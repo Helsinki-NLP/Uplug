@@ -29,6 +29,19 @@
       'stream name' => 'runtime xml',
       'format' => 'xces align',
     },
+
+
+    ##########################
+    # user lexicon
+
+    'lexicon' => {
+	'format' => 'DBM',
+	'file' => 'data/runtime/lexicon.dbm',
+	'key' => ['source','target'],
+    },
+
+    ##########################
+
     'string similarities' => {
       'stream name' => 'string similarities',
     },
@@ -334,6 +347,8 @@
       ###### enable/disable clues ######################
 
       'clues' => {
+        'lexicon' => 1,
+
         'string similarities' => 1,
         'dice' => 1,
         'mutual information' => 0,
@@ -400,6 +415,8 @@
   },
   'arguments' => {
     'shortcuts' => {
+
+      'lex' => 'parameter:alignment:clues:lexicon',
 
       #---- basic clues --------------------------
 
