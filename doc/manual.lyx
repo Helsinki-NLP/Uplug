@@ -1,0 +1,131 @@
+#LyX 1.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 221
+\textclass scrbook
+\language english
+\inputencoding auto
+\fontscheme default
+\graphics default
+\paperfontsize default
+\spacing single 
+\papersize Default
+\paperpackage a4
+\use_geometry 0
+\use_amsmath 0
+\use_natbib 0
+\use_numerical_citations 0
+\paperorientation portrait
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\defskip medskip
+\quotes_language english
+\quotes_times 2
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+
+\layout Title
+
+The Uplug Manual
+\layout Author
+
+Lars Nygaard
+\layout Author
+
+Jörg Tiedemann
+\layout Chapter
+
+Installation
+\layout Standard
+
+There is no tool for installing Uplug yet.
+ Most of the scripts should run on a standard GNU/Linux machine.
+\layout Standard
+
+You need at least a recent version of Perl (I use 5.8.0) You have to modify
+ scripts in bin/ to point to your perl binary (the default setting is /usr/bin/p
+erl)
+\layout Standard
+
+Some scripts in tools/ use bash (/bin/bash) You might have to adjust scripts
+ in tools/ according to your installation
+\layout Standard
+
+Check the external programs in ext/ External programs are pre-compiled for
+ GNU/Linux (RedHat 9) Starter scripts have to be modified if necessary ext/tagge
+r ext/parser ext/chunker
+\layout Standard
+
+Some of the external programs are not included in the package.
+ You might want to install them on your local machine: 
+\layout Standard
+
+
+\begin_inset LatexCommand \htmlurl[The TreeTagger]{http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html}
+
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset LatexCommand \htmlurl[The Qtag Tagger]{http://web.bham.ac.uk/O.Mason/software/tagger/}
+
+\end_inset 
+
+
+\layout Standard
+
+
+\begin_inset LatexCommand \htmlurl[The TnT tagger]{http://www.coli.uni-sb.de/~thorsten/tnt/}
+
+\end_inset 
+
+
+\layout Standard
+
+You should set the environment variable UPLUG_HOME to the directory where
+ you have extracted the uplug files:
+\layout LyX-Code
+
+$ export UPLUG_HOME=/home/myhome/uplug
+\layout Chapter
+
+Running Uplug
+\layout Section
+
+Text processing
+\layout Subsection
+
+Tokenization
+\layout Subsection
+
+Tagging
+\layout Subsection
+
+Chunking
+\layout Section
+
+Sentence alignment
+\layout Section
+
+Word alignment
+\layout Chapter
+
+Configuration
+\layout Section
+
+Configuration files
+\layout Section
+
+Creating data files
+\layout Subsection
+
+Dictionaries
+\layout Subsection
+
+Coocurrence data
+\layout Section
+
+External programs
+\the_end
