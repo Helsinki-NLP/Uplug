@@ -148,6 +148,20 @@ sub MakeIndexerProcess{
     $todo->push($user,$corpus,$command);
 }
 
+sub ViewLogfile{
+    my $user=shift;
+    my $process=shift;
+    my $UserDir=&Uplug::Web::Corpus::GetCorpusDir($user);
+    my $ProcessDir="$UserDir/$process";
+    if (-e "$ProcessDir/uplugweb.log"){
+	open F,"<$ProcessDir/uplugweb.log";
+	my @cont=<F>;
+	close F;
+	return join '',@cont;
+    }
+    return "There is no logfile for this process!";
+}
+
 sub MakeUplugProcess{
     my $user=shift;
     my $corpus=shift;
@@ -168,6 +182,8 @@ sub MakeUplugProcess{
     system "cp -R $UserDir/systems $ThisProcDir/";   # copy config files
     copy ($DocConfig,                                # copy document config-
 	  "$ThisProcDir/ini/UserDataStreams.ini");   #   file to process-dir
+    open F,">$ThisProcDir/uplugweb.log";close F;     # create a log-file
+    chmod 0664,"$ThisProcDir/uplugweb.log";          # make it writable
 #    system "cp -R $UserDir/ini $ThisProcDir/";       # copy ini files
 #    system "chmod g+w $ThisProcDir";
     chdir $ThisProcDir;
@@ -251,7 +267,7 @@ sub PrepareProcess{
 	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user);
 	if (not -d "$dir/data"){mkdir "$dir/data",0755;}
 	if (not -d "$dir/data/runtime"){
-	    mkdir "$dir/data/runtime",0755;
+	    mkdir "$dir/data/runtime",0775;
 	    system "chmod g+w $dir/data/runtime";
 	}
 	$dir.='/data/runtime/';

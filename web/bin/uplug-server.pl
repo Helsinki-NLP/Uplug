@@ -223,9 +223,14 @@ sub RunCommand{
 	return 0;
     }
 
+#    my $UserDir=
+#	&Uplug::Web::Corpus::GetCorpusDir($user); # the user's home directory
+#    my $ConfigDir=$UserDir.'/'.$process;          # the process home dir
+#    my $LogFile="$ConfigDir/uplugweb.log";
     #----------------------------------------------------------
 #    if (my $sig=system "$command"){
 #    if (my $sig=system "$command >/tmp/uplugweb$$.out 2>/tmp/uplugweb$$.err"){
+#    if (my $sig=system "$command >$LogFile 2>>$LogFile"){
     if (my $sig=system "$command >/dev/null 2>/dev/null"){
 	&Uplug::Web::Process::MoveJobTo($user,$process,'failed');
 	&my_log("Got exit-signal $? from $command!");
@@ -271,7 +276,8 @@ sub RunUplug{
 #    print "do pre-processing ...\n";
     &PreProcessing($user,$config);
     #----------------------------------------------------------
-    if (my $sig=system "$UPLUG $config >uplugweb.out 2>uplugweb.err"){
+    my $LogFile="$ConfigDir/uplugweb.log";
+    if (my $sig=system "$UPLUG $config >uplugweb.out 2>$LogFile"){
 	&Uplug::Web::Process::MoveJobTo($user,$process,'failed');
 	&my_log("Got exit-signal $? from $UPLUG!");
 	return 0;

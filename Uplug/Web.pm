@@ -243,8 +243,8 @@ sub AddCorpusForm{
     $str.= "with not more than 10 characters!".&br;
     $str.= "Use ASCII characters only for the name of the corpus using the following character set: ";
     $str.= "[a-z,A-Z,0-9,_]!".&br();
-    $str.= "Each corpus may consists of multiple files in different languages!".&p();
-    $str.= "The file must be a plain text file! Additional markup is not recognized and will be used as text!".&br();
+#    $str.= "Each corpus may consists of multiple files in different languages!".&p();
+#    $str.= "The file must be a plain text file! Additional markup is not recognized and will be used as text!".&br();
 
     $str.= &start_multipart_form;
     $str.= &table({},caption(''),&Tr(\@rows));
@@ -325,7 +325,7 @@ sub CorpusIndexerForm{
 sub LostPassword{
     my ($email)=@_;
     my $html=&h3("Lost password").&hr();
-    if ($email){return $html.=&Uplug::Web::User::SendPassword($email);}
+    if ($email){return $html.=&Uplug::Web::User::SendUserPassword($email);}
     my $form= &startform();
     $form.='Type your e-mail adress: ';
     $form.=&textfield(-name => 'e',-default=>'user@uplug.se');
@@ -1018,12 +1018,16 @@ sub ShowProcessInfo{
     my $html;
 
     if (not $admin){
-	$html.= &ProcessTable($query,$user,'todo',$process,'view','remove');
-	$html.= &ProcessTable($query,$user,'queued',$process,'view');
-	$html.= &ProcessTable($query,$user,'working',$process,'view');
-	$html.= &ProcessTable($query,$user,'done',$process,'view','remove');
+	$html.= &ProcessTable($query,$user,'todo',$process,
+			      'view','remove');
+	$html.= &ProcessTable($query,$user,'queued',$process,
+			      'view');
+	$html.= &ProcessTable($query,$user,'working',$process,
+			      'view','logfile');
+	$html.= &ProcessTable($query,$user,'done',$process,
+			      'view','remove','logfile');
 	$html.= &ProcessTable($query,$user,'failed',$process,
-			      'view','remove','restart');
+			      'view','remove','restart','logfile');
 	return $html;
     }
 
@@ -1032,11 +1036,12 @@ sub ShowProcessInfo{
     #
     $html.= &ProcessTable($query,undef,'todo',$process,'view','remove');
     $html.= &ProcessTable($query,$user,'queued',$process,'view','remove');
-    $html.= &ProcessTable($query,undef,'working',$process,'view','remove');
+    $html.= &ProcessTable($query,undef,'working',$process,
+			  'view','remove','logfile');
     $html.= &ProcessTable($query,undef,'done',$process,
-			  'view','remove','restart');
+			  'view','remove','restart','logfile');
     $html.= &ProcessTable($query,undef,'failed',$process,
-			  'view','remove','restart');
+			  'view','remove','restart','logfile');
     return $html;
 }
 

@@ -610,7 +610,7 @@
 	      'chunktriposi clue' => 'checkbox'
 	   },
 	   'minimal score' => 'scale (0,1,0.00001,0.005)',
-	   'search' => 'optionmenu (best first,refined,intersection,union,competitive,directional_src,directedional_trg)',
+	   'search' => 'optionmenu (best first,refined,intersection,union,competitive,directional_src,directional_trg)',
             },
         }
   }

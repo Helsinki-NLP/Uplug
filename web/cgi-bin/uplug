@@ -226,7 +226,7 @@ sub UplugMenu{
 		 [
           # 'UplugWeb' , $UPLUGHTML.'../uplug/UplugWeb/',
           # "PWA User's Guide" , '/plug/pwa/pwa_manual.html',
-		  'F.A.Q.',undef,
+		  'F.A.Q.',$UPLUGHTML.'/uplugweb-faq.html',
 #		  'F.A.Q.' => 'http://stp.ling.uu.se/cgi-bin/joerg/faq/uplug',
 #		  'PLUG' , 'http://stp.ling.uu.se/plug/',
 #		  'PWA' , 'http://stp.ling.uu.se/plug/pwa/'
@@ -556,6 +556,9 @@ sub TaskManager{
 	elsif ($task eq 'restart'){
 	    &Uplug::Web::Process::RestartProcess($type,$user,$process);
 	    $html.=&Uplug::Web::ShowProcessInfo($query,$user,undef,$ADMIN);
+	}
+	elsif ($task eq 'logfile'){
+	    $html.=&pre(&Uplug::Web::Process::ViewLogfile($user,$process));
 	}
 	else{
 	    $html.=&Uplug::Web::ShowProcessInfo($query,$user,$process,$ADMIN);
