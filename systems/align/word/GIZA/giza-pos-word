@@ -17,18 +17,14 @@
     'bitext' => {
       'format' => 'xces align',
       'status' => 'word',
+      'SkipSrcFile' => 1,
+      'SkipTrgFile' => 1,
     },
-    'clue' => {
-        'format' => 'dbm',
-        'write_mode' => 'overwrite',
-        'key' => ['source','target'],
-        'file' => 'data/runtime/giza-pos-word.dbm',
-    }
   },
   'parameter' => {
      'alignment direction' => 'src-trg',
 #     'alignment direction' => 'both',
-     'make clue' => '1',
+     'make clue' => '0',
     'token' => {
 
     #------------------------------------------------------------------

@@ -48,11 +48,13 @@ my $StartWithAllClues=0;  # =1 --> start with all available clues
 my $ModifyWeightsOnly=0;  # =1 --> modify weights only (don't add/delete clues)
 my $RunMax=30;            # max number of remote processes
 my $KeepMax=10;           # keep the best KeepMax settings before modfiying
-my $ClueWeightSteps=0.03; # steps for changing clue weights
-my $LearnStep=30;         # how often to learn new dynamic clues
+my $ClueWeightSteps=0.01; # steps for changing clue weights
+my $LearnStep=100;        # how often to learn new dynamic clues
 my $maxNotImpr=25;        # stop after a certain number of clue-learning
                           #     without any improvement
 my $DefWeight=0.05;       # default weight for clues
+my $DefScoreThr=0.02;     # default score threshold
+my $ScoreThrSteps=0.005;  # steps for changing score threshold
 
 #my $LearnStep=50000000;   # (basically don't do it ....)
 
@@ -171,6 +173,7 @@ my $GoldSize=&GetGoldSize($gold);  # check the size of the gold standard
 
 &MakeEstimatedClues();                       # estimate clues
 my @AvailableClues=&GetAvailableClues();     # get available clues
+&CheckPrevious(\@Setting);                   # check previous aligment runs
 
 if ($StartWithAllClues){
     &RunAllClues(\@Setting,\@AvailableClues);          # run with all clues
@@ -180,7 +183,9 @@ if ($StartWithAllClues){
     }
 }
 else{
-    &RunSingleClues(\@Setting,\@AvailableClues);   # run single clue settings
+    if (not @Setting){                               # if Settings is empty:
+	&RunSingleClues(\@Setting,\@AvailableClues); # run single clue settings
+    }
 }
 
 #----------------------------------------------------------------------
@@ -192,9 +197,12 @@ else{
 #########################################################################
 
 my $bestScore=0;        # best F-score so far
+my $lastDyn;            # last link-setting used for learning clues
 my $countNotImpr=0;     # count number loops without any improvement
 my $modified=0;         # number of modified settings
-my $nextDyn=$LearnStep; # next time to learn clues from the best alignment
+
+my $nextDyn=keys %{$Scores{F}};  # next time to learn clues 
+$nextDyn+=$LearnStep;            # from the best alignment
 
 
 do {
@@ -214,7 +222,8 @@ do {
 		if (&ModifyClueWeights($Setting[$_])){$modified++;}
 	    }
 	    else{
-		if (&ModifySetting($Setting[$_])){$modified++;}
+#		if (&ModifySetting($Setting[$_])){$modified++;}
+		if (&Mutate($Setting[$_])){$modified++;}
 	    }
 	}
     }
@@ -237,13 +246,53 @@ do {
 	&PrintScores();
 	my ($best)=sort {$Scores{F}{$b} <=> $Scores{F}{$a}} keys %{$Scores{F}};
 	my $score=$Scores{F}{$best};                 # the best score so far
-	if ($score>$bestScore){$bestScore=$score;}   # improved? yes!->save it!
-	else{$countNotImpr++;}                       # no? -> increment counter
-	if ($countNotImpr>$maxNotImpr){&FinishUp();} # ... enough! --> give up!
 
-	if ($best and (not -e "$best.dyn")){                # don't do it twice
-	    if (-e "$best.links.gz"){
+
+##########################################################################
+#### old !!!!!!!!!!!!!!!!!!!!!!!!!!!
+##########################################################################
+#	#-------------------------
+#	# if the score has been improved since last check
+#
+#	if ($score<=$bestScore){                     # not improved
+#	    $countNotImpr++;                         # increment counter
+#	    if ($countNotImpr>$maxNotImpr){          # that's enough
+#		&FinishUp();                         # finish up now!
+#	    }
+#	}
+#	else{
+#	    $bestScore=$score;                       # improved? yes!->save it!
+#	    if ($best and 
+#		(not -e "$best.dyn") and                    # don't do it twice
+#		(-e "$best.links.gz")){                     # links exist
+##########################################################################
+#### old up to here !!!!!!!!!!!!!!!!!!!!!!!!!!!
+##########################################################################
+
+	#-----------------------------------------------------------------
+	# if the score has not been improved since last check
+	#-----------------------------------------------------------------
+
+	if ($score<=$bestScore){                         # not improved
+	    #---------------------------
+	    # no improvement since
+	    # last time we learned clues
+	    #---------------------------
+	    if ($Scores{F}{$lastDyn}>=$score){
+		$countNotImpr++;                         # increment counter
+		if ($countNotImpr>$maxNotImpr){          # that's enough
+		    &FinishUp();                         # finish up now!
+		}
+	    }
+	    #--------------------------------------
+	    # improvement since last clue learning:
+	    #     learn clues from the best one!!!
+	    #--------------------------------------
+	    elsif ($best and 
+		(not -e "$best.dyn") and                    # don't do it twice
+		(-e "$best.links.gz")){                     # links exist
 		$DynNr++;                                   # increment counter
+		$lastDyn=$best;                             # save link setting
 		print "learn dynamic clues from $best.links\n";
 		my $thisdir=getcwd;                         # the current dir
 		my $links="$thisdir/$best.links.gz";        # training data
@@ -253,15 +302,19 @@ do {
 		while (not -e "dyn$DynNr.ready"){sleep 1;}  # wait until ready
 		unlink "dyn$DynNr.ready";
 		chdir $thisdir;                             #   (go back)
+		#-------------------------------------
 		# wait until all alignment processes
 		# using dynamic clues are finished
 		# (this should be probably checked more carefully)
+		#-------------------------------------
 		while (&DynIsRunning){sleep 1;}
+		#-------------------------------------
 		# move dynamic clues
 		# (overwrite old ones!!!)
+		#-------------------------------------
 		system ("mv dynamic/data/runtime/*dbm* data/runtime/");
 		system ("touch $best.dyn");                 # create a flag
-
+		#-------------------------------------
 		if ($StartWithAllClues){                    # if StartWithAll:
 		    &GetBestSettings(\@Setting,$KeepMax);   # get top results
 		    foreach my $s (@Setting){               # add all clues
@@ -273,11 +326,20 @@ do {
 		}
 	    }
 	}
+	#-----------------------------------------------------------------
+	# if the score has been improved since last check: save the score!
+	#  (don't do anything else)
+	#-----------------------------------------------------------------
+	else{
+	    $bestScore=$score;
+	}
     }
     # -----------------
     sleep 1;
 }
 until ((not $modified) and (not keys %Running));
+
+
 
 #-------------------------------------------------------------
 &FinishUp();  # wait until all running processes are finished
@@ -293,16 +355,49 @@ exit;
 
 
 
-
+use File::stat;
 
 sub DynIsRunning{
     my @dynamic=keys %Running;
     @dynamic=grep (/^dyn/,@dynamic);
     foreach (@dynamic){
-	if (-e "$_.links"){return 1;}
+	if (-e "$_.links"){
+	    my $fstat=stat("$_.links");        # check file statistics
+	    my $mtime=time-$fstat->mtime;      # time - last-modification-time
+	    if ($mtime>600){                   # no modification since 10 min?
+		unlink ("$_.links");           # --> remove the file!
+		delete $Running{$_};           # --> remove from Running
+	    }                                  # otherwise:
+	    else{return 1;}                    # yes, still running!
+	}
     }
     return 0;
 }
+
+#-------------------------
+# check previous runs
+# read their scores
+# save their settings
+#-------------------------
+
+sub CheckPrevious{
+    my $settings=shift;
+    opendir(DIR, '.');
+    my @eval = grep { /\.eval/ } readdir(DIR);
+    @eval = grep { $_!~/giza/ } @eval;
+    closedir DIR;
+    foreach my $file (@eval){
+	$file=~s/\.eval//;
+	push(@{$settings},{});
+	&File2Setting($settings->[-1],$file);
+	$Tried{$file}=1;
+	system "touch $file.ready";
+	&CheckScore($settings,$file);
+	unlink "$file.ready";
+    }
+}
+
+#-------------------------
 
 sub FinishUp{
     my $running=scalar keys %Running;
@@ -646,6 +741,188 @@ sub ModifySetting{
 
 # end of modify setting
 ###########################################################
+
+
+
+
+
+
+
+###########################################################
+# modify clue alignment settings
+#
+# 1) add available clues
+# 2) change clue weights
+
+sub Mutate{
+    my $s=shift;
+
+    #----------------
+    # check without modification
+    # (might be ok if new dynamic clues exist!
+    #----------------
+    my $file=&Setting2File($s);           #   get the filebase
+    if ((not defined $Scores{F}{$file})   #   if tested already or
+	and (not defined $Tried{$file})){ #   if already running:
+	$s->{modified}=1;                 #   give it a shot
+	return 1;                         #   (mark as modified)
+    }
+
+
+    my @AllClues=&GetAvailableClues();           # get all available clues
+    @AvailableClues=@AllClues;
+
+    # 0 --> add clue
+    # 1 --> increase weight
+    # 2 --> decrease weight
+    # 3 --> increase minimal score
+    # 4 --> decrease minimal score
+    # 5 --> remove clue
+
+    while (1){
+	my $operation=int(rand 6);
+	if ($operation==0){
+	    if (&AddRandomClue($s,@AllClues)){
+		return 1;
+	    }
+	}
+	elsif ($operation==1){
+	    if (&ChangeRandomClueWeight($s,$ClueWeightSteps)){
+		return 1;
+	    }
+	}
+	elsif ($operation==2){
+	    if (&ChangeRandomClueWeight($s,0-$ClueWeightSteps)){
+		return 1;
+	    }
+	}
+	elsif ($operation==3){
+	    if (&ChangeScoreThreshold($s,$ScoreThrSteps)){
+		return 1;
+	    }
+	}
+	elsif ($operation==4){
+	    if (&ChangeScoreThreshold($s,0-$ScoreThrSteps)){
+		return 1;
+	    }
+	}
+	elsif ($operation==5){
+	    if (&RemoveRandomClue($s)){
+		return 1;
+	    }
+	}
+    }
+}
+
+sub AddRandomClue{
+    my $s=shift;
+    my @AllClues=@_;
+    while (@AllClues){
+	my $idx=int(rand $#AllClues+1);          # random index number
+	my $c=splice(@AllClues,$idx,1);          # get/remove the clue
+	if (not defined $s->{clues}->{$c}){      # if not included already:
+	    $s->{clues}->{$c}=$DefWeight;        #   set default weight
+	    my $file=&Setting2File($s);          #   get the filebase
+	    if ((defined $Scores{F}{$file}) or   #   if tested already or
+		(defined $Tried{$file})){        #   if already running:
+		delete $s->{clues}->{$c};        #      don't try again
+	    }
+	    else{                                # otherwise:
+		$s->{modified}=1;                #   give it a shot
+		return 1;                        #   (mark as modified)
+	    }
+	}
+    }
+    return 0;
+}
+
+sub RemoveRandomClue{
+    my $s=shift;
+    my @AllClues=keys %{$s->{clues}};
+    my $file;
+
+    while ($#AllClues){                      # as long as there are >2 clues:
+	my $idx=int(rand $#AllClues+1);      #    choose a clue
+	my $c=splice(@AllClues,$idx,1);      #    get the clue name
+	my $old=$s->{clues}->{$c};           #    save the old weight
+	delete $s->{clues}->{$c};            #    delete the clue
+	my $file=&Setting2File($s);          #    get the filebase
+	if ((defined $Scores{F}{$file}) or   #    if tested already or
+	    (defined $Tried{$file})){        #    if already running:
+	    $s->{clues}->{$c}=$old;          #       restore clue
+	}
+	else{                                #    otherwise:
+	    $s->{modified}=1;                #       give it a shot
+	    return 1;                        #       (mark as modified)
+	}
+    }
+    return 0;
+}
+
+
+sub ChangeRandomClueWeight{
+    my $s=shift;
+    my $step=shift;
+
+    my @clues=keys %{$s->{clues}};
+    my $file;
+#    do {
+	my $idx=int(rand $#clues+1);              # random index number
+	my $clue=$clues[$idx];                    # (choose random clue)
+	my $old=$s->{clues}->{$clue};             # save the old weight
+	$s->{clues}->{$clue}+=$step;              # change the weight
+	$s->{clues}->{$clue}=
+	    (int(100*$s->{clues}->{$clue}))/100; 
+	$file=&Setting2File($s);                  # convert to file base
+#    }
+#    until ((not defined $Scores{F}{$file})       # 
+#	   and (not defined $Tried{$file}));
+#    $s->{modified}=1;
+#    return 1;
+
+    if ((not defined $Scores{F}{$file})       # 
+	and (not defined $Tried{$file})){     #
+	$s->{modified}=1;
+	return 1;
+    }
+    $s->{clues}->{$clue}=$old;                # restore the old weight
+    return 0;
+}
+
+sub ChangeScoreThreshold{
+    my $s=shift;
+    my $step=shift;
+
+    my $file;
+#    do{
+	if (not defined $s->{score}){
+	    $s->{score}=$DefScoreThr;
+	}
+	else{
+	    $s->{score}+=$step;
+	}
+	if ($s->{score}<=0){
+	    delete $s->{score};
+	}
+	$file=&Setting2File($s);                 # convert to file base
+#    }
+#    until ((not defined $Scores{F}{$file})       # 
+#	   and (not defined $Tried{$file}));
+#    $s->{modified}=1;
+#    return 1;
+
+    if ((not defined $Scores{F}{$file})       # 
+	and (not defined $Tried{$file})){     #
+	$s->{modified}=1;
+	return 1;
+    }
+    return 0;
+}
+
+
+# end of modify setting
+###########################################################
+
 
 
 
