@@ -145,7 +145,7 @@ my $LinkConfig='systems/align/word/test/link';
 my $align=$uplug.' '.$LinkConfig;
 my $eval=$UplugHome.'/bin/evalalign.pl';
 my $summarize=$Bin.'/summarize-eval';
-my $remote='/home/staff/joerg/bin/remote';
+my $remote='remote';
 
 my @gizaclues=('giza-word-prefix',
 	       'giza-word-prefix-i',
