@@ -97,7 +97,7 @@ my $uplug=$UplugHome.'/uplug';
 my $LinkConfig='systems/align/word/test/link';
 my $align=$uplug.' '.$LinkConfig;
 my $eval=$UplugHome.'/bin/evalalign.pl';
-my $summarize=$UplugHome.'tools/summarize-eval';
+my $summarize=$Bin.'/summarize-eval';
 my $remote='/home/staff/joerg/bin/remote';
 
 my @gizaclues=('giza-word-prefix',
