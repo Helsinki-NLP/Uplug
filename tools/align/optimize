@@ -126,15 +126,15 @@ my $AlwaysDyn=0;    # =0 --> learn dynamic clues only if no improvements
 while ($ARGV[0]=~/^\-/){                          # get some script options
     my $opt=shift(@ARGV);
     if ($opt eq '-tb'){$TrainBitext=shift(@ARGV);}
-    if ($opt eq '-tg'){$TrainGold=shift(@ARGV);}
-    if ($opt eq '-eb'){$EvalBitext=shift(@ARGV);}
-    if ($opt eq '-eg'){$EvalGold=shift(@ARGV);}
-    if ($opt eq '-eb'){$HeldoutBitext=shift(@ARGV);}
-    if ($opt eq '-eg'){$HeldoutGold=shift(@ARGV);}
-    if ($opt eq '-a'){$AlwaysDyn=1;}              # always learn dynamic clues
-    if ($opt eq '-l'){$LearnStep=shift(@ARGV);}   # learn dynamic clues each X align
-    if ($opt eq '-r'){$RunMax=shift(@ARGV);}      # run max this nr of children
-    if ($opt eq '-m'){$KeepMax=shift(@ARGV);}     # size of population
+    elsif ($opt eq '-tg'){$TrainGold=shift(@ARGV);}
+    elsif ($opt eq '-eb'){$EvalBitext=shift(@ARGV);}
+    elsif ($opt eq '-eg'){$EvalGold=shift(@ARGV);}
+    elsif ($opt eq '-hb'){$HeldoutBitext=shift(@ARGV);}
+    elsif ($opt eq '-hg'){$HeldoutGold=shift(@ARGV);}
+    elsif ($opt eq '-a'){$AlwaysDyn=1;}            # always learn dynamic clues
+    elsif ($opt eq '-l'){$LearnStep=shift(@ARGV);} # learn dynamic clues each X align
+    elsif ($opt eq '-r'){$RunMax=shift(@ARGV);}    # run max this nr of children
+    elsif ($opt eq '-m'){$KeepMax=shift(@ARGV);}   # size of population
 }
 
 ##
