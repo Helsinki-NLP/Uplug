@@ -1,6 +1,14 @@
+* 03-03-2005 joerg
+
+- re-implementation of Uplug.pm, Uplug/Config.pm, uplug
+- some minor changes in Uplug/IO* (mainly cleaning up, it's still messy though)
+- some minor changes in the configuration files for pre-processing and
+
 * 15-02-2005 joerg
 
 - new version of ini/DataStreams.ini
+- new/changed configuration files for word-alignment 
+  (basic, default, tagged, advanced)
 
 * 15-02-2005 lars
 
