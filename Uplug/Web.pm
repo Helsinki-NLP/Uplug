@@ -1461,6 +1461,7 @@ sub view{
 #	    print join '<br>',%{$param};
 	$url=&Uplug::Web::AddUrlParam($url,'sx',$self->{'FROMDOC-POS'});
 	$url=&Uplug::Web::AddUrlParam($url,'tx',$self->{'TODOC-POS'});
+	$self->{URL}=$url;
 	if ($$param{mn}){
 	    $self->moveSentLinks($param);
 	}
@@ -1483,6 +1484,7 @@ sub moveSentLinks{
     my $LOCK=$file.'.lock';            # lock the lock-file
     open LCK,"+<$file\.lock";
     my $sec=0;
+#    print "lock file<br>";
     while (not flock(LCK,2)){
 	$sec++;sleep(1);
 	if ($sec>$MAXFLOCKWAIT){
@@ -1501,12 +1503,15 @@ sub moveSentLinks{
 
     local $/='>';                         # read up to the next '>'
 
+#    print "read pos 0<br>";
     read(F,$before{$pos[0]},$pos[0]);
     $link{$pos[0]}=<F>;
-    if ($pos[1]-tell(F)){
+    if (($pos[1]-tell(F))>0){
 	read(F,$before{$pos[1]},$pos[1]-tell(F));
     }
+#   print "read pos 1<br>";
     $link{$pos[1]}=<F>;
+#    print "read rest<br>";
     while (<F>){$after.=$_;}         # read up to end-of-file
     close F;                         # and close the files!
 
@@ -1543,6 +1548,11 @@ sub moveSentLinks{
 	$link{$$param{mnx}}=~s/(xtargets=\").*?(\")/$1$src;$trg$2/s;
     }
 
+#    print &pre(escapeHTML($before{$pos[0]})),'<hr>';
+#    print &pre(escapeHTML($link{$pos[0]})),'<hr>';
+#    print &pre(escapeHTML($before{$pos[1]})),'<hr>';
+#    print &pre(escapeHTML($link{$pos[1]})),'<hr>';
+#    print escapeHTML($after),'<hr>';
     open F,"> $file";
     binmode(F);
     print F $before{$pos[0]};
@@ -1552,7 +1562,6 @@ sub moveSentLinks{
     print F $after;
     close F;
     close LCK;
-
 }
 
 
@@ -1932,11 +1941,15 @@ sub view{
     my $self=shift;
     my ($url,$style,$pos,$params)=@_;
 
+    $self->{URL}=$url;
     if (ref($params) eq 'HASH'){
 	$self->{'FROMDOC-POS'}=$$params{sx};
 	$self->{'TODOC-POS'}=$$params{tx};
 	$url=&Uplug::Web::AddUrlParam($url,'sx',$self->{'FROMDOC-POS'});
 	$url=&Uplug::Web::AddUrlParam($url,'tx',$self->{'TODOC-POS'});
+#	&param('sx',$$params{sx});
+#	&param('sx',$$params{tx});
+	$self->{URL}=$url;
 	if ($$params{edit} eq 'change'){
 #	    print join('<br>',%{$params});
 	    $self->changeLinks($params);
@@ -2191,6 +2204,8 @@ sub linkMatrix{
 	$html.=hidden(-name=>'start',-default=>[$self->{POS}]); # start and
 	$html.=hidden(-name=>'end',-default=>[$self->{NEXT}]);  # end position
 	$html.=hidden(-name=>'seg',-default=>[$id]);            # seg ID
+	$html.=hidden(-name=>'sx',-default=>[$self->{'FROMDOC-POS'}]);
+	$html.=hidden(-name=>'tx',-default=>[$self->{'TODOC-POS'}]);
     }
     my @rows=();
     push (@rows,&th([$id]));

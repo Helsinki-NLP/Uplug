@@ -34,7 +34,7 @@ BEGIN {
     binmode(STDOUT, ":utf8");                   # set UTF8 for STDOUT
     $MAXPOST=100;                               # post max X kB of data
     $CGI::POST_MAX = $MAXPOST * 1024;           # to the CGI-script
-    $ALARM=10;                                  # stop cgi-script after X sec.
+    $ALARM=20;                                  # stop cgi-script after X sec.
 
     $UPLUGADMIN = 'joerg@stp.ling.uu.se';                # administrator e-mail
     $UPLUGLOG  = '/tmp/uplug.log';                       # CGI log-file
@@ -317,6 +317,7 @@ sub CorpusManager{
     if ($style){$query=&Uplug::Web::AddUrlParam($query,'s',$style);}
 
     if (not defined $owner){$owner=$user;}
+    if (not defined $owner){$owner='pub';}
     my $priv='all';
     if ($user eq $owner){$priv='user';}
     if ($user eq $UPLUGADMIN){$priv='admin';}
@@ -588,6 +589,10 @@ sub TaskManager{
 #    $html.="   jobs: ".&Uplug::Web::ActionLinks($query,@actions).&br();
 
     $html.=&hr;
+    if (not defined $user){
+	$html.=&h3("You have to register first!");
+	return $html;
+    }
 
     &Uplug::Web::Process::ClearStack('done',$user,5);
 
