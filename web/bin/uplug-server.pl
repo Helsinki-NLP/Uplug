@@ -120,21 +120,23 @@ else{
 	while (@data=&Uplug::Web::Process::GetNextProcess('todo')){
 	    $data[4]='('.$HOST.')';
 	    &Uplug::Web::Process::AddProcess('queued',@data);
-	    if (not &run(@data)){
-		&my_log("problems! -> Re-schedule process!");
-		&Uplug::Web::Process::MoveJobTo($data[0],    # user-name
-						$data[1],    # process-ID
-						'failed');   # failed-stack
+	    if ($data[2] eq '$bash'){
+		if (not &RunCommand(@data)){
+		    &my_log("problems! -> Re-schedule process!");
+		    &Uplug::Web::Process::MoveJobTo($data[0],    # user-name
+						    $data[1],    # process-ID
+						    'failed');   # failed-stack
+		}
+	    }
+	    else{
+		if (not &RunUplug(@data)){
+		    &my_log("problems! -> Re-schedule process!");
+		    &Uplug::Web::Process::MoveJobTo($data[0],    # user-name
+						    $data[1],    # process-ID
+						    'failed');   # failed-stack
+		}
 	    }
 	    @data=();
-
-##	    push (@data,'('.$HOST.')');
-#	    &Uplug::Web::Process::AddProcess('queued',@data);
-#	    if (my $sig=system "$data[2]"){
-#		print "got signal $sig! -> Re-schedule process!\n";
-#		&Uplug::Web::Process::MoveJobTo($data[0],$data[1],'failed');
-#	    }
-#	    @data=();
 	}
 	sleep(1);
     }              # found STOPSERVER: stop the server!
@@ -208,9 +210,39 @@ sub my_die{
 ##########################################################################
 ##########################################################################
 ##########################################################################
+#
+# RunCommand: run arbitrary command
+#             (possibly dangerous ...)
+
+sub RunCommand{
+
+    my ($user,$process,$corpus,$type,$command)=@_;
+
+    if (not &Uplug::Web::Process::MoveJobTo($user,$process,'working')){
+	&my_log("Cannot find job $process for user $user!");
+	return 0;
+    }
+
+    #----------------------------------------------------------
+    if (my $sig=system "$command >/tmp/uplugweb.out 2>/tmp/uplugweb.err"){
+	&Uplug::Web::Process::MoveJobTo($user,$process,'failed');
+	&my_log("Got exit-signal $? from $command!");
+	return 0;
+    }
+    #----------------------------------------------------------
+
+    if (not &Uplug::Web::Process::MoveJob($user,$process,'working','done')){
+	&my_log("Couldn't move job $process of user $user to done-stack!");
+	return 0;
+    }
+    return 1;
+}
 
 
-sub run{
+##########################################################################
+
+
+sub RunUplug{
 
     my ($user,$process,$corpus,$config)=@_;
 
@@ -331,7 +363,10 @@ sub PostProcessing{
 			    if ($data{input}{$s}{file}=~/\.gz$/){
 				system "gzip uplugweb.out";
 			    }
+#			    print `ls -al $data{input}{$s}{file}`;
+#			    print "cp uplugweb.out $data{input}{$s}{file}\n";
 			    system "cp uplugweb.out $data{input}{$s}{file}";
+#			    print `ls -al $data{input}{$s}{file}`;
 			}
 			$data{output}{$s}{$a}=$data{input}{$s}{$a};
 		    }

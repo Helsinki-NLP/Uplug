@@ -2,7 +2,11 @@
 
 use FindBin qw($Bin);
 
-my $JAVA_HOME='/usr/java/j2re1.4.2';
+#my $JAVA_HOME='/usr/java/j2re1.4.2';
+#my $JAVA="${JAVA_HOME}/bin/java";
+
+my $JAVA="java";
+my $JAVA="/opt/sun-jdk-1.4.2.04/bin/java";
 my $GROK_HOME="$Bin/../grok/";
 my $JARS=`echo ${GROK_HOME}/lib/*.jar | tr ' ' ':'`;
 $ENV{CLASSPATH}="$ENV{CLASSPATH}:.:${JARS}:${GROK_HOME}/output/classes:${GROK_HOME}/src/java/";
@@ -12,7 +16,7 @@ chdir $Bin;                                         # go to Bin
 my $file=$ARGV[0];                                  # file to be tagged
 if (not -e $file){$file="$DIR/$file";}              # change path if necessary
 
-system "${JAVA_HOME}/bin/java GrokTaggerEN $file";  # call the tagger
+system "$JAVA GrokTaggerEN $file";                  # call the tagger
 
 chdir $DIR;                                         # go bach to original dir
 exit;

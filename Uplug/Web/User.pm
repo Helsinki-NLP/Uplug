@@ -24,15 +24,14 @@ use Uplug::Web::Process::Stack;
 
 use vars qw(@ISA @EXPORT);
 
-@ISA=qw( Exporter);
+@ISA    = qw( Exporter);
 @EXPORT = qw( ReadUserInfo );
 
-our $UplugAdmin='joerg@stp.ling.uu.se';
-
-my $Uplug2Dir='/corpora/OPUS/uplug2/';
-my $CorpusDir=$Uplug2Dir;
-my $UserDataFile=$Uplug2Dir.'.user';
-my $PasswordFile=$Uplug2Dir.'.htpasswd';
+our $UplugAdmin   = $ENV{UPLUGADMIN};
+our $Uplug2Dir    = $ENV{UPLUGDATA};
+our $CorpusDir    = $Uplug2Dir;
+our $UserDataFile = $Uplug2Dir.'/.user';
+our $PasswordFile = $Uplug2Dir.'/.htpasswd';
 
 # my $IniDir=$CorpusDir.'/ini';
 # my $CorpusFile=$IniDir.'/uplugUserStreams';
@@ -52,7 +51,7 @@ sub RemoveUser{
     if (-e "$CorpusDir/.recycled/$user"){
 	`rm -fr $CorpusDir/.recycled/$user`;
     }
-    `mv $CorpusDir$user $CorpusDir/.recycled/`;
+    `mv $CorpusDir/$user $CorpusDir/.recycled/`;
 
     my $UserInfo=Uplug::Web::Process::Stack->new($UserDataFile);
     $UserInfo->remove($user);
@@ -66,7 +65,7 @@ sub EditUser{
     my $user=shift;
     my %UserData=();
 #    &ReadUserInfo(\%UserData,$user);
-    print "edit $user (not implemented yet!)";
+    return "edit $user (not implemented yet!)";
 }
 
 
@@ -80,11 +79,13 @@ sub ReadUserInfo{
 	$$data{$u}{info}=$f;
 	if (not -e $f){$$data{$u}{status}='removed';}
 	elsif ($user eq $u){
-	    open U,"<$f";
+	    open U, '<:encoding(utf8)',$f;
+#	    open U,"<$f";
 	    while (<U>){
 		chomp;
 		my ($k,$v)=split(/\:/);
-		$$data{$u}{$k}=$v;
+		if ($k eq 'Password'){$$data{$u}{$k}='******';}
+		else{$$data{$u}{$k}=$v;}
 	    }
 	    close U;
 	}

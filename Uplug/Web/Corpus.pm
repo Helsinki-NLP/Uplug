@@ -30,8 +30,7 @@ use Uplug::Config;
 
 
 
-our $ALIGN2CWB=$ENV{UPLUGHOME}.'/web/bin/make-cwb-align';
-our $CORPUS2CWB=$ENV{UPLUGHOME}.'/web/bin/make-cwb-corpus';
+our $INDEXER=$ENV{UPLUGHOME}.'/web/bin/uplug-indexer.pl';
 our $RECODE=$ENV{RECODE};
 
 my $CorpusDir=$ENV{UPLUGDATA};
@@ -54,6 +53,31 @@ sub GetIndexedCorpora{
     }
     return keys %{$data};
 }
+
+
+sub IndexCorpus{
+    my $owner=shift;
+    my $corpus=shift;
+
+    my $CorpusDir=&GetCorpusDir($owner,$corpus);
+    my $CWBREG="$ENV{UPLUGCWB}/reg/$owner/$corpus";
+    my $CWBDAT="$ENV{UPLUGCWB}/dat/$owner/$corpus";
+
+    if (not -d "$ENV{UPLUGCWB}/reg"){mkdir "$ENV{UPLUGCWB}/reg";}
+    if (not -d "$ENV{UPLUGCWB}/dat"){mkdir "$ENV{UPLUGCWB}/dat";}
+    if (not -d "$ENV{UPLUGCWB}/reg/$corpus"){
+	mkdir "$ENV{UPLUGCWB}/reg/$corpus";
+	system "chmod g+w $ENV{UPLUGCWB}/reg/$corpus";
+    }
+    if (not -d "$ENV{UPLUGCWB}/dat/$corpus"){
+	mkdir "$ENV{UPLUGCWB}/dat/$corpus";
+	system "chmod g+w $ENV{UPLUGCWB}/dat/$corpus";
+    }
+
+    my $command="$INDEXER $CWBREG $CWBDAT $CorpusDir";
+
+}
+
 
 
 sub AddCorpusToIndex{

@@ -1,23 +1,45 @@
+#!/usr/bin/perl
+
+use FindBin qw($Bin);
+
+#my $JAVA_HOME='/usr/java/j2re1.4.2';
+#my $JAVA="${JAVA_HOME}/bin/java";
+
+my $JAVA="java";
+my $JAVA="/opt/sun-jdk-1.4.2.04/bin/java";
+my $GROK_HOME="$Bin/../grok/";
+my $JARS=`echo ${GROK_HOME}/lib/*.jar | tr ' ' ':'`;
+$ENV{CLASSPATH}="$ENV{CLASSPATH}:.:${JARS}:${GROK_HOME}/output/classes:${GROK_HOME}/src/java/";
+
+my $DIR=$ENV{PWD};                                  # save current dir
+chdir $Bin;                                         # go to Bin
+my $file=$ARGV[0];                                  # file to be tagged
+if (not -e $file){$file="$DIR/$file";}              # change path if necessary
+
+system "$JAVA GrokChunkerEN $file";                 # call the chunker
+
+chdir $DIR;                                         # go bach to original dir
+exit;
+
+
+
 #!/bin/bash
-
-
-
-JAVA_HOME='/usr/java/j2re1.4.2';
-
-# openNLP
-# and Grok
-
-GROK_HOME=${UPLUGHOME}/ext/grok/
-JARS=`echo ${GROK_HOME}/lib/*.jar | tr ' ' ':'`
-CLASSPATH=${CLASSPATH}:.:${JARS}:${GROK_HOME}/output/classes:${GROK_HOME}/src/java/
-
-DIR=`pwd`;
-CHUNKERDIR=${UPLUGHOME}/ext/chunker;
-cd ${CHUNKERDIR};
-
-
-${JAVA_HOME}/bin/java GrokChunkerEN $1
-
-
-cd ${DIR};
+#
+#JAVA_HOME='/usr/java/j2re1.4.2';
+#
+## openNLP
+## and Grok
+#
+#GROK_HOME=${UPLUGHOME}/ext/grok/
+#JARS=`echo ${GROK_HOME}/lib/*.jar | tr ' ' ':'`
+#CLASSPATH=${CLASSPATH}:.:${JARS}:${GROK_HOME}/output/classes:${GROK_HOME}/src/java/
+#
+#DIR=`pwd`;
+#CHUNKERDIR=${UPLUGHOME}/ext/chunker;
+#cd ${CHUNKERDIR};
+#
+#
+#${JAVA_HOME}/bin/java GrokChunkerEN $1
+#
+#cd ${DIR};
 

@@ -1,3 +1,5 @@
+# -*- coding: ISO-8859-1 -*-
+#
 #  Beata Megyesi
 #  bea@speech.kth.se
 #  Centre for Speech Technology, 

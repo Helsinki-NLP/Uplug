@@ -23,10 +23,8 @@ use CGI qw/:standard escapeHTML escape/;
 use Uplug::Web::Corpus;
 use Uplug::Web::Process;
 use Uplug::Web::User;
+use Uplug::Web::CWB;
 use XML::Parser;
-
-use lib ('/home/staff/joerg/user_local/lib/perl5/site_perl/5.8.0/');
-use WebCqp::Query;
 
 our $CWBREG=$ENV{UPLUGCWB}.'/reg/';
 our $ALIGN2CWB=$ENV{UPLUGHOME}.'/web/bin/make-cwb-align';
@@ -39,17 +37,19 @@ my $MAXVIEWDATA=10;
 binmode(STDOUT, ":utf8");            # set UTF8 for STDOUT
 
 my %DataAccess=
-    (admin => {corpus => ['info','view','send','add-doc','remove'],
+    (admin => {corpus => ['info','view','send','add-doc',
+			  'index','query','remove'],
 	       doc => ['info','view','send','remove'],
 	       user => ['info','edit','remove']},
-     user => {corpus => ['info','view','send','add-doc','remove'],
+     user => {corpus => ['info','view','send','add-doc',
+			 'index','query','remove'],
 	      doc => ['info','view','send','remove'],
 	      'Uplug::Web::Data' => ['xml'],
 	      'Uplug::Web::Bitext' => ['text','xml'],
 	      'Uplug::Web::BitextLinks' => ['text','xml','matrix','edit'],
 	      user => ['info','edit']},
      all => {doc => ['info','view','send'],
-	     corpus => ['documents'],
+	     corpus => ['info','view','send'],
 	     'Uplug::Web::Data' => ['xml'],
 	     'Uplug::Web::Bitext' => ['text','xml'],
 	     'Uplug::Web::BitextLinks' => ['text','xml','matrix'],
@@ -65,17 +65,23 @@ sub AccessMode{
 
 sub ShowUserInfo{
     my $query=shift;
-    my $UserData=shift;
     my $user=shift;
+    my $UserData=shift;
     my $name=shift;
+    my $admin=shift;
 
     my @rows=();
     foreach my $u (keys %{$UserData}){
-	my $url=&AddUrlParam($query,'name',$u);
+
+	my $priv='all';                     # access priviliges: public
+	if ($admin){$priv='admin';}         #    administrator
+	elsif ($u eq $user){$priv='user';}  #    registered user
+
+	my $url=&AddUrlParam($query,'n',$u);
 	if (keys %{$$UserData{$u}} > 1){
 	    push (@rows,
 		  &th([$u]).
-		  &td(&ActionLinks($url,&AccessMode($user,'user'))));
+		  &td(&ActionLinks($url,&AccessMode($priv,'user'))));
 	    foreach (keys %{$$UserData{$u}}){
 		push (@rows,td([$_,$$UserData{$u}{$_}]));
 	    }
@@ -83,7 +89,7 @@ sub ShowUserInfo{
 	else{
 	    push (@rows,
 		  &th([$u]).
-		  &td(&ActionLinks($url,&AccessMode($user,'user'))));
+		  &td(&ActionLinks($url,&AccessMode($priv,'user'))));
 	}
     }
     return &table({},caption(''),&Tr(\@rows));
@@ -287,6 +293,10 @@ sub AddDocumentForm{
 
 
 
+
+
+
+
 sub CorpusIndexerForm{
     my ($user)=@_;
     my %corpora=();
@@ -306,8 +316,9 @@ sub CorpusIndexerForm{
 }
 
 sub CorpusQueryForm{
-    my ($user,$owner,$corpus,$lang,$aligned)=@_;
+    my ($owner,$corpus,$lang,$aligned)=@_;
 
+    return &Uplug::Web::CWB::Query('',$owner,$corpus,$lang,$aligned);
 
     my %index=();
     &Uplug::Web::Corpus::GetIndexedCorpora(\%index,$owner,$corpus);
@@ -488,9 +499,13 @@ sub ShowCorpusInfo{
     if (defined $corpus){$link=&AddUrlParam($link,'c',$corpus);}
     if (defined $docbase){$link=&AddUrlParam($link,'b',$docbase);}
 
-    my $html='possible tasks: ';
-    $html.=&ActionLinks($link,&AccessMode($priv,'corpus')).&br();
-    $html.='selected task: '.$task;
+    my $html;
+#    my $html='possible tasks: ';
+#    $html.=&TaskLinks({url=>$link,selected=>$task},
+#		      &AccessMode($priv,'corpus')).&br();
+
+#    $html.=&ActionLinks($link,&AccessMode($priv,'corpus')).&br();
+#    $html.='selected task: '.$task;
     $query=&AddUrlParam($query,'t',$task);
     if ($task eq 'remove'){
 	$html.=&p().&b('ATTENTION! ');
@@ -502,13 +517,17 @@ sub ShowCorpusInfo{
     foreach my $c (sort keys %{$CorpusNames}){
 
 	$query=&AddUrlParam($query,'c',$c);
-	$html.=&a({-href=>$query},$c).' ';
+	$html.=&a({-href=>$query},$c.' ');
+
+	$html.=&TaskLinks({url=>$query,selected=>$task},
+			  &AccessMode($priv,'corpus')).&br();
+
 #	$html.=&ActionLinks($url,&AccessMode($priv,'corpus')).&br();
 #	push (@rows,&td([&a({-href=>$url},$c)]));
 	if ($c ne $corpus){next;}
 
 	my @rows=();
-	foreach my $d (keys %docs){
+	foreach my $d (sort keys %docs){
 	    my $link=&AddUrlParam($query,'b',$d);   # add base name
 	    push (@rows,&th([$d]));
 	    $rows[-1].=&td(['['.&a({-href=>$link},'links').']']);
@@ -544,14 +563,14 @@ sub ShowCorpusInfo{
 #		}
 #	    }
 	}
-	$html.=&table({},caption(''),&Tr(\@rows));
+	$html.=&table({},caption(''),&Tr(\@rows)).&p();
 	if ((defined $doc) and ($task eq 'info')){
 	    my @rows=();
 	    push (@rows,&th(['info:',$doc]));
 	    foreach (keys %{$$CorpusDocs{$doc}}){
 		push (@rows,&td([$_,$$CorpusDocs{$doc}{$_}]));
 	    }
-	    $html.=&table({},caption(''),&Tr(\@rows));
+	    $html.=&table({},caption(''),&Tr(\@rows)).&p();
 	}
     }
     return $html;
@@ -824,7 +843,6 @@ sub ViewCorpus{
 	$params,
 	$links)=@_;
 
-    my $html;
     my $DocConfig=&Uplug::Web::Corpus::GetCorpusInfo($owner,$corpus,$doc);
     if (not defined $$DocConfig{file}){return undef;}
     my $file=$$DocConfig{file};
@@ -842,6 +860,8 @@ sub ViewCorpus{
     }
     else{$data=new Uplug::Web::Data($priv,$file);}
     return $data->view($url,$style,$pos,$params,$links);
+#    my $html='['.&a({-href=>'javascript:history.go(-1)'},'back').']';
+#    return $html.$data->view($url,$style,$pos,$params,$links);
 }
 
 
@@ -888,9 +908,9 @@ sub Process{
     elsif ((ref($params) eq 'HASH') and (defined $$params{save})){
 	if (&Uplug::Web::Process::SaveUplugSettings($user,$name,$params)){
 	    return 
-		&h3($name).
+#		&h3($name).
 		&UplugSystemForm($query,$user,$corpus,$name).
-		&p().'settings saved!';
+		&p().&b('settings saved!');
 	}
     }
 
@@ -916,7 +936,7 @@ sub ProcessTable{
     my $process=shift;
     my @actions=@_;
 
-    my $url=&Uplug::Web::AddUrlParam($query,'type',$type);
+    my $url=&Uplug::Web::AddUrlParam($query,'y',$type);
     my $html;
     if (defined $user){$html=&h3($type);}
     else{$html=&h3($type.' '.&ActionLinks($url,'clear'));}
@@ -931,14 +951,14 @@ sub ProcessTable{
 	chomp;
 	my ($u,$p,@c)=split(/\:/);
 	if ((defined $user) and ($user ne $u)){next;}
-	$url=&Uplug::Web::AddUrlParam($url,'process',$p);
-	$url=&Uplug::Web::AddUrlParam($url,'user',$u);
+	$url=&Uplug::Web::AddUrlParam($url,'p',$p);
+	$url=&Uplug::Web::AddUrlParam($url,'u',$u);
 	push (@rows,
 	      &td([$count.')']).
 	      &th([$u]).
-	      &td([$p.&Uplug::Web::ActionLinks($url,@actions)]));
+	      &td([$p,&Uplug::Web::ActionLinks($url,@actions)]));
 	if ($process eq $p){
-	    push (@rows,&td(['','',@c]));
+	    push (@rows,&td(['',@c]));
 	}
     }
     return $html.&table({},caption(''),&Tr(\@rows));
@@ -948,9 +968,11 @@ sub ShowProcessInfo{
     my $query=shift;
     my $user=shift;
     my $process=shift;
+    my $admin=shift;
+    my $html;
 
-    if (defined $user){
-	my $html.= &ProcessTable($query,$user,'todo',$process,'view','remove');
+    if (not $admin){
+	$html.= &ProcessTable($query,$user,'todo',$process,'view','remove');
 	$html.= &ProcessTable($query,$user,'queued',$process,'view');
 	$html.= &ProcessTable($query,$user,'working',$process,'view');
 	$html.= &ProcessTable($query,$user,'done',$process,'view','remove');
@@ -960,22 +982,16 @@ sub ShowProcessInfo{
     }
 
     #-----------------------------------
-    # no user --> administrator view!!!
+    # administrator view!!!
     #
-    else{
-	my $html.= &ProcessTable($query,undef,'todo',$process,
-			      'view','run','remove');
-	$html.= &ProcessTable($query,$user,'queued',$process,
-			      'view','remove');
-	$html.= &ProcessTable($query,undef,'working',$process,
-			      'view','remove');
-	$html.= &ProcessTable($query,undef,'done',$process,
-			      'view','remove','restart');
-	$html.= &ProcessTable($query,undef,'failed',$process,
-			      'view','remove','restart');
-	return $html;
-    }
-
+    $html.= &ProcessTable($query,undef,'todo',$process,'view','remove');
+    $html.= &ProcessTable($query,$user,'queued',$process,'view','remove');
+    $html.= &ProcessTable($query,undef,'working',$process,'view','remove');
+    $html.= &ProcessTable($query,undef,'done',$process,
+			  'view','remove','restart');
+    $html.= &ProcessTable($query,undef,'failed',$process,
+			  'view','remove','restart');
+    return $html;
 }
 
 
@@ -1195,15 +1211,38 @@ sub ActionLinks{
 
 
 sub TaskLinks{
-    my $url=shift;
-    my $para=shift;
-    my @action;
-    if (ref($_[0]) eq 'ARRAY'){@action=@{$_[0]};}
-    else{@action=@_;}
+
+    my %para=();
+    my $url;
+    my $key='t';                                      # default url-attr: t
+
+    if (ref($_[0]) eq 'HASH'){                        # first arg = HASH ref?
+	%para=%{$_[0]};shift;                         # -> parameter hash
+	$url=$para{url};                              #    get URL parameter
+    }
+    else{                                             # otherwise:
+	$url=shift;                                   #    URL=first arg
+	$key=shift;                                   #    URL-attr=second arg
+    }
+
+    if (exists $para{key}){$key=$para{key};}          # check key parameter
+    my $selected=$para{selected};                     # selected 'task'
+
+    my @tasks;                                        # tasks:
+    if (ref($_[0]) eq 'ARRAY'){@tasks=@{$_[0]};}      #  array reference
+    else{@tasks=@_;}                                  #  or all remaining args
 
     my @links;
-    foreach (@action){
-	push (@links,'['.&a({-href => &AddUrlParam($url,$para,$_)},$_).']');
+    foreach my $t (@tasks){
+	if ($t eq $selected){
+	    push (@links,'['.$t.']');
+	}
+	elsif (defined $key){
+	    push (@links,'['.&a({-href=>&AddUrlParam($url,$key,$t)},$t).']');
+	}
+	else{
+	    push (@links,'['.&a({-href=>$url},$t).']');
+	}
     }
     return wantarray ? @links : join '',@links;
 }
@@ -1507,7 +1546,7 @@ sub view{
     close F;
 
     my $links=$self->nextLinks($url);
-    return $links.$html;
+    return $links.$html.$links;
 
 }
 
@@ -1598,7 +1637,8 @@ sub view{
     if (not $self->readLinks($pos)){return undef;}
     my $seg=$self->readSentLinks($style);
     my $html=$self->nextLinks($url);
-    $html.=$seg;
+    $html.=$seg.&p();
+    $html.=$self->nextLinks($url);
     return $html;
 }
 

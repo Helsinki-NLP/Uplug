@@ -1,4 +1,5 @@
 #!/usr/bin/python2 -O
+# -*- coding: ISO-8859-1 -*-
 
 #  Beata Megyesi
 #  bea@speech.kth.se

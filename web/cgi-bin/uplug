@@ -39,9 +39,10 @@ BEGIN {
     $CSS       = $UPLUGHTML.'/menu.css';
     $HTPASSWD  = '/usr/sbin/htpasswd2';
 
-    $ENV{UPLUGHOME}=$UPLUGHOME;
-    $ENV{UPLUGDATA}=$UPLUGDATA;
-    $ENV{UPLUGCWB} =$UPLUGCWB;
+    $ENV{UPLUGHOME} =$UPLUGHOME;
+    $ENV{UPLUGDATA} =$UPLUGDATA;
+    $ENV{UPLUGCWB}  =$UPLUGCWB;
+    $ENV{UPLUGADMIN}=$UPLUGADMIN;
 #    use CGI::Carp qw(carpout);
 #    open L, ">>$UPLUGLOG" || die ("could not open log\n");
 #    carpout(*L);
@@ -56,15 +57,17 @@ use Uplug::Web;
 # use Uplug::Web::Process;
 
 
-if (defined &url_param('a')){&param('a',&url_param('a'));}
-if (defined &url_param('c')){&param('c',&url_param('c'));}
+#if (defined &url_param('a')){&param('a',&url_param('a'));}
+#if (defined &url_param('c')){&param('c',&url_param('c'));}
 
 my $user   = &remote_user;
-my $action = param('a');
-my $corpus = param('c');        # corpus name
+my $action = &my_param('a');
+my $corpus = &my_param('c');        # corpus name
 my $url    = url();
 my $query  = url(-query=>1);
 
+my $ADMIN=0;
+if ($user eq $UPLUGADMIN){$ADMIN=1;}
 
 #########################################################################
 #########################################################################
@@ -77,6 +80,9 @@ my $main;
 if ($action eq 'corpus'){
     $main=&CorpusManager();
 }
+elsif ($action eq 'user'){
+    $main=&UserManager();
+}
 elsif ($action eq 'process'){
     $main=&TaskManager();
 }
@@ -87,7 +93,7 @@ elsif ($action eq 'register'){
     $main=&Register();
 }
 else{
-    $main=&UplugHome();
+    $main=&UplugHome($user);
 }
 
 print &table({-width => '100%',
@@ -139,14 +145,14 @@ sub UplugMenu{
 	  ],
 	 );
 
-    if ($user eq $UPLUGADMIN){
-	push (@menu,('Uplug administration',
-		     [
-		      'User manager' , "$url?a=user",
-		      'Corpus manager' , "$url?a=corpus",
-		      'Task manager' , "$url?a=process",
-		      ]));
-    }
+#    if ($user eq $UPLUGADMIN){
+#	push (@menu,('Uplug administration',
+#		     [
+#		      'User manager' , "$url?a=user",
+#		      'Corpus manager' , "$url?a=corpus",
+#		      'Task manager' , "$url?a=process",
+#		      ]));
+#    }
     if (not defined $user){
 	push (@menu,('User management' , 
 		     [
@@ -165,6 +171,8 @@ sub UplugMenu{
     else{
 	push (@menu,('User management' , 
 		     [
+		      'Uplug users','?a=user',
+		      'Create a new User','?a=regform',
 		      'Change password' , undef
 		      ],
 		     'Corpus management',
@@ -244,8 +252,15 @@ sub UplugMenu{
 
 
 
-
-
+sub my_param{
+    my $p=shift;
+    my $v=&param($p);
+    if (not defined $v){
+	$v=&url_param($p);
+	if (defined $v){&param($p,$v);}
+    }
+    return $v;
+}
 
 
 #########################################################################
@@ -255,18 +270,12 @@ sub UplugMenu{
 
 sub CorpusManager{
 
-    if (defined &url_param('t')){&param('t',&url_param('t'));}
-#    if (defined &url_param('c')){&param('c',&url_param('c'));}
-    if (defined &url_param('b')){&param('b',&url_param('b'));}
-    if (defined &url_param('d')){&param('d',&url_param('d'));}
-    if (defined &url_param('o')){&param('o',&url_param('o'));}
+    my $task   = &my_param('t');        # task
+#    my $corpus = &my_param('c');        # corpus name
+    my $docbase= &my_param('b');        # document base name
+    my $doc    = &my_param('d');        # document
+    my $owner  = &my_param('o');        # corpus owner
     $query  = url(-query=>1);
-
-    my $task   = param('t');        # task
-#    my $corpus = param('c');        # corpus name
-    my $docbase= param('b');        # document base name
-    my $doc    = param('d');        # document
-    my $owner  = param('o');        # corpus owner
 
     if (not defined $owner){$owner=$user;}
     my $priv='all';
@@ -279,18 +288,19 @@ sub CorpusManager{
 #    $html.="tasks: ".&Uplug::Web::ActionLinks($url,'view all',
 #					      'view my','add'),&p();
 
-    my $base=&Uplug::Web::AddUrlParam($url,'a','corpus');   # base-url
-    $html.=&Uplug::Web::TaskLinks($base,'t','my');          # view my corpora
-    $html.=&Uplug::Web::TaskLinks($base,'o','pub');         # view public
-    $html.=&Uplug::Web::TaskLinks($base,'t',                # other tasks:
-				  'add',                    #   add corpora
-				  'index',                  #   create index
-				  'query');                 #   corpus query
+#    my $base=&Uplug::Web::AddUrlParam($url,'a','corpus');   # base-url
+##    $html.=&Uplug::Web::TaskLinks($base,'o',$user);         # view my corpora
+#    $html.=&Uplug::Web::TaskLinks($base,undef,'my');        # view my corpora
+#    $html.=&Uplug::Web::TaskLinks($base,'o','pub');         # view public
+#    $html.=&Uplug::Web::TaskLinks($base,'t',                # other tasks:
+#				  'add',                    #   add corpora
+#				  'index',                  #   create index
+#				  'query');                 #   corpus query
     $html.=&hr;
 
     my %CorpusData=();
     my %params;                               # other query parameters
-    if (param()) {%params=&CGI::Vars();}      # (stored in a hash)
+    if (&param()) {%params=&CGI::Vars();}      # (stored in a hash)
 
 
     #-------------------------------------------------------------------------
@@ -301,12 +311,12 @@ sub CorpusManager{
 	(defined $corpus) and
 	(defined $doc)){
 
-	if (defined &url_param('x')){&param('x',&url_param('x'));}
-	if (defined &url_param('s')){&param('s',&url_param('s'));}
+#	if (defined &url_param('x')){&param('x',&url_param('x'));}
+#	if (defined &url_param('s')){&param('s',&url_param('s'));}
 
-	my $pos    = param('x');        # current position in corpus
-	my $style  = param('s');        # display style
-	my @links  = param('l');        # aligned languages
+	my $pos    = &my_param('x');        # current position in corpus
+	my $style  = &my_param('s');        # display style
+	my @links  = &my_param('l');        # aligned languages
 
 	$html.=&Uplug::Web::ViewCorpus($owner,            # corpus-owner
 				       $corpus,$doc,      # corpus + document
@@ -322,8 +332,13 @@ sub CorpusManager{
     #-------------------------------------------------------------------------
 
     elsif ($task eq 'query'){
-	$html.=&Uplug::Web::QueryCorpus($user,$owner,$corpus,
-					\%params,$query);
+
+	my $lang  = &my_param('s');        # language
+	my @links = &my_param('l');        # aligned languages
+	$html.=&Uplug::Web::CorpusQueryForm($user,$corpus,$lang,\@links);
+
+#	$html.=&Uplug::Web::QueryCorpus($user,$owner,$corpus,
+#					\%params,$query);
     }
 
     #-------------------------------------------------------------------------
@@ -336,22 +351,6 @@ sub CorpusManager{
 	}
 	$html.=&Uplug::Web::QueryCorpus($user,$owner,$corpus,
 					\%params,$query);
-    }
-
-    #-------------------------------------------------------------------------
-    # remove a corpus from the repository
-    #-------------------------------------------------------------------------
-
-    elsif ($task eq 'rmcorpus'){
-	if ($priv ne 'all'){
-	    &Uplug::Web::Corpus::RemoveCorpus($owner,$corpus);
-	}
-	$html.=&Uplug::Web::ShowCorpusInfo($task,
-					   $owner,
-					   $corpus,
-					   $docbase,
-					   $doc,
-					   $priv);
     }
 
     #-------------------------------------------------------------------------
@@ -389,6 +388,8 @@ sub CorpusManager{
 	if ($priv ne 'all'){
 	    $html.=&Uplug::Web::AddCorpus($user,\%params);
 	}
+	$task='view';
+	&param('t',$task);
 	$html.=&Uplug::Web::ShowCorpusInfo($task,
 					   $owner,$corpus,$docbase,$doc,$priv);
     }
@@ -411,13 +412,7 @@ sub CorpusManager{
     #-------------------------------------------------------------------------
 
     else{
-	$html.='<table width="100%"><tr><td valign="top">Select one of the tasks from above<ul>';
-	$html.='<li><b>my</b>: show my corpora</li>';
-	$html.='<li><b>pub</b>: show public corpora</li>';
-	$html.='<li><b>add</b>: add a new corpus to my repository</li>';
-	$html.='<li><b>index</b>: create a corpus index using CWB</li>';
-	$html.='<li><b>query</b>: corpus queries using CWB (on indexed corpora)</li>';
-	$html.='</ul></td>';
+	$html.='<table width="100%"><tr>';
 	$html.='<td valign="top">For each corpus you may<ul>';
 #	$html.='<li>list all documents included in the corpus (<b>documents</b>)</li>';
 #	$html.='<li>remove the entire corpus (<b>remove</b>)</li>';
@@ -425,8 +420,16 @@ sub CorpusManager{
 	$html.='<li>view corpus documents (<b>view</b>)</li>';
 	$html.='<li>send documents via mail (<b>send</b>)</li>';
 	$html.='<li>add documents to the corpus (<b>add-doc</b>)</li>';
-	$html.='<li>remove documents and the entire corpus(<b>remove</b>)</li>';
-	$html.='<li>display a link matrix (<b>links</b>)</li>';
+	$html.='<li>create a corpus index using CWB (<b>index</b>)</li>';
+	$html.='<li>run corpus queries using CWB (<b>query</b>)</li>';
+	$html.='<li>remove documents and the entire corpus (<b>remove</b>)</li>';
+#	$html.='<li>display a link matrix (<b>links</b>)</li>';
+	$html.='</td><td valign="top">Use the links for each corpus!<ul>';
+	$html.='<li>Select a corpus by clicking on its name</li>';
+	$html.='<li>Show aligned bitexts by clicking on <b>link</b></li>';
+	$html.='<li>Select one of the tasks to the right of each corpus</li>';
+	$html.='<li>Run one of the tasks by selecting a corpus/document</li>';
+	$html.='</ul></td>';
 	$html.='</ul></td>';
 
 	$html.='</tr></table><hr />';
@@ -444,22 +447,26 @@ sub CorpusManager{
 
 sub TaskManager{
 
-#    if (defined &url_param('c')){&param('c',&url_param('c'));}
-    if (defined &url_param('m')){&param('m',&url_param('m'));}
-    if (defined &url_param('p')){&param('p',&url_param('p'));}
-    if (defined &url_param('y')){&param('y',&url_param('y'));}
+##    if (defined &url_param('c')){&param('c',&url_param('c'));}
+#    if (defined &url_param('m')){&param('m',&url_param('m'));}
+#    if (defined &url_param('p')){&param('p',&url_param('p'));}
+#    if (defined &url_param('y')){&param('y',&url_param('y'));}
 
-#    my $corpus = param('c');        # corpus
-    my $task   = param('m');        # task
-    my $process= param('p');        # process
-    my $type   = param('y');        # type
+#    my $corpus = &my_param('c');        # corpus
+    my $module   = &my_param('m');      # Uplug module
+    my $task   = &my_param('t');        # task
+    my $process= &my_param('p');        # process
+    my $type   = &my_param('y');        # type
 
     my $corpora=&Uplug::Web::Corpus::Corpora($user); # get all corpora names
     if (not $corpus){                                # if no corpus selected:
 	($corpus)=each %{$corpora};                  #   take just one
 	&param('c',$corpus);                         #   and set the form-param
     }
-    $query  = url(-query=>1);
+#    $query  = url(-query=>1);
+    $query=&Uplug::Web::AddUrlParam('','a','process');
+    $query=&Uplug::Web::AddUrlParam($query,'c',$corpus);
+    if (defined $module){$query=&Uplug::Web::AddUrlParam($query,'m',$module);}
 
     my $html=&h2("UplugWeb - Task Manager");
     $html.="selected corpus: [<b>$corpus</b>] ";
@@ -475,31 +482,35 @@ sub TaskManager{
 
     &Uplug::Web::Process::ClearStack('done',$user,5);
 
-    if ($action eq 'view'){
-	$html.=&Uplug::Web::ShowProcessInfo($url,$user);
+    if ($task eq 'view'){
+	$html.=&Uplug::Web::ShowProcessInfo($query,$user,$process,$ADMIN);
     }
-    elsif ($action eq 'clear'){
+    elsif ($task eq 'clear'){
 	&Uplug::Web::Process::ClearStack($type,$user);
-	$html.=&Uplug::Web::ShowProcessInfo($url,$user);
+	$html.=&Uplug::Web::ShowProcessInfo($query,$user,$ADMIN);
     }
     elsif ($process){
-	if ($action eq 'remove'){
+	if ($task eq 'remove'){
 	    &Uplug::Web::Process::RemoveProcess($type,$user,$process);
-	    $html.=&Uplug::Web::ShowProcessInfo($url,$user);
+	    $html.=&Uplug::Web::ShowProcessInfo($query,$user,undef,$ADMIN);
+	}
+	elsif ($task eq 'restart'){
+	    &Uplug::Web::Process::RestartProcess($type,$user,$process);
+	    $html.=&Uplug::Web::ShowProcessInfo($query,$user,undef,$ADMIN);
 	}
 	else{
-	    $html.=&Uplug::Web::ShowProcessInfo($url,$user,$process);
+	    $html.=&Uplug::Web::ShowProcessInfo($query,$user,$process,$ADMIN);
 	}
     }
     else{
 	my %params;
-	if (param()) {%params=&CGI::Vars();}
+	if (&param()) {%params=&CGI::Vars();}
 	$html.=&Uplug::Web::Process($query,
 				    $user,$corpus,
-				    $task,\%params);
+				    $module,\%params);
 	$html.=&hr;
 	$html.=&h3('Jobs');
-	$html.=&Uplug::Web::ShowProcessInfo($url,$user);
+	$html.=&Uplug::Web::ShowProcessInfo($query,$user,$process,$ADMIN);
     }
     return $html;
 }
@@ -509,10 +520,56 @@ sub TaskManager{
 #########################################################################
 
 
+sub UserManager{
+
+    my $name   = &my_param('n');        # user name
+    my $task   = &my_param('t');        # task
+
+    my $html=&h2("UplugWeb user management").&hr();
+#    $html.=&a({-href => 'admin.pl'},'Main admin menu');
+#    $html.=&p();
+
+    my %UserData;
+    if ($name){
+	if ($task eq 'remove'){
+	    &Uplug::Web::User::RemoveUser($name);
+	    &Uplug::Web::User::ReadUserInfo(\%UserData,$name);
+	    $html.=&Uplug::Web::ShowUserInfo($query,$user,
+					     \%UserData,$name,$ADMIN);
+	}
+	elsif ($task eq 'edit'){
+	    $html.=&Uplug::Web::User::EditUser($user).&p();
+	    &Uplug::Web::User::ReadUserInfo(\%UserData,$user);
+	    $html.=&Uplug::Web::ShowUserInfo($query,$user,
+					     \%UserData,$name,$ADMIN);
+	}
+	else{
+	    &Uplug::Web::User::ReadUserInfo(\%UserData,$name);
+	    $html.=&Uplug::Web::ShowUserInfo($query,$user,
+					     \%UserData,$name,$ADMIN);
+	}
+    }
+    else{
+	&Uplug::Web::User::ReadUserInfo(\%UserData);
+	$html.=&Uplug::Web::ShowUserInfo($query,$user,
+					 \%UserData,$name,$ADMIN);
+    }
+    return $html;
+}
+
+
+#########################################################################
+#########################################################################
+#########################################################################
+
+
+
+
 sub UplugHome{
+    my $user=shift;
     return '<CENTER>
-<H1>The Uplug home page</H1>
-</CENTER>
+<H1>The Uplug home page</H1><i>user: '.$user.
+'</i></CENTER>
 <hr>
 
 <P>
@@ -624,7 +681,7 @@ sub RegisterForm{
 <HR>
 
 <P>
-<FORM METHOD="POST" ACTION="uplug?a=register" 
+<FORM METHOD="POST" ACTION="?a=register" 
       NAME="UPLUGUSER" ENCTYPE="multipart/form-data">
 
 <table border=0>
@@ -822,7 +879,7 @@ sub SendUserInfo{
 sub GetParameter{
     my ($ParamName,$ParamValue)=@_;
     foreach (@{$ParamName}){
-	$$ParamValue{$_} = param($_);
+	$$ParamValue{$_} = &my_param($_);
     }
 }
 

@@ -368,11 +368,7 @@ sub RestartProcess{
     my $type=shift;
     my $user=shift;
     my $process=shift;
-
-    my $stack=&GetJobStack($type);
-    if ($stack->remove($user,$process)){
-	$todo->push($user,$process);
-    }
+    &MoveJob($user,$process,$type,'todo');
 }
 
 sub MoveJob{
@@ -430,16 +426,16 @@ sub GetJobStack{
 }
 
 
-sub RunProcess{
-    my $type=shift;
-    my $user=shift;
-    my $process=shift;
-
-    my $stack=&GetJobStack($type);
-    my @data=$stack->find($user,$process);
-    &MoveJob($user,$process,'type','queued');
-    if (@data){`$data[2]`;}
-}
+#sub RunProcess{
+#    my $type=shift;
+#    my $user=shift;
+#    my $process=shift;
+#
+#    my $stack=&GetJobStack($type);
+#    my @data=$stack->find($user,$process);
+#    &MoveJob($user,$process,'type','queued');
+#    if (@data){`$data[2]`;}
+#}
 
 
 sub ClearStack{

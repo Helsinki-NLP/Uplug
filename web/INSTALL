@@ -6,6 +6,9 @@ You need the following:
    (http://search.cpan.org/~markov/MailTools-1.62/)
  - CWB and Perl modules for IMS CWB and CQP
    (ftp://ftp.ims.uni-stuttgart.de/pub/outgoing/cwb-beta/)
+ - make for sure that all external tools exist and work on your system,
+   even for web-processes! (TnT, TreeTagger, Grok, CWB) you might have to 
+   adjust things in uplug/ext !!!!
 
 
 
