@@ -180,7 +180,7 @@ sub GetDefaultIni{
   'module' => {
     'name' => 'convert files',
     'program' => 'convert.pl',
-    'location' => '$UplugBin',
+    'location' => '\$UplugBin',
     'stdin' => 'text',
     'stdout' => 'text',
   },
