@@ -975,6 +975,11 @@ sub lowerCase {
 	$self->getLanguageData('character specifications','lower case letter');
     my $UpperCaseLetter=
 	$self->getLanguageData('character specifications','upper case letter');
+
+    if ((not $UpperCaseLetter) or (not $LowerCaseLetter)){
+	return lc($string);
+    }
+
     eval "\$string\=\~tr/$UpperCaseLetter/$LowerCaseLetter/;";
     return $string;
 }
