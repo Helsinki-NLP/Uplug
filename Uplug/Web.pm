@@ -1458,10 +1458,10 @@ sub view{
     if (ref($param) eq 'HASH'){
 	$self->{'FROMDOC-POS'}=$$param{sx};
 	$self->{'TODOC-POS'}=$$param{tx};
-	if ($$param{mn}){
 #	    print join '<br>',%{$param};
-	    $url=&Uplug::Web::AddUrlParam($url,'sx',$self->{'FROMDOC-POS'});
-	    $url=&Uplug::Web::AddUrlParam($url,'tx',$self->{'TODOC-POS'});
+	$url=&Uplug::Web::AddUrlParam($url,'sx',$self->{'FROMDOC-POS'});
+	$url=&Uplug::Web::AddUrlParam($url,'tx',$self->{'TODOC-POS'});
+	if ($$param{mn}){
 	    $self->moveSentLinks($param);
 	}
     }
@@ -1700,22 +1700,27 @@ sub readSegment{
     my $failed=0;
     my $startpos=tell($fh);
     while (@{$ids} and &ParseXml($fh,$parser,1)){
+#	print "try to find $$ids[0] ($self->{$doc},$startpos) ...";
 	if ($$ids[0] eq $parser->{DATA}->{id}){
 	    if ($style eq 'text'){$text.=$parser->{HTMLTXT};}
 	    else{$text.=$parser->{HTML};}
 	    shift(@{$ids});
+#	    print " found!";
 	}
 	else{
+#	    print " next ...";
 	    $failed++;                         # wrong segment-ID
 	    delete $parser->{SUBDATA};         # delete segment
-	    if ($failed>3){                    # skip no more than 3 segments
+	    if ($failed>5){                    # skip no more than 5 segments
 		if ($startpos==0){last;}       # started at the beginning->stop
 		$startpos-=500;                # enough! go 500 bytes back
 		if ($startpos<0){$startpos=0;} # (but not more than filestart)
 		seek($fh,$startpos,0);         # move the pointer
 		$failed=0;                     # reset fail counter
+#		print "start=$startpos ...";
 	    }
 	}
+#	print "<br>";
 	if (not @{$ids}){last;}
     }
     if ($style ne 'text'){$text=&pre($text);}
@@ -1750,6 +1755,7 @@ sub openDocument{
     eval { $parser->parse_more($xml); };   # ... and parse it
 
     if ($self->{$doc.'-POS'}>0){           # go to the last file-position
+#	print "seek $doc-pos: $self->{$doc.'-POS'}<hr>";
 	seek ($fh,$self->{$doc.'-POS'},0); # (if > 0)
     }
 }
@@ -1927,6 +1933,10 @@ sub view{
     my ($url,$style,$pos,$params)=@_;
 
     if (ref($params) eq 'HASH'){
+	$self->{'FROMDOC-POS'}=$$params{sx};
+	$self->{'TODOC-POS'}=$$params{tx};
+	$url=&Uplug::Web::AddUrlParam($url,'sx',$self->{'FROMDOC-POS'});
+	$url=&Uplug::Web::AddUrlParam($url,'tx',$self->{'TODOC-POS'});
 	if ($$params{edit} eq 'change'){
 #	    print join('<br>',%{$params});
 	    $self->changeLinks($params);
@@ -2081,13 +2091,23 @@ sub readSentLinks{
     my $style=shift;
 
     my @rows=();
+    my $LastID;
+    my $LastPos;
     foreach my $l (0..$#{$self->{SENTLINKS}}){
+	$self->{PREV_ALIGN_ID}=$LastID;
+	$self->{THIS_ALIGN_ID}=shift(@{$self->{ID}});
+	$self->{NEXT_ALIGN_ID}=$self->{ID}->[0];
+	$self->{PREV_ALIGN_POS}=$LastPos;
+	$self->{THIS_ALIGN_POS}=shift(@{$self->{FILEPOS}});
+	$self->{NEXT_ALIGN_POS}=$self->{FILEPOS}->[0];
 	push (@rows,$self->readBitextSegment($self->{SENTLINKS}->[$l],
 					     $self->{WORDLINKS}->[$l],
 					     $style));
 	if ($style eq 'text'){
 	    push (@rows,$self->viewWordLinks($self->{WORDLINKS}->[$l]));
 	}
+	$LastID=$self->{THIS_ALIGN_ID};
+	$LastPos=$self->{THIS_ALIGN_POS};
     }
     $self->{'FROMDOC-POS'}=tell $self->{'FROMDOCHANDLE'};
     $self->{'TODOC-POS'}=tell $self->{'TODOCHANDLE'};
