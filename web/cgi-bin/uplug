@@ -176,8 +176,8 @@ sub UplugMenu{
 		      ],
 		     'Corpus management',
 		     [
-		      'All corpora' , "$url?a=corpus",
-		      'CWB Query' , "$url?a=query",
+		      'Public corpora' , "$url?a=corpus;o=pub",
+		      'CWB Query' , "$url?a=corpus;t=query",
 		      ],
 		     'Task Management'
 		     ));
@@ -211,9 +211,12 @@ sub UplugMenu{
     while (@main){
 	my $mod=shift(@main);
 	my $name=shift(@main);
-	my $link="$url?a=process;m=".&escape($mod);
-	if (defined $corpus){
-	    $link.=";c=".&escape($corpus);
+	my $link;
+	if (defined $user){                          # add links only for
+	    $link="$url?a=process;m=".&escape($mod); # registered users!
+	    if (defined $corpus){
+		$link.=";c=".&escape($corpus);
+	    }
 	}
 	push (@apps,('- '.$name,$link));
 #	push (@apps,('- '.$name,"$url?a=process;m=".escape($mod)));
@@ -407,9 +410,23 @@ sub CorpusManager{
     #-------------------------------------------------------------------------
 
     elsif ($task eq 'send'){
-	if (&Uplug::Web::Corpus::SendCorpus($user,$owner,$corpus,$doc)){
-	    $html.="$corpus has been send to $user!";
+	if (not defined $user){
+	    $html.=&h3("You have to register first!");
 	}
+	elsif (defined $doc){
+	    if (&Uplug::Web::Corpus::SendCorpus($user,$owner,$corpus,$doc)){
+		$html.=&h3("'$doc' from '$corpus' has been send to $user!");
+	    }
+	}
+	else{
+	    $html.=&h3("Click on any document and I will send it to you!");
+	}
+	$html.=&Uplug::Web::ShowCorpusInfo($task,
+					   $owner,
+					   $corpus,
+					   $docbase,
+					   $doc,
+					   $priv);
     }
 
     #-------------------------------------------------------------------------
