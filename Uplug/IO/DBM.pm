@@ -27,7 +27,6 @@
 
 package Uplug::IO::DBM;
 
-use bytes;     # required to treet wide unicode characters as byte sequences?!?
 use strict;
 use vars qw(@ISA $VERSION $DEFAULTMODE $DEFAULTCACHESIZE);
 use Uplug::IO;
@@ -149,12 +148,16 @@ sub read{
 
     my $data={};
     my ($key,$val)=each %{$self->{DBMhash}};
+    my $UplugEncoding=$self->getInternalEncoding;
+    $val=Uplug::Encoding::decode($val,$UplugEncoding);
+    $key=Uplug::Encoding::decode($key,$UplugEncoding);
+
     if ((not defined $key) and (not defined $val)){
 	return 0;
     }
 
-    my $DBMEncoding=$self->getEncoding;
-    my $UplugEncoding=$self->getInternalEncoding;
+#    my $DBMEncoding=$self->getEncoding;
+#    my $UplugEncoding=$self->getInternalEncoding;
 
 # JT: 2004-08-26: forget about encodings (check that later?!)
 #
@@ -163,9 +166,9 @@ sub read{
 #	$key=Uplug::Encoding::decode($key,$DBMEncoding,$UplugEncoding);
 #    }
 
-    my $UplugEncoding=$self->getInternalEncoding;
-    $val=Uplug::Encoding::decode($val,$UplugEncoding);
-    $key=Uplug::Encoding::decode($key,$UplugEncoding);
+#    my $UplugEncoding=$self->getInternalEncoding;
+#    $val=Uplug::Encoding::decode($val,$UplugEncoding);
+#    $key=Uplug::Encoding::decode($key,$UplugEncoding);
 
 
     my @keyval=split(/\x00/,$key);
@@ -195,8 +198,6 @@ sub read{
 sub write{
     my ($self,$TreeData)=@_;
 
-#    my $DataEncoding=$TreeData->getExternalEncoding;
-
     $self->SUPER::write($TreeData);
     my $data=$TreeData->data;
     if (ref($data) ne 'HASH'){return;}
@@ -217,8 +218,17 @@ sub write{
 	$key=$self->{'LastNr'};
     }
 
-    if (defined $self->{DBMhash}->{$key}){
-	my %TmpData=$self->GetKeyValue($key);
+    # JT: 2005-01-27
+    # this looks strange but seems to be required to get real utf-8
+    # in DBM files on some platforms (I'm still confused about this
+    # encoding business and the language settings ....)
+
+    my $UplugEncoding=$self->getInternalEncoding;
+    $key=Uplug::Encoding::encode($key,$UplugEncoding); # encode key string
+
+#    if (defined $self->{DBMhash}->{$key}){
+    my %TmpData=$self->GetKeyValue($key);
+    if (keys %TmpData){
 	my $NewData=&JoinComplexHashs(\%TmpData,\%dat);
 	%dat=%{$NewData};
     }
@@ -226,7 +236,7 @@ sub write{
 
     %dat=&dumpData(\%dat);
     my $d=join ("\x00",%dat);
-
+    $d=Uplug::Encoding::encode($d,$UplugEncoding);     # encode data string
 
 # JT: 2004-08-26: forget about encodings (check that later?!)
 #
@@ -234,15 +244,6 @@ sub write{
 #    my $DBMEncoding=$self->getEncoding;
 #    $d=Uplug::Encoding::encode($d,$DBMEncoding,$UplugEncoding);
 #    $key=Uplug::Encoding::encode($key,$DBMEncoding,$UplugEncoding);
-
-    # JT: 2005-01-27
-    # this looks strange but seems to be required to get real utf-8
-    # in DBM files on some platforms (I'm still confused about this
-    # encoding business and the language settings ....)
-
-    my $UplugEncoding=$self->getInternalEncoding;
-    $d=Uplug::Encoding::encode($d,$UplugEncoding);      # this looks strange
-    $key=Uplug::Encoding::encode($key,$UplugEncoding);  # 
 
     eval { $self->{DBMhash}->{$key}=$d; };
     return 1;
@@ -306,8 +307,8 @@ sub select{
 #	$key=Uplug::Encoding::encode($key,$DBMEncoding,$UplugEncoding);
 #    }
 
-    my $UplugEncoding=$self->getInternalEncoding;
-    $key=Uplug::Encoding::encode($key,$UplugEncoding);
+#    my $UplugEncoding=$self->getInternalEncoding;
+#    $key=Uplug::Encoding::encode($key,$UplugEncoding);
 
     #-------------------------------------------------------------------------
     my %hash=();
@@ -399,17 +400,17 @@ sub GetKeyData{
     }
     #-----------------------------------------------
 
+    my $UplugEncoding=$self->getInternalEncoding;
+    $key=Uplug::Encoding::encode($key,$UplugEncoding); # encode key string
+
     if (defined $self->{DBMhash}->{$key}){
 	my $dat=$self->{DBMhash}->{$key};
-
-	my $DBMEncoding=$self->getEncoding;
-	my $UplugEncoding=$self->getInternalEncoding;
 
 # JT: 2004-08-26: forget about encodings (check that later?!)
 #
 #	if ($DBMEncoding ne $UplugEncoding){
-#	    $dat=Uplug::Encoding::decode($dat,$DBMEncoding,$UplugEncoding);
-#	    $key=Uplug::Encoding::decode($key,$DBMEncoding,$UplugEncoding);
+	    $dat=Uplug::Encoding::decode($dat,$UplugEncoding);
+	    $key=Uplug::Encoding::decode($key,$UplugEncoding);
 #	}
 	my @keyval=split(/\x00/,$key);
 	my %FoundData=split(/\x00/,$dat);
