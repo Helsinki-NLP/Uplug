@@ -98,6 +98,9 @@ sub UplugSystemIni{
     my $name=shift;
 
     if (not -e $name){chdir &Uplug::Web::Corpus::GetCorpusDir($user);}
+    &Uplug::Config::LoadNamedStreams();        # reload named streams
+                                               # (they might have changed since
+                                               #  last time reading them!!)
     return &LoadConfiguration($data,$name);
 }
 
