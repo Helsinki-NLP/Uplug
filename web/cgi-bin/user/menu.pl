@@ -20,9 +20,11 @@
 use strict;
 use CGI qw/:standard escapeHTML escape/;
 use FindBin qw($Bin);
-use lib "$Bin/../lib";
-use UplugUser;
-use UplugProcess;
+# use lib "$Bin/../lib";
+use lib "/home/staff/joerg/html_bin/uplug";
+
+use Uplug::Web::User;
+use Uplug::Web::Process;
 
 BEGIN { 
     use CGI::Carp qw(carpout);
@@ -31,8 +33,8 @@ BEGIN {
 }
 
 my $user = &remote_user;
-my $css = "/~joerg/uplug2/menu.css";
-my $HtmlHome = "/~joerg/uplug2/";
+my $css = "/~joerg/uplugII/menu.css";
+my $HtmlHome = "/~joerg/uplugII/";
 
 my @stat=stat('menu.pl');
 my $mtime=scalar(localtime($stat[9]));
@@ -46,7 +48,7 @@ my @menu =
       ]
      );
 
-if ($UplugUser::UplugAdmin eq $user){
+if ($Uplug::Web::User::UplugAdmin eq $user){
 push (@menu,(
 	     'Uplug administration',
 	     [
@@ -74,7 +76,7 @@ push (@menu,(
 
 my @apps=('Main' , 'process.pl?task=main');
 my %main=();
-my @main=&UplugProcess::GetSubmodules($user,'main');
+my @main=&Uplug::Web::Process::GetSubmodules($user,'main');
 while (@main){
     my $mod=shift(@main);
     my $name=shift(@main);

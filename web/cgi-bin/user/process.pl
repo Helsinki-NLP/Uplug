@@ -25,8 +25,9 @@ use strict;
 
 use CGI qw/:standard/;
 use FindBin qw($Bin);
-use lib "$Bin/../lib";
-use UplugWeb;
+# use lib "$Bin/../lib";
+use lib "/home/staff/joerg/html_bin/uplug";
+use Uplug::Web;
 
 # `rm -fr /corpora/OPUS/uplug2/joerg\@stp.ling.uu.se/106*`;
 #`rm -fr /corpora/OPUS/uplug2/joerg\@stp.ling.uu.se/systems/*`;
@@ -71,34 +72,34 @@ print &start_html(-title => 'Uplug - Task Manager',
 
 print &h2("UplugWeb - Task Manager");
 
-print "tasks: ",&UplugWeb::ActionLinks($url,@actions);
+print "tasks: ",&Uplug::Web::ActionLinks($url,@actions);
 print &hr;
 
-&UplugProcess::ClearStack('done',$user,5);
+&Uplug::Web::Process::ClearStack('done',$user,5);
 
 if ($action eq 'jobs'){
-    print &UplugWeb::ShowProcessInfo($url,$user);
+    print &Uplug::Web::ShowProcessInfo($url,$user);
 }
 elsif ($action eq 'clear'){
-    &UplugProcess::ClearStack($type,$user);
-    print &UplugWeb::ShowProcessInfo($url,$user);
+    &Uplug::Web::Process::ClearStack($type,$user);
+    print &Uplug::Web::ShowProcessInfo($url,$user);
 }
 elsif ($process){
     if ($action eq 'remove'){
-	&UplugProcess::RemoveProcess($type,$user,$process);
-	print &UplugWeb::ShowProcessInfo($url,$user);
+	&Uplug::Web::Process::RemoveProcess($type,$user,$process);
+	print &Uplug::Web::ShowProcessInfo($url,$user);
     }
     else{
-	print &UplugWeb::ShowProcessInfo($url,$user,$process);
+	print &Uplug::Web::ShowProcessInfo($url,$user,$process);
     }
 }
 else{
     my %params;
     if (param()) {%params=&CGI::Vars();}
-    print &UplugWeb::ShowApplications($query,$user,$task,\%params);
+    print &Uplug::Web::ShowApplications($query,$user,$task,\%params);
     print &hr;
     print &h3('Jobs');
-    print &UplugWeb::ShowProcessInfo($url,$user);
+    print &Uplug::Web::ShowProcessInfo($url,$user);
 }
 
 

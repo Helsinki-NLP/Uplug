@@ -25,10 +25,11 @@ use strict;
 
 use CGI qw/:standard/;
 use FindBin qw($Bin);
-use lib "$Bin/../lib";
-use UplugUser;
-use UplugCorpus;
-use UplugWeb;
+# use lib "$Bin/../lib";
+use lib "/home/staff/joerg/html_bin/uplug";
+use Uplug::Web::User;
+use Uplug::Web::Corpus;
+use Uplug::Web;
 
 
 #BEGIN { 
@@ -65,7 +66,7 @@ print &start_html(-title => 'Uplug - Corpus Index',
 
 print &h2("UplugWeb - Corpus Index");
 
-print "tasks: ",&UplugWeb::ActionLinks($url,'query','add'),&p();
+print "tasks: ",&Uplug::Web::ActionLinks($url,'query','add'),&p();
 print 'Select "query" to reset the corpus query form!',&br();
 print 'Select "add" to create a new CWB index!',&br();
 print &hr;
@@ -77,10 +78,10 @@ if ($action eq 'add'){
 	if (&UplugProcess::MakeIndexerProcess($user,$corpus,$srcenc,$trgenc)){
 	    print "Job added to process queue!",&p();
 	}
-#	print &UplugWeb::ShowProcessInfo($url,$user);
+#	print &Uplug::Web::ShowProcessInfo($url,$user);
     }
 #    else{
-#	print &UplugWeb::CorpusIndexerForm($user);
+#	print &Uplug::Web::CorpusIndexerForm($user);
 #    }
 }
 elsif (param('query')){
@@ -88,13 +89,13 @@ elsif (param('query')){
     my $cqp = param('query');
     my @alg = param('alg');
     my $style = param('style');
-    print &UplugWeb::CorpusQuery($user,$owner,$corpus,$lang,
+    print &Uplug::Web::CorpusQuery($user,$owner,$corpus,$lang,
 				 $cqp,\@alg,$style);
 }
 else{
     my $lang = param('lang');
     my $alg = param('alg');
-    print &UplugWeb::CorpusQueryForm($user,$owner,$corpus,$lang,$alg);
+    print &Uplug::Web::CorpusQueryForm($user,$owner,$corpus,$lang,$alg);
 }
 
 print &end_html;

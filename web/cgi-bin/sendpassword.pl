@@ -27,9 +27,9 @@ use lib '/home/staff/joerg/user_perl/lib/perl5/site_perl/5.6.1/';
 use Mail::Mailer;
 use CGI qw/:standard/;
 
-my $css = "/~joerg/uplug2/menu.css";
-my $UplugUrl = '/~joerg/uplug2';
-my $Uplug2Dir='/corpora/OPUS/uplug2/';
+my $css = "/~joerg/uplugII/menu.css";
+my $UplugUrl = '/~joerg/uplugII';
+my $Uplug2Dir='/corpora/OPUS/uplugII/';
 my $UserDataFile=$Uplug2Dir.'user';
 my $UplugAdmin='joerg@stp.ling.uu.se';
 

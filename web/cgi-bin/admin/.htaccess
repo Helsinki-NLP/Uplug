@@ -1,4 +1,4 @@
-AuthName uplug2
+AuthName uplugII
 AuthType Basic
-AuthUserFile /corpora/OPUS/uplug2/.htpasswd
+AuthUserFile /corpora/OPUS/uplugII/.htpasswd
 require user joerg@stp.ling.uu.se

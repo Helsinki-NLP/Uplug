@@ -25,9 +25,10 @@ use strict;
 
 use CGI qw/:standard/;
 use FindBin qw($Bin);
-use lib "$Bin/../lib";
-use UplugUser;
-use UplugWeb;
+# use lib "$Bin/../lib";
+use lib "/home/staff/joerg/html_bin/uplug";
+use Uplug::Web::User;
+use Uplug::Web;
 
 my $user = &remote_user;
 
@@ -44,7 +45,7 @@ print &start_html(-title => 'Uplug welcome page',
 			       -content=>'text/html;charset=utf-8'}));
 
 my %UserData=();
-&UplugUser::ReadUserInfo(\%UserData,$user);
+&Uplug::Web::User::ReadUserInfo(\%UserData,$user);
 
 print &h2("$UserData{$user}{Name} - Welcome to UplugWeb"),&hr();
 print '

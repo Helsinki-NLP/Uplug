@@ -25,10 +25,12 @@ use strict;
 
 use CGI qw/:standard/;
 use FindBin qw($Bin);
-use lib "$Bin/../lib";
-use UplugUser;
-use UplugCorpus;
-use UplugWeb;
+# use lib "$Bin/../lib";
+use lib "/home/staff/joerg/html_bin/uplug";
+
+use Uplug::Web::User;
+use Uplug::Web::Corpus;
+use Uplug::Web;
 
 
 #BEGIN { 
@@ -70,7 +72,7 @@ print &start_html(-title => 'Uplug - Corpus Manager',
 
 print &h2("UplugWeb - Corpus Manager");
 
-print "tasks: ",&UplugWeb::ActionLinks($url,'view all','view my','add'),&p();
+print "tasks: ",&Uplug::Web::ActionLinks($url,'view all','view my','add'),&p();
 print &hr;
 
 my %CorpusData=();
@@ -78,27 +80,27 @@ my %params;
 if (param()) {%params=&CGI::Vars();}
 
 if ($action eq 'remove'){
-    &UplugCorpus::RemoveCorpus($user,$owner,$corpus);
-    print &UplugWeb::ShowCorpusInfo($user,$owner,$corpus,$query);
+    &Uplug::Web::Corpus::RemoveCorpus($user,$owner,$corpus);
+    print &Uplug::Web::ShowCorpusInfo($user,$owner,$corpus,$query);
 }
 elsif ($action eq 'view'){
-    print &UplugWeb::ViewCorpus($user,$owner,$corpus,$query,$pos,$style,
+    print &Uplug::Web::ViewCorpus($user,$owner,$corpus,$query,$pos,$style,
 				\%params,\@links);
 }
 elsif ($action eq 'send'){
-    if (&UplugCorpus::SendCorpus($user,$owner,$corpus)){
+    if (&Uplug::Web::Corpus::SendCorpus($user,$owner,$corpus)){
 	print "$corpus has been send to $user!";
     }
 }
 elsif ($action eq 'add'){
-    &UplugCorpus::GetCorpusData(\%CorpusData,$user);
+    &Uplug::Web::Corpus::GetCorpusData(\%CorpusData,$user);
     &AddCorpus($user);
 }
 elsif ($action eq 'view my'){
-    print &UplugWeb::ShowCorpusInfo($user,$user,$corpus,$query);
+    print &Uplug::Web::ShowCorpusInfo($user,$user,$corpus,$query);
 }
 else{
-    print &UplugWeb::ShowCorpusInfo($user,$owner,$corpus,$query);
+    print &Uplug::Web::ShowCorpusInfo($user,$owner,$corpus,$query);
 }
 
 
@@ -119,7 +121,7 @@ sub AddCorpus{
     my $lang=param('lang');
     my $enc=param('enc');
 
-    my $CorpusName=&UplugCorpus::GetCorpusName($name,$lang);
+    my $CorpusName=&Uplug::Web::Corpus::GetCorpusName($name,$lang);
 
     #------------------------------------------------------------
 
@@ -146,14 +148,14 @@ sub AddCorpus{
 	print &AddCorpusQuery;
     }
     else{
-	if (&UplugCorpus::AddTextCorpus($user,$name,$lang,$file,$enc)){
+	if (&Uplug::Web::Corpus::AddTextCorpus($user,$name,$lang,$file,$enc)){
 	    print &h3("The corpus $CorpusName has been successfully added!");
 	}
 	else{
 	    print &h3("Operation failed!");
 	    print &AddCorpusQuery;
 	}
-	print &UplugWeb::ShowCorpusInfo($user,$user,$corpus,$query);
+	print &Uplug::Web::ShowCorpusInfo($user,$user,$corpus,$query);
     }
 }
 
@@ -165,14 +167,14 @@ sub AddCorpusQuery{
 		     &textfield(-name=>'name',
 				-size=>25,
 				-maxlength=>50).
-		     &UplugWeb::iso639_menu('lang','en')]));
+		     &Uplug::Web::iso639_menu('lang','en')]));
 
     push (@rows,&td(["Corpus file: ",
 		     &filefield(-name=>'file',
 				-size=>25,
 				-maxlength=>50)]));
 
-    push (@rows,&td(['Encoding',&UplugWeb::encodings_menu('enc','utf8')]));
+    push (@rows,&td(['Encoding',&Uplug::Web::encodings_menu('enc','utf8')]));
 
     my $str="Add corpus files to your repository!".&p();
     $str.= "Specify a unique name for your corpus ";
