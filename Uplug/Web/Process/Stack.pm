@@ -18,6 +18,10 @@
 package Uplug::Web::Process::Stack;
 
 use strict;
+use Fcntl qw(:DEFAULT :flock);
+
+use Uplug::Web::Process::Lock;
+
 
 my $DEFAULTMAXFLOCKWAIT=5;
 
@@ -37,7 +41,7 @@ sub setFile{
     my $self=shift;
     my $file=shift;
     if (not -e $file){
-	open F,">$file";
+	sysopen (F,$file,O_CREAT);
 	close F;
 	system "chmod g+w $file";
     }
@@ -56,7 +60,43 @@ sub setFlockWait{
     else{$self->{MAXFLOCKWAIT}=$DEFAULTMAXFLOCKWAIT;}
 }
 
+
 sub open{
+    my $self=shift;
+    my $lock=shift;                   # open with file locking!
+
+    if (not -e $self->{FILE}){return 0;}
+    open $self->{FH},"+<$self->{FILE}";
+    my $fh=$self->{FH};
+
+    if ($lock){
+	if (not $self->lock()){       # lock the file
+	    close $fh;
+	    return 0;
+	}
+    }
+    $self->{STATUS}='open';
+    return 1;
+}
+
+sub lock{
+    my $self=shift;
+    if (nflock($self->{FILE},$self->{MAXLOCKWAIT})){
+	$self->{LOCKED}=1;
+	return 1;
+    }
+    return 0;
+}
+
+sub unlock{
+    my $self=shift;
+    nunflock($self->{FILE});          # release lock!
+    delete $self->{LOCKED};
+    return 1;
+}
+
+
+sub openFlock{
     my $self=shift;
 
     my $fh=$self->{FH};
@@ -83,6 +123,10 @@ sub close{
 	close $fh;
 	$self->{STATUS}='closed';
     }
+    if ($self->{LOCKED}){
+	nunflock($self->{FILE});          # release lock!
+	delete $self->{LOCKED};
+    }
 }
 
 sub read{
@@ -94,6 +138,7 @@ sub read{
 	$NeedToClose=1;                     #   but close it afterwards again!
     }
     my $fh=$self->{FH};                     # get the file handle
+    seek ($fh,0,0);                         # go to the beginning of the file
     my @content=<$fh>;                      # and read from it
     if ($NeedToClose){$self->close();}      # close the stack if we opened it
 
@@ -107,8 +152,11 @@ sub write{
 
     my $NeedToClose=0;
     if ($self->{STATUS} ne 'open'){
-	if (not $self->open()){return 0;}
+	if (not $self->open('lock')){return 0;}  # open in lock-mode
 	$NeedToClose=1;
+    }
+    if (not $self->{LOCKED}){
+	if (not $self->lock()){return 0;}
     }
     my $fh=$self->{FH};
     seek ($fh,0,0);
@@ -125,8 +173,11 @@ sub push{
 
     my $NeedToClose=0;
     if ($self->{STATUS} ne 'open'){
-	if (not $self->open()){return 0;}
+	if (not $self->open('lock')){return 0;}  # open in lock-mode
 	$NeedToClose=1;
+    }
+    if (not $self->{LOCKED}){
+	if (not $self->lock()){return 0;}
     }
     my @content=$self->read();
     push (@content,$text."\n");
@@ -141,8 +192,11 @@ sub pop{
 
     my $NeedToClose=0;
     if ($self->{STATUS} ne 'open'){
-	if (not $self->open()){return undef;}
+	if (not $self->open('lock')){return undef;}  # open in lock-mode
 	$NeedToClose=1;
+    }
+    if (not $self->{LOCKED}){
+	if (not $self->lock()){return undef;}
     }
     my @content=$self->read();
     my $text=pop (@content);
@@ -160,8 +214,11 @@ sub unshift{
 
     my $NeedToClose=0;
     if ($self->{STATUS} ne 'open'){
-	if (not $self->open()){return 0;}
+	if (not $self->open('lock')){return 0;}  # open in lock-mode
 	$NeedToClose=1;
+    }
+    if (not $self->{LOCKED}){
+	if (not $self->lock()){return 0;}
     }
     my @content=$self->read();
     unshift (@content,$text."\n");
@@ -176,8 +233,11 @@ sub shift{
 
     my $NeedToClose=0;
     if ($self->{STATUS} ne 'open'){
-	if (not $self->open()){return undef;}
+	if (not $self->open('lock')){return undef;}  # open in lock-mode
 	$NeedToClose=1;
+    }
+    if (not $self->{LOCKED}){
+	if (not $self->lock()){return undef;}
     }
     my @content=$self->read();
     my $text=shift (@content);
@@ -195,8 +255,11 @@ sub remove{
 
     my $NeedToClose=0;
     if ($self->{STATUS} ne 'open'){
-	if (not $self->open()){return 0;}
+	if (not $self->open('lock')){return 0;}  # open in lock-mode
 	$NeedToClose=1;
+    }
+    if (not $self->{LOCKED}){
+	if (not $self->lock()){return 0;}
     }
     my @content=$self->read();
     @content=grep($_!~/$pattern/,@content);
@@ -217,3 +280,5 @@ sub find{
     chomp($match[0]);
     return wantarray ? split(/\:/,$match[0]) : $match[0];
 }
+
+

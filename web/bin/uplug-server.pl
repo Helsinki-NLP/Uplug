@@ -52,6 +52,8 @@ use lib $UPLUGHOME;
 use Uplug::Web::Process;
 use Uplug::Web::Corpus;
 use Uplug::Web::User;
+use Uplug::Web::Process::Lock;
+
 
 my $HOST=(uname)[1];
 my $ME=(getpwuid($>))[0];
@@ -117,24 +119,29 @@ else{
 
     &my_log("server started!");
     while (not -e "$UPLUGDATA/STOPSERVER"){
-	while (@data=&Uplug::Web::Process::GetNextProcess('todo')){
+	@data=&Uplug::Web::Process::GetNextProcess('todo');
+	if (not @data){@data=&Uplug::Web::Process::GetNextProcess('failed');}
+
+	if (@data){
 	    $data[4]='('.$HOST.')';
 	    &Uplug::Web::Process::AddProcess('queued',@data);
 	    if ($data[2] eq '$bash'){
-		if (not &RunCommand(@data)){
-		    &my_log("problems! -> Re-schedule process!");
-		    &Uplug::Web::Process::MoveJobTo($data[0],    # user-name
-						    $data[1],    # process-ID
-						    'failed');   # failed-stack
-		}
+		&RunCommand(@data);
+#		if (not &RunCommand(@data)){
+#		    &my_log("problems! -> Re-schedule process!");
+#		    &Uplug::Web::Process::MoveJobTo($data[0],    # user-name
+#						    $data[1],    # process-ID
+#						    'failed');   # failed-stack
+#		}
 	    }
 	    else{
-		if (not &RunUplug(@data)){
-		    &my_log("problems! -> Re-schedule process!");
-		    &Uplug::Web::Process::MoveJobTo($data[0],    # user-name
-						    $data[1],    # process-ID
-						    'failed');   # failed-stack
-		}
+		&RunUplug(@data);
+#		if (not &RunUplug(@data)){
+#		    &my_log("problems! -> Re-schedule process!");
+#		    &Uplug::Web::Process::MoveJobTo($data[0],    # user-name
+#						    $data[1],    # process-ID
+#						    'failed');   # failed-stack
+#		}
 	    }
 	    @data=();
 	}
@@ -182,10 +189,13 @@ sub my_log{
     my $message=shift;
     if (-e $LogFile){open F,">>$LogFile";}
     else{open F,">$LogFile";}
-    while (not flock(F,2)){sleep(1);}
-    chomp($message);
-    my $time=localtime();
-    print F "[$HOST:$time] ",$message,"\n";
+#    while (not flock(F,2)){sleep(1);}
+    if (nflock($LogFile,5)){
+	chomp($message);
+	my $time=localtime();
+	print F "[$HOST:$time] ",$message,"\n";
+	nunflock($LogFile);
+    }
     close F;
 }
 
@@ -193,10 +203,13 @@ sub my_die{
     my $message=shift;
     if (-e $LogFile){open F,">>$LogFile";}
     else{open F,">$LogFile";}
-    while (not flock(F,2)){sleep(1);}
-    chomp($message);
-    my $time=localtime();
-    print F "[$HOST:$time] ",$message,"\n";
+#    while (not flock(F,2)){sleep(1);}
+    if (nflock($LogFile,5)){
+	chomp($message);
+	my $time=localtime();
+	print F "[$HOST:$time] ",$message,"\n";
+	nunflock($LogFile);
+    }
     close F;
     exit();
 }
@@ -217,6 +230,11 @@ sub my_die{
 sub RunCommand{
 
     my ($user,$process,$type,$command)=@_;
+
+    if (not $user){return 0;}
+    if (not $process){return 0;}
+
+    &my_log("running job $process for user $user");
 
     if (not &Uplug::Web::Process::MoveJobTo($user,$process,'working')){
 	&my_log("Cannot find job $process for user $user!");
@@ -252,6 +270,11 @@ sub RunCommand{
 sub RunUplug{
 
     my ($user,$process,$corpus,$config)=@_;
+
+    if (not $user){return 0;}
+    if (not $process){return 0;}
+
+    &my_log("running job $process for user $user");
 
     my $TempDir='/tmp/uplugweb'.$process;        # run the program in a tmp-dir
     my $UserDir=

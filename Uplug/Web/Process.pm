@@ -52,7 +52,10 @@ my $doneFile = $ProcHome.'/.done';
 my $failedFile = $ProcHome.'/.failed';
 my $serverlogFile = $ProcHome.'/.serverlog';
 
-if (not -e $ProcHome){mkdir $ProcHome;}
+if (not -e $ProcHome){
+    mkdir $ProcHome;
+    system "chmod g+w $ProcHome"; # add group write access
+}
 
 my $todo=Uplug::Web::Process::Stack->new($todoFile);
 my $queued=Uplug::Web::Process::Stack->new($queuedFile);
@@ -385,7 +388,7 @@ sub RemoveProcess{
 
     my $UserDir=&Uplug::Web::Corpus::GetCorpusDir($user);
     if (-d "$UserDir/$process"){
-	`rm -fr "$UserDir/$process"`;
+	system "rm -fr $UserDir/$process";
     }
 }
 
@@ -406,7 +409,7 @@ sub MoveJob{
     my $fromstack=&GetJobStack($from);
     my $tostack=&GetJobStack($to);
 
-    $fromstack->open();                            # open the stack to lock it!
+    $fromstack->open('lock');                      # open the stack to lock it!
     if (my @data=$fromstack->find($user,$process)){# look for the process ID
 	$fromstack->remove($user,$process);        # remove it from fromstack
 	$tostack->push(@data);                     # push it into the tostack
