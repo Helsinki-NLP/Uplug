@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE cesAlign SYSTEM "xcesAlign.dtd">
+<cesDoc>
+<cesAlign>
+<linkList>
+<linkGrp fromDoc="svenprf-src.xml" toDoc="svenprf-trg.xml" version="1.0">
 
-<cesDoc><cesAlign><linkList><linkGrp fromDoc="svenprf-src.xml" toDoc="svenprf-trg.xml" version="1.0">
-
- 
 <link id="svenprf1" xtargets="1 ; 1" />
 <link id="svenprf2" xtargets="2 ; 2" />
 <link id="svenprf3" xtargets="3 ; 3" />
