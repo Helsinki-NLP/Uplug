@@ -1077,7 +1077,7 @@ sub CheckScore{
 		    while ($time=~s/^\s*0:\s*//){};
 		    $Scores{time}{$file}=$time;
 		}
-#		unlink "$file.log";
+		unlink "$file.log";
 	    }
 	    unlink "$file.ready";
 	    return 1;
@@ -1230,7 +1230,7 @@ sub RunClueAligner{
 
     my $comm="nice $align -in $TrainBitext $param -out $file.links 2>$file.log";
     $comm.=";nice gzip -f $file.links";
-    $comm.=";nice gzip -f $file.log";
+#    $comm.=";nice gzip -f $file.log";
     $comm.=";nice $eval -gold $TrainGold -in $file.links.gz >$file.eval";
     if (-e $HeldoutBitext){
 	if ($HeldoutBitext and (not -e 'HELDOUT')){mkdir 'HELDOUT';}
@@ -1402,7 +1402,8 @@ sub MakeDynamicClues{
     my %setup=();                          #  sub-routine like in 
     &File2Setting(\%setup,$file);          #  RunClueAligner)
     my $param='';
-    foreach (keys %setup){
+    if (ref($setup{clues}) ne 'HASH'){return;}
+    foreach (keys %{$setup{clues}}){
 	if ($setup{clues}{$_}){
 	    $param.='-'.$_.' ';
 	    $param.='-'.$_.'_w '.$setup{clues}{$_}.' ';
