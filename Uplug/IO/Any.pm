@@ -134,12 +134,11 @@ sub FindOut{
     my $format=shift;
     my $stream=shift;
 
-    my $found;
-
     my $named=&GetNamedIO($stream);
     if ((ref($named) eq 'HASH') and $named->{format}){
 	return $format;
     }
+    my $found;
     if ($found=&CheckStreamName($stream,$format)){return $found;}
     if ($found=&CheckHeader($stream,$format)){return $found;}
     if ($found=&CheckExtender($stream,$format)){return $found;}
