@@ -632,7 +632,7 @@ sub competitiveSearch{
 #
 #===========================================================================
 
-sub bidirectRefinedSearchOch{
+sub bidirectionalRefinedSearchOch{
     my $self=shift;
     my $Links=shift;
     my $MinScore=shift;
@@ -1011,7 +1011,7 @@ sub competitiveSrcLinks{
 
     my ($s,$t);
     while (($s,$t)=$self->getTopLink(\@LinkMatrix,$MinScore)){
-	if ($LinkMatrix[$s][$t]<$MinScore){last;}
+	if ($LinkMatrix[$s][$t]<$MinScore){next;}
 	$LinkMatrix[$s][$t]=0;
 
 	$Links[$s]=$t;
@@ -1042,7 +1042,7 @@ sub competitiveTrgLinks{
 
     my ($s,$t);
     while (($s,$t)=$self->getTopLink(\@LinkMatrix,$MinScore)){
-	if ($LinkMatrix[$s][$t]<$MinScore){last;}
+	if ($LinkMatrix[$s][$t]<$MinScore){next;}
 	$LinkMatrix[$s][$t]=0;
 
 	$Links[$t]=$s;
@@ -1593,7 +1593,7 @@ sub printClueMatrix{
 
     foreach my $s (0..$nrSrc){
 	my $str=substr($SrcTok->[$s],0,10);
-	$str=&Uplug::Data::encode($str,'utf-8','iso-8859-1');
+	$str=&Uplug::Encoding::convert($str,'utf-8','iso-8859-1');
 
 	printf STDERR "%10s",$str; 
 	foreach my $t (0..$nrTrg){
@@ -1620,7 +1620,7 @@ sub MakeCharArr{
 #	$lat1[$_]=&Uplug::Data::encode($tok->[$_],'utf-8','iso-8859-1');
 #    }
 
-    map ($lat1[$_]=&Uplug::Data::encode($lat1[$_],'utf-8','iso-8859-1'),
+    map ($lat1[$_]=&Uplug::Encoding::convert($lat1[$_],'utf-8','iso-8859-1'),
 	 (0..$#lat1));
 
     my $max=&MaxLength(\@lat1);

@@ -393,6 +393,7 @@
       'stat2' => 'parameter:alignment:clues:coocstat2',
       'stat3' => 'parameter:alignment:clues:coocstat3',
       'stat4' => 'parameter:alignment:clues:coocstat4',
+      'giza' => 'parameter:alignment:clues:giza dictionary',
 
       #---- giza-clues-----------------------
 

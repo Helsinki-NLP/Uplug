@@ -4,6 +4,7 @@
     'submodules' => [
         '$UplugSystem/align/word/basicclues',
         '$UplugSystem/align/word/GIZA/gizaclue-word',
+        '$UplugSystem/align/word/GIZA/gizaclue-word-i',
         '$UplugSystem/align/word/link',
 	],
 #    'loop' => '5:6',
