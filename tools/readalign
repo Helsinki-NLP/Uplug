@@ -97,6 +97,8 @@ while (<F>){
 	}
     }
     if (/xtargets=\"([^\"]+)\s*\;\s*([^\"]+)\"/){
+	my $srceof=1;
+	my $trgeof=1;
 	$count++;
 	if ($max and ($count>$max)){last;}
 	my $src=$1;
@@ -108,8 +110,9 @@ while (<F>){
 	$/='</s>';
 	foreach (@srcsent){
 	    while (my $sent=<SRC>){
-		if ($sent=~/s id="$_"/s){
-		    $sent=~s/^.*<s id/(src)/s;
+		$srceof=0;
+		if ($sent=~/s [^\>]*id="$_"/s){
+		    $sent=~s/^.*<s [^\>]*id/(src)/s;
 		    $sent=~s/\n/ /gs;
 		    $sent=~s/\<[^\>]*>//gs;
 		    $sent=~s/  +/ /gs;
@@ -124,13 +127,15 @@ while (<F>){
 		    print "\n";
 		    last;
 		}
+		$srceof=1;
 	    }
 	}
 
 	foreach (@trgsent){
 	    while (my $sent=<TRG>){
-		if ($sent=~/s id="$_"/s){
-		    $sent=~s/^.*<s id/(trg)/s;
+		$trgeof=0;
+		if ($sent=~/s [^\>]*id="$_"/s){
+		    $sent=~s/^.*<s [^\>]*id/(trg)/s;
 		    $sent=~s/\n/ /gs;
 		    $sent=~s/\<[^\>]*>//gs;
 		    $sent=~s/  +/ /gs;
@@ -145,8 +150,19 @@ while (<F>){
 		    print "\n";
 		    last;
 		}
+		$trgeof=1;
 	    }
 	}
+        if ($trgeof){
+            close TRG;
+            if ($trgdoc=~/\.gz$/){open TRG,"gzip -cd <$trgdoc |";}
+            else{open TRG,"<$trgdoc";}
+        }
+        if ($srceof){
+            close SRC;
+            if ($srcdoc=~/\.gz$/){open SRC,"gzip -cd <$srcdoc |";}
+            else{open SRC,"<$srcdoc";}
+        }
 	$/=$oldDel;
 	if ($html){print "<hr>\n";}
 	else{print "================================\n";}

@@ -36,7 +36,7 @@ my $ALIGN="$BASE.ces";
 my $SRCTXT="$ALIGN.src";
 my $TRGTXT="$ALIGN.trg";
 
-my $UPLUGHOME="$Bin/..";
+my $UPLUGHOME="$Bin/../..";
 my $UPLUGSYSTEM="$UPLUGHOME/systems";
 my $UPLUG="$UPLUGHOME/uplug";
 my $TOOLS="$UPLUGHOME/tools";

@@ -19,7 +19,7 @@
 
 use strict;
 use FindBin qw($Bin);
-use lib "$Bin/..";
+use lib "$Bin/../..";
 
 use Uplug::Data::Align;
 use Uplug::IO::Any;

@@ -36,12 +36,12 @@ my $ALIGN="$BASE.ces";
 my $SRCTXT="$ALIGN.src";
 my $TRGTXT="$ALIGN.trg";
 
-my $UPLUGHOME="$Bin/..";
+my $UPLUGHOME="$Bin/../..";
 my $TOOLS="$UPLUGHOME/tools";
 
-my $PLUG2KOMA="$TOOLS/plug2koma";
-my $ETAP2GOLD="$TOOLS/etap2gold";
-my $GOLD2KOMA="$TOOLS/gold2koma";
+my $PLUG2KOMA="$TOOLS/KOMA/plug2koma";
+my $ETAP2GOLD="$TOOLS/ETAP/etap2gold";
+my $GOLD2KOMA="$TOOLS/KOMA/gold2koma";
 
 ## 1) convert PLUG XML to XCES
 

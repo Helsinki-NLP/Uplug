@@ -41,7 +41,7 @@ while ($ARGV[0]=~/^\-/){
 my @files=@ARGV;
 if (not @files){
     opendir(DIR, '.');
-    my @files = grep { /\.eval/ } readdir(DIR);
+    @files = grep { /\.eval/ } readdir(DIR);
     closedir DIR;
 }
 
