@@ -14,8 +14,6 @@
         '$UplugSystem/align/word/dynamicclues -dc3x -dlp -dp3',
         '$UplugSystem/align/word/link',
 	],
-    'loop' => '6:7',
-    'iterations' => '3',
   },
   'description' => 'The clue aligner runs several sub-modules:
     <ul><li>basicclues: computes basic alignment clues using association
@@ -36,7 +34,6 @@
 	<li>dynamicclues: learns clues from previously aligned data  (include
             feature patterns that use POS and chunk labels)</li>
 	<li>link: clue alignment using all clues (basic, giza, learned)
-	<li>repeat the last 2 steps 3 times (this will be slow!)</li>
     </ul><p>Note: Word alignment may take quite a while. Processing time
      depends on the size of the corpus and on the processing load on the
      local computer system. UplugWeb processes do not have the highest

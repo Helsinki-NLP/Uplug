@@ -19,6 +19,7 @@
       'status' => 'word',
       'SkipSrcFile' => 1,
       'SkipTrgFile' => 1,
+      'write_mode' => 'overwrite',
     },
     'clue' => {
 	'format' => 'dbm',

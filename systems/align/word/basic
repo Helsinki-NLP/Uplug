@@ -13,12 +13,13 @@
   },
   'description' => 'The clue aligner runs several sub-modules:
     <ul><li>basicclues: computes basic alignment clues using association
-        measures
-	<li>giza: runs GIZA++ and converts the lexical probabilities to the
-	clue aligner format
-	<li>link: clue alignment using basic clues and the giza clue
-	<li>learnclues: learns clues from previously aligned data
-	<li>link: clue alignment using all clues (basic, giza, learned)
+            measures</li>
+	<li>giza-word-refined: runs GIZA++ in both alignment directions and
+            converts the lexical probabilities to the clue aligner format</li>
+        <li>dynamicclues: learns clues from the "refined" combination of both
+            Viterbi alignments</li>
+	<li>link: clue alignment using basic clues, giza clues, and learned
+            clues</li>
     </ul><p>Note: Word alignment may take quite a while. Processing time
      depends on the size of the corpus and on the processing load on the
      local computer system. UplugWeb processes do not have the highest
