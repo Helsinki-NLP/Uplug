@@ -154,7 +154,10 @@ sub MakeUplugProcess{
     my $UserDir=&Uplug::Web::Corpus::GetCorpusDir($user);
     my $DocConfig=&Uplug::Web::Corpus::DocumentConfigFile($user,$corpus);
     my $ThisProcDir=$UserDir;
-    my $process=time().'_'.$$;
+    my $pid=$$;
+    my $time=time();
+    while (-d "$ThisProcDir/$time\_$pid"){$pid++;}
+    my $process=$time.'_'.$pid;
     $ThisProcDir.='/'.$process;
 
     mkdir $ThisProcDir,0755;
@@ -227,7 +230,7 @@ sub PrepareProcess{
 	$$config{output}{bitext}{file}=$output;
 	$$config{output}{bitext}{language}=$srclang.'-'.$trglang;
     }
-    elsif ($configfile=~/(align\/word\/..\-..|giza)$/){
+    elsif ($configfile=~/align\/word\/(..\..|basic|advanced|giza)$/){
 	my $bitext=$$config{input}{'bitext'}{'stream name'};
 	my $corp=&Uplug::Web::Corpus::GetCorpusInfo($user,$corpus,$bitext);
 	my ($name,$lang)=&Uplug::Web::Corpus::SplitCorpusName($bitext);

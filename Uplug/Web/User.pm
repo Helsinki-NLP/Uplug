@@ -39,6 +39,20 @@ our $PasswordFile = $Uplug2Dir.'/.htpasswd';
 
 ######################################################################
 
+sub SendUserPassword{
+    my $user=shift;
+    my %UserData=();
+    &ReadUserInfo(\%UserData,$user);
+
+    if (not defined $UserData{$user}{Password}){
+	return "Cannot find user '$user'! Please register first!\n";
+    }
+    &SendMail($user,'UplugWeb password',
+	      "UplugWeb account: $user\nUplugWeb password: $UserData{$user}{Password}");
+    return "Mail sent to $user!";
+}
+
+
 sub RemoveUser{
     my $user=shift;
     my %UserData=();
@@ -84,8 +98,9 @@ sub ReadUserInfo{
 	    while (<U>){
 		chomp;
 		my ($k,$v)=split(/\:/);
-		if ($k eq 'Password'){$$data{$u}{$k}='******';}
-		else{$$data{$u}{$k}=$v;}
+#		if ($k eq 'Password'){$$data{$u}{$k}='******';}
+#		else{$$data{$u}{$k}=$v;}
+		$$data{$u}{$k}=$v;
 	    }
 	    close U;
 	}

@@ -56,6 +56,7 @@ use Uplug::Web;
 # use Uplug::Web::Corpus;
 # use Uplug::Web::Process;
 
+#system ("rm -fr /corpora/uplug/cwb");
 
 #if (defined &url_param('a')){&param('a',&url_param('a'));}
 #if (defined &url_param('c')){&param('c',&url_param('c'));}
@@ -91,6 +92,10 @@ elsif ($action eq 'regform'){
 }
 elsif ($action eq 'register'){
     $main=&Register();
+}
+elsif ($action eq 'sendpassword'){
+    my $email = &my_param('e');
+    $main=&Uplug::Web::LostPassword($email);
 }
 else{
     $main=&UplugHome($user);
@@ -157,7 +162,7 @@ sub UplugMenu{
 	push (@menu,('User management' , 
 		     [
 		      'Login' , "user/login",
-		      'Lost Password' , "$url?a=sendpasswd",
+		      'Lost Password' , "$url?a=sendpassword",
 		      '<blink>Register now!</blink>' , "$url?a=regform",
 		      ],
 		     'Corpus management',
@@ -177,10 +182,10 @@ sub UplugMenu{
 		      ],
 		     'Corpus management',
 		     [
+		      'Create new corpus' , "$url?a=corpus;t=create",
 		      'My corpora' , "$url?a=corpus",
 		      'Public corpora' , "$url?a=corpus;o=pub",
-		      'Add corpus' , "$url?a=corpus;t=add",
-#		      'Add document' , "$url?a=corpus;t=add-doc",
+#		      'Add document' , "$url?a=corpus;t=add",
 #		      'Create CWB index' , "$url?a=corpus;t=index",
 		      'CWB Query' , "$url?a=corpus;t=query",
 		      ],
@@ -214,8 +219,8 @@ sub UplugMenu{
 		  ],
 		 'Status' , 
 		 [
-		  &i('&#106;&#111;&#101;&#114;&#103;&#64;&#115;&#116;&#112;&#46;&#108;&#105;&#110;&#103;&#46;&#117;&#117;&#46;&#115;&#101;') , 'mailto:&#106;&#111;&#101;&#114;&#103;&#64;&#115;&#116;&#112;&#46;&#108;&#105;&#110;&#103;&#46;&#117;&#117;&#46;&#115;&#101;',
-		  $mtime , undef
+		  $mtime , undef,
+		  &i('&#106;&#111;&#101;&#114;&#103;&#64;&#115;&#116;&#112;&#46;&#108;&#105;&#110;&#103;&#46;&#117;&#117;&#46;&#115;&#101;') , 'mailto:&#106;&#111;&#101;&#114;&#103;&#64;&#115;&#116;&#112;&#46;&#108;&#105;&#110;&#103;&#46;&#117;&#117;&#46;&#115;&#101;'
 		  ],
 		 ));
 
@@ -283,19 +288,6 @@ sub CorpusManager{
     if ($user eq $UPLUGADMIN){$priv='admin';}
 
     my $html=&h2("UplugWeb - Corpus Manager");
-
-
-#    $html.="tasks: ".&Uplug::Web::ActionLinks($url,'view all',
-#					      'view my','add'),&p();
-
-#    my $base=&Uplug::Web::AddUrlParam($url,'a','corpus');   # base-url
-##    $html.=&Uplug::Web::TaskLinks($base,'o',$user);         # view my corpora
-#    $html.=&Uplug::Web::TaskLinks($base,undef,'my');        # view my corpora
-#    $html.=&Uplug::Web::TaskLinks($base,'o','pub');         # view public
-#    $html.=&Uplug::Web::TaskLinks($base,'t',                # other tasks:
-#				  'add',                    #   add corpora
-#				  'index',                  #   create index
-#				  'query');                 #   corpus query
     $html.=&hr;
 
     my %CorpusData=();
@@ -310,9 +302,6 @@ sub CorpusManager{
     if (($task eq 'view') and 
 	(defined $corpus) and
 	(defined $doc)){
-
-#	if (defined &url_param('x')){&param('x',&url_param('x'));}
-#	if (defined &url_param('s')){&param('s',&url_param('s'));}
 
 	my $pos    = &my_param('x');        # current position in corpus
 	my $style  = &my_param('s');        # display style
@@ -332,12 +321,7 @@ sub CorpusManager{
     #-------------------------------------------------------------------------
 
     elsif ($task eq 'query'){
-
-	my $lang  = &my_param('s');        # language
-	$html.=&Uplug::Web::CorpusQueryForm($owner,$corpus,$lang);
-
-#	$html.=&Uplug::Web::QueryCorpus($user,$owner,$corpus,
-#					\%params,$query);
+	$html.=&Uplug::Web::CorpusQueryForm($owner,$corpus);
     }
 
     #-------------------------------------------------------------------------
@@ -347,7 +331,11 @@ sub CorpusManager{
     elsif ($task eq 'index'){
 	if ($priv ne 'all'){
 	    &Uplug::Web::Corpus::IndexCorpus($owner,$corpus);
+	    $html.=&b("Corpus '$corpus' will be indexed!").&br();
+	    $html.="(Indexing process is in the queue!)".&p();
 	}
+	$task='view';
+	&param('t',$task);
 	$html.=&Uplug::Web::ShowCorpusInfo($task,
 					   $owner,$corpus,$docbase,$doc,$priv);
     }
@@ -370,6 +358,18 @@ sub CorpusManager{
     }
 
     #-------------------------------------------------------------------------
+    # align all bitexts in a corpus
+    #-------------------------------------------------------------------------
+
+    elsif ($task eq 'align'){
+	$html.=&Uplug::Web::AlignAllDocuments($owner,$corpus);
+	$task='view';
+	&param('t',$task);
+	$html.=&Uplug::Web::ShowCorpusInfo($task,
+					   $owner,$corpus,$docbase,$doc,$priv);
+    }
+
+    #-------------------------------------------------------------------------
     # send a document of a corpus by mail
     #-------------------------------------------------------------------------
 
@@ -383,7 +383,7 @@ sub CorpusManager{
     # add a corpus to the repository
     #-------------------------------------------------------------------------
 
-    elsif ($task eq 'add'){
+    elsif ($task eq 'create'){
 	if ($priv ne 'all'){
 	    $html.=&Uplug::Web::AddCorpus($user,\%params);
 	}
@@ -397,11 +397,12 @@ sub CorpusManager{
     # add a document to a corpus
     #-------------------------------------------------------------------------
 
-    elsif ($task eq 'add-doc'){
+    elsif ($task eq 'add'){
 	if ($priv ne 'all'){
 	    my $file=param('file');
 	    $html.=&Uplug::Web::AddDocument($user,$corpus,$file,\%params);
 	}
+	$task='view';
 	$html.=&Uplug::Web::ShowCorpusInfo($task,
 					   $owner,$corpus,$docbase,$doc,$priv);
     }
@@ -418,19 +419,21 @@ sub CorpusManager{
 	$html.='<li>look at status information of each document(<b>info</b>)</li>';
 	$html.='<li>view corpus documents (<b>view</b>)</li>';
 	$html.='<li>send documents via mail (<b>send</b>)</li>';
-	$html.='<li>add documents to the corpus (<b>add-doc</b>)</li>';
+	$html.='<li>add documents to the corpus (<b>add</b>)</li>';
 	$html.='<li>create a corpus index using CWB (<b>index</b>)</li>';
 	$html.='<li>run corpus queries using CWB (<b>query</b>)</li>';
 	$html.='<li>remove documents and the entire corpus (<b>remove</b>)</li>';
 #	$html.='<li>display a link matrix (<b>links</b>)</li>';
-	$html.='</td><td valign="top">Use the links for each corpus!<ul>';
+	$html.='</ul></td>';
+	$html.='<td valign="top">Use the links for each corpus!<ul>';
 	$html.='<li>Select a corpus by clicking on its name</li>';
-	$html.='<li>Show aligned bitexts by clicking on <b>link</b></li>';
+	$html.='<li>Show aligned bitexts by clicking on document names</li>';
 	$html.='<li>Select one of the tasks to the right of each corpus</li>';
 	$html.='<li>Run one of the tasks by selecting a corpus/document</li>';
-	$html.='</ul></td>';
-	$html.='</ul></td>';
-
+	$html.='</ul>';
+	$html.='Note that corpus documents have to be tokenized '.&br();
+	$html.='before you can index them using CWB!';
+	$html.='</td>';
 	$html.='</tr></table><hr />';
 	$html.=&Uplug::Web::ShowCorpusInfo($task,
 					   $owner,$corpus,$docbase,$doc,$priv);
@@ -566,12 +569,10 @@ sub UserManager{
 
 sub UplugHome{
     my $user=shift;
-    return '<CENTER>
-<H1>The Uplug home page</H1><i>user: '.$user.
-'</i></CENTER>
-<hr>
-
-<P>
+    my $html='<center><h1>The Uplug home page</h1>';
+    if ($user){$html.='<i>user: '.$user.'</i>';}
+    $html.='</center><hr>
+<p>
 The Uplug system was developed within the co-operative project on
 parallel corpora PLUG 
 [<A href="UplugWeb/node6.html#Sag99">ASH99</A>]. 
@@ -665,6 +666,7 @@ Linguistics, Uppsala University. 1999
 </DD>
 </DL>
 <HR>';
+return $html;
 }
 
 

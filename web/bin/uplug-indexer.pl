@@ -75,7 +75,9 @@ my %xmlfiles;
 
 foreach my $l (@lang){
     @{$xmlfiles{$l}}=&GetXmlFiles("$CORPUSDIR/$l");
-    &XML2CWB($REGDIR,$DATDIR,$l,$xmlfiles{$l});
+    if (@{$xmlfiles{$l}}){
+	&XML2CWB($REGDIR,$DATDIR,$l,$xmlfiles{$l});
+    }
 }
 
 foreach my $s (@lang){
@@ -115,7 +117,13 @@ sub GetXmlFiles{
 	map(s/^/$dir\//,@files);
 	closedir DIR;
     }
-    return @files;
+    my @xml=();
+    foreach my $f (@files){
+	open F,"<$f";                    # open the file
+	$_=<F>;close F;                  # and check if the header
+	if (/\<\?xml\s/){push(@xml,$f);} # is a XML-header (we need XML files!)
+    }
+    return @xml;
 }
 
 sub GetBitexts{

@@ -37,11 +37,11 @@ my $MAXVIEWDATA=10;
 binmode(STDOUT, ":utf8");            # set UTF8 for STDOUT
 
 my %DataAccess=
-    (admin => {corpus => ['info','view','send','add-doc',
+    (admin => {corpus => ['info','view','send','add','align',
 			  'index','query','remove'],
 	       doc => ['info','view','send','remove'],
 	       user => ['info','edit','remove']},
-     user => {corpus => ['info','view','send','add-doc',
+     user => {corpus => ['info','view','send','add','align',
 			 'index','query','remove'],
 	      doc => ['info','view','send','remove'],
 	      'Uplug::Web::Data' => ['xml'],
@@ -83,6 +83,7 @@ sub ShowUserInfo{
 		  &th([$u]).
 		  &td(&ActionLinks($url,&AccessMode($priv,'user'))));
 	    foreach (keys %{$$UserData{$u}}){
+		if ($_ eq 'Password'){$$UserData{$u}{$_}='*******';}
 		push (@rows,td([$_,$$UserData{$u}{$_}]));
 	    }
 	}
@@ -152,18 +153,19 @@ sub AddDocument{
 
     #------------------------------------------------------------
 
+    my $html;
     if ($corpus and $name and $file){
 	my ($ret,$msg)=&Uplug::Web::Corpus::AddDocument($user,$corpus,
 							$name,$file,
 							$lang,$enc);
-	if (not $ret){
-#	    my $back=&a({-href=>'javascript:',
-#			 -onclick=>'history.go(-1)'},'back');
-	    return &h3($msg).&AddDocumentForm($user,$corpus);
-	}
-	return &h3($msg);
+#	if (not $ret){
+##	    my $back=&a({-href=>'javascript:',
+##			 -onclick=>'history.go(-1)'},'back');
+#	    return &h3($msg).&AddDocumentForm($user,$corpus);
+#	}
+	$html=&h3($msg);
     }
-    else{return &AddDocumentForm($user,$corpus);}
+    return &AddDocumentForm($user,$corpus).$html;
 }
 
 
@@ -315,77 +317,21 @@ sub CorpusIndexerForm{
     return $form;
 }
 
-sub CorpusQueryForm{
-    my ($owner,$corpus,$lang)=@_;
-
-    return &Uplug::Web::CWB::Query('?a=corpus;t=query',$owner,$corpus,$lang);
-
-    my %index=();
-    &Uplug::Web::Corpus::GetIndexedCorpora(\%index,$owner,$corpus);
-
+sub LostPassword{
+    my ($email)=@_;
+    my $html=&h3("Lost password").&hr();
+    if ($email){return $html.=&Uplug::Web::User::SendPassword($email);}
     my $form= &startform();
-    my $query;
-    my @row=();
+    $form.='Type your e-mail adress: ';
+    $form.=&textfield(-name => 'e',-default=>'user@uplug.se');
+    $form.= &submit(-name => 'action',-value => 'send');
+    $form.= &endform;
+    return $html.$form;
+}
 
-    if (not $owner){
-#	if ((scalar keys %index) == 1){($owner)=each %index;}
-#	else{
-	    $form.='Select a user!'.&p();;
-	    push (@row,&popup_menu(-name=> 'owner',
-				   -values => [sort keys %index]));
-#	}
-    }
-    elsif (not $corpus){
-	$form.='Select a corpus!'.&p();
-	push (@row,$owner.' '.&hidden(-name=>'owner',-default=>[$owner]));
-	push (@row,&popup_menu(-name=> 'corpus',
-			       -values => [sort keys %{$index{$owner}}]));
-    }
-    elsif (not $lang){
-	$form.='Select a language!'.&p();
-	push (@row,$owner.' '.&hidden(-name=>'owner',-default=>[$owner]));
-	push (@row,$corpus.' '.&hidden(-name=>'corpus',-default=>[$corpus]));
-	push (@row,&popup_menu(-name=> 'lang',
-			       -values => 
-			       [sort keys %{$index{$owner}{$corpus}}]));
-    }
-    else{
-	$form.='Type a query using the ';
-	$form.=&a({-href=>'http://www.ims.uni-stuttgart.de/projekte/CorpusWorkbench/CQPSyntax.html'},'CQP syntax');
-	$form.=' of the ';
-	$form.=&a({-href=>'http://www.ims.uni-stuttgart.de/projekte/CorpusWorkbench/index.html'},'Corpus Work Bench');
-	$form.='!'.&p();
-	push (@row,$owner.' '.&hidden(-name=>'owner',-default=>[$owner]));
-	push (@row,$corpus.' '.&hidden(-name=>'corpus',-default=>[$corpus]));
-	push (@row,$lang.' '.&hidden(-name=>'lang',-default=>[$lang]));
-
-	$query=&textfield(-size=>'50',-name => 'query',
-			  -default=>'[word="Government" & pos="NN.*"]').&br();
-	$query.='cqp-query (';
-	$query.=&a({-href=>'http://www.ims.uni-stuttgart.de/projekte/CorpusWorkbench/CQPSyntax.html'},'cqp syntax').',';
-	$query.=&a({-href=>'http://www.ims.uni-stuttgart.de/projekte/CorpusWorkbench/CQPExamples.html'},'sample queries').',';
-	$query.=&a({-href=>'http://www.ims.uni-stuttgart.de/projekte/CorpusWorkbench/index.html'},'cwb');
-	$query.=')'.&p();
-	if (ref($index{$owner}{$corpus}{$lang}{align}) eq 'ARRAY'){
-	    my @lang=sort @{$index{$owner}{$corpus}{$lang}{align}};
-	    my $align=&checkbox_group(-name=>'alg',
-				      -values=>\@lang,
-				      -default=>\@lang);
-	    push (@row,$align);
-	    $query.=&radio_group(-name=>'style',
-				 -values=>['vertical','horizontal'],
-				 -default=>'vertical',
-				 -labels=>{vertical=>'vertical',
-					   horizontal=>'horizontal'});
-	}
-
-    }
-    my @head=('&nbsp;user','&nbsp;corpus','&nbsp;language','&nbsp;alignment');
-    $form.=&table({},caption(''),&Tr([&th(\@head),&td(\@row)]));
-    $form.=&p().$query.&p();
-    $form.= &submit(-name => 'action',-value => 'select');
-    $form.= &endform();
-    return $form;
+sub CorpusQueryForm{
+    my ($owner,$corpus)=@_;
+    return &Uplug::Web::CWB::Query('?a=corpus;t=query',$owner,$corpus);
 }
 
 
@@ -496,6 +442,7 @@ sub ShowCorpusInfo{
     $query=&AddUrlParam($query,'o',$owner);
 
     my $link=$query;
+    if (not defined $docbase){($docbase)=each %docs;}
     if (defined $corpus){$link=&AddUrlParam($link,'c',$corpus);}
     if (defined $docbase){$link=&AddUrlParam($link,'b',$docbase);}
 
@@ -517,10 +464,11 @@ sub ShowCorpusInfo{
     foreach my $c (sort keys %{$CorpusNames}){
 
 	$query=&AddUrlParam($query,'c',$c);
-	$html.=&a({-href=>$query},$c.' ');
+	if ($c eq $corpus){$html.=$c.' ';}
+	else{$html.=&a({-href=>$query},$c.' ');}
 
 	$html.=&TaskLinks({url=>$query,selected=>$task},
-			  &AccessMode($priv,'corpus')).&br();
+			  &AccessMode($priv,'corpus')).&p();
 
 #	$html.=&ActionLinks($url,&AccessMode($priv,'corpus')).&br();
 #	push (@rows,&td([&a({-href=>$url},$c)]));
@@ -529,8 +477,12 @@ sub ShowCorpusInfo{
 	my @rows=();
 	foreach my $d (sort keys %docs){
 	    my $link=&AddUrlParam($query,'b',$d);   # add base name
-	    push (@rows,&th([$d]));
-	    $rows[-1].=&td(['['.&a({-href=>$link},'links').']']);
+#	    push (@rows,&th([$d]));
+#	    $rows[-1].=&td(['['.&a({-href=>$link},'links').']']);
+	    if ($d eq $docbase){push(@rows,&th([$d]));}
+	    else{
+		push(@rows,&th([&a({-href=>$link},$d)]));
+	    }
 	    my @lang=sort keys %{$docs{$d}};
 	    foreach my $l (@lang){
 		$link=&AddUrlParam($link,'d',$docs{$d}{$l}{'_doc'});
@@ -541,19 +493,19 @@ sub ShowCorpusInfo{
 	    foreach my $s (@lang){
 		$link=&AddUrlParam($link,'d',$docs{$d}{$s}{'_doc'});
 		push (@rows,&td({-align=>'right'},
-				['','['.&a({-href=>$link},$s).']']));
+				['['.&a({-href=>$link},$s).']']));
 		foreach my $t (@lang){
 		    if (defined $docs{$d}{$s}{$t}){
 			$link=&AddUrlParam($link,'d',$docs{$d}{$s}{$t});
 			if ($docs{$d}{$s}{$t}=~/\sword\s\(/){
-			    $rows[-1].=&td([&a({-href=>$link},'word')]);
+			    $rows[-1].=&th([&a({-href=>$link},'word')]);
 			    }
 			else{
-			    $rows[-1].=&td([&a({-href=>$link},'sent')]);
+			    $rows[-1].=&th([&a({-href=>$link},'sent')]);
 			}
 		    }
 		    else{
-			$rows[-1].=&td({-align=>'center'},['-']);
+			$rows[-1].=&th({-align=>'center'},['-']);
 		    }
 		}
 	    }
@@ -879,6 +831,47 @@ sub SelectCorpusForm{
 }
 
 
+#------------------------------------------------------------
+# sentence-align all bitexts in a given corpus
+
+sub AlignAllDocuments{
+    my ($user,$corpus)=@_;
+    my $config='./systems/align/sent';
+
+    my %docs;
+    my %aligned;
+    my $CorpusData=&Uplug::Web::Corpus::CorpusDocuments($user,$corpus);
+    my $html;
+    foreach my $c (keys %{$CorpusData}){
+	if ($$CorpusData{$c}{language}=~/^(.+)\-(.+)$/){   # aligned corpora
+	    $aligned{$$CorpusData{$c}{corpus}}{$1}{$2}=1;  # (save lang pairs)
+	    next;
+	}
+	if ($$CorpusData{$c}{status}!~/(tag|tok|chunk)/){  # check status
+	    $html.="$c is not tokenized yet! Run pre-processing first!".&br();
+	    next;
+	}
+	$docs{$$CorpusData{$c}{corpus}}{$$CorpusData{$c}{language}}=$c;
+    }
+    my $count=0;
+    foreach my $c (keys %docs){
+	my @lang=sort keys %{$docs{$c}};
+	while (@lang){
+	    my $s=shift(@lang);
+	    foreach my $t (@lang){
+		if ($aligned{$c}{$s}{$t}){next;}   # skip if already aligned!
+		if ($aligned{$c}{$t}{$s}){next;}   # (even if source->target)
+		my %para=('input:source text:stream name' => $docs{$c}{$s},
+			  'input:target text:stream name' => $docs{$c}{$t});
+		&Uplug::Web::Process::MakeUplugProcess($user,$corpus,
+						       $config,\%para);
+		$count++;
+	    }
+	}
+    }
+    return $html.
+	&h3("$count sentence alignment processes added to the queue!");
+}
 
 sub Process{
     my $query=shift;
@@ -942,7 +935,7 @@ sub ProcessTable{
     else{$html=&h3($type.' '.&ActionLinks($url,'clear'));}
     my @proc=&Uplug::Web::Process::GetProcesses($type);
     if (not @proc){
-	return "No process in $type stack!".&br();
+	return "No process in $type-processes-stack!".&br();
     }
     my @rows;
     my $count=0;

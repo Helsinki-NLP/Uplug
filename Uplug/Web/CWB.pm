@@ -67,8 +67,9 @@ sub Query{
     my $url      = shift;
     my $owner    = shift;
     my $corpus   = shift;
-    my $lang     = shift;
-    if (@_){$SHOWMAX=shift;}
+
+    my $lang = url_param('s');
+    if (param('showmax')){$SHOWMAX=param('showmax');}
 
     my $advanced = url_param('adv');
     my @alg = param('alg');
@@ -76,11 +77,12 @@ sub Query{
     if ($cqp){param('query',$cqp);}
 
     binmode (STDOUT,':encoding(utf-8)');
-    if (not -e $ENV{UPLUGCWB}){`mkdir $ENV{UPLUGCWB}`;}
-    if (not -e "$ENV{UPLUGCWB}/reg"){`mkdir $ENV{UPLUGCWB}/reg`;}
-    if (not -e "$ENV{UPLUGCWB}/dat"){`mkdir $ENV{UPLUGCWB}/dat`;}
-    if (not -e "$ENV{UPLUGCWB}/reg/$owner"){`mkdir $ENV{UPLUGCWB}/reg/$owner`;}
-    if (not -e "$ENV{UPLUGCWB}/dat/$owner"){`mkdir $ENV{UPLUGCWB}/dat/$owner`;}
+
+    if (not -d $ENV{UPLUGCWB}){mkdir $ENV{UPLUGCWB};}
+    if (not -d "$ENV{UPLUGCWB}/reg"){mkdir "$ENV{UPLUGCWB}/reg";}
+    if (not -d "$ENV{UPLUGCWB}/dat"){mkdir "$ENV{UPLUGCWB}/dat";}
+    if (not -d "$ENV{UPLUGCWB}/reg/$owner"){mkdir "$ENV{UPLUGCWB}/reg/$owner";}
+    if (not -d "$ENV{UPLUGCWB}/dat/$owner"){mkdir "$ENV{UPLUGCWB}/dat/$owner";}
 
     my $CWBregistry="$ENV{UPLUGCWB}/reg/$owner";
     chdir $CWBregistry;
@@ -469,7 +471,7 @@ sub RegisteryLinks{
     my $corpora=shift;
     my $url=shift;
 
-    my @rows=(&th({},['corpus&nbsp;','&nbsp;sub-corpora']));
+    my @rows=(&th({},['corpus&nbsp;','&nbsp;languages&nbsp;']));
     my %trans=();
     foreach my $c (sort keys %{$corpora}){
 	my $link=&AddUrlParam($url,'c',$c);

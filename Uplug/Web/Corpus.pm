@@ -64,6 +64,7 @@ sub IndexCorpus{
     my $CWBREG="$ENV{UPLUGCWB}/reg/$owner/$corpus";
     my $CWBDAT="$ENV{UPLUGCWB}/dat/$owner/$corpus";
 
+    if (not -d $ENV{UPLUGCWB}){mkdir $ENV{UPLUGCWB};}
     if (not -d "$ENV{UPLUGCWB}/reg"){mkdir "$ENV{UPLUGCWB}/reg";}
     if (not -d "$ENV{UPLUGCWB}/dat"){mkdir "$ENV{UPLUGCWB}/dat";}
     if (not -d "$ENV{UPLUGCWB}/reg/$owner"){mkdir "$ENV{UPLUGCWB}/reg/$owner";}
