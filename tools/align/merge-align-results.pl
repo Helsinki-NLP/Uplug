@@ -72,7 +72,7 @@ sub Correlation{
     print "\n# settings: $name\n";
     print "x=[$vec1]\n";
     print "y=[$vec2]\n";
-    print 'puts "ALL SETTINGS\n"'."\n";
+    print "puts \"SETTINGS: $name\\n\"\n";
     print 'r=corrcoef(x,y)'."\n";
     print 'xdev=std(x)'."\n";
     print 'ydev=std(y)'."\n";

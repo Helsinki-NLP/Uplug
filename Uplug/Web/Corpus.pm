@@ -17,44 +17,29 @@
 package Uplug::Web::Corpus;
 
 use strict;
-use Exporter;
 use IO::File;
 use POSIX qw(tmpnam);
 use File::Copy;
 use ExtUtils::Command;
 
+use Uplug::Web;
+use Uplug::Web::Config;
 use Uplug::Web::Process::Stack;
 use Uplug::Web::User;
-# use lib '/home/staff/joerg/cvs/upl_dev/';
-# use lib '/home/staff/joerg/cvs/upl_dev/lib/';
-# use lib '/corpora/OPUS/upl/';
-# use lib '/corpora/OPUS/upl/lib/';
 use Uplug::Config;
-# use Uplug::IO::Any;
-# use Uplug::Data::DOM;
 
-use vars qw(@ISA @EXPORT);
 
-@ISA=qw( Exporter);
-@EXPORT = qw( &GetCorpusData );
 
-my $RECODE='/home/staff/joerg/user_local/bin/recode';
-my $ALIGN2CWB='/corpora/OPUS/uplug2-cwb/make-cwb-align';
-my $CORPUS2CWB='/corpora/OPUS/uplug2-cwb/make-cwb-corpus';
+our $ALIGN2CWB=$ENV{UPLUGHOME}.'/web/bin/make-cwb-align';
+our $CORPUS2CWB=$ENV{UPLUGHOME}.'/web/bin/make-cwb-corpus';
+our $RECODE=$ENV{RECODE};
 
-my $GZIP='/usr/bin/gzip';
-my $GUNZIP='/usr/bin/gunzip';
+my $CorpusDir=$ENV{UPLUGDATA};
 
-my $Uplug2Dir='/corpora/OPUS/uplug2';
-my $CorpusDir=$Uplug2Dir;
-my $CorpusIndexFile=$Uplug2Dir.'/corpora';
 my $MAXFLOCKWAIT=3;
 
-# my $IniDir=$CorpusDir.'/ini';
-# my $CorpusFile=$IniDir.'/uplugUserStreams';
-
+my $CorpusIndexFile=$ENV{UPLUGDATA}.'/.index';
 my $CorpusIndex=Uplug::Web::Process::Stack->new($CorpusIndexFile);
-
 
 sub GetIndexedCorpora{
     my $data=shift;
@@ -77,31 +62,38 @@ sub AddCorpusToIndex{
     my $srcenc=shift;
     my $trgenc=shift;
     my $alg=shift;
-    my %info=&GetCorpusInfo($user,$corpus);
-    if ($info{format}=~/align/){
-	my ($src,$trg)=split(/\-/,$info{language});
+    my $info=&GetCorpusInfo($user,$corpus);
+    if ($$info{format}=~/align/){
+	my ($src,$trg)=split(/\-/,$$info{language});
 	&AddCorpusToIndex($user,
-			  &GetCorpusName($info{corpus},$src),
+			  &GetCorpusName($$info{corpus},$src),
 			  $srcenc,$trgenc,
 			  $trg);
 	&AddCorpusToIndex($user,
-			  &GetCorpusName($info{corpus},$trg),
+			  &GetCorpusName($$info{corpus},$trg),
 			  $trgenc,$srcenc,
 			  $src);
     }
     else{
-	$CorpusIndex->remove($user,$info{corpus},$info{language},$alg);
-	$CorpusIndex->push($user,$info{corpus},$info{language},$alg,$srcenc);
+	$CorpusIndex->remove($user,$$info{corpus},$$info{language},$alg);
+	$CorpusIndex->push($user,$$info{corpus},$$info{language},$alg,$srcenc);
     }
 }
 
 
 
 
-sub GetCorpusDataFile{
+sub GetCorpusDataFileOld{
     my $user=shift;
     return "$CorpusDir/$user/ini/uplugUserStreams.ini";
 }
+
+sub GetCorpusDataFile{
+    my $user=shift;
+    my $corpus=shift;
+    return "$CorpusDir/$user/$corpus/.documents";
+}
+
 
 sub GetCorpusDir{
     my $user=shift;
@@ -115,6 +107,8 @@ sub GetCorpusDir{
 sub GetRecycleDir{
     my $user=shift;
     my $corpus=shift;
+    my $lang=shift;
+
     if (not -d "$CorpusDir/.recycled"){
 	mkdir "$CorpusDir/.recycled",0755;
     }
@@ -125,6 +119,12 @@ sub GetRecycleDir{
     if (not defined $corpus){return "$CorpusDir/.recycled/$user";}
     if (not -d "$CorpusDir/.recycled/$user/$corpus"){
 	mkdir "$CorpusDir/.recycled/$user/$corpus",0755;
+    }
+    if (defined $lang){
+	if (not -d "$CorpusDir/.recycled/$user/$corpus/$lang"){
+	    mkdir "$CorpusDir/.recycled/$user/$corpus/$lang",0755;
+	}
+	return "$CorpusDir/.recycled/$user/$corpus/$lang";
     }
     return "$CorpusDir/.recycled/$user/$corpus";
 }
@@ -146,6 +146,31 @@ sub GetCorpusStreams{
 }
 
 
+#------------------------------------------------------------------
+# MatchingDocuments
+#    find all documents within a corpus with matching attributes
+#    (%para=attribute-value pairs to be matched)
+
+sub MatchingDocuments{
+    my $user=shift;
+    my $corpus=shift;
+    my %para=@_;
+
+    my $docs=&CorpusDocuments($user,$corpus);
+    my @ok=();
+    foreach my $c (keys %{$docs}){
+	my $match=1;
+	foreach (keys %para){
+	    if ($$docs{$c}{$_}!~/$para{$_}/){$match=0;last;}
+	}
+	if ($match){push (@ok,$c);}
+    }
+    return @ok;
+}
+
+#------------------------------------------------------------------
+
+
 sub GetCorpusData{
 
     my $CorpusData=shift;
@@ -158,12 +183,68 @@ sub GetCorpusData{
     return keys %{$CorpusData};
 }
 
+sub RemoveDocument{
+    my ($owner,$corpus,$doc)=@_;
+
+    my $ConfigFile=&DocumentConfigFile($owner,$corpus);
+    my $documents=Uplug::Web::Config->new($ConfigFile);
+    my $config=$documents->read();
+
+    if (defined $$config{$doc}){
+	my $lang=$$config{$doc}{language};
+	my $file=$$config{$doc}{file};
+	my $corpus=$$config{$doc}{corpus};
+	my $RecycleDir=&GetRecycleDir($owner,$corpus,$lang);
+	if (-e $file){
+	    move ($file,"$RecycleDir/");
+	}
+	delete $$config{$doc};
+	$documents->write($config);
+    }
+    $documents->close();
+}
+
 sub RemoveCorpus{
+    my ($owner,$corpus)=@_;
+
+    my $ConfigFile=&CorporaConfigFile($owner);
+    my $corpora=Uplug::Web::Config->new($ConfigFile);
+    my $config=$corpora->read();
+
+    if (defined $$config{$corpus}){
+	my $RecycleDir=&GetRecycleDir($owner);
+	my $DataDir=&GetCorpusDir($owner,$corpus);
+
+	if (-d "$RecycleDir/$corpus"){                  # quite a hack ...
+	    system "rm -fr $RecycleDir/$corpus";        # and maybe dangerous!!
+	}
+	if (-e $DataDir){
+	    system "mv $DataDir $RecycleDir/";          # requires UNIX!!
+	}
+	delete $$config{$corpus};
+	$corpora->write($config);
+    }
+    $corpora->close();
+
+    my $ConfigFile=&CorporaConfigFile('pub');          # delete from public
+    my $corpora=Uplug::Web::Config->new($ConfigFile);  # corpora list
+    my $config=$corpora->read();
+    if (defined $$config{"../$owner/$corpus"}){
+	delete $$config{"../$owner/$corpus"};
+	$corpora->write($config);
+    }
+    $corpora->close();
+
+}
+
+
+
+sub RemoveCorpusOld{
     my ($user,$owner,$name)=@_;
 
     if ($owner ne $user){print "Cannot remove corpus $name!";return 0;}
 
-    my $CorpusInfoFile=&GetCorpusDataFile($owner);
+    my $CorpusInfoFile=&GetCorpusDataFile($owner,$name);
     my %CorpusData;
     &LoadIniData(\%CorpusData,$CorpusInfoFile);
     if (defined $CorpusData{$name}){
@@ -180,14 +261,6 @@ sub RemoveCorpus{
 
 }
 
-sub AddTextCorpus{
-    my ($user,$name,$lang,$file,$enc)=@_;
-    my $file=&SaveCorpusFile($user,$name,$lang,$file,$enc);
-    if (not defined $file){return 0;}
-    &AddCorpusInfo($user,$name,$lang,'text',
-		   {file => $file,format => 'text'});
-    return 1;
-}
 
 sub GetCorpusName{
     my ($name,$lang)=@_;
@@ -202,11 +275,22 @@ sub SplitCorpusName{
     return undef;
 }
 
+
 sub GetCorpusInfo{
+    my $user=shift;
+    my $corpus=shift;
+    my $doc=shift;
+
+    my $documents=&CorpusDocuments($user,$corpus);
+    if (ref($$documents{$doc}) eq 'HASH'){return $$documents{$doc};}
+    return {};
+}
+
+sub GetCorpusInfoOld{
     my $user=shift;
     my $CorpusName=shift;
 
-    my $CorpusInfoFile=&GetCorpusDataFile($user);
+    my $CorpusInfoFile=&GetCorpusDataFile($user,$CorpusName);
     my %CorpusData;
     &LoadIniData(\%CorpusData,$CorpusInfoFile);
     if (ref($CorpusData{$CorpusName}) eq 'HASH'){
@@ -214,6 +298,8 @@ sub GetCorpusInfo{
     }
     return undef;
 }
+
+
 
 #sub ReadCorpus{
 #    my $user=shift;
@@ -250,50 +336,230 @@ sub SendCorpus{
     my $to=shift;
     my $owner=shift;
     my $corpus=shift;
-    my %data=&GetCorpusInfo($owner,$corpus);
-    if (defined $data{file}){
-	&Uplug::Web::User::SendFile($to,'UplugWeb - '.$corpus,$data{file});
+    my $doc=shift;
+
+    my $data=&GetCorpusInfo($owner,$corpus,$doc);
+
+    if (defined $$data{file}){
+	&Uplug::Web::User::SendFile($to,'UplugWeb - '.$corpus,$$data{file});
 	return 1;
     }
     return 0;
 }
 
+sub CorpusIsPrivate{
+    my $owner=shift;
+    my $corpus=shift;
+    my $CorpusConfig=Uplug::Web::Config->new("$CorpusDir/$owner/.corpora");
+    my $corpora=$CorpusConfig->read();
+    return $$CorpusConfig{$corpus};
+}
+
+sub CorpusIsPublic{
+    return not &CorpusIsPrivate(@_);
+}
+
+
+sub CorporaConfigFile{
+    my $owner=shift;
+    if (not -d "$CorpusDir/$owner"){mkdir "$CorpusDir/$owner";}
+    return "$CorpusDir/$owner/.corpora";
+}
+
+sub DocumentConfigFile{
+    my $owner=shift;
+    my $corpus=shift;
+    if (not -d "$CorpusDir/$owner/$corpus"){mkdir "$CorpusDir/$owner/$corpus";}
+    return "$CorpusDir/$owner/$corpus/.documents";
+}
+
+sub Corpora{
+    my $owner=shift;
+    my $ConfigFile=&CorporaConfigFile($owner);
+    my $CorpusConfig=Uplug::Web::Config->new($ConfigFile);
+    return $CorpusConfig->read();
+}
+
+
+sub CorpusDocuments{
+    my $owner=shift;
+    my $corpus=shift;
+    my $ConfigFile=&DocumentConfigFile($owner,$corpus);
+    my $documents=Uplug::Web::Config->new($ConfigFile);
+    return $documents->read();
+}
+
+
+
+sub AddCorpus{
+    my $user=shift;
+    my $corpus=shift;
+    my $priv=shift;            # =1 --> private corpus (don't store in public)
+
+    if ((defined $corpus) and ($corpus!~/^[a-zA-Z\_0-9]{1,10}$/)){
+	return (0,"Corpus name $corpus is not valid!");
+    }
+
+    my $UserCorpusFile=&CorporaConfigFile($user);
+    # "$CorpusDir/$user/.corpora";
+    my $UserCorpora=Uplug::Web::Config->new($UserCorpusFile);
+    my $corpora=$UserCorpora->read();
+
+    if (defined $$corpora{$corpus}){
+	return (0,"A corpus with the name '$corpus' exists already!");
+    }
+
+    $$corpora{$corpus}=1;
+    if (not $UserCorpora->write($corpora)){
+	return (0,"Could not add corpus info to $UserCorpusFile!");
+    }
+    $UserCorpora->close();
+
+    if (not mkdir "$CorpusDir/$user/$corpus"){
+	return (0,"Could not create corpus directory for '$corpus'!");
+    }
+
+    if (not $priv){
+	my $PublicCorpusFile=&CorporaConfigFile('pub');
+	my $PublicCorpora=Uplug::Web::Config->new($PublicCorpusFile);
+	my $public=$PublicCorpora->read();
+	$$public{"../$user/$corpus"}=1;
+	if (not $PublicCorpora->write($public)){
+	    return (0,"Could not add corpus info to $PublicCorpusFile!");
+	}
+	$PublicCorpora->close();
+    }
+    return (1,"Corpus '$corpus' sucessfully added!");
+}
+
+sub AddDocument{
+    my ($user,$corpus,$name,$fh,$lang,$enc)=@_;
+
+    if ((defined $name) and ($name!~/^[a-zA-Z\_\.0-9]{1,15}$/)){
+	return (0,"Invalid document name '$name'! (use: [a-zA-Z_.]{1,15})");
+    }
+
+    my $documents=&CorpusDocuments($user,$corpus);
+    my $CorpusName=&GetCorpusName($corpus,$lang);
+    if (defined $$documents{$CorpusName}){
+	return (0,"A document with the name '$CorpusName' exists already!");
+    }
+
+    my $dir="$CorpusDir/$user/$corpus/$lang";
+    if (not -e $dir){
+	if (not mkdir $dir){
+	    return (0,"Could not create $lang language directory for '$corpus'!");
+	}
+    }
+    my $file="$dir/$name";
+#    my $tmpfile=&GetTempFileName;
+#    open OUT, '>:encoding(utf8)',$tmpfile;
+    open OUT, '>:encoding(utf8)',$file;
+    binmode($fh);require Encode;
+
+    #----------------------------------
+    # read data and save them in tempfile
+    #
+    while (<$fh>){
+	eval {$_=&Encode::decode($enc,$_,1); };
+	if ($@){print $@;return undef;}
+	print OUT $_;
+    }
+    close OUT;
+
+#    move($tmpfile,$file);                # create the corpus file
+    my $lckfile="$file.lock";
+    open F,">$lckfile";close F;                  # create a lock file
+    chmod 0664,$file;
+    chmod 0664,$lckfile;
+#    unlink $tmpfile;
+
+    &AddCorpusInfo($user,$corpus,$name,$lang,'text',
+		   {file => $file,format => 'text'});
+    return (1,"Document $fh successfully added to corpus $corpus!");
+}
+
+
 sub AddCorpusInfo{
 
-    my $user=shift;
+    my $owner=shift;
+    my $corpus=shift;
     my $name=shift;
     my $lang=shift;
     my $status=shift;
     my $para=shift;
 
-    my $CorpusInfoFile=&GetCorpusDataFile($user);
-    my %CorpusData;
-    my $CorpusName=&GetCorpusName($name,$lang);
+    my $CorpusFile="$CorpusDir/$owner/$corpus/.documents";
+    my $UserCorpora=Uplug::Web::Config->new($CorpusFile);
+    my $corpora=$UserCorpora->read();
 
-    &LoadIniData(\%CorpusData,$CorpusInfoFile);
-    if (defined $CorpusData{$CorpusName}){
-	print "corpus $CorpusName exists already!\n";
-	return 0;
-    }
-    %{$CorpusData{$CorpusName}}=('language' => $lang,
-				 'corpus' => $name,
-				 'status' => $status);
+    my $CorpusName=&GetCorpusName($name,$lang);
+    %{$$corpora{$CorpusName}}=('language' => $lang,
+			       'corpus' => $name,
+			       'status' => $status);
     if (ref($para) eq 'HASH'){
 	foreach (keys %{$para}){
-	    $CorpusData{$CorpusName}{$_}=$$para{$_};
+	    $$corpora{$CorpusName}{$_}=$$para{$_};
 	}
     }
-    &WriteIniFile($CorpusInfoFile,\%CorpusData);
+    if (not $UserCorpora->write($corpora)){
+	return (0,"Could not add corpus info to $CorpusFile!");
+    }
+    $UserCorpora->close();
 }
 
 
 sub ChangeCorpusInfo{
 
+    my $owner=shift;
+    my $corpus=shift;
+    my $CorpusName=shift;
+    my $para=shift;
+
+    my $CorpusFile="$CorpusDir/$owner/$corpus/.documents";
+    my $UserCorpora=Uplug::Web::Config->new($CorpusFile);
+    my $corpora=$UserCorpora->read();
+
+    if (not defined $$corpora{$CorpusName}){
+	if ((ref($para) eq 'HASH') and (defined $$para{language})){
+	    $CorpusName=&GetCorpusName($CorpusName,$$para{language});
+	}
+    }
+    if (ref($para) eq 'HASH'){
+	foreach (keys %{$para}){
+	    $$corpora{$CorpusName}{$_}=$$para{$_};
+	}
+    }
+    if (not $UserCorpora->write($corpora)){
+	return (0,"Could not add corpus info to $CorpusFile!");
+    }
+    $UserCorpora->close();
+}
+
+sub ChangeCorpusStatus{
+    my $owner=shift;
+    my $corpus=shift;
+    my $CorpusName=shift;
+    my $status=shift;
+
+    my $CorpusFile="$CorpusDir/$owner/$corpus/.documents";
+    my $UserCorpora=Uplug::Web::Config->new($CorpusFile);
+    my $corpora=$UserCorpora->read();
+
+    if (not defined $$corpora{$CorpusName}){return undef;}
+    my $old=$$corpora{$CorpusName}{status};
+    $$corpora{$CorpusName}{status}=$status;
+    $UserCorpora->close();
+    return $old;
+}
+
+sub ChangeCorpusInfoOld{
+
     my $user=shift;
     my $CorpusName=shift;
     my $para=shift;
 
-    my $CorpusInfoFile=&GetCorpusDataFile($user);
+    my $CorpusInfoFile=&GetCorpusDataFile($user,$CorpusName);
     my %CorpusData;
     &LoadIniData(\%CorpusData,$CorpusInfoFile);
     if (not defined $CorpusData{$CorpusName}){
@@ -309,13 +575,13 @@ sub ChangeCorpusInfo{
     &WriteIniFile($CorpusInfoFile,\%CorpusData);
 }
 
-sub ChangeCorpusStatus{
+sub ChangeCorpusStatusOld{
 
     my $user=shift;
     my $CorpusName=shift;
     my $status=shift;
 
-    my $CorpusInfoFile=&GetCorpusDataFile($user);
+    my $CorpusInfoFile=&GetCorpusDataFile($user,$CorpusName);
     my %CorpusData;
     &LoadIniData(\%CorpusData,$CorpusInfoFile);
     if (not defined $CorpusData{$CorpusName}){return undef;}
@@ -325,69 +591,6 @@ sub ChangeCorpusStatus{
     return $old;
 }
 
-
-sub SaveCorpusFile{
-    my ($user,$name,$lang,$fh,$enc)=@_;
-    my $ThisCorpusDir=&GetCorpusDir($user,$name);
-    my $txtfile="$ThisCorpusDir/$lang.gz";
-
-    #----------------------------------
-    # open a temp file
-    # (use PerlIO for encoding in perl > 5.8)
-    #
-    my $out;
-    my $tmpfile=&GetTempFileName;
-    if ($]>=5.008){
-	binmode($fh);require Encode;
-#	binmode($fh,":encoding($enc)");print $!;
-	open $out, '>:encoding(utf8)',$tmpfile;
-    }
-    else{open $out,">$tmpfile";}
-
-    #----------------------------------
-    # read data and save them in tempfile
-    #
-    while (<$fh>){
-	if ($]>=5.008){
-	    eval {$_=&Encode::decode($enc,$_,1); };
-	    if ($@){print $@;return undef;}
-	}
-	print $out $_;
-    }
-    close $out;
-
-    #----------------------------------
-    # for perl < 5.8:
-    #   check encoding with recode and convert to UTF8
-    #
-    if ($]<5.008){
-	if ($enc=~/utf\-?8/i){
-	    my $err=`$RECODE $enc..utf16 $tmpfile 2>&1`;
-	    if ($err){print "problems with encoding (UTF8)";return undef;}
-	    my $err=`$RECODE utf16..$enc $tmpfile 2>&1`;
-	    if ($err){print "problems with encoding (UTF8)";return undef;}
-	}
-	my $err=`$RECODE $enc..utf8 $tmpfile 2>&1`;
-	if ($err){print "problems with recode: ",$err;return undef;}
-    }
-
-    #----------------------------------
-    # gzip file and move to corpus dir
-    #
-    my $err=`$GZIP $tmpfile 2>&1`;
-    if ($err){print "problems with gzip: ",$err;return undef;}
-
-    while (-e $txtfile){$txtfile='A'.$txtfile;}
-    move("$tmpfile.gz",$txtfile);                # create the corpus file
-    my $lckfile="$ThisCorpusDir/$lang.gz.lock";
-    open F,">$lckfile";close F;                  # create a lock file
-    chmod 0664,$txtfile;
-    chmod 0664,$lckfile;
-    unlink $tmpfile;
-    unlink "$tmpfile.gz";
-
-    return $txtfile;
-}
 
 sub GetTempFileName{
     my $fh;

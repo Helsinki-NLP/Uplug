@@ -26,24 +26,25 @@ use lib '/home/staff/joerg/user_perl/lib/perl5/site_perl/5.6.1/';
 use CGI qw/:standard escapeHTML escape/;
 use Mail::Mailer;
 use FindBin qw($Bin);
-use vars qw($UPLUGADMIN $UPLUGHOME $UPLUGDATA 
+use vars qw($UPLUGADMIN $UPLUGLOG $UPLUGHOME $UPLUGDATA 
 	    $UPLUGHTML $UPLUGCWB $CSS $HTPASSWD);
 
 BEGIN {
     $UPLUGADMIN = 'joerg@stp.ling.uu.se';
-    $UPLUGHOME = '/home/staff/joerg/html_bin/uplug';
-    $UPLUGDATA = '/corpora/OPUS/uplugII';
+    $UPLUGLOG  = '/tmp/uplug.log';
+    $UPLUGHOME = '/home/joerg/cvs/sourceforge/uplug';
+    $UPLUGDATA = '/corpora/uplug';
     $UPLUGCWB  = $UPLUGDATA.'/cwb';
     $UPLUGHTML = 'http://stp.ling.uu.se/~joerg/uplugII';
     $CSS       = $UPLUGHTML.'/menu.css';
-    $HTPASSWD  = '/usr/bin/htpasswd';
+    $HTPASSWD  = '/usr/sbin/htpasswd2';
 
     $ENV{UPLUGHOME}=$UPLUGHOME;
     $ENV{UPLUGDATA}=$UPLUGDATA;
     $ENV{UPLUGCWB} =$UPLUGCWB;
-    use CGI::Carp qw(carpout);
-    open L, ">>/tmp/uplug.log" || die ("could not open log\n");
-    carpout(*L);
+#    use CGI::Carp qw(carpout);
+#    open L, ">>$UPLUGLOG" || die ("could not open log\n");
+#    carpout(*L);
 }
 
 
@@ -256,12 +257,14 @@ sub CorpusManager{
 
     if (defined &url_param('t')){&param('t',&url_param('t'));}
 #    if (defined &url_param('c')){&param('c',&url_param('c'));}
+    if (defined &url_param('b')){&param('b',&url_param('b'));}
     if (defined &url_param('d')){&param('d',&url_param('d'));}
     if (defined &url_param('o')){&param('o',&url_param('o'));}
     $query  = url(-query=>1);
 
     my $task   = param('t');        # task
 #    my $corpus = param('c');        # corpus name
+    my $docbase= param('b');        # document base name
     my $doc    = param('d');        # document
     my $owner  = param('o');        # corpus owner
 
@@ -294,7 +297,9 @@ sub CorpusManager{
     # view a corpus
     #-------------------------------------------------------------------------
 
-    if (($task eq 'view') and (defined $corpus)){
+    if (($task eq 'view') and 
+	(defined $corpus) and
+	(defined $doc)){
 
 	if (defined &url_param('x')){&param('x',&url_param('x'));}
 	if (defined &url_param('s')){&param('s',&url_param('s'));}
@@ -341,7 +346,12 @@ sub CorpusManager{
 	if ($priv ne 'all'){
 	    &Uplug::Web::Corpus::RemoveCorpus($owner,$corpus);
 	}
-	$html.=&Uplug::Web::ShowCorpusInfo($owner,$corpus,$doc,$priv);
+	$html.=&Uplug::Web::ShowCorpusInfo($task,
+					   $owner,
+					   $corpus,
+					   $docbase,
+					   $doc,
+					   $priv);
     }
 
     #-------------------------------------------------------------------------
@@ -357,7 +367,8 @@ sub CorpusManager{
 		$html.=&Uplug::Web::RemoveCorpus($owner,$corpus,\%params);
 	    }
 	}
-	$html.=&Uplug::Web::ShowCorpusInfo($owner,$corpus,$doc,$priv);
+	$html.=&Uplug::Web::ShowCorpusInfo($task,
+					   $owner,$corpus,$docbase,$doc,$priv);
     }
 
     #-------------------------------------------------------------------------
@@ -378,7 +389,8 @@ sub CorpusManager{
 	if ($priv ne 'all'){
 	    $html.=&Uplug::Web::AddCorpus($user,\%params);
 	}
-	$html.=&Uplug::Web::ShowCorpusInfo($owner,$corpus,$doc,$priv);
+	$html.=&Uplug::Web::ShowCorpusInfo($task,
+					   $owner,$corpus,$docbase,$doc,$priv);
     }
 
     #-------------------------------------------------------------------------
@@ -390,7 +402,8 @@ sub CorpusManager{
 	    my $file=param('file');
 	    $html.=&Uplug::Web::AddDocument($user,$corpus,$file,\%params);
 	}
-	$html.=&Uplug::Web::ShowCorpusInfo($owner,$corpus,$doc,$priv);
+	$html.=&Uplug::Web::ShowCorpusInfo($task,
+					   $owner,$corpus,$docbase,$doc,$priv);
     }
 
     #-------------------------------------------------------------------------
@@ -406,17 +419,19 @@ sub CorpusManager{
 	$html.='<li><b>query</b>: corpus queries using CWB (on indexed corpora)</li>';
 	$html.='</ul></td>';
 	$html.='<td valign="top">For each corpus you may<ul>';
-	$html.='<li>list all documents included in the corpus (<b>documents</b>)</li>';
-	$html.='<li>add documents to the corpus (<b>add-doc</b>)</li>';
-	$html.='<li>remove the entire corpus (<b>remove</b>)</li>';
+#	$html.='<li>list all documents included in the corpus (<b>documents</b>)</li>';
+#	$html.='<li>remove the entire corpus (<b>remove</b>)</li>';
 	$html.='<li>look at status information of each document(<b>info</b>)</li>';
 	$html.='<li>view corpus documents (<b>view</b>)</li>';
 	$html.='<li>send documents via mail (<b>send</b>)</li>';
-	$html.='<li>remove documents(<b>remove</b>)</li>';
+	$html.='<li>add documents to the corpus (<b>add-doc</b>)</li>';
+	$html.='<li>remove documents and the entire corpus(<b>remove</b>)</li>';
+	$html.='<li>display a link matrix (<b>links</b>)</li>';
 	$html.='</ul></td>';
 
 	$html.='</tr></table><hr />';
-	$html.=&Uplug::Web::ShowCorpusInfo($owner,$corpus,$doc,$priv);
+	$html.=&Uplug::Web::ShowCorpusInfo($task,
+					   $owner,$corpus,$docbase,$doc,$priv);
     }
     return $html;
 }

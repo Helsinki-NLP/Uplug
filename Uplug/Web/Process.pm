@@ -17,59 +17,40 @@
 package Uplug::Web::Process;
 
 use strict;
-use Exporter;
 use IO::File;
 use POSIX qw(tmpnam);
 use File::Copy;
 use ExtUtils::Command;
 
+use Uplug::Web;
 use Uplug::Web::Process::Stack;
 use Uplug::Web::User;
 use Uplug::Web::Corpus;
-#use lib '/home/staff/joerg/cvs/upl_dev/';
-#use lib '/home/staff/joerg/cvs/upl_dev/lib/';
-#use lib '/corpora/OPUS/upl/';
-#use lib '/corpora/OPUS/upl/lib/';
 use Uplug::Config;
 
-use vars qw(@ISA @EXPORT);
 
-@ISA=qw( Exporter);
-@EXPORT = qw( );
-
-
-# our $UPLUGHOME='/home/staff/joerg/cvs/upl_dev';
-our $UPLUGHOME='/corpora/OPUS/upl';
-our $UPLUG=$UPLUGHOME.'/uplug';
-$ENV{UPLUGHOME}=$UPLUGHOME;
-
-#my $SENDFILE='/home/staff/joerg/cgi-bin/uplug2/user/sendfile.pl';
-#my $MOVEJOB='/home/staff/joerg/cgi-bin/uplug2/user/movejob.pl';
+our $UPLUG=$ENV{UPLUGHOME}.'/uplug';
 
 #-------------------------------------------------------------
 #          RUN: script for running jobs
 # CLUEDBMFILES: file-base for word alignment clue databases
 
-my $RUN='/home/staff/joerg/cgi-bin/uplug2/tools/run.pl';
-my $INDEX='/home/staff/joerg/cgi-bin/uplug2/tools/index.pl';
+my $RUN=$ENV{UPLUGHOME}.'/web/bin/run.pl';
+my $INDEX=$ENV{UPLUGHOME}.'/web/bin/index.pl';
 my @CLUEDBMFILES=('giza','dice','mi','tscore','str',
 		  'chunk','chunktri','chunktripos','chunktriposi',
 		  'lex','lexpos','pos','pos_coarse','position',
 		  'posposi','postri','postriposi');
 #-------------------------------------------------------------
 
+my $ProcHome = $ENV{UPLUGDATA};
 
-#my %UplugSystems=('Markup' => 'systems/pre/markup',
-#		  'Sentence Splitter' => 'pre/sent',
-#		  'Tokenizer' => 'pre/tok');
-
-# my $ProcHome = '/home/staff/joerg/remote/web';
-my $ProcHome = &Uplug::Web::Corpus::GetCorpusDir();
-my $todoFile = $ProcHome.'/todo';
-my $queuedFile = $ProcHome.'/queued';
-my $workingFile = $ProcHome.'/working';
-my $doneFile = $ProcHome.'/done';
-my $failedFile = $ProcHome.'/failed';
+my $todoFile = $ProcHome.'/.todo';
+my $queuedFile = $ProcHome.'/.queued';
+my $workingFile = $ProcHome.'/.working';
+my $doneFile = $ProcHome.'/.done';
+my $failedFile = $ProcHome.'/.failed';
+my $serverlogFile = $ProcHome.'/.serverlog';
 
 if (not -e $ProcHome){mkdir $ProcHome;}
 
@@ -79,6 +60,10 @@ my $working=Uplug::Web::Process::Stack->new($workingFile);
 my $done=Uplug::Web::Process::Stack->new($doneFile);
 my $failed=Uplug::Web::Process::Stack->new($failedFile);
 
+if (not -e $serverlogFile){
+    open F,">$serverlogFile";close F;  # create a serverlogfile
+    system "chmod g+w $serverlogFile"; # add group write access
+}
 
 sub AvailableUplugSystems{
     return &GetApplications(@_);
@@ -162,17 +147,23 @@ sub MakeIndexerProcess{
 
 sub MakeUplugProcess{
     my $user=shift;
+    my $corpus=shift;
     my $configfile=shift;
     my $para=shift;
 
     my $UserDir=&Uplug::Web::Corpus::GetCorpusDir($user);
+    my $DocConfig=&Uplug::Web::Corpus::DocumentConfigFile($user,$corpus);
     my $ThisProcDir=$UserDir;
     my $process=time().'_'.$$;
     $ThisProcDir.='/'.$process;
 
     mkdir $ThisProcDir,0755;
+    mkdir "$ThisProcDir/ini",0755;
     system "cp -R $UserDir/systems $ThisProcDir/";   # copy config files
-    system "cp -R $UserDir/ini $ThisProcDir/";       # copy ini files
+    copy ($DocConfig,                                # copy document config-
+	  "$ThisProcDir/ini/UserDataStreams.ini");   #   file to process-dir
+#    system "cp -R $UserDir/ini $ThisProcDir/";       # copy ini files
+#    system "chmod g+w $ThisProcDir";
     chdir $ThisProcDir;
 
 
@@ -180,12 +171,12 @@ sub MakeUplugProcess{
     if (not defined $configfile){return 0;}
     &LoadIniData(\%config,$configfile);
     &ExpandParameter(\%config,$para);
-    &PrepareProcess($user,$process,$configfile,\%config);
+    &PrepareProcess($user,$corpus,$process,$configfile,\%config);
     &WriteIniFile($configfile,\%config);
 
-    my $command="$RUN '$user' '$process' '$configfile'";
+#     my $command="$RUN '$user' '$process' '$configfile'";
 
-    $todo->push($user,$process,$command);
+    $todo->push($user,$process,$corpus,$configfile);
     return $process;
 }
 
@@ -194,14 +185,14 @@ sub MakeUplugProcess{
 ##   do some special preperations for certain Uplug processes
 ##   e.g. create output files, set permissions, change configurations
 ##   set postprocessing tasks for client processes (run.pl)
-##     - config->postprocessing->STDOUT = file-to-save-stadout-in
+##     - config->postprocessing->STDOUT = file-to-save-stdout-in
 ##     - config->postprocessing->corpus = hash of new corpus streams
 ##                                        (to be set in user's corpus config)
 ##   this is highly specific and dependent on uplug modules!
 ##
 
 sub PrepareProcess{
-    my ($user,$process,$configfile,$config)=@_;
+    my ($user,$corpus,$process,$configfile,$config)=@_;
 
     ## 2) touch output files and give write permissions
 
@@ -213,12 +204,14 @@ sub PrepareProcess{
     if ($configfile=~/align\/sent$/){
 	my $src=$$config{input}{'source text'}{'stream name'};
 	my $trg=$$config{input}{'target text'}{'stream name'};
-	my %srccorpus=&Uplug::Web::Corpus::GetCorpusInfo($user,$src);
-	my %trgcorpus=&Uplug::Web::Corpus::GetCorpusInfo($user,$trg);
+	my $srccorpus=&Uplug::Web::Corpus::GetCorpusInfo($user,$corpus,$src);
+	my $trgcorpus=&Uplug::Web::Corpus::GetCorpusInfo($user,$corpus,$trg);
 	my ($srcname,$srclang)=&Uplug::Web::Corpus::SplitCorpusName($src);
 	my ($trgname,$trglang)=&Uplug::Web::Corpus::SplitCorpusName($trg);
-	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$trgname);
-	$output=$dir.'/'.$srclang.'-'.$trglang.'.gz';
+#	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$trgname);
+	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$corpus);
+	$output=$dir.'/'.$trgname.'.'.$srclang.'-'.$trglang;
+#	$output=$dir.'/'.$srclang.'-'.$trglang.'.gz';
 	if (not -e $output){open F,">$output";close F;}
 	chmod 0664,$output;
 	my $lockfile=$output.'.lock';
@@ -229,39 +222,42 @@ sub PrepareProcess{
 	if ($srcname ne $trgname){
 	    $$config{output}{bitext}{corpus}.='-'.$trgname;
 	}
-	$$config{output}{bitext}{fromDoc}=$srccorpus{file};
-	$$config{output}{bitext}{toDoc}=$trgcorpus{file};
+	$$config{output}{bitext}{fromDoc}=$$srccorpus{file};
+	$$config{output}{bitext}{toDoc}=$$trgcorpus{file};
 	$$config{output}{bitext}{file}=$output;
 	$$config{output}{bitext}{language}=$srclang.'-'.$trglang;
     }
     elsif ($configfile=~/(align\/word\/..\-..|giza)$/){
 	my $bitext=$$config{input}{'bitext'}{'stream name'};
-	my %corpus=&Uplug::Web::Corpus::GetCorpusInfo($user,$bitext);
+	my $corp=&Uplug::Web::Corpus::GetCorpusInfo($user,$corpus,$bitext);
 	my ($name,$lang)=&Uplug::Web::Corpus::SplitCorpusName($bitext);
-	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$name);
-	$output=$dir.'/'.$lang.'.links.gz';
+	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$corpus);
+	$output=$dir.'/'.$name.'.'.$lang.'.links';
 	if (not -e $output){open F,">$output";close F;}
 	chmod 0664,$output;
 	my $lockfile=$output.'.lock';
 	if (not -e $lockfile){open F,">$lockfile";close F;}
 	chmod 0664,$lockfile;
 	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user);
-	mkdir "$dir/data",0755;
-	mkdir "$dir/data/runtime",0755;
-	$dir.='/data/runtime/';
-	foreach (@CLUEDBMFILES){
-	    if (not -e "$dir$_.dbm"){open F,">$dir$_.dbm";close F;}
-	    chmod 0664,"$dir$_.dbm";
-	    if (not -e "$dir$_.dbm.head"){open F,">$dir$_.dbm.head";close F;}
-	    chmod 0664,"$dir$_.dbm.head";
+	if (not -d "$dir/data"){mkdir "$dir/data",0755;}
+	if (not -d "$dir/data/runtime"){
+	    mkdir "$dir/data/runtime",0755;
+	    system "chmod g+w $dir/data/runtime";
 	}
+	$dir.='/data/runtime/';
+#	foreach (@CLUEDBMFILES){
+#	    if (not -e "$dir$_.dbm"){open F,">$dir$_.dbm";close F;}
+#	    chmod 0664,"$dir$_.dbm";
+#	    if (not -e "$dir$_.dbm.head"){open F,">$dir$_.dbm.head";close F;}
+#	    chmod 0664,"$dir$_.dbm.head";
+#	}
 
 	$$config{output}{bitext}{corpus}=$name.' word';
-	if (-e $corpus{fromDoc}){
-	    $$config{output}{bitext}{fromDoc}=$corpus{fromDoc};
+	if (-e $$corp{fromDoc}){
+	    $$config{output}{bitext}{fromDoc}=$$corp{fromDoc};
 	}
-	if (-e $corpus{toDoc}){
-	    $$config{output}{bitext}{toDoc}=$corpus{toDoc};
+	if (-e $$corp{toDoc}){
+	    $$config{output}{bitext}{toDoc}=$$corp{toDoc};
 	}
 	$$config{output}{bitext}{file}=$output;
 	$$config{output}{bitext}{language}=$lang;
@@ -463,3 +459,9 @@ sub ClearStack{
     }
 }
 
+
+
+#########################################
+# return a true value
+
+1;

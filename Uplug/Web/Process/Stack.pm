@@ -39,7 +39,7 @@ sub setFile{
     if (not -e $file){
 	open F,">$file";
 	close F;
-	`chmod g+w $file`;
+	system "chmod g+w $file";
     }
     $self->{FILE}=$file;
 }

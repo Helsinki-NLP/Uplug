@@ -31,7 +31,7 @@ our $UplugAdmin='joerg@stp.ling.uu.se';
 
 my $Uplug2Dir='/corpora/OPUS/uplug2/';
 my $CorpusDir=$Uplug2Dir;
-my $UserDataFile=$Uplug2Dir.'user';
+my $UserDataFile=$Uplug2Dir.'.user';
 my $PasswordFile=$Uplug2Dir.'.htpasswd';
 
 # my $IniDir=$CorpusDir.'/ini';

@@ -57,7 +57,7 @@
   'widgets' => {
        'input' => {
 	  'text' => {
-	    'stream name' => 'stream(format=xml,status=(tok|tag|chunk),language=en)'
+	    'stream name' => 'stream(format=xml,status=(tok|tag|chunk),language=de)'
 	  },
        },
        'parameter' => {

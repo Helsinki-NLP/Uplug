@@ -14,6 +14,22 @@ my $SGML2XML = "/usr/bin/sgml2xml -E0 -xno-nl-in-tag -xlower -c${CATALOG} 2>/dev
 my $RECODE = "$ENV{HOME}/user_local/bin/recode";
 my $TIDY='/usr/bin/tidy -i -xml -utf8';
 
+my %WrongNames=(ty => 'de',
+		ho => 'nl',
+		po => 'pl',
+		a => 'sv',
+		b => 'en',
+		c => 'de',
+		d => 'es',
+		e => 'fr',
+		f => 'nl',
+		g => 'it',
+		h => 'fi',
+		p => 'es',
+		'-e' => 'en',
+		'_s' => 'sv',
+		v => 'sv',
+		is => 'sv');
 
 foreach my $f (@ARGV){
     my ($oldsrc,$oldtrg,
@@ -91,6 +107,8 @@ sub GetLanguagePair{
     }
     my $s=join '',@diffs;
     my $t=join '',@difft;
+    if (defined $WrongNames{$s}){$s=$WrongNames{$s};}
+    if (defined $WrongNames{$t}){$t=$WrongNames{$t};}
     my $name=$s.$t;
     return ($s,$t);
 }

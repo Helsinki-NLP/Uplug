@@ -117,7 +117,7 @@ $output->close;
 
 sub MakeOutData{
     my ($paragraph,$CountPb)=@_;
-
+    $paragraph=~s/\s*$//;                    # delete final whitespaces
     if ($$CountPb>$PageBreak){
 	my $PbData=Uplug::Data->new();
 	$PbData->setContent(undef,$PageBreakTag);
@@ -144,12 +144,12 @@ sub BestTag{
 
 sub ParagraphBoundary{
     my ($paragraph,$CountLb,$CountPb)=@_;
-    if ((length($paragraph)<=$HeaderSize) and
-	($paragraph=~/^[$HeaderStarter]/)){
-	&MakeOutData($paragraph,$CountPb);
-	return 1;
-    }
     if ($CountLb>=$LbLimit){
+	if ((length($paragraph)<=$HeaderSize) and
+	    ($paragraph=~/^[$HeaderStarter]/)){
+	    &MakeOutData($paragraph,$CountPb);
+	    return 1;
+	}
 	&MakeOutData($paragraph,$CountPb);
 	return 1;
     }

@@ -1,6 +1,7 @@
-#! /bin/csh
+#! /bin/sh
 
-if( $# != 3 ) then
+if [ $# != 3 ] 
+then
 
  echo Usage: trainGIZA++.sh vcb1 vcb2 snt
  echo " "
@@ -16,4 +17,4 @@ else
     rm PLAIN2.txt
     GIZA++ -S $1 -T $2 -C $3 -p0 0.98 -o GIZA++ >& GIZA++.log
 
-endif
+fi

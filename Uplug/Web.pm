@@ -19,34 +19,38 @@
 package Uplug::Web;
 
 use strict;
-use Exporter;
 use CGI qw/:standard escapeHTML escape/;
-use vars qw(@ISA @EXPORT);
 use Uplug::Web::Corpus;
 use Uplug::Web::Process;
 use Uplug::Web::User;
 use XML::Parser;
 
-@ISA=qw( Exporter);
-@EXPORT = qw( $CSS &ShowUserInfo &AddUrlParam &ActionLinks );
+use lib ('/home/staff/joerg/user_local/lib/perl5/site_perl/5.8.0/');
+use WebCqp::Query;
 
-our $CSS = "/~joerg/uplug2/menu.css";
-my $CWBREG='/corpora/OPUS/uplug2-cwb/reg/';
+our $CWBREG=$ENV{UPLUGCWB}.'/reg/';
+our $ALIGN2CWB=$ENV{UPLUGHOME}.'/web/bin/make-cwb-align';
+our $CORPUS2CWB=$ENV{UPLUGHOME}.'/web/bin/make-cwb-corpus';
+
+our $RECODE='/home/staff/joerg/user_local/bin/recode';
+
 my $MAXVIEWLINES=40;
 my $MAXVIEWDATA=10;
-my $GUNZIP='/usr/bin/gzip -cd';      # gunzip to STDOUT!!!
 binmode(STDOUT, ":utf8");            # set UTF8 for STDOUT
 
 my %DataAccess=
-    (admin => {corpus => ['info','view','send','remove'],
+    (admin => {corpus => ['info','view','send','add-doc','remove'],
+	       doc => ['info','view','send','remove'],
 	       user => ['info','edit','remove']},
-     user => {corpus => ['info','view','send','remove'],
-	      'Uplug::Web::Corpus' => ['xml'],
+     user => {corpus => ['info','view','send','add-doc','remove'],
+	      doc => ['info','view','send','remove'],
+	      'Uplug::Web::Data' => ['xml'],
 	      'Uplug::Web::Bitext' => ['text','xml'],
 	      'Uplug::Web::BitextLinks' => ['text','xml','matrix','edit'],
 	      user => ['info','edit']},
-     all => {corpus => ['info','view'],
-	     'Uplug::Web::Corpus' => ['xml'],
+     all => {doc => ['info','view','send'],
+	     corpus => ['documents'],
+	     'Uplug::Web::Data' => ['xml'],
 	     'Uplug::Web::Bitext' => ['text','xml'],
 	     'Uplug::Web::BitextLinks' => ['text','xml','matrix'],
 	     user => ['info']});
@@ -54,19 +58,9 @@ my %DataAccess=
 
 
 sub AccessMode{
-    my $user=shift;
-    my $owner=shift;
+    my $priv=shift;
     my $type=shift;
-
-    if ($user eq $Uplug::Web::User::UplugAdmin){
-	if (defined $DataAccess{admin}{$type}){
-	    return $DataAccess{admin}{$type};
-	}
-    }
-    if ($user eq $owner){return $DataAccess{user}{$type};}
-    else{return $DataAccess{all}{$type};}
-#    print $DataAccess{user}{$type};
-
+    return $DataAccess{$priv}{$type};
 }
 
 sub ShowUserInfo{
@@ -81,7 +75,7 @@ sub ShowUserInfo{
 	if (keys %{$$UserData{$u}} > 1){
 	    push (@rows,
 		  &th([$u]).
-		  &td(&ActionLinks($url,&AccessMode($user,$u,'user'))));
+		  &td(&ActionLinks($url,&AccessMode($user,'user'))));
 	    foreach (keys %{$$UserData{$u}}){
 		push (@rows,td([$_,$$UserData{$u}{$_}]));
 	    }
@@ -89,7 +83,7 @@ sub ShowUserInfo{
 	else{
 	    push (@rows,
 		  &th([$u]).
-		  &td(&ActionLinks($url,&AccessMode($user,$u,'user'))));
+		  &td(&ActionLinks($url,&AccessMode($user,'user'))));
 	}
     }
     return &table({},caption(''),&Tr(\@rows));
@@ -98,11 +92,205 @@ sub ShowUserInfo{
 
 #--------------------------------------------------------------------
 
+sub RemoveCorpus{
+    my $user=shift;
+    my $corpus=shift;
+    my $param=shift;
+
+    if ($$param{'really'}){
+	return &Uplug::Web::Corpus::RemoveCorpus($user,$corpus);
+    }
+    elsif (not defined $$param{'really'}){
+	my $str= &start_multipart_form;
+	$str.="Are you really sure to remove the entire '$corpus' corpus? ";
+	$str.=&checkbox(-name=>'really',
+			-value=>1,
+			-label=>'yes!');
+	$str.= &p();
+	$str.= &submit(-name => 'submit');
+	$str.= &endform;
+	return $str;
+    }
+    return "Corpus $corpus has not been removed!";
+}
+
+
+sub AddCorpus{
+    my $user=shift;
+    my $param=shift;
+    my $query=shift;
+
+    my $name=$$param{name};
+    my $priv=$$param{priv};
+
+    #------------------------------------------------------------
+
+    if (not $name){return &AddCorpusForm();}
+    else{
+	my ($ret,$msg)=&Uplug::Web::Corpus::AddCorpus($user,$name,$priv);
+	return &h3($msg);
+    }
+}
+
+sub AddDocument{
+    my $user=shift;
+    my $corpus=shift;
+    my $file=shift;
+    my $param=shift;
+    my $query=shift;
+
+    my $name=$$param{name};
+#    my $file=$$param{file};
+    my $lang=$$param{lang};
+    my $enc=$$param{enc};
+
+    #------------------------------------------------------------
+
+    if ($corpus and $name and $file){
+	my ($ret,$msg)=&Uplug::Web::Corpus::AddDocument($user,$corpus,
+							$name,$file,
+							$lang,$enc);
+	if (not $ret){
+#	    my $back=&a({-href=>'javascript:',
+#			 -onclick=>'history.go(-1)'},'back');
+	    return &h3($msg).&AddDocumentForm($user,$corpus);
+	}
+	return &h3($msg);
+    }
+    else{return &AddDocumentForm($user,$corpus);}
+}
+
+
+sub AddDocumentOld{
+    my $user=shift;
+    my $corpus=shift;
+    my $document=shift;
+    my $param=shift;
+    my $query=shift;
+
+    my $name=$$param{'name'};
+    my $file=$$param{'file'};
+    my $lang=$$param{'lang'};
+    my $enc=$$param{'enc'};
+
+    my $CorpusName=&Uplug::Web::Corpus::GetCorpusName($name,$lang);
+
+    #------------------------------------------------------------
+
+    my $missing=0;
+    my @rows=();
+
+    if (not $name){$missing++;}
+    if ((defined $name) and ($name!~/^[a-zA-Z\.\_0-9]{1,10}$/)){
+	$missing++;
+	print "Corpus name $name is not valid!",&br();
+    }
+#    if (defined $$CorpusData{$CorpusName}){
+#	$missing++;
+#	print "A corpus with the name '$CorpusName' exists already!",&br();
+#    }
+    if (not $file){$missing++;}
+
+    if (not defined $enc){$enc='utf8';}
+    if (not defined $lang){$lang='en';}
+
+    #------------------------------------------------------------
+
+    if ($missing){
+	print &AddDocumentForm;
+    }
+    else{
+	if (&Uplug::Web::Corpus::AddTextCorpus($user,$name,$lang,$file,$enc)){
+	    print &h3("The corpus $CorpusName has been successfully added!");
+	}
+	else{
+	    print &h3("Operation failed!");
+	    print &AddCorpusQuery;
+	}
+	print &Uplug::Web::ShowCorpusInfo($user,$user,$corpus,$query);
+    }
+}
+
+
+
+sub AddCorpusForm{
+    my @rows;
+    push (@rows,
+	  &td(["Corpus name: ",
+	       &textfield(-name=>'name',
+			  -size=>25,
+			  -maxlength=>50)]).
+	  &td([&checkbox(-name=>'priv',
+#			 -checked=>'checked',
+			 -value=>1,
+			 -label=>'private')]));
+
+    my $str="Add a corpus to your repository!".&p();
+    $str.= "Specify a unique name for your corpus ";
+    $str.= "with not more than 10 characters!".&br;
+    $str.= "Use ASCII characters only for the name of the corpus using the following character set: ";
+    $str.= "[a-z,A-Z,0-9,_]!".&br();
+    $str.= "Each corpus may consists of multiple files in different languages!".&p();
+    $str.= "The file must be a plain text file! Additional markup is not recognized and will be used as text!".&br();
+
+    $str.= &start_multipart_form;
+    $str.= &table({},caption(''),&Tr(\@rows));
+    $str.= &p();
+    $str.= &submit(-name => 'submit');
+    $str.= &endform;
+}
+
+
+
+sub AddDocumentForm{
+    my $user=shift;
+    my $corpus=shift;
+
+    my @rows;
+    my $corpora=&Uplug::Web::Corpus::Corpora($user);
+
+    push (@rows,&td(['Select a corpus: ',
+		     &popup_menu(-name=> 'c',
+				 -values => [sort keys %{$corpora}])]));
+    push (@rows,&td(["Document name: ",
+		     &textfield(-name=>'name',
+				-size=>25,
+				-maxlength=>50).
+		     &Uplug::Web::iso639_menu('lang','en')]));
+
+    push (@rows,&td(["Upload file: ",
+		     &filefield(-name=>'file',
+				-size=>25,
+				-maxlength=>50)]));
+
+    push (@rows,&td(['Encoding',&Uplug::Web::encodings_menu('enc','utf8')]));
+
+    my $str="Add a document to your repository!".&p();
+    $str.= "Select a corpus and specify a unique name for your document ";
+    $str.= "with not more than 15 characters!".&br;
+    $str.= "Use ASCII characters only for the name of the document using the following character set: ";
+    $str.= "[a-z,A-Z,0-9,_,.]!".&br();
+    $str.= "Each document may be translated into different languages!".&p();
+    $str.= "The file must be a plain text file! Additional markup is not recognized and will be used as text!".&br();
+    $str.= "Make sure that the specified character encoding matches the encoding of your corpus file".&br();
+    $str.= "Check for example ".&a({-href => 'http://czyborra.com/charsets/iso8859.html'},'this').' page for more information about character encoding'.&br();
+
+
+    $str.= &start_multipart_form;
+    $str.= &table({},caption(''),&Tr(\@rows));
+    $str.= &p();
+    $str.= &submit(-name => 'submit');
+    $str.= &endform;
+}
+
+
+
+
 
 sub CorpusIndexerForm{
     my ($user)=@_;
     my %corpora=();
-    &GetCorpusData(\%corpora,$user);
+    &Uplug::Web::Corpus::GetCorpusData(\%corpora,$user);
     my $form= &startform();
     $form.='Select a corpus to be indexed by the Corpus Work Bench (CWB)'.&p();
     $form.=&popup_menu(-name=> 'corpus',
@@ -192,9 +380,6 @@ sub CorpusQueryForm{
 
 sub CorpusQuery{
 
-    use lib ('/home/staff/joerg/user_local/lib/perl5/site_perl/5.8.0/');
-    use WebCqp::Query;
-
     my ($user,$owner,$corpus,$lang,$cqp,$aligned,$style)=@_;
 
     my $registry=$CWBREG.$user.'/'.$corpus;
@@ -250,16 +435,229 @@ sub CorpusQuery{
 }
 
 
+############################################################################
+# ShowCorpusInfo:
+#    * list all corpora of a certain owner
+#    * list info about documents for selected corpora
+############################################################################
+
+sub ShowCorpusInfo{
+    my $task=shift;
+    my $owner=shift;
+    my $corpus=shift;
+    my $docbase=shift;
+    my $doc=shift;
+    my $priv=shift;
+
+    my $CorpusNames=&Uplug::Web::Corpus::Corpora($owner);
+    if (not defined $corpus){($corpus)=each %{$CorpusNames};}
+    if (not defined $task){$task='view';}
+
+    #--------------------------------------------------------
+    # read info about corpus documents if a corpus is selected
+
+    my %docs=();
+    my $CorpusDocs={};
+    if (defined $$CorpusNames{$corpus}){
+	$CorpusDocs=&Uplug::Web::Corpus::CorpusDocuments($owner,$corpus);
+	foreach my $c (sort keys %{$CorpusDocs}){
+	    my $d=$$CorpusDocs{$c}{corpus};
+	    $d=~s/\sword//;
+	    my $l=$$CorpusDocs{$c}{language};
+	    if ($l=~/^(.+)\-(.+)$/){             # alignments:
+		my $s=$1;                        # source language
+		my $t=$2;                        # target language
+		if ($c=~/word\s\(/){             # word alignments:
+		    $docs{$d}{$s}{$t}=$c;        #  save source->target
+		}
+		else{                            # sentence alignment:
+		    $docs{$d}{$t}{$s}=$c;        #  save target->source
+		}
+	    }
+	    else{
+		$docs{$d}{$l}{'_doc'}=$c;
+	    }
+	}
+    }
+    #--------------------------------------------------------
+
+    my $query=&AddUrlParam('','a','corpus');
+    $query=&AddUrlParam($query,'o',$owner);
+
+    my $link=$query;
+    if (defined $corpus){$link=&AddUrlParam($link,'c',$corpus);}
+    if (defined $docbase){$link=&AddUrlParam($link,'b',$docbase);}
+
+    my $html='possible tasks: ';
+    $html.=&ActionLinks($link,&AccessMode($priv,'corpus')).&br();
+    $html.='selected task: '.$task;
+    $query=&AddUrlParam($query,'t',$task);
+    if ($task eq 'remove'){
+	$html.=&p().&b('ATTENTION! ');
+	$html.='Documents will be removed immediately';
+	$html.=' when clicking on the links below!';
+    }
+    $html.=&p();
+
+    foreach my $c (sort keys %{$CorpusNames}){
+
+	$query=&AddUrlParam($query,'c',$c);
+	$html.=&a({-href=>$query},$c).' ';
+#	$html.=&ActionLinks($url,&AccessMode($priv,'corpus')).&br();
+#	push (@rows,&td([&a({-href=>$url},$c)]));
+	if ($c ne $corpus){next;}
+
+	my @rows=();
+	foreach my $d (keys %docs){
+	    my $link=&AddUrlParam($query,'b',$d);   # add base name
+	    push (@rows,&th([$d]));
+	    $rows[-1].=&td(['['.&a({-href=>$link},'links').']']);
+	    my @lang=sort keys %{$docs{$d}};
+	    foreach my $l (@lang){
+		$link=&AddUrlParam($link,'d',$docs{$d}{$l}{'_doc'});
+		$rows[-1].=&td({-align=>'center'},
+			       ['['.&a({-href=>$link},$l).']']);
+	    }
+	    if ($docbase ne $d){next;}
+	    foreach my $s (@lang){
+		$link=&AddUrlParam($link,'d',$docs{$d}{$s}{'_doc'});
+		push (@rows,&td({-align=>'right'},
+				['','['.&a({-href=>$link},$s).']']));
+		foreach my $t (@lang){
+		    if (defined $docs{$d}{$s}{$t}){
+			$link=&AddUrlParam($link,'d',$docs{$d}{$s}{$t});
+			if ($docs{$d}{$s}{$t}=~/\sword\s\(/){
+			    $rows[-1].=&td([&a({-href=>$link},'word')]);
+			    }
+			else{
+			    $rows[-1].=&td([&a({-href=>$link},'sent')]);
+			}
+		    }
+		    else{
+			$rows[-1].=&td({-align=>'center'},['-']);
+		    }
+		}
+	    }
+#	    if ((defined $doc) and ($task eq 'info')){
+#		foreach (keys %{$$CorpusDocs{$doc}}){
+#		    push (@rows,td([$_,$$CorpusDocs{$doc}{$_}]));
+#		}
+#	    }
+	}
+	$html.=&table({},caption(''),&Tr(\@rows));
+	if ((defined $doc) and ($task eq 'info')){
+	    my @rows=();
+	    push (@rows,&th(['info:',$doc]));
+	    foreach (keys %{$$CorpusDocs{$doc}}){
+		push (@rows,&td([$_,$$CorpusDocs{$doc}{$_}]));
+	    }
+	    $html.=&table({},caption(''),&Tr(\@rows));
+	}
+    }
+    return $html;
+}
+
+
+#
+# end of ShowCorpusInfo
+#
+############################################################################
+
+
+############################################################################
+# ShowCorpusInfo:
+#    * list all corpora of a certain owner
+#    * list info about documents for selected corpora
+############################################################################
+
+sub ShowCorpusInfoLast{
+    my $owner=shift;
+    my $corpus=shift;
+    my $doc=shift;
+    my $priv=shift;
+
+    my $query=&AddUrlParam('','a','corpus');
+    $query=&AddUrlParam($query,'o',$owner);
+    my $CorpusNames=&Uplug::Web::Corpus::Corpora($owner);
+    if (not defined $corpus){($corpus)=each %{$CorpusNames};}
+
+    #--------------------------------------------------------
+    # read info about corpus documents if a corpus is selected
+
+    my %docs=();
+    my $CorpusDocs={};
+    if (defined $$CorpusNames{$corpus}){
+	$CorpusDocs=&Uplug::Web::Corpus::CorpusDocuments($owner,$corpus);
+
+	foreach my $c (sort keys %{$CorpusDocs}){
+	    if ($$CorpusDocs{$c}{format}=~/align/){
+		push (@{$docs{alignment}},$c);
+	    }
+	    elsif (defined $$CorpusDocs{$c}{language}){
+		push (@{$docs{monolingual}},$c);
+	    }
+	    else{
+		push (@{$docs{other}},$c);
+	    }
+	}
+    }
+    #--------------------------------------------------------
+
+
+    my @rows=();
+    foreach my $c (sort keys %{$CorpusNames}){
+
+	my $url=&AddUrlParam($query,'c',$c);
+	push (@rows,&td([&a({-href=>$url},$c)]).
+	      &td(&ActionLinks($url,&AccessMode($priv,'corpus'))));
+
+	if ($c ne $corpus){next;}
+
+	foreach my $t ('monolingual','alignment','other'){
+	    if (ref($docs{$t}) eq 'ARRAY'){
+		foreach my $d (sort @{$docs{$t}}){
+		    my $url=&AddUrlParam($query,'c',$corpus);
+		    $url=&AddUrlParam($url,'d',$d);
+
+		    push (@rows,&th([$d]).
+			  &td(&ActionLinks($url,&AccessMode($priv,'doc'))));
+
+		    #---------------------------------------------
+		    # if a document has been selected:
+		    #    show all information about the document
+
+		    if ($d eq $doc){
+			foreach (keys %{$$CorpusDocs{$d}}){
+			    push (@rows,td([$_,$$CorpusDocs{$d}{$_}]));
+			}
+		    }
+		    #----------------------------------------------
+		}
+	    }
+	}
+    }
+    return &table({},caption(''),&Tr(\@rows));
+}
+
+
+#
+# end of ShowCorpusInfo
+#
+############################################################################
+
+
+
 
 #-----------------------------
 # ShowCorpusInfo:
 #    * list all corpora of a certain owner
 #    * if no owner specified: list all corpora of all users
 
-sub ShowCorpusInfo{
+sub ShowCorpusInfoOld{
     my $user=shift;
     my $owner=shift;
     my $corpus=shift;
+    my $doc=shift;
     my $query=shift;
 
     my %CorpusData=();
@@ -267,19 +665,20 @@ sub ShowCorpusInfo{
     #----------------------------------------
     # no owner: get corpora of all users!
 
-    if (not $owner){
-	my %UserData=();
-	&Uplug::Web::User::ReadUserInfo(\%UserData);
-	my $html='';
-	foreach my $u (keys %UserData){
-	    $html.=&h3($u);
-	    $html.=&ShowCorpusInfo($user,$u,$corpus,$query);
-	}
-	return $html;
-    }
+    if (not $owner){$owner=$user;};
+#    if (not $owner){
+#	my %UserData=();
+#	&Uplug::Web::User::ReadUserInfo(\%UserData);
+#	my $html='';
+#	foreach my $u (keys %UserData){
+#	    $html.=&h3($u);
+#	    $html.=&ShowCorpusInfo($user,$u,$corpus,$query);
+#	}
+#	return $html;
+#    }
     #----------------------------------------
 
-    &GetCorpusData(\%CorpusData,$owner);
+    &Uplug::Web::Corpus::GetCorpusData(\%CorpusData,$owner);
     my %corpora=();
     foreach my $c (sort keys %CorpusData){
 	if ($CorpusData{$c}{format}=~/align/){
@@ -299,8 +698,8 @@ sub ShowCorpusInfo{
 	    if (ref($corpora{$c}{$t}) eq 'ARRAY'){
 		push (@rows,&td([$c.' - '.$t]));
 		foreach my $n (sort @{$corpora{$c}{$t}}){
-		    my $url=&AddUrlParam($query,'corpus',$n);
-		    $url=&AddUrlParam($url,'owner',$owner);
+		    my $url=&AddUrlParam($query,'c',$n);
+		    $url=&AddUrlParam($url,'o',$owner);
 		    if ($n eq $corpus){
 			push (@rows,
 			      &th([$n]).
@@ -333,7 +732,7 @@ sub ShowCorpusInfoNew{
     my $corpus=shift;
 
     my %CorpusData;
-    &GetCorpusData(\%CorpusData,$user);
+    &Uplug::Web::Corpus::GetCorpusData(\%CorpusData,$user);
 
     my %corpora;
     foreach my $c (sort keys %CorpusData){
@@ -416,48 +815,93 @@ sub ShowCorpusInfoNew{
 #-------------------------------------------------------------------------
 
 sub ViewCorpus{
-    my ($user,$owner,$name,$url,$pos,$style,$params,$links)=@_;
+    my ($owner,
+	$corpus,
+	$doc,
+	$url,
+	$pos,
+	$style,
+	$params,
+	$links)=@_;
 
     my $html;
-    my %CorpusData=&Uplug::Web::Corpus::GetCorpusInfo($owner,$name);
-    if (not defined $CorpusData{file}){return undef;}
-    my $file=$CorpusData{file};
-    my $corpus;
-    if ($CorpusData{format}=~/align/){
-	if ($CorpusData{status}=~/word/){
-	    $corpus=new Uplug::Web::BitextLinks($user,$owner,$file);
+    my $DocConfig=&Uplug::Web::Corpus::GetCorpusInfo($owner,$corpus,$doc);
+    if (not defined $$DocConfig{file}){return undef;}
+    my $file=$$DocConfig{file};
+    my $data;
+
+    my $priv='user';                     # default: user privileges
+    if ($owner eq 'pub'){$priv='all';}   # for public data: restricted access!
+    if ($$DocConfig{format}=~/align/){
+	if ($$DocConfig{status}=~/word/){
+	    $data=new Uplug::Web::BitextLinks($priv,$file);
 	}
 	else{
-	    $corpus=new Uplug::Web::Bitext($user,$owner,$file);
+	    $data=new Uplug::Web::Bitext($priv,$file);
 	}
     }
-    else{$corpus=new Uplug::Web::Corpus($user,$owner,$file);}
-    return $corpus->view($url,$style,$pos,$params,$links);
+    else{$data=new Uplug::Web::Data($priv,$file);}
+    return $data->view($url,$style,$pos,$params,$links);
 }
 
 
 ###################################################################
 
-sub ShowApplications{
+sub SelectCorpusForm{
+    my $user=shift;
+    my $corpora=&Uplug::Web::Corpus::Corpora($user);
+    my $str = &start_multipart_form;
+    $str.='corpora: ';
+    $str.=&popup_menu(-name=> 'c',-values => [sort keys %{$corpora}]);
+    $str.= &submit(-name => 'select');
+    $str.= &endform;
+    return $str;
+}
+
+
+
+sub Process{
     my $query=shift;
-    my ($user,$name,$params)=@_;
-    if (not defined $name){$name='main';}
-    if ((ref($params) eq 'HASH') and (defined $$params{submit})){
-	my $proc=&Uplug::Web::Process::MakeUplugProcess($user,$name,$params);
-	return "job $proc added to queue!";
+    my ($user,$corpus,$name,$params)=@_;
+
+    if (not defined $corpus){              # if no corpus selected:
+	return &SelectCorpusForm($user);   #   return corpus-select-form
     }
+    if (not defined $name){$name='main';}  # default-module = main
+
+    #-----------------------------------------------
+    # 'submit'
+    #     create a uplug-process in the process-queue
+
+    if ((ref($params) eq 'HASH') and (defined $$params{submit})){
+	my $proc=&Uplug::Web::Process::MakeUplugProcess($user,$corpus,
+							$name,$params);
+	my $html="job $proc added to queue!<hr />";
+	$html.=&UplugSystemForm($query,$user,$corpus,$name);
+	return $html;
+    }
+
+    #-----------------------------------------------
+    # 'save'
+    #    save configuration
+
     elsif ((ref($params) eq 'HASH') and (defined $$params{save})){
 	if (&Uplug::Web::Process::SaveUplugSettings($user,$name,$params)){
 	    return 
 		&h3($name).
-		&Uplug::Web::UplugSystemForm($query,$user,$name).
+		&UplugSystemForm($query,$user,$corpus,$name).
 		&p().'settings saved!';
 	}
     }
+
+    #-----------------------------------------------
+    # 'reset'
+    #    restore default parameters
+
     elsif ((ref($params) eq 'HASH') and (defined $$params{reset})){
 	&Uplug::Web::Process::ResetUplugSettings($user,$name,$params);
     }
-    return &Uplug::Web::UplugSystemForm($query,$user,$name);
+    return &UplugSystemForm($query,$user,$corpus,$name);
 }
 
 
@@ -553,7 +997,7 @@ sub MakeSubmoduleLinks{
 	my $m=shift(@mod);
 	$m=~s/^(\S+)\s.*$/$1/;
 	my $n=shift(@mod);
-	my $query=&AddUrlParam($url,'task',$m);
+	my $query=&AddUrlParam($url,'m',$m);
 	push (@links,&a({-href => $query},$n));
     }
     return wantarray ? @links : join &br(),@links;
@@ -563,6 +1007,7 @@ sub MakeSubmoduleLinks{
 sub UplugSystemForm{
     my $url=shift;
     my $user=shift;
+    my $corpus=shift;
     my $name=shift;
 
     my %config;
@@ -576,7 +1021,7 @@ sub UplugSystemForm{
 	$shortcuts=$config{arguments}{shortcuts};
     }
 
-    my $back=&a({-href=>'javascript:',onclick=>'history.go(-1)'},'back');
+    my $back=&a({-href=>'javascript:history.go(-1)'},'back');
     my $html.=$config{description}.&p();
 #    $html=~s/\n/\<br\>/gs;
 #    $html=~s/ /\&nbsp\;/gs;
@@ -589,8 +1034,9 @@ sub UplugSystemForm{
     }
 
     my $form= &startform;
-    my $widgets=&MakeWidgetForm($user,$config{widgets},\%config,$shortcuts);
-    if (not $widgets){return $back.$html;}
+    my ($widgets,$msg)=
+	&MakeWidgetForm($user,$corpus,$config{widgets},\%config,$shortcuts);
+    if (not $widgets){return $back.&p().$msg.$html;}
     $form.= $widgets;
     $form.= &p();
     $form.= &submit(-name => 'reset',-value => 'reset');
@@ -606,6 +1052,7 @@ sub UplugSystemForm{
 
 sub MakeWidgetForm{
     my $user=shift;
+    my $corpus=shift;
     my $config=shift;
     my $defaults=shift;
     my $shortcuts=shift;
@@ -621,12 +1068,13 @@ sub MakeWidgetForm{
 	if (ref($defaults) eq 'HASH'){$def=$$defaults{$p};}
 	if (ref($$config{$p}) eq 'HASH'){
 	    push (@rows,&th([$p]));
-	    my $form=&MakeWidgetForm($user,
-				     $$config{$p}, # sub-menu config
-				     $def,         # default value
-				     $shortcuts,   # shortcuts hash
-				     $name);       # sub-menu name
-	    if (not $form){return undef;}
+	    my ($form,$msg)=&MakeWidgetForm($user,
+					    $corpus,
+					    $$config{$p}, # sub-menu config
+					    $def,         # default value
+					    $shortcuts,   # shortcuts hash
+					    $name);       # sub-menu name
+	    if (not $form){return (undef,$msg);}
 	    push (@rows,&td([$form]));
 	}
 	else{
@@ -634,41 +1082,46 @@ sub MakeWidgetForm{
 		my ($short)=grep ($$shortcuts{$_} eq $name,keys %{$shortcuts});
 		if ($short){$name='-'.$short;}
 	    }
-	    my $widget=&MakeWidget($user,$name,$$config{$p},$def);
-	    if (not $widget){return undef;}
+	    my ($widget,$msg)=&MakeWidget($user,$corpus,
+					  $name,$$config{$p},$def);
+	    if (not $widget){return (undef,$msg);}
 	    push (@rows,&td([$p,$widget]));
 	}
     }
-    if (not @rows){return undef;}
-    return &table({},&Tr(\@rows));
+    if (not @rows){return (undef,'empty?!');}
+    return (&table({},&Tr(\@rows)));
 }
 
 
 sub MakeWidget{
     my $user=shift;
+    my $corpus=shift;
     my $name=shift;
     my $config=shift;
     my $default=shift;
 
     if ($config=~/stream\s*\((.*)\)/){
 	my %para=split(/\s*[\,\=]\s*/,$1);
-	my @streams=&Uplug::Web::Corpus::GetCorpusStreams($user,%para);
+#	my @streams=&Uplug::Web::Corpus::GetCorpusStreams($user,%para);
+	my @streams=
+	    &Uplug::Web::Corpus::MatchingDocuments($user,$corpus,%para);
 	if (not @streams){
-	    print "No appropriate input corpora found!",&p;
+	    my $msg="No appropriate document found in this corpus ($corpus)!";
+	    $msg.=&p();
 	    foreach (keys %para){
-		print "$_=$para{$_}",&br;
+		$msg.="$_=$para{$_}".&br;
 	    }
-	    return undef;
+	    return (undef,$msg);
 	}
-	return &td([&popup_menu(-name=> $name,
+	return (&td([&popup_menu(-name=> $name,
 				-default => $default,
-				-values => [sort @streams])]);
+				-values => [sort @streams])]));
     }
     elsif($config=~/optionmenu\s*\((.*)\)/){
 	my @options=split(/\s*\,\s*/,$1);
-	return &td([&popup_menu(-name=> $name,
+	return (&td([&popup_menu(-name=> $name,
 				-default => $default,
-				-values => [sort @options])]);
+				-values => [sort @options])]));
     }
     elsif($config=~/scale\s*\((.*)\)/){
 	my ($start,$end,$steps,$bigsteps)=split(/\s*\,\s*/,$1);
@@ -679,15 +1132,15 @@ sub MakeWidget{
 	if ((defined $default) and (not grep ($_==$default,@options))){
 	    push (@options,$default);
 	}
-	return &td([&popup_menu(-name=> $name,
+	return (&td([&popup_menu(-name=> $name,
 				-default => $default,
-				-values => [sort {$a <=> $b} @options])]);
+				-values => [sort {$a <=> $b} @options])]));
     }
     elsif($config=~/checkbox/){
-	return &radio_group(-name=>$name,
+	return (&radio_group(-name=>$name,
 			     -values=>['0','1'],
                              -default=>$default,
-			     -labels=> {'1' => 'on','0' => 'off'});
+			     -labels=> {'1' => 'on','0' => 'off'}));
 
 #	if ($default){
 #	    return &checkbox(-name=>$name,
@@ -696,7 +1149,7 @@ sub MakeWidget{
 #	}
 #	return &checkbox(-name=>$name,-value=>'1',-label=>'');
     }
-    return &td([&textfield(-name => $name,-default=>$default)]);
+    return (&td([&textfield(-name => $name,-default=>$default)]));
 }
 
 
@@ -735,11 +1188,25 @@ sub ActionLinks{
 
     my @links;
     foreach (@action){
-	push (@links,'['.&a({-href => &AddUrlParam($url,'action',$_)},$_).']');
+	push (@links,'['.&a({-href => &AddUrlParam($url,'t',$_)},$_).']');
     }
     return wantarray ? @links : join '',@links;
 }
 
+
+sub TaskLinks{
+    my $url=shift;
+    my $para=shift;
+    my @action;
+    if (ref($_[0]) eq 'ARRAY'){@action=@{$_[0]};}
+    else{@action=@_;}
+
+    my @links;
+    foreach (@action){
+	push (@links,'['.&a({-href => &AddUrlParam($url,$para,$_)},$_).']');
+    }
+    return wantarray ? @links : join '',@links;
+}
 
 
 
@@ -983,23 +1450,27 @@ sub encodings_menu{
 #############################################################################
 #############################################################################
 #############################################################################
+#
+# classes for reading datafiles
+#
+# Uplug::Web::Data ......... read text files (e.g. XML as plain text)
+# Uplug::Web::Bitext ....... read sentence aligned bitexts
+# Uplug::Web::BitextLinks .. read word aligned bitexts
+#
 
-
-package Uplug::Web::Corpus;
+package Uplug::Web::Data;
 
 use CGI qw/:standard escapeHTML escape/;
 
 sub new{
     my $class=shift;
-    my $user=shift;
-    my $owner=shift;
+    my $priv=shift;
     my $file=shift;
     my $self={};
     bless $self,$class;
     $self->{FILE}=$file;
-    $self->{USER}=$user;
-    $self->{OWNER}=$owner;
-    $self->{STYLES}=&Uplug::Web::AccessMode($user,$owner,$class);
+    $self->{PRIV}=$priv;
+    $self->{STYLES}=&Uplug::Web::AccessMode($priv,$class);
 #    print @{$self->{STYLES}};
 #    print $self->{STYLES};
     return $self;
@@ -1010,30 +1481,32 @@ sub view{
     my ($url,$style,$pos)=@_;
 
     if (not defined $style){$style='xml';}
-    $self->{STYLE}=$style;
-    $self->{POS}=$pos;
 
     my $file=$self->{FILE};
-    if ($file=~/\.gz$/){open F,"$GUNZIP < $file |";}
-    else{open F,"< $file";}
+    open F,"< $file";
     binmode(F,":utf8");
-#    binmode(F);
+    if (defined $pos){
+	seek (F,$pos,0);
+    }
+    $self->{STYLE}=$style;
+    $self->{POS}=$pos;
 
     my $html='';
     my $skip=0;
     my $count=0;
     while (<F>){
-	if ($skip<$pos){$skip++;next;}
+#	if ($skip<$pos){$skip++;next;}
 	$html.=escapeHTML($_);
 	$html=~s/\n/\<br\>/gs;
 	$html=~s/\s/\&nbsp\;\&nbsp\;/gs;
-	if ($count>$MAXVIEWLINES){last;}
 	$count++;
+	if ($count>$MAXVIEWLINES){last;}
     }
-    close F;
+    $self->{NEXT}=tell(F);
     $self->{COUNT}=$count;
+    close F;
 
-    my $links=$self->PrevNextLinks($url);
+    my $links=$self->nextLinks($url);
     return $links.$html;
 
 }
@@ -1045,44 +1518,58 @@ sub edit{                           # no edit defined!
 
 
 
-sub PrevNextLinks{
+sub nextLinks{
     my $self=shift;
     my $url=shift;
 
     my $count=$self->{COUNT};
     my $style=$self->{STYLE};
     my $pos=$self->{POS};
-
-    my ($next,$prev,$styles);
+    my $NextPos=$self->{NEXT};
+    my ($start,$prev,$next,$styles);
     if (ref($self->{STYLES}) eq 'ARRAY'){
 	foreach (@{$self->{STYLES}}){
 	    if ($style eq $_){next;}
-	    my $link=&Uplug::Web::AddUrlParam($url,'style',$_);
+	    my $link=&Uplug::Web::AddUrlParam($url,'s',$_);
 	    $styles.=' ['.&a({-href => $link},$_).']';
 	}
     }
     if ($styles){$styles='display style: '.$styles.&br();}
-    if ($pos){
-	my $link=&Uplug::Web::AddUrlParam($url,'pos',$pos-$count);
-	$prev=&a({-href => $link},'previous');
+    if ($pos>0){
+	my $link=&Uplug::Web::AddUrlParam($url,'x',0);
+	$link=&Uplug::Web::DelUrlParam($link,'sx');
+	$link=&Uplug::Web::DelUrlParam($link,'tx');
+	$start='['.&a({-href => $link},'start').']';
+	$prev='['.&a({-href=>'javascript:history.go(-1)'},'previous').']';
     }
     if ($count>=$MAXVIEWDATA){
-	my $link=&Uplug::Web::AddUrlParam($url,'pos',$pos+$count);
-	$next=&a({-href => $link},'next');
+	my $link=&Uplug::Web::AddUrlParam($url,'x',$NextPos);
+	if ($self->{'FROMDOC-POS'}>0){
+	    $link=&Uplug::Web::AddUrlParam($link,'sx',$self->{'FROMDOC-POS'});
+	}
+	if ($self->{'TODOC-POS'}>0){
+	    $link=&Uplug::Web::AddUrlParam($link,'tx',$self->{'TODOC-POS'});
+	}
+	$next='['.&a({-href => $link},'next').']';
     }
-    return $styles.&p().$prev.&br().$next.&p();
+#    return $styles.&p().$start.&br().$prev.&br().$next.&p();
+    return $styles.&p().$start.$prev.$next.&p();
 }
 
 
 
 #############################################################################
+#############################################################################
+#
+# sentence aligned bitext
+#
 
 
 package Uplug::Web::Bitext;
 
 use CGI qw/:standard escapeHTML escape/;
 use vars qw(@ISA);
-@ISA = qw( Uplug::Web::Corpus );
+@ISA = qw( Uplug::Web::Data );
 
 
 sub new{
@@ -1096,16 +1583,22 @@ sub new{
 
 sub view{
     my $self=shift;
-    my ($url,$style,$pos)=@_;
+    my ($url,$style,$pos,$param)=@_;
 
     if (not defined $style){$style='xml';}
     $self->{STYLE}=$style;
     $self->{POS}=$pos;
+    if (ref($param) eq 'HASH'){
+	$self->{'FROMDOC-POS'}=$$param{sx};
+	$self->{'TODOC-POS'}=$$param{tx};
+    }
+#    $self->{PREVIOUS}=$prev;
 
     my $count;my $fromDoc;my $toDoc;
     if (not $self->readLinks($pos)){return undef;}
-    my $html=$self->PrevNextLinks($url);
-    $html.=$self->readSentLinks($style);
+    my $seg=$self->readSentLinks($style);
+    my $html=$self->nextLinks($url);
+    $html.=$seg;
     return $html;
 }
 
@@ -1116,8 +1609,7 @@ sub readLinks{
     my ($pos)=@_;
 
     my $file=$self->{FILE};
-    if ($file=~/\.gz$/){open F,"$GUNZIP < $file |";}
-    else{open F,"< $file";}
+    open F,"< $file";
     binmode(F);
     local $/='>';
 
@@ -1128,12 +1620,14 @@ sub readLinks{
     $self->{SENTLINKS}=[];
     $self->{WORDLINKS}=[];
     $handle->{ROOT}=$self->{ROOT};
+    &ParseBitextHeader(*F,$handle);      # read bitext header (get src/trg-doc)
+    if ($pos>0){seek (F,$pos,0);}        # go to last file position
 
-    my $count;my $skipped;
+    my $count;
     while (&ParseXml(*F,$handle)){
-	if ($skipped<$pos){$skipped++;next;}
-	if ($count>=$MAXVIEWDATA){last;}
 	$count++;
+	if ($count>$MAXVIEWDATA){last;}
+	$self->{NEXT}=tell(F);
 	push (@{$self->{SENTLINKS}},$handle->{DATA}->{xtargets});
 	if (ref($handle->{SUBDATA}) ne 'HASH'){next;}
 	if (ref($handle->{SUBDATA}->{wordLink}) ne 'ARRAY'){next;}
@@ -1163,6 +1657,8 @@ sub readSentLinks{
     foreach (@{$self->{SENTLINKS}}){
 	push (@rows,$self->readBitextSegment($_,$style));
     }
+    $self->{'FROMDOC-POS'}=tell $self->{'FROMDOCHANDLE'};
+    $self->{'TODOC-POS'}=tell $self->{'TODOCHANDLE'};
     return &table({},caption(''),&Tr(\@rows));
 }
 
@@ -1214,23 +1710,70 @@ sub readSegment{
     return $text;
 }
 
+#-------------------------------------------------
+# open XML-documents
+#   * open the file
+#   * create a XML-parser-object
+#   * read the XML-header and the XML-root-tag
 
 sub openDocument{
     my $self=shift;
     my $doc=shift;
 
-    if ($self->{$doc}=~/\.gz/){
-	open $self->{$doc.'HANDLE'},"$GUNZIP < $self->{$doc} |";
-    }
-    else{open $self->{$doc.'HANDLE'},"< $self->{$doc}";}
-    $self->{$doc.'EXPAT'}=new XML::Parser(Handlers => {Start => \&XmlStart,
-							End => \&XmlEnd,
-							Default => \&XmlChar});
+    open $self->{$doc.'HANDLE'},"< $self->{$doc}";
+    $self->{$doc.'EXPAT'}=new XML::Parser(Handlers => {Start   => \&XmlStart,
+						       End     => \&XmlEnd,
+						       Default => \&XmlChar});
     $self->{$doc.'PARSER'}=$self->{$doc.'EXPAT'}->parse_start();
     $self->{$doc.'PARSER'}->{ROOT}='s';
     $self->{$doc.'PARSER'}->{SUBROOT}='w';
+
+    my $fh=$self->{$doc.'HANDLE'};         # the file handle
+    my $parser=$self->{$doc.'PARSER'};     # the XML-parser
+    local $/='>';                          # set input boundary to '>'
+    my $xml=<$fh>;                         # simply read the XML header
+    eval { $parser->parse_more($xml); };   # parse XML-header
+    $xml=<$fh>;                            # read the root-tag of the document
+    eval { $parser->parse_more($xml); };   # ... and parse it
+
+    if ($self->{$doc.'-POS'}>0){           # go to the last file-position
+	seek ($fh,$self->{$doc.'-POS'},0); # (if > 0)
+    }
 }
 
+
+#--------------------------------------------
+# parse the header of a bitext file
+#  * parse XML header and
+#  * look for source and target documents
+
+sub ParseBitextHeader{
+    my ($fh,$p)=@_;
+
+    delete $p->{DATA};
+    delete $p->{OPEN};
+    delete $p->{SUBOPEN};
+    delete $p->{COMPLETE};
+    delete $p->{INSIDE};
+    delete $p->{BEFORE};
+    delete $p->{INSIDETXT};
+    delete $p->{BEFORETXT};
+    delete $p->{HTML};
+    delete $p->{HTMLTXT};
+    delete $p->{FROMDOC};
+    delete $p->{TODOC};
+
+    while (<$fh>){
+ 	eval { $p->parse_more($_); };
+	if ($@){print "problems when parsing ($@)!\n";return 0;}
+	if ($p->{FROMDOC} and $p->{TODOC}){return 1;}
+    }
+    return 0;
+}
+
+
+#------------------------------------------------
+# parse XML until a complete ROOT-subtree is found
 
 sub ParseXml{
     my ($fh,$p,$keepSubData)=@_;
@@ -1247,14 +1790,32 @@ sub ParseXml{
     delete $p->{HTMLTXT};
     if (not $keepSubData){delete $p->{SUBDATA};}
 
-    while (<$fh>){
- 	eval { $p->parse_more($_); };
-	if ($@){print "problems when parsing ($@)!\n";return 0;}
+    local $/='>';                              # set input boundary to '>'
+    my $pos=tell $fh;                          # save the current file position
+    while (<$fh>){                             # go to next ROOT-tag
+	if (/\<$p->{ROOT}(\s|\>)/){last;}      # (avoid not welformed XML
+	$pos=tell $fh;                         #  when jumping within the file)
+    }
+    seek ($fh,$pos,0);
+
+    while (<$fh>){                             # read from the file
+ 	eval { $p->parse_more($_); };          # and parse the XML-string
+	if ($@){
+	    s/</&lt;/g;s/</&gt;/g;
+	    print "problems when parsing ($@)! XML-string: $_\n";
+	    return 0;
+	}
 	if ($p->{COMPLETE}){return 1;}
     }
     return 0;
 }
 
+
+#-----------------------------------------------------------------------
+# XML-parser subroutines
+#   XmlStart .... XML-start-tag
+#   XmlEnd ...... XML-end-tag
+#   XmlChar ..... everything else
 
 sub XmlStart{
     my ($p,$e,%attr)=@_;
@@ -1324,7 +1885,10 @@ sub XmlChar{
 
 
 #############################################################################
-
+#############################################################################
+#
+# word-aligned bitexts
+#
 
 
 package Uplug::Web::BitextLinks;
@@ -1345,11 +1909,11 @@ sub new{
 
 sub view{
     my $self=shift;
-    my ($url,$style,$pos,$params,$links)=@_;
+    my ($url,$style,$pos,$prev,$params,$links)=@_;
 
     if (ref($params) eq 'HASH'){
 	if ($$params{edit} eq 'change'){
-	    Uplug::Web::Corpus::ChangeWordLinks($self->{FILE},$links,$params);
+	    Uplug::Web::Data::ChangeWordLinks($self->{FILE},$links,$params);
 	      $url=Uplug::Web::DelUrlParam($url,'seg');
 	      $url=Uplug::Web::DelUrlParam($url,'links');
 	      $url=Uplug::Web::DelUrlParam($url,'edit');
@@ -1358,9 +1922,9 @@ sub view{
 
     if (not $style){$style='text';}
     if ($style eq 'xml'){
-	return $self->Uplug::Web::Corpus::view($url,$style,$pos);
+	return $self->Uplug::Web::Data::view($url,$style,$pos,$prev);
     }
-    return $self->SUPER::view($url,$style,$pos);
+    return $self->SUPER::view($url,$style,$pos,$prev);
 }
 
 
@@ -1378,6 +1942,8 @@ sub readSentLinks{
 	    push (@rows,$self->viewWordLinks($self->{WORDLINKS}->[$l]));
 	}
     }
+    $self->{'FROMDOC-POS'}=tell $self->{'FROMDOCHANDLE'};
+    $self->{'TODOC-POS'}=tell $self->{'TODOCHANDLE'};
     if ($style=~/(matrix|edit)/){return join '<hr>',@rows;}
     else{return &table({},caption(''),&Tr(\@rows));}
 }

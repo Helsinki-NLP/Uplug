@@ -180,6 +180,7 @@ sub MakeDynAlign{
 	if (not defined $dynamic->{'dyn'.$dyn}){last;}
 	&RunAligner($dynamic->{'dyn'.$dyn});
 	while (not -e $dynamic->{'dyn'.$dyn}.'.ready'){sleep 1;}
+	$DynNr=$dyn;
 	&MakeDynamicClues($dynamic->{'dyn'.$dyn}.'.links.gz');
 	while (not -e "dyn$DynNr.ready"){sleep 1;}
 	mkdir 'dyn'.$dyn;
