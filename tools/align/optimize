@@ -113,19 +113,24 @@ my $EvalStep=50;          # evaluation using EvalGold after X alignment runs
 ## get the optional arguments
 ##
 
-my $EvalGold;       # second fold standard (for evaluation)
-my $Unseen;         # unseen (heldout) data (bitext)
-my $UnseenGold;     # gold standard for the unseen data
-my $ClueBitext;     # bitext (for training)
+my $TrainBitext;
+my $TrainGold;
+my $EvalBitext;
+my $EvalGold;
+my $HeldoutBitext;
+my $HeldoutGold;
+my $Bitext;
+
 my $AlwaysDyn=0;    # =0 --> learn dynamic clues only if no improvements
 
 while ($ARGV[0]=~/^\-/){                          # get some script options
     my $opt=shift(@ARGV);
-    if ($opt eq '-g'){$EvalGold=shift(@ARGV);}    # eval.gold
-    if ($opt eq '-e'){$EvalStep=shift(@ARGV);}    # eval-steps
-    if ($opt eq '-h'){$Unseen=shift(@ARGV);}      # unseen bitext
-    if ($opt eq '-hg'){$UnseenGold=shift(@ARGV);} # ... and its gold standard
-    if ($opt eq '-c'){$ClueBitext=shift(@ARGV);}  # bitext for training clues
+    if ($opt eq '-tb'){$TrainBitext=shift(@ARGV);}
+    if ($opt eq '-tg'){$TrainGold=shift(@ARGV);}
+    if ($opt eq '-eb'){$EvalBitext=shift(@ARGV);}
+    if ($opt eq '-eg'){$EvalGold=shift(@ARGV);}
+    if ($opt eq '-eb'){$HeldoutBitext=shift(@ARGV);}
+    if ($opt eq '-eg'){$HeldoutGold=shift(@ARGV);}
     if ($opt eq '-a'){$AlwaysDyn=1;}              # always learn dynamic clues
     if ($opt eq '-l'){$LearnStep=shift(@ARGV);}   # learn dynamic clues each X align
     if ($opt eq '-r'){$RunMax=shift(@ARGV);}      # run max this nr of children
@@ -141,20 +146,29 @@ my $trglang;
 if (@ARGV<2){
     die "\nusage: optimize corpus gold-standard [srclang [trglang]]\n\n";
 }
-my $corpus=shift @ARGV;
-my $gold=shift @ARGV;
-if (not -e $corpus){die "cannot find corpus '$corpus'!\n";}
-if (not -e $gold){die "cannot find gold standard '$gold'!\n";}
+my $Bitext=shift @ARGV;
+my $GoldLinks=shift @ARGV;
+
+
+if (not -e $Bitext){die "cannot find corpus '$Bitext'!\n";}
+if (not -e $GoldLinks){die "cannot find gold standard '$GoldLinks'!\n";}
 if (@ARGV){$srclang=shift @ARGV;}
 if (@ARGV){$trglang=shift @ARGV;}
 
-if (not $ClueBitext){$ClueBitext=$corpus;}    # default for training clues
 
 ########################################################################
 
 my $thisdir=getcwd;
-if (dirname($gold)!~/^\//){$gold="$thisdir/$gold";}
-if (dirname($corpus)!~/^\//){$corpus="$thisdir/$corpus";}
+if (dirname($GoldLinks)!~/^\//){$GoldLinks="$thisdir/$GoldLinks";}
+if (dirname($Bitext)!~/^\//){$Bitext="$thisdir/$Bitext";}
+
+if (not $EvalBitext){$EvalBitext=$Bitext;}
+if (not $TrainGold){$TrainGold=$GoldLinks;}
+if (not $EvalGold){$EvalGold=$TrainGold;}
+if (not $TrainBitext){$TrainBitext=$Bitext;}
+
+########################################################################
+
 
 my $UplugHome="$Bin/../..";
 my $uplug=$UplugHome.'/uplug';
@@ -244,7 +258,7 @@ my %Tried;                # settings tried already (filenames)
 my %Scores;               # scores
 $Scores{F}={};
 
-my $GoldSize=&GetGoldSize($gold);  # check the size of the gold standard
+my $GoldSize=&GetGoldSize($TrainGold);  # check the size of the gold standard
 
 #########################################################################
 #########################################################################
@@ -323,14 +337,6 @@ do {
     #    ....
     my $NrScores=keys %{$Scores{F}};
 
-    if ((-e $EvalGold) and ($NrScores>=$nextEval)){  # if there is a 2nd gold:
-	$nextEval+=$EvalStep;                        # evaluate the best alignm
-                                                     # from time to time
-	my ($best)=sort {$Scores{F}{$b} <=> $Scores{F}{$a}} keys %{$Scores{F}};
-	if (not -e 'EVAL'){mkdir 'EVAL';}
-	system "$eval -gold $EvalGold -in $best.links.gz >EVAL/after$NrScores\_$best.eval";
-    }
-
     if ($NrScores>$nextDyn){          # learn new dynamic clues
 	$nextDyn+=$LearnStep;
 
@@ -380,32 +386,12 @@ do {
 	    # improvement since last clue learning:
 	    #     learn clues from the best one!!!
 	    #--------------------------------------
-	    elsif ($best and 
-		(not -e "$best.dyn") and                    # don't do it twice
-		(-e "$best.links.gz")){                     # links exist
+	    elsif ($best and (not -e "$best.dyn")){         # not yet done?
 		$DynNr++;                                   # increment counter
 		$lastDyn=$best;                             # save link setting
-		print "learn dynamic clues from $best.links\n";
-		my $thisdir=getcwd;                         # the current dir
-		my $links="$thisdir/$best.links.gz";        # training data
-		if (not -e 'dynamic'){mkdir 'dynamic';}     # training dir
-		chdir 'dynamic';                            #   (go there)
-		&MakeDynamicClues($links);                  # learn clues
-		while (not -e "dyn$DynNr.ready"){sleep 1;}  # wait until ready
-		unlink "dyn$DynNr.ready";
-		chdir $thisdir;                             #   (go back)
-		#-------------------------------------
-		# wait until all alignment processes
-		# using dynamic clues are finished
-		# (this should be probably checked more carefully)
-		#-------------------------------------
-		while (&DynIsRunning){sleep 1;}
-		#-------------------------------------
-		# move dynamic clues
-		# (overwrite old ones!!!)
-		#-------------------------------------
-		system ("mv dynamic/data/runtime/*dbm* data/runtime/");
-		system ("touch $best.dyn");                 # create a flag
+
+		&MakeDynamicClues($best);
+
 		#-------------------------------------
 		if ($StartWithAllClues){                    # if StartWithAll:
 		    &GetBestSettings(\@Setting,$KeepMax);   # get top results
@@ -1228,20 +1214,28 @@ sub RunClueAligner{
 
     my $file=&Setting2File($setting);
 
-    my $comm="$align -in $corpus $param -out $file.links 2>$file.log";
-    $comm.=";gzip -f $file.links";
-    $comm.=";$eval -gold $gold -in $file.links.gz >$file.eval";
-    if (-e $Unseen){
-	if ($Unseen and (not -e 'HELDOUT')){mkdir 'HELDOUT';}   # create held-out dir
-	$comm.=";$align -in $Unseen $param -out HELDOUT/$file.links 2>HELDOUT/$file.log";
-	$comm.=";gzip -f HELDOUT/$file.links";
-	if (-e $UnseenGold){
-	    $comm.=";$eval -gold $UnseenGold -in HELDOUT/$file.links.gz >HELDOUT/$file.eval";
-	    $comm.=";rm HELDOUT/$file.links.gz";
+    my $comm="nice $align -in $TrainBitext $param -out $file.links 2>$file.log";
+    $comm.=";nice gzip -f $file.links";
+    $comm.=";nice gzip -f $file.log";
+    $comm.=";nice $eval -gold $TrainGold -in $file.links.gz >$file.eval";
+    if (-e $HeldoutBitext){
+	if ($HeldoutBitext and (not -e 'HELDOUT')){mkdir 'HELDOUT';}
+	$comm.=";nice $align -in $HeldoutBitext $param -out HELDOUT/$file.links 2>HELDOUT/$file.log";
+	$comm.=";nice gzip -f HELDOUT/$file.links";
+	$comm.=";nice gzip -f HELDOUT/$file.log";
+	if (-e $HeldoutGold){
+	    $comm.=";nice $eval -gold $HeldoutGold -in HELDOUT/$file.links.gz >HELDOUT/$file.eval";
+	    $comm.=";nice rm HELDOUT/$file.links.gz";
 	}
+    }
+    if (-e $EvalBitext){
+	if ($EvalBitext and (not -e 'EVAL')){mkdir 'EVAL';}
+	$comm.=";nice $align -in $EvalBitext $param -out EVAL/$file.links 2>EVAL/$file.log";
+	$comm.=";nice gzip -f EVAL/$file.links";
+	$comm.=";nice gzip -f EVAL/$file.log";
 	if (-e $EvalGold){
-	    if (not -e 'EVAL'){mkdir 'EVAL';}
-	    $comm.=";$eval -gold $EvalGold -in $file.links.gz >EVAL/$file.eval";
+	    $comm.=";nice $eval -gold $EvalGold -in EVAL/$file.links.gz >EVAL/$file.eval";
+	    $comm.=";nice rm EVAL/$file.links.gz";
 	}
     }
     $comm.=";touch $file.ready";
@@ -1352,9 +1346,8 @@ sub MakeEstimatedClues{
 	if (-e "$c.eval"){
 	    next;
 	}
-#	my $comm="$uplug systems/align/word/test/$c -in $corpus -out $c.links";
-	my $comm="$uplug systems/align/word/test/$c -in $ClueBitext -out $c.links";
-	$comm.=";gzip -f $c.links;$eval -gold $gold -in $c.links.gz >$c.eval";
+	my $comm="$uplug systems/align/word/test/$c -in $Bitext -out $c.links";
+	$comm.=";gzip -f $c.links;$eval -gold $TrainGold -in $c.links.gz >$c.eval";
 	system ("$remote '$comm'");
     }
 
@@ -1364,8 +1357,7 @@ sub MakeEstimatedClues{
     if ((not -e "data/runtime/str.dbm") or 
 	(not -e "data/runtime/dice.dbm")){
 	print "create basic clues!\n";
-#	system("$uplug systems/align/word/basicclues -in $corpus");
-	system("$uplug systems/align/word/basicclues -in $ClueBitext");
+	system("$uplug systems/align/word/basicclues -in $Bitext");
     }
 
 #------------------------------------------------
@@ -1387,10 +1379,58 @@ sub MakeEstimatedClues{
 #------------------------------------------------
 
 sub MakeDynamicClues{
-    my $links=shift;
+
+    my $file=shift;
+    my $thisdir=getcwd;                         # the current dir
+    my $links="$thisdir/__dynamic.links";        # training data
+
+    print "align $Bitext with $file!\n";   # (this should be done in a common
+    my %setup=();                          #  sub-routine like in 
+    &File2Setting(\%setup,$file);          #  RunClueAligner)
+    my $param='';
+    foreach (keys %setup){
+	if ($setup{clues}{$_}){
+	    $param.='-'.$_.' ';
+	    $param.='-'.$_.'_w '.$setup{clues}{$_}.' ';
+	}
+    }
+    if ($setup{score}){$param.=" -min $setup{score}";}
+    my $comm="nice $align -in $Bitext $param -out $links 2>__dynamic.log";
+    $comm.=";touch __dynamic.ready";
+    system ("$remote '$comm'");
+
+
+    print "wait for __dynamic.ready!\n"; 
+    while (not -e '__dynamic.ready'){sleep 1;}
+
+
+    print "learn dynamic clues from __dynamic.links\n";
+    if (not -e 'dynamic'){mkdir 'dynamic';}     # training dir
+    chdir 'dynamic';                            #   (go there)
     my $comm="$dynamic -in $links >dyn$DynNr.out 2>dyn$DynNr.log";
     $comm.=";touch dyn$DynNr.ready;";
     system ("$remote '$comm'");
+
+    print "wait for the new dynamic clues to be finished\n";
+    while (not -e "dyn$DynNr.ready"){sleep 1;}  # wait until ready
+    unlink "dyn$DynNr.ready";
+    chdir $thisdir;                             #   (go back)
+
+    #-------------------------------------
+    # wait until all alignment processes
+    # using dynamic clues are finished
+    # (this should be probably checked more carefully)
+    #-------------------------------------
+    print "wait for processes using old dynamic clues!\n";
+    while (&DynIsRunning){sleep 1;}
+    #-------------------------------------
+    # move dynamic clues
+    # (overwrite old ones!!!)
+    #-------------------------------------
+    system ("mv dynamic/data/runtime/*dbm* data/runtime/");
+    system ("touch $file.dyn");                 # create a flag
+    #-------------------------------------
+
 }
 
 
