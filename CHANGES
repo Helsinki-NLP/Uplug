@@ -4,3 +4,8 @@
 - Grok source code files removed from Uplug release
 - added Giza.pm for running GIZA++
 
+* 15-02-2005 joerg
+
+- giza.pl creates 2 clue-dbms when running in both alignment directions
+- standard word alignment settings: basic, default, tagged, advanced
+- some minor bug-fixes
