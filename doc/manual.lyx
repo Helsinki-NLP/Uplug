@@ -29,26 +29,49 @@
 The Uplug Manual
 \layout Author
 
-Lars Nygaard
-\layout Author
-
-Jörg Tiedemann
+Lars Nygaard, Jörg Tiedemann
 \layout Chapter
 
 Installation
+\layout Section
+
+System requrements
+\layout Itemize
+
+You need at least a recent version of Perl (I use 5.8.0).
+ 
+\layout Itemize
+
+Some programs are compiled for the GNU/Linux platform 
+\layout Section
+
+Uplug tools
 \layout Standard
 
-There is no tool for installing Uplug yet.
- Most of the scripts should run on a standard GNU/Linux machine.
-\layout Standard
+To install Perl modules and scripts, cd to the uplug directory and do:
+\layout LyX-Code
 
-You need at least a recent version of Perl (I use 5.8.0) You have to modify
- scripts in bin/ to point to your perl binary (the default setting is /usr/bin/p
-erl)
+$ perl Makefile.PL
+\layout LyX-Code
+
+$ make
+\layout LyX-Code
+
+$ make install
 \layout Standard
 
 Some scripts in tools/ use bash (/bin/bash) You might have to adjust scripts
- in tools/ according to your installation
+ in tools/ according to your installation.
+\layout Standard
+
+You should set the environment variable UPLUG_HOME to the directory where
+ you have extracted the uplug files:
+\layout LyX-Code
+
+$ export UPLUG_HOME=/home/myhome/uplug
+\layout Section
+
+External tools
 \layout Standard
 
 Check the external programs in ext/ External programs are pre-compiled for
@@ -82,22 +105,47 @@ Some of the external programs are not included in the package.
 \end_inset 
 
 
-\layout Standard
-
-You should set the environment variable UPLUG_HOME to the directory where
- you have extracted the uplug files:
 \layout LyX-Code
 
-$ export UPLUG_HOME=/home/myhome/uplug
 \layout Chapter
 
 Running Uplug
 \layout Section
 
 Text processing
+\layout Standard
+
+Basic Uplug operations are done by calling the 
+\family typewriter 
+uplug
+\family default 
+ script, using various configuration files (located in $UPLUG_HOME/systems).
 \layout Subsection
 
 Tokenization
+\layout Standard
+
+To use the tagging and alignment functions, the corpus has to be tokenized,
+ and converted to XML:
+\layout LyX-Code
+
+$ uplug $UPLUGHOME/systems/pre/basic -in 1988sv.txt > 1988sv.xml
+\layout Standard
+
+Unless you want to use the default utf8 charset, you can specify charsets
+ with the 
+\family typewriter 
+-ci
+\family default 
+ (input charset) and 
+\family typewriter 
+-co
+\family default 
+ (output charset) options:
+\layout LyX-Code
+
+$ uplug $UPLUGHOME/systems/pre/basic -co 'iso-8859-1' -ci 'iso-8859-1' -in
+ 1988sv.txt > 1988sv.xml
 \layout Subsection
 
 Tagging
@@ -128,4 +176,10 @@ Coocurrence data
 \layout Section
 
 External programs
+\layout Chapter
+
+Developer's guide
+\layout Section
+
+CVS
 \the_end

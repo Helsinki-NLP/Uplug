@@ -1,10 +1,8 @@
+TODO-list
 
-
-Uplug TODO-list
----------------
-
-
-* installation script
+* all filenames should be relative to $UPLUGHOME
+  (now there are several environment variables and some
+  FindBin-hacks in the code).
 * documentation
 * XML-based configuration files
 * faster XML-parsing/writing

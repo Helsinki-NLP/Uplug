@@ -1,3 +1,8 @@
+* 15-02-2005 lars
+
+- started manual
+- started installation script
+- changed Uplug.pm to call converter.pl from $UPLUGHOME
 
 * 26-10-2004 joerg
 

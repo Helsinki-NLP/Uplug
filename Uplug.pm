@@ -28,7 +28,7 @@ package Uplug;
 require 5.004;
 
 use strict;
-use FindBin qw($Bin);
+	use FindBin qw($Bin);
 use lib "$Bin/lib";
 use IO::File;
 use POSIX qw(tmpnam);
@@ -37,6 +37,7 @@ use Uplug::Config;
 
 use vars qw($VERSION);
 use vars qw(@TempFiles);
+
 
 $VERSION = '0.01';
 
@@ -1094,7 +1095,7 @@ sub CreateConvertModule{
     my $data=$module->{config};
     $data->{module}->{name}='convert';
     $data->{module}->{program}=$ConverterModule;
-    $data->{module}->{location}="$Bin/bin";
+    $data->{module}->{location}=$ENV{UPLUGHOME}."/bin";
 
     $data->{input}->{$name}=$output;
     $data->{output}->{$name}=$new;
