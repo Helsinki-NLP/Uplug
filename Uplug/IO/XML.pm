@@ -67,7 +67,6 @@ my $DEFAULTROOTTAG='document';
 		  'encoding' => 'utf-8',
 #		  'attributes' => 1,                  # save attribute values
 #		  'delimiter' => ' ',                 # default delimiter
-#		  'DataStructure' => 'complex',
 		  'REMOVESPACES' => 1,
 #		  'DocRootTag' => 'document',
 		  );
@@ -555,6 +554,13 @@ sub XmlTagStart{
 
 sub XmlTagEnd{
     my ($p,$e)=@_;
+    #--------------------------------------------------
+    # document root tags are parsed ... but ignored
+    #--------------------------------------------------
+    if ((defined $p->{DocRootTagRE}) and ($e=~/$p->{DocRootTagRE}/)){
+	delete $p->{NewDoc};
+	return;
+    }
     if ($p->{SubTreeStarted}){
 	if (ref($p->{LastNode})){
 	    $p->{LastNode}=

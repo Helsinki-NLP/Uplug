@@ -209,48 +209,6 @@ sub split{
 
 
 
-my $id;
-my $idhead;
-sub splitOld{
-    my $data=shift;
-    my %subst=();
-
-    my @text=();
-    my @attr=();
-    my @seg=$data->findNodes($SegTag);
-    if (@seg){return;}                     # data are already segmented!!!!
-    my @nodes=$data->contentNodes;
-    my @text=$data->content(\@nodes);
-    my @attr=$data->attribute(\@nodes,'id');
-    foreach (0..$#text){
-#	if ($text[$_]!~/\S/){next;}
-	my @spans=();
-	my @seg=&SplitText($text[$_],\@spans);
-	if ($AddId){
-	    if ($attr[$_]=~/^[^0-9]*([0-9]+)$/){
-		if ($idhead ne "$1\-"){
-		    $idhead=$1.'-';
-		    $id=0;
-		}
-	    }
-	}
-	&RemoveEmptyNodes(\@seg,\@spans);
-	my @children=$data->splitContent($nodes[$_],$SegTag,\@seg);
-	if ($AddId or $AddSpans){
-	    foreach my $c (0..$#children){
-		if ($AddId){
-		    $id++;
-		    $data->setAttribute($children[$c],
-					'id',"$SegTag$idhead$id");
-		}
-		if ($AddSpans){
-		    $data->setAttribute($children[$c],'span',$spans[$c]);
-		}
-	    }
-	}
-    }
-}
-
 sub RemoveEmptyNodes{
     my ($string,$span)=@_;
     my $i=0;

@@ -549,28 +549,6 @@ sub makeParameter{
 
 
 
-sub rmLinkedTokenOld{
-    my $data=shift;
-
-    my $srcData=Uplug::Data->new;
-    my $trgData=Uplug::Data->new;
-    $data->subData($srcData,'source');
-    $data->subData($trgData,'target');
-#    $data->{'source'}=$data->subData('source');
-#    $data->{'target'}=$data->subData('target');
-
-    my $link=$data->{link};
-    my @nodes=$link->findNodes('wordLink');
-    my @src=$link->attribute(\@nodes,'src');
-    my @trg=$link->attribute(\@nodes,'trg');
-    foreach my $s (@src){
-	$data->rmToken($s,$srcData);
-    }
-    foreach my $t (@trg){
-	$data->rmToken($t,$trgData);
-    }
-}
-
 
 sub rmLinkedToken{
     my $data=shift;
@@ -594,18 +572,6 @@ sub rmLinkedToken{
 	    my ($s,$t)=($1,$2);
 	    $data->rmToken($s,$srcData);
 	    $data->rmToken($t,$trgData);
-	}
-    }
-}
-
-sub rmTokenOld{
-    my $self=shift;
-    my ($span,$data)=@_;
-    my @token=split(/\:/,$span);
-    foreach (@token){
-	my ($node)=$data->findNodes('.*',{id => $_});
-	if (defined $node){
-	    $node->detach;
 	}
     }
 }
@@ -642,61 +608,6 @@ sub findLink{
 	return @nodes;
     }
     return undef;
-}
-
-sub addWordLinkOld{
-    my $data=shift;
-    my $link=shift;
-    my $OutData=$data->{link};
-
-
-    if (defined $data->findLink($link)){return;}
-
-    my %attr=();
-    my ($src,$trg)=split(/;/,$link->{link});
-# 	    print STDERR "WordAlign: $src -> $trg\n";
-    $attr{score}=$link->{score};
-    $attr{src}=$link->{source};
-    $attr{trg}=$link->{target};
-    if (defined $link->{step}){$attr{step}=$link->{step};}
-#	    $attr{'id'}=$id;
-#	    $attr{'content'}="\n$src:$trg\n";
-    my $wordLink=$OutData->createNode('wordLink',\%attr);
-    $OutData->addNode($wordLink);
-
-    %attr=(src => $src,
-	   trg => $trg);
-    my $child=$OutData->createNode('link',\%attr);
-    $OutData->addNode($child,$wordLink);
-
-    if ($link->{src} and $link->{trg}){
-	$link->{src}=~tr/\&/\+/;
-	$link->{trg}=~tr/\&/\+/;
-	%attr=(src => $link->{src},
-	       trg => $link->{trg});
-	my $child=$OutData->createNode('span',\%attr);
-	$OutData->addNode($child,$wordLink);
-    }
-
-#	    if ($Links{$s}{src}){
-#		%attr=(content => $Links{$s}{src},
-#		       span => 'src');
-#		$OutData->addChild($child,'span',\%attr);
-#	    }
-#	    if ($Links{$s}{trg}){
-#		%attr=(content => $Links{$s}{trg},
-#		       span => 'trg');
-#		$OutData->addChild($child,'span',\%attr);
-#	    }
-#	    if ($Links{$s}{trg}){
-#		$attr{'t'}=$Links{$s}{trg};
-#	    }
-#	    my %attr=();
-#	    $attr{'source'}=$src;
-#	    $attr{'target'}=$trg;
-#	    $attr{'align_step'}=1;
-#	    my $child=$OutData->addChild($child,'link',\%attr);
-
 }
 
 

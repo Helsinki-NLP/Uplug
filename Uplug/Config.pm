@@ -108,6 +108,9 @@ sub ReadConfig{
 	if (-f "$ENV{UPLUGHOME}/$file"){
 	    $file = "$ENV{UPLUGHOME}/$file";
 	}
+	elsif (-f "$ENV{UPLUGHOME}/ini/$file"){
+	    $file = "$ENV{UPLUGHOME}/ini/$file";
+	}
 	elsif (-f "$ENV{UPLUGHOME}/systems/$file"){
 	    $file = "$ENV{UPLUGHOME}/systems/$file";
 	}

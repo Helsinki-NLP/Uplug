@@ -348,71 +348,8 @@ sub AddHash2Hash{
 }
 
 
-sub AddHash2HashOld{
-    my $base=shift;
-    my $hash=shift;
-    if (ref($base) ne 'HASH'){return;}
-    if (ref($hash) eq 'HASH'){
-	foreach (keys %{$hash}){
-#	    if ($hash->{$_}=~/^(\(.*\=\>.*\))\s*$/){
-#		eval "\%{\$base->{\$_}}=$1";
-	    if ($hash->{$_}=~/^[\(\{](.*\=\>.*)[\)\}]\s*$/){
-		$base->{$_}= {};
-		my @pairs=split(/,/,$1);
-		foreach my $p (@pairs){
-		    if ($p=~/^(.*)\=\>(.*)$/){
-			$base->{$_}->{$1}=$2;
-		    }
-		}
-	    }
-	    elsif ($hash->{$_}=~/^[\(\[](.*)[\)\]]\s*$/){
-		$base->{$_}= [];
-		@{$base->{$_}}= split(/,/,$1);
-	    }
-	    else{
-		$base->{$_}=$hash->{$_};
-	    }
-	}
-    }
-}
-
-
-
-
-
 
 #-------------------------------------------------------------------------
-
-
-sub MakeFlatData{
-    my $data=shift;
-    my %FlatData;
-    my $VAR1;
-    foreach (keys %{$data}){
-	if (ref($data->{$_})){
-	    $Data::Dumper::Indent=0;
-	    $Data::Dumper::Terse=0;
-	    $Data::Dumper::Purity=1;
-	    $FlatData{$_}=Dumper($data->{$_});
-	}
-	else{
-	    $FlatData{$_}=$data->{$_};
-	}
-    }
-    return %FlatData;
-}
-
-
-sub ExpandFlatData{
-    my $data=shift;
-    my %FlatData=%{$data};
-    my $VAR1;
-    foreach (keys %FlatData){
-	if ($FlatData{$_}=~/^\s*\$VAR1\s*\=/){
-	    $data->{$_}=eval $FlatData{$_};
-	}
-    }
-}
 
 sub encode{
     my $self=shift;

@@ -292,7 +292,7 @@ sub run{
             $year-70,$mon,$mday-1,$hour,$min,$sec;
     }
     $start=time()-$start;
-    my ($sec,$min,$hour,$mday,$mon,$year)=gmtime($time);
+    my ($sec,$min,$hour,$mday,$mon,$year)=gmtime($start);
     printf STDERR
 	"      total processing time: %2d:%2d:%2d:%2d:%2d:%2d\n",
 	$year-70,$mon,$mday-1,$hour,$min,$sec;

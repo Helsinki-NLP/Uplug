@@ -33,8 +33,6 @@ use Uplug::IO::Any;
 $VERSION='1.0';
 @ISA = qw( Uplug::IO );
 
-1;
-
 
 sub new{
     my $class=shift;
@@ -209,4 +207,7 @@ sub GotoStream{
 	return 0;
     }
 }
+
+
+1;
 

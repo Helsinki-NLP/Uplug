@@ -21,7 +21,7 @@
   'output' => {
     'text' => {
       'format' => 'xml',
-      'DocRootTag' => 'cesDoc',
+#      'DocRootTag' => 'cesDoc',
 #      'DocHeaderTag' => 'cesHeader',
       'DocBodyTag' => 'text',
       'write_mode' => 'overwrite',

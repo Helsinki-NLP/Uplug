@@ -18,7 +18,6 @@
 # $Author$
 # $Id$
 #
-# some kind of DOM-lite ....
 #
 
 package Uplug::Data::Node;
@@ -495,7 +494,7 @@ sub DESTROY{
 ########################################################################
 ########################################################################
 #
-# DOM methods
+# DOM-like methods
 #
 
 #    getElementsByTagName

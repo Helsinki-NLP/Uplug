@@ -35,13 +35,13 @@ package Uplug::IO::Text;
 use bytes;    #### ????????? Do WE NEED THIS ?????????????
 use strict;
 use vars qw(@ISA $VERSION $COMPRESS $DECOMPRESS);
-use FileHandle;
 use FindBin qw($Bin);
 use lib "$Bin/../lib";
 use Data::Dumper;
+use File::Basename;
+use FileHandle;
 
 use Uplug::IO;
-#require ('uplugLib.pl');
 
 @ISA = qw( Uplug::IO );
 
@@ -49,13 +49,6 @@ $VERSION = '0.1';
 $COMPRESS='gzip -c';
 $DECOMPRESS='gzip -cd';
 
-my $UplugHome=$ENV{UPLUGHOME};
-my $LocalHome=$ENV{UPLUG};
-if ((-d $UplugHome) and ($UplugHome!~/\\\/$/)){$UplugHome.='/';}
-if ((-d $LocalHome) and ($LocalHome!~/\\\/$/)){$LocalHome.='/';}
-my $UplugData=$LocalHome.'data';
-my $UplugIni=$LocalHome.'ini';
-my $UplugSystem=$LocalHome.'systems';
 
 sub init{
     my $self    = shift;
@@ -175,24 +168,6 @@ sub writeheader{
 	    $Data::Dumper::Purity=1;
 	    my $string=Dumper($self->{StreamHeader}->{$k});
 	    $self->writeToHandle($fh,"# $k: $string\n");
-
-#	    if (ref($self->{StreamHeader}->{$k}) eq 'HASH'){
-#		my $str='(';
-#		foreach (keys %{$self->{StreamHeader}->{$k}}){
-#		    $str.="'$_'=>'$self->{StreamHeader}->{$k}->{$_},";
-#		}
-#		chop $str;
-#		$str.=')';
-#		$self->writeToHandle($fh,"# $k: $str\n");
-#	    }
-#	    elsif (ref($self->{StreamHeader}->{$k}) eq 'ARRAY'){
-#		my $str=join ',',@{$self->{StreamHeader}->{$k}};
-#		$self->writeToHandle($fh,"# $k: ($str)\n");
-#	    }
-#	    else{
-#		$self->writeToHandle($fh,
-#				     "# $k: $self->{StreamHeader}->{$k}\n");
-#	    }
 	}
     }
 }
@@ -225,145 +200,7 @@ sub delete{
 
 
 
-
-############################################################################
-
-
-sub OpenStreamFileTest{
-
-    my $fh=shift;
-    my $FileName=shift;
-    my $AccessMode=shift;
-    my $OptionHash=shift;
-
-    print STDERR "open $FileName ($AccessMode)\n";
-
-#    my $fh;
-
-#---------------------------------------------------------------------------
-# initialize pipe command according to the access mode
-#---------------------------------------------------------------------------
-
-    if ($AccessMode eq 'read'){
-	$FileName=&FindDataFile($FileName);
-	if (defined $$OptionHash{'input pipe command'}){
-	    $$OptionHash{'pipe command'}=$$OptionHash{'input pipe command'};
-	}
-    }
-    if ($AccessMode ne 'read'){
-	if (defined $$OptionHash{'output pipe command'}){
-	    $$OptionHash{'pipe command'}=$$OptionHash{'output pipe command'};
-	}
-    }
-
-#---------------------------------------------------------------------------
-# gzipped files: add gzip command in pipe
-#---------------------------------------------------------------------------
-
-    if ($FileName=~/\.gz$/){
-	my $compress;
-	if ($AccessMode eq 'read'){
-	    $compress=$Uplug::IO::Text::DECOMPRESS;
-	}
-	else{
-	    $compress=$Uplug::IO::Text::COMPRESS;
-	}
-	if (not defined $$OptionHash{'pipe command'}){
-	    $$OptionHash{'pipe command'}=$compress;
-	}
-	else{
-	    if ($$OptionHash{'pipe command'}!~/$compress/){
-		if ($AccessMode eq 'read'){
-		    $$OptionHash{'pipe command'}=
-			"$compress | $$OptionHash{'pipe command'}";
-		}
-		else{
-		    $$OptionHash{'pipe command'}=
-			"$$OptionHash{'pipe command'} | $compress";
-		}
-	    }
-	}
-    }
-
-#---------------------------------------------------------------------------
-# access_mode == read --> open files for reading
-#---------------------------------------------------------------------------
-
-    if ($AccessMode eq 'read'){
-	if (-e $FileName){                   # if file exists
-	    my $str="<$FileName";
-	    if ($$OptionHash{'pipe command'}){
-		$str="$$OptionHash{'pipe command'} $str |";
-	    }
-
-	    print STDERR "open $fh,$str\n";
-	    if (not open $$fh,$str){
-		warn "failed to open $FileName";
-		return 0;
-	    }
-	}
-    }
-
-#---------------------------------------------------------------------------
-# access_mode <> read --> open files for writing
-#---------------------------------------------------------------------------
-
-    if ($AccessMode ne 'read'){
-	my $f;
-	my $pipe='';
-	if ($$OptionHash{'pipe command'}){
-	    $pipe="| $$OptionHash{'pipe command'} ";
-	}
-
-#---------------------------------------------------------------------------
-# ... file exists and is non-empty
-#---------------------------------------------------------------------------
-
-	if ((-s $FileName) and 
-	    ($AccessMode eq 'write')){
-	    warn "failed to open $FileName, data exist!";
-	    return 0;
-	}
-
-#---------------------------------------------------------------------------
-# ... file exists and access_mode is 'overwrite'
-#---------------------------------------------------------------------------
-
-	elsif ((-e $FileName) and
-	       ($AccessMode eq 'overwrite')){
-#	    print STDERR "# Uplug::IO::Text.pm: Data exist in $FileName! (overwriting!)\n";
-
-	    if (not open $$fh,"$pipe>$FileName"){
-		warn "failed to open $FileName";
-		return 0;
-	    }
-	}
-
-#---------------------------------------------------------------------------
-# ... access_mode is 'append'
-#---------------------------------------------------------------------------
-
-	elsif ($AccessMode eq 'append'){
-	    if (not open $$fh,"$pipe>>$FileName"){
-		warn "failed to open $FileName";
-		return 0;
-	    }
-	}
-
-#---------------------------------------------------------------------------
-# ... (file is empty or does not exist) and (access_mode is not 'append')
-#---------------------------------------------------------------------------
-
-	else{
-	    if (not open $$fh,"$pipe>$FileName"){
-		warn "failed to open $FileName in $$OptionHash{'id'}!";
-		return 0;
-	    }
-	}
-    }
-#    binmode($fh);
-#    return $fh;
-}
+##########################################################################
 
 
 sub OpenStreamFile{
@@ -505,14 +342,14 @@ sub OpenStreamFile{
 sub FindDataFile{
     my ($file)=@_;
     if (-f $file){return $file;}
-    if (-f "$UplugHome/$file"){return "$UplugHome/$file";}
-    if (-f "$UplugData/$file"){return "$UplugData/$file";}
-    if ($file=~/[\\\/]([^\\\/]+)$/){
-	if (-f "$UplugData/$1"){return "$UplugData/$1";}
-    }
     if ($file!~/\.gz$/){
       my $new=&FindDataFile("$file.gz");
       if (-f $new){return $new;}
     }
+    if (-f "data/$file"){return "data/$file";}
+    if (-f "$ENV{UPLUGHOME}/$file"){return "$ENV{UPLUGHOME}/$file";}
+    $file=basename($file);
+    if (-f "data/$file"){return "data/$file";}
+    if (-f "$ENV{UPLUGHOME}/$file"){return "$ENV{UPLUGHOME}/$file";}
     return $file;
 }

@@ -24,6 +24,7 @@
       'format' => 'xml',
       'write_mode' => 'overwrite',
 	'status' => 'sent',
+	'root' => 's'
     }
   },
   'parameter' => {
