@@ -43,7 +43,7 @@ my @CLUEDBMFILES=('giza','dice','mi','tscore','str',
 		  'posposi','postri','postriposi');
 #-------------------------------------------------------------
 
-my $ProcHome = $ENV{UPLUGDATA}.'.process';
+my $ProcHome = $ENV{UPLUGDATA}.'/.process';
 
 my $todoFile = $ProcHome.'/.todo';
 my $queuedFile = $ProcHome.'/.queued';
@@ -52,9 +52,10 @@ my $doneFile = $ProcHome.'/.done';
 my $failedFile = $ProcHome.'/.failed';
 my $serverlogFile = $ProcHome.'/.serverlog';
 
-if (not -e $ProcHome){
-    mkdir $ProcHome;
-    system "chmod g+w $ProcHome";
+my $NewProcDir=0;
+if (not -e $ProcHome){    # if the Process directory does not exist:
+    mkdir $ProcHome;      #  - create it
+    $NewProcDir=1;        #  - and set a flag that it has been created
 }
 
 #if (not -e "$ProcHome/.lockdir"){           # Lock.pm changed:
@@ -62,16 +63,15 @@ if (not -e $ProcHome){
 #    system "chmod g+w $ProcHome/.lockdir";  # for locking anymore!
 #}                                           # (lock-files will be in ProcHome)
 
-my $todo=Uplug::Web::Process::Stack->new($todoFile);
-my $queued=Uplug::Web::Process::Stack->new($queuedFile);
-my $working=Uplug::Web::Process::Stack->new($workingFile);
-my $done=Uplug::Web::Process::Stack->new($doneFile);
-my $failed=Uplug::Web::Process::Stack->new($failedFile);
+my $todo=Uplug::Web::Process::Stack->new($todoFile);        # new stack-objects
+my $queued=Uplug::Web::Process::Stack->new($queuedFile);    # (this will even
+my $working=Uplug::Web::Process::Stack->new($workingFile);  #  create new stack
+my $done=Uplug::Web::Process::Stack->new($doneFile);        #  files if they
+my $failed=Uplug::Web::Process::Stack->new($failedFile);    #  do not exist!)
 
-if (not -e $serverlogFile){
-    open F,">$serverlogFile";close F;  # create a serverlogfile
-    system "chmod g+w $serverlogFile"; # add group write access
-}
+if ($NewProcDir){                            # if the process dir is new:
+    system "chmod g+w $ProcHome";            # add write mode (has to be after
+}                                            # creating stack files above!)
 
 sub AvailableUplugSystems{
     return &GetApplications(@_);
