@@ -975,10 +975,15 @@ sub MakeWidget{
 				-values => [sort {$a <=> $b} @options])]));
     }
     elsif($config=~/checkbox/){
-	return (&radio_group(-name=>$name,
-			     -values=>['0','1'],
-                             -default=>$default,
-			     -labels=> {'1' => 'on','0' => 'off'}));
+#	return (&checkbox(-name=>$name,
+#			  -value=>1,
+#			  -checked=>$default,
+#			  -label=>''));
+	return (join ('&nbsp;',&radio_group(-name=>$name,
+					    -values=>['1','0'],
+					    -default=>$default,
+					    -labels=> {'1' => 'on',
+						       '0' => 'off'})));
     }
     return (&td([&textfield(-name => $name,-default=>$default)]));
 }
@@ -1350,12 +1355,13 @@ sub view{
     my $count=0;
     while (<F>){
 #	if ($skip<$pos){$skip++;next;}
-	$html.=escapeHTML($_);
-	$html=~s/\n/\<br\>/gs;
-	$html=~s/\s/\&nbsp\;\&nbsp\;/gs;
+	$html.=&escapeHTML($_);
+#	$html=~s/\n/\<br\>/gs;
+#	$html=~s/\s/\&nbsp\;\&nbsp\;/gs;
 	$count++;
 	if ($count>$MAXVIEWLINES){last;}
     }
+    $html=&pre($html);
     $self->{NEXT}=tell(F);
     $self->{COUNT}=$count;
     close F;
@@ -1700,10 +1706,12 @@ sub readSegment{
 	else{delete $parser->{SUBDATA};}
 	if (not @{$ids}){last;}
     }
-    if ($style ne 'text'){
-	$text=~s/\n/\<br\>/sg;
-	$text=~s/\s/\&nbsp;\&nbsp;/sg;
+    if (@{$ids} and ($self->{REREAD}<1)){            # still segment-ID's left!
+	$self->{REREAD}++;                           # (re-read only once)
+	seek($fh,0,0);                               # go to the beginning of
+	return $self->readSegment($doc,$ids,$style); # the file and read again
     }
+    if ($style ne 'text'){$text=&pre($text);}
     return $text;
 }
 

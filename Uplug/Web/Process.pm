@@ -122,6 +122,7 @@ sub SaveUplugSettings{
     my $user=shift;
     my $configfile=shift;
     my $para=shift;
+#    print join '<br>',%{$para};
     if (not defined $configfile){return 0;}
 
     my $UserDir=&Uplug::Web::Corpus::GetCorpusDir($user);
