@@ -1,0 +1,29 @@
+
+
+declclue		convert text-files to clue-DBMs
+dumpdbm			dump content of DBM-files
+etap2gold		convert gold-standard-files from the ETAP project
+etap2koma		convert ETAP-corpora to XCES
+etap2unicode		convert ETAP character encoding to Unicode
+giza2clue		convert lexical prob's from GIZA++ to clue DBMs
+giza2links		convert GIZA++ Viterbi alignments to token links
+giza2uplug		convert GIZA++ Viterbi alignments to Uplug XML
+giza_inv2clue		same as giza2clue for GIZA++ in inverse align direction
+giza_inv2uplug		same as giza2uplug for GIZA++ in inverse align direction
+gold2koma		convert UWA gold standards to Uplug XCES
+invlinks		swap alignment direction (in XCES align files)
+koma2dic		get type links from XCES align files (sorted by freq)
+koma2text		convert XCES align files to plain text files
+koma2xces		convert Liu XML to XCES XML (sentence align files)
+optimize		run evolutionary optimization (requires remote)
+plug2koma		convert PLUG XML to XCES align files (still working?)
+readalign		read sentence alignments from XCES files
+run-optimize-settings	run settings from an optimize-logfile on other corpora
+summarize-eval		summarize word alignmet evaluation-files 
+swap-lang		swap languages in clue-DBMs
+uwa2koma		convert UWA-token-link files to XCES align files
+xces2dic		get type links from XCES align files (UWA-style)
+xces2koma		convert XCES align files to Liu XML
+xces2link		convert token links from XML to plain text
+xces2text		convert XCES bitext files to plain text
+
