@@ -106,7 +106,7 @@ my %regions;
 
 # $source->open('read',$SrcStream);
 open F,">$TmpSrc";
-binmode(F,':encoding(utf-8)');
+binmode(F,':encoding(utf-8)') if ($]>=5.008);
 print F '<page>'."\n";
 while ($source->read($data)){
     my $id=$data->attribute('id');
@@ -143,7 +143,7 @@ $source->close;
 my $data=Uplug::Data->new;    # use a new data-object (new XML parser!)
 # $target->open('read',$TrgStream);
 open F,">$TmpTrg";
-binmode(F,':encoding(utf-8)');
+binmode(F,':encoding(utf-8)')  if ($]>=5.008);
 print F '<page>'."\n";
 while ($target->read($data)){
     my $id=$data->attribute('id');
@@ -206,7 +206,7 @@ my %align;
 my $score;
 my $segID;
 open F,"<$TmpSrc.al";
-binmode(F,':encoding(utf-8)');
+binmode(F,':encoding(utf-8)') if ($]>=5.008);
 # binmode(F);
 my @seg=();
 while (<F>){
@@ -227,7 +227,7 @@ while (<F>){
 close F;
 
 open F,"<$TmpTrg.al";
-binmode(F,':encoding(utf-8)');
+binmode(F,':encoding(utf-8)') if ($]>=5.008);
 # binmode(F);
 my @seg=();
 while (<F>){

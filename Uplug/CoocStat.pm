@@ -27,8 +27,9 @@ package Uplug::CoocStat;
 
 use strict;
 
-our @ISA;
-our $VERSION = '0.1';
+use vars qw(@ISA $VERSION);
+@ISA;
+$VERSION = '0.1';
 
 sub new{
 
@@ -145,7 +146,7 @@ sub compute{
 
 package Uplug::CoocStat::Dice;
 
-our @ISA = qw( Uplug::CoocStat::Measure );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Measure );
 
 sub compute{
     my $s=shift;
@@ -162,7 +163,7 @@ sub compute{
 
 package Uplug::CoocStat::Jaccard;
 
-our @ISA = qw( Uplug::CoocStat::Measure );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Measure );
 
 sub compute{
     my $s=shift;
@@ -181,7 +182,7 @@ sub compute{
 
 package Uplug::CoocStat::PMI;
 
-our @ISA = qw( Uplug::CoocStat::Measure );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Measure );
 
 sub compute{
     my $s=shift;
@@ -206,7 +207,7 @@ sub compute{
 
 package Uplug::CoocStat::tscore;
 
-our @ISA = qw( Uplug::CoocStat::Measure );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Measure );
 
 
 sub compute{
@@ -237,7 +238,7 @@ sub compute_old{
 #
 
 package Uplug::CoocStat::Phi;
-our @ISA = qw( Uplug::CoocStat::Measure );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Measure );
 
 
 sub setValues{
@@ -268,7 +269,7 @@ sub compute{
 #
 
 package Uplug::CoocStat::LL;
-our @ISA = qw( Uplug::CoocStat::Phi );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Phi );
 
 
 sub checkValues{
@@ -327,7 +328,7 @@ sub compute{
 #
 
 package Uplug::CoocStat::MI3;
-our @ISA = qw( Uplug::CoocStat::Phi );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Phi );
 
 sub compute{
     my $s=shift;
@@ -344,7 +345,7 @@ sub compute{
 #
 
 package Uplug::CoocStat::MI;
-our @ISA = qw( Uplug::CoocStat::Phi );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Phi );
 
 sub compute{
     my $s=shift;
@@ -361,7 +362,7 @@ sub compute{
 #
 
 package Uplug::CoocStat::Kulczinsky;
-our @ISA = qw( Uplug::CoocStat::Phi );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Phi );
 
 sub compute{
     my $s=shift;
@@ -378,7 +379,7 @@ sub compute{
 #
 
 package Uplug::CoocStat::Ochiai;
-our @ISA = qw( Uplug::CoocStat::Phi );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Phi );
 
 sub compute{
     my $s=shift;
@@ -395,7 +396,7 @@ sub compute{
 #
 
 package Uplug::CoocStat::Yule;
-our @ISA = qw( Uplug::CoocStat::Phi );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Phi );
 
 sub compute{
     my $s=shift;
@@ -412,7 +413,7 @@ sub compute{
 #
 
 package Uplug::CoocStat::McConnoughy;
-our @ISA = qw( Uplug::CoocStat::Phi );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Phi );
 
 sub compute{
     my $s=shift;
@@ -428,7 +429,7 @@ sub compute{
 #
 
 package Uplug::CoocStat::Simple;
-our @ISA = qw( Uplug::CoocStat::Phi );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Phi );
 
 sub compute{
     my $s=shift;
@@ -446,7 +447,7 @@ sub compute{
 #
 
 package Uplug::CoocStat::Chi2;
-our @ISA = qw( Uplug::CoocStat::Phi );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::Phi );
 
 sub compute{
     my $s=shift;
@@ -477,7 +478,7 @@ sub compute{
 #
 
 package Uplug::CoocStat::I;
-our @ISA = qw( Uplug::CoocStat::LL );
+use vars qw(@ISA); @ISA = qw( Uplug::CoocStat::LL );
 
 sub compute{
     my $s=shift;

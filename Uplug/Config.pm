@@ -279,7 +279,7 @@ sub CheckParam{
 	if (exists $flags->{$f}){
 	    my @attr=split(/:/,$flags->{$f});
 	    my $val=1;
-	    if ($_[0]!~/^\-/){
+	    if ((@_) and ($_[0]!~/^\-/)){
 		$val=shift;
 	    }
 	    SetParam($config,$val,@attr);

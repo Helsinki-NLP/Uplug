@@ -24,7 +24,7 @@
 
 package Uplug::StrSim;
 
-use vars qw(@ISA @EXPORT %NamedStreams);
+use vars qw(@ISA @EXPORT);
 @ISA = qw( Exporter);
 @EXPORT = qw( &similar );
 

@@ -24,11 +24,13 @@ package Uplug::Data::Node;
 
 use strict;
 
-our $DEBUG=0;
-our %CREATED;
-our %DESTROYED;
-our %CHILDREN;
-our %ALIVE;
+use vars qw($DEBUG %CREATED %DESTROYED %CHILDREN %ALIVE);
+
+$DEBUG=0;
+%CREATED;
+%DESTROYED;
+%CHILDREN;
+%ALIVE;
 
 sub new{
     my $class=shift;

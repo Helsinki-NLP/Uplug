@@ -65,11 +65,11 @@ sub new{
     $self->{CONFIGFILE} = $configfile;
     $self->{CONFIG}     = &ReadConfig($configfile,@_);
 
-    mkdir 'data' if (! -d 'data');
-    mkdir 'data/runtime' if (! -d 'data/runtime');
+    mkdir 'data',0755 if (! -d 'data');
+    mkdir 'data/runtime',0755 if (! -d 'data/runtime');
 
     $self->{RUNTIMEDIR} = 'data/runtime/'.$$;
-    mkdir $self->{RUNTIMEDIR} if (! -d $self->{RUNTIMEDIR});
+    mkdir $self->{RUNTIMEDIR},0755 if (! -d $self->{RUNTIMEDIR});
 
     return $self;
 }

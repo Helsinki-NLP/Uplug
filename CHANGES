@@ -1,3 +1,11 @@
+* 24-03-2005 joerg
+
+- found&fixed some bugs in systems/align/word/link and 
+  systems/align/word/test/link (shortcut definitions for dynamic clue 
+  weights)
+- fixed a bug in Uplug/Config.pm in CheckParam
+
+
 * 03-03-2005 joerg
 
 - re-implementation of Uplug.pm, Uplug/Config.pm, uplug
