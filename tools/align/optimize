@@ -1278,6 +1278,7 @@ sub Setting2File{
 	$file.='+';
     }
     chop ($file);
+    if (not $DynNr){$DynNr=1;}
     if ($InclDynClue){$file='dyn'.$DynNr.'__'.$file;}  # add dynclue-marker
     my $minscore=$setting->{score};
     if ($minscore){$file.="_min$minscore";}
