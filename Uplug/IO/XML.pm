@@ -28,7 +28,7 @@
 package Uplug::IO::XML;
 
 use strict;
-use vars qw(@ISA $VERSION $PARSERENCODING $SGGREP);
+use vars qw(@ISA $VERSION $PARSERENCODING $USESGGREP $SGGREP);
 use vars qw(%DEFAULTOPTIONS);
 use XML::Parser;
 use XML::Writer;
@@ -41,8 +41,9 @@ use Uplug::Data;
 $VERSION='$Id $ ';
 @ISA = qw( Uplug::IO::Text );
 $PARSERENCODING='utf-8';
+$USESGGREP=0;
 
-BEGIN{
+sub __find_sggrep{
     if ($_=`which sggrep 2>/dev/null`){
 	chomp;$SGGREP=$_;
 	use autouse 'Data::Dumper';
@@ -171,8 +172,11 @@ sub read{
 sub select{
     my $self=shift;
     my $file=$self->option('file');
-    if ((-e $file) and (defined $SGGREP)){
-	return $self->sggrepSelect($file,@_);
+    if ((-e $file) and $USESGGREP){
+	&__find_sggrep() if (not defined $SGGREP);
+	if (defined $SGGREP){
+	    return $self->sggrepSelect($file,@_);
+	}
     }
     return $self->SUPER::select(@_);
 }
@@ -191,7 +195,13 @@ sub sggrepSelect{
 	my $subquery=&MakeSggrepSubQuery($pattern);
 	my $regexp=&MakeSggrepRegExp($pattern);
 
-	my $result=`$SGGREP -r $query $subquery $regexp <$file 2>/dev/null`;
+	my $result;
+	if ($file=~/\.gz$/){
+	    $result=`gzip -cd $file | $SGGREP -r $query $subquery $regexp 2>/dev/null`;
+	}
+	else{
+	    $result=`$SGGREP -r $query $subquery $regexp <$file 2>/dev/null`;
+	}
 	if ($?){
 	    print STDERR "something went wrong when executing sggrep!\n";
 	    print STDERR "command: $SGGREP -r $query $subquery $regexp <$file";

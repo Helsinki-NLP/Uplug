@@ -1199,6 +1199,7 @@ sub RunClueAligner{
     if (ref($setting->{clues}) ne 'HASH'){return;}
 
     my @clues=keys %{$setting->{clues}};
+    if (not @clues){return;}
     my @weights=values %{$setting->{clues}};
     my $minscore=$setting->{score};
 
