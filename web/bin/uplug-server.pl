@@ -426,7 +426,7 @@ sub PostProcessing{
 	    }
 	}
     }
-    if ($config=~/align\/word\/..\-..$/){
+    if ($config=~/align\/word\/(..\-..|basic|advanced|giza)$/){
 	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user);
 	if ((-d "$dir/data/runtime") and (-d "data/runtime")){
 	    `cp data/runtime/*.dbm* $dir/data/runtime/`;
