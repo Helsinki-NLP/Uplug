@@ -59,11 +59,14 @@ sub init{
     my $language=shift;
     if ((defined $language) or (not ref($self->{LanguageData}))){
 	$self->{LanguageData}={};
-	if (not $language){$language=$DEFAULTLANGUAGE;}
-	if ($self->{language} ne $language){
-	    $self->{language}=$language;
+	if ((defined $language) and ($self->{language} ne $language)){
 	    $self->loadLanguageFile($language.'.ini');
 	}
+#	if (not $language){$language=$DEFAULTLANGUAGE;}
+#	if ($self->{language} ne $language){
+#	    $self->{language}=$language;
+#	    $self->loadLanguageFile($language.'.ini');
+#	}
     }
     return $self->SUPER::init(@_);
 }

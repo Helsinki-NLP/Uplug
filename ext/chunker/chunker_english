@@ -3,9 +3,16 @@
 use FindBin qw($Bin);
 
 my $JAVA="$ENV{JAVA_HOME}/bin/java";
-my $GROK_HOME="$Bin/../grok/";
-my $JARS=`echo ${GROK_HOME}/lib/*.jar | tr ' ' ':'`;
-$ENV{CLASSPATH}="$ENV{CLASSPATH}:.:${JARS}:${GROK_HOME}/output/classes:${GROK_HOME}/src/java/";
+
+my $GROK_HOME = "$Bin/../grok";
+my $GROK_LIB  = "$GROK_HOME/lib";
+my @JARS;
+opendir(LIB, $GROK_LIB) or die "Can't open $dir: $!";
+while( defined ($file = readdir LIB) ) {
+    push (@JARS,"$GROK_LIB/$file") if $file=~/.jar$/;
+}
+closedir(LIB);
+$ENV{CLASSPATH}="$ENV{CLASSPATH}:.:".join(':',@JARS);
 
 my $DIR=$ENV{PWD};                                  # save current dir
 chdir $Bin;                                         # go to Bin
