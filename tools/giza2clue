@@ -6,13 +6,6 @@
 #
 # $Id$
 #
-# this is nothing else than a call to declclue 
-# with specific arguments for converting GIZA word alignments to uplug clues!
-#
-# usage: giza2clue giza.actual
-#
-# this OVERWRITES 'giza.dbm' and 'giza.dbm.head' in the current directory!!!!
-#
 #
 
 
@@ -20,22 +13,33 @@ use strict;
 use FindBin qw($Bin);
 use lib "$Bin/..";
 use Uplug::Align::Word::Giza;
-use File::Basename;
 
 my $inverse=0;
 my $output='giza.dbm';
+my $threshold;
+
+while ($ARGV[0]=~/^\-/){
+    my $opt=shift(@ARGV);
+    if ($opt eq '-t'){
+	$threshold=shift(@ARGV);
+    }
+    elsif ($opt eq '-i'){
+	$inverse=not $inverse;
+    }
+}
 
 my $dir=shift(@ARGV);
-if (not -d $dir){$dir=dirname($dir);}
 if (@ARGV){$output=shift(@ARGV);}
 
 
 &Giza2Clue($dir,
 	   {},
-	   $inverse,{format=>'dbm',
-		     file=>$output,
-		     'key' => ['source','target'],
-		     write_mode=>'overwrite'});
+	   $inverse,
+	   {format=>'dbm',
+	    file=>$output,
+	    'key' => ['source','target'],
+	    write_mode=>'overwrite'},
+	   $threshold);
 
 
 

@@ -42,10 +42,15 @@ $DEBUG = 0;
 #  - creates data/runtime/giza2.dbm (inverse alignments)
 
 sub Giza2Clue{
-    my $dir=shift;
+    my $file=shift;
     my $param=shift;
     my $inverse=shift;
     my $ClueDB=shift;
+    my $threshold=shift;
+
+    if (-d $file){                             # if file is a directory
+	$file="$file/GIZA++.actual.ti.final";  # look for the standard file in
+    }                                          # this directory!
 
     my %dic;
     if (ref($ClueDB) eq 'HASH'){
@@ -60,7 +65,7 @@ sub Giza2Clue{
 	else{$dic{file}="$cluedir/giza.dbm";}
     }
 
-    my %inStream=('file' => "$dir/GIZA++.actual.ti.final",
+    my %inStream=('file' => $file,
 		  'format' => 'tab',
 		  'field delimiter' => ' ');
     if ($inverse){
@@ -86,6 +91,7 @@ sub Giza2Clue{
 	if ((not $src) or (not $trg)){next;}
 	my $value=$data->attribute('value');
 	if (not $value){$value=1;}
+	if ((defined $threshold) and ($value<$threshold)){next;}
 	$lex{$src}{$trg}=$value;
 	if (($src=~s/\_/ /gs) or ($trg=~s/\_/ /gs)){ # (for giza-clue:)
 	    $lex{$src}{$trg}=$value;                 #   '_' means ' '
