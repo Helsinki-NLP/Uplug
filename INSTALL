@@ -19,6 +19,7 @@ Most of the scripts should run on a standard GNU/Linux machine.
 	  ext/tagger
 	  ext/parser
 	  ext/chunker
+
   Some of the external programs are not included in the package. You
   might want to install them on your local machine:
      The TreeTagger: http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html
