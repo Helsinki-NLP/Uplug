@@ -15,9 +15,10 @@ package Uplug::Web::Process::Lock;
 use strict;
 
 use Exporter;
-use vars qw(@ISA @EXPORT);
+use vars qw(@ISA @EXPORT $VERSION);
 @ISA      = qw(Exporter);
 @EXPORT   = qw(nflock nunflock);
+$VERSION  = '5';
 
 use vars qw($Debug $Check $MaxLockTime);
 $Debug  ||= 0;  # may be predefined
@@ -51,7 +52,12 @@ sub nflock($;$) {
     }
 
     if (!-w dirname($pathname)) {
-        croak "can't write to directory of $pathname";
+#        croak "can't write to directory of $pathname";
+	#
+	# joerg 040913:
+	# I should give up and return 0 but for the sake of UplugWeb
+	# and its write-permissions we simply return 1 instead of failing
+	return 1;
     }
 
     while (1) {
@@ -128,7 +134,6 @@ sub RemoveOldLockFiles{
         return unlink($file);
     }
 }
-
 
 # anything forgotten?
 END {
