@@ -1,0 +1,5 @@
+external POS tagger: TreeTagger
+
+download the TreeTagger from 
+http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html
+and install it in this directory.
