@@ -57,7 +57,7 @@ Uplug - Quickstart
    Word alignment results are stored in 1988sven.links.
    You may look at word type links using the following script:
 
-   /cvs/tools/koma2dic < 1988sven.links | less
+   /cvs/tools/xces2dic < 1988sven.links | less
 
 
 3d) Tagging (using external taggers)

@@ -944,6 +944,7 @@ sub bestSrcLinks{
 	    }
 	}
 	if ($LinkMatrix[$s][$bestLink]<$MinScore){next;}
+#	if ($LinkMatrix[$s][$bestLink]<$MinScore){last;}
 	$Links[$s]=$bestLink;
     }
 
@@ -984,6 +985,7 @@ sub bestTrgLinks{
 	    }
 	}
 	if ($LinkMatrix[$bestLink][$t]<$MinScore){next;}
+#	if ($LinkMatrix[$bestLink][$t]<$MinScore){last;}
 	$Links[$t]=$bestLink;
     }
     return @Links;
