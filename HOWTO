@@ -1,0 +1,45 @@
+
+
+
+How to include a dictionary in the Clue Aligner
+===============================================
+
+
+1) Create a DBM-clue database
+  * you can use uplug/tools/declclue to create a clue-database-file
+    from a plain-text-file:
+    - if this is your lexicon (lexicon.txt):
+    
+######################################################################
+# everything line that start with '#' is part of the header
+# the header may include parameters in the form attribute: value
+# you may specify source-feature-patterns and target-feature-patterns
+# lexical data is separated by TAB (source<TAB>target<TAB>frequency)
+# frequency-values are optional
+# everything should be in Unicode (UTF8) if not specified with -ci
+#
+# Swedish - English
+#---------------------------------------------------------------------
+enligt	according to
+en	a
+ett	a
+efter	after
+för	for
+för	to
+och	and
+den	the
+regeringen	the Government
+################## this is the end of the file
+
+   - use the following command to create a new clue-DB
+
+uplug/tools/declclue -o data/runtime/lexicon.dbm < lexicon.txt
+
+
+2) The lexicon is now used by the 'link'-module in the clue
+   aligner. Try for example to align the example-bitext from
+   uplug/example (supposing that you copied the corpus to the
+   current directory):
+
+uplug/uplug systems/align/word/link -in svenprf.xces
+
