@@ -52,9 +52,10 @@ my $doneFile = $ProcHome.'/.done';
 my $failedFile = $ProcHome.'/.failed';
 my $serverlogFile = $ProcHome.'/.serverlog';
 
-if (not -e $ProcHome){
-    mkdir $ProcHome;
-    system "chmod g+w $ProcHome"; # add group write access
+if (not -e $ProcHome){mkdir $ProcHome;}
+if (not -e "$ProcHome/.lockdir"){
+    mkdir "$ProcHome/.lockdir";
+    system "chmod g+w $ProcHome/.lockdir";
 }
 
 my $todo=Uplug::Web::Process::Stack->new($todoFile);

@@ -194,8 +194,8 @@ sub my_log{
 	chomp($message);
 	my $time=localtime();
 	print F "[$HOST:$time] ",$message,"\n";
-	nunflock($LogFile);
     }
+    nunflock($LogFile);
     close F;
 }
 
@@ -208,8 +208,8 @@ sub my_die{
 	chomp($message);
 	my $time=localtime();
 	print F "[$HOST:$time] ",$message,"\n";
-	nunflock($LogFile);
     }
+    nunflock($LogFile);
     close F;
     exit();
 }
