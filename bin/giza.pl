@@ -64,6 +64,8 @@ my ($InputStreamName,$InputStream)=
     each %{$IniData{'input'}};               # the first input stream;
 my $ClueDB=$IniData{output}{clue};
 delete $IniData{output}{clue};
+my $ClueDBinv=$IniData{output}{clue_inv};
+delete $IniData{output}{clue_inv};
 my ($OutputStreamName,$OutputStream)=         # take only
     each %{$IniData{'output'}};               # the first output stream
 
@@ -109,7 +111,8 @@ if (($direction eq 'src-trg') or ($direction eq 'both')){
 
 if ($combined){
     &Combined2Uplug($TmpDir.'/src-trg.viterbi',
-		    $TmpDir.'/trg-src.viterbi',$combined,$InputStream,$TokenParam,$OutputStream);
+		    $TmpDir.'/trg-src.viterbi',$combined,
+		    $InputStream,$TokenParam,$OutputStream);
 }
 
 #foreach my $d (@align){
@@ -146,7 +149,10 @@ sub Giza2Clue{
     my $inverse=shift;
 
     my %dic;
-    if (ref($ClueDB) eq 'HASH'){
+    if ($inverse and (ref($ClueDBinv) eq 'HASH')){
+	%dic=%{$ClueDBinv};
+    }
+    elsif ((not $inverse) and (ref($ClueDB) eq 'HASH')){
 	%dic=%{$ClueDB};
     }
     else{

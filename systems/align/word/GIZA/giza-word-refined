@@ -3,7 +3,7 @@
     'name' => 'GIZA++ word alignment',
     'program' => 'giza.pl',
     'location' => '$UplugBin',
-    'stdout' => 'bitext',
+    'stdout' => 'viterbi',
   },
   'description' => 'This module runs GIZA++ with basic settings and
   converts its alignment to the Uplug format. For more information on
@@ -14,6 +14,12 @@
     },
   },
   'output' => {
+    'viterbi' => {
+      'format' => 'xces align',
+      'status' => 'word',
+      'SkipSrcFile' => 1,
+      'SkipTrgFile' => 1,
+    },
     'clue' => {
 	'format' => 'dbm',
 	'write_mode' => 'overwrite',
@@ -28,9 +34,9 @@
     }
   },
   'parameter' => {
-#     'alignment direction' => 'src-trg',
-     'alignment direction' => 'both',
-     'make clue' => '1',
+    'alignment direction' => 'both',
+    'make clue' => 0,
+    'symmetric alignment' => 'refined',
     'token' => {
 
     #------------------------------------------------------------------
@@ -54,7 +60,7 @@
   'arguments' => {
     'shortcuts' => {
        'in' => 'input:bitext:file',
-       'out' => 'output:bitext:file',
+       'out' => 'output:viterbi:file',
        'd' => 'parameter:alignment direction',
        'c' => 'parameter:make clue',
        's' => 'parameter:symmetric alignment',

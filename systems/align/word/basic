@@ -3,8 +3,9 @@
     'name' => 'The clue aligner',
     'submodules' => [
         '$UplugSystem/align/word/basicclues',
-        '$UplugSystem/align/word/GIZA/gizaclue-word',
-        '$UplugSystem/align/word/GIZA/gizaclue-word-i',
+        '$UplugSystem/align/word/GIZA/giza-word-refined -c 1 -out giza-refined.links',
+        '$UplugSystem/align/word/dynamicclues -in giza-refined.links',
+#        '$UplugSystem/align/word/GIZA/gizaclue-word',
         '$UplugSystem/align/word/link',
 	],
 #    'loop' => '5:6',
@@ -16,8 +17,8 @@
 	<li>giza: runs GIZA++ and converts the lexical probabilities to the
 	clue aligner format
 	<li>link: clue alignment using basic clues and the giza clue
-	<li>dynamicclues: learns dynamic clues from previously aligned data
-	<li>link: clue alignment using all clues (basic, giza, dynamic)
+	<li>learnclues: learns clues from previously aligned data
+	<li>link: clue alignment using all clues (basic, giza, learned)
     </ul><p>Note: Word alignment may take quite a while. Processing time
      depends on the size of the corpus and on the processing load on the
      local computer system. UplugWeb processes do not have the highest

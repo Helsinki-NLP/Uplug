@@ -15,15 +15,21 @@
   },
   'output' => {
     'clue' => {
-        'format' => 'dbm',
-        'write_mode' => 'overwrite',
-        'key' => ['source','target'],
-        'file' => 'data/runtime/giza-word-suffix.dbm',
+	'format' => 'dbm',
+	'write_mode' => 'overwrite',
+	'key' => ['source','target'],
+	'file' => 'data/runtime/giza-word-suffix.dbm',
+    },
+    'clue_inv' => {
+	'format' => 'dbm',
+	'write_mode' => 'overwrite',
+	'key' => ['source','target'],
+	'file' => 'data/runtime/giza-word-suffix-i.dbm',
     }
   },
   'parameter' => {
-     'alignment direction' => 'src-trg',
-#     'alignment direction' => 'both',
+#     'alignment direction' => 'src-trg',
+     'alignment direction' => 'both',
      'make clue' => '1',
     'token' => {
 
@@ -52,6 +58,10 @@
        'd' => 'parameter:alignment direction',
 #	'sf' => 'parameter:token:features (source):#text',
 #        'tf' => 'parameter:token:features (target):#text',
+       'c' => 'parameter:make clue',
+       's' => 'parameter:symmetric alignment',
+       'clue' => 'output:clue:file',
+       'clue_inv' => 'output:clue_inv:file',
     }
   },
   'widgets' => {

@@ -3,20 +3,19 @@
     'name' => 'The clue aligner',
     'submodules' => [
         '$UplugSystem/align/word/basicclues',
-        '$UplugSystem/align/word/GIZA/gizaclue-word',
-        '$UplugSystem/align/word/GIZA/gizaclue-word-prefix',
-        '$UplugSystem/align/word/GIZA/gizaclue-word-suffix',
+        '$UplugSystem/align/word/GIZA/giza-word-refined -c 1 -out giza-refined.links',
+        '$UplugSystem/align/word/dynamicclues -dc3x -dlp -dp3 -in giza-refined.links',
         '$UplugSystem/align/word/GIZA/gizaclue-pos',
-        '$UplugSystem/align/word/GIZA/gizaclue-word-i',
-        '$UplugSystem/align/word/GIZA/gizaclue-word-prefix-i',
-        '$UplugSystem/align/word/GIZA/gizaclue-word-suffix-i',
-        '$UplugSystem/align/word/GIZA/gizaclue-pos-i',
+        '$UplugSystem/align/word/GIZA/gizaclue-word-prefix',
+#        '$UplugSystem/align/word/GIZA/gizaclue-word',
+#        '$UplugSystem/align/word/GIZA/gizaclue-pos-word',
+#        '$UplugSystem/align/word/GIZA/gizaclue-word-suffix',
         '$UplugSystem/align/word/link',
-        '$UplugSystem/align/word/dynamicclues',
+        '$UplugSystem/align/word/dynamicclues -dc3x -dlp -dp3',
         '$UplugSystem/align/word/link',
 	],
-#    'loop' => '5:6',
-#    'iterations' => '3',
+    'loop' => '6:7',
+    'iterations' => '3',
   },
   'description' => 'The clue aligner runs several sub-modules:
     <ul><li>basicclues: computes basic alignment clues using association
@@ -24,8 +23,8 @@
 	<li>giza: runs GIZA++ and converts the lexical probabilities to the
 	clue aligner format
 	<li>link: clue alignment using basic clues and the giza clue
-	<li>dynamicclues: learns dynamic clues from previously aligned data
-	<li>link: clue alignment using all clues (basic, giza, dynamic)
+	<li>learnclues: learns clues from previously aligned data
+	<li>link: clue alignment using all clues (basic, giza, learned)
     </ul><p>Note: Word alignment may take quite a while. Processing time
      depends on the size of the corpus and on the processing load on the
      local computer system. UplugWeb processes do not have the highest

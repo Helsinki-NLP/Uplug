@@ -15,15 +15,21 @@
   },
   'output' => {
     'clue' => {
-        'format' => 'dbm',
-        'write_mode' => 'overwrite',
-        'key' => ['source','target'],
-        'file' => 'data/runtime/giza-pos-word.dbm',
+	'format' => 'dbm',
+	'write_mode' => 'overwrite',
+	'key' => ['source','target'],
+	'file' => 'data/runtime/giza-pos-word.dbm',
+    },
+    'clue_inv' => {
+	'format' => 'dbm',
+	'write_mode' => 'overwrite',
+	'key' => ['source','target'],
+	'file' => 'data/runtime/giza-pos-word-i.dbm',
     }
   },
   'parameter' => {
-     'alignment direction' => 'src-trg',
-#     'alignment direction' => 'both',
+#     'alignment direction' => 'src-trg',
+     'alignment direction' => 'both',
      'make clue' => '1',
     'token' => {
 
@@ -52,6 +58,10 @@
        'in' => 'input:bitext:file',
        'out' => 'output:bitext:file',
        'd' => 'parameter:alignment direction',
+       'c' => 'parameter:make clue',
+       's' => 'parameter:symmetric alignment',
+       'clue' => 'output:clue:file',
+       'clue_inv' => 'output:clue_inv:file',
     }
   },
   'widgets' => {

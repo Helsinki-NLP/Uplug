@@ -1,4 +1,19 @@
+#######################################################################
+#
+# learnclues - module for learning clues from previously
+#              word-aligned bitexts
+#              (bootstrapping)
+#
+# 2005-02-14 Joerg Tiedemann		
+# tiedeman@let.rug.nl
+#
+#######################################################################
+
 {
+  #######################################################################
+  # module specifications
+  #######################################################################
+
   'module' => {
     'location' => '$UplugBin',
     'stdin' => 'bitext',
@@ -7,86 +22,100 @@
   },
   'description' => 'This module learns clues from word aligned
   bitexts. The following clue patterns are defined:
-  <ul><li>part-of-speech tags of the current link (dynamic POS clue)
-  <li>part-of-speech tags of the current link using a reduced tag set
-  (dynamic POS clue (coarse))
-  <li>chunk labels of the current link (dynamic chunk clue)
-  <li>the word position of the target language word 
-  relative to the aligned source language word (dynamic position clue)
-  <li>word forms of the current link (dynamic lex clue)
-  <li>word forms together with their POS tags (dynamic lex/POS clue)
-  <li>POS tags and relative positions (posposi clue)
-  <li>POS tag trigrams (previous, current, next) (postri clue)
-  <li>POS tag trigrams and relative word position (postriposi clue)
-  <li>chunk label trigrams (chunktri clue)
-  <li>chunk label trigrams and POS tags of the current link (chunktripos)
-  <li>chunk label trigrams and relative word positions (chunktriposi)
+  <ul>
+  <li>word forms of the current link (dl)
+  <li>word forms together with their POS tags (dlp)
+  <li>word forms and relative word positions (dlx)
+  <li>initial 3 characters and relative word positions (dl3x)
+  <li>POS tags and relative positions (dlpx)
+  <li>POS tag trigrams (previous, current, next) (dp3)
+  <li>POS tag trigrams and relative word position (dp3x)
+  <li>chunk label trigrams (dc3)
+  <li>chunk label trigrams and POS tags of the current link (dc3p)
+  <li>chunk label trigrams and relative word positions (dc3x)
   </ul><p>
   Note: If you add dynamic clues to be learned from the data make sure
   to enable the same clues in the alignment module (link). Otherwise
   they will not be used for the word alignment.',
+
+  #######################################################################
+  # input = bitext in XML
+  #######################################################################
+
   'input' => {
     'bitext' => {'stream name' => 'runtime xml',format => 'xces align'}
   },
+
+  #######################################################################
+  # output = clues in DBM files (defined in $UPLUG/ini/DataStreams.ini)
+  #######################################################################
+
   'output' => {
-    'dynamic POS clue' => {'stream name' => 'POS clue'},
-    'dynamic POS clue (coarse)' => {'stream name' => 'POS clue (coarse)'},
-    'dynamic chunk clue' => {'stream name' => 'chunk clue'},
-    'dynamic position clue' => {'stream name' => 'position clue'},
-    'dynamic lex clue' => {'stream name' => 'lex clue',},
-    'dynamic lex/POS clue' => {'stream name' => 'lexpos clue'},
-    'posposi clue' => {'stream name' => 'posposi clue'},
-    'postri clue' => {'stream name' => 'postri clue'},
-    'postriposi clue' => {'stream name' => 'postriposi clue'},
-    'chunktri clue' => {'stream name' => 'chunktri clue'},
-    'chunktripos clue' => {'stream name' => 'chunktripos clue'},
-    'chunktriposi clue' => {'stream name' => 'chunktriposi clue'}
+    'clue dl'		=> {'stream name' => 'clue dl',},
+    'clue dlp'		=> {'stream name' => 'clue dlp'},
+    'clue dlx'		=> {'stream name' => 'clue dlx'},
+    'clue dl3x'		=> {'stream name' => 'clue dl3x'},
+    'clue dpx'	        => {'stream name' => 'clue dpx'},
+    'clue dp3'		=> {'stream name' => 'clue dp3'},
+    'clue dp3 (prefix)' => {'stream name' => 'clue dp3 (prefix)'},
+    'clue dp3x'		=> {'stream name' => 'clue dp3x'},
+    'clue dc3'		=> {'stream name' => 'clue dc3'},
+    'clue dc3p'		=> {'stream name' => 'clue dc3p'},
+    'clue dc3x'		=> {'stream name' => 'clue dc3x'}
   },
+
+
+  #######################################################################
+  # parameters
+  #######################################################################
+  #
+  # clues ..... enable/disable clue types to be learned (1=enabled)
+  # 
+  #-------------------------------------------------------------------
+
+
   'parameter' => {
     'clues' => {
-       'dynamic POS clue' => 0,
-       'dynamic POS clue (coarse)' => 0,
-       'dynamic chunk clue' => 0,
-       'dynamic position clue' => 0,
-       'dynamic lex clue' => 0,
-       'dynamic lex/POS clue' => 0,
-       'posposi clue' => 0,
-       'postri clue' => 0,
-       'postriposi clue' => 1,
-       'chunktri clue' => 0,
-       'chunktripos clue' => 0,
-       'chunktriposi clue' => 1,
+       'clue dl'	   => 1,
+       'clue dlp'	   => 0,
+       'clue dlx'	   => 1,
+       'clue dl3x'	   => 1,
+       'clue dpx'	   => 0,
+       'clue dp3'	   => 0,
+       'clue dp3 (prefix)' => 0,
+       'clue dp3x'	   => 0,
+       'clue dc3'	   => 0,
+       'clue dc3p'	   => 0,
+       'clue dc3x'	   => 0,
     },
-    'dynamic POS clue' => {
-       'features (source)' => {
-           'pos' => undef,
-       },
-       'features (target)' => {
-           'pos' => undef,
-       },
+
+    #-------------------------------------------------------------------
+    # clue type patterns:
+    #    define features to be used when looking for clues
+    #-------------------------------------------------------------------
+
+    'clue dl' => {
+      'pair frequency' => 2,         # co-occurrence > 1 !
+      'features (source)' => {
+	'#text' => undef
+      },
+      'features (target)' => {
+	'#text' => undef
+      }
     },
-    'dynamic POS clue (coarse)' => {
-       'features (target)' => {
-           'pos' => '^(..).*$/$1',
-       },
-       'features (source)' => {
-           'pos' => '^(..).*$/$1',
-       },
+    'clue dlp' => {
+      'pair frequency' => 2,
+      'features (source)' => {
+        'pos' => undef,
+	'#text' => undef
+      },
+      'features (target)' => {
+        'pos' => undef,
+	'#text' => undef
+      }
     },
-    'dynamic chunk clue' => {
-       'features (source)' => {
-           'c.*:type' => undef
-       },
-       'features (target)' => {
-           'c.*:type' => undef,
-       },
-    },
-    'dynamic position clue' => {
+    'clue dlx' => {
       'relative position' => 1,
-       'features (source)' => {},
-       'features (target)' => {},
-    },
-    'dynamic lex clue' => {
       'pair frequency' => 2,
       'features (source)' => {
 	'#text' => undef
@@ -95,18 +124,63 @@
 	'#text' => undef
       }
     },
-    'dynamic lex/POS clue' => {
+    'clue dl3x' => {
+      'relative position' => 1,
       'pair frequency' => 2,
       'features (source)' => {
+	'#text' => '^(...).*$/$1'
+      },
+      'features (target)' => {
+	'#text' => '^(...).*$/$1'
+      }
+    },
+    'clue dpx' => {
+      'relative position' => 1,
+      'features (source)' => {
         'pos' => undef,
-	'#text' => undef
       },
       'features (target)' => {
         'pos' => undef,
-	'#text' => undef
       }
     },
-    'chunktri clue' => {
+    'clue dp3' => {
+      'features (source)' => {
+        'left(w):pos' => undef,
+        'pos' => undef,
+        'right(w):pos' => undef
+      },
+      'features (target)' => {
+        'left(w):pos' => undef,
+        'pos' => undef,
+        'right(w):pos' => undef
+      },
+     },
+    'clue dp3 (prefix)' => {
+       'features (target)' => {
+	   'left(w):pos'  => '^(..).*$/$1',
+           'pos'          => '^(..).*$/$1',
+	   'right(w):pos' => '^(..).*$/$1',
+       },
+       'features (source)' => {
+	   'left(w):pos'  => '^(..).*$/$1',
+           'pos'          => '^(..).*$/$1',
+	   'right(w):pos' => '^(..).*$/$1',
+       },
+    },
+    'clue dp3x' => {
+      'relative position' => 1,
+      'features (source)' => {
+	'left(w):pos' => undef,
+        'pos' => undef,
+	'right(w):pos' => undef
+      },
+      'features (target)' => {
+	'left(w):pos' => undef,
+        'pos' => undef,
+	'right(w):pos' => undef
+      }
+    },
+    'clue dc3' => {
       'features (source)' => {
 	'c.*:type' => undef,
 	'c.*:left:type' => undef,
@@ -118,7 +192,7 @@
         'c.*:right:type' => undef
       }
     },
-    'chunktripos clue' => {
+    'clue dc3p' => {
       'features (source)' => {
 	'c.*:type' => undef,
 	'c.*:left:type' => undef,
@@ -132,7 +206,7 @@
         'pos' => undef
       }
     },
-    'chunktriposi clue' => {
+    'clue dc3x' => {
       'relative position' => 1,
       'features (source)' => {
 	'c.*:type' => undef,
@@ -145,81 +219,40 @@
         'c.*:right:type' => undef
       }
     },
-    'posposi clue' => {
-      'relative position' => 1,
-      'features (source)' => {
-        'pos' => undef,
-      },
-      'features (target)' => {
-        'pos' => undef,
-      }
-    },
-    'postri clue' => {
-      'features (source)' => {
-        'left(w):pos' => undef,
-        'pos' => undef,
-        'right(w):pos' => undef
-      },
-      'features (target)' => {
-        'left(w):pos' => undef,
-        'pos' => undef,
-        'right(w):pos' => undef
-      },
-     },
-    'postriposi clue' => {
-      'relative position' => 1,
-      'features (source)' => {
-	'left(w):pos' => undef,
-        'pos' => undef,
-	'right(w):pos' => undef
-      },
-      'features (target)' => {
-	'left(w):pos' => undef,
-        'pos' => undef,
-	'right(w):pos' => undef
-      }
-    },
     'general' => {
-      'pair frequency' => 4
+      'pair frequency' => 4         # co-occurrence > 3
     }
   },
+
+
+  #######################################################################
+  # definition of command line arguments
+  #######################################################################
+
   'arguments' => {
     'shortcuts' => {
       'informat' => 'input:bitext:format',
       'in' => 'input:bitext:file',
       'infile' => 'input:bitext:file',
 
-      'dynpos' => 'parameter:clues:dynamic POS clue',
-      'dynpos2' => 'parameter:clues:dynamic POS clue (coarse)',
-      'dynchunk' => 'parameter:clues:dynamic chunk clue',
-      'dynposi' => 'parameter:clues:dynamic position clue',
-      'dynlex' => 'parameter:clues:dynamic lex clue',
-      'dynlexpos' => 'parameter:clues:dynamic lex/POS clue',
-      'posposi' => 'parameter:clues:posposi clue',   
-      'postri' => 'parameter:clues:postri clue',   
-      'postriposi' => 'parameter:clues:postriposi clue',
-      'chunktri' => 'parameter:clues:chunktri clue',
-      'chunktripos' => 'parameter:clues:chunktripos clue',
-      'chunktriposi' => 'parameter:clues:chunktriposi clue',
-
-      #---- shorter versions
-
-      'dp' => 'parameter:clues:dynamic POS clue',
-      'dpp' => 'parameter:clues:dynamic POS clue (coarse)',
-      'dc' => 'parameter:clues:dynamic chunk clue',
-      'dx' => 'parameter:clues:dynamic position clue',
-      'dl' => 'parameter:clues:dynamic lex clue',
-      'dlp' => 'parameter:clues:dynamic lex/POS clue',
-      'dpx' => 'parameter:clues:posposi clue',   
-      'dp3' => 'parameter:clues:postri clue',   
-      'dp3x' => 'parameter:clues:postriposi clue',
-      'dc3' => 'parameter:clues:chunktri clue',
-      'dc3p' => 'parameter:clues:chunktripos clue',
-      'dc3x' => 'parameter:clues:chunktriposi clue',
-
-
+      'dl'	     => 'parameter:clues:clue dl',
+      'dlp'	     => 'parameter:clues:clue dlp',
+      'dlx'	     => 'parameter:clues:clue dlx',
+      'dl3x'	     => 'parameter:clues:clue dl3x',
+      'dpx'	     => 'parameter:clues:clue dpx',   
+      'dp3'	     => 'parameter:clues:clue dp3',
+      'dp3 (prefix)' => 'parameter:clues:clue dp3 (prefix)',
+      'dp3x'	     => 'parameter:clues:clue dp3x',
+      'dc3'	     => 'parameter:clues:clue dc3',
+      'dc3p'	     => 'parameter:clues:clue dc3p',
+      'dc3x'	     => 'parameter:clues:clue dc3x',
     }
   },
+
+  #######################################################################
+  # GUI widgets
+  #######################################################################
+
   'widgets' => {
 #       'input' => {
 #            'bitext' => {
@@ -228,18 +261,17 @@
 #        },
        'parameter' => {
          'clues' => {
-	   'dynamic POS clue' => 'checkbox',
-	   'dynamic POS clue (coarse)' => 'checkbox',
-	   'dynamic chunk clue' => 'checkbox',
-	   'dynamic position clue' => 'checkbox',
-	   'dynamic lex clue' => 'checkbox',
-	   'dynamic lex/POS clue' => 'checkbox',
-	   'posposi clue' => 'checkbox',
-	   'postri clue' => 'checkbox',
-	   'postriposi clue' => 'checkbox',
-	   'chunktri clue' => 'checkbox',
-	   'chunktripos clue' => 'checkbox',
-	   'chunktriposi clue' => 'checkbox'
+	   'clue dl'	       => 'checkbox',
+	   'clue dlp'	       => 'checkbox',
+	   'clue dlx'	       => 'checkbox',
+	   'clue dl3x'	       => 'checkbox',
+	   'clue dpx'	       => 'checkbox',
+	   'clue dp3'	       => 'checkbox',
+	   'clue dp3 (prefix)' => 'checkbox',
+	   'clue dp3x'	       => 'checkbox',
+	   'clue dc3'	       => 'checkbox',
+	   'clue dc3p'	       => 'checkbox',
+	   'clue dc3x'	       => 'checkbox'
 	   },
         }
   }
