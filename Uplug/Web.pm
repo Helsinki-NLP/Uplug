@@ -25,6 +25,8 @@ use Uplug::Web::Process;
 use Uplug::Web::User;
 use Uplug::Web::CWB;
 use XML::Parser;
+use File::Copy;
+use Encode;
 
 our $CWBREG=$ENV{UPLUGCWB}.'/reg/';
 our $ALIGN2CWB=$ENV{UPLUGHOME}.'/web/bin/make-cwb-align';
@@ -32,9 +34,12 @@ our $CORPUS2CWB=$ENV{UPLUGHOME}.'/web/bin/make-cwb-corpus';
 
 our $RECODE='/home/staff/joerg/user_local/bin/recode';
 
-my $MAXVIEWLINES=40;
-my $MAXVIEWDATA=10;
-binmode(STDOUT, ":utf8");            # set UTF8 for STDOUT
+my $MAXVIEWLINES=40;                # view max X lines from text files
+my $MAXVIEWDATA=10;                 # view max X data records
+my $MAXFLOCKWAIT=10;                # wait max X seconds for flock
+
+binmode(STDOUT, ":utf8");           # set UTF8 for STDOUT
+#binmode(STDIN, ":utf8");           # set UTF8 for STDIN
 
 my %DataAccess=
     (admin => {corpus => ['info','view','send','add','align',
@@ -45,7 +50,7 @@ my %DataAccess=
 			 'index','query','remove'],
 	      doc => ['info','view','send','remove'],
 	      'Uplug::Web::Data' => ['xml'],
-	      'Uplug::Web::Bitext' => ['text','xml'],
+	      'Uplug::Web::Bitext' => ['text','xml','wordalign'],
 	      'Uplug::Web::BitextLinks' => ['text','xml','matrix','edit'],
 	      user => ['info','edit']},
      all => {doc => ['info','view','send'],
@@ -784,37 +789,72 @@ sub ShowCorpusInfoNew{
 
 
 #-------------------------------------------------------------------------
+# view corpus data
+#    * text files (even XML)
+#    * bitexts (sentence aligned)
+#    * bitexts (sentence and word aligned)
+# uses object classes further down in this file!
 
 sub ViewCorpus{
-    my ($owner,
-	$corpus,
-	$doc,
-	$url,
-	$pos,
-	$style,
-	$params,
-	$links)=@_;
+    my ($owner,       # owner of the corpus
+	$corpus,      # corpus name
+	$doc,         # document name
+	$url,         # current query URL
+	$pos,         # last position in the document
+	$style,       # display style
+	$params)=@_;  # other parameters (pointer to hash)
 
     my $DocConfig=&Uplug::Web::Corpus::GetCorpusInfo($owner,$corpus,$doc);
+
     if (not defined $$DocConfig{file}){return undef;}
     my $file=$$DocConfig{file};
     my $data;
+    my $html;
 
     my $priv='user';                     # default: user privileges
     if ($owner eq 'pub'){$priv='all';}   # for public data: restricted access!
-    if ($$DocConfig{format}=~/align/){
-	if ($$DocConfig{status}=~/word/){
+    if ($$DocConfig{format}=~/align/){   # for bitexts:
+
+	#---------------------------------------------------------------------
+	if ($$DocConfig{status}=~/word/){                   # word alignments
+	    $data=new Uplug::Web::BitextLinks($priv,$file); # -> BitextLinks
+	}
+	#---------------------------------------------------------------------
+	elsif ($style eq 'wordalign'){                      # style=wordalign
+	    $style='edit';                                  # - make align-
+	    $doc=~s/(\s\(..\-..\))$/ word$1/;               #   modus for
+	    $html=&b("Align words in document '$doc'!");    #   sentence-
+	    if (not -e "$file.links"){                      #   aligned bitexts
+		copy($file,"$file.links");                  # - create a word-
+		open F,">$file.links.lock";close F;         #   align file and
+		chmod 0664,"$file.links.lock";              #   a lock-file
+		chmod 0664,"$file.links";                   # - set permissions
+		$$DocConfig{file}="$file.links";            # - add info to the
+		$$DocConfig{status}='word';                 #   user configfile
+		my $DocBase=$$DocConfig{corpus}.' word';    #   (without lang)
+		&Uplug::Web::Corpus::ChangeCorpusInfo($owner,
+						      $corpus,
+						      $DocBase,
+						      $DocConfig);
+		$html.=&br().&i("(added document ($doc) to corpus '$corpus')");
+	    }
+	    $html.=&p();                                    # - view the word-
+	    $file.='.links';                                #   align file
+	    $url=&AddUrlParam($url,'d',$doc);               #   in edit mode!
+	    $url=&AddUrlParam($url,'s',$style);
 	    $data=new Uplug::Web::BitextLinks($priv,$file);
 	}
-	else{
-	    $data=new Uplug::Web::Bitext($priv,$file);
-	}
+	#---------------------------------------------------------------------
+	else{$data=new Uplug::Web::Bitext($priv,$file);}    # sentence align
     }
-    else{$data=new Uplug::Web::Data($priv,$file);}
-    return $data->view($url,$style,$pos,$params,$links);
-#    my $html='['.&a({-href=>'javascript:history.go(-1)'},'back').']';
-#    return $html.$data->view($url,$style,$pos,$params,$links);
+    #-------------------------------------------------------------------------
+    else{$data=new Uplug::Web::Data($priv,$file);}          # all other data:
+    return $html.$data->view($url,$style,$pos,$params);     #   view as text
 }
+
+# end of ViewCorpus
+#-----------------------------------------------------------------------------
+
 
 
 ###################################################################
@@ -1170,8 +1210,7 @@ sub MakeWidget{
 
 sub DelUrlParam{
     my ($url,$name)=@_;
-
-    $url=~s/([\;\?])$name\=[^\;]*(\;|\Z)/$1/;
+    while($url=~s/([\;\?])$name\=[^\;]*(\;|\Z)/$1/){1;}
     return $url;
 }
 
@@ -1516,7 +1555,8 @@ sub view{
 
     my $file=$self->{FILE};
     open F,"< $file";
-    binmode(F,":utf8");
+     binmode(F,":utf8");
+#   binmode(F);
     if (defined $pos){
 	seek (F,$pos,0);
     }
@@ -1557,6 +1597,7 @@ sub nextLinks{
     my $count=$self->{COUNT};
     my $style=$self->{STYLE};
     my $pos=$self->{POS};
+    if (not $pos){$pos=0;}
     my $NextPos=$self->{NEXT};
     my ($start,$prev,$next,$styles);
     if (ref($self->{STYLES}) eq 'ARRAY'){
@@ -1572,10 +1613,14 @@ sub nextLinks{
 	$link=&Uplug::Web::DelUrlParam($link,'sx');
 	$link=&Uplug::Web::DelUrlParam($link,'tx');
 	$start='['.&a({-href => $link},'start').']';
-	$prev='['.&a({-href=>'javascript:history.go(-1)'},'previous').']';
+	if ($style ne 'edit'){
+	    $prev='['.&a({-href=>'javascript:history.go(-1)'},'previous').']';
+	}
     }
     if ($count>=$MAXVIEWDATA){
 	my $link=&Uplug::Web::AddUrlParam($url,'x',$NextPos);
+	param('ax',$pos);
+	my $link=&Uplug::Web::AddUrlParam($link,'ax',$pos);
 	if ($self->{'FROMDOC-POS'}>0){
 	    $link=&Uplug::Web::AddUrlParam($link,'sx',$self->{'FROMDOC-POS'});
 	}
@@ -1624,8 +1669,6 @@ sub view{
 	$self->{'FROMDOC-POS'}=$$param{sx};
 	$self->{'TODOC-POS'}=$$param{tx};
     }
-#    $self->{PREVIOUS}=$prev;
-
     my $count;my $fromDoc;my $toDoc;
     if (not $self->readLinks($pos)){return undef;}
     my $seg=$self->readSentLinks($style);
@@ -1701,7 +1744,7 @@ sub readBitextSegment{
     my $link=shift;
     my $style=shift;
 
-    my ($src,$trg)=split(/\;/,$link);
+    my ($src,$trg)=split(/\s*\;\s*/,$link);
     my @s=split(/\s+/,$src);
     my @t=split(/\s+/,$trg);
 
@@ -1754,6 +1797,7 @@ sub openDocument{
     my $doc=shift;
 
     open $self->{$doc.'HANDLE'},"< $self->{$doc}";
+    binmode($self->{$doc.'HANDLE'});
     $self->{$doc.'EXPAT'}=new XML::Parser(Handlers => {Start   => \&XmlStart,
 						       End     => \&XmlEnd,
 						       Default => \&XmlChar});
@@ -1899,6 +1943,7 @@ sub XmlEnd{
 sub XmlChar{
     my ($p)=@_;
     my $text=$p->recognized_string();
+
     if ($p->{OPEN}){
 	$p->{INSIDE}.=$text;
 	$p->{INSIDETXT}.=$text;
@@ -1942,24 +1987,152 @@ sub new{
 
 sub view{
     my $self=shift;
-    my ($url,$style,$pos,$prev,$params,$links)=@_;
+    my ($url,$style,$pos,$params)=@_;
 
     if (ref($params) eq 'HASH'){
 	if ($$params{edit} eq 'change'){
-	    Uplug::Web::Data::ChangeWordLinks($self->{FILE},$links,$params);
-	      $url=Uplug::Web::DelUrlParam($url,'seg');
-	      $url=Uplug::Web::DelUrlParam($url,'links');
-	      $url=Uplug::Web::DelUrlParam($url,'edit');
-	  }
+#	    print join('<br>',%{$params});
+	    $self->changeLinks($params);
+	    $url=Uplug::Web::DelUrlParam($url,'start');
+	    $url=Uplug::Web::DelUrlParam($url,'end');
+	    $url=Uplug::Web::DelUrlParam($url,'seg');
+	    $url=Uplug::Web::DelUrlParam($url,'links');
+	    $url=Uplug::Web::DelUrlParam($url,'edit');
+	}
     }
 
     if (not $style){$style='text';}
     if ($style eq 'xml'){
-	return $self->Uplug::Web::Data::view($url,$style,$pos,$prev);
+	return $self->Uplug::Web::Data::view($url,$style,$pos);
     }
-    return $self->SUPER::view($url,$style,$pos,$prev);
+    if ($style eq 'edit'){$MAXVIEWDATA=1;}
+    return $self->SUPER::view($url,$style,$pos);
 }
 
+
+sub changeLinks{
+    my $self=shift;
+    my $param=shift;
+
+    my $file=$self->{FILE};
+    if (not -e $file){return 0;}
+
+    my $LOCK=$file.'.lock';            # lock the lock-file
+    open LCK,"+<$file\.lock";
+    my $sec=0;
+    while (not flock(LCK,2)){
+	$sec++;sleep(1);
+	if ($sec>$MAXFLOCKWAIT){
+	    close LCK;
+	    return 0;
+	}
+    }
+
+    open F,"< $file";
+#    binmode(F,":utf8");
+    binmode(F);
+    my ($before,$old,$after);
+    if ($$param{start}){
+	read(F,$before,$$param{start});
+	my $wrong=tell(F)-$$param{start};
+	if ($wrong<0){my $new;read(F,$new,-$wrong);$before.=$new;}
+	if ($wrong>0){for (0..$wrong){$before=~s/.$//;}}
+	seek(F,$$param{start},0);
+    }
+    read(F,$old,$$param{end}-$$param{start});
+    my $remove=tell(F)-$$param{end}-2;
+    if ($remove){for (0..$remove){$after=~s/.$//;}}
+    seek(F,$$param{end},0);
+    while (<F>){$after.=$_;}
+    close F;
+
+    #--------------------------------------------------------------------------
+    my %src;                              # source token
+    my %trg;                              # target token
+    my @lex;                              # lexical pairs (lexPair attribute)
+    my @links=&param('links');            # all 1:1 word links
+#   @links= map {$_->[0] }                # sort link ID's by the last digit
+#           sort {                        # (=sorted by target ID's)
+#		my @af=@$a[1..$#$a];      # this map-sort-map is taken from
+#		my @bf=@$b[1..$#$b];      # Programming Perl
+#		$af[-1] <=> $bf[-1];      # (the "Schwartzian Transform")
+#	    }
+#            map { [$_,split /./] } @links;
+    my %srclink=();                       # save link-cluster for src-tokens
+    my %trglink=();                       # save link-cluster for src-tokens
+    my @xtrg=();                          # list of link clusters
+    foreach (@links){                     # for each 1:1 word link
+	my ($s,$t)=split(/:/);            #   split src and trg ID
+	if (not defined $src{$s}){
+	    $src{$s}=param("S$s");             #   get the source token
+	    $src{$s}=Encode::decode('utf-8',   #   (decode UTF-8)
+				    $src{$s});
+	}
+	if (not defined $trg{$t}){
+	    $trg{$t}=param("T$t");             #   get the target token
+	    $trg{$t}=Encode::decode('utf-8',
+				    $trg{$t});
+	}
+	my $i;
+	if (not defined $srclink{$s}){    # src tokens is not part of any xtrg:
+	    if (not defined $trglink{$t}){#   neither is the trg token
+		$i=$#xtrg+1;              #   --> just create a new xtrg
+		@{$xtrg[$i]}=($s,$t);     #       (easy!)
+		@{$lex[$i]}=($src{$s},
+			     $trg{$t});
+	    }
+	    else{                         #   trg token is part of another xtrg
+		$i=$trglink{$t};          #   --> add source token to this xtrg
+		$xtrg[$i][0].="+$s";
+		$lex[$i][0].=" $src{$s}";
+	    }
+	}
+	elsif (not defined $trglink{$t}){ # src token is part of another xtrg
+	    $i=$srclink{$s};              # AND trg token is not:
+	    $xtrg[$i][1].="+$t";          #   --> add target token to this xtrg
+	    $lex[$i][1].=" $trg{$t}";
+	}
+	else{                             # the hardest case: both are part of
+	    $i=$srclink{$s};              # other xtrg's:
+	    my $j=$trglink{$t};           #    join the two xtrgs!
+	    if ($i!=$j){
+		$xtrg[$i][0].="+$xtrg[$j][0]";
+		$xtrg[$i][1].="+$xtrg[$j][1]";
+		splice(@xtrg,$j,1);
+		$lex[$i][0].=" $lex[$j][0]";
+		$lex[$i][1].=" $lex[$j][1]";
+		splice(@lex,$j,1);
+	    }
+	}
+	$srclink{$s}=$i;                  # save the index of the xtrg both
+	$trglink{$t}=$i;                  # tokens are part of
+    }
+    #--------------------------------------------------------------------------
+
+    $old=~s/^(.*?\<link\s[^>]*?)\/?(\>).*$/$1$2/s;  # keep only <link ...>
+#    $old=~s/^(.*?\<link\s[^>]*?\>).*$/$1/s;
+    $old.="\n";
+    foreach (0..$#xtrg){
+	$old.="  <wordLink ";
+	$old.="lexPair=\"$lex[$_][0];$lex[$_][1]\" ";
+	$old.="xtargets=\"$xtrg[$_][0];$xtrg[$_][1]\" />\n";
+    }
+    $old.='</link>';
+
+    open F,"> $file";
+    binmode(F);
+#    binmode(F,":utf8");
+    print F $before;
+    $self->{POS}=tell(F);
+    $old=Encode::encode('utf-8',$old);
+    print F $old;
+    $self->{NEXT}=tell(F);
+    print F $after;
+    close F;
+    close LCK;
+    param('start',$self->{POS});
+    param('end',$self->{NEXT});
+}
 
 
 sub readSentLinks{
@@ -2051,13 +2224,32 @@ sub linkMatrix{
 	    }
 	}
     }
+    my $html='';
+    if ($form){
+	$html.=&startform();
+	$html.=hidden(-name=>'start',-default=>[$self->{POS}]); # start and
+	$html.=hidden(-name=>'end',-default=>[$self->{NEXT}]);  # end position
+	$html.=hidden(-name=>'seg',-default=>[$id]);            # seg ID
+    }
     my @rows=();
     push (@rows,&th([$id]));
     foreach my $t (0..$#{$trgTok}){
 	$rows[0].=&td($trgTok->[$t]->{'#text'});
+	if ($form){
+	    my $key='T'.$trgTok->[$t]->{id};             # save target tokens
+	    my $val=$trgTok->[$t]->{'#text'};
+	    param($key,$val);
+	    $html.=hidden(-name=>$key,-default=>[$val]);
+	}
     }
     foreach my $s (0..$#{$srcTok}){
 	my $row=&td($srcTok->[$s]->{'#text'});
+	if ($form){
+	    my $key='S'.$srcTok->[$s]->{id};
+	    my $val=$srcTok->[$s]->{'#text'};
+	    param($key,$val);
+	    $html.=hidden(-name=>$key,-default=>[$val]);
+	}
 	foreach my $t (0..$#{$trgTok}){
 	    my $value="$srcTok->[$s]->{id}:$trgTok->[$t]->{id}";
 	    my $cell='';
@@ -2065,22 +2257,25 @@ sub linkMatrix{
 		if ($form){
 		    $cell=&checkbox(-name=>'links',-checked=>'checked',
 				    -value=>$value,-label=>'');
+#		    $cell.=&checkbox(-name=>'fuzzy',-checked=>'checked',
+#				    -value=>$value,-label=>'');
 		}
 		$row.=&td({},[$cell]);
 	    }
 	    else{
 		if ($form){
 		    $cell=&checkbox(-name=>'links',-value=>$value,-label=>'');
+#		    $cell.=&checkbox(-name=>'fuzzy',-value=>$value,-label=>'');
 		}
 		$row.=&th({},[$cell]);
 	    }
 	}
+	$row.=&td($srcTok->[$s]->{'#text'});
 	push (@rows,$row);
     }
-    my $html='';
-    if ($form){
-	$html.=&startform();
-	$html.=hidden(-name=>'seg',-default=>[$id]);
+    push (@rows,&th(['']));
+    foreach my $t (0..$#{$trgTok}){
+	$rows[-1].=&td($trgTok->[$t]->{'#text'});
     }
     $html.='<div class="matrix">';
     $html.=&table({},caption(''),&Tr(\@rows));

@@ -224,6 +224,7 @@ sub RunCommand{
     }
 
     #----------------------------------------------------------
+#    if (my $sig=system "$command"){
 #    if (my $sig=system "$command >/tmp/uplugweb$$.out 2>/tmp/uplugweb$$.err"){
     if (my $sig=system "$command >/dev/null 2>/dev/null"){
 	&Uplug::Web::Process::MoveJobTo($user,$process,'failed');

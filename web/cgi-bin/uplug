@@ -23,13 +23,17 @@
 require 5.002;
 use strict;
 use lib '/home/staff/joerg/user_perl/lib/perl5/site_perl/5.6.1/';
-use CGI qw/:standard escapeHTML escape/;
 use Mail::Mailer;
 use FindBin qw($Bin);
 use vars qw($UPLUGADMIN $UPLUGLOG $UPLUGHOME $UPLUGDATA 
-	    $UPLUGHTML $UPLUGCWB $CSS $HTPASSWD);
+	    $UPLUGHTML $UPLUGCWB $CSS $HTPASSWD $MAXPOST);
 
 BEGIN {
+    binmode(STDOUT, ":utf8");            # set UTF8 for STDOUT
+    $MAXPOST=100;
+    use CGI qw/:standard escapeHTML escape/;
+    $CGI::POST_MAX = $MAXPOST * 1024;           # max $MAXPOST kB of POST data
+
     $UPLUGADMIN = 'joerg@stp.ling.uu.se';
     $UPLUGLOG  = '/tmp/uplug.log';
     $UPLUGHOME = '/home/joerg/cvs/sourceforge/uplug';
@@ -69,6 +73,11 @@ my $query  = url(-query=>1);
 
 my $ADMIN=0;
 if ($user eq $UPLUGADMIN){$ADMIN=1;}
+
+
+my @char=split(//,$UPLUGADMIN);
+map($_='&#'.ord($_).';',@char);
+my $SAVEMAIL=join('',@char);
 
 #########################################################################
 #########################################################################
@@ -213,14 +222,15 @@ sub UplugMenu{
 		 [
           # 'UplugWeb' , $UPLUGHTML.'../uplug/UplugWeb/',
           # "PWA User's Guide" , '/plug/pwa/pwa_manual.html',
-		  'F.A.Q.' => 'http://stp.ling.uu.se/cgi-bin/joerg/faq/uplug',
-		  'PLUG' , 'http://stp.ling.uu.se/plug/',
-		  'PWA' , 'http://stp.ling.uu.se/plug/pwa/'
+		  'F.A.Q.',undef,
+#		  'F.A.Q.' => 'http://stp.ling.uu.se/cgi-bin/joerg/faq/uplug',
+#		  'PLUG' , 'http://stp.ling.uu.se/plug/',
+#		  'PWA' , 'http://stp.ling.uu.se/plug/pwa/'
 		  ],
 		 'Status' , 
 		 [
 		  $mtime , undef,
-		  &i('&#106;&#111;&#101;&#114;&#103;&#64;&#115;&#116;&#112;&#46;&#108;&#105;&#110;&#103;&#46;&#117;&#117;&#46;&#115;&#101;') , 'mailto:&#106;&#111;&#101;&#114;&#103;&#64;&#115;&#116;&#112;&#46;&#108;&#105;&#110;&#103;&#46;&#117;&#117;&#46;&#115;&#101;'
+		  &i($SAVEMAIL) , 'mailto:'.$SAVEMAIL
 		  ],
 		 ));
 
@@ -276,11 +286,21 @@ sub my_param{
 sub CorpusManager{
 
     my $task   = &my_param('t');        # task
-#    my $corpus = &my_param('c');        # corpus name
     my $docbase= &my_param('b');        # document base name
     my $doc    = &my_param('d');        # document
     my $owner  = &my_param('o');        # corpus owner
-    $query  = url(-query=>1);
+    my $pos    = &my_param('x');        # current position in corpus
+    my $style  = &my_param('s');        # display style
+
+#    $query  = url(-query=>1);
+    $query=&Uplug::Web::AddUrlParam('','a','corpus');
+    $query=&Uplug::Web::AddUrlParam($query,'c',$corpus);
+    if ($task){$query=&Uplug::Web::AddUrlParam($query,'t',$task);}
+    if ($owner){$query=&Uplug::Web::AddUrlParam($query,'d',$owner);}
+    if ($doc){$query=&Uplug::Web::AddUrlParam($query,'d',$doc);}
+    if ($docbase){$query=&Uplug::Web::AddUrlParam($query,'b',$docbase);}
+    if ($pos){$query=&Uplug::Web::AddUrlParam($query,'x',$pos);}
+    if ($style){$query=&Uplug::Web::AddUrlParam($query,'s',$style);}
 
     if (not defined $owner){$owner=$user;}
     my $priv='all';
@@ -303,17 +323,12 @@ sub CorpusManager{
 	(defined $corpus) and
 	(defined $doc)){
 
-	my $pos    = &my_param('x');        # current position in corpus
-	my $style  = &my_param('s');        # display style
-	my @links  = &my_param('l');        # aligned languages
-
 	$html.=&Uplug::Web::ViewCorpus($owner,            # corpus-owner
 				       $corpus,$doc,      # corpus + document
 				       $query,            # URL for this query
 				       $pos,              # corpus position
 				       $style,            # display-style
-				       \%params,          # other parameters
-				       \@links);          # aligned languages
+				       \%params);         # other parameters
     }
 
     #-------------------------------------------------------------------------
@@ -400,7 +415,14 @@ sub CorpusManager{
     elsif ($task eq 'add'){
 	if ($priv ne 'all'){
 	    my $file=param('file');
-	    $html.=&Uplug::Web::AddDocument($user,$corpus,$file,\%params);
+	    if (!$file && &cgi_error()) {
+		$html.=&h3('Upload failed!');
+		$html.="Uploads are limited to $MAXPOST kB of data!".&br();
+		$html.='('.&header(-status=>cgi_error()).')'.&hr();
+	    }
+	    else{
+		$html.=&Uplug::Web::AddDocument($user,$corpus,$file,\%params);
+	    }
 	}
 	$task='view';
 	$html.=&Uplug::Web::ShowCorpusInfo($task,
@@ -675,7 +697,7 @@ return $html;
 #########################################################################
 
 sub RegisterForm{
-    return '<CENTER>
+    my $html='<CENTER>
 <H2 ALIGN=CENTER>UplugWeb Registration</H2>
 </CENTER>
 
@@ -742,8 +764,9 @@ submitted to the UplugWeb server. The Licensee may contact the
 Proprietors in order to remove data from the Proprietors site. 
 All communication to the Proprietors shall be sent to:
 
-<a href="mailto:&#106;&#111;&#101;&#114;&#103;&#64;&#115;&#116;&#112;&#46;&#108;&#105;&#110;&#103;&#46;&#117;&#117;&#46;&#115;&#101;">&#106;&#111;&#101;&#114;&#103;&#64;&#115;&#116;&#112;&#46;&#108;&#105;&#110;&#103;&#46;&#117;&#117;&#46;&#115;&#101;</a>
-</div>
+<a href="mailto:';
+    $html.=$SAVEMAIL.'">'.$SAVEMAIL.'</a>';
+    $html.='</div>
 
 </font>
 <p>
@@ -758,7 +781,7 @@ license agreement as specified above and agree with all its parts.
 (* - required parameters)
 <HR>
 ';
-
+return $html;
 }
 
 
@@ -825,8 +848,9 @@ sub Register{
     $html.= "<a target=\"_top\" href=\"user/login\">here</a> to login!";
     $html.= '
            <p>Send e-mail to 
-           <A HREF="mailto:joerg@stp.ling.uu.se">joerg@stp.ling.uu.se</A>
-           in case of any trouble. Any kind of feedback is very welcome!
+           <A HREF="mailto:';
+    $html.=$SAVEMAIL.'">'.$SAVEMAIL.'</a> ';
+    $html.='in case of any trouble. Any kind of feedback is very welcome!
            <p>Enjoy using UplugWeb and good luck!';
     return $html;
 }

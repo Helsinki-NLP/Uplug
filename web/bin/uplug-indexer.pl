@@ -200,9 +200,11 @@ sub XML2CWB{
 
     #----------------------------------------------------------
     # convert corpus files to CWB input format!
+    # (restrict structural patterns with spattern)
 
     my $allattr=1;
-    my $spattern=undef;
+#    my $spattern=undef;
+    my $spattern='(cell|row|table|s|p|pb|head|c|chunk)';
     my $ppattern=undef;
     my $attr=&XML2CWBinput($lang,$files,$allattr,$spattern,$ppattern);
 

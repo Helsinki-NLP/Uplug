@@ -545,21 +545,21 @@ sub ChangeCorpusInfo{
 
     my $owner=shift;
     my $corpus=shift;
-    my $CorpusName=shift;
+    my $doc=shift;    # either EXISTING doc-name or doc-base-name without lang!
     my $para=shift;
 
     my $CorpusFile="$CorpusDir/$owner/$corpus/.documents";
     my $UserCorpora=Uplug::Web::Config->new($CorpusFile);
     my $corpora=$UserCorpora->read();
 
-    if (not defined $$corpora{$CorpusName}){
+    if (not defined $$corpora{$doc}){
 	if ((ref($para) eq 'HASH') and (defined $$para{language})){
-	    $CorpusName=&GetCorpusName($CorpusName,$$para{language});
+	    $doc=&GetCorpusName($doc,$$para{language});
 	}
     }
     if (ref($para) eq 'HASH'){
 	foreach (keys %{$para}){
-	    $$corpora{$CorpusName}{$_}=$$para{$_};
+	    $$corpora{$doc}{$_}=$$para{$_};
 	}
     }
     if (not $UserCorpora->write($corpora)){
@@ -571,16 +571,16 @@ sub ChangeCorpusInfo{
 sub ChangeCorpusStatus{
     my $owner=shift;
     my $corpus=shift;
-    my $CorpusName=shift;
+    my $doc=shift;
     my $status=shift;
 
     my $CorpusFile="$CorpusDir/$owner/$corpus/.documents";
     my $UserCorpora=Uplug::Web::Config->new($CorpusFile);
     my $corpora=$UserCorpora->read();
 
-    if (not defined $$corpora{$CorpusName}){return undef;}
-    my $old=$$corpora{$CorpusName}{status};
-    $$corpora{$CorpusName}{status}=$status;
+    if (not defined $$corpora{$doc}){return undef;}
+    my $old=$$corpora{$doc}{status};
+    $$corpora{$doc}{status}=$status;
     $UserCorpora->close();
     return $old;
 }
