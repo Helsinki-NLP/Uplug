@@ -13,8 +13,7 @@
 # Use Option -h to display a help screen.
 
 # THESE VARIABLES HAVE TO BE SET:
-# ROOT=/home/staff/ljo/etap/taggare
-ROOT=/users1/tiedeman/wordalign/TreeTagger
+ROOT=${UPLUGHOME}/ext/tree-tagger
 BIN=$ROOT/bin
 CMD=$ROOT/cmd
 LIB=$ROOT/lib

@@ -11,7 +11,7 @@
 ###########################################################################
 
 # THESE VARIABLES HAVE TO BE SET:
-ROOT=/users1/tiedeman/wordalign/TreeTagger
+ROOT=${UPLUGHOME}/ext/tree-tagger
 BIN=$ROOT/bin
 CMD=$ROOT/cmd
 LIB=$ROOT/lib
