@@ -88,35 +88,34 @@ sub close{
 sub read{
     my $self=shift;
 
-    if ($self->{STATUS} ne 'open'){
-	if ($self->open()){
-	    my $fh=$self->{FH};
-	    my @content=<$fh>;
-	    $self->close();
-	    return wantarray ? @content : join "@content";
-	}
-	return ();
+    my $NeedToClose=0;
+    if ($self->{STATUS} ne 'open'){         # if the stack is not opend yet:
+	if (not $self->open()){return 0;}   #   open it!
+	$NeedToClose=1;                     #   but close it afterwards again!
     }
-    if ($self->{STATUS} eq 'open'){
-	my $fh=$self->{FH};
-	my @content=<$fh>;
-	return wantarray ? @content : join "@content";
-    }
-    return ();
+    my $fh=$self->{FH};                     # get the file handle
+    my @content=<$fh>;                      # and read from it
+    if ($NeedToClose){$self->close();}      # close the stack if we opened it
+
+    return wantarray ? @content : join "@content";
 }
+
 
 sub write{
     my $self=shift;
     my $content=shift;
 
-    if ($self->{STATUS} eq 'open'){
-	my $fh=$self->{FH};
-	seek ($fh,0,0);
-	if (ref($content) eq 'ARRAY'){print $fh @{$content};}
-	else{print $fh $content;}
-	return 1;
+    my $NeedToClose=0;
+    if ($self->{STATUS} ne 'open'){
+	if (not $self->open()){return 0;}
+	$NeedToClose=1;
     }
-    return 0;
+    my $fh=$self->{FH};
+    seek ($fh,0,0);
+    if (ref($content) eq 'ARRAY'){print $fh @{$content};}
+    else{print $fh $content;}
+    if ($NeedToClose){$self->close();}
+    return 1;
 }
 
 
@@ -124,29 +123,33 @@ sub push{
     my $self=shift;
     my $text=join(':',@_);
 
-    if ($self->open()){
-	my @content=$self->read();
-	push (@content,$text."\n");
-	$self->write(\@content);
-	$self->close();
-	return 1;
+    my $NeedToClose=0;
+    if ($self->{STATUS} ne 'open'){
+	if (not $self->open()){return 0;}
+	$NeedToClose=1;
     }
-    return 0;
+    my @content=$self->read();
+    push (@content,$text."\n");
+    $self->write(\@content);
+    if ($NeedToClose){$self->close();}
+    return 1;
 }
 
 
 sub pop{
     my $self=shift;
 
-    if ($self->open()){
-	my @content=$self->read();
-	my $text=pop (@content);
-	$self->write(\@content);
-	$self->close();
-	chomp($text);
-	return wantarray ? split(/\:/,$text) : $text;
+    my $NeedToClose=0;
+    if ($self->{STATUS} ne 'open'){
+	if (not $self->open()){return undef;}
+	$NeedToClose=1;
     }
-    return undef;
+    my @content=$self->read();
+    my $text=pop (@content);
+    $self->write(\@content);
+    if ($NeedToClose){$self->close();}
+    chomp($text);
+    return wantarray ? split(/\:/,$text) : $text;
 }
 
 
@@ -155,45 +158,51 @@ sub unshift{
     my $self=shift;
     my $text=join(':',@_);
 
-    if ($self->open()){
-	my @content=$self->read();
-	unshift (@content,$text."\n");
-	$self->write(\@content);
-	$self->close();
-	return 1;
+    my $NeedToClose=0;
+    if ($self->{STATUS} ne 'open'){
+	if (not $self->open()){return 0;}
+	$NeedToClose=1;
     }
-    return 0;
+    my @content=$self->read();
+    unshift (@content,$text."\n");
+    $self->write(\@content);
+    if ($NeedToClose){$self->close();}
+    return 1;
 }
 
 
 sub shift{
     my $self=shift;
 
-    if ($self->open()){
-	my @content=$self->read();
-	my $text=shift (@content);
-	$self->write(\@content);
-	$self->close();
-	chomp($text);
-	return wantarray ? split(/\:/,$text) : $text;
+    my $NeedToClose=0;
+    if ($self->{STATUS} ne 'open'){
+	if (not $self->open()){return undef;}
+	$NeedToClose=1;
     }
-    return undef;
+    my @content=$self->read();
+    my $text=shift (@content);
+    $self->write(\@content);
+    if ($NeedToClose){$self->close();}
+    chomp($text);
+    return wantarray ? split(/\:/,$text) : $text;
 }
 
 sub remove{
     my $self=shift;
     my @data=@_;
     map($_=quotemeta($_),@data);
-
     my $pattern='^'.join(':',@data).'(\:|\Z)';
-    if ($self->open()){
-	my @content=$self->read();
-	@content=grep($_!~/$pattern/,@content);
-	$self->write(\@content);
-	$self->close();
-	return 1;
+
+    my $NeedToClose=0;
+    if ($self->{STATUS} ne 'open'){
+	if (not $self->open()){return 0;}
+	$NeedToClose=1;
     }
-    return 0;
+    my @content=$self->read();
+    @content=grep($_!~/$pattern/,@content);
+    $self->write(\@content);
+    if ($NeedToClose){$self->close();}
+    return 1;
 }
 
 
