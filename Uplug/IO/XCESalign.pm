@@ -256,8 +256,16 @@ sub write{
 
 
 
+#-----------------------------------------------------------------
+# select: select data (unfinished/buggy/not used at the moment)
+#
+# * read sequentially through the link-file and
+#   search bitext segments according to the matching pattern
+# * remove 'New' from the sub-name if you want to use it
+# * fall back to IO::XML::select otherwise
 
-sub select{
+
+sub selectNew{
     my $self=shift;
     my ($data,$pattern,$attr,$operator)=@_;
 
@@ -301,36 +309,38 @@ sub select{
 	    if (not  $self->OpenAlignDocs($BodyAttr)){
 		return 0;
 	    }
+	    delete $data->{sourceSent};    # delete previous data-objects
+	    delete $data->{targetSent};    # (to get new XML::Parser instances)
 	}
 
 	if (not $data->{link}->matchData(\%linkPattern,$operator)){next;}
 
+
 	my $attr=$data->{link}->attribute();
-# 	$data->addChild('align',undef,$attr);
 	$data->addNode('align',$attr);
 	my ($src,$trg);
 	my $xtargets=$data->{link}->attribute('xtargets');
+
 	if (defined $xtargets){
-	    ($src,$trg)=split(/\;/,$xtargets);
+	    ($src,$trg)=split(/\s*\;\s*/,$xtargets);
 	}
 	else{return 0;}
 
 	my @srcID=split(/\s/,$src);
 	my @trgID=split(/\s/,$trg);
 
-#----------- sentences ------------------------------
+        #----------- sentences ------------------------------
+
+#	print STDERR "read src sentences ",join(":",@srcID),"\n";
+#	print STDERR "read trg sentences ",join(":",@trgID),"\n";
 
 	&SearchSegments($self->{source},$data,\@srcID,'source');
 	&SearchSegments($self->{target},$data,\@trgID,'target');
 
+#	&ReadSegments($self->{source},$data,\@srcID,'source');
+#	&ReadSegments($self->{target},$data,\@trgID,'target');
+
 	$self->Uplug::IO::read($data);
-
-	$data->{source}=$data->subData('source');
-	$data->{target}=$data->subData('target');
-
-#	$data->subTree($data->{source},'source');
-#	$data->subTree($data->{target},'target');
-
 	return 1;
     }
 
@@ -339,12 +349,8 @@ sub select{
 }
 
 
-
-
-sub selectOld{
-    my $self=shift;
-    return $self->Uplug::IO::select(@_);
-}
+# end of select
+#-----------------------------------------------------------------
 
 
 
@@ -434,7 +440,109 @@ sub OpenAlignDocs{
 
 
 
+#-------------------------------------------------------------------------
+# ReadSegments: read segments from the aligned XML-files (sentences)
+#
+#  * read sequentially through the data and add sentences with the 
+#    requested IDs
+#  * if the ID's don't match --> use the select function for IO::XML
+#    (this is probably also just a sequential read -> might be a problem!)
+
 sub ReadSegments{
+
+    my ($stream,$data,$IDs,$lang)=@_;
+
+    if (not ref($stream)){return;}
+    if (not @{$IDs}){return;}
+
+    #--------------------------------------------------------------
+    if (not ref($data->{$lang})){
+	$data->{$lang}=Uplug::Data::Lang->new();  # a new language object
+    }
+    if (not ref($data->{$lang.'Sent'})){
+	$data->{$lang.'Sent'}=Uplug::Data->new(); # a new object for reading
+    }
+    #--------------------------------------------------------------
+
+    my $parent=$data->addNode($lang);     # set root node = $lang
+    $data->{$lang}->setRoot($parent);     # set root node of sub-lang-data
+    my $sent=$data->{$lang.'Sent'};       # sentences will be read into $sent
+
+    while ($stream->read($sent)){          # read sequentially through the data
+	my $id=$sent->attribute('id');     # get the sentence ID
+	if (not grep ($_ eq $id,@{$IDs})){ # if s-ID is not in the requested:
+	    foreach (@{$IDs}){                           # use the select-
+		if ($stream->select($sent,{id => $_})){  # function for the
+		    my $node=$sent->root();              # XML-data
+		    $data->addNode($parent,$node);
+		}
+	    }
+	    return;
+	}
+	my $node=$sent->root();            # otherwise: add the sentence
+	$data->addNode($parent,$node);     # and continue to read if necessary
+	if ($id eq $IDs->[-1]){last;}
+    }
+}
+
+
+
+#-------------------------------------------------------------------------
+# SearchSegments: search sentences in the aligned XML files
+#
+# * similar to ReadSegments but uses the select function in IO::XML
+#   as standard (does not call data->read at all!)
+# * 'select' is just reading sequentially through the data at the moment
+#   and could actually be used even for ReadSegments (??!)
+
+
+sub SearchSegments{
+
+    my ($stream,$data,$IDs,$lang)=@_;
+
+    if (not ref($stream)){return;}
+    if (not @{$IDs}){return;}
+
+    #--------------------------------------------------------------
+    if (not ref($data->{$lang})){
+	$data->{$lang}=Uplug::Data::Lang->new();  # a new language object
+    }
+    if (not ref($data->{$lang.'Sent'})){
+	$data->{$lang.'Sent'}=Uplug::Data->new(); # a new object for reading
+    }
+    #--------------------------------------------------------------
+
+    my $parent=$data->addNode($lang);     # set root node = $lang
+    $data->{$lang}->setRoot($parent);     # set root node of sub-lang-data
+    my $sent=$data->{$lang.'Sent'};       # sentences will be read into $sent
+
+    foreach (@{$IDs}){
+	if ($stream->select($sent,{id => $_})){
+	    my $node=$sent->root();
+	    $data->addNode($parent,$node);
+	}
+    }
+}
+
+
+
+#-------------------------------------------------------------------------
+# ReadSegments: old version of ReadSegments
+#
+# * reads sentences only if the IDs match OR the current ID is
+#   LOWER than the FIRST sentence ID in the list of requested onces
+# * advantage: does not use the select function from IO::XML which is
+#   right just a sequential search through the file! this may cause the
+#   program to read through the whole file without finding anything, and
+#   this is slow
+#   (this problem appears if there is an requested ID which is LOWER than
+#    the one at the current file position, or if the requested ID does not
+#    exist in the file)
+# * use this one instead of the one above by removing the 'Old' in the
+#   sub-name
+
+
+sub ReadSegmentsOld{
 
     my ($stream,$data,$IDs,$lang)=@_;
 
@@ -455,79 +563,37 @@ sub ReadSegments{
     $data->{$lang}->setRoot($parent);     # set root node of sub-lang-data
     my $sent=$data->{$lang.'Sent'};       # sentences will be read into $sent
 
-#------------
-# alternative: call stream->select
-# (select uses read as default but may fail ...)
-#
-#    while ($stream->select($sent,{id => "$$IDs[0]"})){
-#	my $id=$sent->attribute('id');
-#	my $node=$sent->getRootNode();
-#	$data->addChild($node,$parent);
-#	if ($id eq $IDs->[-1]){last;}
-#	$i++;
-#	shift @{$IDs};
-#    }
+    my @start=split(/\./,$IDs->[0]);  # split start ID (can be like 's3.2.5.2')
+    map(s/[^0-9]//,@start);           # delete non-digits
 
-#-------------
-# alterantive 2: read segments sequentially and check if the id
-#                matches one of the aligned sentences
-# problem: fails if the sentence does not exist
-#          (the whole xml file will be read and the process stops)
-# another problem: embedded non-aligned sentences
-#                  right now: fail only once to match it
-#                             or fail only when id is smaller then the first id
-# last problem: reading stops after last id in IDs
-#               sentences may be missing if a matching id comes after this one
-#                   in the corpus
-#
     my $fail=0;
-    while ($stream->read($sent)){
-	my $id=$sent->attribute('id');
-	if (not grep ($_ eq $id,@{$IDs})){
-	    if ($id<$IDs->[0]){next;}
-	    else{
-		$fail++;
-		if ($fail>1){
-		    last;
-		}                # fail only once!!!
-#		$stream->close;            # re-open the file: takes too
-#		$stream->open('read');     #  much time! ... ignore it for now!
-		next;
+    while ($stream->read($sent)){          # read sequentially through the data
+	my $id=$sent->attribute('id');     # get the sentence ID
+	if (not grep ($_ eq $id,@{$IDs})){ # if s-ID is not in the requested
+
+	    my @nr=split(/\./,$id);        # split into ID-levels
+	    map(s/[^0-9]//,@nr);           # delete non-digits
+
+	    foreach my $l (0..$#start){    # compare each ID level
+		if ($nr[$l]<$start[$l]){   # if the current ID is lower:
+		    last;                  #    OK! continue reading! (we don't
+		}                          #    have to check deeper levels!)
+		if ($nr[$l]>$start[$l]){   # if larger than the start-ID
+		    $fail++;last;          # --> fail and stop
+		}
 	    }
+	    if ($fail>1){last;}            # allow to fail once (why ?!?!)
+#		$stream->close;            # we could also re-open: takes too
+#		$stream->open('read');     #  much time! ... ignore it for now!
+	    next;
 	}
 	my $node=$sent->root();
 	$data->addNode($parent,$node);
 	if ($id eq $IDs->[-1]){last;}
 	$i++;
     }
-#    $sent->dispose();
 }
 
 
 
 
-sub SearchSegments{
-
-    my ($stream,$data,$IDs,$lang)=@_;
-
-    if (not ref($stream)){return;}
-    if (not @{$IDs}){return;}
-    my $i=0;
-#    my $parent=$data->addChild($lang);
-    my $parent=$data->addNode($lang);
-    my $sent=Uplug::Data->new();
-
-#------------
-# call stream->select
-#
-
-    map ($_=quotemeta($_),@{$IDs});
-    while (@{$IDs} and $stream->select($sent,{id => "\^$$IDs[0]\$"})){
-	my $node=$sent->root();
-#	$data->addChild($node,$parent);
-	$data->addNode($parent,$node);
-	$i++;
-	shift @{$IDs};
-    }
-#    $sent->dispose();
-}

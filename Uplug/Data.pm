@@ -874,6 +874,8 @@ sub isEmptyNode{
 
 
 ######################################################################
+######################################################################
+######################################################################
 # ..............
 #
 # should look through these functions some day
@@ -931,6 +933,109 @@ sub delEmptyFields{                    # delete empty fields ('')
 	if ($$data{$_} eq ''){delete $$data{$_};}
     }
 }
+
+
+#--------------------------------------------------
+# matchData: does not really match all data in this object
+#            matches only the root attributes with the select pattern
+
+sub matchData{
+    my $self=shift;
+    my $pattern=shift;
+    my $root=$self->root();
+    if (not ref($root)){return 0;}
+    return $root->matchAttr($pattern);
+}
+
+
+#-----------------------------------------
+# experimental: convert to HTML-tables
+                                                                                
+sub toHTML{
+    my $self=shift;
+    my $dom=shift;
+    my $indent=shift;
+
+    my %colors=('default' => '#FFFFFF',
+                's' => '#EEEEEE',
+                'chunk' => '#E4EEFF',
+                'c' => '#E4EEFF',
+                'source' => '#FFFFEE',
+                'target' => '#FFFFEE',
+                'w' => '#FFEEDD');
+
+    if (not defined $dom){
+        $dom=$self->root();
+    }
+
+    my $html="$indent<table>";
+    $html.="$indent<tr>";
+    foreach my $n ($dom->getChildNodes()){
+        my $name=$n->getNodeName;
+
+        if (defined $colors{$name}){
+            $html.="$indent<td bgcolor='$colors{$name}'>";
+        }
+        else{
+            $html.="$indent<td bgcolor='$colors{default}'>";
+            if ($name!~/^\#/){
+                $html.="<b>$name</b><br>";
+            }
+        }
+        if ($name eq '#text'){
+            my $str=$n->getNodeValue;
+            if ($str=~/\S/){
+                $html.="<i>$str</i>";
+            }
+        }
+        elsif ($name eq '#comment'){
+            my $str=$n->getNodeValue;
+            if ($str=~/\S/){
+                $html.='<!-- '.$str.' -->';
+            }
+        }
+        else{
+            my $attr=$n->attributes();
+#           $html.="<b>$name</b>";
+            if (ref($attr) eq 'HASH'){
+#               $html.='<font size="-3">';
+                delete $$attr{id};                    # skip ID and byte-spans!
+                delete $$attr{span};
+                $html.=join '<br>',values %{$attr};
+#               foreach (sort keys %{$attr}){
+#                   $html.="<br>$_='$attr->{$_}'";
+#               }
+#               $html.='</font>';
+            }
+        }
+        $html.=$indent.'</td>';
+    }
+
+    $html.="$indent</tr>$indent<tr>";
+
+    #--------------------
+    # process children
+
+    foreach my $n ($dom->getChildNodes()){
+        $html.="$indent<td>";
+#       $indent.='    ';
+        $indent='';
+        $html.=$self->toHTML($n,$indent);
+        $html.="$indent</td>";
+    }
+
+    $html.="$indent</tr>$indent</table>\n";
+    return $html;
+}
+
+
+######################################################################
+######################################################################
+######################################################################
+######################################################################
+
+
+
 
 
 

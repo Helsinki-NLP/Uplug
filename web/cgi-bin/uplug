@@ -415,7 +415,7 @@ sub CorpusManager{
 	}
 	elsif (defined $doc){
 	    if (&Uplug::Web::Corpus::SendCorpus($user,$owner,$corpus,$doc)){
-		$html.=&h3("'$doc' from '$corpus' has been send to $user!");
+		$html.=&h3("'$doc' from '$corpus' has been sent to $user!");
 	    }
 	}
 	else{
