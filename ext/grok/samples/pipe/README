@@ -1,0 +1,14 @@
+This is a small sample program that shows how to set up a pipeline and
+run it on some text.  To run it, you just need to make sure that the
+environment variable GROK_HOME is set to where you have installed
+Grok, make sure that you have compiled Grok, and then do the following
+in this directory:
+
+./runpipe
+
+This will compile the .java files, get the classpath sorted out and
+run it.
+
+You can play around with adding different pipelinks and running it
+again to test your own pipelink components or pipeline configuration
+and see the output.

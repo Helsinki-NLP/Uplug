@@ -1,0 +1,43 @@
+#!/usr/bin/perl
+
+use FindBin qw($Bin);
+
+my $JAVA_HOME='/usr/java/j2re1.4.2';
+my $GROK_HOME="$Bin/../grok/";
+my $JARS=`echo ${GROK_HOME}/lib/*.jar | tr ' ' ':'`;
+$ENV{CLASSPATH}="$ENV{CLASSPATH}:.:${JARS}:${GROK_HOME}/output/classes:${GROK_HOME}/src/java/";
+
+my $DIR=$ENV{PWD};                                  # save current dir
+chdir $Bin;                                         # go to Bin
+my $file=$ARGV[0];                                  # file to be tagged
+if (not -e $file){$file="$DIR/$file";}              # change path if necessary
+
+system "${JAVA_HOME}/bin/java GrokTaggerSV $file";  # call the tagger
+
+chdir $DIR;                                         # go bach to original dir
+exit;
+
+
+#############################
+# bash version
+
+
+# !/bin/bash
+#
+# JAVA_HOME='/usr/java/j2re1.4.2';
+#
+## openNLP
+## and Grok
+#
+# GROK_HOME=${UPLUGHOME}/ext/grok/
+# JARS=`echo ${GROK_HOME}/lib/*.jar | tr ' ' ':'`
+# CLASSPATH=${CLASSPATH}:.:${JARS}:${GROK_HOME}/output/classes:${GROK_HOME}/src/java/
+#
+# DIR=`pwd`;
+# TAGGERDIR=${UPLUGHOME}/ext/tagger;
+# cd ${TAGGERDIR};
+#
+#
+# ${JAVA_HOME}/bin/java GrokTaggerSV $1
+# 
+# cd ${DIR};

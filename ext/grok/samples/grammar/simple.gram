@@ -1,0 +1,4 @@
+lexicon lexicon.xml
+rules rules.xml
+morphology morph.xml
+morphdata flat_morph_db

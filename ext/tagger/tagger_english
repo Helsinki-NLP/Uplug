@@ -1,0 +1,22 @@
+#!/bin/bash
+
+
+JAVA_HOME='/usr/java/j2re1.4.2';
+
+# openNLP
+# and Grok
+
+GROK_HOME=${UPLUGHOME}/ext/grok/
+JARS=`echo ${GROK_HOME}/lib/*.jar | tr ' ' ':'`
+CLASSPATH=${CLASSPATH}:.:${JARS}:${GROK_HOME}/output/classes:${GROK_HOME}/src/java/
+
+DIR=`pwd`;
+TAGGERDIR=${UPLUGHOME}/ext/tagger;
+cd ${TAGGERDIR};
+
+
+${JAVA_HOME}/bin/java GrokTaggerEN $1
+
+
+cd ${DIR};
+

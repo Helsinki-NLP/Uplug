@@ -1,0 +1,2 @@
+SRC = Parameter.cc myassert.cc Perplexity.cc model1.cc model2.cc model3.cc getSentence.cc TTables.cc ATables.cc AlignTables.cc main.cc NTables.cc model2to3.cc collCounts.cc alignment.cc vocab.cc MoveSwapMatrix.cc transpair_model3.cc transpair_model5.cc transpair_model4.cc utility.cc parse.cc reports.cc model3_viterbi.cc model3_viterbi_with_tricks.cc Dictionary.cc model345-peg.cc hmm.cc HMMTables.cc ForwardBackward.cc
+

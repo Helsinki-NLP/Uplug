@@ -1,0 +1,14 @@
+#!/bin/bash
+
+
+DIR=`pwd`;
+PARSERDIR=${UPLUGHOME}/ext/parser/sv;
+PARSER=${PARSERDIR}/run_parse.py;
+cd ${PARSERDIR};
+
+# LINES=`wc -l $1 |sed "s/^ *//g" | cut -f1 -d " "`;
+# ${PARSER} -p 0 ${LINES} $1 $2
+
+${PARSER} -p 0 0 $1 $2
+
+cd ${DIR};

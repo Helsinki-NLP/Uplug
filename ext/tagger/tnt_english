@@ -1,0 +1,8 @@
+#!/bin/bash
+
+BIN=/local/ling/tnt/tnt
+TNT=${BIN}/tnt
+MODEL=${BIN}/models/wsj.tnt
+
+${TNT} ${MODEL} $1
+
