@@ -32,6 +32,7 @@
 #            -c clue-bitext ........... bitext used for training clues (can be
 #                                       different from the other bitexts used for
 #                                       aligning and evaluating)
+#            -l nr .................... learn dynamic clues after each <nr> alignments
 #
 #
 #   bitext.ces ..... sentence alignment file a la XCES
@@ -111,6 +112,7 @@ while ($ARGV[0]=~/^\-/){                          # get some script options
     if ($opt eq '-hg'){$UnseenGold=shift(@ARGV);} # ... and its gold standard
     if ($opt eq '-c'){$ClueBitext=shift(@ARGV);}  # bitext for training clues
     if ($opt eq '-a'){$AlwaysDyn=1;}              # always learn dynamic clues
+    if ($opt eq '-l'){$LearnStep=shift(@ARGV);}   # learn dynamic clues each X align
 }
 
 ##
@@ -460,6 +462,9 @@ sub CheckPrevious{
     closedir DIR;
     foreach my $file (@eval){
 	$file=~s/\.eval//;
+	if ($file=~/dyn([0-9]+)\_/){    # if there are already some dynamic
+	    if ($1>$DynNr){$DynNr=$1;}  # clues: check the DynNr
+	}
 	push(@{$settings},{});
 	&File2Setting($settings->[-1],$file);
 	$Tried{$file}=1;
@@ -1022,7 +1027,7 @@ sub CheckScore{
 
 	my ($size)=grep /size of gold standard/,@link;
 	$size=~s/^.*size of gold standard:\s*([0-9]+)\,.*$/$1/;
-	if ($size<$GoldSize){
+	if (($size<$GoldSize) or ($size>$GoldSize+5)){
 	    if (-e "$file.links.gz"){unlink "$file.links.gz";}
 	    if (-e "$file.links"){unlink "$file.links";}
 	    unlink "$file.eval";                         # delete old eval-file
