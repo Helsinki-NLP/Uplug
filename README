@@ -1,8 +1,21 @@
 
-Uplug
------
+Uplug - NLP tools for processing (parallel) corpora
+---------------------------------------------------
 
-NLP tools for processing (parallel) corpora
-	- pre-processing
-	- alignment
+Uplug is a collection of tools and scripts for processing text-corpora
+The whole package is in development - be patient!
 
+uplug		  script for running Uplug modules
+bin/		  executable scripts (Uplug modules)
+systems/	  configuration files of Uplug modules
+ext/		  external programs/tools integrated in Uplug
+tools/		  simple tools (converting, dumping, etc)
+web/		  scripts for UplugWeb (not tested)
+
+ini/		  some configuration files
+lang/		  language specific data
+example/	  small example corpora
+
+Uplug.pm          main library for running Uplug modules
+Uplug/		  Uplug libraries
+XML/		  external XML libraries (just in case you don't have them)

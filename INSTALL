@@ -1,0 +1,27 @@
+
+
+Installing Uplug
+----------------
+
+
+There is no tool for installing Uplug yet.
+Most of the scripts should run on a standard GNU/Linux machine.
+
+* You need at least a recent version of Perl (I use 5.8.0)
+  You have to modify scripts in bin/ to point to your perl binary
+  (the default setting is /usr/bin/perl)
+* Some scripts in tools/ use bash (/bin/bash)
+  You might have to adjust scripts in tools/ according to your
+  installation
+* Check the external programs in ext/
+  External programs are pre-compiled for GNU/Linux (RedHat 9)
+  Starter scripts have to be modified if necessary
+	  ext/tagger
+	  ext/parser
+	  ext/chunker
+  Some of the external programs are not included in the package. You
+  might want to install them on your local machine:
+     The TreeTagger: http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html
+     The Qtag Tagger: http://web.bham.ac.uk/O.Mason/software/tagger/
+
+
