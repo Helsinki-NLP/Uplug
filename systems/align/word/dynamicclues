@@ -16,7 +16,6 @@
 
   'module' => {
     'location' => '$UplugBin',
-    'stdin' => 'bitext',
     'program' => 'linkclue.pl',
     'name' => 'dynamic alignment clues'
   },

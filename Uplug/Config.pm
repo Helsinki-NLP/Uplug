@@ -1,4 +1,9 @@
 #####################################################################
+#
+# $Author$
+# $Id$
+#
+#---------------------------------------------------------------------------
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
 # This program is free software; you can redistribute it and/or modify
@@ -14,778 +19,332 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-#
-# Uplug::Config
-#
-#####################################################################
-# $Author$
-# $Id$
+#---------------------------------------------------------------------------
+
 
 
 package Uplug::Config;
 
+require 5.004;
+
 use strict;
-use vars qw(@ISA @EXPORT %NamedStreams);
-use Exporter;
-use File::Copy;
-use Fcntl qw(:DEFAULT :flock);
+use vars qw($VERSION @ISA @EXPORT);
+use vars qw(%NamedIO);
+
 use Data::Dumper;
-use FindBin qw($Bin);
-use lib $Bin;
-use lib "$Bin/lib";
-use lib "$Bin/..";
-use lib "$Bin/../lib";
-use Uplug::Encoding;
-use Uplug::Web::Process::Lock;     # file locking without flock!
+
+$VERSION = 0.02;
+
 
 @ISA = qw( Exporter);
-
-@EXPORT = qw(&ReadIniFile &ReadIniString &LoadIniData &GetIniData
-	     &WriteIniFile &WriteAll2IniFile &Write2IniFile
-	     &SetIniAttribute &AddIniAttribute &SetAttribute
-	     &SetValue &CheckParameter
-	     &InitLocalUplugConfig &ReloadDefaults 
-	     &InstallLocalFiles &InstallAllLocalFiles 
-	     &LoadConfiguration &SaveConfiguration
-	     &CheckConfigDir &SplitFileName
-	     &ExpandNamedStreams &ExpandHash &ExpandVariables
-	     &UplugHome &LocalUplugHome &UplugData &UplugSystem &UplugIni
-	     &CopyFile &CopyDir &RmDir &FindDataFile);
-
-my $MAXFLOCKWAIT=3;
-
-if (not defined $ENV{UPLUGRUN}){$ENV{UPLUGRUN}='.';}   # check and set
-if ((not defined $ENV{UPLUGHOME}) and                  # UPLUG environment
-    (defined $ENV{UPLUG}) and                          # variables!
-    (-d "$ENV{UPLUG}/ini") and 
-    (-d "$ENV{UPLUG}/systems")){
-    $ENV{UPLUGHOME}=$ENV{UPLUG};
-}
-elsif ((-d "$Bin/ini") and (-d "$Bin/systems")){
-    $ENV{UPLUGHOME}=$Bin;
-}
-elsif ((-d "$Bin/../ini") and (-d "$Bin/../systems")){
-    $ENV{UPLUGHOME}=$Bin.'/..';
-}
+@EXPORT = qw(&ReadConfig &WriteConfig &CheckParameter &GetNamedIO
+	     &GetParam &SetParam);
 
 
+## "named" IO streams are stored in %NamedIO
+## read them from the files below (in ENV{UPLUGHOME}/ini)
 
-sub ReadIniFile{
-    my ($file,$cat,$subcat,$attr)=@_;
-    my $IniData={};
-    return &LoadIniData($IniData,$file,$cat,$subcat,$attr);
-}
+&ReadNamed('DataStreams.ini');          # default "IO streams"
+&ReadNamed('UserDataStreams.ini');      # user "IO streams"
 
-sub ReadIniString{
-    my ($IniData,$DataString,$cat,$subcat,$attr)=@_;
-    $IniData->{data}={};
-    $IniData->{data} = eval $DataString;
-    %{$IniData}=%{$IniData->{data}};
-    return &GetIniData($IniData,$cat,$subcat,$attr);
-}
 
-sub MyCopyFile{
-    my ($src,$dest)=@_;
+#------------------------------------------------------------------------
+# CheckParameter($config,$param,$file)
+#   * config .... pointer to hash with default config
+#   * param ..... command-line parameters (usually a pointer ot an ARRAY)
+#   * file ...... config-file (replaces default config options)
 
-    my @path=split(/[\\\/]/,$dest);
-    pop(@path);
-    my $dir='';
-    while (@path){
-	$dir.=shift @path;
-	if (not -d $dir){
-	    if (not mkdir $dir,0750){return 0;}
-	}
-	$dir.='/';
+sub CheckParameter{
+    my ($config,$param,$file)=@_;
+
+    if (ref($config) ne 'HASH'){$config={};}
+    my @arg;
+    if (ref($param) eq 'ARRAY'){@arg=@$param;}
+    elsif($param=~/\S\s\S/){@arg=split(/\s+/,$param);}
+
+    if (-e $file){
+	my $new=&ReadConfig($file);
+	$config=&MergeConfig($config,$new);
     }
-    print STDERR "create $dest\n";
-    copy($src,$dest);
-    if (-e $dest){return 1;}
+    for (0..$#arg){                            # special treatment for the
+	if ($arg[$_] eq '-i'){                 # -i argument --> config file
+	    my $new=&ReadConfig($arg[$_+1]);
+	    $config=&MergeConfig($config,$new);
+	}
+    }
+    &CheckParam($config,@arg);
+
+    return $config;
 }
 
-sub FindConfigFile{
+
+# $config = MergeConfig($config1,$config2)
+#    copy all keys from $config2 to $config1 and return $config1
+
+sub MergeConfig{
+    my ($conf1,$conf2)=@_;
+    if (ref($conf1) ne 'HASH'){return $conf1;}
+    if (ref($conf2) ne 'HASH'){return $conf1;}
+    for (keys %{$conf2}){
+	$conf1->{$_}=$conf2->{$_};
+    }
+    return $conf1;
+}
+
+
+#------------------------------------------------------------------------
+# read configuration files
+#    - essentially this restores a Perl hash from a hash dump
+#    - some variables are expanded before restoring (see ExpandVar)
+#    - "named" IO streams are replaced with their expanded specifications
+#    - command line arguments are expanded and set in the config hash 
+
+
+sub ReadConfig{
     my $file=shift;
-    my $config=$file;
+    my @param=@_;
 
-    if (-f "ini/$file"){
-	return "ini/$file";
-    }
-    elsif (-f "systems/$file"){
-	return "systems/$file";
-    }
-    elsif(-f "$ENV{UPLUGHOME}/$file"){
-	$file="$ENV{UPLUGHOME}/$file";
-    }
-    elsif(-f "$ENV{UPLUGHOME}/ini/$file"){
-	$config="ini/$file";
-	$file="$ENV{UPLUGHOME}/ini/$file";
-    }
-    elsif(-f "$ENV{UPLUGHOME}/systems/$file"){
-	$config="systems/$file";
-	$file="$ENV{UPLUGHOME}/systems/$file";
-    }
-    if (-f $file){
-	if ($config ne $file){
-	    if (&MyCopyFile($file,$config)){
-		return $config;
-	    }
+    if (! -f $file){
+	if (-f "$ENV{UPLUGHOME}/$file"){
+	    $file = "$ENV{UPLUGHOME}/$file";
 	}
-	return $file;
+	elsif (-f "$ENV{UPLUGHOME}/systems/$file"){
+	    $file = "$ENV{UPLUGHOME}/systems/$file";
+	}
+	else{
+	    warn "# Uplug::Config: config file '$file' not found!\n";
+	}
     }
-    return 0;
+
+    open F,"<$file" || die "# Uplug::Config: cannot open file '$file'!\n";
+    my @lines=<F>;
+    my $text=join '',@lines;
+    close F;
+    $text=&ExpandVar($text);
+    my $config=eval $text;
+    &ExpandNamed($config);
+    &CheckParam($config,@param);
+    return $config;
 }
 
-sub LoadIniData{
 
-    my ($IniData,$file,$cat,$subcat,$attr)=@_;
+#------------------------------------------------------------------------
+# write configuration file
+#    dump a perl hash into a text file (nothing else)
 
-    if ($file=~/^\&/){
-	my $command=$file;
-	$command=~s/^\&//;
-	my $DataString=`$command`;
-	if ($DataString){
-	    return &ReadIniString($IniData,$DataString,$cat,$subcat,$attr);
-	}
-	return ();
-    }
-    if (not -f $file){
-	my $found;
-	if (not ($found=&FindConfigFile($file))){
-	    print STDERR "# Uplug::Config.pm: error: cannot load $file\n";
-	    return ();
-	}
-	$file=$found;
-    }
+sub WriteConfig{
+    my $file=shift;
+    my $config=shift;
 
-    my $DataString='';
-#    print STDERR "# Uplug::Config - open file $file!\n";
-    open FH,"<$file";
-    my $del=$/;undef $/;
-    $DataString=<FH>;
-#    print STDERR "# Uplug::Config - close file $file!\n";
-    close FH;
-    $/=$del;
-
-    $IniData->{'__newdata'}={};
-    if (not $IniData->{'__newdata'} = eval $DataString){
-	warn "# Uplug::Config.pm: problems with config file $file!\n# $@\n";
-    }
-    if (ref($IniData->{'__newdata'}) eq 'HASH'){
-	if (defined $IniData->{'__newdata'}->{encoding}){
-	    if ($IniData->{'__newdata'}->{encoding} ne 
-		$Uplug::Encoding::DEFAULTENCODING){
-		$DataString=
-		    &Uplug::Encoding::convert($DataString,
-					 $IniData->{'__newdata'}->{encoding},
-					 $Uplug::Encoding::DEFAULTENCODING);
-		$IniData->{'__newdata'} = eval $DataString;
-	    }
-	}
-
-	foreach (keys %{$IniData->{'__newdata'}}){
-	    $IniData->{$_}=$IniData->{'__newdata'}->{$_};
-	    delete $IniData->{'__newdata'}->{$_};
-	}
-    }
-    delete $IniData->{'__newdata'};
-    &ExpandHash($IniData);
-    return &GetIniData($IniData,$cat,$subcat,$attr);
-}
-
-sub GetIniData{
-    my ($IniData,$cat,$subcat,$attr)=@_;
-
-    if (ref($IniData) eq 'HASH'){
-	if (defined $cat){
-	    if (ref($$IniData{$cat}) eq 'HASH'){
-		if (defined $subcat){
-		    if (ref($$IniData{$cat}{$subcat}) eq 'HASH'){
-			if (defined $attr){
-			    return $$IniData{$cat}{$subcat}{$attr};
-			}
-			return wantarray ? %{$$IniData{$cat}{$subcat}} :
-			    $$IniData{$cat}{$subcat};
-		    }
-		    return $$IniData{$cat}{$subcat};
-		}
-		return wantarray ? %{$$IniData{$cat}} : $$IniData{$cat};
-	    }
-	    return $$IniData{$cat};
-	}
-	return wantarray ? %{$IniData} : $IniData;
-    }
-    return $IniData;
-}
-
-############################
-# WriteIniFile:
-#    write inifile
-############################
-
-sub WriteIniFile{
-    my ($file,$ATTR)=@_;
-
-##
-## file locking with flock
-##
-#    sysopen(INI,$file,O_RDWR|O_CREAT) or die "can't open $file: $!\n";
-#    my $sec=0;
-#    while (not flock(INI,2)){
-#	$sec++;sleep(1);
-#	if ($sec>$MAXFLOCKWAIT){
-#	    print STDERR "# Uplug::Config - can't get exclusive lock for $file!\n";
-#	    close INI;
-#	    return 0;
-#	}
-#    }
-
-##
-## file locking with Uplug::Web::Process::Lock::nflock
-##
-
-    if (not &nflock($file,$MAXFLOCKWAIT)){
-	print STDERR "# Uplug::Config - can't get exclusive lock for $file!\n";
-	return 0;
-    }
-    sysopen(INI,$file,O_RDWR|O_CREAT) or die "can't open $file: $!\n";
+    open F,">$file" || die "# Config: cannot open '$file'!\n";
 
     $Data::Dumper::Indent=1;
     $Data::Dumper::Terse=1;
     $Data::Dumper::Purity=1;
-    seek (INI,0,0);
-    print INI Dumper($ATTR);
-    truncate(INI,tell(INI));
-    close INI;
-
-##
-## unlocking with Uplug::Web::Process::Lock::nunflock
-##
-
-    &nunflock($file);
-
+    print F Dumper($config);
+    close F;
 }
 
 
-sub WriteAll2IniFile{
-    return &WriteIniFile(@_);
-}
 
-############################
-# Write2IniFile($file,$cat,$subcat,$attr,$value):
-#    write/update one attribute in inifile
-#    $value may be reference to array or hash
-############################
 
-sub Write2IniFile{
-    my ($file,$cat,$subcat,$attr,$value)=@_;
-    my %ATTR;
-    &LoadIniData(\%ATTR,$file);
-    &SetIniAttribute(\%ATTR,$cat,$subcat,$attr,$value);
-    &WriteIniFile($file,\%ATTR);
-}
+#------------------------------------------------------------------------
+# ExpandVar .... expand some special variables in config files
+#
+#  UplugSystem - default directory for module configuration files
+#  UplugData   - default directory for data files (= ./data)
+#  UplugIni    - default directory for inital config files (DataStreams.ini)
+#  UplugBin    - default directory for Uplug scripts (called by modules)
 
-sub SetIniAttribute{
-    my ($IniData,$cat,$subcat,$attr,$value)=@_;
-    my $data;
 
-    if (not defined $IniData->{$cat}){
-	$IniData->{$cat}={};
-    }
-    if (not defined $IniData->{$cat}->{$subcat}){
-	$IniData->{$cat}->{$subcat}={};
-    }
-    if ($value=~/^\((.*\=\>.*)\)$/){
-	$data={};
-	my $tmp=$1;
-	$tmp=~s/\=\>/,/g;
-	%{$data}=split(/,/,$tmp);
-#	eval '%{$data}='.$value;
-    }
-    elsif ($value=~/^\((.*)\)$/){
-	$data=[];
-	@{$data}=split(/,/,$1);
-#	eval '@{$data}='.$value;
-    }
-    else{$data=$value;}
-    &SetAttribute($IniData->{$cat}->{$subcat},$attr,$data);
+sub ExpandVar{
+    my $configtext=shift;
+    $configtext=~s/\$UplugSystem/$ENV{UPLUGHOME}\/systems/gs;
+    $configtext=~s/\$UplugData/data/gs;
+    $configtext=~s/\$UplugIni/$ENV{UPLUGHOME}\/ini/gs;
+    $configtext=~s/\$UplugBin/$ENV{UPLUGHOME}\/bin/gs;
+    return $configtext;
 }
 
 
-############################
-# AddIniAttribute(\%ATTR,$key,$val)
-#    adds an attribute-value structure    
-#    to an IniHash
-############################
+#------------------------------------------------------------------------
+# ExpandNamed .... expand "named" IO streams
+#
+#   some input/output specifications are stored in ini/DataStreams.ini
+#   this provides a shorthand for some standard I/O
+#   (use attribute 'stream name' to point to one of the defined IO streams)
+#
+# ExpandNamed substitutes these shorthands in "input" and "output" in a 
+# module configuration hash with the actual specifications
+#
 
-sub AddIniAttribute{
-    &SetAttribute(@_);
-}
-
-sub SetAttribute{
-    my ($ATTR,$key,$val)=@_;
-    if (defined $ATTR->{$key}){
-	if (ref($ATTR->{$key})){
-	    if (ref($ATTR->{$key}) ne ref($val)){
-		&SetValue($ATTR,$key,$val);
-		return;
-	    }
-	    if (ref($val) eq 'ARRAY'){
-		push (@{$ATTR->{$key}},@{$val});
-		&SetValue($ATTR,$key,$ATTR->{$key});
-		return;
-	    }
-	    if (ref($val) eq 'HASH'){
-		foreach (keys %{$val}){
-		    $ATTR->{$key}->{$_}=$val->{$_};
+sub ExpandNamed{
+    my $config=shift;
+    my $input=GetParam($config,'input');
+    if (ref($input) eq 'HASH'){
+	for my $i (keys %$input){
+	    if (ref($input->{$i}) eq 'HASH'){
+		if (exists $input->{$i}->{'stream name'}){
+		    $input->{$i}=&GetNamedIO($input->{$i});
 		}
-		&SetValue($ATTR,$key,$ATTR->{$key});
-		return;
 	    }
 	}
     }
-    &SetValue($ATTR,$key,$val);
+    my $output=GetParam($config,'output');
+    if (ref($output) eq 'HASH'){
+	for my $i (keys %$output){
+	    if (ref($output->{$i}) eq 'HASH'){
+		if (exists $output->{$i}->{'stream name'}){
+		    $output->{$i}=&GetNamedIO($output->{$i});
+		}
+	    }
+	}
+    }
+    return $config;
 }
 
-sub SetValue{
-    my ($hash,$key,$val)=@_;
-    if (ref($val)){
-	$Data::Dumper::Indent=0;
+#------------------------------------------------------------------------
+# GetNamedIO ... return specifications of a "named" IO stream
+
+sub GetNamedIO{
+    my $name=shift;
+    my $spec={};
+    if (ref($name) eq 'HASH'){
+	$spec=$name;
+	$name=$name->{'stream name'};
+    }
+    if (exists $NamedIO{$name}){
+	my $conf=eval $NamedIO{$name};
+	if (ref($conf) eq 'HASH'){
+	    for (keys %$conf){
+		if (exists $spec->{$_}){next;}
+		$spec->{$_}=$conf->{$_};
+	    }
+	    delete $spec->{'stream name'};
+	}
+    }
+    return $spec;
+}
+
+
+#------------------------------------------------------------------------
+# CheckParam ... check command line parameters and modify the config hash
+#                according to the given parameters
+# possible command line arguments are specified in the config hash, either
+# in { arguments => { shortcuts => { ... } } } or
+# in { arguments => { optons => { ... } } }    or
+# in { options => { ... } }
+#
+# example: define an option '-in file-name' for setting the file-name (=file)
+#          of the input stream called 'text' with the following code:
+#
+#  { 'arguments' => {
+#       'shortcuts' => {
+#          'in' => 'input:text:file'
+#       }
+#  }
+#
+# if you use the flag '-in' its argument (e.g. 'my-file.txt') will be moved to
+#    { input => { text => { file => my-file.txt } } }
+# in the config hash
+#
+
+
+sub CheckParam{
+    my $config=shift;
+
+    if ($_[0]=~/\S\s\S/){                   # if next argument is a string with
+	my @params=split(/\s+/,$_[0]);      # spaces: split it into an array
+	return CheckParam($config,@params); #         and try again
+    }
+
+    my $flags=GetParam($config,'arguments','shortcuts');
+    if (ref($flags) ne 'HASH'){
+	$flags=GetParam($config,'arguments','options');
+    }
+    if (ref($flags) ne 'HASH'){
+	$flags=GetParam($config,'options');
+    }
+    return if (ref($flags) ne 'HASH');
+    while (@_){
+	my $f=shift;                    # flag name
+	$f=~s/^\-//;                    # delete leading '-'
+	if (exists $flags->{$f}){
+	    my @attr=split(/:/,$flags->{$f});
+	    my $val=1;
+	    if ($_[0]!~/^\-/){
+		$val=shift;
+	    }
+	    SetParam($config,$val,@attr);
+	}
+    }
+    return $config;
+}    
+
+#------------------------------------------------------------------------
+# SetParam($config,@attr,$value) ... set a parameter in a config hash
+#
+#  $config is a pointer to hash
+#  @attr   is a sequence of attribute names (refer to nested hash structures)
+#  $value  is the value to be set
+
+sub SetParam{
+    my $config=shift;
+    my $value=shift;    # value
+    my $attr=pop(@_);   # attribute name
+
+    if (ref($config) ne 'HASH'){$config={};}
+    foreach (@_){
+	if (ref($config->{$_}) ne 'HASH'){
+	    $config->{$_}
+	}
+	$config=$config->{$_};
+    }
+    $config->{$attr}=$value;
+}
+
+#------------------------------------------------------------------------
+# GetParam(config,@attr) ... get the value of a (nested attribute)
+
+sub GetParam{
+    my $config=shift;
+    my $attr=pop(@_);
+    foreach (@_){
+	if (ref($config) eq 'HASH'){
+	    $config=$config->{$_};
+	}
+	else{return undef;}
+    }
+    return $config->{$attr};
+}
+
+
+#------------------------------------------------------------------------
+# ReadNamed .... read pre-defined IO streams from a file and store
+#                the specifications in the global NamedIO hash
+
+sub ReadNamed{
+    my $file=shift;
+    if (! -f $file){
+	$file='ini/'.$file if (-f 'ini/'.$file);
+	$file=$ENV{UPLUGHOME}.'/'.$file if (-f $ENV{UPLUGHOME}.'/'.$file);
+	$file=$ENV{UPLUGHOME}.'/ini/'.$file 
+	    if (-f $ENV{UPLUGHOME}.'/ini/'.$file);
+    }
+    if (! -f $file){return 0;}
+    my $config=&ReadConfig($file);
+    if (ref($config) eq 'HASH'){
+	$Data::Dumper::Indent=1;
 	$Data::Dumper::Terse=1;
 	$Data::Dumper::Purity=1;
-	my $ValString=Dumper($val);
-	$hash->{$key}=eval $ValString;
-    }
-    else{
-	$hash->{$key}=$val;
-    }
-}
-
-
-
-sub CheckParameter{
-    my ($Data,$ArgVal,$IniFile)=@_;
-
-    my $PrintIniAndExit=0;
-
-    if (-e $IniFile){
-	&LoadIniData($Data,$IniFile);
-    }
-    my $shorts={};
-    if (ref($Data) ne 'HASH'){return 0;}
-    if (ref($Data->{arguments}) eq 'HASH'){
-	if (ref($Data->{arguments}->{shortcuts}) eq 'HASH'){
-	    $shorts=$Data->{arguments}->{shortcuts};
+	for (keys %$config){
+	    $NamedIO{$_}=Dumper($config->{$_});
 	}
     }
-
-    if (ref($ArgVal) eq 'ARRAY'){
-	foreach (0..$#{$ArgVal}){
-	    if ($ArgVal->[$_]=~/^\-i$/){
-		$IniFile=$ArgVal->[$_+1];
-		&LoadIniData($Data,$IniFile);
-		if (ref($Data->{arguments}) eq 'HASH'){
-		    if (ref($Data->{arguments}->{shortcuts}) eq 'HASH'){
-			$shorts=$Data->{arguments}->{shortcuts};
-		    }
-		}
-	    }
-	}
-
-	while ($ArgVal->[0]=~/^\-/){
-	    my $flag=shift @{$ArgVal};
-	    if (($flag=~/^\-h$/) or ($flag=~/^\-help/)){
-		&PrintHelpScreen($Data);
-		exit;
-	    }
-	    if ($flag=~/^\-(.*)$/){
-		if (defined $$shorts{$1}){
-		    $flag=$$shorts{$1};
-		}
-		my @ini=split(/\:/,$flag);
-		my $value;
-		if (($ArgVal->[0]=~/^\-/) or (not @{$ArgVal})){
-		    $value=1;
-		}
-		else{$value=shift @{$ArgVal};}
-
-		if (defined $ini[3]){
-		    $Data->{$ini[0]}->{$ini[1]}->{$ini[2]}->{$ini[3]}=$value;
-		}
-		elsif (defined $ini[2]){
-		    $Data->{$ini[0]}->{$ini[1]}->{$ini[2]}=$value;
-		}
-		elsif (defined $ini[1]){
-		    $Data->{$ini[0]}->{$ini[1]}=$value;
-		}
-		else {
-		    $Data->{$ini[0]}=$value;
-		}
-	    }
-	}
-    }
-}
-
-
-sub PrintHelpScreen{
-    my $data=shift;
-
-    my $helpexists=0;
-    if (ref($data->{help}) eq 'HASH'){$helpexists=1;}
-
-    if (ref($data->{module}) eq 'HASH'){
-	print STDERR "uplug module: $data->{module}->{name}\n\n";
-	print STDERR "       usage: $data->{module}->{program} [OPTIONS]";
-	if (defined $data->{module}->{stdin}){print STDERR " < input";}
-	if (defined $data->{module}->{stdout}){print STDERR " > output";}
-    }
-    print STDERR "\n\nOPTIONS:\n";
-    if (ref($data->{arguments}) eq 'HASH'){
-	if (ref($data->{arguments}->{shortcuts}) eq 'HASH'){
-	    my @para=sort { $data->{arguments}->{shortcuts}->{$a} cmp 
-			    $data->{arguments}->{shortcuts}->{$b} } 
-	    keys %{$data->{arguments}->{shortcuts}};
-	    foreach my $i (0..$#para){
-		my $p=$para[$i];
-		printf STDERR "\t%-15s","\-$p arg";
-		if ($helpexists and 
-		    (ref($data->{help}->{shortcuts}) eq 'HASH') and
-		    (defined $data->{help}->{shortcuts}->{$p})){
-		    printf STDERR "%-40s\n","$data->{help}->{shortcuts}->{$p}";
-		}
-		else{
-		    printf STDERR "%-40s\n","$data->{arguments}->{shortcuts}->{$p}";
-		}
-	    }
-	}
-    }
-    printf STDERR "\t%-15s%-40s\n","-i config","configuration file <config>";
-    printf STDERR "\t%-15s%-40s\n\n","-h","this help";
-}
-
-
-
-
-
-
-#---------------------------------------------------------------------
-#
-# taken from uplugLib.pl ....
-#
-#---------------------------------------------------------------------
-# set Uplug home directories
-#                            central: FindBin::Bin/..
-#                            local:   $ENV{HOME}/Uplug       OR
-#                                     $ENV{UPLUG}
-
-
-chdir $ENV{UPLUGRUN};                    # Uplug runs always in UplugHome!!!
-my @DataFiles=(
-#	       '1988sv.txt',
-#	       '1988de.txt',
-#	       '1988en.txt',
-#	       '000307sv.106.sgml',
-#	       '000307en.106.sgml',
-#	       '000307de.106.sgml',
-#	       'svenprf.xml',
-	       );
-
-#---------------------------------------------------------------------
-# get local settings
-# (create local settings if they don't exist)
-
-
-sub InitLocalUplugConfig{
-    if ((not -d $ENV{UPLUGRUN}) or 
-	(not -d "$ENV{UPLUGRUN}/ini") or 
-	(not -d "$ENV{UPLUGRUN}/systems") or 
-	(not -d "$ENV{UPLUGRUN}/data")){
-	&InstallLocalFiles($ENV{UPLUGRUN},$ENV{UPLUGHOME});
-    }
-}
-
-sub LoadConfiguration{
-    my ($data,$file)=@_;
-    $file=&ExpandVariables($file);
-    &LoadIniData($data,$file);
-#    &ExpandHash($data);
-    &ExpandNamedStreams($data);
-}
-
-sub LoadNamedStreams{
-
-    my $IniDir="$ENV{UPLUGRUN}/ini";
-    my $NamedStreamFile=$IniDir.'/DataStreams.ini';
-    my $LocalNamedStreamFile=$IniDir.'/UserDataStreams.ini';
-
-    if (-f $LocalNamedStreamFile){
-#	print "load $LocalNamedStreamFile ... ";
-	&LoadIniData(\%NamedStreams,$LocalNamedStreamFile);
-    }
-    if (not &LoadIniData(\%NamedStreams,$NamedStreamFile)){
-	if (-f "$ENV{UPLUGHOME}/ini/DataStreams.ini"){
-	    $NamedStreamFile="$ENV{UPLUGHOME}/ini/DataStreams.ini";
-#	    print "load $LocalNamedStreamFile ... ";
-	    return &LoadIniData(\%NamedStreams,$NamedStreamFile);
-	}
-	return 0;
-    }
-#    print "load $NamedStreamFile ... ";
     return 1;
 }
 
-sub CheckNamedStreams{
-    my $stream=shift;
-    my $format=shift;
 
-    if (not keys %NamedStreams){
-	&LoadNamedStreams;
-    }
-    if (defined $NamedStreams{$format}){
-	%{$stream}=%{$NamedStreams{$format}};
-	return $NamedStreams{$format}{format};
-    }
-    &LoadNamedStreams;
-    if (defined $NamedStreams{$format}){
-	%{$stream}=%{$NamedStreams{$format}};
-	return $NamedStreams{$format}{format};
-    }
-    return 0;
-}
-
-sub GetNamedStream{    
-    my $stream=shift;
-    my $name=$stream->{'stream name'};
-    if (not keys %NamedStreams){
-	&LoadNamedStreams;
-    }
-    if (defined $NamedStreams{$name}){
-	%{$stream}=%{$NamedStreams{$name}};
-	return $NamedStreams{$name};
-    }
-#    print "reload";
-    &LoadNamedStreams;                  # try once more: reload configuration!
-    if (defined $NamedStreams{$name}){
-	%{$stream}=%{$NamedStreams{$name}};
-	return $NamedStreams{$name};
-    }
-    print "stream $name is undefined!\n";
-    return undef;
-}
-
-sub ExpandNamedStreams{
-    my $data=shift;
-    if (ref($data) eq 'HASH'){
-	if (ref($data->{input}) eq 'HASH'){
-	    foreach my $s (keys %{$data->{input}}){
-		if (defined $data->{input}->{$s}->{'stream name'}){
-#		    print "expand stream name for $s ...";
-		    my $conf=&GetNamedStream($data->{input}->{$s});
-		    if (ref($conf) eq 'HASH'){
-#			print "ok!\n";
-			%{$data->{input}->{$s}}=%{$conf};
-		    }
-		}
-	    }
-	}
-	if (ref($data->{output}) eq 'HASH'){
-	    foreach my $s (keys %{$data->{output}}){
-		if (defined $data->{output}->{$s}->{'stream name'}){
- 		    my $conf=&GetNamedStream($data->{output}->{$s});
-		    if (ref($conf) eq 'HASH'){
-			%{$data->{output}->{$s}}=%{$conf};
-		    }
-		}
-	    }
-	}
-    }
-}
-
-sub SaveConfiguration{
-    my ($data,$file)=@_;
-    $file=&ExpandVariables($file);
-    &WriteIniFile($file,$data);
-}
-
-
-sub ReloadDefaults{
-    &InstallLocalFiles($ENV{UPLUGRUN},$ENV{UPLUGHOME});
-}
-
-sub InstallAllLocalFiles{
-    &InstallLocalFiles($ENV{UPLUGRUN},$ENV{UPLUGHOME});
-    &CopyDir("$ENV{UPLUGHOME}/lang","$ENV{UPLUGRUN}/lang",1);
-    &CopyDir("$ENV{UPLUGHOME}/ini","$ENV{UPLUGRUN}/ini",1);
-    &CopyDir("$ENV{UPLUGHOME}/systems","$ENV{UPLUGRUN}/systems",1);
-}
-
-
-sub UplugHome{
-    return $ENV{UPLUGHOME};
-}
-sub LocalUplugHome{
-    return $ENV{UPLUGRUN};
-}
-sub UplugData{
-    return "$ENV{UPLUGRUN}/data";
-}
-sub UplugSystem{
-    return "$ENV{UPLUGRUN}/systems";
-}
-sub UplugIni{
-    return "$ENV{UPLUGRUN}/ini";
-}
-
-
-sub SplitFileName{
-    my $name=shift;
-    if ($name=~/^(.*)[\/\\]([^\/\\]+)$/){
-	return ($1,$2);
-    }
-    return ('.',$name);
-}
-
-sub CheckConfigDir{
-    my ($dir,$system,$modules)=@_;
-
-    if (not -d $dir){
-	if (not mkdir $dir,0750){
-# 	    die "Cannot create the local Uplug directory $dir!\n";
-	    warn "Cannot create the local Uplug directory $dir!\n";
-	}
-    }
-    if ($dir!~/\/$/){$dir.='/';}
-    for my $s (@{$system}){
-	if (ref($modules->{$s}) eq 'HASH'){
-	    my $file=$modules->{$s}->{configuration};
-	    if (not -f "$dir$file"){
-		if (defined $modules->{$s}->{defaults}){
-		    my %data=();
-		    &LoadIniData(\%data,$modules->{$s}->{defaults});
-		    &WriteIniFile("$dir$file",\%data);
-		}
-	    }
-	}
-    }
-    return $dir;
-}
-
-
-sub ExpandHash{
-    my $hash=shift;
-    $Data::Dumper::Indent=1;
-    $Data::Dumper::Terse=1;
-    $Data::Dumper::Purity=1;
-    my $DataString=Dumper($hash);
-    $DataString=&ExpandVariables($DataString);
-    $hash->{data}={};
-    $hash->{data}=eval $DataString;
-    %{$hash}=%{$hash->{data}};
-}
-
-sub ExpandVariables{
-    my $string=shift;
-    $string=~s/\$UplugBin/$ENV{UPLUGHOME}\/bin/gs;
-    $string=~s/\$UplugIni/$ENV{UPLUGRUN}\/ini/gs;
-    $string=~s/\$UplugSystem/$ENV{UPLUGRUN}\/systems/gs;
-    $string=~s/\$UplugLib/$ENV{UPLUGHOME}\/lib/gs;
-    $string=~s/\$UplugLang/$ENV{UPLUGHOME}\/lang/gs;
-    return $string;
-}
-
-sub InstallLocalFiles{
-    my ($local,$central)=@_;
-
-    if (not -d $local){
-	if (not mkdir $local,0750){
-	    warn "Cannot create the local Uplug directory $local!\n";
-#	    die "Cannot create the local Uplug directory $local!\n";
-	}
-    }
-    if (not -d "$local/data"){
-	if (not mkdir "$local/data",0750){
-	    warn "Cannot create the local Uplug directory $local/data!\n";
-# 	    die "Cannot create the local Uplug directory $local/data!\n";
-	}
-    }
-    if (not -d "$local/data/runtime"){
-	if (not mkdir "$local/data/runtime",0750){
-	    warn "Cannot create the local Uplug directory $local/data/runtime!\n";
-# 	    die "Cannot create the local Uplug directory $local/data!\n";
-	}
-    }
-    foreach (@DataFiles){
-	if (-f "$central/data/$_"){
-	    print STDERR "create $local/data/$_\n";
-	    copy ("$central/data/$_","$local/data/$_");
-	}
-    }
-#    &CopyDir("$central/lang","$local/lang",1);        # copy complete lang-dir
-#    &CopyDir("$central/ini","$local/ini",1);          # copy ini/
-#    &CopyDir("$central/systems","$local/systems",1);  # copy systems/
-}
-
-sub CopyFile{
-    my ($file,$dir1,$dir2)=@_;
-    if (not -d $dir2){
-	if (not mkdir $dir2,0750){
-	    die "Cannot create the directory $dir2!\n";
-	}
-    }
-    if (-f "$dir1/$file"){
-	copy("$dir1/$file","$dir2/$file");
-    }
-}
-
-
-sub CopyDir{
-    my ($dir1,$dir2,$recursive)=@_;
-    if (opendir (DIR,$dir1)){
-	my @files=readdir(DIR);
-	closedir (DIR);
-	if (not -d $dir2){
-	    if (not mkdir $dir2,0750){
-		die "Cannot create the directory $dir2!\n";
-	    }
-	}
-	foreach (@files){
-	    if ($_ eq 'CVS'){next;}
-	    if (/^\./){next;}
-	    print STDERR "create $dir2/$_\n";
-	    if (-f "$dir1/$_"){
-		copy("$dir1/$_","$dir2/$_");
-	    }
-	    elsif ((-d "$dir1/$_") and $recursive){
-		&CopyDir("$dir1/$_","$dir2/$_",$recursive);
-	    }
-	}
-    }
-}
-
-sub RmDir{
-    my ($dir)=@_;
-    if (opendir (DIR,$dir)){
-	my @files=readdir(DIR);
-	closedir (DIR);
-	foreach (@files){
-	    if ($_ eq 'CVS'){next;}
-	    if (/^\./){next;}
-	    print STDERR "delete $dir/$_\n";
-	    if (-f "$dir/$_"){unlink "$dir/$_";}
-	}
-	print STDERR "delete $dir\n";
-	rmdir $dir;
-    }
-}
-
-sub FindDataFile{
-    my ($file)=@_;
-    if (-f $file){return $file;}
-    if (-f "$ENV{UPLUGHOME}/$file"){return "$ENV{UPLUGHOME}/$file";}
-    if (-f "$ENV{UPLUGRUN}/data/$file"){return "$ENV{UPLUGRUN}/data/$file";}
-    if (-f "$ENV{UPLUGHOME}/data/$file"){return "$ENV{UPLUGHOME}/data/$file";}
-    if ($file=~/[\\\/]([^\\\/]+)$/){
-	if (-f "$ENV{UPLUGHOME}/data/$1"){return "$ENV{UPLUGHOME}/data/$1";}
-    }
-    return $file;
-}
+## return a true value
 
 1;

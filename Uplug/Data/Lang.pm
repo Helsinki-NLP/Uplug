@@ -77,7 +77,8 @@ sub loadLanguageFile{
     my $self=shift;
     my $file=shift;
     my $lang=$self->getLanguage();
-    &LoadIniData($self->{LanguageData},$file);
+    $self->{LanguageData}=&ReadConfig($file);
+#    &LoadIniData($self->{LanguageData},$file);
     if (defined $self->{LanguageData}->{$lang}){              # we don't need
 	$self->{LanguageData}=$self->{LanguageData}->{$lang}; # a root node!
     }
