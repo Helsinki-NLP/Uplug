@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/usr/bin/perl
 
-BIN=/local/ling/tnt/tnt
-TNT=${BIN}/tnt
-MODEL=${BIN}/models/wsj.tnt
+use FindBin qw($Bin);
+my $TNT=$Bin.'../tnt/tnt'
+my $MODEL=$Bin.'../tnt/models/wsj.tnt'
 
-${TNT} ${MODEL} $1
+system ($TNT,$MODEL,@ARGV);
 
