@@ -20,31 +20,44 @@
 #
 # $Id$
 #--------------------------------------------------------------------------
-# USAGE: optimize [OPTIONS] bitext.ces optimise.gold [src-lang [trg-lang]]
+# USAGE: optimize [OPTIONS] bitext.ces align.gold [src-lang [trg-lang]]
 #
-# OPTIONS -g eval.gold ....... gold standard used for evaluation (which should
-#                              be different to the one used for optimisation)
-#         -e eval-step ....... evaluation using eval.gold each X alignment
-#                              runs (default=50)
-#         -h held-out-bitext . unseen bitext data for evaluation (which 
-#                              should be distinct from the training data)
-#         -hg held-out-gold .. gold standard for the held-out-bitext
-#         -c clue-bitext ..... bitext used for training clues (can be
-#                              different from the other bitexts used for
-#                              aligning and evaluating)
-#         -l nr .............. learn dynamic clues after each <nr> alignments
-#         -a ................. always learn dynamic clues (even if improvements
-#                              encountered during the previous generation)
-#         -m nr .............. keep at most <nr> individuals for producing new
-#                              offspring
-#         -r nr .............. start (run) at most <nr> amounts of new 
-#                              alignment processes (children)
+# OPTIONS 
+#
+# -tb bitext.train.... bitext for training (xces align format)
+# -tg train.gold ..... gold standard for training
+# -eb bitext.test .... bitext for evaluation (default=same as training)
+# -eg test.gold ...... gold standard for evaluation (default=tg)
+# -hb bitext.heldout . held-out data for evaluation
+# -hg heldout.gold ... gold standard for heldout data
+# -l nr .............. learn dynamic clues after each <nr> alignments
+# -a ................. always learn dynamic clues (even if improvements
+#                      encountered during the previous generation)
+# -m nr .............. keep at most <nr> individuals for producing new
+#                      offspring
+# -r nr .............. start (run) at most <nr> amounts of new 
+#                      alignment processes (children)
 #
 #
-#   bitext.ces ..... sentence alignment file a la XCES
-#   optimise.gold .. gold standard for the same bitext used for optimisation
+#   bitext.ces ..... sentence alignment file a la XCES (used for estimating
+#                    clues and asa default bitext if no other ones specified)
+#   align.gold ..... default gold standard (for training and evaluation if
+#                    no other ones specified)
 #   src-lang ....... source language id, e.g. 'sv' (optional)
 #   trg-lang ....... source language id, e.g. 'en' (optional)
+#
+# * heldout data should be distinct from all other data (bitext.ces, 
+#   bitext.train and bitext.test)
+#
+# * train.gold and test.gold should be disjoint (but may be included in the
+#   same data set from which the clues are derived (bitext.ces))
+#
+# * bitext.train and bitext.test should only include sentence pairs for which
+#   links are defined in the according gold standards (to save processing time)
+#
+# * word alignment and evaluation (fitness) will be run for training data
+#   alignment and evaluation for testing and heldout data is only done if
+#   they are specified (how obvious ...)
 #
 # * probability of mutation operations is hard-coded !!!!! (see Mutate sub)
 #     * add random clue = 0.5
