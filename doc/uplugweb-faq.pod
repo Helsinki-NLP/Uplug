@@ -246,17 +246,27 @@ infomation). Click on I<info> to activate the info mode and select the
 document by clicking on the corresponding link (if you are in the info
 mode).
 
+=head2 What is I<preprocess>?
+
+The I<preprocess> task automatically adds pre-processing processes to
+the queue for all documents from the chosen corpus that are still in
+plain text format. Documents will be pre-processed with
+language-specific pre-processing modules if available. Otherwise, it
+will add the I<basic> pre-processing modules that adds simple XML
+markup and runs the sentence splitter and the general
+tokenizer. Documents that have been finished will be sent to you. Look
+att the process queue in the I<task manager> to track queued processes.
 
 =head2 What is I<align>?
 
-The I<align> task automatically adds all sentence alignment
-processes to the process queue possible for the chosen corpus. Each
-document with one or more translations will be sentence aligned. All
-possible alignment pairs will be considered (only in one
-direction). NOTE: documents have to be tokenized before they can be
-aligned! There is no quick-task (yet) for doing this for all documents
-automatically. Use the pre-processing functions described in the
-section about the Task Manager.
+The I<align> task automatically adds all sentence alignment processes
+to the process queue possible for the chosen corpus. Each document
+with one or more translations will be sentence aligned. All possible
+alignment pairs will be considered (only in one direction). NOTE:
+documents have to be tokenized before they can be aligned! There is a
+quick-task for doing this for all documents automatically:
+I<preprocess>. Otherwise, use the pre-processing functions described
+in the section about the Task Manager.
 
 =head2 What is I<index>?
 
@@ -377,6 +387,10 @@ The pre-processor will overwrite the original text-document and
 replace it with the tokenized XML version. It will also be sent by
 mail if the process is finished.
 
+You can also run the pre-processor on all documents in a corpus by
+clicking on the I<preprocess> taks in the corpus manager. Check the
+section on I<corpus management> above!
+
 
 =head2 How do I POS tag a document?
 
@@ -401,6 +415,10 @@ errors) if they are
 not detected correctly. A simple solution is to remove all double
 empty lines from the text files before submitting them to the UplugWeb
 repository.
+
+You can also run the sentence aligner for all possible document pairs
+ini a corpus by clicking on the I<align> task in the corpus
+manager. Check the section on I<corpus management> above.
 
 
 =head2 How do I word-align a bitext?

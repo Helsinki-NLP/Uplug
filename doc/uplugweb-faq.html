@@ -48,6 +48,7 @@
 		<li><a href="#can_i_edit_word_alignment_files">Can I edit word alignment files?</a></li>
 		<li><a href="#can_i_wordalign_bitexts_by_hand">Can I word-align bitexts by hand?</a></li>
 		<li><a href="#what_is_the_info_mode">What is the <em>info</em> mode?</a></li>
+		<li><a href="#what_is_preprocess">What is <em>preprocess</em>?</a></li>
 		<li><a href="#what_is_align">What is <em>align</em>?</a></li>
 		<li><a href="#what_is_index">What is <em>index</em>?</a></li>
 		<li><a href="#what_is_query">What is <em>query</em>?</a></li>
@@ -281,15 +282,26 @@ document by clicking on the corresponding link (if you are in the info
 mode).</p>
 <p>
 </p>
+<h2><a name="what_is_preprocess">What is <em>preprocess</em>?</a></h2>
+<p>The <em>preprocess</em> task automatically adds pre-processing processes to
+the queue for all documents from the chosen corpus that are still in
+plain text format. Documents will be pre-processed with
+language-specific pre-processing modules if available. Otherwise, it
+will add the <em>basic</em> pre-processing modules that adds simple XML
+markup and runs the sentence splitter and the general
+tokenizer. Documents that have been finished will be sent to you. Look
+att the process queue in the <em>task manager</em> to track queued processes.</p>
+<p>
+</p>
 <h2><a name="what_is_align">What is <em>align</em>?</a></h2>
-<p>The <em>align</em> task automatically adds all sentence alignment
-processes to the process queue possible for the chosen corpus. Each
-document with one or more translations will be sentence aligned. All
-possible alignment pairs will be considered (only in one
-direction). NOTE: documents have to be tokenized before they can be
-aligned! There is no quick-task (yet) for doing this for all documents
-automatically. Use the pre-processing functions described in the
-section about the Task Manager.</p>
+<p>The <em>align</em> task automatically adds all sentence alignment processes
+to the process queue possible for the chosen corpus. Each document
+with one or more translations will be sentence aligned. All possible
+alignment pairs will be considered (only in one direction). NOTE:
+documents have to be tokenized before they can be aligned! There is a
+quick-task for doing this for all documents automatically:
+<em>preprocess</em>. Otherwise, use the pre-processing functions described
+in the section about the Task Manager.</p>
 <p>
 </p>
 <h2><a name="what_is_index">What is <em>index</em>?</a></h2>
@@ -388,6 +400,9 @@ page if you have several corpora in your repository!)</p>
 <p>The pre-processor will overwrite the original text-document and
 replace it with the tokenized XML version. It will also be sent by
 mail if the process is finished.</p>
+<p>You can also run the pre-processor on all documents in a corpus by
+clicking on the <em>preprocess</em> taks in the corpus manager. Check the
+section on <em>corpus management</em> above!</p>
 <p>
 </p>
 <h2><a name="how_do_i_pos_tag_a_document">How do I POS tag a document?</a></h2>
@@ -409,6 +424,9 @@ errors) if they are
 not detected correctly. A simple solution is to remove all double
 empty lines from the text files before submitting them to the UplugWeb
 repository.</p>
+<p>You can also run the sentence aligner for all possible document pairs
+ini a corpus by clicking on the <em>align</em> task in the corpus
+manager. Check the section on <em>corpus management</em> above.</p>
 <p>
 </p>
 <h2><a name="how_do_i_wordalign_a_bitext">How do I word-align a bitext?</a></h2>
