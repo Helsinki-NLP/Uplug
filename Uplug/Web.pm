@@ -1680,13 +1680,13 @@ sub sentLinkHeader{
     $url=&Uplug::Web::AddUrlParam($url,'mo',$old);   # old ID (bitext segment)
     $url=&Uplug::Web::AddUrlParam($url,'mox',$self->{THIS_ALIGN_POS});
     my $html;
-    if ($up){
+    if ($up and ($self->{PRIV} ne 'all')){
 	$url=&Uplug::Web::AddUrlParam($url,'mn',$up);    # new ID (up)
 	$url=&Uplug::Web::AddUrlParam($url,'mnx',$self->{PREV_ALIGN_POS});
 	$html=&a({-href=>$url},'&uArr;');
     }
     $html.=$sent;
-    if ($down){
+    if ($down and ($self->{PRIV} ne 'all')){
 	$url=&Uplug::Web::AddUrlParam($url,'mn',$down);  # new ID (down)
 	$url=&Uplug::Web::AddUrlParam($url,'mnx',$self->{NEXT_ALIGN_POS});
 	$html.=&a({-href=>$url},'&dArr;');

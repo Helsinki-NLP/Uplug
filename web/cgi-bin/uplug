@@ -34,7 +34,7 @@ BEGIN {
     binmode(STDOUT, ":utf8");                   # set UTF8 for STDOUT
     $MAXPOST=100;                               # post max X kB of data
     $CGI::POST_MAX = $MAXPOST * 1024;           # to the CGI-script
-    $ALARM=20;                                  # stop cgi-script after X sec.
+    $ALARM=10;                                  # stop cgi-script after X sec.
 
     $UPLUGADMIN = 'joerg@stp.ling.uu.se';                # administrator e-mail
     $UPLUGLOG  = '/tmp/uplug.log';                       # CGI log-file
