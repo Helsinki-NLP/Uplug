@@ -316,9 +316,9 @@ sub CorpusIndexerForm{
 }
 
 sub CorpusQueryForm{
-    my ($owner,$corpus,$lang,$aligned)=@_;
+    my ($owner,$corpus,$lang)=@_;
 
-    return &Uplug::Web::CWB::Query('',$owner,$corpus,$lang,$aligned);
+    return &Uplug::Web::CWB::Query('?a=corpus;t=query',$owner,$corpus,$lang);
 
     my %index=();
     &Uplug::Web::Corpus::GetIndexedCorpora(\%index,$owner,$corpus);
@@ -956,7 +956,7 @@ sub ProcessTable{
 	push (@rows,
 	      &td([$count.')']).
 	      &th([$u]).
-	      &td([$p,&Uplug::Web::ActionLinks($url,@actions)]));
+	      &td([$p.&Uplug::Web::ActionLinks($url,@actions)]));
 	if ($process eq $p){
 	    push (@rows,&td(['',@c]));
 	}

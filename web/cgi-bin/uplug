@@ -43,9 +43,9 @@ BEGIN {
     $ENV{UPLUGDATA} =$UPLUGDATA;
     $ENV{UPLUGCWB}  =$UPLUGCWB;
     $ENV{UPLUGADMIN}=$UPLUGADMIN;
-#    use CGI::Carp qw(carpout);
-#    open L, ">>$UPLUGLOG" || die ("could not open log\n");
-#    carpout(*L);
+    use CGI::Carp qw(carpout);
+    open L, ">>$UPLUGLOG" || die ("could not open log\n");
+    carpout(*L);
 }
 
 
@@ -181,7 +181,7 @@ sub UplugMenu{
 		      'Public corpora' , "$url?a=corpus;o=pub",
 		      'Add corpus' , "$url?a=corpus;t=add",
 #		      'Add document' , "$url?a=corpus;t=add-doc",
-		      'Create CWB index' , "$url?a=corpus;t=index",
+#		      'Create CWB index' , "$url?a=corpus;t=index",
 		      'CWB Query' , "$url?a=corpus;t=query",
 		      ],
 		     'Task Management'
@@ -334,8 +334,7 @@ sub CorpusManager{
     elsif ($task eq 'query'){
 
 	my $lang  = &my_param('s');        # language
-	my @links = &my_param('l');        # aligned languages
-	$html.=&Uplug::Web::CorpusQueryForm($user,$corpus,$lang,\@links);
+	$html.=&Uplug::Web::CorpusQueryForm($owner,$corpus,$lang);
 
 #	$html.=&Uplug::Web::QueryCorpus($user,$owner,$corpus,
 #					\%params,$query);
@@ -347,10 +346,10 @@ sub CorpusManager{
 
     elsif ($task eq 'index'){
 	if ($priv ne 'all'){
-	    &Uplug::Web::Corpus::IndexCorpus($user,$owner,$corpus);
+	    &Uplug::Web::Corpus::IndexCorpus($owner,$corpus);
 	}
-	$html.=&Uplug::Web::QueryCorpus($user,$owner,$corpus,
-					\%params,$query);
+	$html.=&Uplug::Web::ShowCorpusInfo($task,
+					   $owner,$corpus,$docbase,$doc,$priv);
     }
 
     #-------------------------------------------------------------------------

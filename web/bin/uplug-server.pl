@@ -216,7 +216,7 @@ sub my_die{
 
 sub RunCommand{
 
-    my ($user,$process,$corpus,$type,$command)=@_;
+    my ($user,$process,$type,$command)=@_;
 
     if (not &Uplug::Web::Process::MoveJobTo($user,$process,'working')){
 	&my_log("Cannot find job $process for user $user!");
@@ -224,7 +224,8 @@ sub RunCommand{
     }
 
     #----------------------------------------------------------
-    if (my $sig=system "$command >/tmp/uplugweb.out 2>/tmp/uplugweb.err"){
+#    if (my $sig=system "$command >/tmp/uplugweb$$.out 2>/tmp/uplugweb$$.err"){
+    if (my $sig=system "$command >/dev/null 2>/dev/null"){
 	&Uplug::Web::Process::MoveJobTo($user,$process,'failed');
 	&my_log("Got exit-signal $? from $command!");
 	return 0;

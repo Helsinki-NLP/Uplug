@@ -24,6 +24,7 @@ use ExtUtils::Command;
 
 use Uplug::Web;
 use Uplug::Web::Config;
+use Uplug::Web::Process;
 use Uplug::Web::Process::Stack;
 use Uplug::Web::User;
 use Uplug::Config;
@@ -65,16 +66,22 @@ sub IndexCorpus{
 
     if (not -d "$ENV{UPLUGCWB}/reg"){mkdir "$ENV{UPLUGCWB}/reg";}
     if (not -d "$ENV{UPLUGCWB}/dat"){mkdir "$ENV{UPLUGCWB}/dat";}
-    if (not -d "$ENV{UPLUGCWB}/reg/$corpus"){
-	mkdir "$ENV{UPLUGCWB}/reg/$corpus";
-	system "chmod g+w $ENV{UPLUGCWB}/reg/$corpus";
+    if (not -d "$ENV{UPLUGCWB}/reg/$owner"){mkdir "$ENV{UPLUGCWB}/reg/$owner";}
+    if (not -d "$ENV{UPLUGCWB}/dat/$owner"){mkdir "$ENV{UPLUGCWB}/dat/$owner";}
+
+    if (not -d "$ENV{UPLUGCWB}/reg/$owner/$corpus"){
+	mkdir "$ENV{UPLUGCWB}/reg/$owner/$corpus";
+	system "chmod g+w $ENV{UPLUGCWB}/reg/$owner/$corpus";
     }
-    if (not -d "$ENV{UPLUGCWB}/dat/$corpus"){
-	mkdir "$ENV{UPLUGCWB}/dat/$corpus";
-	system "chmod g+w $ENV{UPLUGCWB}/dat/$corpus";
+    if (not -d "$ENV{UPLUGCWB}/dat/$owner/$corpus"){
+	mkdir "$ENV{UPLUGCWB}/dat/$owner/$corpus";
+	system "chmod g+w $ENV{UPLUGCWB}/dat/$owner/$corpus";
     }
 
+    my $process=time().'_'.$$;
     my $command="$INDEXER $CWBREG $CWBDAT $CorpusDir";
+    &Uplug::Web::Process::AddProcess('todo',$owner,$process,'$bash',$command);
+#    print "$command<hr>";
 
 }
 
