@@ -3,7 +3,9 @@
 
 
 # taken from the Perl Cookbook recipe 7.21 (netlock)
-
+#
+# try: LockFile::Simple
+# http://search.cpan.org/~ram/LockFile-Simple-0.2.5/Simple.pm
 
 
 package Uplug::Web::Process::Lock;
