@@ -491,15 +491,18 @@ sub LoadNamedStreams{
     my $LocalNamedStreamFile=$IniDir.'/UserDataStreams.ini';
 
     if (-f $LocalNamedStreamFile){
+#	print "load $LocalNamedStreamFile ... ";
 	&LoadIniData(\%NamedStreams,$LocalNamedStreamFile);
     }
     if (not &LoadIniData(\%NamedStreams,$NamedStreamFile)){
 	if (-f "$ENV{UPLUGHOME}/ini/DataStreams.ini"){
 	    $NamedStreamFile="$ENV{UPLUGHOME}/ini/DataStreams.ini";
+#	    print "load $LocalNamedStreamFile ... ";
 	    return &LoadIniData(\%NamedStreams,$NamedStreamFile);
 	}
 	return 0;
     }
+#    print "load $NamedStreamFile ... ";
     return 1;
 }
 
@@ -510,6 +513,11 @@ sub CheckNamedStreams{
     if (not keys %NamedStreams){
 	&LoadNamedStreams;
     }
+    if (defined $NamedStreams{$format}){
+	%{$stream}=%{$NamedStreams{$format}};
+	return $NamedStreams{$format}{format};
+    }
+    &LoadNamedStreams;
     if (defined $NamedStreams{$format}){
 	%{$stream}=%{$NamedStreams{$format}};
 	return $NamedStreams{$format}{format};
@@ -527,6 +535,13 @@ sub GetNamedStream{
 	%{$stream}=%{$NamedStreams{$name}};
 	return $NamedStreams{$name};
     }
+#    print "reload";
+    &LoadNamedStreams;                  # try once more: reload configuration!
+    if (defined $NamedStreams{$name}){
+	%{$stream}=%{$NamedStreams{$name}};
+	return $NamedStreams{$name};
+    }
+    print "stream $name is undefined!\n";
     return undef;
 }
 
@@ -536,8 +551,10 @@ sub ExpandNamedStreams{
 	if (ref($data->{input}) eq 'HASH'){
 	    foreach my $s (keys %{$data->{input}}){
 		if (defined $data->{input}->{$s}->{'stream name'}){
+#		    print "expand stream name for $s ...";
 		    my $conf=&GetNamedStream($data->{input}->{$s});
 		    if (ref($conf) eq 'HASH'){
+#			print "ok!\n";
 			%{$data->{input}->{$s}}=%{$conf};
 		    }
 		}

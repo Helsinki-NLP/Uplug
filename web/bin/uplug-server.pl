@@ -268,6 +268,7 @@ sub RunUplug{
     if (-e "$UserDir/lang"){system "cp -R $UserDir/lang $TempDir/";}
     chdir $TempDir;
 
+    print "do pre-processing ...\n";
     &PreProcessing($user,$config);
     #----------------------------------------------------------
     if (my $sig=system "$UPLUG $config >uplugweb.out 2>uplugweb.err"){
@@ -276,6 +277,7 @@ sub RunUplug{
 	return 0;
     }
     #----------------------------------------------------------
+    print "do post-processing ...\n";
     &PostProcessing($user,$corpus,$config);
 
     if (not &Uplug::Web::Process::MoveJob($user,$process,'working','done')){
@@ -347,9 +349,11 @@ sub PostProcessing{
     if (ref($data{module}) eq 'HASH'){
 	$stdout=$data{module}{stdout};
     }
+#    print "1";
     if (ref($data{output}) eq 'HASH'){
+#	print "2";
 	foreach my $s (keys %{$data{output}}){
-
+#	    print "3$s";
 	    #---------------------
 	    # copy input stream attributes to output streams
 	    # for data streams with identical names!!
@@ -359,16 +363,23 @@ sub PostProcessing{
 	    #    ----> overwrites input files!!!!!
 
 	    if (ref($data{input}{$s}) eq 'HASH'){
+#		print "4";
 		foreach $a (keys %{$data{input}{$s}}){
+#		    print "5$a";
 		    if (not defined $data{output}{$s}{$a}){
+#			print "6";
 			if (($s eq $stdout) and ($a eq 'file')){
+#			    print "7";
 			    if ($data{input}{$s}{file}=~/\.gz$/){
 				system "gzip uplugweb.out";
+				system "cp uplugweb.out.gz $data{input}{$s}{file}";
 			    }
+			    else{
 #			    print `ls -al $data{input}{$s}{file}`;
-#			    print "cp uplugweb.out $data{input}{$s}{file}\n";
-			    system "cp uplugweb.out $data{input}{$s}{file}";
+				print "cp uplugweb.out $data{input}{$s}{file}\n";
+				system "cp uplugweb.out $data{input}{$s}{file}";
 #			    print `ls -al $data{input}{$s}{file}`;
+			    }
 			}
 			$data{output}{$s}{$a}=$data{input}{$s}{$a};
 		    }
