@@ -337,6 +337,7 @@ sub SplitLink{
     my $xtrg=$data->attribute($node,'xtargets');
     my $lex=$data->attribute($node,'lexPair');
     my $type=$data->attribute($node,'certainty');
+    if (not $type){$type='regular';}
     if (defined $score){
 	if ($type<$score){return;}
     }

@@ -2205,7 +2205,7 @@ sub readBitextSegment{
     my $wordLinks=shift;
     my $style=shift;
 
-    my ($src,$trg)=split(/\;/,$sentLink);
+    my ($src,$trg)=split(/\s*\;\s*/,$sentLink);
     my @s=split(/\s+/,$src);
     my @t=split(/\s+/,$trg);
 
@@ -2242,7 +2242,7 @@ sub linkMatrix{
 
     my %matrix=();
     foreach (keys %{$links}){
-	my ($srcX,$trgX)=split(/\;/,$_);
+	my ($srcX,$trgX)=split(/\s*\;\s*/,$_);
 	my @src=split(/\+/,$srcX);
 	my @trg=split(/\+/,$trgX);
 	foreach my $s (@src){
