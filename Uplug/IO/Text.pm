@@ -1,0 +1,504 @@
+###########################################################################
+# Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
+#
+# simple text stream (reading line by line)
+# (derived from Uplug::IO)
+#
+# TextStream::open($AccessMode,\%OptionHash)
+#        $AccessMode - read|write|overwrite|append
+#        %OptionHash - FileName            => '/path/to/file'    (required)
+#                      pipe command        => pipe_command       (optional)
+#                      input pipe command  => input_pipe         (optional)
+#                      output pipe command => output_pipe        (optional)
+#
+###########################################################################
+# $Author$
+# $Id$
+
+
+package Uplug::IO::Text;
+
+use bytes;
+use strict;
+use vars qw(@ISA $VERSION $COMPRESS $DECOMPRESS);
+use FileHandle;
+use FindBin qw($Bin);
+use lib "$Bin/../lib";
+use Data::Dumper;
+
+use Uplug::IO;
+#require ('uplugLib.pl');
+
+@ISA = qw( Uplug::IO );
+
+$VERSION = '0.1';
+$COMPRESS='gzip -c';
+$DECOMPRESS='gzip -cd';
+
+my $UplugHome=$ENV{UPLUGHOME};
+my $LocalHome=$ENV{UPLUG};
+if ((-d $UplugHome) and ($UplugHome!~/\\\/$/)){$UplugHome.='/';}
+if ((-d $LocalHome) and ($LocalHome!~/\\\/$/)){$LocalHome.='/';}
+my $UplugData=$LocalHome.'data';
+my $UplugIni=$LocalHome.'ini';
+my $UplugSystem=$LocalHome.'systems';
+
+sub init{
+    my $self    = shift;
+    my $OptionHash = shift;
+
+    $self->SUPER::init($OptionHash);
+
+    if ((not defined $self->{StreamOptions}->{FileName}) and
+	(defined $self->{StreamOptions}->{file})){
+	$self->{StreamOptions}->{FileName}=$self->{StreamOptions}->{file};
+    }
+    $self->{FileName}=$self->{StreamOptions}->{FileName};
+    $self->{StreamOptions}->{file}=$self->{StreamOptions}->{FileName};
+
+    my $ret;
+    if (not defined $self->{'FileName'}){
+	if ($self->{AccessMode} eq 'read'){
+	    $self->{FileHandle}=*STDIN;
+	}
+	else{
+	    $self->{FileHandle}=*STDOUT;
+	}
+	$ret=1;
+    }
+    else{
+	$ret=$self->{'FileHandle'}=&OpenStreamFile($self->{FileName},
+						   $self->{AccessMode},
+						   $OptionHash);
+    }
+    if ($]>=5.008){                                   # for Perl version >= 5.8
+	binmode($self->{FileHandle},                  # set PerlIO layer
+		':encoding('.$self->getEncoding.')'); # according to char enc.
+    }
+    return $ret;
+}
+
+sub close{
+    my $self=shift;
+    return $self->SUPER::close;
+    if (defined $self->{'FileHandle'}){
+	$self->{'FileHandle'}->close;
+    }
+}
+
+sub getFileHandle{return $_[0]->{FileHandle};}       # return file-handle!
+
+
+sub read{
+    my $self=shift;
+    my $data=shift;
+    if (not ref($data)){return 0;}
+    $data->init;
+
+    my $fh=$self->{'FileHandle'};
+#    my $content=<$fh>;
+    my $content=$self->readFromHandle($fh);
+    chomp $content;
+    $data->setContent($content);
+    $self->SUPER::read($data);
+    return (defined $content);
+}
+
+
+sub write{
+    my $self=shift;
+    my ($data)=@_;
+    my $content=$data;
+    if (ref($data)){
+	$self->SUPER::write($data);
+	$content=$data->content;
+    }
+    my $fh=$self->{'FileHandle'};
+    $self->writeToHandle($fh,$content."\n");
+    return 1;
+}
+
+
+
+
+sub readheader{
+    my $self=shift;
+    $self->SUPER::readheader;
+    my $fh=$self->{'FileHandle'};
+#    print STDERR "---$fh--\n";
+    if ($fh=~/STDIN/){return;}
+    my $CurrentPos;
+    my %HeaderHash=();
+    my $DataLine;
+    do {
+	$CurrentPos=tell $fh;
+	if (not $DataLine=$self->readFromHandle($fh)){
+	    $self->addheader(\%HeaderHash);
+	    return 0;
+	}
+	chomp $DataLine;
+	if ($DataLine=~/^\# ([^:]+):\s*(\S.*)\s*$/){
+	    $HeaderHash{$1}=eval $2;
+#	    $HeaderHash{$1}=$2;
+	}
+    }
+    until ($DataLine!~/^\#/);
+    seek $fh,$CurrentPos,0;
+    if (tell $fh != $CurrentPos){$self->{READBUFFER}=$DataLine;}
+    $self->addheader(\%HeaderHash);
+}
+
+
+
+sub writeheader{
+    my $self=shift;
+    if (ref($self->{StreamHeader}) eq 'HASH'){
+	my $fh=$self->{'FileHandle'};
+	foreach my $k (sort keys %{$self->{StreamHeader}}){
+
+	    $Data::Dumper::Terse = 1;
+	    $Data::Dumper::Indent = 0;
+	    $Data::Dumper::Purity=1;
+	    my $string=Dumper($self->{StreamHeader}->{$k});
+	    $self->writeToHandle($fh,"# $k: $string\n");
+
+#	    if (ref($self->{StreamHeader}->{$k}) eq 'HASH'){
+#		my $str='(';
+#		foreach (keys %{$self->{StreamHeader}->{$k}}){
+#		    $str.="'$_'=>'$self->{StreamHeader}->{$k}->{$_},";
+#		}
+#		chop $str;
+#		$str.=')';
+#		$self->writeToHandle($fh,"# $k: $str\n");
+#	    }
+#	    elsif (ref($self->{StreamHeader}->{$k}) eq 'ARRAY'){
+#		my $str=join ',',@{$self->{StreamHeader}->{$k}};
+#		$self->writeToHandle($fh,"# $k: ($str)\n");
+#	    }
+#	    else{
+#		$self->writeToHandle($fh,
+#				     "# $k: $self->{StreamHeader}->{$k}\n");
+#	    }
+	}
+    }
+}
+
+
+sub files{
+    my $self=shift;
+    if (defined $self->{file}){
+	return wantarray ? ($self->{file}) : $self->{file};
+    }
+    if (defined $self->{FileName}){
+	return wantarray ? ($self->{FileName}) : $self->{FileName};
+    }
+}
+
+sub delete{
+    my $self=shift;
+    my $file;
+    if (defined $self->{file}){$file=$self->{file};}
+    if (defined $self->{FileName}){$file=$self->{FileName};}
+    if (-e $file){
+	print STDERR "# LiuStream.pm: remove file $file!\n";
+	unlink $file;
+    }
+}
+
+
+
+
+
+
+
+
+############################################################################
+
+
+sub OpenStreamFileTest{
+
+    my $fh=shift;
+    my $FileName=shift;
+    my $AccessMode=shift;
+    my $OptionHash=shift;
+
+    print STDERR "open $FileName ($AccessMode)\n";
+
+#    my $fh;
+
+#---------------------------------------------------------------------------
+# initialize pipe command according to the access mode
+#---------------------------------------------------------------------------
+
+    if ($AccessMode eq 'read'){
+	$FileName=&FindDataFile($FileName);
+	if (defined $$OptionHash{'input pipe command'}){
+	    $$OptionHash{'pipe command'}=$$OptionHash{'input pipe command'};
+	}
+    }
+    if ($AccessMode ne 'read'){
+	if (defined $$OptionHash{'output pipe command'}){
+	    $$OptionHash{'pipe command'}=$$OptionHash{'output pipe command'};
+	}
+    }
+
+#---------------------------------------------------------------------------
+# gzipped files: add gzip command in pipe
+#---------------------------------------------------------------------------
+
+    if ($FileName=~/\.gz$/){
+	my $compress;
+	if ($AccessMode eq 'read'){
+	    $compress=$Uplug::IO::Text::DECOMPRESS;
+	}
+	else{
+	    $compress=$Uplug::IO::Text::COMPRESS;
+	}
+	if (not defined $$OptionHash{'pipe command'}){
+	    $$OptionHash{'pipe command'}=$compress;
+	}
+	else{
+	    if ($$OptionHash{'pipe command'}!~/$compress/){
+		if ($AccessMode eq 'read'){
+		    $$OptionHash{'pipe command'}=
+			"$compress | $$OptionHash{'pipe command'}";
+		}
+		else{
+		    $$OptionHash{'pipe command'}=
+			"$$OptionHash{'pipe command'} | $compress";
+		}
+	    }
+	}
+    }
+
+#---------------------------------------------------------------------------
+# access_mode == read --> open files for reading
+#---------------------------------------------------------------------------
+
+    if ($AccessMode eq 'read'){
+	if (-e $FileName){                   # if file exists
+	    my $str="<$FileName";
+	    if ($$OptionHash{'pipe command'}){
+		$str="$$OptionHash{'pipe command'} $str |";
+	    }
+
+	    print STDERR "open $fh,$str\n";
+	    if (not open $$fh,$str){
+		warn "failed to open $FileName";
+		return 0;
+	    }
+	}
+    }
+
+#---------------------------------------------------------------------------
+# access_mode <> read --> open files for writing
+#---------------------------------------------------------------------------
+
+    if ($AccessMode ne 'read'){
+	my $f;
+	my $pipe='';
+	if ($$OptionHash{'pipe command'}){
+	    $pipe="| $$OptionHash{'pipe command'} ";
+	}
+
+#---------------------------------------------------------------------------
+# ... file exists and is non-empty
+#---------------------------------------------------------------------------
+
+	if ((-s $FileName) and 
+	    ($AccessMode eq 'write')){
+	    warn "failed to open $FileName, data exist!";
+	    return 0;
+	}
+
+#---------------------------------------------------------------------------
+# ... file exists and access_mode is 'overwrite'
+#---------------------------------------------------------------------------
+
+	elsif ((-e $FileName) and
+	       ($AccessMode eq 'overwrite')){
+#	    print STDERR "# Uplug::IO::Text.pm: Data exist in $FileName! (overwriting!)\n";
+
+	    if (not open $$fh,"$pipe>$FileName"){
+		warn "failed to open $FileName";
+		return 0;
+	    }
+	}
+
+#---------------------------------------------------------------------------
+# ... access_mode is 'append'
+#---------------------------------------------------------------------------
+
+	elsif ($AccessMode eq 'append'){
+	    if (not open $$fh,"$pipe>>$FileName"){
+		warn "failed to open $FileName";
+		return 0;
+	    }
+	}
+
+#---------------------------------------------------------------------------
+# ... (file is empty or does not exist) and (access_mode is not 'append')
+#---------------------------------------------------------------------------
+
+	else{
+	    if (not open $$fh,"$pipe>$FileName"){
+		warn "failed to open $FileName in $$OptionHash{'id'}!";
+		return 0;
+	    }
+	}
+    }
+#    binmode($fh);
+#    return $fh;
+}
+
+
+sub OpenStreamFile{
+
+    my $FileName=shift;
+    my $AccessMode=shift;
+    my $OptionHash=shift;
+
+    print STDERR "open $FileName ($AccessMode)\n";
+
+    my $fh = new FileHandle;
+
+#---------------------------------------------------------------------------
+# initialize pipe command according to the access mode
+#---------------------------------------------------------------------------
+
+    if ($AccessMode eq 'read'){
+	$FileName=&FindDataFile($FileName);
+	if (defined $$OptionHash{'input pipe command'}){
+	    $$OptionHash{'pipe command'}=$$OptionHash{'input pipe command'};
+	}
+    }
+    if ($AccessMode ne 'read'){
+	if (defined $$OptionHash{'output pipe command'}){
+	    $$OptionHash{'pipe command'}=$$OptionHash{'output pipe command'};
+	}
+    }
+
+#---------------------------------------------------------------------------
+# gzipped files: add gzip command in pipe
+#---------------------------------------------------------------------------
+
+    if ($FileName=~/\.gz$/){
+	my $compress;
+	if ($AccessMode eq 'read'){
+	    $compress=$Uplug::IO::Text::DECOMPRESS;
+	}
+	else{
+	    $compress=$Uplug::IO::Text::COMPRESS;
+	}
+	if (not defined $$OptionHash{'pipe command'}){
+	    $$OptionHash{'pipe command'}=$compress;
+	}
+	else{
+	    if ($$OptionHash{'pipe command'}!~/$compress/){
+		if ($AccessMode eq 'read'){
+		    $$OptionHash{'pipe command'}=
+			"$compress | $$OptionHash{'pipe command'}";
+		}
+		else{
+		    $$OptionHash{'pipe command'}=
+			"$$OptionHash{'pipe command'} | $compress";
+		}
+	    }
+	}
+    }
+
+#---------------------------------------------------------------------------
+# access_mode == read --> open files for reading
+#---------------------------------------------------------------------------
+
+    if ($AccessMode eq 'read'){
+	if (-e $FileName){                   # if file exists
+	    my $str="<$FileName";
+	    if ($$OptionHash{'pipe command'}){
+		$str="$$OptionHash{'pipe command'} $str |";
+	    }
+	    if (not $fh->open($str)){
+		warn "failed to open $FileName";
+		return 0;
+	    }
+	}
+    }
+
+#---------------------------------------------------------------------------
+# access_mode <> read --> open files for writing
+#---------------------------------------------------------------------------
+
+    if ($AccessMode ne 'read'){
+	my $f;
+	my $pipe='';
+	if ($$OptionHash{'pipe command'}){
+	    $pipe="| $$OptionHash{'pipe command'} ";
+	}
+
+#---------------------------------------------------------------------------
+# ... file exists and is non-empty
+#---------------------------------------------------------------------------
+
+	if ((-s $FileName) and 
+	    ($AccessMode eq 'write')){
+	    warn "failed to open $FileName, data exist!";
+	    return 0;
+	}
+
+#---------------------------------------------------------------------------
+# ... file exists and access_mode is 'overwrite'
+#---------------------------------------------------------------------------
+
+	elsif ((-e $FileName) and
+	       ($AccessMode eq 'overwrite')){
+#	    print STDERR "# Uplug::IO::Text.pm: Data exist in $FileName! (overwriting!)\n";
+
+	    if (not $fh->open("$pipe>$FileName")){
+		warn "failed to open $FileName";
+		return 0;
+	    }
+	}
+
+#---------------------------------------------------------------------------
+# ... access_mode is 'append'
+#---------------------------------------------------------------------------
+
+	elsif ($AccessMode eq 'append'){
+	    if (not $fh->open("$pipe>>$FileName")){
+		warn "failed to open $FileName";
+		return 0;
+	    }
+	}
+
+#---------------------------------------------------------------------------
+# ... (file is empty or does not exist) and (access_mode is not 'append')
+#---------------------------------------------------------------------------
+
+	else{
+	    if (not $fh->open("$pipe>$FileName")){
+		warn "failed to open $FileName in $$OptionHash{'id'}!";
+		return 0;
+	    }
+	}
+    }
+#    binmode($fh);
+    return $fh;
+}
+
+
+############################################################################
+
+sub FindDataFile{
+    my ($file)=@_;
+    if (-f $file){return $file;}
+    if (-f "$UplugHome/$file"){return "$UplugHome/$file";}
+    if (-f "$UplugData/$file"){return "$UplugData/$file";}
+    if ($file=~/[\\\/]([^\\\/]+)$/){
+	if (-f "$UplugData/$1"){return "$UplugData/$1";}
+    }
+    if ($file!~/\.gz$/){
+      my $new=&FindDataFile("$file.gz");
+      if (-f $new){return $new;}
+    }
+    return $file;
+}

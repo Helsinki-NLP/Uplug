@@ -1,0 +1,108 @@
+#!/usr/bin/perl
+# for perl 5.6.0: use /usr/bin/perl
+# for perl 5.005: use /local/bin/perl5.00502
+#
+# uplug.pl:
+#
+#   uplug.pl [-f first] [-l last] [-skip skip] [-load_defaults] module
+#
+#     module: name of module (or path/name of module configuration)
+#     first:  module number to start with (complex modules)
+#     last:   module number to stop at (complex modules)
+#     skip:   module numbers to skip (complex modules)
+#               (t.ex. '0,3,4')
+#
+# $Author$
+# $Id$
+#
+# usage:
+#
+# 
+# 
+use strict;
+use FindBin qw($Bin);
+use lib $Bin;
+use Uplug;
+use Uplug::Config;
+# push (@INC,$Bin);
+# require ('lib/uplugLib.pl');
+
+#---------------------------------------------------------------------
+# check arguments
+#
+
+my %IniData=&GetDefaultIni;
+&Uplug::Config::CheckParameter(\%IniData,\@ARGV);
+
+if ($IniData{'-load_defaults'}){       # reload default configuration
+    &ReloadDefaults;                   # NOTE!! overwrites old config files!!!
+}
+elsif ($IniData{'-install_local'}){    # install local config files
+    &InstallLocalFiles;                # NOTE!! overwrites old config files!!!
+}
+else{
+    &InitLocalUplugConfig;
+}
+
+#---------------------------------------------------------------------
+# read module and system configurations
+#
+
+my $first=$IniData{run}{first};
+my $last=$IniData{run}{last};
+my @skip=split(/\,/,$IniData{run}{skip});
+my $ModName=shift(@ARGV);
+
+#---------------------------------------------------------------------
+# create the module object and run the module
+#
+
+my $Module=Uplug->new;
+my $ConfigFile=&GetModuleConfigFile($ModName);
+$Module->load($ConfigFile,\@ARGV);
+$Module->run($first,$last,\@skip) ||
+    die "# uplug: Could not run module $ModName\n";
+
+#---------------------------------------------------------------------
+#---------------------------------------------------------------------
+
+
+BEGIN{
+    $SIG{HUP}=sub{$Module->cleanup();die "# uplug: hangup\n";};
+    $SIG{INT}=sub{$Module->cleanup();die "# uplug: interrupted\n";};
+    $SIG{QUIT}=sub{$Module->cleanup();die "# uplug: quit\n";};
+}
+
+sub GetModuleConfigFile{
+    my $mod=shift;
+    if (defined $IniData{modules}{$mod}){
+	return $IniData{modules}{$mod};
+    }
+    return $mod;
+}
+
+
+sub GetDefaultIni{
+
+    my $DefaultIni = eval 
+"{
+  'run' => {
+    'module' => '\$UplugSystem/default/Markup.ini',
+    'first' => undef,
+    'last' => undef,
+  },
+  'modules' => {
+#    'plug2koma' => '\$UplugSystem/plug/convert.ini',
+#    'koma2uwa' => '\$UplugSystem/koma2uwa',
+
+  },
+  'arguments' => {
+    'shortcuts' => {
+       'f' => 'run:first',
+       'l' => 'run:last',
+       'skip' => 'run:skip',
+    }
+  },
+}";
+    return %{$DefaultIni};
+}
