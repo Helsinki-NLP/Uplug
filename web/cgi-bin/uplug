@@ -163,6 +163,7 @@ sub UplugMenu{
     my @menu = 
 	('General', 
 	 ['Home' , $url,
+	  'SourceForge', 'http://uplug.sourceforge.net',
 	  # 'Publications' , $UPLUGHTML.'/home.html#publications',
           # 'System architecture' , $UPLUGHTML.'/uplug.gif'
 	  ],
@@ -681,16 +682,11 @@ sub UplugHome{
     my $html='<center><h1>The Uplug home page</h1>';
     if ($user){$html.='<i>user: '.$user.'</i>';}
     $html.='</center><hr>
+
+Uplug is a collection of tools for linguistic corpus processing, word
+alignment and term extraction from parallel corpora. It includes two main 
+components:
 <p>
-The Uplug system was developed within the co-operative project on
-parallel corpora PLUG 
-[<A href="UplugWeb/node6.html#Sag99">ASH99</A>]. 
-It is a modular system designed
-to process text corpora with the focus on parallel texts and word
-alignment 
-[<A href="UplugWeb/node6.html#Tied99b">Tied99a</A>]. 
-UplugWeb is a collection of web interfaces and tools for managing and
-processing parallel corpora. It includes two main components:
 
 <ul>
 <li><a href="?a=corpus">Corpus 
@@ -705,23 +701,24 @@ queued on the local system and results will be send by mail and added
 to the personal data collection.
 </ul>
 
-Several tools have been integrated in Uplug. pre-processing tools
+
+Several tools have been integrated in Uplug. Pre-processing tools
 include a sentence splitter, tokenizer and external part-of-speech
 tagger and shallow parsers. 
-The following external tools are used: The <a href="http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a>
+The following external tools are used: 
+The <a href="http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a>
   for English, French, Italian, and German,
   the <a href="http://www.coli.uni-sb.de/~thorsten/tnt/">TnT
   tagger</a> for English, German and Swedish,
-  the <a href="http://grok.sourceforge.net/">Grok system</a> for
-  English, and
+  The <a href="http://grok.sourceforge.net/">Grok system</a> for
+  English (tagging and chunking), and
   the morphological analyzer 
   <a href="http://chasen.aist-nara.ac.jp/">ChaSen</a> for Japanese.
-<br>
 Translated documents can be sentence
 aligned using the length-based approach by 
 <a href="http://citeseer.nj.nec.com/gale91program.html">Gale&amp;Church</a>.
 Words and phrases can be aligned using the 
-<a href="/~joerg/paper/eacl03.pdf">clue
+<a href="http://stp.ling.uu.se/~joerg/paper/eacl03.pdf">clue
 alignment</a> approach and the toolbox for statistical machine translation 
 <a href="http://www-i6.informatik.rwth-aachen.de/web/Software/GIZA++.html">GIZA++</a>.
 
@@ -730,6 +727,15 @@ alignment</a> approach and the toolbox for statistical machine translation
 <P>
 
 <DL>
+<dt>Tiedemann, J. 2003,</dt>
+<dd><i>Recycling Translations - Extraction of Lexical Data from Parallel
+Corpora and their Application in Natural Language Processing</i>,<br/>
+Doctoral Thesis, Studia Linguistica Upsaliensia 1, ISSN 1652-1366,
+ISBN 91-554-5815-7<br>
+[<a href="http://publications.uu.se/uu/fulltext/nbn_se_uu_diva-3791.pdf">pdf, 1.3MB</a>]
+[<a href="http://stp.ling.uu.se/~joerg/phd/html/">html</a>]
+[<a href="http://stp.ling.uu.se/~joerg/phd/errata.pdf">errata, pdf</a>]</dd>
+
 <dt>Tiedemann,J. 2003,</dt>
 <dd>Combining Clues for Word Alignment.
 In <cite>Proceedings of the 10th Conference
@@ -746,33 +752,6 @@ Athens/Greece.</i>
 <A HREF="http://stp.ling.uu.se/~corpora/plug/paper/lrec2000.pdf">[pdf, 406kB]</A>
 <A HREF="http://stp.ling.uu.se/~corpora/plug/paper/lrec2000.ps">[ps, 757kB]</A>
 <A HREF="http://stp.ling.uu.se/~corpora/plug/paper/lrec2000.ps.gz">[gzipped ps, 236kB]</A></DD>
-
-<DT>Tiedemann, J., 1999,</DT>
-<DD>Word Alignment Step by Step. 
-In <I>Proceedings of the 12th Nordic Conference on Computational
-Linguistics</I>, 1999, Technical University of Trondheim. Department of
-Linguistics.
-<BR>
-    <A HREF="http://stp.ling.uu.se/~corpora/plug/paper/nodalida99.pdf">[pdf, 442 kB]</a>
-    <A HREF="http://stp.ling.uu.se/~corpora/plug/paper/nodalida99.ps">[ps, 683 kB]</a>
-    <A HREF="http://stp.ling.uu.se/~corpora/plug/paper/nodalida99.ps.gz">[gzipped ps, 208 kB]</a>
-    <A HREF="http://stp.ling.uu.se/~joerg/nodalida99/nodalida99.htm">[slides - html]</a>
-    <a href="http://stp.ling.uu.se/~joerg/nodalida99/nodalida99.ps">[slides  - ps]</A>
-</DD>
-
-<DT>Tiedemann, J., 1999,</DT>
-<DD>Uplug - a modular corpus tool for parallel corpora. 
-In <I>L. Borin (ed.) Parallel Corpora, Parallel Worlds. Proceedings of
-Parallel Corpus Symposium</I>, Uppsala, April 22-23, 1999, Uppsala
-University, to appear. Also available as WP 17 in <i>Working Papers in
-Computational Linguistics and Language Engineering</i>,  Department of
-Linguistics, Uppsala University. 1999
-<br>
-    <a href="http://stp.ling.uu.se/pks99/synopsis/Joerg.html">[abstract]</a>
-    <a href="http://stp.ling.uu.se/~joerg/paper/pks99_final.ps">[ps, 765 kB]</a>
-    <a href="http://stp.ling.uu.se/~joerg/paper/pks99_final.ps.gz">[gzipped ps, 226 kB]</a>
-    <a href="http://stp.ling.uu.se/~joerg/paper/pks99_final.pdf">[pdf, 320 kB]</a>
-</DD>
 </DL>
 <HR>';
 return $html;
