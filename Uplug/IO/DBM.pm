@@ -1,4 +1,4 @@
-#####################################################################
+####################################################################
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
 # This program is free software; you can redistribute it and/or modify
@@ -162,6 +162,11 @@ sub read{
 #	$key=Uplug::Encoding::decode($key,$DBMEncoding,$UplugEncoding);
 #    }
 
+    my $UplugEncoding=$self->getInternalEncoding;
+    $val=Uplug::Encoding::decode($val,$UplugEncoding);
+    $key=Uplug::Encoding::decode($key,$UplugEncoding);
+
+
     my @keyval=split(/\x00/,$key);
     %{$data}=split(/\x00/,$val);
     if ($val=~/\|/){
@@ -174,7 +179,8 @@ sub read{
 	}
     }
     if (defined $self->{key}){
-	foreach (sort @{$self->{'key'}}){
+#	foreach (sort @{$self->{'key'}}){
+	foreach (@{$self->{'key'}}){
 	    $data->{$_}=shift(@keyval);
 	}
     }
@@ -198,7 +204,8 @@ sub write{
     my $key;
     my @fields=();
     if (defined $self->{key}){
-	foreach (sort @{$self->{'key'}}){
+#	foreach (sort @{$self->{'key'}}){
+	foreach (@{$self->{'key'}}){
 	    push (@fields,$dat{$_});
 	    delete $dat{$_};
 	}
@@ -219,12 +226,23 @@ sub write{
     %dat=&dumpData(\%dat);
     my $d=join ("\x00",%dat);
 
+
 # JT: 2004-08-26: forget about encodings (check that later?!)
 #
 #    my $UplugEncoding=$self->getInternalEncoding;
 #    my $DBMEncoding=$self->getEncoding;
 #    $d=Uplug::Encoding::encode($d,$DBMEncoding,$UplugEncoding);
 #    $key=Uplug::Encoding::encode($key,$DBMEncoding,$UplugEncoding);
+
+    # JT: 2005-01-27
+    # this looks strange but seems to be required to get real utf-8
+    # in DBM files on some platforms (I'm still confused about this
+    # encoding business and the language settings ....)
+
+    my $UplugEncoding=$self->getInternalEncoding;
+    $d=Uplug::Encoding::encode($d,$UplugEncoding);      # this looks strange
+    $key=Uplug::Encoding::encode($key,$UplugEncoding);  # 
+
     eval { $self->{DBMhash}->{$key}=$d; };
     return 1;
 }
@@ -264,7 +282,8 @@ sub select{
     my $key;
     my $keycomplete=1;                            # hash-key is complete
     my @fields=();
-    foreach my $k (sort @keys){                   # check all key-fields
+#    foreach my $k (sort @keys){                   # check all key-fields
+    foreach my $k (@keys){                   # check all key-fields
 	if (not defined $Pattern{$k}){            # if one of them is not
 	    $keycomplete=0;                       # specified --> reset flag
 	    push (@fields,'.*');                  # and create a wild-card-key
@@ -285,6 +304,9 @@ sub select{
 #    if ($DBMEncoding ne $UplugEncoding){
 #	$key=Uplug::Encoding::encode($key,$DBMEncoding,$UplugEncoding);
 #    }
+
+    my $UplugEncoding=$self->getInternalEncoding;
+    $key=Uplug::Encoding::encode($key,$UplugEncoding);
 
     #-------------------------------------------------------------------------
     my %hash=();
