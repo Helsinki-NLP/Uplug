@@ -22,9 +22,9 @@ package Uplug::Web::Config;
 
 use strict;
 use Data::Dumper;
-use Uplug::Web::Process::Lock
+use Uplug::Web::Process::Lock;
 
-my $DEFAULTMAXFLOCKWAIT=5;
+our $DEFAULTMAXFLOCKWAIT=5;
 
 sub DESTROY{
     $_[0]->close();
@@ -109,7 +109,7 @@ sub close{
 	##
 	## unlocking the file if nflock was used!
 	##
-	&nunflock($self->{FILE}
+	&nunflock($self->{FILE});
 	$self->{STATUS}='closed';
     }
 }

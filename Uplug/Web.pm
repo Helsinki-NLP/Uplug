@@ -2021,7 +2021,7 @@ sub changeLinks{
 ## 
 
     if (not &nflock($file,$MAXFLOCKWAIT)){
-	print STDERR "# Uplug::Web - can't get exclusive lock for $LOCK!\n";
+	print STDERR "# Uplug::Web - can't get exclusive lock for $file!\n";
 	return 0;
     }
 
