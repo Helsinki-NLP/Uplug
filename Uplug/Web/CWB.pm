@@ -78,11 +78,11 @@ sub Query{
 
     binmode (STDOUT,':encoding(utf-8)');
 
-    if (not -d $ENV{UPLUGCWB}){mkdir $ENV{UPLUGCWB};}
-    if (not -d "$ENV{UPLUGCWB}/reg"){mkdir "$ENV{UPLUGCWB}/reg";}
-    if (not -d "$ENV{UPLUGCWB}/dat"){mkdir "$ENV{UPLUGCWB}/dat";}
-    if (not -d "$ENV{UPLUGCWB}/reg/$owner"){mkdir "$ENV{UPLUGCWB}/reg/$owner";}
-    if (not -d "$ENV{UPLUGCWB}/dat/$owner"){mkdir "$ENV{UPLUGCWB}/dat/$owner";}
+    if (not -d $ENV{UPLUGCWB}){mkdir $ENV{UPLUGCWB},0755;}
+    if (not -d "$ENV{UPLUGCWB}/reg"){mkdir "$ENV{UPLUGCWB}/reg",0755;}
+    if (not -d "$ENV{UPLUGCWB}/dat"){mkdir "$ENV{UPLUGCWB}/dat",0755;}
+    if (not -d "$ENV{UPLUGCWB}/reg/$owner"){mkdir "$ENV{UPLUGCWB}/reg/$owner",0755;}
+    if (not -d "$ENV{UPLUGCWB}/dat/$owner"){mkdir "$ENV{UPLUGCWB}/dat/$owner",0755;}
 
     my $CWBregistry="$ENV{UPLUGCWB}/reg/$owner";
     chdir $CWBregistry;

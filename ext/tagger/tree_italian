@@ -11,11 +11,10 @@
 ###########################################################################
 
 # THESE VARIABLES HAVE TO BE SET:
-# ROOT=/home/staff/ljo/etap/taggare
-ROOT=/local/ling/taggare
-BIN=$ROOT/tree-tagger/bin
-CMD=$ROOT/tree-tagger/cmd
-LIB=$ROOT/tree-tagger/lib
+ROOT=/users1/tiedeman/wordalign/TreeTagger
+BIN=$ROOT/bin
+CMD=$ROOT/cmd
+LIB=$ROOT/lib
 
 # set your default options for the Tree Tagger
 TAGGEROPTS="-token -lemma -sgml"

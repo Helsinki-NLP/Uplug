@@ -341,7 +341,7 @@ sub PrintHtmlClue{
     my ($idx,$id,$align,$max)=@_;
     my $dir='clue-html-files';
     if (not -d $dir){
-	mkdir $dir;
+	mkdir $dir,0755;
     }
     my $file="$dir/$id.html";
     open F,">$file";

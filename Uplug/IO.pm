@@ -309,7 +309,9 @@ sub readFromHandle{
     if (not $content){return $content;}
     if ($PerlVersion<5.008){
 	if ($encoding ne $DEFAULTENCODING){
-	    $content=$self->decode($content,$encoding,$DEFAULTENCODING);
+	    $content=Uplug::Encoding::decode($content,$DEFAULTENCODING,
+					     $encoding);
+#	    $content=$self->decode($content,$encoding,$DEFAULTENCODING);
 	}
     }
     return $content;

@@ -2,10 +2,10 @@
 
 # Set these paths appropriately
 # ROOT=/home/staff/ljo/etap/taggare
-ROOT=/local/ling/taggare
-BIN=$ROOT/tree-tagger/bin
-CMD=$ROOT/tree-tagger/cmd
-LIB=$ROOT/tree-tagger/lib
+ROOT=/users1/tiedeman/wordalign/TreeTagger
+BIN=$ROOT/bin
+CMD=$ROOT/cmd
+LIB=$ROOT/lib
 
 TOKENIZER=${BIN}/separate-punctuation
 TAGGER=${BIN}/tree-tagger

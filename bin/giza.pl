@@ -72,7 +72,7 @@ my ($OutputStreamName,$OutputStream)=         # take only
 
 # my $TmpDir=Uplug::IO::Any::GetTempFileName;
 my $TmpDir='/tmp/giza'.$$;
-mkdir $TmpDir;
+mkdir $TmpDir,0755;
 my $SrcFile=$TmpDir."/src";
 my $TrgFile=$TmpDir."/trg";
 my $BitextHeader;

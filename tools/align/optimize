@@ -1168,7 +1168,7 @@ sub MakeLinkSubDir{
     my $dir=$links;
 #    $dir=~s/\.links.gz//;
 #    $dir=uc($dir);
-    mkdir $dir;
+    mkdir $dir,0755;
     my ($name,$path)=fileparse($links);
     link $links,"$dir/$name";
     return $dir;
@@ -1184,8 +1184,8 @@ sub MakeClueLinks{
     opendir(DIR, 'data/runtime');                  # make links to clues
     my @dbm = grep { /\.dbm/ } readdir(DIR);
     closedir DIR;
-    mkdir "$dir/data";
-    mkdir "$dir/data/runtime";
+    mkdir "$dir/data",0755;
+    mkdir "$dir/data/runtime",0755;
     foreach (@dbm){
 	if (not -e "$dir/data/runtime/$_"){
 	    link "data/runtime/$_","$dir/data/runtime/$_";
@@ -1233,7 +1233,7 @@ sub RunClueAligner{
 #    $comm.=";nice gzip -f $file.log";
     $comm.=";nice $eval -gold $TrainGold -in $file.links.gz >$file.eval";
     if (-e $HeldoutBitext){
-	if ($HeldoutBitext and (not -e 'HELDOUT')){mkdir 'HELDOUT';}
+	if ($HeldoutBitext and (not -e 'HELDOUT')){mkdir 'HELDOUT',0755;}
 	$comm.=";nice $align -in $HeldoutBitext $param -out HELDOUT/$file.links 2>HELDOUT/$file.log";
 	$comm.=";nice gzip -f HELDOUT/$file.links";
 	$comm.=";nice gzip -f HELDOUT/$file.log";
@@ -1243,7 +1243,7 @@ sub RunClueAligner{
 	}
     }
     if (-e $EvalBitext){
-	if ($EvalBitext and (not -e 'EVAL')){mkdir 'EVAL';}
+	if ($EvalBitext and (not -e 'EVAL')){mkdir 'EVAL',0755;}
 	$comm.=";nice $align -in $EvalBitext $param -out EVAL/$file.links 2>EVAL/$file.log";
 	$comm.=";nice gzip -f EVAL/$file.links";
 	$comm.=";nice gzip -f EVAL/$file.log";
@@ -1420,7 +1420,7 @@ sub MakeDynamicClues{
 
 
     print "learn dynamic clues from __dynamic.links\n";
-    if (not -e 'dynamic'){mkdir 'dynamic';}     # training dir
+    if (not -e 'dynamic'){mkdir 'dynamic',0755;}     # training dir
     chdir 'dynamic';                            #   (go there)
     my $comm="$dynamic -in $links >dyn$DynNr.out 2>dyn$DynNr.log";
     $comm.=";touch dyn$DynNr.ready;";

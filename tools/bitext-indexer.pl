@@ -60,19 +60,19 @@ my $DATDIR    = shift(@ARGV);  # CWB data directory
 my @BITEXTS   = @ARGV;         # one or more bitext-files (XCES align)
 
 
-if (not -d $REGDIR){mkdir $REGDIR;}  # make registry directory if not existing
-if (not -d $DATDIR){mkdir $DATDIR;}  # make data directory if not existing
+if (not -d $REGDIR){mkdir $REGDIR,0755;}  # make registry directory
+if (not -d $DATDIR){mkdir $DATDIR,0755;}  # make data directory if not existing
 $REGDIR.='/'.$CORPUS;                # sub-directory for this corpus
 $DATDIR.='/'.$CORPUS;                # ... also for data
-if (not -d $REGDIR){mkdir $REGDIR;}  # make sub-dirs if they do not exist
-if (not -d $DATDIR){mkdir $DATDIR;}
+if (not -d $REGDIR){mkdir $REGDIR,0755;}  # make sub-dirs if they do not exist
+if (not -d $DATDIR){mkdir $DATDIR,0755;}
 
 if (not -d $REGDIR){die "cannot access registry dir: $REGDIR!";}
 if (not -d $DATDIR){die "cannot access data dir: $DATDIR!";}
 
 my $DIR    = $ENV{PWD};
 my $TMPDIR = '/tmp/BITEXTINDEXER'.$$;
-mkdir $TMPDIR;
+mkdir $TMPDIR,0755;
 chdir $TMPDIR;
 
 if (not -d $REGDIR){$REGDIR="$DIR/$REGDIR";}
@@ -170,7 +170,7 @@ sub XML2CWB{
     if (-d "$datdir/$lang"){
 	system ("rm -fr $datdir/$lang");
     }
-    mkdir "$datdir/$lang";
+    mkdir "$datdir/$lang",0755;
     system ("$ENCODE -R $regdir/$lang -d $datdir/$lang -f $lang $attr");
     system ("$CWBMAKEALL -r $regdir -V $lang");
 

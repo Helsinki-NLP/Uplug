@@ -45,8 +45,9 @@ $DEFAULTENCODING='utf-8';
 
 my $PerlVersion=$];
 if ($PerlVersion<5.008){
-    my $mod=qw( Unicode::String );
-    eval "require $mod";
+#    my $mod=qw( Unicode::String );
+    my $mod='Unicode/String.pm';
+    eval "require('$mod')";
     if ($@){warn $@;exit;}
 }
 else{

@@ -55,14 +55,14 @@ my $REG       = shift(@ARGV);  # CWB regisistry
 my $DATDIR    = shift(@ARGV);  # CWB data directory
 my @CORPUS    = @ARGV;         # corpus files
 
-if (not -d $DATDIR){mkdir $DATDIR;}
+if (not -d $DATDIR){mkdir $DATDIR,0755;}
 if (not -d $DATDIR){die "cannot access data dir: $DATDIR!";}
 
 #-----------------------------------------------------------------------
 
 my $DIR    = $ENV{PWD};
 my $TMPDIR = '/tmp/CORPUSINDEXER'.$$;
-mkdir $TMPDIR;
+mkdir $TMPDIR,0755;
 chdir $TMPDIR;
 
 if (not -d $DATDIR){$DATDIR="$DIR/$DATDIR";}
@@ -110,7 +110,7 @@ sub XML2CWB{
     # cwb-encode arguments (PATTR and SATTR) are stored in $L.cmd
     # (take only one of them to encode the entire corpus)
 
-    if (not -d $datdir){mkdir "$datdir";}
+    if (not -d $datdir){mkdir $datdir,0755;}
     system ("$ENCODE -R $reg -d $datdir -f $lang $attr");
     my $regdir=dirname($reg);
     my $corpus=basename($reg);

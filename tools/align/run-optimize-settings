@@ -183,7 +183,7 @@ sub MakeDynAlign{
 	$DynNr=$dyn;
 	&MakeDynamicClues($dynamic->{'dyn'.$dyn}.'.links.gz');
 	while (not -e "dyn$DynNr.ready"){sleep 1;}
-	mkdir 'dyn'.$dyn;
+	mkdir 'dyn'.$dyn,0755;
 	system "cp data/runtime/* dyn$dyn/";
 	$dyn++;
     }

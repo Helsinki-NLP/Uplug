@@ -5,7 +5,7 @@
 # $Id$
 
 grep '<wordLink ' |\
-perl -e 'if ($]>=5.008){binmode(STDIN, ":encoding(utf-8)");};
+perl -e '#if ($]>=5.008){binmode(STDIN, ":encoding(utf-8)");};
          while (<>){if (/lexPair=\"([^\"]*)\"/){print "$1\n";}}' |\
 tr ';' "\t" |\
 sort |\

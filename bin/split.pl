@@ -38,7 +38,7 @@ use strict;
 
 use FindBin qw($Bin);
 use lib "$Bin/..";
-use utf8;
+# use utf8;
 
 use Uplug::Data;
 use Uplug::IO::Any;

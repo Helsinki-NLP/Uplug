@@ -33,6 +33,7 @@ use Uplug::IO::Any;
 use Uplug::Data;
 use Uplug::Config;
 
+my $beta=1;   # default: P and R are equally important
 
 #---------------------------------------------------------------------------
 # 0) get input parameter
@@ -51,7 +52,9 @@ foreach (keys %{$IniData{input}}){
     }
 }
 my $minscore=$IniData{parameter}{'minimal score'};
-
+if (defined $IniData{parameter}{'F-beta'}){
+    $beta=$IniData{parameter}{'F-beta'};
+}
 #---------------------------------------------------------------------------
 # 1) read links from the gold standard
 
@@ -122,12 +125,17 @@ foreach ('regular','fuzzy','all'){
 	    $precision{$_}=$counts{$_}{precision}/$aligned;
 	}
 	if ($precision_pwa{$_}+$recall_pwa{$_}){
-	    $F_pwa{$_}=(2*$precision_pwa{$_}*$recall_pwa{$_})/
-		($precision_pwa{$_}+$recall_pwa{$_});
+	    $F_pwa{$_}=(($beta*$beta+1)*$precision_pwa{$_}*$recall_pwa{$_})/
+		($beta*$beta*$precision_pwa{$_}+$recall_pwa{$_});
+#	    $F_pwa{$_}=(2*$precision_pwa{$_}*$recall_pwa{$_})/
+#		($precision_pwa{$_}+$recall_pwa{$_});
 	}
 	if ($precision{$_}+$recall{$_}){
-	    $F{$_}=(2*$precision{$_}*$recall{$_})/
-		($precision{$_}+$recall{$_});
+#	    $F{$_}=(2*$precision{$_}*$recall{$_})/
+#		($precision{$_}+$recall{$_});
+	    $F{$_}=(($beta*$beta+1)*$precision{$_}*$recall{$_})/
+		($beta*$beta*$precision{$_}+$recall{$_});
+
 	}
     }
 }
@@ -368,12 +376,14 @@ sub GetDefaultIni{
     }
   },
   'parameter' => {
+      'F-beta' => 1
   },
   'arguments' => {
     'shortcuts' => {
        'in' => 'input:alignments:file',
        'gold' => 'input:gold standard:file',
        'min' => 'parameter:minimal score',
+       'beta' => 'parameter:F-beta',
     }
   },
   'widgets' => {
