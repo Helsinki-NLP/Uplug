@@ -17,8 +17,8 @@ Uplug - Quickstart
    Let's assume that uplug is installed in /cvs/
    Copy example files to your project directory:
 
-     cp /cvs/example/1988sv.txt .
-     cp /cvs/example/1988en.txt .
+     cp /cvs/uplug/example/1988sv.txt .
+     cp /cvs/uplug/example/1988en.txt .
    
 
 3a) Basic pre-processing (text --> xml)
@@ -44,15 +44,20 @@ Uplug - Quickstart
    /cvs/tools/readlign 1988sven.xml | less
 
 
-3c) Word alignment (basic)
+3c) Word alignment (default)
 
-   /cvs/uplug systems/align/word/basic -in 1988sven.xml -out 1988sven.links
+   /cvs/uplug systems/align/word/default -in 1988sven.xml -out 1988sven.links
 
    This will take some time! Word alignment is slow even for this
    little bitext. The word aligner will 
      * create basic clues (Dice and LCSR)
      * run GIZA++ with standard settings (trained on plain text)
+     * learn clues from GIZA's Viterbi alignments
+     * "radical stemming" (take only the 3 inital characters of each token)
+       and run GIZA++ again
      * align words with existing clues
+     * learn clues from previous alignment
+     * align words again with all existing clues
 
    Word alignment results are stored in 1988sven.links.
    You may look at word type links using the following script:
@@ -60,7 +65,19 @@ Uplug - Quickstart
    /cvs/tools/xces2dic < 1988sven.links | less
 
 
-3d) Tagging (using external taggers)
+3d) Word alignment (tagged)
+
+   Use the following command for aligning tagged corpora (at least POS tags):
+
+   cp /cvs/uplug/example/svenprf* .
+   /cvs/uplug systems/align/word/tagged -in svenprf.xces -out svenprf.links
+
+   This is essentially the same as the default word alignment with addiyional
+   clues for POS and chunk labels.
+
+
+
+3e) Tagging (using external taggers)
 
     There are several taggers that can be called from the Uplug
     scripts. The following command can be used to tag the English
@@ -69,34 +86,12 @@ Uplug - Quickstart
     /cvs/uplug systems/pre/en/tagGrok -in 1988en.xml > 1988en.tag
 
 
-3e) Chunking (using external chunkers)
+3f) Chunking (using external chunkers)
 
     There is a chunker for English that can be run on POS-tagged
     corpus files:
 
     /cvs/uplug systems/pre/en/chunk -in 1988en.tag > 1988en.chunk
-
-
-3f) Word alignment (advanced)
-
-    There is an advanced configuration for the word aligner
-    module. The advanced alignment process includes learning dynamic
-    alignment clues from previously aligned bitexts. This is
-    useful when working with tagged corpus files!!!
-    Use for example the tagged bitext from the Uplug package:
-
-    cp /cvs/example/svenprf* .
-   /cvs/uplug systems/align/word/advanced -in svenprf.xces -out svenprf.links
-
-   This will take some time (much more time than for the basic
-   settings)! Word alignment is slow even for this little bitext. The
-   word aligner will 
-     * create basic clues (Dice and LCSR)
-     * run GIZA++ with three different settings (trained on plain text,
-       token prefixes, and token suffixes),
-     * align words with existing clues
-     * learn dynamic clues from the previous alignment
-     * align words again using even dynamic clues
 
 
 3g) Word alignment evaluation
@@ -156,6 +151,36 @@ Uplug - Quickstart
     -dc3	   -dc3_w	dynamic clue (chunk label trigram)
     -dc3p	   -dc3p_w	dynamic clue (chunk label trigram+POS)
     -dc3x	   -dc3x_w	dynamic clue (chunk trigram+relative position)
+
+
+
+3i) Word alignment (basic)
+
+   There is another standard setting for word alignment:
+
+   /cvs/uplug systems/align/word/basic -in 1988sven.xml -out basic.links
+
+   The word aligner will 
+     * create basic clues (Dice and LCSR)
+     * run GIZA++ with standard settings (trained on plain text)
+     * align words with existing clues
+
+   Word alignment results are stored in basic.links.
+   You may look at word type links using the following script:
+
+   /cvs/tools/xces2dic < basic.links | less
+
+
+
+3j) Word alignment (advanced)
+
+    This settings is similar to the tagged word alignmen settings (3i) but the
+    last two steps will be repeated 3 times (learning clues from precious
+    alignments). This is the slowest standard setting for word alignment.
+
+   /cvs/uplug systems/align/word/advanced -in svenprf.xces -out advanced.links
+   /cvs/tools/xces2dic < advanced.links | less
+
 
 
 

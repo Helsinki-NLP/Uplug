@@ -26,3 +26,8 @@ Most of the scripts should run on a standard GNU/Linux machine.
      The Qtag Tagger: http://web.bham.ac.uk/O.Mason/software/tagger/
      The TnT tagger: http://www.coli.uni-sb.de/~thorsten/tnt/
 
+  - The TreeTagger is expected to be in ext/tree-tagger.
+  - Qtag is expected in ext/Qtag with sub-directories for different languages
+    (check startup scripts in ext/tagger/qtag_XXXXX)
+  - TnT is expected in ext/tnt with a subdirectory 'models' for the language
+    models (check scripts again)
