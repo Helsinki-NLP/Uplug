@@ -1437,6 +1437,8 @@ use CGI qw/:standard escapeHTML escape/;
 use vars qw(@ISA);
 @ISA = qw( Uplug::Web::Data );
 
+use Uplug::Web::Process::Lock;
+
 
 sub new{
     my $class=shift;
@@ -1950,6 +1952,8 @@ package Uplug::Web::BitextLinks;
 use CGI qw/:standard escapeHTML escape/;
 use vars qw(@ISA);
 @ISA = qw( Uplug::Web::Bitext );
+
+use Uplug::Web::Process::Lock;
 
 sub new{
     my $class=shift;
