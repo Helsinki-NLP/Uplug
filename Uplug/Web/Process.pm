@@ -406,12 +406,15 @@ sub MoveJob{
     my $fromstack=&GetJobStack($from);
     my $tostack=&GetJobStack($to);
 
-    if (my @data=$fromstack->find($user,$process)){
-	$fromstack->remove($user,$process);
-	$tostack->push(@data);
-	return 1;
-    }
-    return 0;
+    $fromstack->open();                            # open the stack to lock it!
+    if (my @data=$fromstack->find($user,$process)){# look for the process ID
+	$fromstack->remove($user,$process);        # remove it from fromstack
+	$tostack->push(@data);                     # push it into the tostack
+	$fromstack->close();                       # release the file lock
+	return 1;                                  # and return true
+    }                                              # process not found:
+    $fromstack->close();                           #  release lock
+    return 0;                                      #  and return false
 }
 
 
