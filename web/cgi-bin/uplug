@@ -110,11 +110,13 @@ else{
     $main=&UplugHome($user);
 }
 
-print &table({-width => '100%',
-	      -cellpadding=> '4'},
+print &table({-width => '100%',-border=>'0',
+	      -cellpadding=> '0'},
 	     caption(''),
 	     &Tr([&td({-valign=>'top',-width=>'150'},[$menu]).
-		  &td({-valign=>'top'},[$main])]));
+		  &td({-width=>'6'},['&nbsp;']).
+		  &td({-valign=>'top'},[$main]).
+		  &td({-width=>'6'},['&nbsp;'])]));
 
 
 print &end_html;
@@ -131,6 +133,10 @@ sub HtmlHeader{
 		       -author => 'Joerg Tiedemann',
 		       -base=>'true',
 		       -dtd=>1,
+		       -leftmargin=>'0',
+		       -topmargin=>'0',
+		       -marginwidth=>'0',
+		       -marginheight=>'0',
 		       -style=>{'src'=>$CSS},
 		       -encoding => 'utf-8',
 		       -head=>meta({-http_equiv=>'Content-Type',

@@ -1697,19 +1697,26 @@ sub readSegment{
 
     my $text='';
     delete $parser->{SUBDATA};
+    my $failed=0;
+    my $startpos=tell($fh);
     while (@{$ids} and &ParseXml($fh,$parser,1)){
 	if ($$ids[0] eq $parser->{DATA}->{id}){
 	    if ($style eq 'text'){$text.=$parser->{HTMLTXT};}
 	    else{$text.=$parser->{HTML};}
 	    shift(@{$ids});
 	}
-	else{delete $parser->{SUBDATA};}
+	else{
+	    $failed++;                         # wrong segment-ID
+	    delete $parser->{SUBDATA};         # delete segment
+	    if ($failed>3){                    # skip no more than 3 segments
+		if ($startpos==0){last;}       # started at the beginning->stop
+		$startpos-=500;                # enough! go 500 bytes back
+		if ($startpos<0){$startpos=0;} # (but not more than filestart)
+		seek($fh,$startpos,0);         # move the pointer
+		$failed=0;                     # reset fail counter
+	    }
+	}
 	if (not @{$ids}){last;}
-    }
-    if (@{$ids} and ($self->{REREAD}<1)){            # still segment-ID's left!
-	$self->{REREAD}++;                           # (re-read only once)
-	seek($fh,0,0);                               # go to the beginning of
-	return $self->readSegment($doc,$ids,$style); # the file and read again
     }
     if ($style ne 'text'){$text=&pre($text);}
     return $text;
