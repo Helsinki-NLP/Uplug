@@ -76,7 +76,11 @@ sub Giza2Clue{
 
     my $in=Uplug::IO::Any->new(\%inStream);
     $in->open('read',\%inStream);
+    my $count=0;
     while ($in->read($data)){
+	$count++;
+	if (not ($count % 1000)){print STDERR '.';}
+	if (not ($count % 10000)){print STDERR "$count\n";}
 	my $src=$data->attribute('source');
 	my $trg=$data->attribute('target');
 	if ((not $src) or (not $trg)){next;}

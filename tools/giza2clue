@@ -18,8 +18,28 @@
 
 use strict;
 use FindBin qw($Bin);
+use lib "$Bin/..";
+use Uplug::Align::Word::Giza;
+use File::Basename;
 
-my $convert="$Bin/declclue -p -o giza.dbm -d ' ' -c 'target,source,value'";
-my $input=$ARGV[0];
+my $inverse=0;
+my $output='giza.dbm';
 
-system "$convert <$input";
+my $dir=shift(@ARGV);
+if (not -d $dir){$dir=dirname($dir);}
+if (@ARGV){$output=shift(@ARGV);}
+
+
+&Giza2Clue($dir,
+	   {},
+	   $inverse,{format=>'dbm',
+		     file=>$output,
+		     'key' => ['source','target'],
+		     write_mode=>'overwrite'});
+
+
+
+#my $convert="$Bin/declclue -p -o giza.dbm -d ' ' -c 'target,source,value'";
+#my $input=$ARGV[0];
+#
+#system "$convert <$input";

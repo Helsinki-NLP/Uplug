@@ -419,6 +419,12 @@ sub ShowCorpusInfo{
 
 
 	################################################################
+	# stop here if this is not the selected corpus
+	#
+
+	if ($c ne $corpus){next;}
+
+	################################################################
 	# add links for the different access modes
 	#                         and corpus tasks
 	################################################################
@@ -458,10 +464,6 @@ sub ShowCorpusInfo{
 	#
 	# end of the task bars
 	##################################################################
-	# stop here if this is not the selected corpus
-	#
-
-	if ($c ne $corpus){next;}
 
 	if ($task eq 'remove'){
 	    $html.=&p().&b('ATTENTION! ');
