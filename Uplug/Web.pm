@@ -29,10 +29,7 @@ use File::Copy;
 use Encode;
 
 our $CWBREG=$ENV{UPLUGCWB}.'/reg/';
-our $ALIGN2CWB=$ENV{UPLUGHOME}.'/web/bin/make-cwb-align';
-our $CORPUS2CWB=$ENV{UPLUGHOME}.'/web/bin/make-cwb-corpus';
-
-our $RECODE='/home/staff/joerg/user_local/bin/recode';
+our %ISO639;                        # ISO639 - 2-letter-language-codes
 
 my $MAXVIEWLINES=40;                # view max X lines from text files
 my $MAXVIEWDATA=10;                 # view max X data records
@@ -42,11 +39,11 @@ binmode(STDOUT, ":utf8");           # set UTF8 for STDOUT
 #binmode(STDIN, ":utf8");           # set UTF8 for STDIN
 
 my %DataAccess=
-    (admin => {corpus => ['info','view','send','add','align',
+    (admin => {corpus => ['info','view','send','add','preprocess','align',
 			  'index','query','remove'],
 	       doc => ['info','view','send','remove'],
 	       user => ['info','edit','remove']},
-     user => {corpus => ['info','view','send','add','align',
+     user => {corpus => ['info','view','send','add','preprocess','align',
 			 'index','query','remove'],
 	      doc => ['info','view','send','remove'],
 	      'Uplug::Web::Data' => ['xml'],
@@ -406,10 +403,14 @@ sub ShowRemovedCorpusInfo{
 }
 
 
+
+
 ############################################################################
+#
 # ShowCorpusInfo:
 #    * list all corpora of a certain owner
 #    * list info about documents for selected corpora
+#
 ############################################################################
 
 sub ShowCorpusInfo{
@@ -462,41 +463,68 @@ sub ShowCorpusInfo{
     if (defined $docbase){$link=&AddUrlParam($link,'b',$docbase);}
 
     my $html;
-#    my $html='possible tasks: ';
-#    $html.=&TaskLinks({url=>$link,selected=>$task},
-#		      &AccessMode($priv,'corpus')).&br();
-
-#    $html.=&ActionLinks($link,&AccessMode($priv,'corpus')).&br();
-#    $html.='selected task: '.$task;
     $query=&AddUrlParam($query,'t',$task);
-    if ($task eq 'remove'){
-	$html.=&p().&b('ATTENTION! ');
-	$html.='Documents will be removed immediately';
-	$html.=' when clicking on the links below!';
-    }
     $html.=&p();
 
+    my $count;
     foreach my $c (sort keys %{$CorpusNames}){
+	$count++;
 
 	$query=&AddUrlParam($query,'c',$c);
-	if ($c eq $corpus){$html.=$c.' ';}
-	else{$html.=&a({-href=>$query},$c.' ');}
+	if ($c eq $corpus){$html.="Corpus $count: ".&b($c).' ';}
+	else{$html.="Corpus $count: ".&a({-href=>$query},&b($c).' ');}
+
+
+	################################################################
+	# add links for the different access modes
+	#                         and corpus tasks
+	################################################################
 
 	if (not $notasks){
-	    $html.=&TaskLinks({url=>$query,selected=>$task},
-			      &AccessMode($priv,'corpus'));
+#	    $html.=&TaskLinks({url=>$query,selected=>$task},
+#			      &AccessMode($priv,'corpus'));
+
+	    $html.=&p().'modes: ';
+	    if ($priv ne 'all'){
+		$html.=&TaskLinks({url=>$query,selected=>$task},
+				  'view','info','send','remove');
+	    }
+	    else{
+		$html.=&TaskLinks({url=>$query,selected=>$task},
+				  'view','info','send');
+	    }
+	    $html.=&br().'tasks: ';
+	    if ($priv ne 'all'){
+		$html.=&TaskLinks({url=>$query,selected=>$task},
+				  'preprocess','align','index','query');
+	    }
+	    else{
+		$html.=&TaskLinks({url=>$query,selected=>$task},
+				  'index','query');
+	    }
 	}
 	$html.=&p();
 
-#	$html.=&ActionLinks($url,&AccessMode($priv,'corpus')).&br();
-#	push (@rows,&td([&a({-href=>$url},$c)]));
+	#
+	# end of the task bars
+	##################################################################
+	# stop here if this is not the selected corpus
+	#
+
 	if ($c ne $corpus){next;}
+
+	if ($task eq 'remove'){
+	    $html.=&p().&b('ATTENTION! ');
+	    $html.='Documents will be removed immediately';
+	    $html.=' when clicking on the links below!';
+	}
+
+	#-----------------------------------------------------------
+	# add document links
 
 	my @rows=();
 	foreach my $d (sort keys %docs){
 	    my $link=&AddUrlParam($query,'b',$d);   # add base name
-#	    push (@rows,&th([$d]));
-#	    $rows[-1].=&td(['['.&a({-href=>$link},'links').']']);
 	    if ($d eq $docbase){push(@rows,&th([$d]));}
 	    else{
 		push(@rows,&th([&a({-href=>$link},$d)]));
@@ -508,6 +536,12 @@ sub ShowCorpusInfo{
 			       ['['.&a({-href=>$link},$l).']']);
 	    }
 	    if ($docbase ne $d){next;}
+	    if (@lang<2){next;}         # no matrix for only one language!
+
+	    #-------------------------------------------------------
+	    # create the multilingual document matrix
+	    # for the selected document
+
 	    foreach my $s (@lang){
 		$link=&AddUrlParam($link,'d',$docs{$d}{$s}{'_doc'});
 		push (@rows,&td({-align=>'right'},
@@ -527,13 +561,13 @@ sub ShowCorpusInfo{
 		    }
 		}
 	    }
-#	    if ((defined $doc) and ($task eq 'info')){
-#		foreach (keys %{$$CorpusDocs{$doc}}){
-#		    push (@rows,td([$_,$$CorpusDocs{$doc}{$_}]));
-#		}
-#	    }
 	}
 	$html.=&table({},caption(''),&Tr(\@rows)).&p();
+
+	#--------------------------------------------------------
+	# the next part is for the info-mode: 
+	#    show extra info for the selected document!
+
 	if ((defined $doc) and ($task eq 'info')){
 	    my @rows=();
 	    push (@rows,&th(['info:',$doc]));
@@ -925,6 +959,42 @@ sub AlignAllDocuments{
     return $html.
 	&h3("$count sentence alignment processes added to the queue!");
 }
+
+
+#------------------------------------------------------------
+# sentence-align all bitexts in a given corpus
+
+sub PreprocessAllDocuments{
+    my ($user,$corpus)=@_;
+
+    my $CorpusData=&Uplug::Web::Corpus::CorpusDocuments($user,$corpus);
+    my $count;
+    foreach my $c (keys %{$CorpusData}){
+	if ($$CorpusData{$c}{status} eq 'text'){
+	    $count++;
+	    my $config=&GetPreprocessConfig($$CorpusData{$c}{language});
+	    my %para=('input:text:stream name' => $c);
+	    &Uplug::Web::Process::MakeUplugProcess($user,$corpus,
+						   $config,\%para);
+	}
+    }
+    return &h3("$count pre-processing jobs added to the queue!");
+}
+
+sub GetPreprocessConfig{
+    my $lang=shift;
+    my $configbase='systems/pre';
+    my $LangName=$ISO639{$lang};
+    $LangName=~tr/A-Z/a-z/;
+    print "checking $ENV{UPLUGHOME}/$configbase/$LangName<hr>";
+    if (-e "$ENV{UPLUGHOME}/$configbase/$LangName"){
+	return "$configbase/$LangName";
+    }
+    return $configbase.'/basic';
+}
+
+
+
 
 sub Process{
     my $query=shift;
@@ -1320,7 +1390,7 @@ sub TaskLinks{
 # The Registration Authority for ISO 639 is Infoterm, Osterreichisches
 # Normungsinstitut (ON), Postfach 130, A-1021 Vienna, Austria.
 
-my %ISO639=( qw(
+%ISO639=( qw(
 aa Afar
 ab Abkhazian
 af Afrikaans

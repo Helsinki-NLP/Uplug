@@ -406,6 +406,18 @@ sub CorpusManager{
     }
 
     #-------------------------------------------------------------------------
+    # pre-process all bitexts in a corpus
+    #-------------------------------------------------------------------------
+
+    elsif ($task eq 'preprocess'){
+	$html.=&Uplug::Web::PreprocessAllDocuments($owner,$corpus);
+	$task='view';
+	&param('t',$task);
+	$html.=&Uplug::Web::ShowCorpusInfo($task,
+					   $owner,$corpus,$docbase,$doc,$priv);
+    }
+
+    #-------------------------------------------------------------------------
     # send a document of a corpus by mail
     #-------------------------------------------------------------------------
 
