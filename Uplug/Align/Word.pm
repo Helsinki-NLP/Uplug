@@ -29,6 +29,7 @@
 package Uplug::Align::Word;
 
 use strict;
+use Time::HiRes qw(time);
 use vars qw(@ISA $VERSION $CLUEWEIGHT );
 
 use Uplug::Data;
@@ -113,7 +114,7 @@ sub align{
 #	$self->{data}->rmLinkedToken;
 #    }
 
-#    my $time=time();
+    my $time=time();
 
     if ($self->getParameter('non-aligned only')){  # --> align all tokens
 	$self->{data}->rmLinkedToken;              #     which haven't been
@@ -129,12 +130,14 @@ sub align{
 
     $self->{nrSrcToken}+=$#{$self->{token}->{source}}+1;
     $self->{nrTrgToken}+=$#{$self->{token}->{target}}+1;
-
-#    $self->{prepare_time}+=time()-$time;$time=time();
+    ### DEBUG: store time for preparing data
+    $self->{prepare_time}+=time()-$time;$time=time();
     $self->getLinkScores();
-#    $self->{get_scores_time}+=time()-$time;$time=time();
+    ### DEBUG: store time for retrieving clue scores
+    $self->{get_scores_time}+=time()-$time;$time=time();
     $self->findAlignment();
-#    $self->{align_time}+=time()-$time;
+    ### DEBUG: store time for finding the best word alignment
+    $self->{align_time}+=time()-$time;
 
 
 #    if ($self->getParameter('remove word links')){
@@ -410,6 +413,11 @@ sub setLinkParam{
     my $param=shift;
     if (ref($param) eq 'HASH'){
 	%{$self->{param}->{$linkType}}=%{$param};
+#	if ($linkType!~/^general$/){
+#	    if ($linkType!~/^original$/){
+#		%{$self->{clueparam}->{$linkType}}=%{$param};
+#	    }
+#	}
     }
 }
 

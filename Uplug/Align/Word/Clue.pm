@@ -29,6 +29,7 @@
 package Uplug::Align::Word::Clue;
 
 use strict;
+use Time::HiRes qw(time);
 
 use vars qw(@ISA $VERSION $DEBUG);
 use vars qw($INPHRASESONLY $ADJACENTONLY $ADJACENTSCORE $FILLPHRASES);
@@ -110,42 +111,65 @@ sub getLinkScores{
     my $Param=$self->{param};
     my $data=$self->{data};
 
-    foreach my $s (sort {$a <=> $b} keys %{$SrcTok}){
-#	print STDERR "-->$s ($$SrcTok{$s}{general})\n";
-#	if ($s==184){
-#	    print '';
-#	}
-	foreach my $t (keys %{$TrgTok}){
+    ## prepare clue param hash (reduce checks in the loop below)
+    my %ClueParam=%{$Param};
+    if (exists $ClueParam{general}){delete $ClueParam{general};}
+    if (exists $ClueParam{original}){delete $ClueParam{original};}
+    foreach (keys %ClueParam){
+	if (ref($ClueParam{$_}) ne 'HASH'){$ClueParam{$_}={};}
+	if (not defined $ClueParam{$_}{'score weight'}){
+	    $ClueParam{$_}{'score weight'}=$self->defaultClueWeight();
+	}
+    }
 
-	    my ($src,$trg)=($$SrcTok{$s}{general},$$TrgTok{$t}{general});
+    ## define some variables used in the loop
+    my $weight;           # clue combination weight
+    my ($src,$trg);       # source and target language tokens
+    my $score;            # clue score found for the current pair
+    my $time;             # time (for debugging)
+    my %search;           # hash of patterns for searching clues
+    my $found=Uplug::Data->new;  # clues found
+    my @SrcTok;           # positions of the current source
+    my @TrgTok;           # and target tokens in the sentence
+    my ($s,$t,$x,$y,$p);  # variables for iteration
+    my $ScoreComb=$self->parameter('score combination');
+    if (not $ScoreComb){$ScoreComb='probabilistic';}
 
+
+    ## the following loop takes most of the time!
+
+    foreach $s (sort {$a <=> $b} keys %{$SrcTok}){
+	foreach $t (keys %{$TrgTok}){
+
+	    $time=time();
+
+	    ($src,$trg)=($$SrcTok{$s}{general},$$TrgTok{$t}{general});
 	    $self->alignIdentical($src,$trg,$s,$t,$LinkProb);
 
-	    foreach (keys %{$Param}){
-		if (/^general$/){next;}
-		if (/^original$/){next;}
-		my $weight=$self->defaultClueWeight();
-		if (ref($$Param{$_}) eq 'HASH'){
-		    if (defined $$Param{$_}{'score weight'}){
-			$weight=$$Param{$_}{'score weight'};
-		    }
-		}
-		my ($src,$trg)=($$SrcTok{$s}{$_},$$TrgTok{$t}{$_});
-		if ($$Param{$_}{'relative position'}){
-#			print STDERR "$src - $trg\n";
+	    ### DEBUG: store search time
+	    $self->{identical_score_time}+=time()-$time;
+
+	    foreach (keys %ClueParam){
+
+		$time=time();
+
+		$weight=$ClueParam{$_}{'score weight'};
+		if ($ClueParam{$_}{'relative position'}){
 		    ($src,$trg)=$self->makeRelPosFeature($src,$trg);
-#			print STDERR "$src - $trg\n";
 		}
-		
-		my $score=0;
+		else{($src,$trg)=($$SrcTok{$s}{$_},$$TrgTok{$t}{$_});}
+
+		### DEBUG: store search time
+		$self->{before_score_time}+=time()-$time;
+
+		$score=0;
 
 		#---------------------------------------
 		# length difference as  scores ...
 		#---------------------------------------
 
-		if ($$Param{$_}{'string length difference'}){
+		if ($ClueParam{$_}{'string length difference'}){
 		    $score=$data->lengthQuotient($src,$trg);
-#			print STDERR "diff: $score\n";
 		}
 
 		#---------------------------------------
@@ -155,28 +179,36 @@ sub getLinkScores{
 		else{
 		    if (not defined $links->{$_}){next;}
 		    if (defined($src) and defined($trg)){
-			my %search=('source' => $src,
-				    'target' => $trg);
-			my $found=Uplug::Data->new;
-#			my $time=time();
+			%search=('source' => $src,
+				 'target' => $trg);
+			$time=time();
 			if ($links->{$_}->select($found,\%search)){
-#			    $self->{search_score_time}+=time()-$time;
 			    $score=$found->attribute('score');
 			}
+			### DEBUG: store search time
+			$self->{search_score_time}+=time()-$time;
 		    }
 		}
+
+		$time=time();
 
 		#---------------------------------------
 		# set weighted score in score matrix
 		#---------------------------------------
 
 		if (not $score){next;}
-		if (not $data->checkPairParameter($src,$trg,$$Param{$_})){
+		if (not $data->checkPairParameter($src,$trg,$ClueParam{$_})){
+		    ### DEBUG: store search time
+		    $self->{after_score_time}+=time()-$time;
 		    next;
 		}
 
-		if (defined $$Param{$_}{'minimal score'}){
-		    if ($score<$$Param{$_}{'minimal score'}){next;}
+		if (exists $ClueParam{$_}{'minimal score'}){
+		    if ($score<$ClueParam{$_}{'minimal score'}){
+			### DEBUG: store search time
+			$self->{after_score_time}+=time()-$time;
+			next;
+		    }
 		}
 
 		$score*=$weight;
@@ -186,27 +218,56 @@ sub getLinkScores{
 		if ($score>=1){$score=0.999999999999;}
 		#--------------------------------
 
-		my @SrcTok=split(/:/,$s);
-		my @TrgTok=split(/:/,$t);
-
 		if ($self->parameter('verbose')){
 		    printf STDERR "[%5s - %-5s] {%20s - %-20s} %f\n",
 		    $s,$t,$src,$trg,$score;
 		}
 
-		foreach my $x (@SrcTok){
-		    foreach my $y (@TrgTok){
-			my $p=$$LinkProb[$x][$y];
-#			    $$LinkProb[$x][$y]=$p+$score;
-			$$LinkProb[$x][$y]=$p+$score-$p*$score;
+		@SrcTok=split(/:/,$s);
+		@TrgTok=split(/:/,$t);
+
+		foreach $x (@SrcTok){
+		    foreach $y (@TrgTok){
+			if ($ScoreComb eq 'addition'){
+			    $$LinkProb[$x][$y]+=$score;
+			}
+#
+# log-linear and multiplication are useless!
+# * there's not always a positive score for each possible pair! 
+#   --> multiplications with one factor = 0 --> score = 0
+#   --> leaving out zero-factors -> implicit penalty for pairs with multiple
+#                                   clue scores
+#
+#			elsif ($ScoreComb eq 'log-linear'){
+#			    $$LinkProb[$x][$y]+=log($score);
+#			}
+#			elsif ($ScoreComb eq 'multiplication'){
+#			    $$LinkProb[$x][$y]+=log($score);
+#			}
+			else{
+			    $p=$$LinkProb[$x][$y];
+			    $$LinkProb[$x][$y]=$p+$score-$p*$score;
+			}
 		    }
 		}
+
+		### DEBUG: store search time
+		$self->{after_score_time}+=time()-$time;
+
 	    }
 	}
     }
 
+    $time=time();
     $self->align1x($LinkProb);
 
+#    if ($ScoreComb eq 'log-linear'){              # special for log-linear:
+#	foreach $x (0..$#{$LinkProb}){            # reverse log (make positiv
+#	    foreach $y (0..$#{$$LinkProb[$x]}){   # score values)
+#		$$LinkProb[$x][$y]=exp($$LinkProb[$x][$y]);
+#	    }
+#	}
+#    }
 
     if ($self->parameter('verbose')){
 	$self->printClueMatrix($self->{token}->{source},
@@ -216,7 +277,8 @@ sub getLinkScores{
 	$self->printBitextToken($self->{token}->{source},
 				$self->{token}->{target});
     }
-
+    ### DEBUG: store search time
+    $self->{'1x_score_time'}+=time()-$time;
 }
 
 
@@ -1075,7 +1137,7 @@ sub getTopLink{
 	$self->sortLinks($LinkProb,$MinScore);
     }
     my $top=shift @{$self->{SORTEDLINKS}};
-    if (not $top){
+    if (not defined $top){
 	delete $self->{SORTEDLINKS};
     }
     my @link=split (':',$top);
@@ -1179,7 +1241,7 @@ sub getMatrixScore{
     my $count;
     foreach my $s (keys %{$src}){
 	foreach my $t (keys %{$trg}){
-	    if ($$matrix[$s][$t]){
+	    if ($$matrix[$s][$t]>0){
 		$score+=log($$matrix[$s][$t]);
 		$count++;
 	    }

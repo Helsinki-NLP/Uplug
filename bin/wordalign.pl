@@ -33,6 +33,7 @@
 use strict;
 
 use FindBin qw($Bin);
+use Time::HiRes qw(time);
 use lib "$Bin/..";
 
 use Uplug::Data::Align;
@@ -222,7 +223,15 @@ while ($align->read($alignIndex)){
 	if ($SearchMode ne 'tree'){
 	    if (not ($AlignCount % 10)){
 #		my $used=time-$StartTime;
-#		print STDERR "pre: $align->{prepare_time}, scores: $align->{get_scores_time}, search: $align->{search_score_time}, align: $align->{align_time} ($used)\n";
+#		print STDERR "\n* prepare   : ",$align->{prepare_time},"\n";
+#		print STDERR "* get scores: ",$align->{get_scores_time},"\n";
+#		print STDERR "   identical: ",$align->{identical_score_time},"\n";
+#		print STDERR "          1x: ",$align->{'1x_score_time'},"\n";
+#		print STDERR "      before: ",$align->{before_score_time},"\n";
+#		print STDERR "      search: ",$align->{search_score_time},"\n";
+#		print STDERR "       after: ",$align->{after_score_time},"\n";
+#		print STDERR "* align     : ",$align->{align_time},"\n";
+#		print STDERR "= used      : ",$used,"\n";
 		$|=1;print STDERR '.';$|=0;
 	    }
 	}

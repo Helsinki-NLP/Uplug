@@ -46,7 +46,8 @@ use POSIX;
 # simple caching: the first selected items get chached
 # nothing will be added if the cache is full until the DBM is opened again
 
-$DEFAULTCACHESIZE=10000;          # max number of items cached by GetKeyData
+$DEFAULTCACHESIZE=1000000;       # max number of items cached by GetKeyData
+#$DEFAULTCACHESIZE=0;
 $DEFAULTMODE=0644;                # default file mode for tie
 
 
@@ -275,10 +276,11 @@ sub select{
     }
     $key=join ("\x00",@fields);                   # join all keys together
 
-    my $DBMEncoding=$self->getEncoding;           # check internal and external
-    my $UplugEncoding=$self->getInternalEncoding; # character encodings
-
 # JT: 2004-08-26: forget about encoding (check that later?!)
+#
+#    my $DBMEncoding=$self->getEncoding;          # check internal and external
+#    my $UplugEncoding=$self->getInternalEncoding; # character encodings
+#
 #
 #    if ($DBMEncoding ne $UplugEncoding){
 #	$key=Uplug::Encoding::encode($key,$DBMEncoding,$UplugEncoding);
@@ -400,6 +402,13 @@ sub GetKeyData{
 	#-----------------------------------------------
 	return %FoundData;
     }
+    #-----------------------------------------------
+    # JT 14-11-2004: cache even not-found keys
+    if ($self->{CACHED}<$self->{CACHESIZE}){
+	%{$self->{DBMcache}->{$key}}=();
+	$self->{CACHED}++;
+    }
+    #-----------------------------------------------
     return ();
 }
 

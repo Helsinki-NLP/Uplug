@@ -213,9 +213,6 @@
     'coocstat4' => {
        'stream name' => 'co-occurrence statistics 4',
     },
-    'pos dice' => {
-       'stream name' => 'pos dice', 
-    },
     'giza dictionary' => {
        'stream name' => 'giza dictionary', 
     },
@@ -311,10 +308,6 @@
 #      'score weight' => 0.0001,
 #      'string length difference' => 1,
     },
-    'pos dice' => {
-#      'minimal score' => 0.2,
-#      'score weight' => 0.01,  
-    },
     'giza dictionary' => {
 #      'score weight' => '0.1',
     },
@@ -402,6 +395,7 @@
       'minimal score' => '0.00001',
       'search' => 'best first',
        'verbose' => 0,                # =1 --> print clue matrices!
+       'score combination' => 'probabilistic', # how to combine clue scores
 #      'minimal score' => '70%',      # minimal score=70% of top-score
 #      'general stream' => 'dice',
 #      'align 1:1' => '0.5',          # align bitext segments with only 1 token
@@ -579,6 +573,7 @@
       'html' => 'parameter:runtime:print html only',
       'search' => 'parameter:alignment:search',
       'v' => 'parameter:alignment:verbose',
+      'comb' => 'parameter:alignment:score combination',
       'adj' => 'parameter:alignment:adjacent_only',
       'phr' => 'parameter:alignment:in_phrases_only',
       'min' => 'parameter:alignment:minimal score',

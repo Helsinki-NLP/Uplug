@@ -46,6 +46,7 @@ use Uplug::IO::LiuAlign;
 use Uplug::IO::DBM;
 use Uplug::IO::XCESalign;
 use Uplug::IO::LWA;
+use Uplug::IO::Storable;
 
 $VERSION='0.1';
 @ISA = qw( Uplug::IO );
@@ -98,6 +99,7 @@ sub new{
     elsif ($format=~/^uwa\s+tab$/i){$self=Uplug::IO::Tab->new();}
     elsif ($format=~/^collection$/i){$self=Uplug::IO::Collection->new();}
     elsif ($format=~/^dbm$/i){$self=Uplug::IO::DBM->new();}
+    elsif ($format=~/^stor/i){$self=Uplug::IO::Storable->new();}
 
     ##-----------------------------
     ## try to find the appropriate format ...

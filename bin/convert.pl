@@ -176,6 +176,39 @@ sub GetDefaultIni{
 
     my $DefaultIni = eval 
 "{
+  'encoding' => 'iso-8859-1',
+  'module' => {
+    'name' => 'convert files',
+    'program' => 'convert.pl',
+    'location' => '$UplugBin',
+    'stdin' => 'text',
+    'stdout' => 'text',
+  },
+   'input' =>{
+     'text' =>{
+        'file' => undef,
+     },
+   },
+   'output' =>{
+     'text' =>{
+        'format' => 'xml',
+	'write_mode' => 'overwrite',
+     },
+   },
+  'arguments' => {
+    'shortcuts' => {
+       'in' => 'input:text:file',
+       'out' => 'output:text:file',
+       'if' => 'input:text:format',
+       'of' => 'output:text:format',
+       'ci' => 'input:text:encoding',
+       'co' => 'output:text:encoding',
+    }
+  },
+  'help' => {
+    'shortcuts' => {
+    },
+  },
 }";
     return %{$DefaultIni};
 }
