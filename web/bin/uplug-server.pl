@@ -34,9 +34,9 @@ use vars qw($UPLUGHOME $UPLUGDATA $UPLUGCWB $UPLUG $LogFile);
 BEGIN{
     setpgrp(0,0);              # become leader of the process group
 
-    $UPLUGDATA = '/corpora/uplug';
+    $UPLUGDATA = '/corpora/OPUS/UPLUG';
     $UPLUGCWB  = $UPLUGDATA.'/cwb/';
-    $LogFile   = "$UPLUGDATA/.serverlog";
+    $LogFile   = "$UPLUGDATA/.process/.serverlog";
     $UPLUGHOME = "$Bin/../..";
     $UPLUG=$UPLUGHOME.'/uplug';
 
