@@ -24,7 +24,7 @@ use vars qw($Debug $Check $MaxLockTime);
 $Debug  ||= 0;  # may be predefined
 $Check  ||= 5;  # may be predefined
 
-$MaxLockTime ||= 30;   # lock files max 30 seconds! (remove older lockfiles!)
+$MaxLockTime ||= 10;   # lock files max 10 seconds! (remove older lockfiles!)
 
 use Cwd;
 use Fcntl;
@@ -56,7 +56,7 @@ sub nflock($;$) {
 	#
 	# joerg 040913:
 	# I should give up and return 0 but for the sake of UplugWeb
-	# and its write-permissions we simply return 1 instead of failing
+	# and its write-permissions we simply go on instead of failing
 	return 1;
     }
 
@@ -100,7 +100,7 @@ sub nunflock($) {
     my $dir      = dirname($pathname);
     my $lockname = name2lock($pathname);
     my $whosegot = "$lockname/owner";
-    unlink($whosegot);
+    unlink($whosegot) if -e $whosegot;
     carp "releasing lock on $lockname" if $Debug;
     delete $Locked_Files{$pathname};
     return rmdir($lockname);
