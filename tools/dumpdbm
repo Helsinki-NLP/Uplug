@@ -1,0 +1,26 @@
+#!/usr/bin/perl
+#
+#--------------------------------------------------------------------------
+# -*-perl-*-
+#
+# Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
+# $Id$
+#--------------------------------------------------------------------------
+
+BEGIN {@AnyDBM_File::ISA=qw(DB_File GDBM_File SDBM_File NDBM_File ODBM_File) }
+#BEGIN { @AnyDBM_File::ISA=qw(GDBM_File SDBM_File NDBM_File ODBM_File) }
+use AnyDBM_File;
+use POSIX;
+
+my $dbmfile=shift @ARGV;
+
+tie %dbm, 'AnyDBM_File',$dbmfile,O_RDONLY,0440;
+
+my ($key,$val);
+while (($key,$val)=each %dbm){
+    print "$key => $val\n";
+}
+
+untie %dbm;
+
+

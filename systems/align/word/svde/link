@@ -1,0 +1,314 @@
+{
+  'module' => {
+    'program' => 'wordalign.pl',
+    'location' => '$UplugBin',
+    'name' => 'The clue aligner - linking words (Swedish - German)',
+    'stdin' => 'bitext',
+    'stdout' => 'bitext',
+  },
+  'description' => 'This module links words and phrases using the
+  clues that are available and which have been enabled for the
+  alignment. Note: If you enable additional clues make sure that they
+  exist, i.e. that they have been produced before. Non-existing clues
+  are simply ignored.<p>
+  The search parameter sets the link strategy:
+  The default search
+  strategy is a constrained best-first search (=best first). Other
+  available strategies are 
+  <ul><li>a refined bi-directional alignment
+  (=refined)
+  <li>the intersection of directional alignments (source to
+  target and target to source) (=intersection)
+  <li>the union of
+  directional alignments (=union)
+  <li>a competitive linking approach (=competitive)
+  <li>and two directional alignment strategies
+  (directional_src and directional_trg).</ul>',
+  'input' => {
+    'bitext' => {
+      'stream name' => 'runtime xml',
+    },
+    'string similarities' => {
+      'stream name' => 'string similarities',
+    },
+    'dice' => {
+       'stream name' => 'dice',
+    },
+    'mutual information' => {
+       'stream name' => 'mutual information',
+    },
+    't-score' => {
+       'stream name' => 't-score',
+    },
+    'pos dice' => {
+       'stream name' => 'pos dice', 
+    },
+    'giza dictionary' => {
+       'stream name' => 'giza dictionary', 
+    },
+    'giza inverse' => {
+       'stream name' => 'giza inverse', 
+    },
+    'static POS clue' => {
+      'stream name' => 'svde pos clue',
+    },
+    'static POS clue 2' => {
+      'stream name' => 'svde pos clue 2',
+    },
+    'static chunk clue' => {
+      'stream name' => 'svde chunk clue',
+    },
+    'dynamic POS clue' => {
+      'stream name' => 'POS clue',
+    },
+    'dynamic POS clue (coarse)' => {
+      'stream name' => 'POS clue (coarse)',
+    },
+    'dynamic chunk clue' => {
+      'stream name' => 'chunk clue',
+    },
+    'dynamic position clue' => {
+      'stream name' => 'position clue',
+    },
+    'dynamic lex clue' => {
+      'stream name' => 'lex clue',
+    },
+    'dynamic lex/POS clue' => {
+      'stream name' => 'lexpos clue',
+    },
+    'dynamic left POS-bigram clue' => {
+      'stream name' => 'posleft clue',
+    },
+    'dynamic right POS-bigram clue' => {
+      'stream name' => 'posright clue',
+    },
+    'dynamic POS-trigram clue' => {
+      'stream name' => 'postrigram clue',
+    },
+    'dynamic chunk/POS clue' => {
+      'stream name' => 'chunkpos clue',
+    },
+    'dynamic chunk/POS-trigram clue' => {
+      'stream name' => 'chunkpostrigram clue',
+    },
+    'posposi clue' => {
+      'stream name' => 'posposi clue',
+    },
+    'pos2posi clue' => {
+      'stream name' => 'pos2posi clue',
+    },
+    'postri clue' => {
+      'stream name' => 'postri clue',
+    },
+    'postriposi clue' => {
+      'stream name' => 'postriposi clue',
+    },
+    'postri2posi clue' => {
+      'stream name' => 'postri2posi clue',
+    },
+    'postri2 clue' => {
+      'stream name' => 'postri2 clue',
+    },
+    'chunktripos clue' => {
+      'stream name' => 'chunktripos clue',
+    },
+    'chunktriposi clue' => {
+      'stream name' => 'chunktriposi clue',
+    },
+    'chunktri clue' => {
+      'stream name' => 'chunktri clue',
+    },
+  },
+  'output' => {
+    'bitext' => {
+      'format' => 'xces align',
+      'status' => 'word',
+    },
+  },
+  'parameter' => {
+    'string similarities' => {
+      'minimal score' => 0.3,
+      'score weight' => 0.05,
+    },
+    'dice' => {
+      'minimal score' => 0.2,
+      'score weight' => 0.05,
+    },
+    'mutual information' => {
+      'minimal score' => 2,
+      'score weight' => 0.005,
+    },
+    't-score' => {
+      'minimal score' => 0.8,
+      'score weight' => 0.01,
+    },
+    'length clue' => {
+      'score weight' => 0.0001,
+      'string length difference' => 1,
+    },
+    'pos dice' => {
+      'minimal score' => 0.2,
+      'score weight' => 0.01,  
+    },
+    'giza dictionary' => {
+      'score weight' => '0.1',
+    },
+    'giza inverse' => {
+      'score weight' => '0.1',
+    },
+    'static chunk clue' => {
+      'score weight' => '0.02'
+    },
+    'static POS clue' => {
+      'score weight' => '0.05'
+    },
+    'static POS clue 2' => {
+      'score weight' => '0.05'
+    },
+    'dynamic POS clue' => {
+#      'minimal score' => 0.2,
+      'score weight' => 0.05,
+    },
+    'dynamic POS clue (coarse)' => {
+#      'minimal score' => 0.2,
+      'score weight' => 0.05,
+    },
+    'dynamic position clue' => {
+#      'minimal score' => 0.2,
+      'score weight' => 0.01,
+    },
+    'dynamic chunk clue' => {
+#      'minimal score' => 0.2,
+      'score weight' => 0.01,
+    },
+    'general' => {
+        'chunks (source)' => 'c.*',
+        'chunks (target)' => 'c.*',
+    },
+    'alignment' => {
+      'remove word links' => 0,
+      'clues' => {
+        'string similarities' => 1,
+        'dice' => 1,
+        'mutual information' => 0,
+        't-score' => 0,
+        'giza dictionary' => 1,
+        'giza inverse' => 1,
+        'static POS clue' => 1,
+        'static POS clue 2' => 1,
+        'static chunk clue' => 1,
+        'dynamic POS clue' => 0,
+        'dynamic POS clue (coarse)' => 0,
+        'dynamic chunk clue' => 0,
+        'dynamic position clue' => 0,
+	'chunktriposi clue' => 1,
+	'postriposi clue' => 1,
+      },
+      'minimal score' => '0.00001',
+      'search' => 'matrix',
+       'verbose' => 0,                # don't print clue matrices!
+#      'minimal score' => '70%',
+#      'general stream' => 'dice',
+#      'align 1:1' => '0.5',
+#      'remove linked' => 1,
+#      'align identical' => '0.08',
+    },
+    'runtime' => {
+      'print progress' => 1,
+      'print link matrix' => 1,
+    },
+  },
+  'arguments' => {
+    'shortcuts' => {
+      'sim' => 'parameter:alignment:clues:string similarities',
+      'dice' => 'parameter:alignment:clues:dice',
+      'mi' => 'parameter:alignment:clues:mutual information',
+      'tscore' => 'parameter:alignment:clues:t-score',
+      'giza' => 'parameter:alignment:clues:giza dictionary',
+      'giza2' => 'parameter:alignment:clues:giza inverse',
+
+      'statpos' => 'parameter:alignment:clues:static POS clue',
+      'statpos2' => 'parameter:alignment:clues:static POS clue 2',
+      'statchunk' => 'parameter:alignment:clues:static chunk clue',
+
+      'dynpos' => 'parameter:alignment:clues:dynamic POS clue',
+      'dynpos2' => 'parameter:alignment:clues:dynamic POS clue (coarse)',
+      'dynchunk' => 'parameter:alignment:clues:dynamic chunk clue',
+      'dynposi' => 'parameter:alignment:clues:dynamic position clue',
+      'dynlex' => 'parameter:alignment:clues:dynamic lex clue',
+      'dynlexpos' => 'parameter:alignment:clues:dynamic lex/POS clue',
+
+      'posposi' => 'parameter:alignment:clues:posposi clue',   
+      'pos2posi' => 'parameter:alignment:clues:pos2posi clue',   
+      'postri' => 'parameter:alignment:clues:postri clue',   
+      'postri2' => 'parameter:alignment:clues:postri2 clue',   
+      'postriposi' => 'parameter:alignment:clues:postriposi clue',
+      'postri2posi' => 'parameter:alignment:clues:postri2posi clue',
+      'chunktri' => 'parameter:alignment:clues:chunktri clue',
+      'chunktripos' => 'parameter:alignment:clues:chunktripos clue',
+      'chunktriposi' => 'parameter:alignment:clues:chunktriposi clue',
+
+      'simw' => 'parameter:string similarities:score weight',
+      'dicew' => 'parameter:dice:score weight',
+      'miw' => 'parameter:mutual information:score weight',
+      'tscorew' => 'parameter:t-score:score weight',
+      'gizaw' => 'parameter:giza dictionary:score weight',
+      'dynposw' => 'parameter:dynamic POS clue:score weight',
+      'dynpos2w' => 'parameter:dynamic POS clue (coarse):score weight',
+      'dynchunkw' => 'parameter:dynamic chunk clue:score weight',
+      'dynposiw' => 'parameter:dynamic position clue:score weight',
+      'statposw' => 'parameter:static POS clue:score weight',
+      'statpos2w' => 'parameter:static POS clue 2:score weight',
+      'statchunkw' => 'parameter:static chunk clue:score weight',
+
+      'dynlexw' => 'parameter:dynamic lex clue:score weight',
+      'dynlexposw' => 'parameter:dynamic lex/POS clue:score weight',
+
+      'new' => 'parameter:alignment:non-aligned only',
+       'in' => 'input:text:file',
+       'infile' => 'input:text:file',
+       'informat' => 'input:text:format',
+       'out' => 'output:bitext:file',
+       'srclang' => 'parameter:general:language (source)',
+       'trglang' => 'parameter:general:language (target)',
+        'id' => 'parameter:alignment:index',
+        'html' => 'parameter:runtime:print html only',
+        'search' => 'parameter:alignment:search',
+        'v' => 'parameter:alignment:verbose',
+	'adj' => 'parameter:alignment:adjacent_only',
+        'phr' => 'parameter:alignment:in_phrases_only',
+        'nr' => 'parameter:runtime:number of segments',
+	'min' => 'parameter:alignment:minimal score',
+    }
+  },
+  'widgets' => {
+       'parameter' => {
+         'alignment' => {
+	   'clues' => {
+	      'string similarities' => 'checkbox',
+	      'dice' => 'checkbox',
+	      'giza dictionary' => 'checkbox',
+	      'static POS clue' => 'checkbox',
+	      'static POS clue 2' => 'checkbox',
+	      'static chunk clue' => 'checkbox',
+	   'dynamic POS clue' => 'checkbox',
+	   'dynamic POS clue (coarse)' => 'checkbox',
+	   'dynamic chunk clue' => 'checkbox',
+	   'dynamic position clue' => 'checkbox',
+	   'dynamic lex clue' => 'checkbox',
+	   'dynamic lex/POS clue' => 'checkbox',
+	   'posposi clue' => 'checkbox',
+	   'postri clue' => 'checkbox',
+	   'postriposi clue' => 'checkbox',
+	   'chunktri clue' => 'checkbox',
+	   'chunktripos clue' => 'checkbox',
+	   'chunktriposi clue' => 'checkbox'
+	   },
+	   'minimal score' => 'scale (0,1,0.00001,0.005)',
+	   'search' => 'optionmenu (best first,refined,intersection,union,competitive,directed_src,directed_trg)',
+#	       'remove linked' => 'checkbox',
+#	       'remove word links' => 'checkbox',
+            },
+        }
+  }
+}

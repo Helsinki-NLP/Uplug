@@ -1,0 +1,31 @@
+{
+  'module' => {
+    'name' => 'pre-processing',
+    'submodules' => [
+        '$UplugSystem/pre/basic',
+        '$UplugSystem/pre/english',
+        '$UplugSystem/pre/french',
+        '$UplugSystem/pre/german',
+        '$UplugSystem/pre/italian',
+        '$UplugSystem/pre/japanese',
+        '$UplugSystem/pre/portuguese',
+        '$UplugSystem/pre/swedish',
+    ],
+    'submodule names' => [
+        'basic',
+        'English',
+        'French',
+        'German',
+        'Italian',
+        'Japanese',
+	'Portuguese',
+        'Swedish',
+    ],
+  },
+  'description' => 'Pre-processing modules include tools for basic
+  XML markup, sentence splitters, tokenizers and additional tools such
+  as part-of-speech taggers for some languages. The "basic"
+  pre-processing module includes generic tools which can be used as
+  default for many languages. Further language-specific tools may be
+  added when tools become available.'
+}

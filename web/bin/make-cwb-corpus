@@ -1,0 +1,71 @@
+#!/bin/bash
+#
+# convert xml-files to CWB format
+#
+# Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
+#--------------------------------------------------------
+# usage: make-cwb-corpus USER CORPUS LANG ENCODING
+#
+#     USER: user name (= sub-directory of DATAHOME)
+#   CORPUS: name of the corpus (= sub-directory of DATAHOME/USER)
+#     LANG: language (= name of the corpus)
+# ENCODING: character encoding in the CWB index (default: latin1)
+#
+# the following files and locations are assumed to exist:
+#
+#          corpus: DATAHOME/USER/CORPUS/LANG.gz
+#
+#        DATAHOME: /corpora/OPUS/uplug2
+#         CWBHOME: /corpora/OPUS/uplug2-cwb
+#
+
+
+USER=$1;
+CORPUS=$2;
+LA=$3;
+ENC=$4;
+
+DATAHOME='/corpora/OPUS/uplug2';
+CWBHOME='/corpora/OPUS/uplug2-cwb';
+CWBBIN='/usr/local/bin';
+SCRIPT='/corpora/OPUS/uplug2-cwb';
+
+DATA="$DATAHOME/$USER/$CORPUS";
+REGDIR="$CWBHOME/reg/$USER";
+DATDIR="$CWBHOME/dat/$USER";
+
+MKDIR='mkdir -p';
+CD='cd';
+RM='rm';
+RMDIR='rmdir';
+CAT='cat';
+
+DIR=$PWD;
+TMP='/tmp/CWBCORPUSTEMP';
+$MKDIR $TMP;
+$CD $TMP
+
+#-----------------------------------------------
+
+ENCODE="$CWBBIN/cwb-encode";
+CWBMAKEALL="${CWBBIN}/cwb-makeall";
+XML2CWB="$SCRIPT/xml2cwb";
+
+#-----------------------------------------------
+
+$XML2CWB -c $ENC -a -p $LA.pos ${DATA}/$LA.gz 2>$LA.cmd > $LA;
+ATTR=`$CAT $LA.cmd`;
+
+$MKDIR "$DATDIR/$CORPUS/$LA";
+$MKDIR "$REGDIR/$CORPUS";
+
+$ENCODE -R $REGDIR/$CORPUS/$LA -d $DATDIR/$CORPUS/$LA -f $LA $ATTR
+$CWBMAKEALL -r $REGDIR/$CORPUS -V $LA
+
+#-----------------------------------------------
+
+$RM $TMP/*
+$RMDIR $TMP
+
+$CD $DIR;
+
