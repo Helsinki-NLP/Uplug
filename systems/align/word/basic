@@ -4,12 +4,6 @@
     'submodules' => [
         '$UplugSystem/align/word/basicclues',
         '$UplugSystem/align/word/GIZA/gizaclue-word',
-        '$UplugSystem/align/word/GIZA/gizaclue-word-prefix',
-        '$UplugSystem/align/word/GIZA/gizaclue-word-suffix',
-#        '$UplugSystem/align/word/GIZA/gizaclue-pos',
-#        '$UplugSystem/align/word/gizaclue',
-        '$UplugSystem/align/word/link',
-        '$UplugSystem/align/word/dynamicclues',
         '$UplugSystem/align/word/link',
 	],
 #    'loop' => '5:6',
@@ -38,6 +32,8 @@
       'format' => 'xces align',
       'write_mode' => 'overwrite',
       'status' => 'word',
+      'SkipSrcFile' => 1,
+      'SkipTrgFile' => 1,
     },
   },
   'arguments' => {

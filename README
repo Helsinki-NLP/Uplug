@@ -19,3 +19,7 @@ example/	  small example corpora
 Uplug.pm          main library for running Uplug modules
 Uplug/		  Uplug libraries
 XML/		  external XML libraries (just in case you don't have them)
+
+
+The project home page: https://sourceforge.net/projects/uplug/
+		       http://uplug.sourceforge.net/

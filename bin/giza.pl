@@ -28,6 +28,7 @@ use strict;
 use Cwd;
 use FindBin qw($Bin);
 use lib "$Bin/..";
+use strict;
 
 use Uplug::Data;
 use Uplug::Data::Align;
@@ -58,7 +59,7 @@ my $TokenParam=$IniData{parameter}{token};
 my ($InputStreamName,$InputStream)=
     each %{$IniData{'input'}};               # the first input stream;
 my $ClueDB=$IniData{output}{clue};
-delete $IniData{ouput}{clue};
+delete $IniData{output}{clue};
 my ($OutputStreamName,$OutputStream)=         # take only
     each %{$IniData{'output'}};               # the first output stream
 
@@ -83,7 +84,9 @@ foreach my $d (@align){
     if ($d){&RunGiza($TmpDir,'trg','src');}
     else{&RunGiza($TmpDir,'src','trg');}
     chdir $PWD;
-    &Giza2Uplug($TmpDir,$InputStream,$TokenParam,$OutputStream,$d);
+    if (ref($OutputStream) eq 'HASH'){
+	&Giza2Uplug($TmpDir,$InputStream,$TokenParam,$OutputStream,$d);
+    }
     if ($makeclue){
 	&Giza2Clue($TmpDir,$TokenParam,$d);
     }

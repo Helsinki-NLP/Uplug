@@ -9,3 +9,5 @@ Uplug TODO-list
 * XML-based configuration files
 * faster XML-parsing/writing
 * DOM, XSLT, LibXML??
+* optimise for larger corpora
+* lots of other things ....

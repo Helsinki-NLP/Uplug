@@ -23,5 +23,5 @@ Most of the scripts should run on a standard GNU/Linux machine.
   might want to install them on your local machine:
      The TreeTagger: http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html
      The Qtag Tagger: http://web.bham.ac.uk/O.Mason/software/tagger/
-
+     The TnT tagger: http://www.coli.uni-sb.de/~thorsten/tnt/
 
