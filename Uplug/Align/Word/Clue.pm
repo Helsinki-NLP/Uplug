@@ -155,7 +155,8 @@ sub getLinkScores{
 
 		$weight=$ClueParam{$_}{'score weight'};
 		if ($ClueParam{$_}{'relative position'}){
-		    ($src,$trg)=$self->makeRelPosFeature($src,$trg);
+		    ($src,$trg)=$self->makeRelPosFeature($$SrcTok{$s}{$_},
+							 $$TrgTok{$t}{$_});
 		}
 		else{($src,$trg)=($$SrcTok{$s}{$_},$$TrgTok{$t}{$_});}
 
