@@ -414,9 +414,8 @@ sub ShowCorpusInfo{
 	$count++;
 
 	$query=&AddUrlParam($query,'c',$c);
-	if ($c eq $corpus){$html.="Corpus $count: ".&b($c).' ';}
-	else{$html.="Corpus $count: ".&a({-href=>$query},&b($c).' ');}
-
+	if ($c eq $corpus){$html.="Corpus $count: ".&b($c).&p();}
+	else{$html.="Corpus $count: ".&a({-href=>$query},&b($c)).&br();}
 
 	################################################################
 	# stop here if this is not the selected corpus
@@ -433,7 +432,7 @@ sub ShowCorpusInfo{
 #	    $html.=&TaskLinks({url=>$query,selected=>$task},
 #			      &AccessMode($priv,'corpus'));
 
-	    $html.=&p().'modes: ';
+	    $html.='modes: ';
 	    if (($corpus eq $c) and (not keys %docs)){ # no docs in the corpus:
 		if ($priv ne 'all'){                   # show only 'add'-mode!
 		    $html.=&TaskLinks({url=>$query,
