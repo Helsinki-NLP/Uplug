@@ -46,7 +46,7 @@ use POSIX;
 # simple caching: the first selected items get chached
 # nothing will be added if the cache is full until the DBM is opened again
 
-$DEFAULTCACHESIZE=1000000;       # max number of items cached by GetKeyData
+$DEFAULTCACHESIZE=200000;       # max number of items cached by GetKeyData
 #$DEFAULTCACHESIZE=0;
 $DEFAULTMODE=0644;                # default file mode for tie
 
