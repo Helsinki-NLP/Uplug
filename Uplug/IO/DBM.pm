@@ -153,10 +153,13 @@ sub read{
 
     my $DBMEncoding=$self->getEncoding;
     my $UplugEncoding=$self->getInternalEncoding;
-    if ($DBMEncoding ne $UplugEncoding){
-	$val=Uplug::Encoding::decode($val,$DBMEncoding,$UplugEncoding);
-	$key=Uplug::Encoding::decode($key,$DBMEncoding,$UplugEncoding);
-    }
+
+# JT: 2004-08-26: forget about encodings (check that later?!)
+#
+#    if ($DBMEncoding ne $UplugEncoding){
+#	$val=Uplug::Encoding::decode($val,$DBMEncoding,$UplugEncoding);
+#	$key=Uplug::Encoding::decode($key,$DBMEncoding,$UplugEncoding);
+#    }
 
     my @keyval=split(/\x00/,$key);
     %{$data}=split(/\x00/,$val);
@@ -215,10 +218,12 @@ sub write{
     %dat=&dumpData(\%dat);
     my $d=join ("\x00",%dat);
 
-    my $UplugEncoding=$self->getInternalEncoding;
-    my $DBMEncoding=$self->getEncoding;
-    $d=Uplug::Encoding::encode($d,$DBMEncoding,$UplugEncoding);
-    $key=Uplug::Encoding::encode($key,$DBMEncoding,$UplugEncoding);
+# JT: 2004-08-26: forget about encodings (check that later?!)
+#
+#    my $UplugEncoding=$self->getInternalEncoding;
+#    my $DBMEncoding=$self->getEncoding;
+#    $d=Uplug::Encoding::encode($d,$DBMEncoding,$UplugEncoding);
+#    $key=Uplug::Encoding::encode($key,$DBMEncoding,$UplugEncoding);
     eval { $self->{DBMhash}->{$key}=$d; };
     return 1;
 }
@@ -272,9 +277,12 @@ sub select{
 
     my $DBMEncoding=$self->getEncoding;           # check internal and external
     my $UplugEncoding=$self->getInternalEncoding; # character encodings
-    if ($DBMEncoding ne $UplugEncoding){
-	$key=Uplug::Encoding::encode($key,$DBMEncoding,$UplugEncoding);
-    }
+
+# JT: 2004-08-26: forget about encoding (check that later?!)
+#
+#    if ($DBMEncoding ne $UplugEncoding){
+#	$key=Uplug::Encoding::encode($key,$DBMEncoding,$UplugEncoding);
+#    }
 
     #-------------------------------------------------------------------------
     my %hash=();
@@ -371,11 +379,13 @@ sub GetKeyData{
 
 	my $DBMEncoding=$self->getEncoding;
 	my $UplugEncoding=$self->getInternalEncoding;
-	if ($DBMEncoding ne $UplugEncoding){
-	    $dat=Uplug::Encoding::decode($dat,$DBMEncoding,$UplugEncoding);
-	    $key=Uplug::Encoding::decode($key,$DBMEncoding,$UplugEncoding);
-	}
 
+# JT: 2004-08-26: forget about encodings (check that later?!)
+#
+#	if ($DBMEncoding ne $UplugEncoding){
+#	    $dat=Uplug::Encoding::decode($dat,$DBMEncoding,$UplugEncoding);
+#	    $key=Uplug::Encoding::decode($key,$DBMEncoding,$UplugEncoding);
+#	}
 	my @keyval=split(/\x00/,$key);
 	my %FoundData=split(/\x00/,$dat);
 	&expandData(\%FoundData);
