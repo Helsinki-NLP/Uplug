@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<rules>
+  <application dir="forward"/>
+  <application dir="backward"/>
+  <composition dir="forward" harmonic="true"/>
+  <composition dir="backward" harmonic="true"/>
+  <typeraising dir="forward" active="true">
+    <argVar>
+      <v n="X">
+        <restrictionSet>
+	  <ac t="n"/>
+	</restrictionSet>
+      </v>
+    </argVar>
+    <resultVar>
+      <v n="Y">
+        <restrictionSet>
+	  <ac t="s"/>
+	</restrictionSet>
+      </v>
+    </resultVar>
+  </typeraising>
+
+  <typeraising dir="backward" active="false">
+    <argVar>
+      <v n="X">
+        <restrictionSet>
+	  <ac t="n"/>
+	</restrictionSet>
+      </v>
+    </argVar>
+    <resultVar>
+      <v n="Y">
+        <restrictionSet>
+	  <ac t="s"/>
+	</restrictionSet>
+      </v>
+    </resultVar>
+  </typeraising>
+
+</rules>

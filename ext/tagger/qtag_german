@@ -1,0 +1,9 @@
+#!/bin/bash
+
+
+JAVA=/usr/java/j2re1.4.2/bin/java
+QTAG=${UPLUGHOME}/ext/QTag/qtag.jar
+MODEL=${UPLUGHOME}/ext/QTag/german/qtag-ger
+
+${JAVA} -jar ${QTAG} ${MODEL} $1
+

@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Set these paths appropriately
+# ROOT=/home/staff/ljo/etap/taggare
+ROOT=/local/ling/taggare
+BIN=$ROOT/tree-tagger/bin
+CMD=$ROOT/tree-tagger/cmd
+LIB=$ROOT/tree-tagger/lib
+
+TOKENIZER=${BIN}/separate-punctuation
+TAGGER=${BIN}/tree-tagger
+ABBR_LIST=${LIB}/german-abbreviations
+PARFILE=${LIB}/german.par
+FILTER=${CMD}/filter-german-tags
+
+# put all on one line
+cat $* |
+# do tokenization
+$TOKENIZER +1 +s +l $ABBR_LIST |
+# remove empty lines
+grep -v '^$' |
+# tagging
+$TAGGER $PARFILE -token -lemma -sgml | 
+# error correction
+$FILTER
+

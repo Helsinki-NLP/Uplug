@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ccg-lexicon name="simple">
+  <macro n="defsym" v="[*DEFAULT*]"/>
+
+  <family name="Name" pos="NNP">
+    <entry name="primary">
+      <ac t="n">
+        <fs>
+          <f a="bare" v="-" />
+          <f a="pn" v="+" />
+	  <f a="inf">
+	    <mode n="CB" />
+	  </f>
+        </fs>
+	<lf>
+	  <satop nom="e">
+	    <prop n="[*DEFAULT*]"/>
+	  </satop>	  
+	</lf>
+      </ac>
+    </entry>
+  </family>
+
+  <family name="Noun" pos="N">
+    <entry name="primary">
+      <ac t="n">
+        <fs>
+          <f a="bare" v="+" />
+          <f a="pn" v="-" />
+          <f a="ppmod" v="-" />
+	  <f a="inf">
+	    <mode n="NB" />
+	  </f>
+        </fs>
+	<lf>
+	  <satop nom="e">
+	    <prop n="[*DEFAULT*]"/>
+	  </satop>	  
+	</lf>
+      </ac>
+    </entry>
+  </family>
+
+  <family name="Det" pos="Det">
+    <entry name="Det.primary">
+      <cc>
+        <ac t="n" id="1">
+	  <fs>
+	    <f a="bare" v="-"/>
+	    <f a="inf">
+	      <mode n="CB" />
+	    </f>
+	  </fs>
+	  <lf>
+	    <satop nomvar="i">
+	      <var n="x"/>
+	    </satop>
+	  </lf>
+        </ac>
+        <sl d="/" />
+        <ac t="n" >
+          <fs inheritorId="1">
+	    <f a="bare" v="+" />
+	  </fs>
+	  <lf>
+	    <satop nomvar="i">
+	      <var n="x"/>
+	    </satop>
+	  </lf>
+        </ac>
+      </cc>
+    </entry>
+    <member stem="the"/>
+    <member stem="a"/>
+    <member stem="all"/>
+  </family>
+
+  <family name="Prep" pos="Prep">
+    <entry name="Prep.nominal">
+      <cc>
+        <ac t="n">
+	  <fs>
+	    <f a="bare" v="-" />
+            <f a="case" v="loc"/>
+	  </fs>
+	  <lf>
+	    <satop nomvar="i">
+	      <var n="x"/>
+	    </satop>
+	  </lf>
+        </ac>
+        <sl d="/" />
+        <ac t="n" >
+          <fs a="case" v="nom"/>
+	  <lf>
+	    <satop nomvar="i">
+	      <var n="x"/>
+	    </satop>
+	  </lf>
+        </ac>
+      </cc>
+    </entry>
+    <entry name="Prep.adjunct">
+      <cc>
+  	<ac t="s" id="1">
+  	  <lf>
+  	    <satop nomvar="i">
+  		<op n="conj">
+  		  <var n="x"/>
+  		  <d m="Locative">
+		    <op n="conj">
+		      <nomvar n="j"/>
+		      <var n="y"/>
+		    </op>
+  		  </d>
+  		</op>
+  	    </satop>
+  	  </lf>
+  	</ac>
+  	<sl d="|" />
+  	<ac t="s">
+  	  <lf>
+  	    <satop nomvar="i">
+  		<var n="x"/>
+  	    </satop>
+  	  </lf>
+  	</ac>
+        <sl d="/" />
+        <ac t="n" >
+          <fs a="case" v="nom"/>
+	  <lf>
+	    <satop nomvar="j">
+	      <var n="y"/>
+	    </satop>
+	  </lf>
+        </ac>
+      </cc>
+    </entry>
+  </family>
+
+  <family name="Adjective" pos="Adj">
+    <entry name="Adj.primary">
+      <cc>
+        <ac t="n" id="1">
+	  <lf>
+	    <satop nomvar="i">
+	      <op n="conj">
+	  	<var n="x"/>
+		<d m="GenRel">
+		  <prop n="[*DEFAULT*]"/>
+		</d>
+	      </op>
+	    </satop>
+	  </lf>
+	</ac>
+        <sl d="/" />
+        <ac t="n">
+          <fs inheritorId="1" a="bare" v="+"/>
+	  <lf>
+	    <satop nomvar="i">
+	      <var n="x"/>
+	    </satop>
+	  </lf>
+	</ac>
+      </cc>
+    </entry>
+    <member stem="small" />
+  </family>
+
+  <family name="Adverb" pos="Adv">
+    <entry name="Adv.primary">
+      <cc>
+        <ac t="s" id="1">
+          <lf>
+            <satop nomvar="i">
+              <op n="conj">
+                <var n="x"/>
+                <d m="Manner">
+                  <op n="conj">
+                    <nomvar n="i"/>
+                    <prop n="[*DEFAULT*]"/>
+                  </op>
+                </d>
+              </op>
+            </satop>
+          </lf>
+        </ac>
+	<sl/>
+	<dollar n="d1"/>
+        <sl d="|" />
+        <cc>
+          <ac t="s">
+            <lf>
+              <satop nomvar="i">
+                <var n="x"/>
+              </satop>
+            </lf>
+          </ac>
+	  <sl/>
+	  <dollar n="d1"/>
+        </cc>
+      </cc>
+    </entry>
+    <member stem="often" />
+  </family>
+
+
+  <family name="IV" pos="V">
+    <entry name="IV.primary">
+      <cc>
+        <ac t="s">
+	  <fs a="mode" v="ind" />
+	  <lf>
+	    <satop nom="h">
+	      <op n="conj">
+	        <prop n="[*DEFAULT*]"/>
+		  <b>
+		    <modevar n="AINF"/>
+		    <d m="Actor">
+	              <op n="conj">
+	                <nomvar n="i"/>
+			<var n="x"/>
+		      </op>
+	            </d>
+		  </b>
+	      </op>
+	    </satop>
+	  </lf>
+        </ac>
+        <sl d="\" />
+        <ac t="n">
+          <fs>
+	    <f a="case" v="nom" />
+	    <f a="inf">
+	      <modevar n="AINF"/>
+	    </f>
+	  </fs>
+	  <lf>
+	    <satop nomvar="i">
+	      <var n="x"/>
+	    </satop>
+	  </lf>
+        </ac>
+      </cc>
+    </entry>
+    <member stem="sleep" />
+    <member stem="walk" />
+  </family>
+
+  <family name="TV" pos="V">
+    <entry name="TV.primary">
+      <ec parent="IV.primary">
+	<lf>
+	  <satop nom="h">
+	    <b>
+	      <modevar n="PINF"/>
+  	      <d m="Patient">
+  		<op n="conj">
+  		  <nomvar n="j"/>
+  		  <var n="y"/>
+  		</op>
+  	      </d>
+	    </b>
+	  </satop>
+	</lf>
+        <sl d="/" />
+        <ac t="n">
+          <fs>
+	    <f a="case" v="acc" />
+	    <f a="inf">
+	      <modevar n="PINF"/>
+	    </f>
+	  </fs>
+	  <lf>
+	    <satop nomvar="j">
+	      <var n="y"/>
+	    </satop>
+	  </lf>
+        </ac>
+      </ec>
+    </entry>
+    <member stem="devour" />
+    <member stem="like" />
+  </family>
+
+  <family name="Motion" pos="V">
+    <entry name="Motion.primary">
+      <ec parent="IV.primary">
+	<lf>
+	  <satop nom="h">
+	  <d m="WhereTo">
+	    <op n="conj">
+	      <nomvar n="j"/>
+	      <var n="y"/>
+	    </op>
+	  </d>
+	  </satop>
+	</lf>
+        <sl d="/" />
+        <ac t="n">
+          <fs a="case" v="loc" />
+	  <lf>
+	    <satop nomvar="j">
+	      <var n="y"/>
+	    </satop>
+	  </lf>
+        </ac>
+      </ec>
+    </entry>
+    <member stem="go" />
+    <member stem="walk" />
+  </family>
+
+  <family name="DTV" pos="V">
+    <entry name="DTV.primary">
+      <ec parent="TV.primary">
+	<lf>
+	  <satop nom="h">
+	    <d m="Addressee">
+	      <op n="conj">
+	        <nomvar n="k"/>
+	        <var n="z"/>
+	      </op>
+	    </d>
+	  </satop>
+	</lf>
+        <sl d="/" />
+        <ac t="n">
+          <fs a="case" v="acc" />
+	  <lf>
+	    <satop nomvar="k">
+	      <var n="z"/>
+	    </satop>
+	  </lf>
+        </ac>
+      </ec>
+    </entry>
+    <member stem="give" />
+  </family>
+
+  <family name="Rel" pos="Pron">
+    <entry name="Rel.subj">
+      <cc>
+	<ac t="n">
+	  <fs>
+            <f a="bare" v="+" />
+	    <f a="inf">
+	      <mode n="CB" />
+	    </f>
+	  </fs>
+	  <lf>
+	    <satop nomvar="i">
+  		<op n="conj">
+  		  <var n="x"/>
+  		  <d m="GenRel">
+		    <op n="conj">
+  		      <nomvar n="j"/>
+  		      <var n="y"/>
+		    </op>
+  		  </d>
+  		</op>
+	    </satop>
+	  </lf>
+	</ac>
+	<sl d="\" />
+	<ac t="n" >
+	  <fs a="bare" v="+" />
+	  <lf>
+	    <satop nomvar="i">
+	      <var n="x"/>
+	    </satop>
+	  </lf>
+	</ac>
+	<sl d="/"/>
+	<cc>
+	  <ac t="s">
+	    <lf>
+	      <satop nomvar="j">
+	        <var n="y"/>
+	      </satop>
+	    </lf>
+	  </ac>
+	  <sl d="\" />
+	  <ac t="n">
+	    <lf>
+	      <satop nomvar="i">
+	        <var n="x"/>
+	      </satop>
+	    </lf>
+	  </ac>
+	</cc>
+      </cc>
+    </entry>
+    <entry name="Rel.obj">
+      <cc>
+	<ac t="n">
+	  <fs>
+            <f a="bare" v="+" />
+	    <f a="inf">
+	      <mode n="CB" />
+	    </f>
+	  </fs>
+	  <lf>
+	    <satop nomvar="i">
+  		<op n="conj">
+  		  <var n="x"/>
+  		  <d m="GenRel">
+		    <op n="conj">
+  		      <nomvar n="j"/>
+  		      <var n="y"/>
+		    </op>
+  		  </d>
+  		</op>
+	    </satop>
+	  </lf>
+	</ac>
+	<sl d="\" />
+	<ac t="n">
+	  <fs a="bare" v="+" />
+	  <lf>
+	    <satop nomvar="i">
+	      <var n="x"/>
+	    </satop>
+	  </lf>
+	</ac>
+	<sl d="/"/>
+	<cc>
+	  <ac t="s">
+	    <lf>
+	      <satop nomvar="j">
+	        <var n="y"/>
+	      </satop>
+	    </lf>
+	  </ac>
+	  <sl d="/" />
+	  <ac t="n">
+	    <lf>
+	      <satop nomvar="i">
+	        <var n="x"/>
+	      </satop>
+	    </lf>
+	  </ac>
+	</cc>
+      </cc>
+    </entry>
+    <member stem="that"/>
+  </family>
+
+
+</ccg-lexicon>
