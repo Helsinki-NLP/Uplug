@@ -26,25 +26,27 @@ use lib '/home/staff/joerg/user_perl/lib/perl5/site_perl/5.6.1/';
 use Mail::Mailer;
 use FindBin qw($Bin);
 use vars qw($UPLUGADMIN $UPLUGLOG $UPLUGHOME $UPLUGDATA 
-	    $UPLUGHTML $UPLUGCWB $CSS $HTPASSWD $MAXPOST);
+	    $UPLUGHTML $UPLUGCWB $CSS $HTPASSWD $MAXPOST $ALARM);
 
 BEGIN {
-    binmode(STDOUT, ":utf8");            # set UTF8 for STDOUT
-    $MAXPOST=100;
     use CGI qw/:standard escapeHTML escape/;
-    $CGI::POST_MAX = $MAXPOST * 1024;           # max $MAXPOST kB of POST data
 
-    $UPLUGADMIN = 'joerg@stp.ling.uu.se';
-    $UPLUGLOG  = '/tmp/uplug.log';
-    $UPLUGHOME = '/home/joerg/cvs/sourceforge/uplug';
-    $UPLUGDATA = '/corpora/uplug';
-    $UPLUGCWB  = $UPLUGDATA.'/cwb';
-    $UPLUGHTML = 'http://stp.ling.uu.se/~joerg/uplugII';
-    $CSS       = $UPLUGHTML.'/menu.css';
-    $HTPASSWD  = '/usr/sbin/htpasswd2';
+    binmode(STDOUT, ":utf8");                   # set UTF8 for STDOUT
+    $MAXPOST=100;                               # post max X kB of data
+    $CGI::POST_MAX = $MAXPOST * 1024;           # to the CGI-script
+    $ALARM=10;                                  # stop cgi-script after X sec.
 
-    $ENV{UPLUGHOME} =$UPLUGHOME;
-    $ENV{UPLUGDATA} =$UPLUGDATA;
+    $UPLUGADMIN = 'joerg@stp.ling.uu.se';                # administrator e-mail
+    $UPLUGLOG  = '/tmp/uplug.log';                       # CGI log-file
+    $UPLUGHOME = '/home/joerg/cvs/sourceforge/uplug';    # path to Uplug
+    $UPLUGDATA = '/corpora/uplug';                       # corpus home-dir
+    $UPLUGCWB  = $UPLUGDATA.'/cwb';                      # CWB index home
+    $UPLUGHTML = 'http://stp.ling.uu.se/~joerg/uplugII'; # HTML home-URL
+    $CSS       = $UPLUGHTML.'/menu.css';                 # ... with css-file
+    $HTPASSWD  = '/usr/sbin/htpasswd2';                  # apache-password-tool
+
+    $ENV{UPLUGHOME} =$UPLUGHOME;   # store important values
+    $ENV{UPLUGDATA} =$UPLUGDATA;   # in global environment variables
     $ENV{UPLUGCWB}  =$UPLUGCWB;
     $ENV{UPLUGADMIN}=$UPLUGADMIN;
     use CGI::Carp qw(carpout);
@@ -56,14 +58,9 @@ BEGIN {
 
 use lib $UPLUGHOME;
 use Uplug::Web;
-# use Uplug::Web::User;
-# use Uplug::Web::Corpus;
-# use Uplug::Web::Process;
 
-#system ("rm -fr /corpora/uplug/cwb");
-
-#if (defined &url_param('a')){&param('a',&url_param('a'));}
-#if (defined &url_param('c')){&param('c',&url_param('c'));}
+$SIG{ALRM}=\&timeout;               # catch SIGALRM
+alarm($ALARM);                      # set alarm timer
 
 my $user   = &remote_user;
 my $action = &my_param('a');
@@ -125,6 +122,12 @@ print &end_html;
 #########################################################################
 #########################################################################
 #########################################################################
+
+sub timeout{
+    print &h3("Got timeout signal (waited $ALARM seconds)!");
+    print &end_html();
+    exit;
+}
 
 
 sub HtmlHeader{
