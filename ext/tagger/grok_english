@@ -2,11 +2,7 @@
 
 use FindBin qw($Bin);
 
-#my $JAVA_HOME='/usr/java/j2re1.4.2';
-#my $JAVA="${JAVA_HOME}/bin/java";
-
-my $JAVA="java";
-my $JAVA="/opt/sun-jdk-1.4.2.04/bin/java";
+my $JAVA="$ENV{JAVA_HOME}/bin/java";
 my $GROK_HOME="$Bin/../grok/";
 my $JARS=`echo ${GROK_HOME}/lib/*.jar | tr ' ' ':'`;
 $ENV{CLASSPATH}="$ENV{CLASSPATH}:.:${JARS}:${GROK_HOME}/output/classes:${GROK_HOME}/src/java/";
