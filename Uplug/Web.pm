@@ -397,6 +397,15 @@ sub CorpusQuery{
 }
 
 
+sub ShowRemovedCorpusInfo{
+    my ($task,$owner,$corpus,$docbase,$doc,$priv)=@_;
+    $Uplug::Web::Corpus::CorpusDir.='/.recycled';
+    my $html=&ShowCorpusInfo($task,$owner,$corpus,$docbase,$doc,$priv,1);
+    $Uplug::Web::Corpus::CorpusDir=$ENV{UPLUGDATA};
+    return $html;
+}
+
+
 ############################################################################
 # ShowCorpusInfo:
 #    * list all corpora of a certain owner
@@ -409,7 +418,8 @@ sub ShowCorpusInfo{
     my $corpus=shift;
     my $docbase=shift;
     my $doc=shift;
-    my $priv=shift;
+    my $priv=shift;            # =1 -> private corpora
+    my $notasks=shift;         # =1 -> skip task-list
 
     my $CorpusNames=&Uplug::Web::Corpus::Corpora($owner);
     if (not defined $corpus){($corpus)=each %{$CorpusNames};}
@@ -472,8 +482,11 @@ sub ShowCorpusInfo{
 	if ($c eq $corpus){$html.=$c.' ';}
 	else{$html.=&a({-href=>$query},$c.' ');}
 
-	$html.=&TaskLinks({url=>$query,selected=>$task},
-			  &AccessMode($priv,'corpus')).&p();
+	if (not $notasks){
+	    $html.=&TaskLinks({url=>$query,selected=>$task},
+			      &AccessMode($priv,'corpus'));
+	}
+	$html.=&p();
 
 #	$html.=&ActionLinks($url,&AccessMode($priv,'corpus')).&br();
 #	push (@rows,&td([&a({-href=>$url},$c)]));
@@ -1662,22 +1675,131 @@ sub view{
     my $self=shift;
     my ($url,$style,$pos,$param)=@_;
 
+    my $html;
     if (not defined $style){$style='xml';}
     $self->{STYLE}=$style;
     $self->{POS}=$pos;
+    $self->{URL}=$url;
     if (ref($param) eq 'HASH'){
 	$self->{'FROMDOC-POS'}=$$param{sx};
 	$self->{'TODOC-POS'}=$$param{tx};
+	if ($$param{mn}){
+#	    print join '<br>',%{$param};
+	    $url=&Uplug::Web::AddUrlParam($url,'sx',$self->{'FROMDOC-POS'});
+	    $url=&Uplug::Web::AddUrlParam($url,'tx',$self->{'TODOC-POS'});
+	    $self->moveSentLinks($param);
+	}
     }
     my $count;my $fromDoc;my $toDoc;
     if (not $self->readLinks($pos)){return undef;}
     my $seg=$self->readSentLinks($style);
-    my $html=$self->nextLinks($url);
+    $html=$self->nextLinks($url);
     $html.=$seg.&p();
     $html.=$self->nextLinks($url);
     return $html;
 }
 
+sub moveSentLinks{
+    my $self=shift;
+    my $param=shift;
+    my $file=$self->{FILE};
+    if (not -e $file){return 0;}
+
+    my $LOCK=$file.'.lock';            # lock the lock-file
+    open LCK,"+<$file\.lock";
+    my $sec=0;
+    while (not flock(LCK,2)){
+	$sec++;sleep(1);
+	if ($sec>$MAXFLOCKWAIT){
+	    close LCK;
+	    return 0;
+	}
+    }
+
+    open F,"< $file";
+    binmode(F);
+
+    my @pos=sort {$a <=> $b} ($$param{mox},$$param{mnx});
+    my %before;
+    my %link;
+    my $after;
+
+    local $/='>';                         # read up to the next '>'
+
+    read(F,$before{$pos[0]},$pos[0]);
+    $link{$pos[0]}=<F>;
+#    print &hr(),tell(F)-$pos[0],&hr(),tell(F),&hr();
+    if ($pos[1]-tell(F)){
+	read(F,$before{$pos[1]},$pos[1]-tell(F));
+    }
+    $link{$pos[1]}=<F>;
+    while (<F>){$after.=$_;}         # read up to end-of-file
+    close F;                         # and close the files!
+
+#    print &br()."old-pos: $$param{mox}".&br();
+#    print "new-pos: $$param{mnx}".&br();
+#    print "pos 0: $pos[0]".&br();
+#    print "pos 1: $pos[1]".&hr();
+#    print escapeHTML($before{$pos[0]}).&hr();
+#    print escapeHTML($link{$pos[0]}).&hr();
+#    print escapeHTML($before{$pos[1]}).&hr();
+#    print escapeHTML($link{$pos[1]}).&hr();
+##    print escapeHTML($after).&hr();
+
+
+    if ($link{$$param{mox}}=~/xtargets=\"(.*?)\;(.*?)\"/){
+	my ($src,$trg)=($1,$2);
+	if ($$param{ms} eq 'src'){
+	    my @w=split(/\s/,$src);
+	    @w=grep ($_ ne $$param{mid},@w);
+	    $src=join (' ',@w);
+	}
+	if ($$param{ms} eq 'trg'){
+	    my @w=split(/\s/,$trg);
+	    @w=grep ($_ ne $$param{mid},@w);
+	    $trg=join ('s',@w);
+	}
+	$link{$$param{mox}}=~s/(xtargets=\").*?(\")/$1$src;$trg$2/s;
+    }
+
+
+    if ($link{$$param{mnx}}=~/xtargets=\"(.*?)\;(.*?)\"/){
+	my ($src,$trg)=($1,$2);
+	if ($$param{ms} eq 'src'){
+	    my @w=split(/\s/,$src);
+	    if ($$param{mox}>$$param{mnx}){push (@w,$$param{mid});}
+	    else{unshift (@w,$$param{mid});}
+	    $src=join (' ',@w);
+	}
+	if ($$param{ms} eq 'trg'){
+	    my @w=split(/\s/,$trg);
+	    if ($$param{mox}>$$param{mnx}){push (@w,$$param{mid});}
+	    else{unshift (@w,$$param{mid});}
+	    $trg=join (' ',@w);
+	}
+	$link{$$param{mnx}}=~s/(xtargets=\").*?(\")/$1$src;$trg$2/s;
+    }
+
+#    print escapeHTML($before{$pos[0]}).&hr();
+#    print escapeHTML($link{$pos[0]}).&hr();
+#    print escapeHTML($before{$pos[1]}).&hr();
+#    print escapeHTML($link{$pos[1]}).&hr();
+
+    open F,"> $file";
+    binmode(F);
+    print F $before{$pos[0]};
+    print F $link{$pos[0]};
+    print F $before{$pos[1]};
+    print F $link{$pos[1]};
+    print F $after;
+    close F;
+    close LCK;
+
+#    $self->{POS}=$$param{mox};
+#    param('start',$self->{POS});
+#    param('end',$self->{NEXT});
+
+}
 
 
 sub readLinks{
@@ -1694,17 +1816,26 @@ sub readLinks{
 					    Default => \&XmlChar});
     my $handle=$parser->parse_start;
     $self->{SENTLINKS}=[];
+    $self->{ID}=[];
+    $self->{FILEPOS}=[];
+    $self->{ENDPOS}=[];
     $self->{WORDLINKS}=[];
     $handle->{ROOT}=$self->{ROOT};
     &ParseBitextHeader(*F,$handle);      # read bitext header (get src/trg-doc)
     if ($pos>0){seek (F,$pos,0);}        # go to last file position
 
     my $count;
+#    push (@{$self->{FILEPOS}},tell(F));  # save file position!
     while (&ParseXml(*F,$handle)){
 	$count++;
-	if ($count>$MAXVIEWDATA){last;}
+
+	push (@{$self->{ID}},$handle->{DATA}->{id});   # save ALIGN-ID's
+#	push (@{$self->{FILEPOS}},tell(F));            # save file position!
+	push (@{$self->{FILEPOS}},$handle->{STARTPOS});# save file position!
+	if ($count>$MAXVIEWDATA){last;}                # 1 segment look-ahead
 	$self->{NEXT}=tell(F);
-	push (@{$self->{SENTLINKS}},$handle->{DATA}->{xtargets});
+	push (@{$self->{SENTLINKS}},$handle->{DATA}->{xtargets});  # sent-links
+
 	if (ref($handle->{SUBDATA}) ne 'HASH'){next;}
 	if (ref($handle->{SUBDATA}->{wordLink}) ne 'ARRAY'){next;}
 	my $i=$#{$self->{SENTLINKS}};
@@ -1730,8 +1861,18 @@ sub readSentLinks{
     my $self=shift;
     my $style=shift;
     my @rows=();
+    my $LastID;
+    my $LastPos;
     foreach (@{$self->{SENTLINKS}}){
+	$self->{PREV_ALIGN_ID}=$LastID;
+	$self->{THIS_ALIGN_ID}=shift(@{$self->{ID}});
+	$self->{NEXT_ALIGN_ID}=$self->{ID}->[0];
+	$self->{PREV_ALIGN_POS}=$LastPos;
+	$self->{THIS_ALIGN_POS}=shift(@{$self->{FILEPOS}});
+	$self->{NEXT_ALIGN_POS}=$self->{FILEPOS}->[0];
 	push (@rows,$self->readBitextSegment($_,$style));
+	$LastID=$self->{THIS_ALIGN_ID};
+	$LastPos=$self->{THIS_ALIGN_POS};
     }
     $self->{'FROMDOC-POS'}=tell $self->{'FROMDOCHANDLE'};
     $self->{'TODOC-POS'}=tell $self->{'TODOCHANDLE'};
@@ -1748,6 +1889,13 @@ sub readBitextSegment{
     my @s=split(/\s+/,$src);
     my @t=split(/\s+/,$trg);
 
+    my $src='';my $trg='';
+    my $url=$self->{URL};
+    my $url=&Uplug::Web::AddUrlParam($url,'ms','src');    # src sentence
+    foreach (@s){$src.=$self->sentLinkHeader($url,$_);}
+    my $url=&Uplug::Web::AddUrlParam($url,'ms','trg');    # trg sentence
+    foreach (@t){$trg.=$self->sentLinkHeader($url,$_);}
+
     my $srctext=$self->readSegment('FROMDOC',\@s,$style);
     my $trgtext=$self->readSegment('TODOC',\@t,$style);
 
@@ -1757,6 +1905,31 @@ sub readBitextSegment{
     return @rows;
 }
 
+sub sentLinkHeader{
+    my $self=shift;
+    my ($url,$sent)=@_;
+
+    my $old=$self->{THIS_ALIGN_ID};       # old bitex segment (this one)
+    my $up=$self->{PREV_ALIGN_ID};        # the one before
+    my $down=$self->{NEXT_ALIGN_ID};      # the one before
+
+    $url=&Uplug::Web::AddUrlParam($url,'mid',$sent); # sentence ID
+    $url=&Uplug::Web::AddUrlParam($url,'mo',$old);   # old ID (bitext segment)
+    $url=&Uplug::Web::AddUrlParam($url,'mox',$self->{THIS_ALIGN_POS});
+    my $html;
+    if ($up){
+	$url=&Uplug::Web::AddUrlParam($url,'mn',$up);    # new ID (up)
+	$url=&Uplug::Web::AddUrlParam($url,'mnx',$self->{PREV_ALIGN_POS});
+	$html=&a({-href=>$url},'&uArr;');
+    }
+    $html.=$sent;
+    if ($down){
+	$url=&Uplug::Web::AddUrlParam($url,'mn',$down);  # new ID (down)
+	$url=&Uplug::Web::AddUrlParam($url,'mnx',$self->{NEXT_ALIGN_POS});
+	$html.=&a({-href=>$url},'&dArr;');
+    }
+    return $html.'&nbsp;';
+}
 
 sub readSegment{
     my $self=shift;
@@ -1874,6 +2047,7 @@ sub ParseXml{
 	$pos=tell $fh;                         #  when jumping within the file)
     }
     seek ($fh,$pos,0);
+    $p->{STARTPOS}=$pos;
 
     while (<$fh>){                             # read from the file
  	eval { $p->parse_more($_); };          # and parse the XML-string
@@ -2034,14 +2208,19 @@ sub changeLinks{
     my ($before,$old,$after);
     if ($$param{start}){
 	read(F,$before,$$param{start});
-	my $wrong=tell(F)-$$param{start};
-	if ($wrong<0){my $new;read(F,$new,-$wrong);$before.=$new;}
-	if ($wrong>0){for (0..$wrong){$before=~s/.$//;}}
-	seek(F,$$param{start},0);
+	if (tell(F)!=$$param{start}){
+	    print "something wrong (file positions)!".&br();
+	    return 0;
+	}
+#	my $wrong=tell(F)-$$param{start};
+#	if ($wrong<0){my $new;read(F,$new,-$wrong);$before.=$new;}
+#	if ($wrong>0){for (0..$wrong){$before=~s/.$//;}}
+#	seek(F,$$param{start},0);
     }
     read(F,$old,$$param{end}-$$param{start});
-    my $remove=tell(F)-$$param{end}-2;
-    if ($remove){for (0..$remove){$after=~s/.$//;}}
+#    my $remove=tell(F)-$$param{end}-2;
+#    if ($remove){for (0..$remove){$after=~s/.$//;}}
+#    print "remove: $remove<hr>";
     seek(F,$$param{end},0);
     while (<F>){$after.=$_;}
     close F;
@@ -2110,7 +2289,6 @@ sub changeLinks{
     #--------------------------------------------------------------------------
 
     $old=~s/^(.*?\<link\s[^>]*?)\/?(\>).*$/$1$2/s;  # keep only <link ...>
-#    $old=~s/^(.*?\<link\s[^>]*?\>).*$/$1/s;
     $old.="\n";
     foreach (0..$#xtrg){
 	$old.="  <wordLink ";

@@ -21,6 +21,7 @@ use IO::File;
 use POSIX qw(tmpnam);
 use File::Copy;
 use ExtUtils::Command;
+use File::Basename;
 
 use Uplug::Web;
 use Uplug::Web::Config;
@@ -34,7 +35,7 @@ use Uplug::Config;
 our $INDEXER=$ENV{UPLUGHOME}.'/web/bin/uplug-indexer.pl';
 our $RECODE=$ENV{RECODE};
 
-my $CorpusDir=$ENV{UPLUGDATA};
+our $CorpusDir=$ENV{UPLUGDATA};
 
 my $MAXFLOCKWAIT=3;
 
@@ -130,10 +131,15 @@ sub GetCorpusDataFile{
 sub GetCorpusDir{
     my $user=shift;
     my $corpus=shift;
+    my $lang=shift;
     if (not defined $user){return $CorpusDir;}
     if (not defined $corpus){return "$CorpusDir/$user";}
-    if (not -d $corpus){mkdir "$CorpusDir/$user/$corpus";}
-    return "$CorpusDir/$user/$corpus";
+    if (not -d "$CorpusDir/$user/$corpus"){mkdir "$CorpusDir/$user/$corpus";}
+    if (not defined $lang){return "$CorpusDir/$user/$corpus";}
+    if (not -d "$CorpusDir/$user/$corpus/$lang"){
+	mkdir "$CorpusDir/$user/$corpus/$lang";
+    }
+    return "$CorpusDir/$user/$corpus/$lang";
 }
 
 sub GetRecycleDir{
@@ -215,6 +221,48 @@ sub GetCorpusData{
     return keys %{$CorpusData};
 }
 
+
+
+sub RestoreDocument{
+    my ($owner,$corpus,$doc)=@_;
+
+    $CorpusDir.='/.recycled';                            # set recycle-dir
+    my $ConfigFile=&CorporaConfigFile($owner);
+    my $corpora=Uplug::Web::Config->new($ConfigFile);    # user corpora
+    my $ConfigFile=&DocumentConfigFile($owner,$corpus);  # corpus configfile
+    my $documents=Uplug::Web::Config->new($ConfigFile);  # corpus documents
+    my $config=$documents->read();
+    $CorpusDir=$ENV{UPLUGDATA};                          # restore data-dir
+
+    if (defined $$config{$doc}){
+	my $lang=$$config{$doc}{language};
+	my $file=$$config{$doc}{file};
+	my $RecycleDir=&GetRecycleDir($owner,$corpus,$lang);
+	my $RemovedFile=$RecycleDir.'/'.&basename($file);
+	if (-e $RemovedFile){
+	    move ($RemovedFile,$file);
+	}
+
+	my $ConfigFile=&DocumentConfigFile($owner,$corpus);  # add the restored
+	my $ResDoc=Uplug::Web::Config->new($ConfigFile);     # document to the
+	my $ResConfig=$ResDoc->read();                       # corpus config
+	$$ResConfig{$doc}=$$config{$doc};                    # file
+	$ResDoc->write($ResConfig);                          # write configfile
+
+	delete $$config{$doc};                               # delete doc-data
+	$documents->write($config);                          # write configfile
+
+	if (not keys %{$config}){               # if no more removed documents
+	    my $corpconf=$corpora->read();      # in this corpus: read the 
+	    delete $$corpconf{$corpus};         # config file and delete the
+	    $corpora->write($corpconf);         # corpus and save
+	}
+
+    }
+    $documents->close();
+}
+
+
 sub RemoveDocument{
     my ($owner,$corpus,$doc)=@_;
 
@@ -225,13 +273,28 @@ sub RemoveDocument{
     if (defined $$config{$doc}){
 	my $lang=$$config{$doc}{language};
 	my $file=$$config{$doc}{file};
-	my $corpus=$$config{$doc}{corpus};
+#	my $corpus=$$config{$doc}{corpus};
 	my $RecycleDir=&GetRecycleDir($owner,$corpus,$lang);
 	if (-e $file){
 	    move ($file,"$RecycleDir/");
 	}
-	delete $$config{$doc};
-	$documents->write($config);
+
+	$CorpusDir.='/.recycled';                            # set recycle-dir
+	my $ConfigFile=&DocumentConfigFile($owner,$corpus);  # config-filename
+	my $RemDoc=Uplug::Web::Config->new($ConfigFile);     # open config-file
+	my $RemConfig=$RemDoc->read();                       # read it
+	$$RemConfig{$doc}=$$config{$doc};                    # save doc-data
+	$RemDoc->write($RemConfig);                          # write configfile
+
+	my $ConfigFile=&CorporaConfigFile($owner);           # config-filename
+	my $RemCorpora=Uplug::Web::Config->new($ConfigFile); # open config-file
+	my $RemConfig=$RemCorpora->read();                   # read it
+	$$RemConfig{$corpus}=1;                              # set corpus
+	$RemCorpora->write($RemConfig);                      # write configfile
+
+	delete $$config{$doc};                               # delete doc-data
+	$documents->write($config);                          # write configfile
+	$CorpusDir=$ENV{UPLUGDATA};                          # restore data-dir
     }
     $documents->close();
 }
@@ -253,8 +316,17 @@ sub RemoveCorpus{
 	if (-e $DataDir){
 	    system "mv $DataDir $RecycleDir/";          # requires UNIX!!
 	}
-	delete $$config{$corpus};
-	$corpora->write($config);
+
+	$CorpusDir.='/.recycled';                            # set recycle-dir
+	my $ConfigFile=&CorporaConfigFile($owner);           # config-filename
+	my $RemCorpora=Uplug::Web::Config->new($ConfigFile); # open config-file
+	my $RemConfig=$RemCorpora->read();                   # read it
+	$$RemConfig{$corpus}=$$config{$corpus};              # set corpus data
+	$RemCorpora->write($RemConfig);                      # write configfile
+
+	delete $$config{$corpus};                            # delete corpus
+	$corpora->write($config);                            # from configfile
+	$CorpusDir=$ENV{UPLUGDATA};                          # restore data-dir
     }
     $corpora->close();
 

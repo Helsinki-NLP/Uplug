@@ -212,8 +212,10 @@ sub PrepareProcess{
 	my ($srcname,$srclang)=&Uplug::Web::Corpus::SplitCorpusName($src);
 	my ($trgname,$trglang)=&Uplug::Web::Corpus::SplitCorpusName($trg);
 #	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$trgname);
-	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$corpus);
-	$output=$dir.'/'.$trgname.'.'.$srclang.'-'.$trglang;
+	my $lang=$srclang.'-'.$trglang;
+	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$corpus,$lang);
+	$output=$dir.'/'.$trgname;
+#	$output=$dir.'/'.$trgname.'.'.$srclang.'-'.$trglang;
 #	$output=$dir.'/'.$srclang.'-'.$trglang.'.gz';
 	if (not -e $output){open F,">$output";close F;}
 	chmod 0664,$output;
@@ -228,14 +230,16 @@ sub PrepareProcess{
 	$$config{output}{bitext}{fromDoc}=$$srccorpus{file};
 	$$config{output}{bitext}{toDoc}=$$trgcorpus{file};
 	$$config{output}{bitext}{file}=$output;
-	$$config{output}{bitext}{language}=$srclang.'-'.$trglang;
+	$$config{output}{bitext}{language}=$lang;
+#	$$config{output}{bitext}{language}=$srclang.'-'.$trglang;
     }
-    elsif ($configfile=~/align\/word\/(..\..|basic|advanced|giza)$/){
+    elsif ($configfile=~/align\/word\/(..\-..|basic|advanced|giza)$/){
 	my $bitext=$$config{input}{'bitext'}{'stream name'};
 	my $corp=&Uplug::Web::Corpus::GetCorpusInfo($user,$corpus,$bitext);
 	my ($name,$lang)=&Uplug::Web::Corpus::SplitCorpusName($bitext);
-	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$corpus);
-	$output=$dir.'/'.$name.'.'.$lang.'.links';
+	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$corpus,$lang);
+	$output=$dir.'/'.$name.'.links';
+#	$output=$dir.'/'.$name.'.'.$lang.'.links';
 	if (not -e $output){open F,">$output";close F;}
 	chmod 0664,$output;
 	my $lockfile=$output.'.lock';

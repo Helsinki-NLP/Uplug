@@ -197,6 +197,7 @@ sub UplugMenu{
 #		      'Add document' , "$url?a=corpus;t=add",
 #		      'Create CWB index' , "$url?a=corpus;t=index",
 		      'CWB Query' , "$url?a=corpus;t=query",
+		      'Restore documents', "$url?a=corpus;t=restore",
 		      ],
 		     'Task Management'
 		     ));
@@ -370,6 +371,23 @@ sub CorpusManager{
 	}
 	$html.=&Uplug::Web::ShowCorpusInfo($task,
 					   $owner,$corpus,$docbase,$doc,$priv);
+    }
+
+    #-------------------------------------------------------------------------
+    # restore removed corpus documents
+    #-------------------------------------------------------------------------
+
+    elsif ($task eq 'restore'){
+	$html.=&h3('Restore removed corpus documents');
+	if (defined $doc){
+	    &Uplug::Web::Corpus::RestoreDocument($owner,$corpus,$doc);
+	}
+	$html.=&Uplug::Web::ShowRemovedCorpusInfo($task,
+						  $owner,
+						  $corpus,
+						  $docbase,
+						  $doc,
+						  $priv);
     }
 
     #-------------------------------------------------------------------------

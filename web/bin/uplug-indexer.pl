@@ -103,7 +103,7 @@ sub GetLanguages{
     my ($dir)=@_;
     my @lang=();
     if (opendir(DIR, $dir)){
-	@lang=grep { /^[^\.]/ && -d "$dir/$_" } readdir(DIR);
+	@lang=grep { /^[^\.]/ && $_!~/\-/ && -d "$dir/$_" } readdir(DIR);
 	closedir DIR;
     }
     return @lang;
@@ -129,8 +129,9 @@ sub GetXmlFiles{
 sub GetBitexts{
     my ($dir,$src,$trg)=@_;
     my @bitexts;
+    $dir.="/$src-$trg";
     if (opendir(DIR, $dir)){
-	@bitexts=grep { /$src-$trg$/ && -f "$dir/$_" } readdir(DIR);
+	@bitexts=grep { $_!~/\.lock$/ && -f "$dir/$_" } readdir(DIR);
 	map(s/^/$dir\//,@bitexts);
 	closedir DIR;
     }
