@@ -22,7 +22,7 @@ use vars qw(@ISA @EXPORT $VERSION $DEBUG $GIZAHOME);
 $VERSION = '$Id$ ';
 $DEBUG = 0;
 
-@EXPORT = qw( &Bitext2Text &RunGiza &Combined2Uplug &Giza2Clue );
+@EXPORT = qw( &Bitext2Text &RunGiza &Combined2Uplug &Giza2Clue &Giza2Uplug );
 
 #BEGIN{
     our $GIZAHOME="$ENV{UPLUGHOME}/ext/GIZA++";
@@ -116,7 +116,7 @@ sub Giza2Clue{
 # (slow and risky: GIZA's output must be complete and use a certain format)
 
 sub Giza2Uplug{
-    my $dir=shift;
+    my $viterbi=shift;
     my $bitext=shift;
     my $param=shift;
     my $links=shift;
@@ -133,8 +133,14 @@ sub Giza2Uplug{
     if (not $output->open('write',$links)){return 0;}
 
     #------------------------------------------------------------------------
-    my $giza=$dir.'/GIZA++.A3.final';
-    open F,"<$giza";
+    if ($viterbi=~/\.gz$/){
+	open F,"gzip -cd <$viterbi |" || 
+	    die "cannot open Viterbi alignment file $viterbi!";
+    }
+    else{
+	open F,"<$viterbi" || 
+	    die "cannot open Viterbi alignment file $viterbi!";
+    }
     #------------------------------------------------------------------------
 
     my $TokenLabel='w';
@@ -169,12 +175,14 @@ sub Giza2Uplug{
 #	my @SrcNodes=$SrcData->findNodes($TokenLabel);
 	my @SrcIds=$data->attribute(\@SrcNodes,'id');
 	my @SrcSpans=$data->attribute(\@SrcNodes,'span');
-	my @SrcTokens=$data->content(\@SrcNodes);
+#	my @SrcTokens=$data->content(\@SrcNodes);
+	my @SrcTokens=$data->getSrcTokenFeatures($param,\@SrcNodes);
 
 #	my @TrgNodes=$TrgData->findNodes($TokenLabel);
 	my @TrgIds=$data->attribute(\@TrgNodes,'id');
 	my @TrgSpans=$data->attribute(\@TrgNodes,'span');
-	my @TrgTokens=$data->content(\@TrgNodes);
+#	my @TrgTokens=$data->content(\@TrgNodes);
+	my @TrgTokens=$data->getTrgTokenFeatures($param,\@TrgNodes);
 
 	if ((not @SrcNodes) or (not @TrgNodes)){next;}
 
@@ -254,8 +262,11 @@ sub Combined2Uplug{
                   # the input stream --> this gives the complete input header)
 
     #------------------------------------------------------------------------
-    open F0,"<$giza0";
-    open F1,"<$giza1";
+    if ($giza0=~/\.gz$/){open F0,"gzip -cd <$giza0 |";}
+    else{open F0,"<$giza0";}
+
+    if ($giza1=~/\.gz$/){open F1,"gzip -cd <$giza1 |";}
+    else{open F1,"<$giza1";}
     #------------------------------------------------------------------------
 
     my $TokenLabel='w';
@@ -297,12 +308,14 @@ sub Combined2Uplug{
 #	my @SrcNodes=$SrcData->findNodes($TokenLabel);
 	my @SrcIds=$data->attribute(\@SrcNodes,'id');
 	my @SrcSpans=$data->attribute(\@SrcNodes,'span');
-	my @SrcTokens=$data->content(\@SrcNodes);
+#	my @SrcTokens=$data->content(\@SrcNodes);
+	my @SrcTokens=$data->getSrcTokenFeatures($param,\@SrcNodes);
 
 #	my @TrgNodes=$TrgData->findNodes($TokenLabel);
 	my @TrgIds=$data->attribute(\@TrgNodes,'id');
 	my @TrgSpans=$data->attribute(\@TrgNodes,'span');
-	my @TrgTokens=$data->content(\@TrgNodes);
+#	my @TrgTokens=$data->content(\@TrgNodes);
+	my @TrgTokens=$data->getTrgTokenFeatures($param,\@TrgNodes);
 
 	if ((not @SrcNodes) or (not @TrgNodes)){next;}
 
