@@ -1,0 +1,47 @@
+#!/usr/bin/perl
+#
+# Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
+#
+# $Id$
+#
+# summarizes recall, precision, F from all *eval* files in the current DIR
+#
+
+opendir(DIR, '.');
+my @files = grep { /\.eval/ } readdir(DIR);
+closedir DIR;
+# my @files=`ls *eval*`;
+
+my %s;
+
+foreach my $f (@files){
+    chomp $f;
+    if (not -f $f){next;}
+    my @result=();
+    if ($f=~/\.gz$/){
+#	@result=`gzip -cd $f \| grep -A2 'recall:'`;
+	@result=`gzip -cd $f \| grep -A13 'size of gold standard:'`;
+    }
+    else{
+#	@result=`grep -A2 'recall:' $f`;
+	@result=`grep -A13 'size of gold standard:' $f`;
+    }
+    $f=~s/links\.//g;
+    $f=~s/\.xml//g;
+    $f=~s/\.eval//g;
+    $f=~s/\.gz//g;
+    if ($result[0]=~/size of gold standard:\s+([0-9]+)[\s\,]/s){$s{$f}{N}=$1;}
+    if ($result[-3]=~/recall:\s+([0-9\.]+)\%/s){$s{$f}{R}=$1;}
+    if ($result[-2]=~/precision:\s+([0-9\.]+)\%/s){$s{$f}{P}=$1;}
+    if ($result[-1]=~/F:\s+([0-9\.]+)\%/s){$s{$f}{F}=$1;}
+}
+
+print "   P      R      F  (size) - ";
+print scalar @files;
+print " files found, sorted by F-scores\n";
+foreach (sort {$s{$b}{F} <=> $s{$a}{F}} keys %s){
+    printf "%3.2f  %3.2f  %3.2f (%d) %s\n",
+    $s{$_}{P},$s{$_}{R},$s{$_}{F},$s{$_}{N},$_;
+}
+
+

@@ -1,0 +1,58 @@
+{
+  'module' => {
+    'name' => 'Swedish pre-processing',
+    'submodules' => [
+        '$UplugSystem/pre/markup',
+	'$UplugSystem/pre/sent',
+        '$UplugSystem/pre/tok',
+        '$UplugSystem/pre/sv/tagTnT',
+        '$UplugSystem/pre/sv/bea',
+    ],
+    'submodule names' => [
+        'basic XML markup',
+	'sentence splitter',
+	'tokenizer',
+        'Swedish tagger (TnT)',
+        'Swedish parser (Bea Megyesi)',
+    ],
+    'stdin' => 'text',
+    'stdout' => 'text',
+  },
+  'description' => 'This is the pre-processing module for Swedish
+  corpora. It includes a basic XML markup tool, a general sentence
+  splitter, a general tokenizer, 
+  <a href="http://www.coli.uni-sb.de/~thorsten/tnt/">TnT tagger</a>
+    which was trained by 
+   <a href="http://www.speech.kth.se/~bea/">Beata Megyesi</a> for
+  Swedish and a context-free parser for Swedish which has been
+  implemented by the <a href="http://www.speech.kth.se/~bea/">same 
+  author</a>.',
+  'input' => {
+    'text' => {
+      'format' => 'text',
+    }
+  },
+  'output' => {
+    'text' => {
+      'format' => 'xml',
+      'root' => 's',
+      'write_mode' => 'overwrite',
+      'status' => 'chunk'
+    }
+  },
+  'arguments' => {
+    'shortcuts' => {
+       'in' => 'input:text:file',
+       'out' => 'output:text:file',
+       'ci' => 'input:text:encoding',
+       'co' => 'output:text:encoding',
+    }
+  },
+  'widgets' => {
+       'input' => {
+	  'text' => {
+	    'stream name' => 'stream(format=text,language=sv)'
+	  },
+       },
+  }
+}

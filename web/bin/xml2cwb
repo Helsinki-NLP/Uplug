@@ -1,0 +1,274 @@
+#!/usr/bin/perl
+#
+# Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
+#
+# usage: xml2cwb [-p posfile] [-a] [-P PATTR] [-S SATTR] filenames
+#
+#    convert xml-files to cwb input format
+#
+#      posfile: output file with start and end position of each sentence
+#           -a: scan through the file and use ALL S- and P-attributes
+#        PATTR: P-attribute (multiple -P allowed!)
+#        SATTR: S-attribute (multiple -S allowed!)
+#    filenames: file with filenames (or list of filenames on STDIN)
+#               (corpus files)
+#
+
+
+# use strict;
+use FindBin qw($Bin);
+use XML::Parser;
+
+my $CorpusHome="$Bin/../../";
+my $encoding='iso-8859-1';
+
+my @PATTR=();
+my %SATTR=();
+my %nrSATTR=();
+
+my $PosFile=undef;
+my $AllAttributes=0;
+$PrintPos=0;
+$pos=0;
+
+$SentTag='s';
+$WordTag='w';
+
+$SentStart=0;
+$SentDone=0;
+$WordStart=0;
+$WordDone=0;
+$XmlStr;
+%WordAttr=();
+
+
+while ($ARGV[0]=~/^\-/){
+    my $opt=shift(@ARGV);
+    if ($opt eq '-a'){
+	$AllAttributes=1;
+    }
+    elsif ($opt eq '-p'){
+	$PrintPos=1;
+	$PosFile=shift(@ARGV);
+    }
+    elsif ($opt eq '-c'){
+	if ($ARGV[0]!~/^\-/){
+	    $encoding=shift(@ARGV);
+	}
+    }
+    elsif ($opt eq '-P'){
+	push (@PATTR,shift(@ARGV));
+    }
+    elsif ($opt eq '-S'){
+	my $s=shift(@ARGV);
+	$s=~s/\:0//;
+	my %attr=();
+	if ($s=~/^([^\+]+)\+(.*)$/){
+	    $s=$1;
+	    my @a=split(/\+/,$2);
+	    foreach (@a){$attr{$_}=1;}
+	}
+	%{$SATTR{$s}}=%attr;
+    }
+}
+
+binmode STDOUT,"encoding($encoding)";
+if ($PrintPos){
+    open POS,">$PosFile";
+    binmode F,"encoding($encoding)";
+}
+
+foreach (@ARGV){
+    Xml2Cwb($_);
+}
+
+if ($PrintPos){
+    close POS;
+}
+
+
+
+sub Xml2Cwb{
+    my $file=shift;
+    my $zipped=0;
+    if ($PrintPos){
+	print POS "# $file\n";
+    }
+    if ((not -e $file) and (-e "$CorpusHome$file")){
+	$file="$CorpusHome$file";
+    }
+    if ((not -e $file) and (-e "$file.gz")){
+	$file="$file.gz";
+    }
+    elsif ((not -e $file) and (-e "$CorpusHome$file.gz")){
+	$file="$CorpusHome$file.gz";
+    }
+    if (not -e $file){return;}
+    if ($file=~/\.gz$/){
+	$zipped=1;
+	system ("gzip -cd $file > /tmp/xmltocwb$$");
+	$file="/tmp/xmltocwb$$";
+    }
+
+    if ($AllAttributes){
+	my $parser1=
+	    new XML::Parser(Handlers => {Start => \&XmlAttrStart});
+
+	eval { $parser1->parsefile($file); };
+	if ($@){warn "$@";}
+	@PATTR=keys %WordAttr;
+    }
+
+    my $parser2=
+	new XML::Parser(Handlers => {Start => \&XmlStart,
+				     End => \&XmlEnd,
+				     Default => \&XmlChar,
+				 },);
+
+    eval { $parser2->parsefile($file); };
+    if ($@){warn "$@";}
+    if ($zipped){
+	unlink "/tmp/xmltocwb$$";
+    }
+    print STDERR "-xsB";
+#     print STDERR "cwb-encode -xsB -S s:0+id";
+    foreach my $s (keys %SATTR){
+	print STDERR " -S $s:0";
+	my $a=join "+",keys %{$SATTR{$s}};
+	if ($a){print STDERR '+'.$a;}
+    }
+    foreach (@PATTR){
+	print STDERR " -P $_";
+    }
+    print STDERR "\n";
+}
+
+
+
+
+
+
+
+
+
+
+sub XmlStart{
+    my $p=shift;
+    my $e=shift;
+    if ($e eq $SentTag){
+	if ($SentStart){                 # there is already an open sentence!
+	    printXmlEndTag($e,@_);       # --> close the old one first!!
+	    if ($PrintPos){
+		print POS $pos-1,"\n";
+	    }
+	}
+	$SentStart=1;
+	printXmlStartTag($e,@_);
+	if ($PrintPos){
+	    my %attr=@_;
+	    print POS "$attr{id}\t$pos\t";
+	}
+    }
+    elsif ($e eq $WordTag){
+	$WordStart=1;
+	$XmlStr='';
+	%WordAttr=@_;
+    }
+    elsif (defined $SATTR{$e}){
+	$nrSATTR{$e}++;                                 # don't allow recursive
+	if ($nrSATTR{$e}==1){printXmlStartTag($e,@_);}  # structures!!!!!!
+
+#	if ($nrSATTR{$e}>1){printXmlStartTag($e.$nrSATTR{$e},@_);}
+#	else{printXmlStartTag($e,@_);}
+    }
+}
+
+sub XmlEnd{
+    my $p=shift;
+    my $e=shift;
+    if ($e eq $SentTag){
+	$SentStart=0;
+	printXmlEndTag($e,@_);
+	if ($PrintPos){
+	    print POS $pos-1,"\n";
+	}
+    }
+    elsif ($e eq $WordTag){
+	$WordStart=0;
+	printWord($XmlStr,\%WordAttr);
+	$pos++;
+    }
+    elsif (defined $SATTR{$e}){
+	if ($nrSATTR{$e}==1){printXmlEndTag($e,@_);}
+#	if ($nrSATTR{$e}>1){printXmlEndTag($e.$nrSATTR{$e},@_);}
+#	else{printXmlEndTag($e,@_);}
+	$nrSATTR{$e}--;
+    }
+}
+
+sub XmlChar{
+    my $p=shift;
+    my $e=shift;
+    if ($WordStart){
+#	$XmlStr.=$p->original_string;
+	$XmlStr.=$p->recognized_string;
+    }
+}
+
+
+
+#################################################
+
+sub XmlAttrStart{
+    my $p=shift;
+    my $e=shift;
+    if ($e eq $WordTag){
+	$WordStart=1;
+	while (@_){$WordAttr{$_[0]}=$_[1];shift;shift;}
+    }
+    else{
+	while (@_){$SATTR{$e}{$_[0]}=$_[1];shift;shift;}
+    }
+}
+
+
+##########################################
+
+
+
+
+sub printWord{
+    my $word=shift;
+    my $attr=shift;
+    $word=~tr/\n/ /;
+    $word=~s/^\s+(\S)/$1/s;
+    $word=~s/(\S)\s+$/$1/s;
+    print $word;
+    foreach (@PATTR){
+	if (defined $attr->{$_}){
+	    print "\t$attr->{$_}";
+	}
+	else{
+	    print "\tunknown";
+	}
+    }
+    print "\n";
+}
+
+sub printXmlStartTag{
+    my $tag=shift;
+    my %attr=@_;
+    print "<$tag";
+    foreach (keys %attr){
+	if (defined $SATTR{$tag}{$_}){
+	    print " $_=\"$attr{$_}\"";
+	}
+    }
+    print ">\n";
+}
+
+sub printXmlEndTag{
+    my $tag=shift;
+    my %attr=@_;
+    print "</$tag>\n";
+}

@@ -1,0 +1,108 @@
+#!/bin/bash
+#
+# convert sentence-aligned xces-files to CWB format
+#
+# Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
+#--------------------------------------------------------
+# usage: make-cwb-align USER CORPUS SRC TRG SRCENC TRGENC
+#
+#     USER: user name (= sub-directory of DATAHOME)
+#   CORPUS: name of the corpus (= sub-directory of DATAHOME/USER)
+#      SRC: source language (= name of source corpus)
+#      TRG: target language (= name of target corpus)
+#   SRCENC: source language encoding (default=latin1)
+#   SRCENC: target language encoding (default=latin1)
+#
+# the following files and locations are assumed to exist:
+#
+#   source corpus: DATAHOME/USER/CORPUS/SRC.gz
+#   target corpus: DATAHOME/USER/CORPUS/TRG.gz
+# XCES ALIGN file: DATAHOME/USER/CORPUS/SRC-TRG.gz
+#
+#        DATAHOME: /corpora/OPUS/uplug2
+#         CWBHOME: /corpora/OPUS/uplug2-cwb
+#
+
+USER=$1;
+CORPUS=$2;
+SRC=$3;
+TRG=$4;
+SRCENC=$5;
+TRGENC=$6;
+
+DATAHOME='/corpora/OPUS/uplug2';
+CWBHOME='/corpora/OPUS/uplug2-cwb';
+CWBBIN='/usr/local/bin';
+SCRIPT='/corpora/OPUS/uplug2-cwb';
+
+DATA="$DATAHOME/$USER/$CORPUS";
+REGDIR="$CWBHOME/reg/$USER";
+DATDIR="$CWBHOME/dat/$USER";
+
+MKDIR='mkdir -p';
+CD='cd';
+RM='rm';
+RMDIR='rmdir';
+CAT='cat';
+ECHO='echo';
+CP='cp';
+
+DIR=$PWD;
+TMP='/tmp/CWBALIGNTEMP';
+$MKDIR $TMP;
+$CD $TMP
+
+#-----------------------------------------------
+
+ENCODE="$CWBBIN/cwb-encode";
+CWBMAKEALL="${CWBBIN}/cwb-makeall";
+CWBALIGNENCODE="${CWBBIN}/cwb-align-encode"
+XML2CWB="$SCRIPT/xml2cwb";
+ALIGN2CWB="$SCRIPT/align2cwb";
+
+#-----------------------------------------------
+
+$XML2CWB -c $SRCENC -a -p $SRC.pos ${DATA}/$SRC.gz 2>$SRC.cmd > $SRC;
+$XML2CWB -c $TRGENC -a -p $TRG.pos ${DATA}/$TRG.gz 2>$TRG.cmd > $TRG;
+$ALIGN2CWB $SRC.pos $TRG.pos -s $SRC -t $TRG -c '' ${DATA}/$SRC-$TRG.gz
+
+if [ ! -e $REGDIR/$CORPUS/$SRC ]; then
+    ATTR=`$CAT $SRC.cmd`;
+
+    $MKDIR "$DATDIR/$CORPUS/$SRC";
+    $MKDIR "$REGDIR/$CORPUS";
+
+    $ENCODE -R $REGDIR/$CORPUS/$SRC -d $DATDIR/$CORPUS/$SRC -f $SRC $ATTR
+    $CWBMAKEALL -r $REGDIR/$CORPUS -V $SRC
+fi
+if [ ! -e $REGDIR/$CORPUS/$TRG ]; then
+    ATTR=`$CAT $TRG.cmd`;
+
+    $MKDIR "$DATDIR/$CORPUS/$TRG";
+    $MKDIR "$REGDIR/$CORPUS";
+
+    $ENCODE -R $REGDIR/$CORPUS/$TRG -d $DATDIR/$CORPUS/$TRG -f $TRG $ATTR
+    $CWBMAKEALL -r $REGDIR/$CORPUS -V $TRG
+fi
+
+
+if ! grep -q "ALIGNED $SRC" $REGDIR/$CORPUS/$TRG
+then $ECHO "ALIGNED $SRC" >> $REGDIR/$CORPUS/$TRG
+fi
+if ! grep -q "ALIGNED $TRG" $REGDIR/$CORPUS/$SRC
+then $ECHO "ALIGNED $TRG" >> $REGDIR/$CORPUS/$SRC
+fi
+
+$CWBALIGNENCODE -r $REGDIR/$CORPUS -D $SRC$TRG.alg
+$CWBALIGNENCODE -r $REGDIR/$CORPUS -D $TRG$SRC.alg
+
+$CP $SRC$TRG.alg $DATDIR/$CORPUS/
+$CP $TRG$SRC.alg $DATDIR/$CORPUS/
+
+#-----------------------------------------------
+
+$RM $TMP/*
+$RMDIR $TMP
+
+$CD $DIR;
+

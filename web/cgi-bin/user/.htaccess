@@ -1,0 +1,4 @@
+AuthName uplug2
+AuthType Basic
+AuthUserFile /corpora/OPUS/uplug2/.htpasswd
+require valid-user

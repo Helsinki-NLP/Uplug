@@ -1,0 +1,246 @@
+{
+  'module' => {
+    'location' => '$UplugBin',
+    'stdin' => 'bitext',
+    'program' => 'linkclue.pl',
+    'name' => 'dynamic alignment clues'
+  },
+  'description' => 'This module learns clues from word aligned
+  bitexts. The following clue patterns are defined:
+  <ul><li>part-of-speech tags of the current link (dynamic POS clue)
+  <li>part-of-speech tags of the current link using a reduced tag set
+  (dynamic POS clue (coarse))
+  <li>chunk labels of the current link (dynamic chunk clue)
+  <li>the word position of the target language word 
+  relative to the aligned source language word (dynamic position clue)
+  <li>word forms of the current link (dynamic lex clue)
+  <li>word forms together with their POS tags (dynamic lex/POS clue)
+  <li>POS tags and relative positions (posposi clue)
+  <li>POS tag trigrams (previous, current, next) (postri clue)
+  <li>POS tag trigrams and relative word position (postriposi clue)
+  <li>chunk label trigrams (chunktri clue)
+  <li>chunk label trigrams and POS tags of the current link (chunktripos)
+  <li>chunk label trigrams and relative word positions (chunktriposi)
+  </ul><p>
+  Note: If you add dynamic clues to be learned from the data make sure
+  to enable the same clues in the alignment module (link). Otherwise
+  they will not be used for the word alignment.',
+  'input' => {
+    'bitext' => {'stream name' => 'runtime xml',format => 'xces align'}
+  },
+  'output' => {
+    'dynamic POS clue' => {'stream name' => 'POS clue'},
+    'dynamic POS clue (coarse)' => {'stream name' => 'POS clue (coarse)'},
+    'dynamic chunk clue' => {'stream name' => 'chunk clue'},
+    'dynamic position clue' => {'stream name' => 'position clue'},
+    'dynamic lex clue' => {'stream name' => 'lex clue',},
+    'dynamic lex/POS clue' => {'stream name' => 'lexpos clue'},
+    'posposi clue' => {'stream name' => 'posposi clue'},
+    'postri clue' => {'stream name' => 'postri clue'},
+    'postriposi clue' => {'stream name' => 'postriposi clue'},
+    'chunktri clue' => {'stream name' => 'chunktri clue'},
+    'chunktripos clue' => {'stream name' => 'chunktripos clue'},
+    'chunktriposi clue' => {'stream name' => 'chunktriposi clue'}
+  },
+  'parameter' => {
+    'clues' => {
+       'dynamic POS clue' => 0,
+       'dynamic POS clue (coarse)' => 0,
+       'dynamic chunk clue' => 0,
+       'dynamic position clue' => 0,
+       'dynamic lex clue' => 0,
+       'dynamic lex/POS clue' => 0,
+       'posposi clue' => 0,
+       'postri clue' => 0,
+       'postriposi clue' => 1,
+       'chunktri clue' => 0,
+       'chunktripos clue' => 0,
+       'chunktriposi clue' => 1,
+    },
+    'dynamic POS clue' => {
+       'features (source)' => {
+           'pos' => undef,
+       },
+       'features (target)' => {
+           'pos' => undef,
+       },
+    },
+    'dynamic POS clue (coarse)' => {
+       'features (target)' => {
+           'pos' => '^(..).*$/$1',
+       },
+       'features (source)' => {
+           'pos' => '^(..).*$/$1',
+       },
+    },
+    'dynamic chunk clue' => {
+       'features (source)' => {
+           'c.*:type' => undef
+       },
+       'features (target)' => {
+           'c.*:type' => undef,
+       },
+    },
+    'dynamic position clue' => {
+      'relative position' => 1,
+       'features (source)' => {},
+       'features (target)' => {},
+    },
+    'dynamic lex clue' => {
+      'pair frequency' => 2,
+      'features (source)' => {
+	'#text' => undef
+      },
+      'features (target)' => {
+	'#text' => undef
+      }
+    },
+    'dynamic lex/POS clue' => {
+      'pair frequency' => 2,
+      'features (source)' => {
+        'pos' => undef,
+	'#text' => undef
+      },
+      'features (target)' => {
+        'pos' => undef,
+	'#text' => undef
+      }
+    },
+    'chunktri clue' => {
+      'features (source)' => {
+	'c.*:type' => undef,
+	'c.*:left:type' => undef,
+	'c.*:right:type' => undef
+      },
+      'features (target)' => {
+        'c.*:type' => undef,
+        'c.*:left:type' => undef,
+        'c.*:right:type' => undef
+      }
+    },
+    'chunktripos clue' => {
+      'features (source)' => {
+	'c.*:type' => undef,
+	'c.*:left:type' => undef,
+	'c.*:right:type' => undef,
+        'pos' => undef
+      },
+      'features (target)' => {
+        'c.*:type' => undef,
+        'c.*:left:type' => undef,
+        'c.*:right:type' => undef,
+        'pos' => undef
+      }
+    },
+    'chunktriposi clue' => {
+      'relative position' => 1,
+      'features (source)' => {
+	'c.*:type' => undef,
+	'c.*:left:type' => undef,
+	'c.*:right:type' => undef
+      },
+      'features (target)' => {
+        'c.*:type' => undef,
+        'c.*:left:type' => undef,
+        'c.*:right:type' => undef
+      }
+    },
+    'posposi clue' => {
+      'relative position' => 1,
+      'features (source)' => {
+        'pos' => undef,
+      },
+      'features (target)' => {
+        'pos' => undef,
+      }
+    },
+    'postri clue' => {
+      'features (source)' => {
+        'left(w):pos' => undef,
+        'pos' => undef,
+        'right(w):pos' => undef
+      },
+      'features (target)' => {
+        'left(w):pos' => undef,
+        'pos' => undef,
+        'right(w):pos' => undef
+      },
+     },
+    'postriposi clue' => {
+      'relative position' => 1,
+      'features (source)' => {
+	'left(w):pos' => undef,
+        'pos' => undef,
+	'right(w):pos' => undef
+      },
+      'features (target)' => {
+	'left(w):pos' => undef,
+        'pos' => undef,
+	'right(w):pos' => undef
+      }
+    },
+    'general' => {
+      'pair frequency' => 4
+    }
+  },
+  'arguments' => {
+    'shortcuts' => {
+      'informat' => 'input:bitext:format',
+      'in' => 'input:bitext:file',
+      'infile' => 'input:bitext:file',
+
+      'dynpos' => 'parameter:clues:dynamic POS clue',
+      'dynpos2' => 'parameter:clues:dynamic POS clue (coarse)',
+      'dynchunk' => 'parameter:clues:dynamic chunk clue',
+      'dynposi' => 'parameter:clues:dynamic position clue',
+      'dynlex' => 'parameter:clues:dynamic lex clue',
+      'dynlexpos' => 'parameter:clues:dynamic lex/POS clue',
+      'posposi' => 'parameter:clues:posposi clue',   
+      'postri' => 'parameter:clues:postri clue',   
+      'postriposi' => 'parameter:clues:postriposi clue',
+      'chunktri' => 'parameter:clues:chunktri clue',
+      'chunktripos' => 'parameter:clues:chunktripos clue',
+      'chunktriposi' => 'parameter:clues:chunktriposi clue',
+
+      #---- shorter versions
+
+      'dp' => 'parameter:clues:dynamic POS clue',
+      'dpp' => 'parameter:clues:dynamic POS clue (coarse)',
+      'dc' => 'parameter:clues:dynamic chunk clue',
+      'dx' => 'parameter:clues:dynamic position clue',
+      'dl' => 'parameter:clues:dynamic lex clue',
+      'dlp' => 'parameter:clues:dynamic lex/POS clue',
+      'dpx' => 'parameter:clues:posposi clue',   
+      'dp3' => 'parameter:clues:postri clue',   
+      'dp3x' => 'parameter:clues:postriposi clue',
+      'dc3' => 'parameter:clues:chunktri clue',
+      'dc3p' => 'parameter:clues:chunktripos clue',
+      'dc3x' => 'parameter:clues:chunktriposi clue',
+
+
+    }
+  },
+  'widgets' => {
+#       'input' => {
+#            'bitext' => {
+#               'stream name' => 'stream (format=xces align,status=sent)',
+#            },
+#        },
+       'parameter' => {
+         'clues' => {
+	   'dynamic POS clue' => 'checkbox',
+	   'dynamic POS clue (coarse)' => 'checkbox',
+	   'dynamic chunk clue' => 'checkbox',
+	   'dynamic position clue' => 'checkbox',
+	   'dynamic lex clue' => 'checkbox',
+	   'dynamic lex/POS clue' => 'checkbox',
+	   'posposi clue' => 'checkbox',
+	   'postri clue' => 'checkbox',
+	   'postriposi clue' => 'checkbox',
+	   'chunktri clue' => 'checkbox',
+	   'chunktripos clue' => 'checkbox',
+	   'chunktriposi clue' => 'checkbox'
+	   },
+        }
+  }
+}
