@@ -572,10 +572,10 @@ sub AddDocument{
     close OUT;
 
 #    move($tmpfile,$file);                # create the corpus file
-    my $lckfile="$file.lock";
-    open F,">$lckfile";close F;                  # create a lock file
+#    my $lckfile="$file.lock";
+#    open F,">$lckfile";close F;                  # create a lock file
     chmod 0664,$file;
-    chmod 0664,$lckfile;
+#    chmod 0664,$lckfile;
 #    unlink $tmpfile;
 
     &AddCorpusInfo($user,$corpus,$name,$lang,'text',

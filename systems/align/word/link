@@ -607,7 +607,7 @@
 	      'dynamic lex/POS clue' => 'checkbox',
 	      'posposi clue' => 'checkbox',
 	      'postri clue' => 'checkbox',
-	      'postriposi clue' => 'checkbox'
+	      'postriposi clue' => 'checkbox',
 	      'chunktri clue' => 'checkbox',
 	      'chunktripos clue' => 'checkbox',
 	      'chunktriposi clue' => 'checkbox'

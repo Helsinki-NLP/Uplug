@@ -43,7 +43,7 @@ my @CLUEDBMFILES=('giza','dice','mi','tscore','str',
 		  'posposi','postri','postriposi');
 #-------------------------------------------------------------
 
-my $ProcHome = $ENV{UPLUGDATA};
+my $ProcHome = $ENV{UPLUGDATA}.'.process';
 
 my $todoFile = $ProcHome.'/.todo';
 my $queuedFile = $ProcHome.'/.queued';
@@ -52,11 +52,15 @@ my $doneFile = $ProcHome.'/.done';
 my $failedFile = $ProcHome.'/.failed';
 my $serverlogFile = $ProcHome.'/.serverlog';
 
-if (not -e $ProcHome){mkdir $ProcHome;}
-if (not -e "$ProcHome/.lockdir"){
-    mkdir "$ProcHome/.lockdir";
-    system "chmod g+w $ProcHome/.lockdir";
+if (not -e $ProcHome){
+    mkdir $ProcHome;
+    system "chmod g+w $ProcHome";
 }
+
+#if (not -e "$ProcHome/.lockdir"){           # Lock.pm changed:
+#    mkdir "$ProcHome/.lockdir";             # don't use a special .lockdir
+#    system "chmod g+w $ProcHome/.lockdir";  # for locking anymore!
+#}                                           # (lock-files will be in ProcHome)
 
 my $todo=Uplug::Web::Process::Stack->new($todoFile);
 my $queued=Uplug::Web::Process::Stack->new($queuedFile);
@@ -243,9 +247,9 @@ sub PrepareProcess{
 #	$output=$dir.'/'.$srclang.'-'.$trglang.'.gz';
 	if (not -e $output){open F,">$output";close F;}
 	chmod 0664,$output;
-	my $lockfile=$output.'.lock';
-	if (not -e $lockfile){open F,">$lockfile";close F;}
-	chmod 0664,$lockfile;
+#	my $lockfile=$output.'.lock';
+#	if (not -e $lockfile){open F,">$lockfile";close F;}
+#	chmod 0664,$lockfile;
 
 	$$config{output}{bitext}{corpus}=$srcname;
 	if ($srcname ne $trgname){
@@ -266,9 +270,9 @@ sub PrepareProcess{
 #	$output=$dir.'/'.$name.'.'.$lang.'.links';
 	if (not -e $output){open F,">$output";close F;}
 	chmod 0664,$output;
-	my $lockfile=$output.'.lock';
-	if (not -e $lockfile){open F,">$lockfile";close F;}
-	chmod 0664,$lockfile;
+#	my $lockfile=$output.'.lock';
+#	if (not -e $lockfile){open F,">$lockfile";close F;}
+#	chmod 0664,$lockfile;
 	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user);
 	if (not -d "$dir/data"){mkdir "$dir/data",0755;}
 	if (not -d "$dir/data/runtime"){

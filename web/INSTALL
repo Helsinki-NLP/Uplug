@@ -5,7 +5,7 @@ You need the following:
  - Mail::Mailer (part of MailTools, needed by the CGI-script!)
    (http://search.cpan.org/~markov/MailTools-1.62/)
  - CWB and Perl modules for IMS CWB and CQP
-   (ftp://ftp.ims.uni-stuttgart.de/pub/outgoing/cwb-beta/)
+   (ftp://ftp.ims.uni-stuttgart.de/pub/outgoing/cwb-beta/index.html)
  - make for sure that all external tools exist and work on your system,
    even for web-processes! (TnT, TreeTagger, Grok, CWB) you might have to 
    adjust things in uplug/ext !!!!
@@ -31,7 +31,8 @@ You need the following:
 * modify the uplug-server configuration (uplug/web/bin/uplug-server)
    UPLUGDATA (should be the same as above)
 * start one (or more) uplug-servers (uplug/web/bin/uplug-server)
-   IMPORTANT: the files .todo, .queued, .working, .done, .failed have 
+   IMPORTANT: the files .todo, .queued, .working, .done, .failed 
+	      in the .process-directory have 
               to be writeable for the uplug-server processes!!!!!!!!!
 
 

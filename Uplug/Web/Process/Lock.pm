@@ -50,9 +50,9 @@ sub nflock($;$) {
         return 1
     }
 
-#    if (!-w dirname($pathname)) {
-#        croak "can't write to directory of $pathname";
-#    }
+    if (!-w dirname($pathname)) {
+        croak "can't write to directory of $pathname";
+    }
 
     while (1) {
         last if mkdir($lockname, 0777);
@@ -70,8 +70,8 @@ sub nflock($;$) {
 	#### added by joerg@stp.ling.uu.se: check time stamp
 	####                                remove files if too old
 	####                                (time-mtime>maxlocktime)
-	&RemoveOld($whosegot,$MaxLockTime);
-	&RemoveOld($lockname,$MaxLockTime);
+	&RemoveOldLockFiles($whosegot,$MaxLockTime);
+	&RemoveOldLockFiles($lockname,$MaxLockTime);
 	####
 	####
 
@@ -91,12 +91,16 @@ sub nflock($;$) {
 # free the locked file
 sub nunflock($) {
     my $pathname = shift;
+    my $dir      = dirname($pathname);
     my $lockname = name2lock($pathname);
     my $whosegot = "$lockname/owner";
     unlink($whosegot);
     carp "releasing lock on $lockname" if $Debug;
     delete $Locked_Files{$pathname};
     return rmdir($lockname);
+#    my $ret = rmdir($lockname);
+#    rmdir("$dir/.lockdir");
+#    return $ret;
 }
 
 # helper function
@@ -105,16 +109,16 @@ sub name2lock($) {
     my $dir  = dirname($pathname);
     my $file = basename($pathname);
     $dir = getcwd() if $dir eq '.';
-#    my $lockname = "$dir/$file.LOCKDIR";     # original version
-    if (not -d "$dir/.lockdir"){
-	mkdir ("$dir/.lockdir",0775);
-	system ("chmod g+w $dir/.lockdir");
-    }
-    my $lockname = "$dir/.lockdir/$file";
+    my $lockname = "$dir/$file.LOCKDIR";     # original version
+#    if (not -d "$dir/.lockdir"){
+#	mkdir ("$dir/.lockdir",0775);
+#	system ("chmod g+w $dir/.lockdir");
+#    }
+#    my $lockname = "$dir/.lockdir/$file";
     return $lockname;
 }
 
-sub RemoveOld{
+sub RemoveOldLockFiles{
     my $file=shift;
     my $maxtime=shift;
     if (not -e $file){return 1;}
@@ -129,11 +133,15 @@ sub RemoveOld{
 # anything forgotten?
 END {
     for my $pathname (keys %Locked_Files) {
+	my $dir      = dirname($pathname);
         my $lockname = name2lock($pathname);
         my $whosegot = "$lockname/owner";
         carp "releasing forgotten $lockname";
         unlink($whosegot);
-        return rmdir($lockname);
+	return rmdir($lockname);
+#	my $ret = rmdir($lockname);
+#	rmdir("$dir/.lockdir");
+#	return $ret;
     }
 }
 

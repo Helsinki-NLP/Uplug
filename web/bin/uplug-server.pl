@@ -357,11 +357,19 @@ sub PreProcessing{
 	    }
 	}
     }
-    if (-e $OUTPUT){
-	$LOCK=$OUTPUT.'.lock';
-	sysopen(LCK,$LOCK,O_RDONLY|O_CREAT) or &my_die("can't open $LOCK: $!");
-	while (not flock(LCK,LOCK_EX)){sleep 1;}
-    }
+
+##
+## forget about locking for the time being, because
+##   - flock does not work on nfs
+##   - nflock has problems with write-permission in this setting
+##
+#    if (-e $OUTPUT){
+#	&nflock($OUTPUT,30) or &my_die("can't lock $OUTPUT: $!");
+##	$LOCK=$OUTPUT.'.lock';
+##	sysopen(LCK,$LOCK,O_RDONLY|O_CREAT) or &my_die("can't open $LOCK: $!");
+##	while (not flock(LCK,LOCK_EX)){sleep 1;}
+#    }
+
 }
 
 
@@ -424,6 +432,13 @@ sub PostProcessing{
 	    `cp data/runtime/*.dbm* $dir/data/runtime/`;
 	}
     }
+
+##
+## locking is not used right now ....
+##
+#    if (-e $OUTPUT){
+#	&nunflock($OUTPUT) or &my_die("can't unlock $OUTPUT: $!");
+#    }
 }
 
 sub RegisterCorpus{

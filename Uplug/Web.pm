@@ -22,6 +22,7 @@ use strict;
 use CGI qw/:standard escapeHTML escape/;
 use Uplug::Web::Corpus;
 use Uplug::Web::Process;
+use Uplug::Web::Process::Lock;
 use Uplug::Web::User;
 use Uplug::Web::CWB;
 use XML::Parser;
@@ -575,8 +576,8 @@ sub ViewCorpus{
 	    $html=&b("Align words in document '$doc'!");    #   sentence-
 	    if (not -e "$file.links"){                      #   aligned bitexts
 		copy($file,"$file.links");                  # - create a word-
-		open F,">$file.links.lock";close F;         #   align file and
-		chmod 0664,"$file.links.lock";              #   a lock-file
+#		open F,">$file.links.lock";close F;         #   align file and
+#		chmod 0664,"$file.links.lock";              #   a lock-file
 		chmod 0664,"$file.links";                   # - set permissions
 		$$DocConfig{file}="$file.links";            # - add info to the
 		$$DocConfig{status}='word';                 #   user configfile
@@ -1481,16 +1482,28 @@ sub moveSentLinks{
     my $file=$self->{FILE};
     if (not -e $file){return 0;}
 
-    my $LOCK=$file.'.lock';            # lock the lock-file
-    open LCK,"+<$file\.lock";
-    my $sec=0;
-#    print "lock file<br>";
-    while (not flock(LCK,2)){
-	$sec++;sleep(1);
-	if ($sec>$MAXFLOCKWAIT){
-	    close LCK;
-	    return 0;
-	}
+##
+## file locking with flock
+##
+#    my $LOCK=$file.'.lock';            # lock the lock-file
+#    open LCK,"+<$file\.lock";
+#    my $sec=0;
+##    print "lock file<br>";
+#    while (not flock(LCK,2)){
+#	$sec++;sleep(1);
+#	if ($sec>$MAXFLOCKWAIT){
+#	    close LCK;
+#	    return 0;
+#	}
+#    }
+
+##
+## file locking with nflock
+## 
+
+    if (not &nflock($file,$MAXFLOCKWAIT)){
+	print STDERR "# Uplug::Web - can't get exclusive lock for $file!\n";
+	return 0;
     }
 
     open F,"< $file";
@@ -1561,7 +1574,18 @@ sub moveSentLinks{
     print F $link{$pos[1]};
     print F $after;
     close F;
-    close LCK;
+
+##
+## unlocking file (when locked with flock)
+##
+#    close LCK;
+
+##
+## unlocking file (when locked with nflock)
+##
+
+    &nunflock($file);
+
 }
 
 
@@ -1977,16 +2001,30 @@ sub changeLinks{
     my $file=$self->{FILE};
     if (not -e $file){return 0;}
 
-    my $LOCK=$file.'.lock';            # lock the lock-file
-    open LCK,"+<$file\.lock";
-    my $sec=0;
-    while (not flock(LCK,2)){
-	$sec++;sleep(1);
-	if ($sec>$MAXFLOCKWAIT){
-	    close LCK;
-	    return 0;
-	}
+
+##
+## file locking with flock
+##
+#    my $LOCK=$file.'.lock';            # lock the lock-file
+#    open LCK,"+<$file\.lock";
+#    my $sec=0;
+#    while (not flock(LCK,2)){
+#	$sec++;sleep(1);
+#	if ($sec>$MAXFLOCKWAIT){
+#	    close LCK;
+#	    return 0;
+#	}
+#    }
+
+##
+## file locking with nflock
+## 
+
+    if (not &nflock($file,$MAXFLOCKWAIT)){
+	print STDERR "# Uplug::Web - can't get exclusive lock for $LOCK!\n";
+	return 0;
     }
+
 
     open F,"< $file";
 #    binmode(F,":utf8");
@@ -2093,7 +2131,18 @@ sub changeLinks{
     $self->{NEXT}=tell(F);
     print F $after;
     close F;
-    close LCK;
+
+##
+## unlocking file (when locked with flock)
+##
+#    close LCK;
+
+##
+## unlocking file (when locked with nflock)
+##
+
+    &nunflock($file);
+
     param('start',$self->{POS});
     param('end',$self->{NEXT});
 }

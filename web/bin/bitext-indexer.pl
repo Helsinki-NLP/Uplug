@@ -38,8 +38,8 @@ use File::Copy;
 use File::Basename;
 use XML::Parser;
 
-use lib ('/home/staff/joerg/user_local/lib/perl5/site_perl/5.8.0/');
-use WebCqp::Query;
+#use lib ('/home/staff/joerg/user_local/lib/perl5/site_perl/5.8.0/');
+#use WebCqp::Query;
 
 #my $CWBBIN='/usr/local/bin';
 #my $ENCODE="$CWBBIN/cwb-encode";
@@ -75,6 +75,8 @@ my $TMPDIR = '/tmp/BITEXTINDEXER'.$$;
 mkdir $TMPDIR;
 chdir $TMPDIR;
 
+if (not -d $REGDIR){$REGDIR="$DIR/$REGDIR";}
+if (not -d $DATDIR){$DATDIR="$DIR/$DATDIR";}
 
 my @srcfiles;
 my @trgfiles;

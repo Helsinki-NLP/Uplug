@@ -22,6 +22,7 @@ package Uplug::Web::Config;
 
 use strict;
 use Data::Dumper;
+use Uplug::Web::Process::Lock
 
 my $DEFAULTMAXFLOCKWAIT=5;
 
@@ -68,15 +69,32 @@ sub open{
 
     my $fh=$self->{FH};
     if (not -e $self->{FILE}){return 0;}
-    open $self->{FH},"+<$self->{FILE}";
-    my $sec=0;
-    while (not flock($self->{FH},2)){
-	$sec++;sleep(1);
-	if ($sec>$self->{MAXFLOCKWAIT}){
-	    close $self->{FH};
-	    return 0;
-	}
+
+##------------------------------------------------------
+## file locking with flock
+##
+#    open $self->{FH},"+<$self->{FILE}";
+#    my $sec=0;
+#    while (not flock($self->{FH},2)){
+#	$sec++;sleep(1);
+#	if ($sec>$self->{MAXFLOCKWAIT}){
+#	    close $self->{FH};
+#	    return 0;
+#	}
+#    }
+##------------------------------------------------------
+##
+## file locking with nflock in Uplug::Web::Process::Lock
+##
+
+    if (not &nflock($self->{FILE},$self->{MAXFLOCKWAIT})){
+	print STDERR "# Uplug::Web::Config - can't get exclusive lock for $self->{FILE}!\n";
+	return 0;
     }
+    open $self->{FH},"+<$self->{FILE}";
+
+##------------------------------------------------------
+
     $self->{STATUS}='open';
     return 1;
 }
@@ -88,6 +106,10 @@ sub close{
 	my $fh=$self->{FH};
 	truncate($fh,tell($fh));
 	close $fh;
+	##
+	## unlocking the file if nflock was used!
+	##
+	&nunflock($self->{FILE}
 	$self->{STATUS}='closed';
     }
 }

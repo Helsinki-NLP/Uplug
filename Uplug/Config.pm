@@ -36,6 +36,7 @@ use lib "$Bin/lib";
 use lib "$Bin/..";
 use lib "$Bin/../lib";
 use Uplug::Encoding;
+use Uplug::Web::Process::Lock;     # file locking without flock!
 
 @ISA = qw( Exporter);
 
@@ -156,9 +157,11 @@ sub LoadIniData{
     }
 
     my $DataString='';
+#    print STDERR "# Uplug::Config - open file $file!\n";
     open FH,"<$file";
     my $del=$/;undef $/;
     $DataString=<FH>;
+#    print STDERR "# Uplug::Config - close file $file!\n";
     close FH;
     $/=$del;
 
@@ -221,15 +224,30 @@ sub GetIniData{
 sub WriteIniFile{
     my ($file,$ATTR)=@_;
 
-    sysopen(INI,$file,O_RDWR|O_CREAT) or die "can't open $file: $!\n";
-    my $sec=0;
-    while (not flock(INI,2)){
-	$sec++;sleep(1);
-	if ($sec>$MAXFLOCKWAIT){
-	    close INI;
-	    return 0;
-	}
+##
+## file locking with flock
+##
+#    sysopen(INI,$file,O_RDWR|O_CREAT) or die "can't open $file: $!\n";
+#    my $sec=0;
+#    while (not flock(INI,2)){
+#	$sec++;sleep(1);
+#	if ($sec>$MAXFLOCKWAIT){
+#	    print STDERR "# Uplug::Config - can't get exclusive lock for $file!\n";
+#	    close INI;
+#	    return 0;
+#	}
+#    }
+
+##
+## file locking with Uplug::Web::Process::Lock::nflock
+##
+
+    if (not &nflock($file,$MAXFLOCKWAIT)){
+	print STDERR "# Uplug::Config - can't get exclusive lock for $file!\n";
+	return 0;
     }
+    sysopen(INI,$file,O_RDWR|O_CREAT) or die "can't open $file: $!\n";
+
     $Data::Dumper::Indent=1;
     $Data::Dumper::Terse=1;
     $Data::Dumper::Purity=1;
@@ -237,7 +255,15 @@ sub WriteIniFile{
     print INI Dumper($ATTR);
     truncate(INI,tell(INI));
     close INI;
+
+##
+## unlocking with Uplug::Web::Process::Lock::nunflock
+##
+
+    &nunflock($file);
+
 }
+
 
 sub WriteAll2IniFile{
     return &WriteIniFile(@_);
