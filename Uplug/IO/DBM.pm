@@ -27,6 +27,8 @@
 
 package Uplug::IO::DBM;
 
+# use utf8;
+# use bytes;
 use strict;
 use vars qw(@ISA $VERSION $DEFAULTMODE $DEFAULTCACHESIZE);
 use Uplug::IO;
@@ -90,7 +92,7 @@ sub open{
 	    }
 	}
 	if ($self->{AccessMode} eq 'read'){
-	    if (not tie %{$self->{DBMhash}},
+	    if (not $self->{DBH}=tie %{$self->{DBMhash}},
 		'AnyDBM_File',
 		$self->{'FileName'},
 		O_RDONLY,
@@ -98,12 +100,29 @@ sub open{
 		return 0;
 	    }
 	}
-	elsif (not tie %{$self->{DBMhash}},
+	elsif (not $self->{DBH}=tie %{$self->{DBMhash}},
 	    'AnyDBM_File',
 	    $self->{'FileName'},
 	    O_RDWR|O_CREAT,
 	    $self->{StreamOptions}->{'file mode'}){
 	    return 0;
+	}
+
+
+	## JT 2005-03-14:
+	
+	if ($]>=5.006){
+	    my $mod=qw( Encode );
+	    eval "require $mod";
+	    if ($@){warn $@;exit;}
+# 	    $self->{DBH}->filter_store_key(sub {Encode::_utf8_off($_)});
+#	    $self->{DBH}->filter_store_value(sub{Encode::_utf8_off($_)});
+#	    $self->{DBH}->filter_fetch_key(sub{Encode::_utf8_off($_)});
+#	    $self->{DBH}->filter_fetch_value(sub {Encode::_utf8_off($_)});
+ 	    $self->{DBH}->filter_store_key(sub {$_=Encode::encode('utf8',$_)});
+	    $self->{DBH}->filter_store_value(sub{$_=Encode::encode('utf8',$_)});
+	    $self->{DBH}->filter_fetch_key(sub{$_=Encode::decode('utf8',$_)});
+	    $self->{DBH}->filter_fetch_value(sub {$_=Encode::decode('utf8',$_)});
 	}
     }
     if (defined $HeaderHash->{'key'}){
@@ -148,28 +167,10 @@ sub read{
 
     my $data={};
     my ($key,$val)=each %{$self->{DBMhash}};
-    my $UplugEncoding=$self->getInternalEncoding;
-    $val=Uplug::Encoding::decode($val,$UplugEncoding);
-    $key=Uplug::Encoding::decode($key,$UplugEncoding);
 
     if ((not defined $key) and (not defined $val)){
 	return 0;
     }
-
-#    my $DBMEncoding=$self->getEncoding;
-#    my $UplugEncoding=$self->getInternalEncoding;
-
-# JT: 2004-08-26: forget about encodings (check that later?!)
-#
-#    if ($DBMEncoding ne $UplugEncoding){
-#	$val=Uplug::Encoding::decode($val,$DBMEncoding,$UplugEncoding);
-#	$key=Uplug::Encoding::decode($key,$DBMEncoding,$UplugEncoding);
-#    }
-
-#    my $UplugEncoding=$self->getInternalEncoding;
-#    $val=Uplug::Encoding::decode($val,$UplugEncoding);
-#    $key=Uplug::Encoding::decode($key,$UplugEncoding);
-
 
     my @keyval=split(/\x00/,$key);
     %{$data}=split(/\x00/,$val);
@@ -183,7 +184,6 @@ sub read{
 	}
     }
     if (defined $self->{key}){
-#	foreach (sort @{$self->{'key'}}){
 	foreach (@{$self->{'key'}}){
 	    $data->{$_}=shift(@keyval);
 	}
@@ -206,7 +206,6 @@ sub write{
     my $key;
     my @fields=();
     if (defined $self->{key}){
-#	foreach (sort @{$self->{'key'}}){
 	foreach (@{$self->{'key'}}){
 	    push (@fields,$dat{$_});
 	    delete $dat{$_};
@@ -218,15 +217,6 @@ sub write{
 	$key=$self->{'LastNr'};
     }
 
-    # JT: 2005-01-27
-    # this looks strange but seems to be required to get real utf-8
-    # in DBM files on some platforms (I'm still confused about this
-    # encoding business and the language settings ....)
-
-    my $UplugEncoding=$self->getInternalEncoding;
-    $key=Uplug::Encoding::encode($key,$UplugEncoding); # encode key string
-
-#    if (defined $self->{DBMhash}->{$key}){
     my %TmpData=$self->GetKeyValue($key);
     if (keys %TmpData){
 	my $NewData=&JoinComplexHashs(\%TmpData,\%dat);
@@ -236,14 +226,6 @@ sub write{
 
     %dat=&dumpData(\%dat);
     my $d=join ("\x00",%dat);
-    $d=Uplug::Encoding::encode($d,$UplugEncoding);     # encode data string
-
-# JT: 2004-08-26: forget about encodings (check that later?!)
-#
-#    my $UplugEncoding=$self->getInternalEncoding;
-#    my $DBMEncoding=$self->getEncoding;
-#    $d=Uplug::Encoding::encode($d,$DBMEncoding,$UplugEncoding);
-#    $key=Uplug::Encoding::encode($key,$DBMEncoding,$UplugEncoding);
 
     eval { $self->{DBMhash}->{$key}=$d; };
     return 1;
@@ -284,8 +266,7 @@ sub select{
     my $key;
     my $keycomplete=1;                            # hash-key is complete
     my @fields=();
-#    foreach my $k (sort @keys){                   # check all key-fields
-    foreach my $k (@keys){                   # check all key-fields
+    foreach my $k (@keys){                        # check all key-fields
 	if (not defined $Pattern{$k}){            # if one of them is not
 	    $keycomplete=0;                       # specified --> reset flag
 	    push (@fields,'.*');                  # and create a wild-card-key
@@ -296,19 +277,6 @@ sub select{
 	}
     }
     $key=join ("\x00",@fields);                   # join all keys together
-
-# JT: 2004-08-26: forget about encoding (check that later?!)
-#
-#    my $DBMEncoding=$self->getEncoding;          # check internal and external
-#    my $UplugEncoding=$self->getInternalEncoding; # character encodings
-#
-#
-#    if ($DBMEncoding ne $UplugEncoding){
-#	$key=Uplug::Encoding::encode($key,$DBMEncoding,$UplugEncoding);
-#    }
-
-#    my $UplugEncoding=$self->getInternalEncoding;
-#    $key=Uplug::Encoding::encode($key,$UplugEncoding);
 
     #-------------------------------------------------------------------------
     my %hash=();
@@ -400,18 +368,8 @@ sub GetKeyData{
     }
     #-----------------------------------------------
 
-    my $UplugEncoding=$self->getInternalEncoding;
-    $key=Uplug::Encoding::encode($key,$UplugEncoding); # encode key string
-
     if (defined $self->{DBMhash}->{$key}){
 	my $dat=$self->{DBMhash}->{$key};
-
-# JT: 2004-08-26: forget about encodings (check that later?!)
-#
-#	if ($DBMEncoding ne $UplugEncoding){
-	    $dat=Uplug::Encoding::decode($dat,$UplugEncoding);
-	    $key=Uplug::Encoding::decode($key,$UplugEncoding);
-#	}
 	my @keyval=split(/\x00/,$key);
 	my %FoundData=split(/\x00/,$dat);
 	&expandData(\%FoundData);
@@ -438,7 +396,6 @@ sub GetKeyData{
 
 sub GetKeyValue{
     my ($self,$key)=@_;
-
     if (defined $self->{DBMhash}->{$key}){
 	my $dat=$self->{DBMhash}->{$key};
 	my %FoundData=split(/\x00/,$dat);

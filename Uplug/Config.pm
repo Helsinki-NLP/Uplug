@@ -154,6 +154,8 @@ sub WriteConfig{
 #------------------------------------------------------------------------
 # ExpandVar .... expand some special variables in config files
 #
+#  UplugHome   - Uplug home directory
+#  UplugLang   - default directory for language specific data
 #  UplugSystem - default directory for module configuration files
 #  UplugData   - default directory for data files (= ./data)
 #  UplugIni    - default directory for inital config files (DataStreams.ini)
@@ -162,6 +164,8 @@ sub WriteConfig{
 
 sub ExpandVar{
     my $configtext=shift;
+    $configtext=~s/\$UplugHome/$ENV{UPLUGHOME}/gs;
+    $configtext=~s/\$UplugLang/$ENV{UPLUGHOME}\/lang/gs;
     $configtext=~s/\$UplugSystem/$ENV{UPLUGHOME}\/systems/gs;
     $configtext=~s/\$UplugData/data/gs;
     $configtext=~s/\$UplugIni/$ENV{UPLUGHOME}\/ini/gs;
