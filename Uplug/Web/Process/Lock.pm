@@ -19,9 +19,11 @@ use vars qw(@ISA @EXPORT);
 @ISA      = qw(Exporter);
 @EXPORT   = qw(nflock nunflock);
 
-use vars qw($Debug $Check);
+use vars qw($Debug $Check $MaxLockTime);
 $Debug  ||= 0;  # may be predefined
 $Check  ||= 5;  # may be predefined
+
+$MaxLockTime ||= 30;   # lock files max 30 seconds! (remove older lockfiles!)
 
 use Cwd;
 use Fcntl;
@@ -64,6 +66,15 @@ sub nflock($;$) {
                 scalar(localtime), $pathname, $lockee;
             close OWNER;
         }}
+
+	#### added by joerg@stp.ling.uu.se: check time stamp
+	####                                remove files if too old
+	####                                (time-mtime>maxlocktime)
+	&RemoveOld($whosegot,$MaxLockTime);
+	&RemoveOld($lockname,$MaxLockTime);
+	####
+	####
+
         sleep $Check;
         return if $naptime && time > $start+$naptime;
     }
@@ -102,6 +113,18 @@ sub name2lock($) {
     my $lockname = "$dir/.lockdir/$file";
     return $lockname;
 }
+
+sub RemoveOld{
+    my $file=shift;
+    my $maxtime=shift;
+    if (not -e $file){return 1;}
+    my $filestat=stat($file);
+    if ((time-$filestat->mtime)>$maxtime){
+        if (-d $file){return rmdir($file);}
+        return unlink($file);
+    }
+}
+
 
 # anything forgotten?
 END {
