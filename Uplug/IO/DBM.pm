@@ -27,6 +27,7 @@
 
 package Uplug::IO::DBM;
 
+use bytes;     # required to treet wide unicode characters as byte sequences?!?
 use strict;
 use vars qw(@ISA $VERSION $DEFAULTMODE $DEFAULTCACHESIZE);
 use Uplug::IO;
