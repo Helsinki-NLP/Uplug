@@ -117,7 +117,7 @@ print &table({-width => '100%',
 		  &td({-valign=>'top'},[$main])]));
 
 
-&end_html;
+print &end_html;
 
 
 #########################################################################
@@ -364,6 +364,7 @@ sub CorpusManager{
     #-------------------------------------------------------------------------
 
     elsif ($task eq 'remove'){
+	$html.=&CorpusManagerInfo();
 	if ($priv ne 'all'){
 	    if (defined $doc){
 		&Uplug::Web::Corpus::RemoveDocument($owner,$corpus,$doc);
@@ -398,6 +399,7 @@ sub CorpusManager{
     #-------------------------------------------------------------------------
 
     elsif ($task eq 'align'){
+	$html.=&CorpusManagerInfo();
 	$html.=&Uplug::Web::AlignAllDocuments($owner,$corpus);
 	$task='view';
 	&param('t',$task);
@@ -410,6 +412,7 @@ sub CorpusManager{
     #-------------------------------------------------------------------------
 
     elsif ($task eq 'preprocess'){
+	$html.=&CorpusManagerInfo();
 	$html.=&Uplug::Web::PreprocessAllDocuments($owner,$corpus);
 	$task='view';
 	&param('t',$task);
@@ -422,6 +425,7 @@ sub CorpusManager{
     #-------------------------------------------------------------------------
 
     elsif ($task eq 'send'){
+	$html.=&CorpusManagerInfo();
 	if (not defined $user){
 	    $html.=&h3("You have to register first!");
 	}
@@ -481,35 +485,59 @@ sub CorpusManager{
     #-------------------------------------------------------------------------
 
     else{
-	$html.='<table width="100%"><tr>';
-	$html.='<td valign="top">For each corpus you may<ul>';
-#	$html.='<li>list all documents included in the corpus (<b>documents</b>)</li>';
-#	$html.='<li>remove the entire corpus (<b>remove</b>)</li>';
-	$html.='<li>look at status information of each document(<b>info</b>)</li>';
-	$html.='<li>view corpus documents (<b>view</b>)</li>';
-	$html.='<li>send documents via mail (<b>send</b>)</li>';
-	$html.='<li>add documents to the corpus (<b>add</b>)</li>';
-	$html.='<li>create a corpus index using CWB (<b>index</b>)</li>';
-	$html.='<li>run corpus queries using CWB (<b>query</b>)</li>';
-	$html.='<li>remove documents and the entire corpus (<b>remove</b>)</li>';
-#	$html.='<li>display a link matrix (<b>links</b>)</li>';
-	$html.='</ul></td>';
-	$html.='<td valign="top">Use the links for each corpus!<ul>';
-	$html.='<li>Select a corpus by clicking on its name</li>';
-	$html.='<li>Show aligned bitexts by clicking on document names</li>';
-	$html.='<li>Select one of the tasks to the right of each corpus</li>';
-	$html.='<li>Run one of the tasks by selecting a corpus/document</li>';
-	$html.='</ul>';
-	$html.='Note that corpus documents have to be tokenized '.&br();
-	$html.='before you can index them using CWB!';
-	$html.='</td>';
-	$html.='</tr></table><hr />';
+	$html.=&CorpusManagerInfo();
 	$html.=&Uplug::Web::ShowCorpusInfo($task,
 					   $owner,$corpus,$docbase,$doc,$priv);
     }
     return $html;
 }
 
+
+sub CorpusManagerInfo{
+    my $html.='<table width="100%"><tr>';
+    $html.='<td valign="top">Corpus manager <b>modes</b><ul>';
+    $html.='<li><b>add</b>: add documents to the corpus</li>';
+    $html.='<li><b>view</b>: view existing corpus documents</li>';
+    $html.='<li><b>info</b>: show some information about documents</li>';
+    $html.='<li><b>send</b>: send documents via e-mail</li>';
+    $html.='<li><b>remove</b>: remove documents from the corpus</li>';
+    $html.='</ul></td>';
+    $html.='<td valign="top">Corpus manager <b>tasks</b><ul>';
+    $html.='<li><b>preprocess</b>: pre-process all (raw) documents</li>';
+    $html.='<li><b>align</b>: sentence-align all bitexts in the corpus</li>';
+    $html.='<li><b>index</b>: create a CWB index for the entire corpus</li>';
+    $html.='<li><b>query</b>: query the corpus with CQP/CWB</li>';
+    $html.='</ul></td>';
+    $html.='</tr></table><hr />';
+    return $html;
+}
+
+sub CorpusManagerInfoOld{
+    my $html.='<table width="100%"><tr>';
+    $html.='<td valign="top">For each corpus you may<ul>';
+#    $html.='<li>list all documents included in the corpus (<b>documents</b>)</li>';
+#    $html.='<li>remove the entire corpus (<b>remove</b>)</li>';
+    $html.='<li>look at status information of each document(<b>info</b>)</li>';
+    $html.='<li>view corpus documents (<b>view</b>)</li>';
+    $html.='<li>send documents via mail (<b>send</b>)</li>';
+    $html.='<li>add documents to the corpus (<b>add</b>)</li>';
+    $html.='<li>create a corpus index using CWB (<b>index</b>)</li>';
+    $html.='<li>run corpus queries using CWB (<b>query</b>)</li>';
+    $html.='<li>remove documents and the entire corpus (<b>remove</b>)</li>';
+#	$html.='<li>display a link matrix (<b>links</b>)</li>';
+    $html.='</ul></td>';
+    $html.='<td valign="top">Use the links for each corpus!<ul>';
+    $html.='<li>Select a corpus by clicking on its name</li>';
+    $html.='<li>Show aligned bitexts by clicking on document names</li>';
+    $html.='<li>Select one of the tasks to the right of each corpus</li>';
+    $html.='<li>Run one of the tasks by selecting a corpus/document</li>';
+    $html.='</ul>';
+    $html.='Note that corpus documents have to be tokenized '.&br();
+    $html.='before you can index them using CWB!';
+    $html.='</td>';
+    $html.='</tr></table><hr />';
+    return $html;
+}
 
 
 #########################################################################

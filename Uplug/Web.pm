@@ -149,7 +149,6 @@ sub AddDocument{
     my $query=shift;
 
     my $name=$$param{name};
-#    my $file=$$param{file};
     my $lang=$$param{lang};
     my $enc=$$param{enc};
 
@@ -160,66 +159,11 @@ sub AddDocument{
 	my ($ret,$msg)=&Uplug::Web::Corpus::AddDocument($user,$corpus,
 							$name,$file,
 							$lang,$enc);
-#	if (not $ret){
-##	    my $back=&a({-href=>'javascript:',
-##			 -onclick=>'history.go(-1)'},'back');
-#	    return &h3($msg).&AddDocumentForm($user,$corpus);
-#	}
 	$html=&h3($msg);
     }
     return &AddDocumentForm($user,$corpus).$html;
 }
 
-
-sub AddDocumentOld{
-    my $user=shift;
-    my $corpus=shift;
-    my $document=shift;
-    my $param=shift;
-    my $query=shift;
-
-    my $name=$$param{'name'};
-    my $file=$$param{'file'};
-    my $lang=$$param{'lang'};
-    my $enc=$$param{'enc'};
-
-    my $CorpusName=&Uplug::Web::Corpus::GetCorpusName($name,$lang);
-
-    #------------------------------------------------------------
-
-    my $missing=0;
-    my @rows=();
-
-    if (not $name){$missing++;}
-    if ((defined $name) and ($name!~/^[a-zA-Z\.\_0-9]{1,10}$/)){
-	$missing++;
-	print "Corpus name $name is not valid!",&br();
-    }
-#    if (defined $$CorpusData{$CorpusName}){
-#	$missing++;
-#	print "A corpus with the name '$CorpusName' exists already!",&br();
-#    }
-    if (not $file){$missing++;}
-
-    if (not defined $enc){$enc='utf8';}
-    if (not defined $lang){$lang='en';}
-
-    #------------------------------------------------------------
-
-    if ($missing){
-	print &AddDocumentForm;
-    }
-    else{
-	if (&Uplug::Web::Corpus::AddTextCorpus($user,$name,$lang,$file,$enc)){
-	    print &h3("The corpus $CorpusName has been successfully added!");
-	}
-	else{
-	    print &h3("Operation failed!");
-	    print &AddCorpusQuery;
-	}
-	print &Uplug::Web::ShowCorpusInfo($user,$user,$corpus,$query);
-    }
-}
 
 
 
@@ -240,8 +184,6 @@ sub AddCorpusForm{
     $str.= "with not more than 10 characters!".&br;
     $str.= "Use ASCII characters only for the name of the corpus using the following character set: ";
     $str.= "[a-z,A-Z,0-9,_]!".&br();
-#    $str.= "Each corpus may consists of multiple files in different languages!".&p();
-#    $str.= "The file must be a plain text file! Additional markup is not recognized and will be used as text!".&br();
 
     $str.= &start_multipart_form;
     $str.= &table({},caption(''),&Tr(\@rows));
@@ -485,13 +427,20 @@ sub ShowCorpusInfo{
 #			      &AccessMode($priv,'corpus'));
 
 	    $html.=&p().'modes: ';
+	    if (($corpus eq $c) and (not keys %docs)){ # no docs in the corpus:
+		if ($priv ne 'all'){                   # show only 'add'-mode!
+		    $html.=&TaskLinks({url=>$query,
+				       selected=>$task},'add');
+		}
+		next;                                  # ... and go to the next
+	    }
 	    if ($priv ne 'all'){
 		$html.=&TaskLinks({url=>$query,selected=>$task},
-				  'view','info','send','remove');
+				  'add','view','info','send','remove');
 	    }
 	    else{
 		$html.=&TaskLinks({url=>$query,selected=>$task},
-				  'view','info','send');
+				  'add','view','info','send');
 	    }
 	    $html.=&br().'tasks: ';
 	    if ($priv ne 'all'){
@@ -585,253 +534,6 @@ sub ShowCorpusInfo{
 # end of ShowCorpusInfo
 #
 ############################################################################
-
-
-############################################################################
-# ShowCorpusInfo:
-#    * list all corpora of a certain owner
-#    * list info about documents for selected corpora
-############################################################################
-
-sub ShowCorpusInfoLast{
-    my $owner=shift;
-    my $corpus=shift;
-    my $doc=shift;
-    my $priv=shift;
-
-    my $query=&AddUrlParam('','a','corpus');
-    $query=&AddUrlParam($query,'o',$owner);
-    my $CorpusNames=&Uplug::Web::Corpus::Corpora($owner);
-    if (not defined $corpus){($corpus)=each %{$CorpusNames};}
-
-    #--------------------------------------------------------
-    # read info about corpus documents if a corpus is selected
-
-    my %docs=();
-    my $CorpusDocs={};
-    if (defined $$CorpusNames{$corpus}){
-	$CorpusDocs=&Uplug::Web::Corpus::CorpusDocuments($owner,$corpus);
-
-	foreach my $c (sort keys %{$CorpusDocs}){
-	    if ($$CorpusDocs{$c}{format}=~/align/){
-		push (@{$docs{alignment}},$c);
-	    }
-	    elsif (defined $$CorpusDocs{$c}{language}){
-		push (@{$docs{monolingual}},$c);
-	    }
-	    else{
-		push (@{$docs{other}},$c);
-	    }
-	}
-    }
-    #--------------------------------------------------------
-
-
-    my @rows=();
-    foreach my $c (sort keys %{$CorpusNames}){
-
-	my $url=&AddUrlParam($query,'c',$c);
-	push (@rows,&td([&a({-href=>$url},$c)]).
-	      &td(&ActionLinks($url,&AccessMode($priv,'corpus'))));
-
-	if ($c ne $corpus){next;}
-
-	foreach my $t ('monolingual','alignment','other'){
-	    if (ref($docs{$t}) eq 'ARRAY'){
-		foreach my $d (sort @{$docs{$t}}){
-		    my $url=&AddUrlParam($query,'c',$corpus);
-		    $url=&AddUrlParam($url,'d',$d);
-
-		    push (@rows,&th([$d]).
-			  &td(&ActionLinks($url,&AccessMode($priv,'doc'))));
-
-		    #---------------------------------------------
-		    # if a document has been selected:
-		    #    show all information about the document
-
-		    if ($d eq $doc){
-			foreach (keys %{$$CorpusDocs{$d}}){
-			    push (@rows,td([$_,$$CorpusDocs{$d}{$_}]));
-			}
-		    }
-		    #----------------------------------------------
-		}
-	    }
-	}
-    }
-    return &table({},caption(''),&Tr(\@rows));
-}
-
-
-#
-# end of ShowCorpusInfo
-#
-############################################################################
-
-
-
-
-#-----------------------------
-# ShowCorpusInfo:
-#    * list all corpora of a certain owner
-#    * if no owner specified: list all corpora of all users
-
-sub ShowCorpusInfoOld{
-    my $user=shift;
-    my $owner=shift;
-    my $corpus=shift;
-    my $doc=shift;
-    my $query=shift;
-
-    my %CorpusData=();
-
-    #----------------------------------------
-    # no owner: get corpora of all users!
-
-    if (not $owner){$owner=$user;};
-#    if (not $owner){
-#	my %UserData=();
-#	&Uplug::Web::User::ReadUserInfo(\%UserData);
-#	my $html='';
-#	foreach my $u (keys %UserData){
-#	    $html.=&h3($u);
-#	    $html.=&ShowCorpusInfo($user,$u,$corpus,$query);
-#	}
-#	return $html;
-#    }
-    #----------------------------------------
-
-    &Uplug::Web::Corpus::GetCorpusData(\%CorpusData,$owner);
-    my %corpora=();
-    foreach my $c (sort keys %CorpusData){
-	if ($CorpusData{$c}{format}=~/align/){
-	    push (@{$corpora{$CorpusData{$c}{corpus}}{alignment}},$c);
-	}
-	elsif (defined $CorpusData{$c}{language}){
-	    push (@{$corpora{$CorpusData{$c}{corpus}}{monolingual}},$c);
-	}
-	else{
-	    push (@{$corpora{$CorpusData{$c}{corpus}}{other}},$c);
-	}
-    }
-
-    my @rows=();
-    foreach my $c (sort keys %corpora){
-	foreach my $t ('monolingual','alignment','other'){
-	    if (ref($corpora{$c}{$t}) eq 'ARRAY'){
-		push (@rows,&td([$c.' - '.$t]));
-		foreach my $n (sort @{$corpora{$c}{$t}}){
-		    my $url=&AddUrlParam($query,'c',$n);
-		    $url=&AddUrlParam($url,'o',$owner);
-		    if ($n eq $corpus){
-			push (@rows,
-			      &th([$n]).
-			      &td(&ActionLinks($url,
-					       &AccessMode($user,
-							   $owner,
-							   'corpus'))));
-			foreach (keys %{$CorpusData{$n}}){
-			    push (@rows,td([$_,$CorpusData{$n}{$_}]));
-			}
-		    }
-		    else{
-			push (@rows,&th([$n]).
-			      &td(&ActionLinks($url,
-					       &AccessMode($user,
-							   $owner,
-							   'corpus'))));
-		    }
-		}
-	    }
-	}
-    }
-    return &table({},caption(''),&Tr(\@rows));
-}
-
-
-sub ShowCorpusInfoNew{
-    my $query=shift;
-    my $user=shift;
-    my $corpus=shift;
-
-    my %CorpusData;
-    &Uplug::Web::Corpus::GetCorpusData(\%CorpusData,$user);
-
-    my %corpora;
-    foreach my $c (sort keys %CorpusData){
-	if ($CorpusData{$c}{format}=~/align/){
-	    if ($CorpusData{$c}{language}=~/^(.*)\-(.*)$/){
-		$corpora{$CorpusData{$c}{corpus}}{align}{$1}{$2}=$c;
-	    }
-	    push (@{$corpora{$CorpusData{$c}{corpus}}{alignment}},$c);
-	}
-	elsif (defined $CorpusData{$c}{language}){
-	    $corpora{$CorpusData{$c}{corpus}}{mono}{$CorpusData{$c}{language}}=
-		$c;
-	}
-	else{
-	    push (@{$corpora{$CorpusData{$c}{corpus}}{other}},$c);
-	}
-    }
-
-    my @rows=();
-    foreach my $c (sort keys %corpora){
-
-	if (ref($corpora{$c}{mono}) eq 'HASH'){
-	    my %trg=();
-	    if (ref($corpora{$c}{align}) eq 'HASH'){
-		foreach my $s (sort keys %{$corpora{$c}{align}}){
-		    if (ref($corpora{$c}{align}{$s}) eq 'HASH'){
-			foreach (keys %{$corpora{$c}{align}{$s}}){
-			    $trg{$_}=1;
-			}
-		    }
-		}
-	    }
-	    push (@rows,&td([$c,'','',sort keys %trg]));
-	    foreach my $s (sort keys %{$corpora{$c}{mono}}){
-		my $n=$corpora{$c}{mono}{$s};
-		my $url=&AddUrlParam($query,'corpus',$n);
-		$url=&AddUrlParam($url,'user',$user);
-		if ($n eq $corpus){
-		    push (@rows,
-			  &th([$n]).
-			  &td(&ActionLinks($url,
-					   'info','view',
-					   'send','remove')));
-		    foreach (keys %{$CorpusData{$n}}){
-			push (@rows,td([$_,$CorpusData{$n}{$_}]));
-		    }
-		}
-		else{
-		    push (@rows,&th([$n]).
-			  &td(&ActionLinks($url,
-					   'info','view',
-					   'send','remove')));
-		}
-
-#-----------------------------------------------------
-# link matrix ....
-#
-		my @t;
-		foreach (sort keys %trg){
-		    if (ref($corpora{$c}{align}) ne 'HASH'){next;}
-		    if (ref($corpora{$c}{align}{$s}) ne 'HASH'){next;}
-		    if (defined $corpora{$c}{align}{$s}{$_}){
-			my $url=&AddUrlParam($query,'corpus',
-					     $corpora{$c}{align}{$s}{$_} );
-			push(@t,&ActionLinks($url,'view'));
-		    }
-		    else{push(@t,'');}
-		}
-		$rows[-1].=&th(['align']).&td([@t]);
-	    }
-	}
-#----------------------------------------------------
-    }
-
-    return &table({},caption(''),&Tr(\@rows));
-}
 
 
 
@@ -957,7 +659,7 @@ sub AlignAllDocuments{
 	}
     }
     return $html.
-	&h3("$count sentence alignment processes added to the queue!");
+	&h3("$count sentence alignment process(es) added to the queue!");
 }
 
 
@@ -978,7 +680,7 @@ sub PreprocessAllDocuments{
 						   $config,\%para);
 	}
     }
-    return &h3("$count pre-processing jobs added to the queue!");
+    return &h3("$count pre-processing job(s) added to the queue!");
 }
 
 sub GetPreprocessConfig{
@@ -986,7 +688,6 @@ sub GetPreprocessConfig{
     my $configbase='systems/pre';
     my $LangName=$ISO639{$lang};
     $LangName=~tr/A-Z/a-z/;
-    print "checking $ENV{UPLUGHOME}/$configbase/$LangName<hr>";
     if (-e "$ENV{UPLUGHOME}/$configbase/$LangName"){
 	return "$configbase/$LangName";
     }
@@ -1278,13 +979,6 @@ sub MakeWidget{
 			     -values=>['0','1'],
                              -default=>$default,
 			     -labels=> {'1' => 'on','0' => 'off'}));
-
-#	if ($default){
-#	    return &checkbox(-name=>$name,
-#			     -checked=>'checked',
-#			     -value=>'1',-label=>'');
-#	}
-#	return &checkbox(-name=>$name,-value=>'1',-label=>'');
     }
     return (&td([&textfield(-name => $name,-default=>$default)]));
 }
@@ -1803,24 +1497,12 @@ sub moveSentLinks{
 
     read(F,$before{$pos[0]},$pos[0]);
     $link{$pos[0]}=<F>;
-#    print &hr(),tell(F)-$pos[0],&hr(),tell(F),&hr();
     if ($pos[1]-tell(F)){
 	read(F,$before{$pos[1]},$pos[1]-tell(F));
     }
     $link{$pos[1]}=<F>;
     while (<F>){$after.=$_;}         # read up to end-of-file
     close F;                         # and close the files!
-
-#    print &br()."old-pos: $$param{mox}".&br();
-#    print "new-pos: $$param{mnx}".&br();
-#    print "pos 0: $pos[0]".&br();
-#    print "pos 1: $pos[1]".&hr();
-#    print escapeHTML($before{$pos[0]}).&hr();
-#    print escapeHTML($link{$pos[0]}).&hr();
-#    print escapeHTML($before{$pos[1]}).&hr();
-#    print escapeHTML($link{$pos[1]}).&hr();
-##    print escapeHTML($after).&hr();
-
 
     if ($link{$$param{mox}}=~/xtargets=\"(.*?)\;(.*?)\"/){
 	my ($src,$trg)=($1,$2);
@@ -1855,11 +1537,6 @@ sub moveSentLinks{
 	$link{$$param{mnx}}=~s/(xtargets=\").*?(\")/$1$src;$trg$2/s;
     }
 
-#    print escapeHTML($before{$pos[0]}).&hr();
-#    print escapeHTML($link{$pos[0]}).&hr();
-#    print escapeHTML($before{$pos[1]}).&hr();
-#    print escapeHTML($link{$pos[1]}).&hr();
-
     open F,"> $file";
     binmode(F);
     print F $before{$pos[0]};
@@ -1869,10 +1546,6 @@ sub moveSentLinks{
     print F $after;
     close F;
     close LCK;
-
-#    $self->{POS}=$$param{mox};
-#    param('start',$self->{POS});
-#    param('end',$self->{NEXT});
 
 }
 
