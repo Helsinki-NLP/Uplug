@@ -27,6 +27,7 @@
 use strict;
 use Cwd;
 use FindBin qw($Bin);
+use File::Copy;
 use lib "$Bin/..";
 use strict;
 
@@ -53,6 +54,9 @@ my $IniFile='giza.ini';
 my $direction=$IniData{parameter}{'alignment direction'};
 my $makeclue=$IniData{parameter}{'make clue'};
 my $TokenParam=$IniData{parameter}{token};
+my $combined=$IniData{parameter}{'symmetric alignment'};
+if ($combined){$direction='both';}
+
 
 #---------------------------------------------------------------------------
 
@@ -73,24 +77,54 @@ my $SrcFile=$TmpDir."/src";
 my $TrgFile=$TmpDir."/trg";
 my $BitextHeader;
 
-my @align;
-if ($direction eq 'trg-src'){@align=(1);}      # inverse alignment
-elsif ($direction eq 'both'){@align=(0,1);}    # both directions
-else{@align=(0);}                              # default
+
 
 &Bitext2Text($InputStream,$SrcFile,$TrgFile,$TokenParam);
-foreach my $d (@align){
+
+if (($direction eq 'trg-src') or ($direction eq 'both')){
     chdir $TmpDir;
-    if ($d){&RunGiza($TmpDir,'trg','src');}
-    else{&RunGiza($TmpDir,'src','trg');}
+    &RunGiza($TmpDir,'trg','src');
+    if ($combined){copy ('GIZA++.A3.final','trg-src.viterbi');}
     chdir $PWD;
-    if (ref($OutputStream) eq 'HASH'){
-	&Giza2Uplug($TmpDir,$InputStream,$TokenParam,$OutputStream,$d);
+    if ((ref($OutputStream) eq 'HASH') and (not $combined)){
+	&Giza2Uplug($TmpDir,$InputStream,$TokenParam,$OutputStream,1);
     }
     if ($makeclue){
-	&Giza2Clue($TmpDir,$TokenParam,$d);
+	&Giza2Clue($TmpDir,$TokenParam,1);
     }
 }
+if (($direction eq 'src-trg') or ($direction eq 'both')){
+    chdir $TmpDir;
+    &RunGiza($TmpDir,'src','trg');
+    if ($combined){copy ('GIZA++.A3.final','src-trg.viterbi');}
+    chdir $PWD;
+    if ((ref($OutputStream) eq 'HASH') and (not $combined)){
+#    if (ref($OutputStream) eq 'HASH'){
+	&Giza2Uplug($TmpDir,$InputStream,$TokenParam,$OutputStream,0);
+    }
+    if ($makeclue){
+	&Giza2Clue($TmpDir,$TokenParam,0);
+    }
+}
+
+if ($combined){
+    &Combined2Uplug($TmpDir.'/src-trg.viterbi',
+		    $TmpDir.'/trg-src.viterbi',$combined,$InputStream,$TokenParam,$OutputStream);
+}
+
+#foreach my $d (@align){
+#    chdir $TmpDir.$d;
+#    if ($d){&RunGiza($TmpDir.$d,'trg','src');}
+#    else{&RunGiza($TmpDir.$d,'src','trg');}
+#    chdir $PWD;
+#    if (ref($OutputStream) eq 'HASH'){
+#	&Giza2Uplug($TmpDir,$InputStream,$TokenParam,$OutputStream,$d);
+#    }
+#    if ($makeclue){
+#	&Giza2Clue($TmpDir,$TokenParam,$d);
+#    }
+#}
+
 
 END{
     if ($TmpDir and (-d $TmpDir)){
@@ -98,8 +132,6 @@ END{
 	`rmdir $TmpDir`;
     }
 }
-
-
 
 
 #----------------------------------------------------------------------------
@@ -327,6 +359,256 @@ sub Giza2Uplug{
     $output->close;
 }
 
+
+#----------------------------------------------------------------------------
+# Combined2Uplug: combine GIZA's Viterbi alignment and convert them to Uplug format (XML)
+# (slow and risky: GIZA's output must be complete and must use a certain format)
+#
+# possible combinatins: union, intersection, refined
+#
+
+sub Combined2Uplug{
+    my $giza0=shift;
+    my $giza1=shift;
+    my $combine=shift;
+    my $bitext=shift;
+    my $param=shift;
+    my $links=shift;
+
+    if (ref($links) ne 'HASH'){return 0;}
+    my $input=Uplug::IO::Any->new($bitext);
+    if (not ref($input)){return 0;}
+    if (not $input->open('read',$bitext)){return 0;}
+    my $output=Uplug::IO::Any->new($links);
+    if (not ref($output)){return 0;}
+    $output->addheader($BitextHeader);
+    if (not $output->open('write',$links)){return 0;}
+
+    #------------------------------------------------------------------------
+    open F0,"<$giza0";
+    open F1,"<$giza1";
+    #------------------------------------------------------------------------
+
+    my $TokenLabel='w';
+    my $data=Uplug::Data::Align->new();
+    print STDERR "combine GIZA's Viterbi alignments and convert to XML!\n";
+    my $count=0;
+
+    while ($input->read($data)){
+
+	$count++;
+	if (not ($count % 100)){
+	    $|=1;print STDERR '.';$|=0;
+	}
+	if (not ($count % 1000)){
+	    $|=1;print STDERR "$count\n";$|=0;
+	}
+
+	#----------------------------------
+	# do the same as for Bitext2Text!!
+	# (to check for empty strings ...)
+	#
+	my @SrcNodes=();
+	my @TrgNodes=();
+	my ($srctxt,$trgtxt)=
+	    &BitextStrings($data,$param,\@SrcNodes,\@TrgNodes);
+	if (($srctxt!~/\S/) or ($trgtxt!~/\S/)){next;}
+	#----------------------------------
+
+#	my @SrcNodes=$SrcData->findNodes($TokenLabel);
+	my @SrcIds=$data->attribute(\@SrcNodes,'id');
+	my @SrcSpans=$data->attribute(\@SrcNodes,'span');
+	my @SrcTokens=$data->content(\@SrcNodes);
+
+#	my @TrgNodes=$TrgData->findNodes($TokenLabel);
+	my @TrgIds=$data->attribute(\@TrgNodes,'id');
+	my @TrgSpans=$data->attribute(\@TrgNodes,'span');
+	my @TrgTokens=$data->content(\@TrgNodes);
+
+	if ((not @SrcNodes) or (not @TrgNodes)){next;}
+
+	$_=<F1>;$_=<F1>;chomp;    # read source->target viterbi alignment
+	my @src=split(/ /);
+	$_=<F1>;chomp;
+	my %srclinks=();
+	my $count=1;
+	while (/\s(\S.*?)\s\(\{\s(.*?)\}\)/g){     # strunta i NULL!!
+	    my @s=split(/\s/,$2);
+	    foreach (@s){$srclinks{$_}{$count}=1;}
+	    $count++;
+	}
+
+
+	$_=<F0>;$_=<F0>;chomp;    # read source->target viterbi alignment
+	my @trg=split(/ /);
+	$_=<F0>;chomp;
+	my %trglinks=();
+	my $count=1;
+	while (/\s(\S.*?)\s\(\{\s(.*?)\}\)/g){     # strunta i NULL!!
+	    my @t=split(/\s/,$2);
+	    foreach (@t){$trglinks{$_}{$count}=1;}
+	    $count++;
+	}
+
+	my (%CombinedSrc,%CombinedTrg);
+	&CombineLinks(\%srclinks,\%trglinks,$combine,\%CombinedSrc,\%CombinedTrg);
+	my @cluster=&LinkClusters(\%CombinedSrc,\%CombinedTrg);
+
+	foreach my $c (@cluster){
+#	    my @s=sort {$a <=> $b} keys %{$cluster[$_]{src}};
+#	    my @t=sort {$a <=> $b} keys %{$cluster[$_]{trg}};
+
+	    my @s=@{$$c{src}};
+	    my @t=@{$$c{trg}};
+
+	    my @src=();my @trg=();
+	    foreach (@s){push (@src,$SrcTokens[$_-1]);}
+	    foreach (@t){push (@trg,$TrgTokens[$_-1]);}
+	    my @srcId=();my @trgId=();
+	    foreach (@s){push (@srcId,$SrcIds[$_-1]);}
+	    foreach (@t){push (@trgId,$TrgIds[$_-1]);}
+	    my @srcSpan=();my @trgSpan=();
+	    foreach (@s){push (@srcSpan,$SrcSpans[$_-1]);}
+	    foreach (@t){push (@trgSpan,$TrgSpans[$_-1]);}
+
+	    my %link=();
+	    $link{link}=join ' ',@src;
+	    $link{link}.=';';
+	    $link{link}.=join ' ',@trg;
+	    $link{source}=join '+',@srcId;
+	    $link{target}=join '+',@trgId;
+	    $link{src}=join '&',@srcSpan;
+	    $link{trg}=join '&',@trgSpan;
+
+	    $data->addWordLink(\%link);
+	}
+
+	$output->write($data);
+    }
+    $input->close;
+    $output->close;
+}
+
+
+sub LinkClusters{
+    my ($src,$trg)=@_;
+    my @cluster=();
+    while (keys %{$src}){
+	my ($s,$links)=each %{$src};            # get the next source token
+	if ((ref($$src{$s}) ne 'HASH') or
+	    (not keys %{$$src{$s}})){           # if no links exist:
+	    delete $$src{$s};                   # delete and next!
+	    next;
+	}
+	push (@cluster,{src=>[],trg=>[]});      # create a new link cluster
+	push (@{$cluster[-1]{src}},$s);         #  and save it in the cluster
+	&AddLinks($cluster[-1],$src,$trg,$s,    # add all tokens aligned to the
+		  'src','trg');                 #  source token to the cluster
+    }                                           #  (and recursively the ones
+
+    foreach my $c (@cluster){
+	@{$$c{src}}=sort {$a <=> $b} @{$$c{src}};
+	@{$$c{trg}}=sort {$a <=> $b} @{$$c{trg}};
+    }
+    return @cluster;
+}                                               #   linked to them, see AddLinks)
+
+sub AddLinks{
+    my ($cluster,$src,$trg,$s,$key1,$key2)=@_;
+    foreach my $t (keys %{$$src{$s}}){          # add all linked tokens to the
+	delete $$src{$s}{$t};                   # cluster and delete the links
+	delete $$trg{$t}{$s};                   # in the link-hashs
+	push (@{$$cluster{$key2}},$t);
+	&AddLinks($cluster,$trg,$src,$t,$key2,$key1); # add tokens aligned to the
+    }                                                 # linked token to the cluster
+    delete $$src{$s};                           # delete the source token link hash
+}
+
+
+
+sub CombineLinks{
+    my ($src,$trg,$method,$srclinks,$trglinks)=@_;
+#    my %srclinks;
+#    my %trglinks;
+    if ($method eq 'union'){
+	foreach my $s (keys %{$src}){
+	    foreach my $t (keys %{$$src{$s}}){
+		$$srclinks{$s}{$t}=1;
+		$$trglinks{$t}{$s}=1;
+	    }
+	}
+	foreach my $t (keys %{$trg}){
+	    foreach my $s (keys %{$$trg{$t}}){
+		$$srclinks{$s}{$t}=1;
+		$$trglinks{$t}{$s}=1;
+	    }
+	}
+    }
+    elsif (($method eq 'intersection') or ($method eq 'refined')){
+	foreach my $s (keys %{$src}){
+	    foreach my $t (keys %{$$src{$s}}){
+		if ($$trg{$t}{$s}){
+		    $$srclinks{$s}{$t}=1;
+		    $$trglinks{$t}{$s}=1;
+		}
+	    }
+	}
+    }
+    if ($method eq 'refined'){                   # refined combination:
+	foreach my $s (keys %{$src}){            # * start with the intersection
+	    foreach my $t (keys %{$$src{$s}}){   # * go iteratively through other links
+		if ((not defined $$srclinks{$s}) and
+		    (not defined $$trglinks{$t})){       #   - if both are not aligned yet:
+		    $$srclinks{$s}{$t}=1;                #     add the link
+		    $$trglinks{$t}{$s}=1;
+		}
+		elsif ((defined $$srclinks{$s-1}) or
+		       (defined $$srclinks{$s+1})){
+		    if (($$srclinks{$s-1}{$t}) or         # if the link is adjacent to
+			   ($$srclinks{$s+1}{$t})){       # another one horizontally:
+			if ($$srclinks{$s}{$t+1}){next;}  # do not accept if it is also
+			if ($$srclinks{$s}{$t-1}){next;}  # adjacent to other links vertically
+			if ($$srclinks{$s-1}{$t}){              # do not accept if the adjacent
+			    if ($$srclinks{$s-1}{$t-1}){next;}  # link is also adjacent to other
+			    if ($$srclinks{$s-1}{$t+1}){next;}  # links vertically
+			}
+			if ($$srclinks{$s+1}{$t}){              # the same for the other
+			    if ($$srclinks{$s+1}{$t-1}){next;}  # adjacency direction
+			    if ($$srclinks{$s+1}{$t+1}){next;}
+			}
+			$$srclinks{$s}{$t}=1;        # everything ok: add the link
+			$$trglinks{$t}{$s}=1;
+		    }
+		}
+		elsif ((defined $$trglinks{$t-1}) or
+		       (defined $$trglinks{$t+1})){
+		    if (($$srclinks{$s}{$t-1}) or         # if the link is adjacent to
+			($$srclinks{$s}{$t+1})){          # another one vertically:
+			if ($$srclinks{$s+1}{$t}){next;}  # do not accept if it is also
+			if ($$srclinks{$s-1}{$t}){next;}  # adjacent to other links horizontally
+			if ($$srclinks{$s}{$t-1}){              # do not accept if the adjacent
+			    if ($$srclinks{$s-1}{$t-1}){next;}  # link is also adjacent to other
+			    if ($$srclinks{$s+1}{$t-1}){next;}  # links horizontally
+			}
+			if ($$srclinks{$s}{$t+1}){              # the same for the other
+			    if ($$srclinks{$s-1}{$t+1}){next;}  # adjacency direction
+			    if ($$srclinks{$s+1}{$t+1}){next;}
+			}
+			$$srclinks{$s}{$t}=1;        # everything ok: add the link
+			$$trglinks{$t}{$s}=1;
+		    }
+		}
+	    }
+	}
+    }
+#    $src=\%srclinks;
+#    $trg=\%trglinks;
+}
+
+
+
+
+
 #----------------------------------------------------------------------------
 # RunGiza: run GIZA++ using external scripts
 # (GIZA must be installed in the given directory)
@@ -456,6 +738,8 @@ sub GetDefaultIni{
     'shortcuts' => {
        'in' => 'input:bitext:file',
        'out' => 'output:bitext:file',
+       'd' => 'parameter:alignment direction',
+       'c' => 'parameter:symmetric alignment'
     }
   },
 };

@@ -27,6 +27,7 @@
        'in' => 'input:bitext:file',
        'out' => 'output:bitext:file',
        'r' => 'parameter:inverse',
+       'c' => 'parameter:symmetric alignment'
     }
   },
   'widgets' => {

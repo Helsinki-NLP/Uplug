@@ -56,6 +56,7 @@
        'in' => 'input:bitext:file',
        'out' => 'output:bitext:file',
        'd' => 'parameter:alignment direction',
+       'c' => 'parameter:symmetric alignment'
     }
   },
   'widgets' => {

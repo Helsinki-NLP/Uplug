@@ -13,6 +13,7 @@ chdir $Bin;                                         # go to Bin
 my $file=$ARGV[0];                                  # file to be tagged
 if (not -e $file){$file="$DIR/$file";}              # change path if necessary
 
+print "$JAVA GrokTaggerEN $file\n";
 system "$JAVA GrokTaggerEN $file";                  # call the tagger
 
 chdir $DIR;                                         # go bach to original dir

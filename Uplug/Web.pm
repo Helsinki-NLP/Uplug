@@ -2120,6 +2120,8 @@ sub changeLinks{
     $old.="\n";
     foreach (0..$#xtrg){
 	$old.="  <wordLink ";
+	$lex[$_][0] = _escapeLiteral($lex[$_][0]);
+	$lex[$_][1] = _escapeLiteral($lex[$_][1]);
 	$old.="lexPair=\"$lex[$_][0];$lex[$_][1]\" ";
 	$old.="xtargets=\"$xtrg[$_][0];$xtrg[$_][1]\" />\n";
     }
@@ -2316,7 +2318,20 @@ sub linkMatrix{
     return $html;
 }
 
-
+#
+# Private: escape an attribute value literal.
+# (taken from XML::Writer)
+#
+sub _escapeLiteral {
+    my $data = $_[0];
+    if ($data =~ /[\&\<\>\"]/) {
+	$data =~ s/\&/\&amp\;/g;
+	$data =~ s/\</\&lt\;/g;
+	$data =~ s/\>/\&gt\;/g;
+	$data =~ s/\"/\&quot\;/g;
+    }
+    return $data;
+}
 
 
 1;

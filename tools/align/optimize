@@ -20,12 +20,29 @@
 #
 # $Id$
 #--------------------------------------------------------------------------
-# USAGE: optimize bitext.ces bitext.gold [src-lang [trg-lang]]
+# USAGE: optimize [OPTIONS] bitext.ces optimise.gold [src-lang [trg-lang]]
+#
+# OPTIONS:   -g eval.gold ............. gold standard used for evaluation (which should
+#                                       be different to the one used for optimisation)
+#            -e eval-step ............. evaluation using eval.gold each X alignment runs 
+#                                       (default=20)
+#            -h held-out-bitext ....... unseen bitext data for evaluation (which should be
+#                                       distnct from the training data)
+#            -hg held-out-gold ........ gold standard for the held-out-bitext
+#            -c clue-bitext ........... bitext used for training clues (can be
+#                                       different from the other bitexts used for
+#                                       aligning and evaluating)
+#
 #
 #   bitext.ces ..... sentence alignment file a la XCES
-#   bitext.gold .... gold standard for the same bitext
+#   optimise.gold .. gold standard for the same bitext used for optimisation
 #   src-lang ....... source language id, e.g. 'sv' (optional)
 #   trg-lang ....... source language id, e.g. 'en' (optional)
+#
+# * evaluation results will be stored in a separate sub-directory EVAL which will be created 
+#   (if non-existsing) in the current directory
+# * evaluations of the held-out data will be stored in a separate HELDOUT subdirectory
+#   (which will also be created if it does not exist already)
 #
 #--------------------------------------------------------------------------
 # run lots of remote alignments
@@ -70,9 +87,35 @@ my $DefWeight=0.05;       # default weight for clues
 my $DefScoreThr=0.02;     # default score threshold
 my $ScoreThrSteps=0.005;  # steps for changing score threshold
 
+my $EvalStep=20;          # evaluation using EvalGold after X alignment runs
+
 #my $LearnStep=50000000;   # (basically don't do it ....)
 
 ########################################################################
+
+##
+## get the optional arguments
+##
+
+my $EvalGold;       # second fold standard (for evaluation)
+my $Unseen;         # unseen (heldout) data (bitext)
+my $UnseenGold;     # gold standard for the unseen data
+my $ClueBitext;     # bitext (for training)
+my $AlwaysDyn=0;    # =0 --> learn dynamic clues only if no improvements
+
+while ($ARGV[0]=~/^\-/){                          # get some script options
+    my $opt=shift(@ARGV);
+    if ($opt eq '-g'){$EvalGold=shift(@ARGV);}    # eval.gold
+    if ($opt eq '-e'){$EvalStep=shift(@ARGV);}    # eval-steps
+    if ($opt eq '-h'){$Unseen=shift(@ARGV);}      # unseen bitext
+    if ($opt eq '-hg'){$UnseenGold=shift(@ARGV);} # ... and its gold standard
+    if ($opt eq '-c'){$ClueBitext=shift(@ARGV);}  # bitext for training clues
+    if ($opt eq '-a'){$AlwaysDyn=1;}              # always learn dynamic clues
+}
+
+##
+## get required arguments and optional language arguments
+##
 
 my $srclang;
 my $trglang;
@@ -85,6 +128,8 @@ if (not -e $corpus){die "cannot find corpus '$corpus'!\n";}
 if (not -e $gold){die "cannot find gold standard '$gold'!\n";}
 if (@ARGV){$srclang=shift @ARGV;}
 if (@ARGV){$trglang=shift @ARGV;}
+
+if (not $ClueBitext){$ClueBitext=$corpus;}    # default for training clues
 
 ########################################################################
 
@@ -215,9 +260,14 @@ my $lastDyn;            # last link-setting used for learning clues
 my $countNotImpr=0;     # count number loops without any improvement
 my $modified=0;         # number of modified settings
 
-my $nextDyn=keys %{$Scores{F}};  # next time to learn clues 
-$nextDyn+=$LearnStep;            # from the best alignment
+my $NrScores=keys %{$Scores{F}};                      # nr results
+my $nextDyn=(int($NrScores/$LearnStep)+1)*$LearnStep; # next time for learning clues
+my $nextEval=(int($NrScores/$EvalStep)+1)*$EvalStep;  # next time for evaluation
 
+# my $nextDyn=keys %{$Scores{F}};  # next time to learn clues 
+# $nextDyn+=int()$LearnStep;            # from the best alignment
+# my $nextEval=keys %{$Scores{F}}; # next time for doing an evaluation
+# $nextEval+=$EvalStep;            # with the second gold-standard
 
 do {
     &GetBestSettings(\@Setting,$KeepMax);     # get the $KeepMax best results
@@ -253,6 +303,15 @@ do {
     #    3) more than 3*$LearnStep scores
     #    ....
     my $NrScores=keys %{$Scores{F}};
+
+    if ((-e $EvalGold) and ($NrScores>=$nextEval)){         # if there is a second gold-standard:
+	$nextEval+=$EvalStep;                               # evaluate the best alignment
+                                                            # from time to time
+	my ($best)=sort {$Scores{F}{$b} <=> $Scores{F}{$a}} keys %{$Scores{F}};
+	if (not -e 'EVAL'){mkdir 'EVAL';}
+	system "$eval -gold $EvalGold -in $best.links.gz >EVAL/after$NrScores\_$best.eval";
+    }
+
     if ($NrScores>$nextDyn){          # learn new dynamic clues
 	$nextDyn+=$LearnStep;
 
@@ -287,7 +346,7 @@ do {
 	# if the score has not been improved since last check
 	#-----------------------------------------------------------------
 
-	if ($score<=$bestScore){                         # not improved
+	if (($score<=$bestScore) or $AlwaysDyn){         # not improved (or always-learn-flag)
 	    #---------------------------
 	    # no improvement since
 	    # last time we learned clues
@@ -366,7 +425,6 @@ exit;
 ### this is the end #####################################################
 #########################################################################
 #########################################################################
-
 
 
 use File::stat;
@@ -1151,6 +1209,19 @@ sub RunClueAligner{
     my $comm="$align -in $corpus $param -out $file.links 2>$file.log";
     $comm.=";gzip -f $file.links";
     $comm.=";$eval -gold $gold -in $file.links.gz >$file.eval";
+    if (-e $Unseen){
+	if ($Unseen and (not -e 'HELDOUT')){mkdir 'HELDOUT';}   # create held-out dir
+	$comm.=";$align -in $Unseen $param -out HELDOUT/$file.links 2>HELDOUT/$file.log";
+	$comm.=";gzip -f HELDOUT/$file.links";
+	if (-e $UnseenGold){
+	    $comm.=";$eval -gold $UnseenGold -in HELDOUT/$file.links.gz >HELDOUT/$file.eval";
+	    $comm.=";rm HELDOUT/$file.links.gz";
+	}
+	if (-e $EvalGold){
+	    if (not -e 'EVAL'){mkdir 'EVAL';}
+	    $comm.=";$eval -gold $EvalGold -in $file.links.gz >EVAL/$file.eval";
+	}
+    }
     $comm.=";touch $file.ready";
 
     $setting->{modified}=0;
@@ -1258,7 +1329,8 @@ sub MakeEstimatedClues{
 	if (-e "$c.eval"){
 	    next;
 	}
-	my $comm="$uplug systems/align/word/test/$c -in $corpus -out $c.links";
+#	my $comm="$uplug systems/align/word/test/$c -in $corpus -out $c.links";
+	my $comm="$uplug systems/align/word/test/$c -in $ClueBitext -out $c.links";
 	$comm.=";gzip -f $c.links;$eval -gold $gold -in $c.links.gz >$c.eval";
 	system ("$remote '$comm'");
     }
@@ -1269,7 +1341,8 @@ sub MakeEstimatedClues{
     if ((not -e "data/runtime/str.dbm") or 
 	(not -e "data/runtime/dice.dbm")){
 	print "create basic clues!\n";
-	system("$uplug systems/align/word/basicclues -in $corpus");
+#	system("$uplug systems/align/word/basicclues -in $corpus");
+	system("$uplug systems/align/word/basicclues -in $ClueBitext");
     }
 
 #------------------------------------------------
