@@ -84,8 +84,7 @@ my $ParagraphTag='p';
 # my %data;
 my $data=Uplug::Data->new('hash');
 my $paragraph='';
-my $CountLb=0;
-my $CountPb=0;
+my $CountNl=0;       # global new line counter
 
 # while ($input->read(\%data)){
 while ($input->read($data)){
@@ -95,18 +94,21 @@ while ($input->read($data)){
 #    my @content=$data->content;
     $paragraph.=$content.' ';
 
-    if ($content=~/^\s*$/){$CountLb++;$CountPb++;}
-    else{$CountLb=0;}
+    if ($content=~/^\s*$/){
+	$CountNl++;
+	next;
+    }
+#    else{$CountNl=0;}
     if ($paragraph=~/^\s*$/){next}
 
-    if (&ParagraphBoundary($paragraph,$CountLb,\$CountPb)){
+    if (&ParagraphBoundary($paragraph)){
 	$paragraph='';
-	$CountLb=0;
     }
+    $CountNl=0;
 }
 
 if ($paragraph){
-    &MakeOutData($paragraph,\$CountPb);
+    &MakeOutData($paragraph);
 }
 
 
@@ -116,13 +118,12 @@ $input->close;
 $output->close;
 
 sub MakeOutData{
-    my ($paragraph,$CountPb)=@_;
+    my ($paragraph)=@_;
     $paragraph=~s/\s*$//;                    # delete final whitespaces
-    if ($$CountPb>$PageBreak){
+    if ($CountNl>$PageBreak){
 	my $PbData=Uplug::Data->new();
 	$PbData->setContent(undef,$PageBreakTag);
 	$output->write($PbData);
-	$$CountPb=0;
     }
     if ($paragraph){
 	my $tag=&BestTag($paragraph);
@@ -143,14 +144,14 @@ sub BestTag{
 
 
 sub ParagraphBoundary{
-    my ($paragraph,$CountLb,$CountPb)=@_;
-    if ($CountLb>=$LbLimit){
+    my ($paragraph)=@_;
+    if ($CountNl>=$LbLimit){
 	if ((length($paragraph)<=$HeaderSize) and
 	    ($paragraph=~/^[$HeaderStarter]/)){
-	    &MakeOutData($paragraph,$CountPb);
+	    &MakeOutData($paragraph);
 	    return 1;
 	}
-	&MakeOutData($paragraph,$CountPb);
+	&MakeOutData($paragraph);
 	return 1;
     }
     return 0;
