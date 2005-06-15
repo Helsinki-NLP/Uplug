@@ -29,7 +29,8 @@
 package Uplug::Align::Word::Clue;
 
 use strict;
-use Time::HiRes qw(time);
+# use Time::HiRes qw(time);
+
 
 use vars qw(@ISA $VERSION $DEBUG);
 use vars qw($INPHRASESONLY $ADJACENTONLY $ADJACENTSCORE $FILLPHRASES);
@@ -147,7 +148,7 @@ sub getLinkScores{
 	    $self->alignIdentical($src,$trg,$s,$t,$LinkProb);
 
 	    ### DEBUG: store search time
-	    $self->{identical_score_time}+=time()-$time;
+	    $self->{identical_score_time}+=time()-$time if ($DEBUG);
 
 	    foreach (keys %ClueParam){
 
@@ -161,7 +162,7 @@ sub getLinkScores{
 		else{($src,$trg)=($$SrcTok{$s}{$_},$$TrgTok{$t}{$_});}
 
 		### DEBUG: store search time
-		$self->{before_score_time}+=time()-$time;
+		$self->{before_score_time}+=time()-$time if ($DEBUG);
 
 		$score=0;
 
@@ -187,7 +188,7 @@ sub getLinkScores{
 			    $score=$found->attribute('score');
 			}
 			### DEBUG: store search time
-			$self->{search_score_time}+=time()-$time;
+			$self->{search_score_time}+=time()-$time if ($DEBUG);
 		    }
 		}
 
@@ -200,14 +201,14 @@ sub getLinkScores{
 		if (not $score){next;}
 		if (not $data->checkPairParameter($src,$trg,$ClueParam{$_})){
 		    ### DEBUG: store search time
-		    $self->{after_score_time}+=time()-$time;
+		    $self->{after_score_time}+=time()-$time if ($DEBUG);
 		    next;
 		}
 
 		if (exists $ClueParam{$_}{'minimal score'}){
 		    if ($score<$ClueParam{$_}{'minimal score'}){
 			### DEBUG: store search time
-			$self->{after_score_time}+=time()-$time;
+			$self->{after_score_time}+=time()-$time if ($DEBUG);
 			next;
 		    }
 		}
@@ -253,7 +254,7 @@ sub getLinkScores{
 		}
 
 		### DEBUG: store search time
-		$self->{after_score_time}+=time()-$time;
+		$self->{after_score_time}+=time()-$time if ($DEBUG);
 
 	    }
 	}
@@ -279,7 +280,7 @@ sub getLinkScores{
 				$self->{token}->{target});
     }
     ### DEBUG: store search time
-    $self->{'1x_score_time'}+=time()-$time;
+    $self->{'1x_score_time'}+=time()-$time if ($DEBUG);
 }
 
 

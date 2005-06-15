@@ -29,8 +29,8 @@
 package Uplug::Align::Word;
 
 use strict;
-use Time::HiRes qw(time);
-use vars qw(@ISA $VERSION $CLUEWEIGHT );
+# use Time::HiRes qw(time);
+use vars qw($DEBUG @ISA $VERSION $CLUEWEIGHT );
 
 use Uplug::Data;
 use Uplug::Data::Align;
@@ -39,6 +39,7 @@ use Uplug::Data::Align;
 
 $VERSION = '$Id$ ';
 $CLUEWEIGHT = 0.05;
+$DEBUG = 0;
 
 sub new{
     my $class=shift;
@@ -131,13 +132,13 @@ sub align{
     $self->{nrSrcToken}+=$#{$self->{token}->{source}}+1;
     $self->{nrTrgToken}+=$#{$self->{token}->{target}}+1;
     ### DEBUG: store time for preparing data
-    $self->{prepare_time}+=time()-$time;$time=time();
+    $self->{prepare_time}+=time()-$time;$time=time() if ($DEBUG);
     $self->getLinkScores();
     ### DEBUG: store time for retrieving clue scores
-    $self->{get_scores_time}+=time()-$time;$time=time();
+    $self->{get_scores_time}+=time()-$time;$time=time() if ($DEBUG);
     $self->findAlignment();
     ### DEBUG: store time for finding the best word alignment
-    $self->{align_time}+=time()-$time;
+    $self->{align_time}+=time()-$time if ($DEBUG);
 
 
 #    if ($self->getParameter('remove word links')){

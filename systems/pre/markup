@@ -38,7 +38,7 @@
       'nr of empty lines' => 1
     },
     'page break' => {
-      'nr of empty lines' => 2
+      'nr of empty lines' => 5
     },
   },
   'arguments' => {

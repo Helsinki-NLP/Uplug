@@ -64,8 +64,8 @@ sub open{
     my $self            = shift;
     if ($self->SUPER::open(@_)){
 
-	if ($self->{AccessMode} eq 'read'){         # if access-mode=read:
-	    if (not $self->option('DocBodyTag')){   # set document body-tag
+	if ($self->{AccessMode} eq 'read'){              # if access-mode=read:
+	    if (not $self->option('DocBodyTag')){        # set doc-body-tag
 		$self->setOption('DocBodyTag','(linkGrp|linkAlign)');
 	    }
 	}
@@ -114,6 +114,15 @@ sub open{
 				'toDoc' => $self->{StreamOptions}->{toDoc}});
 	    }
 	}
+
+	if (ref($self->{XmlParser})){
+	    $self->{XmlHandle}->{REMOVESPACES}=$self->option('REMOVESPACES');
+	    $self->{XmlHandle}->{SubTreeRoot}=$self->option('root');
+	    $self->{XmlHandle}->{DocRootTag}=$self->option('DocRootTag');
+	    $self->{XmlHandle}->{DocBodyTag}=$self->option('DocBodyTag');
+	    $self->CompileTagREs;
+	}
+
 	return 1;
     }
     return 0;
@@ -257,15 +266,16 @@ sub write{
 
 
 #-----------------------------------------------------------------
-# select: select data (unfinished/buggy/not used at the moment)
+# select: select data
 #
 # * read sequentially through the link-file and
 #   search bitext segments according to the matching pattern
-# * remove 'New' from the sub-name if you want to use it
-# * fall back to IO::XML::select otherwise
+#
+# we cannot use select for searching in the link file because
+# we need fromDoc and toDoc from the alignment tags .....!!!!
 
 
-sub selectNew{
+sub select{
     my $self=shift;
     my ($data,$pattern,$attr,$operator)=@_;
 
@@ -303,6 +313,7 @@ sub selectNew{
 
     while ($self->SUPER::read($data->{link})){
 
+	print '';
 	if ($self->NewDocBody){
 	    my $BodyAttr=$self->DocBodyAttr;
 	    $self->addheader($BodyAttr);
@@ -413,6 +424,14 @@ sub OpenAlignDocs{
 	my %stream=('file' => $options->{fromDoc},
 		    'format' => 'XML',
 		    'root' => 's');
+
+	## make subtree index files (DBM hash) for the source file
+	##
+	# if ($self->option('MAKESUBTREEINDEX')){  # commented out -> always!
+	    $stream{MAKESUBTREEINDEX} = 1;
+	# }
+
+
 	if ($self->{AccessMode} ne 'read'){$stream{DocRootTag}='document';}
 	$self->{source}=Uplug::IO::Any->new(\%stream);
 	if (not $self->{source}->open($self->{AccessMode},\%stream)){
@@ -429,6 +448,13 @@ sub OpenAlignDocs{
 	my %stream=('file' => $options->{toDoc},
 		    'format' => 'XML',
 		    'root' => 's');
+
+	## make subtree index files (DBM hash) for the source file
+	##
+	# if ($self->option('MAKESUBTREEINDEX')){  # commented out -> always!
+	    $stream{MAKESUBTREEINDEX} = 1;
+	# }
+
 	if ($self->{AccessMode} ne 'read'){$stream{DocRootTag}='document';}
 	$self->{target}=Uplug::IO::Any->new(\%stream);
 	if (not $self->{target}->open($self->{AccessMode},\%stream)){

@@ -157,8 +157,29 @@ sub read{
 
     my $fh=$self->{FileHandle};
     $data->setHeader(undef);
+
+    my $MakeIndex = $self->option('MAKESUBTREEINDEX');
+    if ($MakeIndex){
+	print '';
+    }
+    my $FilePos = tell($fh);
+    my $NewSubtree = 1;
+
     while ($_=$self->readFromHandle($fh)){
-	if ($self->parseXML($data,$_,$root)){return 1;}
+	# print STDERR "read: $_";
+	my $ret = $self->parseXML($data,$_,$root);
+	if ($MakeIndex){
+	    if (($self->{XmlHandle}->{SubTreeStarted} || $ret) && $NewSubtree){
+		my $id = $self->{XmlHandle}->{SubTreeAttr}->{id};
+		$self->saveSubtreePosition($id,$FilePos);
+		$NewSubtree = 0;
+	    }
+	    if ($self->{XmlHandle}->{SubTreeEnded}){
+		$NewSubtree = 1;
+	    }
+	}
+	return 1 if ($ret);
+	$FilePos = tell($fh);
     }
     if ($data->header){
 	return 1;
@@ -167,14 +188,102 @@ sub read{
 }
 
 
+##########################################################################
+# saveSubtreePosition and gotoSubtreePosition
+#
+#    cache the byte position of each subtree in a DBM file
+#    (this is quite ad hoc but helps to speed up searching 
+#     for subtrees with select and IDs)
+
+
+BEGIN { @AnyDBM_File::ISA=qw(DB_File GDBM_File SDBM_File NDBM_File ODBM_File) }
+use AnyDBM_File;
+use POSIX;
+
+sub saveSubtreePosition{
+    my $self = shift;
+    my ($id,$pos) = @_;
+
+    my $file=$self->option('file');
+    if (-e $file){
+	if (not defined $self->{SUBTREEINDEX}){
+	    if (not $self->{DBH}=tie %{$self->{SUBTREEINDEX}},
+		'AnyDBM_File',
+		$file.'.idx',
+		O_RDWR|O_CREAT,0644){
+		# print STDERR "problems!";
+		return 0;
+	    }
+	}
+	$self->{SUBTREEINDEX}->{$id} = $pos;
+	# print STDERR "save $id .. $pos\n";
+    }
+}
+
+sub gotoSubtreePosition{
+    my $self = shift;
+    my ($id,$pos) = @_;
+
+    my $file=$self->option('file');
+    if (-e $file){
+	if (not defined $self->{SUBTREEINDEX}){
+	    if (not $self->{DBH}=tie %{$self->{SUBTREEINDEX}},
+		'AnyDBM_File',
+		$file.'.idx',
+		O_RDWR,0644){
+		## print STDERR "problems!";
+		## try to open in read-only mode!
+		if (not $self->{DBH}=tie %{$self->{SUBTREEINDEX}},
+		    'AnyDBM_File',
+		    $file.'.idx',
+		    O_RDONLY,0444){
+		    # print STDERR "problems!";
+		    delete $self->{SUBTREEINDEX};
+		    return 0;
+		}
+	    }
+	}
+    }
+    if (my $pos = $self->{SUBTREEINDEX}->{$id}){
+	if (my $fh=$self->{FileHandle}){
+	    seek $fh,$pos,0;
+	    # print STDERR "goto $id .. $pos\n";
+	    return 1;
+	}
+    }
+    return 0;
+}
+
+
+##########################################################################
+# select .... select subtrees in the XML file
+#
+#   * use sggrep if defined
+#   * use byte-position cache if it exists
+#   * read through the file sequentially otherwise
+#
 
 sub select{
     my $self=shift;
+    my ($data,$pattern) = @_;
     my $file=$self->option('file');
-    if ((-e $file) and $USESGGREP){
-	&__find_sggrep() if (not defined $SGGREP);
-	if (defined $SGGREP){
-	    return $self->sggrepSelect($file,@_);
+    if (-e $file){
+	if (ref($pattern) eq 'HASH'){
+	    if (defined $pattern->{id}){
+		if ($self->gotoSubtreePosition($pattern->{id})){
+		    if (scalar keys %{$pattern} == 1){
+			# print STDERR "reading only ...\n";
+			return $self->read(@_);
+		    }
+		}
+	    }
+	}
+
+	if ($USESGGREP){
+	    &__find_sggrep() if (not defined $SGGREP);
+	    if (defined $SGGREP){
+		return $self->sggrepSelect($file,@_);
+	    }
 	}
     }
     return $self->SUPER::select(@_);
@@ -356,6 +465,18 @@ sub readheader{
 	$self->addheader($attr);
 #	$self->{StreamHeader}->{DocRootTag}=$data->DocRootTag;
     }
+    elsif (ref($self->{FileHandle})){
+	my $fh=$self->{FileHandle};
+	my $root=shift;
+	if (not $root){$root=$self->option('root');}
+	my $data=Uplug::Data->new();
+	binmode($fh);
+	while ($_=$self->readFromHandle($fh)){
+	    # print STDERR "header: $_";
+	    my $ret = $self->parseXML($data,$_,$root);
+	    if (defined $self->{XmlHandle}->{XmlProlog}){last;}
+	}
+    }
 }
 
 sub writeheader{
@@ -452,10 +573,10 @@ sub parseXML{
 	$self->{XmlHandle}->{DocBodyTag}=$self->option('DocBodyTag');
 	$self->CompileTagREs;
     }
+
+    $self->{XmlHandle}->{XmlData}=$data;
+
     if (not $self->{XmlHandle}->{LastNode}){        # --> new data!
-	$data->init();                              # initialize root node!
-	$self->{XmlHandle}->{XmlData}=$data;        # save reference
-	$self->{XmlHandle}->{LastNode}=1;           # flag for new data!
 	delete $self->{XmlHandle}->{BeforeSubTree}; # delete header
 	delete $self->{XmlHandle}->{SubTreeEnded};  # reset subtree flag
     }
@@ -524,6 +645,7 @@ sub XmlTagStart{
 	$p->{XmlData}->init($e,\%a);
 	$p->{LastNode}=$p->{XmlData}->root;
 	$p->{SubTreeString}.=$p->recognized_string();
+	%{$p->{SubTreeAttr}}=%a;
     }
 
     elsif ($p->{SubTreeStarted}){

@@ -33,14 +33,12 @@ use POSIX qw(tmpnam);
 use Uplug::Config;
 use File::Basename;
 
-use vars qw($VERSION);
+use vars qw($VERSION $DEBUG);
 use vars qw(@TempFiles);
 
 
 $VERSION = 0.02;
-
-
-my $DEBUG = 0;
+$DEBUG = 0;
 
 #-----------------------------------------------------------------------
 BEGIN{
@@ -261,6 +259,11 @@ sub command{
     my $cmd=&GetParam($self->{CONFIG},'module','program');
     if ($bin){$cmd=$bin.'/'.$cmd;}
     $cmd.=' -i '.$self->{MODULE};
+
+    if ($DEBUG){
+	$cmd='perl -d:DProf '.$cmd;
+    }
+
     return $cmd;
 }
 
