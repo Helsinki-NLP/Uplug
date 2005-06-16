@@ -459,30 +459,25 @@ sub checkScore{
 sub linksToHtml{
     my $self=shift;
     my $links=$self->{links};
-    my $split=6;
+    my $split=8;
+    my $count=0;
     my $html;
     if (ref($links) eq 'HASH'){
-	my $nr=int((scalar keys %{$links})/$split);
-	$html="<table border=0>\n<tr>";
-	foreach (0..$nr){
-	    $html.="<th bgcolor=\"#c9c9c9\">source</th>";
-	    $html.="<th bgcolor=\"#c9c9c9\">target</th>";
-	    $html.="<th></th>";
-	}
-	$html.="<tr>\n<tr>";
-	my $col=0;
+	$html="<div class=\"alignments\"><table cellspacing=\"10\">";
 	foreach my $l (keys %{$links}){
-	    my ($src,$trg)=split(/;/,$$links{$l}{link});
-	    $html.="<td bgcolor=\"#EEEEEE\">$src</td>";
-	    $html.="<td bgcolor=\"#E4EEEE\">$trg</td>\n";
-	    $html.="<td></td>\n";
-	    $col++;
-	    if ($col>$nr){
-		$html.="</tr>\n<tr>";
-		$col=0;
+	    if ((not $count % $split) || ($count==0)){
+		if ($count){$html.="</table></td>";}
+		$html.="<td valign=\"top\"><table cellspacing=1 border=0><tr>";
+		$html.="<th bgcolor=\"#c9c9c9\">source</th>";
+		$html.="<th bgcolor=\"#c9c9c9\">target</th>";
+		$html.="</tr>";
 	    }
+	    my ($src,$trg)=split(/;/,$$links{$l}{link});
+	    $html.="<tr><td bgcolor=\"#EEEEEE\" align='center'>$src</td>";
+	    $html.="<td bgcolor=\"#E4EEEE\" align='center'>$trg</td></tr>\n";
+	    $count++;
 	}
-	$html.="</tr>\n</table>\n";
+	$html.='</table></td></table></div>';
     }
     return $html;
 }

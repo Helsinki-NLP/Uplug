@@ -1578,7 +1578,7 @@ sub clueMatrixToHtml{
     }
     if (not $max){$max=1;}
 
-    my $html="<p>\n";
+    my $html="<div class=\"cluematrix\">\n";
     $html.="<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n";
     $html.="<tr><th></th>\n";
 
@@ -1614,7 +1614,7 @@ sub clueMatrixToHtml{
 	    }
         }
     }
-    $html.="</tr></table><hr>\n";
+    $html.="</tr></table></div>\n";
     return $html;
 }
 
