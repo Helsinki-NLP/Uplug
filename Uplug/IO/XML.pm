@@ -579,6 +579,7 @@ sub parseXML{
     if (not $self->{XmlHandle}->{LastNode}){        # --> new data!
 	delete $self->{XmlHandle}->{BeforeSubTree}; # delete header
 	delete $self->{XmlHandle}->{SubTreeEnded};  # reset subtree flag
+	$self->{XmlHandle}->{LastNode}=1;
     }
 
     eval { $self->{XmlHandle}->parse_more($xml); }; # call xml-parser
