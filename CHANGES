@@ -1,3 +1,9 @@
+
+* 20-06-2005 joerg
+
+- fixed some more bugs in word alignment configuration files
+
+
 * 24-03-2005 joerg
 
 - found&fixed some bugs in systems/align/word/link and 

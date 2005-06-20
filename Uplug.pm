@@ -130,8 +130,10 @@ sub loadSubMods{
 	while ($i<@$submod){
 	    if ((defined $iter) and ($count>$iter)){last;}
 	    my ($conf,@par)=split(/\s+/,$submod->[$i]);
-	    $self->{SUBMOD}->[$n]=Uplug->new($conf,@par);
+	    $self->{SUBMOD}->[$n]=Uplug->new($conf,@par); # check also params
 	    $self->{SUBMOD}->[$n]->input($data);          # change input
+#	    &CheckParam($self->{CONFIG},@par);            # check params again!
+#	                                                  # (highest priority!)
 
 	    ## check if stdout in last module but no stdin now
 	    ## --> if yes: broken pipe!

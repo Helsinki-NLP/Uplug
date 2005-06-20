@@ -38,7 +38,7 @@ $VERSION = 0.02;
 
 @ISA = qw( Exporter);
 @EXPORT = qw(&ReadConfig &WriteConfig &CheckParameter &GetNamedIO
-	     &GetParam &SetParam);
+	     &CheckParam &GetParam &SetParam);
 
 
 ## "named" IO streams are stored in %NamedIO

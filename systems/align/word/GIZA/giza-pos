@@ -3,7 +3,7 @@
     'name' => 'GIZA++ word alignment',
     'program' => 'giza.pl',
     'location' => '$UplugBin',
-    'stdout' => 'bitext',
+    'stdout' => 'bitext links',
   },
   'description' => 'This module runs GIZA++ with basic settings and
   converts its alignment to the Uplug format. For more information on
@@ -14,7 +14,7 @@
     },
   },
   'output' => {
-    'bitext' => {
+    'bitext links' => {
       'format' => 'xces align',
       'status' => 'word',
       'SkipSrcFile' => 1,
@@ -48,7 +48,7 @@
   'arguments' => {
     'shortcuts' => {
        'in' => 'input:bitext:file',
-       'out' => 'output:bitext:file',
+       'out' => 'output:bitext links:file',
        'd' => 'parameter:alignment direction',
     }
   },

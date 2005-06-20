@@ -4,7 +4,7 @@
     'submodules' => [
         '$UplugSystem/align/word/basicclues',
         '$UplugSystem/align/word/GIZA/giza-word-refined -c 1 -out giza-refined.links',
-        '$UplugSystem/align/word/dynamicclues -in giza-refined.links',
+        '$UplugSystem/align/word/dynamicclues',
         '$UplugSystem/align/word/GIZA/gizaclue-word-prefix',
 #        '$UplugSystem/align/word/GIZA/gizaclue-word',
 #        '$UplugSystem/align/word/GIZA/gizaclue-pos-word',
@@ -39,7 +39,7 @@
     }
   },
   'output' => {
-    'bitext' => {
+    'bitext links' => {
       'format' => 'xces align',
       'write_mode' => 'overwrite',
       'status' => 'word',
@@ -51,7 +51,7 @@
     'shortcuts' => {
        'iter' => 'module:iterations',
        'in' => 'input:bitext:file',
-       'out' => 'output:bitext:file',
+       'out' => 'output:bitext links:file',
     }
   },
   'widgets' => {

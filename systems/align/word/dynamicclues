@@ -42,7 +42,7 @@
   #######################################################################
 
   'input' => {
-    'bitext' => {'stream name' => 'runtime xml',format => 'xces align'}
+    'bitext links' => {'stream name' => 'runtime xml',format => 'xces align'}
   },
 
   #######################################################################
@@ -231,7 +231,7 @@
   'arguments' => {
     'shortcuts' => {
       'informat' => 'input:bitext:format',
-      'in' => 'input:bitext:file',
+      'in' => 'input:bitext links:file',
       'infile' => 'input:bitext:file',
 
       'dl'	     => 'parameter:clues:clue dl',
@@ -254,7 +254,7 @@
 
   'widgets' => {
 #       'input' => {
-#            'bitext' => {
+#            'bitext links' => {
 #               'stream name' => 'stream (format=xces align,status=sent)',
 #            },
 #        },

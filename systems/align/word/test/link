@@ -4,7 +4,7 @@
     'location' => '$UplugBin',
     'name' => 'The clue aligner - linking words',
     'stdin' => 'bitext',
-    'stdout' => 'bitext',
+    'stdout' => 'bitext links',
   },
   'description' => 'This module links words and phrases using the
   clues that are available and which have been enabled for the
@@ -132,7 +132,7 @@
 
   },
   'output' => {
-    'bitext' => {
+    'bitext links' => {
       'format' => 'xces align',
       'status' => 'word',
       'write_mode' => 'overwrite',
@@ -333,7 +333,7 @@
       'in' => 'input:bitext:file',
       'infile' => 'input:bitext:file',
       'informat' => 'input:bitext:format',
-      'out' => 'output:bitext:file',
+      'out' => 'output:bitext links:file',
       'srclang' => 'parameter:general:language (source)',
       'trglang' => 'parameter:general:language (target)',
       'id' => 'parameter:alignment:index',

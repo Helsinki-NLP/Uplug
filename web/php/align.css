@@ -1,0 +1,40 @@
+
+.alignments {
+  position: absolute;
+  top: 1em;
+  left: 25em;
+  border: 1px solid #000000;
+}
+
+.cluematrix {
+  margin: 2em 1em;
+}
+
+.cluematrix th {
+  padding-left: 5px;
+  padding-right: 5px;
+  background-color: #eeeeee;
+}
+
+.cluematrix table{
+  border: 1px solid #000000;
+}
+
+
+.cluematrix td {
+  text-align: center;
+}
+
+
+.dbm table{
+  border: 1px solid #000000;
+}
+
+.dbm td{
+  text-align: left;
+  width: 10em;
+}
+
+.dbm th{
+  width: 10em;
+}

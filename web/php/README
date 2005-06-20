@@ -1,0 +1,9 @@
+
+align.php
+
+first try to create a simple PHP script for alignment visualization
+- create some clues and make them accessible to the PHP script
+- change settings in the align.php script to point to your corpus files 
+  and clue databases
+- run the script in the browser
+
