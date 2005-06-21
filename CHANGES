@@ -1,4 +1,9 @@
 
+* 21-06-2005 joerg
+
+- fixed some stupid bugs in bin/markup.pl
+
+
 * 20-06-2005 joerg
 
 - fixed some more bugs in word alignment configuration files
