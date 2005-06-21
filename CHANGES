@@ -2,6 +2,9 @@
 * 20-06-2005 joerg
 
 - fixed some more bugs in word alignment configuration files
+- added subtree indexing for XML files (enables jumping to certain positions
+  in the corpus)
+- added experimental align.php file for alignment visualization
 
 
 * 24-03-2005 joerg

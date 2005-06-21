@@ -86,24 +86,22 @@ my $data=Uplug::Data->new('hash');
 my $paragraph='';
 my $CountNl=0;       # global new line counter
 
-# while ($input->read(\%data)){
+
 while ($input->read($data)){
 
-#    $paragraph.=$data{'content'}.' ';
     my $content=$data->content;
-#    my @content=$data->content;
-    $paragraph.=$content.' ';
 
     if ($content=~/^\s*$/){
 	$CountNl++;
 	next;
     }
-#    else{$CountNl=0;}
-    if ($paragraph=~/^\s*$/){next}
 
     if (&ParagraphBoundary($paragraph)){
+	&MakeOutData($paragraph);
 	$paragraph='';
     }
+
+    $paragraph.=$content.' ';
     $CountNl=0;
 }
 
@@ -119,6 +117,7 @@ $output->close;
 
 sub MakeOutData{
     my ($paragraph)=@_;
+    if ($paragraph=~/^\s*$/){return 0;}
     $paragraph=~s/\s*$//;                    # delete final whitespaces
     if ($CountNl>$PageBreak){
 	my $PbData=Uplug::Data->new();
@@ -148,10 +147,8 @@ sub ParagraphBoundary{
     if ($CountNl>=$LbLimit){
 	if ((length($paragraph)<=$HeaderSize) and
 	    ($paragraph=~/^[$HeaderStarter]/)){
-	    &MakeOutData($paragraph);
 	    return 1;
 	}
-	&MakeOutData($paragraph);
 	return 1;
     }
     return 0;
