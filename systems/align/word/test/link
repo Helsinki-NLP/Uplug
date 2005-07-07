@@ -94,6 +94,19 @@
     },
 
 
+    'ep-ensv-giza-word' => {
+        'format' => 'DBM',
+        'file' => '$UplugLang/ensv/ep-giza-word-ensv.dbm',
+        'key' => ['source','target'],
+    },
+    'ep-ensv-giza-word-i' => {
+        'format' => 'DBM',
+        'file' => '$UplugLang/ensv/ep-giza-word-sven.dbm',
+        'key' => ['target','source'],
+    },
+
+
+
     'string similarities' => {'stream name' => 'string similarities'},
     'dice'		  => {'stream name' => 'dice'},
     'mutual information'  => {'stream name' => 'mutual information'},
@@ -159,9 +172,9 @@
 #      'minimal score' => 0.8,
 #      'score weight' => 0.01,
     },
-    'general' => {
-#       'chunks (source)' => 'c.*',
-#       'chunks (target)' => 'c.*',
+    'general input parameter' => {
+       'chunks (source)' => 'c.*',
+       'chunks (target)' => 'c.*',
     },
     'alignment' => {
       'remove word links' => 0,
@@ -275,6 +288,11 @@
 
       'enfrp' => 'parameter:alignment:clues:enfr static POS clue',
       'enfrpp' => 'parameter:alignment:clues:enfr static POS clue 2',
+
+      #---- language-specific EuroParl clues ---------------
+
+      'ep-ensv-gw' => 'parameter:alignment:clues:ep-ensv-giza-word',
+      'ep-ensv-gwi' => 'parameter:alignment:clues:ep-ensv-giza-word-i',
 
       #-----------clue weights -------------------------
 

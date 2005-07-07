@@ -227,10 +227,8 @@ sub getLinkScores{
 		#--------------------------------
 
 		if ($self->parameter('verbose')){
-		    my $cluetype=$_;
-		    $cluetype=~tr/ /_/;
-		    printf STDERR "%20s [ %s %s ] %15s - %-15s %s\n",
-		    $cluetype,$s,$t,$src,$trg,$score;
+#		    printf STDERR "%20s [ %s %s ] %15s - %-15s %s\n",
+		    printf STDERR "$_\t$s\t$t\t$src\t$trg\t$score\n";
 		}
 
 		@SrcTok=split(/:/,$s);
@@ -1595,7 +1593,7 @@ sub clueMatrixToHtml{
     }
     if (not $max){$max=1;}
 
-    my $html="<div class=\"cluematrix\">\n";
+    my $html="<p>\n";
     $html.="<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">\n";
     $html.="<tr><th></th>\n";
 
@@ -1631,7 +1629,7 @@ sub clueMatrixToHtml{
 	    }
         }
     }
-    $html.="</tr></table></div>\n";
+    $html.="</tr></table><hr>\n";
     return $html;
 }
 

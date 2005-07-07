@@ -159,10 +159,14 @@
 #      'minimal score' => 0.8,
 #      'score weight' => 0.01,
     },
-    'general' => {
+    'general input parameter' => {
+       'chunks (source)' => 'c.*',
+       'chunks (target)' => 'c.*',
+    },
+#    'general' => {
 #       'chunks (source)' => 'c.*',
 #       'chunks (target)' => 'c.*',
-    },
+#    },
     'alignment' => {
       'remove word links' => 0,
       'clues' => {

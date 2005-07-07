@@ -1,5 +1,4 @@
 #!/usr/bin/perl
-# -*-perl-*-
 #
 # wordalign.pl:
 #
@@ -100,7 +99,11 @@ if (not defined $DefaultWeight){$DefaultWeight=0.5;}
 # get general parameters for getting N-gram pairs from the bitext
 # (take the settings of one of the input streams)
 
-if(defined $IniData{'parameter'}{'alignment'}{'general stream'}){
+if ((defined $IniData{'parameter'}{'general input parameter'}) and
+    (ref($IniData{'parameter'}{'general input parameter'}) eq 'HASH')){
+    %{$Param->{general}}=%{$IniData{'parameter'}{'general input parameter'}};
+}
+elsif(defined $IniData{'parameter'}{'alignment'}{'general stream'}){
     my $st=$IniData{'parameter'}{'alignment'}{'general stream'};
     if (ref($Param->{$st}) eq 'HASH'){
 	%{$Param->{general}}=%{$Param->{$st}};
