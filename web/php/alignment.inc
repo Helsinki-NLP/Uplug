@@ -227,6 +227,9 @@ function align($BITEXT,$ID,&$output){
     if ($ClueSelected){
 	//echo $command;
 	exec('ulimit -t 5;'.$command.' 2>&1',$output);
+//	echo '<pre>';
+//	echo implode("\n",$output);
+//	echo '</pre>';
 	//exec($command);
     }
     else{
@@ -335,15 +338,14 @@ function parse_align_output(&$output){
 
 	if ($type == 'clues'){
 	    list($clue,$sidx, $tidx, $src, $trg, $score) = 
-		sscanf($line, "%s [ %s %s ] %s - %s %s\n");
+		explode("\t",$line);
+//		sscanf($line, "%s [ %s %s ] %s - %s %s\n");
 	    if (isset($score)){
 		$sidxs = explode(':',$sidx);
 		$tidxs = explode(':',$tidx);
 		foreach ($sidxs as $s){
 		    foreach ($tidxs as $t){
-			$clues[$s][$t][$clue]["score"]=$score;
-			$clues[$s][$t][$clue]["src"]=$src;
-			$clues[$s][$t][$clue]["trg"]=$trg;
+			$clues[$s][$t][$clue.':'.$src.':'.$trg]=$score;
 		    }
 		}
 	    }
@@ -397,17 +399,18 @@ function make_clue_strings(&$clues){
 		    $str = '<table>';
 		    $str .= '<tr><th>type</th><th>source</th><th>target</th>';
 		    $str .= '<th>score</th></tr>';
-		    foreach ($clues[$i][$j] as $type => $clue){
+		    foreach ($clues[$i][$j] as $clue => $score){
+			list($type,$src,$trg) = explode(':',$clue);
 			$str .= '<tr><td>';
 			$str .= $type;
 			$str .= '</td><td>';
 			$str .= htmlentities(str_replace('"','&quot;',
-				    str_replace("'","\\'",$clue['src'])));
+				    str_replace("'","\\'",$src)));
 			$str .= '</td><td>';
 			$str .= htmlentities(str_replace('"','&quot;',
-				    str_replace("'","\\'",$clue['trg'])));
+				    str_replace("'","\\'",$trg)));
 			$str .= '</td><td>';
-			$str .= $clue['score'];
+			$str .= $score;
 			$str .= '</td></tr>';
 		    }
 		    $str .= "</table>";

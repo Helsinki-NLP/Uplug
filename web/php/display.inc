@@ -70,7 +70,7 @@ function print_clue_matrix(){
 	    }
 
 	    if (($val!=null) && (($highest-$lowest)>0)){
-		$color = 255-($val-$lowest)*256/($highest-$lowest);
+		$color = 255-($val-$lowest)*255/($highest-$lowest);
 //		$color = 128-($val-$lowest)*128/($highest-$lowest);
 //		$color = 256-($val-$lowest)*128/($highest-$lowest);
 		$hex=sprintf("%X",round($color));
