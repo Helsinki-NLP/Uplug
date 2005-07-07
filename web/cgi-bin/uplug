@@ -514,9 +514,9 @@ sub CorpusManagerInfo{
     $html.='<li><b>remove</b>: remove documents from the corpus</li>';
     $html.='</ul></td>';
     $html.='<td valign="top">Corpus manager <b>tasks</b><ul>';
-    $html.='<li><b>preprocess</b>: pre-process all (raw) documents</li>';
-    $html.='<li><b>align</b>: sentence-align all bitexts in the corpus</li>';
-    $html.='<li><b>index</b>: create a CWB index for the entire corpus</li>';
+    $html.='<li><b>preprocess</b>: pre-process <b>ALL</b> (raw) documents</li>';
+    $html.='<li><b>align</b>: sentence-align <b>ALL</b> bitexts in the corpus</li>';
+    $html.='<li><b>index</b>: create a CWB index for the <b>entire</b> corpus</li>';
     $html.='<li><b>query</b>: query the corpus with CQP/CWB</li>';
     $html.='</ul></td>';
     $html.='</tr></table><hr />';
