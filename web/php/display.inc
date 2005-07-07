@@ -61,21 +61,21 @@ function print_clue_matrix(){
 	echo "<tr><th id=\"s$i\">".$_SESSION['srcToken:'.$i].'</th>';
 	for ($j=0;$j<=$nr_trg;$j++){
 
-	    $val = 0;
+	    $val = null;
+	    unset($color);
+	    unset($hex);
+
 	    if (isset($_SESSION['matrix:'.$i.':'.$j])){
 		$val=$_SESSION['matrix:'.$i.':'.$j];
 	    }
 
-	    if (($highest-$lowest)>0){
-		$color = 256-($val-$lowest)*256/($highest-$lowest);
+	    if (($val!=null) && (($highest-$lowest)>0)){
+		$color = 255-($val-$lowest)*256/($highest-$lowest);
 //		$color = 128-($val-$lowest)*128/($highest-$lowest);
 //		$color = 256-($val-$lowest)*128/($highest-$lowest);
+		$hex=sprintf("%X",round($color));
+		if (strlen($hex)<2){$hex="0$hex";}
 	    }
-	    else{
-		$color = 0;
-	    }
-	    $hex=sprintf("%X",$color);
-	    if (strlen($hex)<2){$hex="0$hex";}
 
 	    //////////////////////////////////////////
 	    // aligned items belong to class 'aligned'
@@ -87,33 +87,19 @@ function print_clue_matrix(){
 		echo "\n<td class=\"aligned\" 
                 onMouseOver=\"markCell(this,'s$i','t$j','l$in_link')\" 
                 onMouseOut=\"unmarkCell(this,'s$i','t$j','#ff0000','l$in_link')\" 
-                onClick=\"window.location = '$PHP_SELF?rm=$i:$j'\"
-                          bgcolor=\"#ff$hex$hex\">";
-
-//                onMouseOver=\"setStyle(this,'border','2pt solid #0000ff')\" 
-//                onMouseOut=\"setStyle(this,'border','2pt solid #ff0000')\" 
-//		echo "<td class=\"aligned\" bgcolor=\"#$hex$hex$hex\">";
+                onClick=\"window.location = '$PHP_SELF?rm=$i:$j'\"";
+		if (isset($hex)){
+		    echo " bgcolor=\"#ff$hex$hex\">";
+		}
 	    }
 	    else{
 		echo "\n<td class=\"notaligned\" 
                 onMouseOver=\"markCell(this,'s$i','t$j')\" 
                 onMouseOut=\"unmarkCell(this,'s$i','t$j','#ffffff')\" 
-                onClick=\"window.location = '$PHP_SELF?add=$i:$j'\" 
-                          bgcolor=\"#$hex$hex$hex\">";
-//                onMouseOver=\"setStyle(this,'border','2pt solid #0000ff')\" 
-//                onMouseOut=\"setStyle(this,'border','2pt solid #ffffff')\"
-//		echo "<td bgcolor=\"#$hex$hex$hex\">";
-	    }
-
-	    ///////////////////////////////////////////
-	    // black or white text color 
-	    // (depending on the background color)
-
-            if ($color<128){
-		echo '<font color="#ffffff">';
-	    }
-	    else{
-		$html.='<font color="#000000">';
+                onClick=\"window.location = '$PHP_SELF?add=$i:$j'\"";
+		if (isset($hex)){
+		    echo " bgcolor=\"#$hex$hex$hex\">";
+		}
 	    }
 
             //////////////////////////////////////////////
@@ -131,17 +117,27 @@ function print_clue_matrix(){
 
 		echo $_SESSION['clues:'.$i.':'.$j];
 		echo "')\">";
-		echo round($val*$magn,2);
-		echo '</span>';
+
+		///////////////////////////////////////////
+		// black or white text color 
+		// (depending on the background color)
+		if (isset($color) && ($color<128)){
+		    echo '<font color="#ffffff">';
+		    echo round($val*$magn,2);
+		    echo '</font>';
+		}
+		else{
+		    echo round($val*$magn,2);
+		}
 	    }
 	    else{
-		echo '-';
-//		echo round($val*$magn,2);
+//		echo '-';
+		echo round($val*$magn,2);
 	    }
 
             //////////////////////////////////////////////
 
-	    echo '</font></td>';
+	    echo '</td>';
 	}
 	echo '</tr>';
     }
