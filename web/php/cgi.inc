@@ -90,6 +90,7 @@ function AlignForm(){
 
     echo '<select name="id">';
     foreach ($IDS as $id){
+	$id = rtrim($id);
 	if ($selected) $next_selected = $id;
 	$selected = 0;
 	if (isset($_SESSION['id']) && ($_SESSION['id'] == $id)){
