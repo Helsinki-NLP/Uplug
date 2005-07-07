@@ -1,9 +1,14 @@
 
 align.php
 
-first try to create a simple PHP script for alignment visualization
+first attempt to create a simple PHP script for alignment visualization
+and interactive word alignment
 - create some clues and make them accessible to the PHP script
-- change settings in the align.php script to point to your corpus files 
+- change settings in config.inc to point to your corpus files 
   and clue databases
 - run the script in the browser
+
+
+tooltip code: taken from
+http://www.walterzorn.com/tooltip/tooltip_e.htm
 
