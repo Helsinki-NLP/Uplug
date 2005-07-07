@@ -40,7 +40,6 @@ $VERSION = 0.02;
 @EXPORT = qw(&ReadConfig &WriteConfig &CheckParameter &GetNamedIO
 	     &CheckParam &GetParam &SetParam);
 
-
 ## "named" IO streams are stored in %NamedIO
 ## read them from the files below (in ENV{UPLUGHOME}/ini)
 
@@ -166,7 +165,12 @@ sub ExpandVar{
     my $configtext=shift;
     $configtext=~s/\$UplugHome/$ENV{UPLUGHOME}/gs;
     $configtext=~s/\$UplugLang/$ENV{UPLUGHOME}\/lang/gs;
-    $configtext=~s/\$UplugSystem/$ENV{UPLUGHOME}\/systems/gs;
+    if (defined $ENV{UPLUGCONFIG}){
+	$configtext=~s/\$UplugSystem/$ENV{UPLUGCONFIG}/gs;
+    }
+    else{
+	$configtext=~s/\$UplugSystem/$ENV{UPLUGHOME}\/systems/gs;
+    }
     $configtext=~s/\$UplugData/data/gs;
     $configtext=~s/\$UplugIni/$ENV{UPLUGHOME}\/ini/gs;
     $configtext=~s/\$UplugBin/$ENV{UPLUGHOME}\/bin/gs;
@@ -260,7 +264,7 @@ sub GetNamedIO{
 sub CheckParam{
     my $config=shift;
 
-    if ($_[0]=~/\S\s\S/){                   # if next argument is a string with
+    if ((@_ == 1) && ($_[0]=~/\S\s\S/)){    # if next argument is a string with
 	my @params=split(/\s+/,$_[0]);      # spaces: split it into an array
 	return CheckParam($config,@params); #         and try again
     }
@@ -272,18 +276,24 @@ sub CheckParam{
     if (ref($flags) ne 'HASH'){
 	$flags=GetParam($config,'options');
     }
-    return if (ref($flags) ne 'HASH');
+#    return if (ref($flags) ne 'HASH');
     while (@_){
-	my $f=shift;                    # flag name
-	$f=~s/^\-//;                    # delete leading '-'
-	if (exists $flags->{$f}){
-	    my @attr=split(/:/,$flags->{$f});
-	    my $val=1;
-	    if ((@_) and ($_[0]!~/^\-/)){
-		$val=shift;
+	my $f=shift;                        # flag name
+	my @attr=();
+	if ($f=~/^\-/){                     # if it is a short-cut flag:
+	    $f=~s/^\-//;                    # delete leading '-'
+	    if (exists $flags->{$f}){
+		@attr=split(/:/,$flags->{$f});
 	    }
-	    SetParam($config,$val,@attr);
 	}
+	else{                               # otherwise: long paramter type
+	    @attr=split(/:/,$f);
+	}
+	my $val=1;                          # value = 1
+	if ((@_) and ($_[0]!~/^\-/)){       # ... or next argument if it exists
+	    $val=shift;
+	}
+	SetParam($config,$val,@attr);       # finally set the parameter!
     }
     return $config;
 }    
@@ -303,7 +313,7 @@ sub SetParam{
     if (ref($config) ne 'HASH'){$config={};}
     foreach (@_){
 	if (ref($config->{$_}) ne 'HASH'){
-	    $config->{$_}
+	    $config->{$_}={};
 	}
 	$config=$config->{$_};
     }

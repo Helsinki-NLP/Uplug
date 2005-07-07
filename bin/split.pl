@@ -1,5 +1,5 @@
 #!/usr/bin/perl
-#
+# -*-perl-*-
 #
 # split.pl: split text into segments/tokens
 #
@@ -34,6 +34,7 @@
 # 
 # 
 #
+
 use strict;
 
 use FindBin qw($Bin);

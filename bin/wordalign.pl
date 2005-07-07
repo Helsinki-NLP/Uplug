@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# -*-perl-*-
 #
 # wordalign.pl:
 #
@@ -266,6 +267,13 @@ while ($align->read($alignIndex)){
     #-------------------------------------------------------------------------
 
     my $data=$align->data();
+
+    if ($verboseAlign){
+	print STDERR "\n===================================================\n";
+	print STDERR "word alignments";
+	print STDERR "\n===================================================\n";
+    }
+
     foreach my $s (keys %Links){
 
 #	if ($Links{$s}{score}<$MinScore){next;}

@@ -136,6 +136,12 @@ sub getLinkScores{
     my $ScoreComb=$self->parameter('score combination');
     if (not $ScoreComb){$ScoreComb='probabilistic';}
 
+    if ($self->parameter('verbose')){
+      print STDERR "\n=====================================================\n";
+      print STDERR "matching clue scores";
+      print STDERR "\n=====================================================\n";
+    }
+
 
     ## the following loop takes most of the time!
 
@@ -221,8 +227,10 @@ sub getLinkScores{
 		#--------------------------------
 
 		if ($self->parameter('verbose')){
-		    printf STDERR "[%5s - %-5s] {%20s - %-20s} %f\n",
-		    $s,$t,$src,$trg,$score;
+		    my $cluetype=$_;
+		    $cluetype=~tr/ /_/;
+		    printf STDERR "%20s [ %s %s ] %15s - %-15s %s\n",
+		    $cluetype,$s,$t,$src,$trg,$score;
 		}
 
 		@SrcTok=split(/:/,$s);
@@ -230,6 +238,12 @@ sub getLinkScores{
 
 		foreach $x (@SrcTok){
 		    foreach $y (@TrgTok){
+
+#			if ($self->parameter('verbose')){
+#			    printf STDERR "%20s [%d %d] %15s - %-15s %s\n",
+#			    $_,$x,$y,$src,$trg,$score;
+#			}
+
 			if ($ScoreComb eq 'addition'){
 			    $$LinkProb[$x][$y]+=$score;
 			}
@@ -276,8 +290,11 @@ sub getLinkScores{
 			       $self->{token}->{target},
 			       $self->{matrix});
 
-	$self->printBitextToken($self->{token}->{source},
-				$self->{token}->{target});
+	$self->printBitextTokensWithID();
+
+#	$self->printBitextToken($self->{token}->{source},
+#				$self->{token}->{target});
+
     }
     ### DEBUG: store search time
     $self->{'1x_score_time'}+=time()-$time if ($DEBUG);
@@ -1634,6 +1651,25 @@ sub printClueMatrix{
 
     my $nrSrc=$#{$SrcTok};
     my $nrTrg=$#{$TrgTok};
+
+
+    print STDERR "\n=====================================================\n";
+    print STDERR "final clue matrix scores";
+    print STDERR "\n=====================================================\n";
+
+    foreach my $s (0..$nrSrc){
+	foreach my $t (0..$nrTrg){
+	    my $score=$Matrix->[$s]->[$t];
+	    if ($score>0){
+#		printf STDERR "[%2d-%-2d] %15s - %-15s: %s\n",
+		printf STDERR "[%d %d] %20s - %-20s %s\n",
+		$s,$t,$$SrcTok[$s],$$TrgTok[$t],$score;
+	    }
+	}
+    }
+    print STDERR "\n=====================================================\n";
+    print STDERR "clue matrix $nrSrc x $nrTrg";
+    print STDERR "\n=====================================================\n";
 
     my @char=();
     &MakeCharArr($TrgTok,\@char);

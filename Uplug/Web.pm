@@ -59,6 +59,8 @@ my %DataAccess=
 	     user => ['info']});
 
 
+$ENV{UPLUGCONFIG} = 'systems';
+
 
 sub AccessMode{
     my $priv=shift;

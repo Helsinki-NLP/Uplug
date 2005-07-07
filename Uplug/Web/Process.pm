@@ -20,6 +20,7 @@ use strict;
 use IO::File;
 use POSIX qw(tmpnam);
 use File::Copy;
+use File::Basename;
 use ExtUtils::Command;
 
 use Uplug::Web;
@@ -106,10 +107,12 @@ sub UplugSystemIni{
     my $name=shift;
 
     if (not -e $name){chdir &Uplug::Web::Corpus::GetCorpusDir($user);}
-    &Uplug::Config::LoadNamedStreams();        # reload named streams
+    &Uplug::Config::ReadNamed('UserDataStreams.ini');   # reload named streams
                                                # (they might have changed since
                                                #  last time reading them!!)
-    return &LoadConfiguration($data,$name);
+    my $config=&ReadConfig($name);
+    %{$data}=%{$config};
+    return 1;
 }
 
 sub GetConfiguration{
@@ -117,8 +120,17 @@ sub GetConfiguration{
     my $user=shift;
     my $name=shift;
 
-    if (not -e $name){chdir &Uplug::Web::Corpus::GetCorpusDir($user);}
-    return &LoadIniData($data,$name);
+    chdir &Uplug::Web::Corpus::GetCorpusDir($user);
+    if (! -e $name){
+	if (-e $ENV{UPLUGHOME}.'/'.$name){
+	    my $dir = dirname($name);
+	    if (! -d $dir){system "mkdir -p $dir";}
+	    copy ($ENV{UPLUGHOME}.'/'.$name,$name);
+	}
+    }
+    my $config=&ReadConfig($name);
+    %{$data}=%{$config};
+    return 1;
 }
 
 
@@ -131,11 +143,15 @@ sub SaveUplugSettings{
 
     my $UserDir=&Uplug::Web::Corpus::GetCorpusDir($user);
     chdir $UserDir;
-    my %config=();
 
-    &LoadIniData(\%config,$configfile);
-    &ExpandParameter(\%config,$para);
-    return &WriteIniFile($configfile,\%config);
+    if (ref($para) eq 'ARRAY'){
+	my $config=&ReadConfig($configfile,@{$para});
+	return &WriteConfig($configfile,$config);
+    }
+    elsif (ref($para) eq 'HASH'){
+	my $config=&ReadConfig($configfile,%{$para});
+	return &WriteConfig($configfile,$config);
+    }
 }
 
 sub ResetUplugSettings{
@@ -197,15 +213,19 @@ sub MakeUplugProcess{
 #    system "chmod g+w $ThisProcDir";
     chdir $ThisProcDir;
 
+    open F,">/tmp/uplug-paras";
+    print F "save paras i $configfile\n";
+    close F;
 
-    my %config=();
     if (not defined $configfile){return 0;}
-    &LoadIniData(\%config,$configfile);
-    &ExpandParameter(\%config,$para);
-    &PrepareProcess($user,$corpus,$process,$configfile,\%config);
-    &WriteIniFile($configfile,\%config);
 
-#     my $command="$RUN '$user' '$process' '$configfile'";
+    &Uplug::Config::ReadNamed('UserDataStreams.ini');
+    my $config=&ReadConfig($configfile,%{$para});
+    &PrepareProcess($user,$corpus,$process,$configfile,$config);
+    open F,">>/tmp/uplug-paras";
+    print F "save paras i $configfile\n";
+    close F;
+    &WriteConfig($configfile,$config);
 
     $todo->push($user,$process,$corpus,$configfile);
     return $process;
@@ -233,18 +253,39 @@ sub PrepareProcess{
     # sentence alignment
     #
     if ($configfile=~/align\/sent$/){
-	my $src=$$config{input}{'source text'}{'stream name'};
-	my $trg=$$config{input}{'target text'}{'stream name'};
+
+	my ($src,$srclang,$srcname);
+	if (defined $$config{input}{'source text'}{'stream name'}){
+	    $src=$$config{input}{'source text'}{'stream name'};
+	    ($srcname,$srclang)=&Uplug::Web::Corpus::SplitCorpusName($src);
+	}
+	else{
+	    $srclang = $$config{input}{'source text'}{'language'};
+	    $srcname = $$config{input}{'source text'}{'corpus'};
+	    $src = $srcname.' ('.$srclang.')';
+	    $src = &Uplug::Web::Corpus::GetCorpusName($srcname,$srclang);
+	}
+
+	my ($trg,$trglang,$trgname);
+	if (defined $$config{input}{'target text'}{'stream name'}){
+	    $trg=$$config{input}{'target text'}{'stream name'};
+	    ($trgname,$trglang)=&Uplug::Web::Corpus::SplitCorpusName($trg);
+	}
+	else{
+	    $trglang = $$config{input}{'target text'}{'language'};
+	    $trgname = $$config{input}{'target text'}{'corpus'};
+	    $trg = $trgname.' ('.$trglang.')';
+	    $trg = &Uplug::Web::Corpus::GetCorpusName($trgname,$trglang);
+	}
+
+
 	my $srccorpus=&Uplug::Web::Corpus::GetCorpusInfo($user,$corpus,$src);
 	my $trgcorpus=&Uplug::Web::Corpus::GetCorpusInfo($user,$corpus,$trg);
-	my ($srcname,$srclang)=&Uplug::Web::Corpus::SplitCorpusName($src);
-	my ($trgname,$trglang)=&Uplug::Web::Corpus::SplitCorpusName($trg);
-#	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$trgname);
+	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$trgname);
+
 	my $lang=$srclang.'-'.$trglang;
 	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$corpus,$lang);
 	$output=$dir.'/'.$trgname;
-#	$output=$dir.'/'.$trgname.'.'.$srclang.'-'.$trglang;
-#	$output=$dir.'/'.$srclang.'-'.$trglang.'.gz';
 	if (not -e $output){open F,">$output";close F;}
 	chmod 0664,$output;
 #	my $lockfile=$output.'.lock';
@@ -259,15 +300,28 @@ sub PrepareProcess{
 	$$config{output}{bitext}{toDoc}=$$trgcorpus{file};
 	$$config{output}{bitext}{file}=$output;
 	$$config{output}{bitext}{language}=$lang;
-#	$$config{output}{bitext}{language}=$srclang.'-'.$trglang;
     }
-    elsif ($configfile=~/align\/word\/(..\-..|basic|advanced|giza)$/){
-	my $bitext=$$config{input}{'bitext'}{'stream name'};
+
+    #------------------------
+    # word alignment
+
+    elsif ($configfile=~/align\/word\/(..\-..|basic|default|advanced|giza)$/){
+
+	my ($bitext,$lang,$name);
+	if (defined $$config{input}{'bitext'}{'stream name'}){
+	    $bitext=$$config{input}{'bitext'}{'stream name'};
+	    ($name,$lang)=&Uplug::Web::Corpus::SplitCorpusName($bitext);
+	}
+	else{
+	    $lang = $$config{input}{'bitext'}{'language'};
+	    $name = $$config{input}{'bitext'}{'corpus'};
+	    $bitext = &Uplug::Web::Corpus::GetCorpusName($name,$lang);
+	}
+
+
 	my $corp=&Uplug::Web::Corpus::GetCorpusInfo($user,$corpus,$bitext);
-	my ($name,$lang)=&Uplug::Web::Corpus::SplitCorpusName($bitext);
 	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$corpus,$lang);
 	$output=$dir.'/'.$name.'.links';
-#	$output=$dir.'/'.$name.'.'.$lang.'.links';
 	if (not -e $output){open F,">$output";close F;}
 	chmod 0664,$output;
 #	my $lockfile=$output.'.lock';
@@ -287,15 +341,15 @@ sub PrepareProcess{
 #	    chmod 0664,"$dir$_.dbm.head";
 #	}
 
-	$$config{output}{bitext}{corpus}=$name.' word';
+	$$config{output}{'bitext links'}{corpus}=$name.' word';
 	if (-e $$corp{fromDoc}){
-	    $$config{output}{bitext}{fromDoc}=$$corp{fromDoc};
+	    $$config{output}{'bitext links'}{fromDoc}=$$corp{fromDoc};
 	}
 	if (-e $$corp{toDoc}){
-	    $$config{output}{bitext}{toDoc}=$$corp{toDoc};
+	    $$config{output}{'bitext links'}{toDoc}=$$corp{toDoc};
 	}
-	$$config{output}{bitext}{file}=$output;
-	$$config{output}{bitext}{language}=$lang;
+	$$config{output}{'bitext links'}{file}=$output;
+	$$config{output}{'bitext links'}{language}=$lang;
     }
 }
 

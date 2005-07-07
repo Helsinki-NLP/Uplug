@@ -321,12 +321,66 @@ sub printBitextToken{
     print STDERR "\n\n";
 }
 
+sub tokenID{
+    my $self=shift;
+    my ($lang,$idx)=@_;
+    if (ref($self->{tokenAttr}) eq 'HASH'){
+	if (ref($self->{tokenAttr}->{$lang}) eq 'ARRAY'){
+	    if (ref($self->{tokenAttr}->{$lang}->[$idx]) eq 'HASH'){
+		return $self->{tokenAttr}->{$lang}->[$idx]->{id};
+	    }
+	}
+    }
+    return undef;
+}
+
+sub printBitextTokensWithID{
+    my $self=shift;
+
+    print STDERR "\n\n====================================================\n";
+    print STDERR "bitext segment";
+    print STDERR "\n====================================================\n";
+
+    $self->printTokensWithID('source');
+    $self->printTokensWithID('target');
+}
+
+sub printTokensWithID{
+    my $self=shift;
+    my $lang=shift;
+
+    if (ref($self->{token}->{$lang}) eq 'ARRAY'){
+	foreach (0..$#{$self->{token}->{$lang}}){
+	    if (my $id=$self->tokenID($lang,$_)){
+		print STDERR "$id:";
+	    }
+	    print STDERR $self->{token}->{$lang}->[$_];
+	    print STDERR " ";
+	}
+    }
+    print STDERR "\n";
+}
+
+
+
 sub printBitextLink{
     my $self=shift;
     my $id=shift;
     my $link=shift;
     my ($src,$trg)=split(/;/,$$link{link});
-    print STDERR "$id\t$src\t$trg\n";
+    my $sidx = $$link{source};
+    my $tidx = $$link{target};
+    if (defined $$link{score}){
+	print STDERR join "\t",($id,$sidx,$tidx,$src,$trg,$$link{score});
+	print STDERR "\n";
+#	printf STDERR "%s  %10s %-10s %s %s\t%s\n",
+#	$id,$sidx,$tidx,$src,$trg,$$link{score};
+    }
+    else{
+	print STDERR join "\t",($id,$sidx,$tidx,$src,$trg);
+	print STDERR "\n";
+	$id,$sidx,$tidx,$src,$trg;
+    }
 }
 
 
