@@ -52,8 +52,8 @@ my $IniFile='hunalign.ini';
 
 #---------------------------------------------------------------------------
 
-my $SrcStream=$IniData{input}{source};
-my $TrgStream=$IniData{input}{target};
+my $SrcStream=$IniData{input}{'source text'};
+my $TrgStream=$IniData{input}{'target text'};
 my ($OutputStreamName,$OutputStream)=         # take only
     each %{$IniData{'output'}};               # the first output stream
 
@@ -214,19 +214,19 @@ sub GetDefaultIni{
 
     my $DefaultIni = {
   'input' => {
-    'source' => {
+    'source text' => {
       'format' => 'XML',
       'file' => 'data/source.xml',
       'root' => 's',
     },
-    'target' => {
+    'target text' => {
       'format' => 'XML',
       'file' => 'data/target.xml',
       'root' => 's',
     }
   },
   'output' => {
-    'text' => {
+    'bitext' => {
       'format' => 'xces align',
       'write_mode' => 'overwrite',
     }
@@ -236,9 +236,9 @@ sub GetDefaultIni{
   },
   'arguments' => {
     'shortcuts' => {
-       'src' => 'input:source:file',
-       'trg' => 'input:target:file',
-       'out' => 'output:text:file',
+       'src' => 'input:source text:file',
+       'trg' => 'input:target text:file',
+       'out' => 'output:bitext:file',
     }
   },
 };
