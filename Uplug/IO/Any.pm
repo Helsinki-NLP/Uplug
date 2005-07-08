@@ -64,7 +64,7 @@ sub new{
     ## 'stream name' => look for a 'named stream' and ignore all other settings
 
     if (defined $stream->{'stream name'}){
-	$stream=&Uplug::Config::GetNamedStream($stream);
+	$stream=&Uplug::Config::GetNamedIO($stream);
     }
     if ((not defined $format) and (defined $stream->{format})){
 	$format=$stream->{format};

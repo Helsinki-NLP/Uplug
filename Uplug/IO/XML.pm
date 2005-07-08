@@ -87,6 +87,10 @@ sub new{
 sub init{
     my $self            = shift;
     my $options         = $_[0];
+    if (ref($options) ne 'HASH'){$options={};}
+#    if (not defined $options->{DocRootTag}){
+#	$options->{DocRootTag}='.*';
+#    }
     if ($self->SUPER::init($options)){
 	if (defined $options->{DocRootTag}){
 	    if (not defined $self->{StreamOptions}->{DocRoot}){
@@ -159,14 +163,10 @@ sub read{
     $data->setHeader(undef);
 
     my $MakeIndex = $self->option('MAKESUBTREEINDEX');
-    if ($MakeIndex){
-	print '';
-    }
     my $FilePos = tell($fh);
     my $NewSubtree = 1;
 
     while ($_=$self->readFromHandle($fh)){
-	# print STDERR "read: $_";
 	my $ret = $self->parseXML($data,$_,$root);
 	if ($MakeIndex){
 	    if (($self->{XmlHandle}->{SubTreeStarted} || $ret) && $NewSubtree){
@@ -417,7 +417,6 @@ sub readFromHandle{
 	    $content=~s/\?\>/ encoding="iso-8859-1"\?\>/s;
 	}
     }
-
     return $content;
 }
 
@@ -472,9 +471,10 @@ sub readheader{
 	my $data=Uplug::Data->new();
 	binmode($fh);
 	while ($_=$self->readFromHandle($fh)){
-	    # print STDERR "header: $_";
+	    # print STDERR "\n header: $_";
 	    my $ret = $self->parseXML($data,$_,$root);
-	    if (defined $self->{XmlHandle}->{XmlProlog}){last;}
+	    if ($self->{XmlHandle}->{NewDoc}){last;}
+#	    if (defined $self->{XmlHandle}->{XmlProlog}){last;}
 	}
     }
 }
@@ -541,7 +541,9 @@ sub removeSpaces{$_[0]->setOption('REMOVESPACES',1);}
 sub CompileTagREs{
     my $self=shift;
     foreach my $t ('DocRootTag','SubTreeRoot','DocBodyTag'){
-	$self->{XmlHandle}->{$t.'RE'}=qr/^($self->{XmlHandle}->{$t})$/;
+	if (defined $self->{XmlHandle}->{$t}){
+	    $self->{XmlHandle}->{$t.'RE'}=qr/^($self->{XmlHandle}->{$t})$/;
+	}
     }
 }
 
@@ -623,11 +625,19 @@ sub XmlTagStart{
     #--------------------------------------------------
     # document root tags are parsed ... but ignored
     #--------------------------------------------------
-    if ((defined $p->{DocRootTagRE}) and ($e=~/$p->{DocRootTagRE}/)){
-	$p->{BeforeSubTree}='';
+    if ((defined $p->{DocRootTag}) and      # if DocRootTag is specified
+	($e=~/$p->{DocRootTagRE}/)){      # and the current tag matches
+	$p->{BeforeSubTree}='';              # --> this is the doc root tag
 	$p->{DocRootTag}=$e;
 	$p->{DocRootTagRE}=qr/^($p->{DocRootTag})$/;
-	$p->{NewDoc}=1;
+	$p->{NewDoc}=1;                      # --> the beginning of a new doc!
+	%{$p->{DocRoot}}=%a;
+	return;
+    }
+    if ((not defined $p->{DocRootTag}) and  # DocRootTag is not specified and
+	(not $p->{NewDoc})){                # no doc-root-tag is parsed yet:
+	$p->{BeforeSubTree}.=$p->recognized_string;
+	$p->{NewDoc}=1;                      # --> the beginning of a new doc!
 	%{$p->{DocRoot}}=%a;
 	return;
     }

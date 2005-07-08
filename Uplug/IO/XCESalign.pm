@@ -485,21 +485,32 @@ sub ReadSegments{
     if (not ref($data->{$lang})){
 	$data->{$lang}=Uplug::Data::Lang->new();  # a new language object
     }
-    if (not ref($data->{$lang.'Sent'})){
-	$data->{$lang.'Sent'}=Uplug::Data->new(); # a new object for reading
+    if (ref($data->{$lang.'Sent'}) ne 'ARRAY'){   # the array of data objects
+	$data->{$lang.'Sent'}=[];                 # (one for each sentence)
     }
     #--------------------------------------------------------------
 
     my $parent=$data->addNode($lang);     # set root node = $lang
     $data->{$lang}->setRoot($parent);     # set root node of sub-lang-data
-    my $sent=$data->{$lang.'Sent'};       # sentences will be read into $sent
+
+    my $count = 0;                                  # make a new data object
+    if (not ref($data->{$lang.'Sent'}->[$count])){  # for reading the sentence
+	$data->{$lang.'Sent'}->[$count]=
+	    Uplug::Data->new();
+    }
+    my $sent = $data->{$lang.'Sent'}->[$count];     # $sents points to it!
 
     while ($stream->read($sent)){          # read sequentially through the data
 	my $id=$sent->attribute('id');     # get the sentence ID
 	if (not grep ($_ eq $id,@{$IDs})){ # if s-ID is not in the requested:
-	    foreach (@{$IDs}){                           # use the select-
-		if ($stream->select($sent,{id => $_})){  # function for the
-		    my $node=$sent->root();              # XML-data
+	    foreach (0..$#{$IDs}){         # use the select-function
+
+		if (not ref($data->{$lang.'Sent'}->[$_])){
+		    $data->{$lang.'Sent'}->[$_]=Uplug::Data->new();
+		}
+		my $sent = $data->{$lang.'Sent'}->[$_];
+		if ($stream->select($sent,{id => $IDs->[$_]})){
+		    my $node=$sent->root();
 		    $data->addNode($parent,$node);
 		}
 	    }
@@ -508,6 +519,13 @@ sub ReadSegments{
 	my $node=$sent->root();            # otherwise: add the sentence
 	$data->addNode($parent,$node);     # and continue to read if necessary
 	if ($id eq $IDs->[-1]){last;}
+
+	$count ++;                                      # still more sentences!
+	if (not ref($data->{$lang.'Sent'}->[$count])){  # make a new data-
+	    $data->{$lang.'Sent'}->[$count]=            # object if necessary
+		Uplug::Data->new();
+	}
+	$sent = $data->{$lang.'Sent'}->[$count];        # let $sent point to it
     }
 }
 
@@ -533,17 +551,20 @@ sub SearchSegments{
     if (not ref($data->{$lang})){
 	$data->{$lang}=Uplug::Data::Lang->new();  # a new language object
     }
-    if (not ref($data->{$lang.'Sent'})){
-	$data->{$lang.'Sent'}=Uplug::Data->new(); # a new object for reading
+    if (ref($data->{$lang.'Sent'}) ne 'ARRAY'){   # the array of data objects
+	$data->{$lang.'Sent'}=[];                 # (one for each sentence)
     }
     #--------------------------------------------------------------
 
     my $parent=$data->addNode($lang);     # set root node = $lang
     $data->{$lang}->setRoot($parent);     # set root node of sub-lang-data
-    my $sent=$data->{$lang.'Sent'};       # sentences will be read into $sent
 
-    foreach (@{$IDs}){
-	if ($stream->select($sent,{id => $_})){
+    foreach (0..$#{$IDs}){
+	if (not ref($data->{$lang.'Sent'}->[$_])){
+	    $data->{$lang.'Sent'}->[$_]=Uplug::Data->new();
+	}
+	my $sent = $data->{$lang.'Sent'}->[$_];
+	if ($stream->select($sent,{id => $IDs->[$_]})){
 	    my $node=$sent->root();
 	    $data->addNode($parent,$node);
 	}

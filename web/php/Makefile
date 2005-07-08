@@ -21,7 +21,7 @@ LANGPAIR = $(shell echo '$(CORPUS)' | sed 's/^\(....\).*$$/\1/')
 ###########################################################################
 # you probably don't have to change the settings below
 
-INVLANGPAIR = $(shell echo '$(LANGPAIR)' | sed 's/\(..\)\(..\)/\2\1/');
+INVLANGPAIR = $(shell echo '$(LANGPAIR)' | sed 's/^\(..\)\(..\)/\2\1/')
 SENTALIGN = $(CORPUS).ces
 SENTALIGNIDS = $(CORPUS).ids
 WORDALIGN = $(CORPUS).$(ALIGN)
@@ -29,10 +29,16 @@ WORDALIGN = $(CORPUS).$(ALIGN)
 
 
 CONFIG = config.inc
-DATADIR = aligned
+DATADIR = data/$(CORPUS)
 
 
 all: $(DATADIR) $(SENTALIGNIDS) $(WORDALIGN) $(CONFIG)
+
+## make the data directories
+## DATADIR ....... save alignments from teh PHP script
+## data/runtime .. runtime data for the aligner (clues etc)
+## both have to be writable for the browser
+## (--> simple solution: make them world writable!)
 
 $(DATADIR):
 	mkdir -p $(DATADIR)
@@ -40,8 +46,11 @@ $(DATADIR):
 	mkdir -p data/runtime
 	chmod o+w data/runtime
 
+
 $(SENTALIGNIDS): $(SENTALIGN)
-	grep '<link ' $(SENTALIGN) | cut -d '"' -f2 > $@
+	grep '<link ' $(SENTALIGN) |\
+	sed 's/^.* id="//' |\
+	 cut -d '"' -f1 > $@
 	rm -f config.inc
 
 
@@ -50,12 +59,12 @@ $(WORDALIGN): $(SENTALIGN)
 
 
 $(CONFIG): %.inc: %.in
-	sed 's/%%DATADIR%%/$(DATADIR)/' $< |\
-	sed 's/%%IDFILE%%/$(SENTALIGNIDS)/' |\
-	sed 's/%%BITEXT%%/$(SENTALIGN)/' |\
-	sed 's/%%UPLUG%%/$(UPLUG)/' |\
-	sed 's/%%LANGPAIR%%/$(LANGPAIR)/' |\
-	sed 's/%%INVLANGPAIR%%/$(INVLANGPAIR)/' > $@
+	sed 's#%%DATADIR%%#$(DATADIR)#' $< |\
+	sed 's#%%IDFILE%%#$(SENTALIGNIDS)#' |\
+	sed 's#%%BITEXT%%#$(SENTALIGN)#' |\
+	sed 's#%%UPLUG%%#$(UPLUG)#' |\
+	sed 's#%%LANGPAIR%%#$(LANGPAIR)#' |\
+	sed 's#%%INVLANGPAIR%%#$(INVLANGPAIR)#' > $@
 
 
 clean:
