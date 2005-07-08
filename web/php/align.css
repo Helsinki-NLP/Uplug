@@ -10,6 +10,11 @@
   background-color: #eeaaaa;
 }
 
+.bitext { 
+          border: 1px solid #000000; 
+          margin: 0 5px;
+          padding: 5px;
+}
 
 .alignments {
   float: left;
@@ -17,8 +22,13 @@
   border: 1px solid #000000;
 }
 
+
 .alignments th {
-  background-color: #aaeeee;
+  background-color: #cceeee;
+                 }
+
+.alignments tr {
+  background-color: #eeeeaa
                  }
 
 

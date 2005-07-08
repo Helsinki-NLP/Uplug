@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# -*-perl-*-
 #
 # hunalign.pl:
 #
@@ -226,7 +227,7 @@ sub GetDefaultIni{
   },
   'output' => {
     'text' => {
-      'format' => 'align',
+      'format' => 'xces align',
       'write_mode' => 'overwrite',
     }
   },

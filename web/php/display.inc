@@ -3,6 +3,7 @@
 
 function print_alignments(){
     $count=0;
+    echo '<div class="alignments">';
     echo '<table><tr><th>source</th><th>target</th>';
 //    echo '<th>score</th>';
     echo '</tr>';
@@ -16,6 +17,34 @@ function print_alignments(){
 	$count++;
     }
     echo '</table>';
+    echo '</div>';
+}
+
+
+
+/////////////////////////////////////////////////////////////
+// print the clue matrix!
+
+
+function print_bitext_segment(){
+
+    $nr_src = $_SESSION['nrSrc'];
+    $nr_trg = $_SESSION['nrTrg'];
+
+    if (! $nr_src>0){return 0;}
+    if (! $nr_trg>0){return 0;}
+
+    echo '<div class="bitext">';
+//    echo '<b>source:</b> ';
+    for ($i=0;$i<=$_SESSION['nrSrc'];$i++){
+	echo '<span id="ws'.$i.'">'.$_SESSION['srcToken:'.$i].'</span> ';
+    }
+    echo '<br>';
+//    echo '<b>target:</b> ';
+    for ($i=0;$i<=$_SESSION['nrTrg'];$i++){
+	echo '<span id="wt'.$i.'">'.$_SESSION['trgToken:'.$i].'</span> ';
+    }
+    echo '</div>';
 }
 
 
@@ -85,8 +114,8 @@ function print_clue_matrix(){
 
 		$in_link = $_SESSION['inLink:'.$i.':'.$j];
 		echo "\n<td class=\"aligned\" 
-                onMouseOver=\"markCell(this,'s$i','t$j','l$in_link')\" 
-                onMouseOut=\"unmarkCell(this,'s$i','t$j','#ff0000','l$in_link')\" 
+                onMouseOver=\"markAligned(this,'s$i','t$j','l$in_link')\" 
+                onMouseOut=\"unmarkAligned(this,'s$i','t$j','#ff0000','l$in_link')\" 
                 onClick=\"window.location = '$PHP_SELF?rm=$i:$j'\"";
 		if (isset($hex)){
 		    echo " bgcolor=\"#ff$hex$hex\">";
@@ -94,8 +123,8 @@ function print_clue_matrix(){
 	    }
 	    else{
 		echo "\n<td class=\"notaligned\" 
-                onMouseOver=\"markCell(this,'s$i','t$j')\" 
-                onMouseOut=\"unmarkCell(this,'s$i','t$j','#ffffff')\" 
+                onMouseOver=\"markUnaligned(this,'s$i','t$j')\" 
+                onMouseOut=\"unmarkUnaligned(this,'s$i','t$j','#ffffff')\" 
                 onClick=\"window.location = '$PHP_SELF?add=$i:$j'\"";
 		if (isset($hex)){
 		    echo " bgcolor=\"#$hex$hex$hex\">";

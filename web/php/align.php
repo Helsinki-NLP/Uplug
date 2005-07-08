@@ -95,10 +95,9 @@ else{
     }
 
     get_alignments();
+    print_bitext_segment();
     print_clue_matrix();
-    echo '<div class="alignments">';
     print_alignments();
-    echo '</div>';
 
 }
 

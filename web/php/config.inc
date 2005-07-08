@@ -4,17 +4,14 @@
 // you should change the following settings
 //////////////////////////////////////////////////////////
 
-$BITEXT = 'ensvfbell.ces';   // sentence alignments of your bitext (full path)
-$LANGPAIR = 'ensv';          // language IDs for your language pair
-$INVLANG = 'sven';           // (and target -> source language)
+$BITEXT = 'svenprf.ces';   // sentence alignments of your bitext (full path)
+$LANGPAIR = 'sven';          // language IDs for your language pair
+$INVLANG = 'ensv;';           // (and target -> source language)
 
-$IDS = array();              // this is an array of all bitext segment IDs
-for ($i=1;$i<4210;$i++){     // in your corpus ... maybe you should read this
-    $IDS[] = 'ensvfbell'.$i; // from a file
-}
+$IDS = file('svenprf.ids');
 $UPLUGHOME = 'uplug';        // the relative (or absolute) path to Uplug
                              // this has to be accessible for the PHP script!
-$DATADIR = 'aligned';        // directory for saving data (has to be writable!)
+$DATADIR = 'aligned';    // directory for saving data (has to be writable!)
 
 ///////////////////////////////////////////////////////////////////
 // ... but you probably don't have to touch the settings below ...

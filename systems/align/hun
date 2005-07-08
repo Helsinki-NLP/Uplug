@@ -1,0 +1,47 @@
+{
+  'input' => {
+    'source text' => {
+      'format' => 'XML',
+      'file' => 'data/source.xml',
+      'root' => 's',
+    },
+    'target text' => {
+      'format' => 'XML',
+      'file' => 'data/target.xml',
+      'root' => 's',
+    }
+  },
+  'output' => {
+    'bitext' => {
+      'format' => 'xces align',
+      'write_mode' => 'overwrite',
+    }
+  },
+  'parameter' => {
+      'paragraph boundary' => '(p|head)',
+  },
+  'arguments' => {
+    'shortcuts' => {
+       'src' => 'input:source text:file',
+       'trg' => 'input:target text:file',
+       'out' => 'output:bitext:file',
+    }
+  },
+  'module' => {
+    'program' => 'hunalign.pl',
+    'location' => '$UplugBin',
+    'name' => 'hunalign sentence aligner',
+    'stdout' => 'bitext',
+  },
+  'description' => 'This module calls an external hunalign sentence aligner.',
+  'widgets' => {
+       'input' => {
+	  'source text' => {
+	    'stream name' => 'stream(format=xml,status=(tok|tag|chunk))'
+	  },
+	  'target text' => {
+	    'stream name' => 'stream(format=xml,status=(tok|tag|chunk))'
+	  },
+       },
+  }
+}
