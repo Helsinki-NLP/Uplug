@@ -52,7 +52,7 @@ $DEBUG = 0;
 # parameters for add2LinkCluster
 
 $INPHRASESONLY = 0;          # if = 1 --> no links outside of chunks
-$ADJACENTONLY = 1;           # if = 1 --> allow only adjacent links
+$ADJACENTONLY = 0;           # if = 1 --> allow only adjacent links
 $ADJACENTSCORE = 0;          # if > 0 --> $score >= $neighbor * $ADJACENTSCORE
 # $ALLOWMULTIOVERLAP = 0;      # allow overlap with more than 1 link cluster!
 # $ADJACENTSCORE = 0.4;
@@ -462,15 +462,17 @@ sub topLinkSearch{
     $self->cloneLinkMatrix($LinkProb,\@LinkMatrix);   # clone the matrix
 
     while (($x,$y)=$self->getTopLink(\@LinkMatrix,$MinScore)){
-#	print STDERR "$x:$y\n";
+#	print STDERR "$x:$y:$LinkMatrix[$x][$y]\n";
 	if ($MinScore=~/\%/){
 	    $MinScore=$LinkMatrix[$x][$y]*$MinScore/100;
-	    print STDERR "## minscore == $MinScore\n";
+#	    print STDERR "## minscore == $MinScore\n";
 	}
+	if (not defined($LinkMatrix[$x][$y])){last;}
 	if ($LinkMatrix[$x][$y]<$MinScore){last;}
 
-	$self->add2LinkCluster($x,$y,\@LinkCluster);
-	$LinkMatrix[$x][$y]=0;
+	if ($self->add2LinkCluster($x,$y,\@LinkCluster)){
+	    $LinkMatrix[$x][$y]=0;
+	}
     }
 
 
@@ -683,6 +685,9 @@ sub competitiveSearch{
     my $self=shift;
     my $Links=shift;
     my $MinScore=shift;
+    if (not defined $MinScore){
+	$MinScore=0.00000000000001;
+    }
 
     my $Token=$self->{token};
     my $NrSrc=$#{$$Token{source}};
@@ -705,6 +710,9 @@ sub bidirectionalRefinedSearchOch{
     my $Links=shift;
     my $MinScore=shift;
     my $competitive=shift;
+    if (not defined $MinScore){
+	$MinScore=0.00000000000001;
+    }
 
     my $LinkProb=$self->{matrix};
     my @LinkCluster;
@@ -842,6 +850,9 @@ sub bidirectionalRefinedSearch{
     my $Links=shift;
     my $MinScore=shift;
     my $competitive=shift;
+    if (not defined $MinScore){
+	$MinScore=0.00000000000001;
+    }
 
     my $LinkProb=$self->{matrix};
     my @LinkCluster;
@@ -1271,28 +1282,32 @@ sub add2LinkCluster{
     my ($x,$y,$cluster)=@_;
     my @overlap=$self->findClusterOverlap($x,$y,$cluster);
     if ((not $self->parameter('allow_multiple_overlaps')) and (@overlap>1)){
-#	print STDERR "disregard $x - $y !\n";
+#	print STDERR "disregard $x - $y (multi-overlap)!\n";
 	return 0;
     }
     elsif (@overlap){
 	if ($self->parameter('in_phrases_only')){
 	    if ($self->parameter('fill_phrases')){
 		if (not $self->fillPhrases($x,$y,$cluster,$overlap[0])){
+#		    print STDERR "disregard $x - $y (fill phrase)!\n";
 		    return 0;
 		}
 	    }
 	    if (not $self->isInPhrase($x,$y,$$cluster[$overlap[0]])){
+#		print STDERR "disregard $x - $y (not in phrase)!\n";
 		return 0;
 	    }
 	}
 	if ($self->parameter('adjacent_only')){
 	    if (not $self->isAdjacent($x,$y,$$cluster[$overlap[0]])){
+#		print STDERR "disregard $x - $y (not adjacent)!\n";
 		return 0;
 	    }
 	}
 	if ($self->parameter('adjacent_score')){
 	    if (not $self->isAdjacentScore($x,$y,$$cluster[$overlap[0]],
 				      $self->parameter('adjacent_score'))){
+#s		print STDERR "disregard $x - $y (score difference to adjacent too big)!\n";
 		return 0;
 	    }
 	}

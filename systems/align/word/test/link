@@ -213,7 +213,7 @@
 	'clue dc3p' => 0,
 	'clue dc3x' => 0,
       },
-      'minimal score' => '0.00001',
+#      'minimal score' => '0.000000000001',
       'search' => 'matrix',
        'verbose' => 0,                         # verbose mode
 #      'minimal score' => '70%',
