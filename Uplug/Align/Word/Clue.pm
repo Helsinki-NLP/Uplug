@@ -1237,12 +1237,10 @@ sub getClusterLinks{
 		    $self->ngramIDs($src,$TokenAttr,'source');
 		$$Links{$src}{target}=
 		    $self->ngramIDs($trg,$TokenAttr,'target');
-		my $span=$self->ngramSpans($src,$TokenAttr,'source');
-		if ($span){$$Links{$src}{src}=$span;}
-		$span=$self->ngramSpans($trg,$TokenAttr,'target');
-		if ($span){$$Links{$src}{trg}=$span;}
-		$$Links{$src}{target}=
-		    $self->ngramIDs($trg,$TokenAttr,'target');
+#		my $span=$self->ngramSpans($src,$TokenAttr,'source');
+#		if ($span){$$Links{$src}{src}=$span;}
+#		$span=$self->ngramSpans($trg,$TokenAttr,'target');
+#		if ($span){$$Links{$src}{trg}=$span;}
 		$$Links{$src}{score}=$score;
 	    }
 	}
