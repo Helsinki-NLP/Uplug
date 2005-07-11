@@ -35,12 +35,12 @@ function print_bitext_segment(){
     if (! $nr_trg>0){return 0;}
 
     echo '<div class="bitext">';
-//    echo '<b>source:</b> ';
+    echo '<b>[1]</b> ';
     for ($i=0;$i<=$_SESSION['nrSrc'];$i++){
 	echo '<span id="ws'.$i.'">'.$_SESSION['srcToken:'.$i].'</span> ';
     }
     echo '<br>';
-//    echo '<b>target:</b> ';
+    echo '<b>[2]</b> ';
     for ($i=0;$i<=$_SESSION['nrTrg'];$i++){
 	echo '<span id="wt'.$i.'">'.$_SESSION['trgToken:'.$i].'</span> ';
     }
@@ -314,19 +314,25 @@ function ShowDBM($dbm){
     $command .= ' | tr "\00=>" "~~~" | cut -d "~" -f1,2,5';
 
     ///////////////////////////////////////////////////////////////////////
-    // query the clue DBM ... (this is not safe!!!!)
+    // query the clue DBM ... (this is probably not safe!?!?)
 
     if (($_POST['source'] != "") || ($_POST['target'] != "")){
-	if ($_POST['target'] == ""){
-	    $command .= " | egrep '^ *".utf8_encode($_POST['source'])." *~'";
+
+	// replace all single quotes with nothing
+	// (is that safe enough?)
+	$src_pattern = str_replace("'","",$_POST['source']);
+	$trg_pattern = str_replace("'","",$_POST['target']);
+
+	if ($trg_pattern == ""){
+	    $command .= " | egrep '^ *".utf8_encode($src_pattern)." *~'";
 	}
-	elseif ($_POST['source'] == ""){
-	    $command .= " | egrep '~ *".utf8_encode($_POST['target'])." *~'";
+	elseif ($src_pattern == ""){
+	    $command .= " | egrep '~ *".utf8_encode($trg_pattern)." *~'";
 	}
 	else{
 	    $command = $UPLUGHOME.'/tools/searchdbm '.$CLUES[$dbm];
-	    $command .= ' '.utf8_encode($_POST['source']);
-	    $command .= ' '.utf8_encode($_POST['target']);
+	    $command .= ' '.utf8_encode($src_pattern);
+	    $command .= ' '.utf8_encode($trg_pattern);
 	    $output = shell_exec('ulimit -t 2;'.$command);
 	    list($key,$val) = explode(' => ',$output);
 	    list($src,$trg) = explode("\x00",$key);

@@ -1,5 +1,6 @@
 
-align.php
+ica.php - the Interactive Clue Aligner
+
 
 first attempt to create a simple PHP script for alignment visualization
 and interactive word alignment
