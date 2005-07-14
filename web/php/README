@@ -1,13 +1,19 @@
+isa.php - the Interactive Sentence Aligner
+==========================================
+
+quickstart: run 'make' and open the isa.php script in your browser
+- change settings in the Makefile or in the include/config.isa if 
+  you want to use a different corpus
+
 
 ica.php - the Interactive Clue Aligner
+======================================
 
+quickstart: run 'make wordalign' to create config files and some
+            basic clues and open the ica.php scriptin your browser
+- change the Makefile settings or the include/config.ica to use
+  another corpus
 
-first attempt to create a simple PHP script for alignment visualization
-and interactive word alignment
-- create some clues and make them accessible to the PHP script
-- change settings in config.inc to point to your corpus files 
-  and clue databases
-- run the script in the browser
 
 
 tooltip code: taken from

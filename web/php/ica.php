@@ -5,10 +5,10 @@
 <html>
 <head>
 <title>alignment test</title>
-<link rel="stylesheet" href="align.css" type="text/css">
+<link rel="stylesheet" href="ica.css" type="text/css">
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 
-<?php include_once('java.inc'); ?>
+<?php include('include/java.inc'); ?>
 
 </head>
 <body>
@@ -33,14 +33,30 @@
 //    - learning from alignment changes would be nice!
 
 
-require('config.inc');
-require('display.inc');
-require('cgi.inc');
-require('alignment.inc');
+if (file_exists('include/config.ica')){
+    include('include/config.ica');
+}
+else{
+    include('include/config.inc');
+}
+include('include/display.inc');
+include('include/cgi.inc');
+include('include/wordalign.inc');
+include('include/xmldoc.inc');
 
 if (!file_exists($DATADIR)){
     mkdir($DATADIR);
 }
+if (!file_exists($DATADIR.'/align')){
+    mkdir($DATADIR.'/align');
+}
+if (file_exists($BITEXT) && !file_exists($BITEXT.'.ids')){
+    make_id_file($BITEXT,$BITEXT.'.ids');
+}
+if (file_exists($BITEXT.'.ids')){ // file with sentence link IDs
+    $IDS = file($BITEXT.'.ids');  // used by ICA
+}
+
 
 if ($_REQUEST['save']){
     echo '<div class="status">';
@@ -103,7 +119,7 @@ else{
 
 ?>
 
-<script language="JavaScript" type="text/javascript" src="wz_tooltip.js">
+<script language="JavaScript" type="text/javascript" src="include/wz_tooltip.js">
 </script>
 </body>
 </html>

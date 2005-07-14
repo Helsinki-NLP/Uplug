@@ -70,9 +70,11 @@ function print_clue_matrix(){
 
     $val = $highest;
     $magn = 1;
-    while ((10*$val)<100){
-	$magn *= 10;
-	$val *= 10;
+    if ($highest>0){
+	while ((10*$val)<100){
+	    $magn *= 10;
+	    $val *= 10;
+	}
     }
 
 
@@ -118,8 +120,9 @@ function print_clue_matrix(){
                 onMouseOut=\"unmarkAligned(this,'s$i','t$j','#ff0000','l$in_link')\" 
                 onClick=\"window.location = '$PHP_SELF?rm=$i:$j'\"";
 		if (isset($hex)){
-		    echo " bgcolor=\"#ff$hex$hex\">";
+		    echo " bgcolor=\"#ff$hex$hex\"";
 		}
+		echo ">";
 	    }
 	    else{
 		echo "\n<td class=\"notaligned\" 
@@ -127,8 +130,9 @@ function print_clue_matrix(){
                 onMouseOut=\"unmarkUnaligned(this,'s$i','t$j','#ffffff')\" 
                 onClick=\"window.location = '$PHP_SELF?add=$i:$j'\"";
 		if (isset($hex)){
-		    echo " bgcolor=\"#$hex$hex$hex\">";
+		    echo " bgcolor=\"#$hex$hex$hex\"";
 		}
+		echo ">";
 	    }
 
             //////////////////////////////////////////////

@@ -46,6 +46,7 @@ function remove_link($link){
 
 function save_alignments(){
     global $DATADIR;
+//    $dir = $DATADIR.'/align';
     $dir = $DATADIR;
 
     $filename = $dir.'/'.$_SESSION['id'];
@@ -225,7 +226,7 @@ function align($BITEXT,$ID,&$output){
     $command .= ' -id '.$ID;
 
     if ($ClueSelected){
-	//echo $command;
+//	echo $command;
 	exec('ulimit -t 5;'.$command.' 2>&1',$output);
 //	echo '<pre>';
 //	echo implode("\n",$output);

@@ -4,14 +4,15 @@
 // you should change the following settings
 //////////////////////////////////////////////////////////
 
-$BITEXT = '%%BITEXT%%';   // sentence alignments of your bitext (full path)
-$LANGPAIR = '%%LANGPAIR%%';          // language IDs for your language pair
-$INVLANG = '%%INVLANGPAIR%%';           // (and target -> source language)
+$SRCXML = '%%SRCXML%%';       // source language document (in XML)
+$TRGXML = '%%TRGXML%%';       // target language document (in XML)
+$BITEXT = '%%BITEXT%%';       // sentence alignments of your bitext (full path)
+$LANGPAIR = '%%LANGPAIR%%';   // language IDs for your language pair
+$INVLANG = '%%INVLANGPAIR%%'; // (and target -> source language)
 
-$IDS = file('%%IDFILE%%');
-$UPLUGHOME = '%%UPLUG%%';        // the relative (or absolute) path to Uplug
-                             // this has to be accessible for the PHP script!
-$DATADIR = '%%DATADIR%%';    // directory for saving data (has to be writable!)
+$UPLUGHOME = '%%UPLUG%%';    // path to Uplug (accessible from PHP!)
+//$DATADIR = dirname($BITEXT);//directory for saving data (has to be writable!)
+$DATADIR = '%%DATADIR%%';  // directory for saving data (has to be writable!)
 
 ///////////////////////////////////////////////////////////////////
 // ... but you probably don't have to touch the settings below ...
@@ -19,6 +20,12 @@ $DATADIR = '%%DATADIR%%';    // directory for saving data (has to be writable!)
 
 
 $UPLUG = $UPLUGHOME.'/uplug';
+$ALIGN = $UPLUGHOME.'/ext/align/align2';         // sentence aligner (for ISA)
+$SENTTAG = 's';                                  // sentence tag in XML files
+$SENTLINKTAG = 'link';                           // XML tag for sentence links
+$HARDTAGS = array('p' => 'paragraphs',           // possible XML tags to be
+		  'pb' => 'page breaks');        // used as hard boundaries
+$SHOWMAX = 20;                                   // max nr of sentences in ISA
 $CLUEDIR = 'data/runtime';
 $LANGCLUEDIR = $UPLUGHOME.'/lang/'.$LANGPAIR;
 
