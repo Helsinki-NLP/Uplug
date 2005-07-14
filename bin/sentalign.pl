@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# -*-perl-*-
 #
 # sentalign.pl:
 #
@@ -267,10 +268,10 @@ foreach (@segments){
 
 $output->close;
 
-unlink $TmpSrc;
-unlink $TmpTrg;
-unlink $TmpSrc.'.al';
-unlink $TmpTrg.'.al';
+#unlink $TmpSrc;
+#unlink $TmpTrg;
+#unlink $TmpSrc.'.al';
+#unlink $TmpTrg.'.al';
 
 ############################################################################
 

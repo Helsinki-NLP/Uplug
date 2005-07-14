@@ -77,7 +77,7 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 		    echo ' bgcolor="#efe"';
 		}
 	    }
-	    echo '>'.$buffer.'</td></tr>';
+	    echo '>'.htmlentities($buffer).'</td></tr>';
 
 	    $first = 0;
 	    $src_count++;
@@ -135,7 +135,7 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 		    echo ' bgcolor="#efe"';
 		}
 	    }
-	    echo '>'.$buffer.'</td></tr>';
+	    echo '>'.htmlentities($buffer).'</td></tr>';
 	    $first = 0;
 	    $trg_count++;
 	    $continue++;

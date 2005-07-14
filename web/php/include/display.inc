@@ -13,8 +13,8 @@ function print_alignments(){
     while (isset($_SESSION['alignLex:'.$count])){
 	list($src,$trg) = explode(':',$_SESSION['alignLex:'.$count]);
 	echo "<tr id=\"l$count\">";
-	echo '<td>'.$src.'</td>';
-	echo '<td>'.$trg.'</td>';
+	echo '<td>'.htmlentities($src).'</td>';
+	echo '<td>'.htmlentities($trg).'</td>';
 //	echo '<td>'.$_SESSION['alignScore:'.$count].'</td>';
 	echo '</tr>';
 	$count++;
@@ -40,12 +40,14 @@ function print_bitext_segment(){
     echo '<div class="bitext">';
     echo '<b>[1]</b> ';
     for ($i=0;$i<=$_SESSION['nrSrc'];$i++){
-	echo '<span id="ws'.$i.'">'.$_SESSION['srcToken:'.$i].'</span> ';
+	echo '<span id="ws'.$i.'">';
+	echo htmlentities($_SESSION['srcToken:'.$i]).'</span> ';
     }
     echo '<br>';
     echo '<b>[2]</b> ';
     for ($i=0;$i<=$_SESSION['nrTrg'];$i++){
-	echo '<span id="wt'.$i.'">'.$_SESSION['trgToken:'.$i].'</span> ';
+	echo '<span id="wt'.$i.'">';
+	echo htmlentities($_SESSION['trgToken:'.$i]).'</span> ';
     }
     echo '</div>';
 }
@@ -87,12 +89,13 @@ function print_clue_matrix(){
     echo '<table><tr><th></th>';
 
     for ($j=0;$j<=$nr_trg;$j++){
-	echo "<th id=\"t$j\">".$_SESSION['trgToken:'.$j].'</th>';
+	echo "<th id=\"t$j\">".htmlentities($_SESSION['trgToken:'.$j]).'</th>';
     }
     echo '</tr>';
 
     for ($i=0;$i<=$nr_src;$i++){
-	echo "<tr><th id=\"s$i\">".$_SESSION['srcToken:'.$i].'</th>';
+	echo "<tr><th id=\"s$i\">";
+	echo htmlentities($_SESSION['srcToken:'.$i]).'</th>';
 	for ($j=0;$j<=$nr_trg;$j++){
 
 	    $val = null;
@@ -344,8 +347,8 @@ function ShowDBM($dbm){
 	    list($key,$val) = explode(' => ',$output);
 	    list($src,$trg) = explode("\x00",$key);
 	    list($field,$score) = explode("\x00",$val);
-	    echo '<tr><td>'.utf8_decode($src).'</td>';
-	    echo '<td>'.utf8_decode($trg).'</td>';
+	    echo '<tr><td>'.htmlentities(utf8_decode($src)).'</td>';
+	    echo '<td>'.htmlentities(utf8_decode($trg)).'</td>';
 	    echo '<td>'.$score.'</td></tr>';
 	    echo '</table></div>';
 	    return $output;
@@ -386,8 +389,8 @@ function ShowDBM($dbm){
 
     foreach ($lines as $line){
 	list($src,$trg,$score) = explode("\t",$line);
-	$src = utf8_decode($src);
-	$trg = utf8_decode($trg);
+	$src = htmlentities(utf8_decode($src));
+	$trg = htmlentities(utf8_decode($trg));
 
 	echo '<tr><td>'.$src.'</td><td>'.$trg.'</td><td>'.$score.'</td></tr>';
     }
