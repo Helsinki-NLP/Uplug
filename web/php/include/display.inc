@@ -3,6 +3,9 @@
 
 function print_alignments(){
     $count=0;
+
+    if (!isset($_SESSION['alignLex:'.$count])){return null;}
+
     echo '<div class="alignments">';
     echo '<table><tr><th>source</th><th>target</th>';
 //    echo '<th>score</th>';
