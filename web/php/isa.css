@@ -1,0 +1,47 @@
+
+
+.bitext
+{  
+  border: thin solid #000;
+  background-color: #eef;
+}
+
+.bitext td
+{  
+  vertical-align: top;
+}
+
+
+.bitext-src
+{  
+  border: thin dashed #000;
+  background-color: #fff;
+}
+
+.bitext-trg
+{  
+  border: thin dashed #000;
+  background-color: #fff;
+}
+
+.alignform
+{ 
+  text-align:right;
+}
+
+
+.index
+{ 
+  position: absolute;
+  right: 10px;
+  top: 40px;
+  padding: 10px;
+  }
+
+.status {
+           padding: 5px;
+           position: absolute;
+           right: 10px;
+           top: 10px;
+           background-color: #eeaaaa;
+}
