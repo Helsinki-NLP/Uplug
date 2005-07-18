@@ -77,7 +77,7 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 		    echo ' bgcolor="#efe"';
 		}
 	    }
-	    echo '>'.htmlentities($buffer).'</td></tr>';
+	    echo '>'.$buffer.'</td></tr>';
 
 	    $first = 0;
 	    $src_count++;
@@ -135,7 +135,7 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 		    echo ' bgcolor="#efe"';
 		}
 	    }
-	    echo '>'.htmlentities($buffer).'</td></tr>';
+	    echo '>'.$buffer.'</td></tr>';
 	    $first = 0;
 	    $trg_count++;
 	    $continue++;
@@ -146,7 +146,7 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    if (($trg_count-$trgstart)>$max*1.5) break;
 	}
 	echo '</table></td></tr>';
-	if (($src_count-$srcstart)>$max || ($trg_count-$trgstart)>$max) break;
+	if (($src_count-$srcstart)>=$max||($trg_count-$trgstart)>=$max) break;
     }
     echo '</table>';
 
@@ -294,7 +294,6 @@ function sentence_align($srcfile,$trgfile){
     $command .= ' '.$srctokfile.' '.$trgtokfile;
 
 //    status("aligning input files ... $command");
-    status("input files aligned (if ulimit of 5 seconds not exceeded)!");
 
     exec('ulimit -t 5;'.$command);
 
@@ -305,6 +304,8 @@ function sentence_align($srcfile,$trgfile){
     if (file_exists($trgtokfile)) unlink($trgtokfile);
     if (file_exists($srctokfile.'.al')) unlink($srctokfile.'.al');
     if (file_exists($trgtokfile.'.al')) unlink($trgtokfile.'.al');
+
+    status("input files aligned (if ulimit of 5 seconds not exceeded)!");
 
 }
 

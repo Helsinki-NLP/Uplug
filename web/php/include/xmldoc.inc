@@ -2,34 +2,61 @@
 
 
 $sent_id = null;
-$found_hard = false;
-
 $out = null;            // global file output handler
 
+function read_tag_file($xmlfile,$language){
 
-function doc2sent($xmlfile,$sentfile,$idfile,$boundfile){
+    $filebase = str_replace('.xml','',$xmlfile);
+    $tag_file = $filebase . '.tags';
 
-    status("XML document converted to plain text ... ");
+    if (!file_exists($tag_file)){
+	doc2sent($xmlfile);
+    }
 
-    global $language,$found_hard;
+    $struc_tag = array();
+
+    if (file_exists($tag_file)){
+	$lines = file($tag_file);
+	$lines = array_map("rtrim",$lines);
+	foreach ($lines as $line){
+	    $tags = explode(' ',$line);
+	    $sid = array_pop($tags);
+	    $tags = array_unique($tags);
+
+	    foreach ($tags as $tag){
+		$_SESSION['tag_'.$language.':'.$tag]++;
+		$struc_tag[$tag] = 1;
+		if ($tag == $_SESSION['hardtag']){
+		    $_SESSION[$language.'_hard_'.$sid] = 1;
+		    $_SESSION['nr_'.$language.'_hard']++;
+		}
+	    }
+	    $_SESSION['tags_'.$language]=implode(' ',array_keys($struc_tag));
+	}
+    }
+}
+
+
+function doc2sent($xmlfile){
 
     global $sentFH;
     global $idFH;
-    global $boundFH;
+    global $tagFH;
 
-    $_SESSION['nr_'.$language.'_hard'] = 0;
+    $filebase = str_replace('.xml','',$xmlfile);
+    $sentfile = $filebase . '.sent';    // sentences one per line
+    $idfile = $filebase . '.ids';     // sentence IDs one per line
+    $tagfile = $filebase . '.tags';       // all tags above sentence level
 
     $in = fopen($xmlfile,"r") or exit("unable to open $xmlfile!");
     $sentFH = fopen($sentfile,"w") or exit("unable to open $sentfile!");
     $idFH = fopen($idfile,"w") or exit("unable to open $idfile!");
-    $boundFH = fopen($boundfile,"w") or exit("unable to open $boundfile!");
+    $tagFH = fopen($tagfile,"w") or exit("unable to open $tagfile!");
 
     $xml_parser = xml_parser_create();
     xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);
     xml_set_element_handler($xml_parser, "startElement", "endElement");
     xml_set_character_data_handler($xml_parser, "characterData");
-
-    $found_hard = true;    // always start with a hard boundary!
 
     while ($data = fread($in, 4096)) {
 	if (!xml_parse($xml_parser, $data, feof($in))) {
@@ -41,51 +68,16 @@ function doc2sent($xmlfile,$sentfile,$idfile,$boundfile){
     xml_parser_free($xml_parser);
     fclose($sentFH);
     fclose($idFH);
-    fclose($boundFH);
+    fclose($tagFH);
     fclose($in);
 
+    read_tag_file($xmlfile,$language);
+
+    status("XML document converted to plain text ... ");
 //    echo "done!<br>";
 
 }
 
-
-
-function get_doc_hard($xmlfile,$idfile,$boundfile){
-
-    status("hard boundaries read from XML document ... ");
-
-    global $language,$found_hard;
-
-    global $idFH;
-    global $boundFH;
-
-    $_SESSION['nr_'.$language.'_hard'] = 0;
-
-    $in = fopen($xmlfile,"r") or exit("unable to open $xmlfile!");
-    $idFH = fopen($idfile,"w") or exit("unable to open $idfile!");
-    $boundFH = fopen($boundfile,"w") or exit("unable to open $boundfile!");
-
-    $xml_parser = xml_parser_create();
-    xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);
-    xml_set_element_handler($xml_parser, "startElement","endElementSent");
-
-    $found_hard = true;    // always start with a hard boundary!
-
-    while ($data = fread($in, 4096)) {
-	if (!xml_parse($xml_parser, $data, feof($in))) {
-	    die(sprintf("XML error: %s at line %d",
-			xml_error_string(xml_get_error_code($xml_parser)),
-			xml_get_current_line_number($xml_parser)));
-	}
-    }
-    xml_parser_free($xml_parser);
-    fclose($idFH);
-    fclose($boundFH);
-    fclose($in);
-
-//    echo "done!<br>";
-
-}
 
 
 
@@ -96,46 +88,31 @@ function startElement($parser, $name, $attrs)
 {
     global $SENTTAG;         // sentence tag name
     global $sent_id;          // current sentence ID
-    global $found_hard;       // hard boundary tag found earlier?
-    global $language;         // source | target
 
     global $idFH;
-    global $boundFH;
+    global $tagFH;
 
-    $hard_tag = $_SESSION['hardtag'];
+    // save structure tags before each sentence tag
+    // before checking the tag-name --> include sentence tags
+
+    if ($sent_id == null){
+	fwrite($tagFH,$name.' ');
+    }
 
     if ($name == $SENTTAG){
 	$sent_id = $attrs['id'];
 	fwrite($idFH,$attrs['id']."\n");
-	if (isset($_SESSION[$language.'_hard_'.$sent_id])){
-	    $_SESSION['nr_'.$language.'_hard']++;
-	    fwrite($boundFH,$attrs['id']."\n");
-	    $found_hard = false;
-	}
-	elseif ($found_hard && ($sent_id != null)){
-	    $_SESSION['nr_'.$language.'_hard']++;
-	    $_SESSION[$language.'_hard_'.$sent_id]=1;
-	    fwrite($boundFH,$attrs['id']."\n");
-	    $found_hard = false;
-//	    echo "$language - $sent_id - <br>";
-	}
+	fwrite($tagFH,$attrs['id']."\n");
+    }
 
-    }
-    if ($name == $hard_tag){
-	$found_hard = true;
-    }
+    // after checking the tag-name --> don't include sentence tags
+
+//    if ($sent_id == null){
+//	fwrite($tagFH,$name.' ');
+//    }
+
 }
 
-
-function endElementSent($parser, $name)
-{
-    global $SENTTAG;
-    global $sent_id;
-
-    if ($name == $SENTTAG){
-	$sent_id = null;
-    }
-}
 
 
 function endElement($parser, $name)

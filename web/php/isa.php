@@ -1,6 +1,5 @@
 <?php
 
-
 if (file_exists('include/config.isa')){
     include('include/config.isa');
 }
@@ -60,22 +59,24 @@ $trg_sent_file = $trgbase . '.sent';
 $src_id_file = $srcbase . '.ids';     // sentence IDs one per line
 $trg_id_file = $trgbase . '.ids';
 
-$src_hard_file = $srcbase . '.hard';     // hard boundaries (s-IDs)
-$trg_hard_file = $trgbase . '.hard';
+
 
 if (isset($BITEXT)) $sentalign = $BITEXT;
 else $sentalign = $srcbase.'-'.$trgbase.'.ces';
 
-if (! file_exists($src_sent_file)){
-    $language = 'source';
-    doc2sent($SRCXML,$src_sent_file,$src_id_file,$src_hard_file);
+if (!file_exists($src_sent_file) ||
+    (filemtime($SRCXML) > filemtime($src_sent_file))){
+    doc2sent($SRCXML);
+    $_SESSION['nr_source_hard'] = 0;
+    read_tag_file($SRCXML,'source');
     echo " nr hard boundaries: ".$_SESSION['nr_source_hard']."<br>";
 }
 
-if (! file_exists($trg_sent_file)){
-    $language = 'target';
-    doc2sent($TRGXML,$trg_sent_file,$trg_id_file,$trg_hard_file);
-    $trg_count_hard = $count_hard;
+if (! file_exists($trg_sent_file) ||
+    (filemtime($TRGXML) > filemtime($trg_sent_file))){
+    doc2sent($TRGXML);
+    $_SESSION['nr_source_hard'] = 0;
+    read_tag_file($TRGXML,'target');
     echo " nr hard boundaries: ".$_SESSION['nr_target_hard']."<br>";
 }
 
@@ -135,39 +136,14 @@ if (isset($_REQUEST['hardtag'])){
     $_SESSION['hardtag'] = $_REQUEST['hardtag'];
     if (isset($oldhardtag)){
 	if ($oldhardtag != $_REQUEST['hardtag']){
-	    $language = 'source';
-	    get_doc_hard($SRCXML,$src_id_file,$src_hard_file);
-	    $language = 'target';
-	    get_doc_hard($TRGXML,$trg_id_file,$trg_hard_file);
+	    read_tag_file($SRCXML,'source');
+	    read_tag_file($TRGXML,'target');
 	}
     }
 }
 if (!isset($_SESSION['hardtag'])){
     $_SESSION['hardtag'] = 'p';
 }
-
-echo '<div class="alignform">';
-echo "<form action=\"$PHP_SELF\" method=\"post\">";
-echo '<input type="submit" name="reset" value="reset">';
-if (count($HARDTAGS)>1){
-    echo '<select name="hardtag">';
-    foreach ($HARDTAGS as $tag => $name){
-	if ($_SESSION['hardtag'] == $tag){
-	    echo '<option selected value="'.$tag.'">'.$name.'</option>';
-	}
-	else{
-	    echo '<option value="'.$tag.'">'.$name.'</option>';
-	}
-    }
-}
-else{
-    echo '<input type="hidden" name="hardtag" value="'.$tag.'">';
-}
-echo '</select>';
-echo '<input type="submit" name="save" value="save">';
-echo '<input type="submit" name="align" value="align">';
-echo '</form>';
-echo '</div>';
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -214,35 +190,45 @@ if ($_POST['align']){
     sentence_align($src_sent_file,$trg_sent_file);
 }
 elseif ($_POST['save']){
-    status("bitext saved to ".$sentalign);
     save_sentence_alignment($SRCXML,$TRGXML,$sentalign);
+    status("bitext saved to ".$sentalign);
 }
 elseif ($_POST['reset']){
-    if (file_exists($src_hard_file)){
-	$hard = file($src_hard_file);
-	$hard = array_map("rtrim",$hard);
-	foreach ($hard as $id){
-	    $_SESSION['source_hard_'.$id] = 1;
-	    $_SESSION['nr_source_hard']++;
-	}
-    }
-    else{
-	$language = 'source';
-	doc2sent($SRCXML,$src_sent_file,$src_id_file,$src_hard_file);
-    }
-    if (file_exists($trg_hard_file)){
-	$hard = file($trg_hard_file);
-	$hard = array_map("rtrim",$hard);
-	foreach ($hard as $id){
-	    $_SESSION['target_hard_'.$id] = 1;
-	    $_SESSION['nr_target_hard']++;
-	}
-    }
-    else{
-	$language = 'target';
-	doc2sent($TRGXML,$trg_sent_file,$trg_id_file,$trg_hard_file);
-    }
+    $_SESSION['nr_source_hard'] = 0;
+    $_SESSION['nr_target_hard'] = 0;
+    read_tag_file($SRCXML,'source');
+    read_tag_file($TRGXML,'target');
 }
+
+
+
+echo '<div class="alignform">';
+echo "<form action=\"$PHP_SELF\" method=\"post\">";
+echo '<input type="submit" name="reset" value="reset">';
+
+$srctags = explode(' ',$_SESSION['tags_source']);
+$trgtags = explode(' ',$_SESSION['tags_target']);
+$structags = array_intersect($srctags,$trgtags);
+
+if (count($structags)>1){
+    echo '<select onChange="JavaScript:submit()" name="hardtag">';
+    foreach ($structags as $tag){
+	if ($_SESSION['hardtag'] == $tag){
+	    echo '<option selected value="'.$tag.'">'.$tag.'</option>';
+	}
+	else{
+	    echo '<option value="'.$tag.'">'.$tag.'</option>';
+	}
+    }
+    echo '</select>';
+}
+echo '<input type="submit" name="save" value="save">';
+echo '<input type="submit" name="align" value="align">';
+echo '</form>';
+echo '</div>';
+
+
+
 
 show_bitext($src_sent_file,$trg_sent_file,
 	    $_SESSION['src_start'],

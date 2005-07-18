@@ -62,7 +62,7 @@ CONFIG = include/config.inc
 ISACONFIG = include/config.isa
 ICACONFIG = include/config.ica
 
-# DATADIR = $(shell echo '$(CORPUS)' | sed 's|/[^/]*$$||')
+CORPUSDIR = $(shell echo '$(CORPUS)' | sed 's|/[^/]*$$||')
 DATADIR = $(CORPUS)
 
 # make all .............. make config and data-dirs to run ISA (sentalign)
@@ -73,6 +73,7 @@ DATADIR = $(CORPUS)
 all: sentalign
 
 sentalign: $(SRCXML) $(TRGXML) $(DATADIR) $(ISACONFIG)
+	chmod o+w $(CORPUSDIR)
 
 wordalign: $(SENTALIGN) $(SENTALIGNIDS) $(WORDALIGN) $(DATADIR) $(ICACONFIG)
 
