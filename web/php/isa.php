@@ -331,7 +331,6 @@ echo '<input type="submit" name="align" value="align">';
 echo '</form>';
 echo '</div>';
 
-
 show_bitext($src_sent_file,$trg_sent_file,
 	    $_SESSION['src_start'],
 	    $_SESSION['trg_start'],

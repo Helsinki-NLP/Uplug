@@ -1,10 +1,18 @@
+body{
+font-size: small;
+}
 
-.title{ float:left; }
+.title
+{ 
+position:absolute; 
+top:0px;
+}
 
 .bitext
 {  
   border: thin solid #000;
   background-color: #ccf;
+  clear: both;
 }
 
 .bitext td
@@ -39,7 +47,7 @@ border-top: 2pt solid #fff;
 .alignform
 { 
   text-align:right;
-margin-top: 35px;
+margin-top: 40px;
 }
 
 
