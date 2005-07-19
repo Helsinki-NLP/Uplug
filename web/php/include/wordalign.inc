@@ -234,7 +234,8 @@ function align($BITEXT,$ID,&$output){
 	//exec($command);
     }
     else{
-	echo "<b>Select one or more clues!</b>";
+	echo "<h3 style=\"color:red\">Select one or more clues!</h3>";
+//	status("Select one or more clues!");
     }
 }
 

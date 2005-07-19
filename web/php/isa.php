@@ -1,5 +1,8 @@
 <?php
 
+$DISABLE_SAVE = 1;
+$DISABLE_EMAIL = 0;
+
 if (file_exists('include/config.isa')){
     include('include/config.isa');
 }
@@ -20,6 +23,8 @@ if ($_POST['reset']){                      // reset button pressed -->
     if (isset($hardtag)){
 	$_SESSION['hardtag']=$hardtag;
     }
+//    unset($_SESSION['hardtag']);
+//    $_SESSION['hardtag'] = get_best_hard_tag($SRCXML,$TRGXML);;
 }
 
 $PHP_SELF = $_SERVER['PHP_SELF'];
@@ -88,6 +93,10 @@ $src_ids = array_map("rtrim",$src_ids);
 $trg_ids = array_map("rtrim",$trg_ids);
 
 
+//////////////////////////////////////////////////////////////////
+// get some form data and set SESSION variables
+
+
 if (!isset($_POST['reset'])){
     if (isset($_REQUEST['sadd'])){
 	$idx = $_REQUEST['sadd'];
@@ -130,7 +139,6 @@ if (!isset($_POST['reset'])){
 	}
     }
 }
-
 if (isset($_REQUEST['hardtag'])){
     $oldhardtag = $_SESSION['hardtag'];
     $_SESSION['hardtag'] = $_REQUEST['hardtag'];
@@ -141,8 +149,25 @@ if (isset($_REQUEST['hardtag'])){
 	}
     }
 }
+if (isset($_REQUEST['minlen']))
+    $_SESSION['minlen'] = $_REQUEST['minlen'];
+if (isset($_REQUEST['win']))
+    $_SESSION['win'] = $_REQUEST['win'];
+
+
+
+//////////////////////////////////////////////////////////////
+// set some defaults ....
+
 if (!isset($_SESSION['hardtag'])){
-    $_SESSION['hardtag'] = 'p';
+//    $_SESSION['hardtag'] = 'p';
+    $_SESSION['hardtag'] = get_best_hard_tag($SRCXML,$TRGXML);
+}
+if (!isset($_SESSION['minlen'])){
+    $_SESSION['minlen']=5;
+}
+if (!isset($_SESSION['win'])){
+    $_SESSION['win']=10;
 }
 
 
@@ -193,17 +218,66 @@ elseif ($_POST['save']){
     save_sentence_alignment($SRCXML,$TRGXML,$sentalign);
     status("bitext saved to ".$sentalign);
 }
+elseif ($_POST['mail'] && isset($_POST['email'])){
+    if ($_POST['email'] != 'yourmail@host'){
+	$_SESSION['email'] = $_POST['email'];
+	$_SESSION['format'] = $_POST['format'];
+	if (send_sentence_alignment($SRCXML,$TRGXML,
+				    $sentalign,
+				    $_POST['format'],
+				    $_POST['email'])){
+	    status("bitext sent to ".$_POST['email']);
+	}
+	else{
+	    status("sending to ".$_POST['email'].' failed!');
+	}
+    }
+}
 elseif ($_POST['reset']){
     $_SESSION['nr_source_hard'] = 0;
     $_SESSION['nr_target_hard'] = 0;
     read_tag_file($SRCXML,'source');
     read_tag_file($TRGXML,'target');
 }
+elseif ($_POST['cognates']){
+    add_cognate_boundaries($src_sent_file,$trg_sent_file,
+			   $_SESSION['src_start'],
+			   $_SESSION['trg_start'],
+			   $_SESSION['show_max'],
+			   $_SESSION['win'],
+			   $_SESSION['minlen']);
+}
+
 
 
 
 echo '<div class="alignform">';
 echo "<form action=\"$PHP_SELF\" method=\"post\">";
+
+if (!$DISABLE_EMAIL){
+    $formats = array('xces' => 'XCES Align',
+		     'tmx' => 'TMX',
+		     'text' => 'plain text');
+
+    echo '<input type="submit" name="mail" value="mail">';
+    echo '<select name="format">';
+    foreach ($formats as $format => $name){
+	echo '<option ';
+	if ($format == $_SESSION['format']){
+	    echo 'selected ';
+	}
+	echo 'value="'.$format.'">'.$name.'</option>';
+    }
+    echo '</select>';
+    if (isset($_SESSION['email'])){
+	echo '<input name="email" value="'.$_SESSION['email'].'">';
+    }
+    else{
+	echo '<input name="email" value="yourmail@host">';
+    }
+    echo '&nbsp;&nbsp;&nbsp;';
+}
+
 echo '<input type="submit" name="reset" value="reset">';
 
 $srctags = explode(' ',$_SESSION['tags_source']);
@@ -222,12 +296,37 @@ if (count($structags)>1){
     }
     echo '</select>';
 }
-echo '<input type="submit" name="save" value="save">';
+
+echo '&nbsp;&nbsp;&nbsp;';
+
+echo '<input type="submit" name="cognates" value="cognates">';
+echo '<select name="minlen">';
+for ($i=1;$i<=10;$i++){
+    echo '<option';
+    if ($i == $_SESSION['minlen']){
+	echo ' selected';
+    }
+    echo ' value="'.$i.'">&ge;'.$i.' char</option>';
+}
+echo '</select>';
+echo '<select name="win">';
+for ($i=1;$i<=10;$i++){
+    echo '<option';
+    if ($i == $_SESSION['win']){
+	echo ' selected';
+    }
+    echo ' value="'.$i.'">&le;'.$i.' sentences</option>';
+}
+echo '</select>';
+
+echo '&nbsp;&nbsp;&nbsp;';
+
+if (!$DISABLE_SAVE){
+    echo '<input type="submit" name="save" value="save">';
+}
 echo '<input type="submit" name="align" value="align">';
 echo '</form>';
 echo '</div>';
-
-
 
 
 show_bitext($src_sent_file,$trg_sent_file,

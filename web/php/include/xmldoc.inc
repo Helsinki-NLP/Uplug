@@ -4,6 +4,27 @@
 $sent_id = null;
 $out = null;            // global file output handler
 
+function get_best_hard_tag($srcxml,$trgxml){
+    read_tag_file($srcxml,'source');
+    read_tag_file($trgxml,'target');
+    $srctags = explode(' ',$_SESSION['tags_source']);
+    $trgtags = explode(' ',$_SESSION['tags_target']);
+    $structags = array_intersect($srctags,$trgtags);
+    $nr=0;
+    $besttag='';
+    foreach ($structags as $tag){
+//	echo $_SESSION['tag_source:'.$tag].' - '.$_SESSION['tag_target:'.$tag]."<br>";
+	if ($_SESSION['tag_source:'.$tag] == $_SESSION['tag_target:'.$tag]){
+	    if ($_SESSION['tag_source:'.$tag]>$nr){
+		$nr=$_SESSION['tag_source:'.$tag];
+		$besttag=$tag;
+	    }
+	}
+    }
+    return $besttag;
+}
+
+
 function read_tag_file($xmlfile,$language){
 
     $filebase = str_replace('.xml','',$xmlfile);

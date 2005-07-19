@@ -14,6 +14,9 @@ $UPLUGHOME = '%%UPLUG%%';    // path to Uplug (accessible from PHP!)
 //$DATADIR = dirname($BITEXT);//directory for saving data (has to be writable!)
 $DATADIR = '%%DATADIR%%';  // directory for saving data (has to be writable!)
 
+$MYEMAIL = 'ica@localhost';
+$MYNAME = 'Interactive Clue Aligner';
+
 ///////////////////////////////////////////////////////////////////
 // ... but you probably don't have to touch the settings below ...
 ///////////////////////////////////////////////////////////////////
