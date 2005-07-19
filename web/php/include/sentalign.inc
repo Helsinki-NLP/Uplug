@@ -172,40 +172,40 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    }
 	    if ($first){
 		echo "\n<tr
-                onMouseOver=\"setStyle(this,'backgroundColor','#fee')\" 
+                onMouseOver=\"setStyle(this,'backgroundColor','#fcc')\" 
                 onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
                 onClick=\"window.location='$PHP_SELF?srm=$src_count$anchor'\">";
 		echo "<td
-                onMouseOver=\"setStyle(this,'borderTop','medium solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','medium solid white')\">";
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
 		echo $src_ids[$src_count].'</td>';
 		echo "<td
-                onMouseOver=\"setStyle(this,'borderTop','medium solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','medium solid white')\"";
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
 	    }
 	    else{
 		echo "\n<tr
-                onMouseOver=\"setStyle(this,'backgroundColor','#efe')\" 
+                onMouseOver=\"setStyle(this,'backgroundColor','#cfc')\" 
                 onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
                 onClick=\"window.location='$PHP_SELF?sadd=$src_count$anchor'\">";
 		echo "<td
-                onMouseOver=\"setStyle(this,'borderTop','medium solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','medium solid white')\">";
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
 		echo $src_ids[$src_count].'</td>';
 		echo "<td
-                onMouseOver=\"setStyle(this,'borderTop','medium solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','medium solid white')\"";
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
 	    }
 	    if (isset($new_src_boundary)){
 		if (($new_src_boundary == $src_ids[$src_count]) ||
 		    ($new_src_boundary == $src_ids[$src_count+1])){
-		    echo ' bgcolor="#fee"';
+		    echo ' bgcolor="#FFCCCC"';
 		}
 	    }
 	    if (isset($removed_src_boundary)){
 		if (($removed_src_boundary == $src_ids[$src_count]) ||
 		    ($removed_src_boundary == $src_ids[$src_count+1])){
-		    echo ' bgcolor="#efe"';
+		    echo ' bgcolor="#CCFFCC"';
 		}
 	    }
 	    echo '>'.$buffer.'</td></tr>';
@@ -230,40 +230,40 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    }
 	    if ($first){
 		echo "\n<tr
-                onMouseOver=\"setStyle(this,'backgroundColor','#fee')\" 
+                onMouseOver=\"setStyle(this,'backgroundColor','#fcc')\" 
                 onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
                 onClick=\"window.location='$PHP_SELF?trm=$trg_count$anchor'\">";
 		echo "<td
-                onMouseOver=\"setStyle(this,'borderTop','medium solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','medium solid white')\">";
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
 		echo $trg_ids[$trg_count].'</td>';
 		echo "<td
-                onMouseOver=\"setStyle(this,'borderTop','medium solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','medium solid white')\"";
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
 	    }
 	    else{
 		echo "\n<tr
-                onMouseOver=\"setStyle(this,'backgroundColor','#efe')\" 
+                onMouseOver=\"setStyle(this,'backgroundColor','#cfc')\" 
                 onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
                 onClick=\"window.location='$PHP_SELF?tadd=$trg_count$anchor'\">";
 		echo "<td
-                onMouseOver=\"setStyle(this,'borderTop','medium solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','medium solid white')\">";
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
 		echo $trg_ids[$trg_count].'</td>';
 		echo "<td
-                onMouseOver=\"setStyle(this,'borderTop','medium solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','medium solid white')\"";
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
 	    }
 	    if (isset($new_trg_boundary)){
 		if (($new_trg_boundary == $trg_ids[$trg_count]) ||
 		    ($new_trg_boundary == $trg_ids[$trg_count+1])){
-		    echo ' bgcolor="#fee"';
+		    echo ' bgcolor="#FFCCCC"';
 		}
 	    }
 	    if (isset($removed_trg_boundary)){
 		if (($removed_trg_boundary == $trg_ids[$trg_count]) ||
 		    ($removed_trg_boundary == $trg_ids[$trg_count+1])){
-		    echo ' bgcolor="#efe"';
+		    echo ' bgcolor="#CCFFCC"';
 		}
 	    }
 	    echo '>'.$buffer.'</td></tr>';

@@ -1,9 +1,10 @@
 
+.title{ float:left; }
 
 .bitext
 {  
   border: thin solid #000;
-  background-color: #eef;
+  background-color: #ccf;
 }
 
 .bitext td
@@ -14,34 +15,46 @@
 
 .bitext-src
 {  
-  border: thin dashed #000;
+  border: 1px dashed #000;
   background-color: #fff;
 }
 
 .bitext-trg
 {  
-  border: thin dashed #000;
+  border: 1px dashed #000;
   background-color: #fff;
 }
+
+.bitext-src td
+{  
+border-top: 2pt solid #fff;
+  }
+
+.bitext-trg td
+{  
+border-top: 2pt solid #fff;
+  }
+
 
 .alignform
 { 
   text-align:right;
+margin-top: 35px;
 }
 
 
 .index
 { 
   position: absolute;
-  right: 10px;
-  top: 40px;
+  right: 5px;
+  top: 5px;
   padding: 10px;
   }
 
 .status {
            padding: 5px;
            position: absolute;
-           right: 10px;
-           top: 10px;
+           left: 10px;
+           top: 70px;
            background-color: #eeaaaa;
 }

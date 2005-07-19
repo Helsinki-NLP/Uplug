@@ -50,7 +50,9 @@ $PHP_SELF = $_SERVER['PHP_SELF'];
 </head>
 <body>
 
+<div class="title">
 <h1>Interactive Sentence Alignment</h1>
+</div>
 
 <?php
 
@@ -254,52 +256,9 @@ elseif ($_POST['cognates']){
 echo '<div class="alignform">';
 echo "<form action=\"$PHP_SELF\" method=\"post\">";
 
-if (!$DISABLE_EMAIL){
-    $formats = array('xces' => 'XCES Align',
-		     'tmx' => 'TMX',
-		     'text' => 'plain text');
+//echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+//echo '<br>';
 
-    echo '<input type="submit" name="mail" value="mail">';
-    echo '<select name="format">';
-    foreach ($formats as $format => $name){
-	echo '<option ';
-	if ($format == $_SESSION['format']){
-	    echo 'selected ';
-	}
-	echo 'value="'.$format.'">'.$name.'</option>';
-    }
-    echo '</select>';
-    if (isset($_SESSION['email'])){
-	echo '<input name="email" value="'.$_SESSION['email'].'">';
-    }
-    else{
-	echo '<input name="email" value="yourmail@host">';
-    }
-    echo '&nbsp;&nbsp;&nbsp;';
-}
-
-echo '<input type="submit" name="reset" value="reset">';
-
-$srctags = explode(' ',$_SESSION['tags_source']);
-$trgtags = explode(' ',$_SESSION['tags_target']);
-$structags = array_intersect($srctags,$trgtags);
-
-if (count($structags)>1){
-    echo '<select onChange="JavaScript:submit()" name="hardtag">';
-    foreach ($structags as $tag){
-	if ($_SESSION['hardtag'] == $tag){
-	    echo '<option selected value="'.$tag.'">'.$tag.'</option>';
-	}
-	else{
-	    echo '<option value="'.$tag.'">'.$tag.'</option>';
-	}
-    }
-    echo '</select>';
-}
-
-echo '&nbsp;&nbsp;&nbsp;';
-
-echo '<input type="submit" name="cognates" value="cognates">';
 echo '<select name="minlen">';
 for ($i=1;$i<=10;$i++){
     echo '<option';
@@ -318,8 +277,52 @@ for ($i=1;$i<=10;$i++){
     echo ' value="'.$i.'">&le;'.$i.' sentences</option>';
 }
 echo '</select>';
+echo '<input type="submit" name="cognates" value="cognates">';
 
-echo '&nbsp;&nbsp;&nbsp;';
+//echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+echo '<br>';
+
+if (!$DISABLE_EMAIL){
+    $formats = array('xces' => 'XCES Align',
+		     'tmx' => 'TMX',
+		     'text' => 'plain text');
+    echo '<select name="format">';
+    foreach ($formats as $format => $name){
+	echo '<option ';
+	if ($format == $_SESSION['format']){
+	    echo 'selected ';
+	}
+	echo 'value="'.$format.'">'.$name.'</option>';
+    }
+    echo '</select>';
+    if (isset($_SESSION['email'])){
+	echo '<input name="email" value="'.$_SESSION['email'].'">';
+    }
+    else{
+	echo '<input size="15" name="email" value="yourmail@host">';
+    }
+    echo '<input type="submit" name="mail" value="mail">';
+//    echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+    echo '<br>';
+}
+
+$srctags = explode(' ',$_SESSION['tags_source']);
+$trgtags = explode(' ',$_SESSION['tags_target']);
+$structags = array_intersect($srctags,$trgtags);
+
+if (count($structags)>1){
+    echo '<select onChange="JavaScript:submit()" name="hardtag">';
+    foreach ($structags as $tag){
+	if ($_SESSION['hardtag'] == $tag){
+	    echo '<option selected value="'.$tag.'">'.$tag.'</option>';
+	}
+	else{
+	    echo '<option value="'.$tag.'">'.$tag.'</option>';
+	}
+    }
+    echo '</select>';
+}
+echo '<input type="submit" name="reset" value="reset">';
 
 if (!$DISABLE_SAVE){
     echo '<input type="submit" name="save" value="save">';
