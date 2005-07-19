@@ -45,7 +45,10 @@
 	20 => '(\A\p{P}|[\p{P}\s]\p{P})(\P{P})',  # (\A or P or \s) + P + non-P
 	40 => '(``)(\S)',                         # special treatment for ``
 
-	50 => '(\p{P})(?!\1)',    # split punctuations if they are not te same
+	# separate punctuations if they are not the same
+	# (use negative look-ahead for that!)
+
+	50 => '(\p{P})(?!\1)',
 
 	100 => '  +',                            # delete multiple spaces
     },
