@@ -35,17 +35,20 @@
     },
     'split pattern' => {
 
-       # 10: full stop + 0 or more whitespaces + end-of-line
-       # 20: full stop + 1 or more whitespaces + 
-       #                     (upper case letter|number|opening punctuation)
+       # 10: full stop + maybe ["'] + 0 or more whitespaces + end-of-line
+       # 20: full stop + 
+       #     maybe ["'] + 
+       #     1 or more whitespaces + 
+       #     maybe ["'] +
+       #     (upper case letter|number|opening punctuation)
 
-       10 => '([\.\!\?\¿\:])\s*(\Z)',
-       20 => '([\.\!\?\¿\:])\s+([\p{Lu}\p{N}\p{Ps}])',
+       10 => '([\.\!\?\¿\:][\"\']?)\s*(\Z)',
+       20 => '([\.\!\?\¿\:][\"\']?)\s+([\"\']?[\p{Lu}\p{N}\p{Ps}])',
 
     },
     'exceptions' => {
-       't.ex.' => 'abbr',
-	'el.' => 'abbr',
+#       't.ex.' => 'abbr',
+#	'el.' => 'abbr',
     },
     'word delimiter' => {
        'exceptions' => '\b',
