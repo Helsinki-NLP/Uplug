@@ -1,6 +1,6 @@
 <?php
 
-$DISABLE_SAVE = 1;
+$DISABLE_SAVE = 0;
 $DISABLE_EMAIL = 0;
 
 if (file_exists('include/config.isa')){
@@ -70,6 +70,7 @@ $trg_id_file = $trgbase . '.ids';
 
 if (isset($BITEXT)) $sentalign = $BITEXT;
 else $sentalign = $srcbase.'-'.$trgbase.'.ces';
+
 
 if (!file_exists($src_sent_file) ||
     (filemtime($SRCXML) > filemtime($src_sent_file))){
@@ -146,11 +147,25 @@ if (isset($_REQUEST['hardtag'])){
     $_SESSION['hardtag'] = $_REQUEST['hardtag'];
     if (isset($oldhardtag)){
 	if ($oldhardtag != $_REQUEST['hardtag']){
-	    read_tag_file($SRCXML,'source');
-	    read_tag_file($TRGXML,'target');
+	    if ($_REQUEST['hardtag'] == 'link'){
+		read_links($sentalign);
+	    }
+	    else{
+		read_tag_file($SRCXML,'source');
+		read_tag_file($TRGXML,'target');
+	    }
+	    status('added '.$_SESSION['tag_source:'.$_REQUEST['hardtag']].' (source) and '.$_SESSION['tag_target:'.$_REQUEST['hardtag']].' (target) <'.$_REQUEST['hardtag'].'> tag boundaries!');
 	}
     }
 }
+
+if (file_exists($sentalign)){
+    if ((!$_SESSION['read_links_time']) ||
+	(filemtime($sentalign) > $_SESSION['read_links_time'])){
+	read_links($sent_align);
+    }
+}
+
 if (isset($_REQUEST['minlen']))
     $_SESSION['minlen'] = $_REQUEST['minlen'];
 if (isset($_REQUEST['win']))
@@ -240,6 +255,9 @@ elseif ($_POST['reset']){
     $_SESSION['nr_target_hard'] = 0;
     read_tag_file($SRCXML,'source');
     read_tag_file($TRGXML,'target');
+    if (file_exists($sentalign)){
+	read_links($sentalign);
+    }
 }
 elseif ($_POST['cognates']){
     add_cognate_boundaries($src_sent_file,$trg_sent_file,
@@ -309,6 +327,9 @@ if (!$DISABLE_EMAIL){
 $srctags = explode(' ',$_SESSION['tags_source']);
 $trgtags = explode(' ',$_SESSION['tags_target']);
 $structags = array_intersect($srctags,$trgtags);
+if (file_exists($sentalign)){
+    $structags[] = 'link';
+}
 
 if (count($structags)>1){
     echo '<select onChange="JavaScript:submit()" name="hardtag">';

@@ -164,7 +164,7 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 
 	$first = 1;
 	$anchor = '';
-	echo '<tr><td><table width="100%" class="bitext-src">';
+	echo '<tr><td width="50%"><table width="100%" class="bitext-src">';
 	while ($buffer = fgets($src,4096)) {
 	    echo '<a name="src'.$src_ids[$src_count].'">';
 	    if ($src_count>4){
@@ -175,7 +175,7 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
                 onMouseOver=\"setStyle(this,'backgroundColor','#fcc')\" 
                 onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
                 onClick=\"window.location='$PHP_SELF?srm=$src_count$anchor'\">";
-		echo "<td
+		echo "<td width=\"10%\"
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
                 onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
 		echo $src_ids[$src_count].'</td>';
@@ -228,15 +228,14 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    if ($trg_count>4){
 		$anchor = '#trg'.$trg_ids[$trg_count-4];
 	    }
+
+	    // print the sentence
+
 	    if ($first){
 		echo "\n<tr
                 onMouseOver=\"setStyle(this,'backgroundColor','#fcc')\" 
                 onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
                 onClick=\"window.location='$PHP_SELF?trm=$trg_count$anchor'\">";
-		echo "<td
-                onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
-		echo $trg_ids[$trg_count].'</td>';
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
                 onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
@@ -246,10 +245,6 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
                 onMouseOver=\"setStyle(this,'backgroundColor','#cfc')\" 
                 onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
                 onClick=\"window.location='$PHP_SELF?tadd=$trg_count$anchor'\">";
-		echo "<td
-                onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
-		echo $trg_ids[$trg_count].'</td>';
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
                 onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
@@ -266,7 +261,23 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 		    echo ' bgcolor="#CCFFCC"';
 		}
 	    }
-	    echo '>'.$buffer.'</td></tr>';
+	    echo '>'.$buffer.'</td>';
+
+	    // print the sentence ID
+
+	    if ($first){
+		echo "<td width=\"10%\"
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
+	    }
+	    else{
+		echo "<td
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
+	    }
+	    echo $trg_ids[$trg_count].'</td></tr>';
+
+
 	    $first = 0;
 	    $trg_count++;
 	    $continue++;

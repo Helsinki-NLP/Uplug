@@ -1,11 +1,12 @@
 body{
-font-size: small;
+  font-size: 12px;
+/*  font-family: arial, helvetica, sans-serif; */
 }
 
 .title
 { 
-position:absolute; 
-top:0px;
+  position:absolute; 
+  top:0px;
 }
 
 .bitext
@@ -35,13 +36,20 @@ top:0px;
 
 .bitext-src td
 {  
-border-top: 2pt solid #fff;
-  }
+  border-top: 2pt solid #fff;
+  padding-top: 0px;
+  padding-bottom: 1px;
+  margin: 0px;
+  text-align: right;
+}
 
 .bitext-trg td
 {  
-border-top: 2pt solid #fff;
-  }
+  border-top: 2pt solid #fff;
+  padding-top: 0px;
+  padding-bottom: 1px;
+  margin: 0px;
+}
 
 
 .alignform

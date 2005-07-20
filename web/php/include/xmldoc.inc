@@ -173,11 +173,11 @@ function status($message){
 
 $sidFH = null;
 
-function make_id_file($bitext,$idfile){
+function make_id_file($xmlfile,$idfile){
 
     global $sidFH;
 
-    $inFH = fopen($bitext,"r") or exit("unable to open $bitext!");
+    $inFH = fopen($xmlfile,"r") or exit("unable to open $xmlfile!");
     $sidFH = fopen($idfile,"w") or exit("unable to open $idfile!");
 
 //    status("create link ID file ...");
@@ -214,6 +214,80 @@ function IdStartElement($parser, $name, $attrs)
 // this function does nothing
 
 function IdEndElement($parser, $name)
+{
+}
+
+
+
+// make the id-file for sentence alignments (used by ICA)
+
+
+function read_links($xmlfile){
+
+    if (!file_exists($xmlfile)) return null;
+    $inFH = fopen($xmlfile,"r") or exit("unable to open $xmlfile!");
+
+    $_SESSION['read_links_time'] = time();
+    $_SESSION['tag_source:link']=0;
+    $_SESSION['tag_target:link']=0;
+
+//    status("create link ID file ...");
+
+    $xml_parser = xml_parser_create();
+    xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);
+    xml_set_element_handler($xml_parser, "LinkStartElement","LinkEndElement");
+
+    while ($data = fread($inFH, 4096)) {
+	if (!xml_parse($xml_parser, $data, feof($inFH))) {
+	    die(sprintf("XML error: %s at line %d",
+			xml_error_string(xml_get_error_code($xml_parser)),
+			xml_get_current_line_number($xml_parser)));
+	}
+    }
+    xml_parser_free($xml_parser);
+    fclose($inFH);
+//    $_SESSION['tags_source'] .= ' link';
+//    $_SESSION['tags_target'] .= ' link';
+}
+
+function notempty($var){
+    return ($var != '');
+}
+
+// if tag = link --> save boundaries!
+
+function LinkStartElement($parser, $name, $attrs)
+{
+    if ($name == 'link'){
+	$link = $attrs['xtargets'];
+//	echo '--'.$link.'--<br>';
+	list($src,$trg) = explode(';',$link);
+	$srcids = explode(' ',$src);
+	$srcids = array_filter($srcids,"notempty");
+	$trgids = explode(' ',$trg);
+	$trgids = array_filter($trgids,"notempty");
+
+	$firstsrc = array_shift($srcids);
+	$firsttrg = array_shift($trgids);
+
+	if ($_SESSION['hardtag'] == 'link'){
+	    $_SESSION['tag_source:link']++;
+	    $_SESSION['tag_target:link']++;
+	    if (!isset($_SESSION['source_hard_'.$firstsrc])){
+		$_SESSION['source_hard_'.$firstsrc] = 1;
+		$_SESSION['nr_source_hard']++;
+	    }
+	    if (!isset($_SESSION['target_hard_'.$firsttrg])){
+		$_SESSION['target_hard_'.$firsttrg] = 1;
+		$_SESSION['nr_target_hard']++;
+	    }
+	}
+    }
+}
+
+// this function does nothing
+
+function LinkEndElement($parser, $name)
 {
 }
 
