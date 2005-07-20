@@ -1,11 +1,25 @@
 <?php
 
 
-function WeightSelectionBox($name,$selected){
+function WeightSelectionBoxOld($name,$selected){
     echo "<select name=\"$name\">";
     for ($i=0.01;$i<1;$i+=0.03){
 //	if ($i == $selected){
 	if ($i < ($selected+0.005) && ($i > $selected-0.005)){
+	    echo "<option selected>$i</option>";
+	}
+	else{
+	    echo "<option>$i</option>";
+	}
+    }
+    echo '</select>';
+}
+
+function WeightSelectionBox($name,$selected,$start,$end,$steps){
+    echo "<select name=\"$name\">";
+    for ($i=$start;$i<=$end;$i+=$steps){
+//	if ($i == $selected){
+	if ($i < ($selected+$steps/2) && ($i > $selected-$steps/2)){
 	    echo "<option selected>$i</option>";
 	}
 	else{
@@ -77,7 +91,7 @@ function AlignForm(){
 	    echo $clue;
 	    echo '</a>&nbsp;&nbsp;';
 	    echo '</td><td>';
-	    WeightSelectionBox($clue.'_w',$_SESSION[$clue.'_w']);
+	    WeightSelectionBox($clue.'_w',$_SESSION[$clue.'_w'],0.01,1,0.03);
 	    echo '</td></tr>'."\n";
 	    $count++;
     }
@@ -106,6 +120,7 @@ function AlignForm(){
     echo '</select>';
 
     echo SearchSelectionBox($_SESSION['search']);
+    echo WeightSelectionBox('minscore',$_SESSION['minscore'],0,0.5,0.001);
 
     echo '<input type="submit" name="align" value="align">';
     echo '<input type="submit" name="save" value="save">';

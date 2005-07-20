@@ -642,7 +642,8 @@ sub directionalSrcSearch{
     my @SrcLinks=$self->bestSrcLinks($MinScore,$competitive);
 
     foreach (0..$#SrcLinks){
-	if (defined $SrcLinks[$_]){
+	if ((defined $SrcLinks[$_]) and 
+	    ($SrcLinks[$_] > 0)){
 	    $self->add2LinkCluster($_,$SrcLinks[$_],\@LinkCluster);
 	}
     }
@@ -665,7 +666,8 @@ sub directionalTrgSearch{
 
     my @TrgLinks=$self->bestTrgLinks($MinScore,$competitive);
     foreach (0..$#TrgLinks){
-	if (defined $TrgLinks[$_]){
+	if ((defined $TrgLinks[$_]) and 
+	    ($TrgLinks[$_] > 0)){
 	    $self->add2LinkCluster($TrgLinks[$_],$_,\@LinkCluster);
 	}
     }
@@ -1169,6 +1171,7 @@ sub sortLinks{
     foreach my $x (0..$#{$LinkProb}){
 	foreach my $y (0..$#{$$LinkProb[$x]}){
 	    if ($$LinkProb[$x][$y]<$MinScore){next;}
+	    if ($$LinkProb[$x][$y]<=0){next;}
 	    $self->{ALLLINKS}->{"$x:$y"}=$$LinkProb[$x][$y];
 	}
     }

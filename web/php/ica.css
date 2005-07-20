@@ -1,4 +1,9 @@
 
+body{
+  font-size: 12px;
+/*  font-family: arial, helvetica, sans-serif; */
+}
+
 .status {
            padding: 5px;
            position: absolute;
@@ -58,7 +63,8 @@
 
 
 .cluematrix td {
-  font-size: small;
+/*  font-size: small; */
+  font-size: 10px;
   text-align: center;
 }
 

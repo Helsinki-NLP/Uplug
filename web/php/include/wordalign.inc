@@ -223,6 +223,11 @@ function align($BITEXT,$ID,&$output){
     if (isset($_SESSION['search'])){
 	$command .= ' -search '.$_SESSION['search'];
     }
+    if (isset($_SESSION['minscore'])){
+	if ($_SESSION['minscore']>0){
+	    $command .= ' -min '.$_SESSION['minscore'];
+	}
+    }
     $command .= ' -id '.$ID;
 
     if ($ClueSelected){
