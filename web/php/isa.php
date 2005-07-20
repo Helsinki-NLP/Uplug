@@ -43,7 +43,7 @@ $PHP_SELF = $_SERVER['PHP_SELF'];
                       "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>alignment test</title>
+<title>Interactive Sentence Alignment (ISA)</title>
 <link rel="stylesheet" href="isa.css" type="text/css">
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 <?php include('include/java.inc'); ?>
@@ -51,7 +51,7 @@ $PHP_SELF = $_SERVER['PHP_SELF'];
 <body>
 
 <div class="title">
-<h1>Interactive Sentence Alignment</h1>
+<h1><a href="doc/isa.html">Interactive Sentence Alignment</a></h1>
 </div>
 
 <?php
@@ -352,10 +352,30 @@ echo '<input type="submit" name="align" value="align">';
 echo '</form>';
 echo '</div>';
 
+echo '<div class="help"><a ';
+echo "onMouseOver=\"return escape('";
+echo '<ul><li>click on green highlighting: add boundary';
+echo '<li>click on red highlighting: remove boundary';
+echo '<li>cognates: add boundaries before sentence pairs containing identical words';
+echo '<li>mail: send sentence alignments via e-mail';
+echo '<li>reset: delete <b>all</b> boundaries in the <b>entire</b> document and restore initial boundaries';
+echo '<li>save: save alignments on the server';
+echo '<li>align: run the automatic sentence aligner</ul>';
+echo 'click for more help ...';
+echo "')\"";
+echo ' href="doc/isa.html">Help?</a></div>';
+
 show_bitext($src_sent_file,$trg_sent_file,
 	    $_SESSION['src_start'],
 	    $_SESSION['trg_start'],
 	    $_SESSION['show_max']);
 
 
+
 ?>
+
+<script language="JavaScript" type="text/javascript" src="include/wz_tooltip.js">
+
+</script>
+</body>
+</html>

@@ -4,7 +4,7 @@
                       "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>alignment test</title>
+<title>Interactive Clue Aligner (ICA)</title>
 <link rel="stylesheet" href="ica.css" type="text/css">
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 
