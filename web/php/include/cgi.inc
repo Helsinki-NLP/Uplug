@@ -123,10 +123,15 @@ function AlignForm(){
     echo WeightSelectionBox('minscore',$_SESSION['minscore'],0,0.5,0.001);
 
     echo '<input type="submit" name="align" value="align">';
-    echo '<input type="submit" name="save" value="save">';
+    global $DISABLE_SAVE;
+    if (!$DISABLE_SAVE){
+	echo '<input type="submit" name="save" value="save">';
+    }
     if (isset($next_selected)){
-	echo ' [ <a href="'.$PHP_SELF.'?save=save&align=align&id='.$next_selected.'">';
-	echo ' save &amp; align next </a> ] ';
+	if (!$DISABLE_SAVE){
+	    echo ' [ <a href="'.$PHP_SELF.'?save=save&align=align&id='.$next_selected.'">';
+	    echo ' save &amp; align next </a> ] ';
+	}
 	echo ' [ <a href="'.$PHP_SELF.'?align=align&id='.$next_selected.'">';
 	echo ' align next </a> ] ';
 

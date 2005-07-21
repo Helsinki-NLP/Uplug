@@ -17,6 +17,9 @@ $DATADIR = '%%DATADIR%%';  // directory for saving data (has to be writable!)
 $MYEMAIL = 'ica@localhost';
 $MYNAME = 'Interactive Clue Aligner';
 
+$DISABLE_SAVE = 0;
+$DISABLE_EMAIL = 0;
+
 ///////////////////////////////////////////////////////////////////
 // ... but you probably don't have to touch the settings below ...
 ///////////////////////////////////////////////////////////////////

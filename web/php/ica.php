@@ -4,7 +4,7 @@
                       "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Interactive Clue Aligner (ICA)</title>
+<title>Interactive Clue Aligner (ICA)<</title>
 <link rel="stylesheet" href="ica.css" type="text/css">
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 
@@ -58,7 +58,7 @@ if (file_exists($BITEXT.'.ids')){ // file with sentence link IDs
 }
 
 
-if ($_REQUEST['save']){
+if ($_REQUEST['save'] && !$DISABLE_SAVE){
     echo '<div class="status">';
     link_clusters();
     get_alignments();
