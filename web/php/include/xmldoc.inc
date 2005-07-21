@@ -4,12 +4,19 @@
 $sent_id = null;
 $out = null;            // global file output handler
 
-function get_best_hard_tag($srcxml,$trgxml){
+function get_best_hard_tag($srcxml,$trgxml,$sentalign){
+
     read_tag_file($srcxml,'source');
     read_tag_file($trgxml,'target');
+    if (file_exists($sentalign)){
+	read_links($sentalign);
+    }
     $srctags = explode(' ',$_SESSION['tags_source']);
     $trgtags = explode(' ',$_SESSION['tags_target']);
     $structags = array_intersect($srctags,$trgtags);
+    if (file_exists($sentalign)){
+	$structags[] = 'link';
+    }
     $nr=0;
     $besttag='';
     foreach ($structags as $tag){
@@ -26,6 +33,8 @@ function get_best_hard_tag($srcxml,$trgxml){
 
 
 function read_tag_file($xmlfile,$language){
+
+//    echo "read $language ...<br>";
 
     $filebase = str_replace('.xml','',$xmlfile);
     $tag_file = $filebase . '.tags';
@@ -52,8 +61,8 @@ function read_tag_file($xmlfile,$language){
 		    $_SESSION['nr_'.$language.'_hard']++;
 		}
 	    }
-	    $_SESSION['tags_'.$language]=implode(' ',array_keys($struc_tag));
 	}
+	$_SESSION['tags_'.$language]=implode(' ',array_keys($struc_tag));
     }
 }
 
@@ -270,9 +279,10 @@ function LinkStartElement($parser, $name, $attrs)
 	$firstsrc = array_shift($srcids);
 	$firsttrg = array_shift($trgids);
 
+	$_SESSION['tag_source:link']++;
+	$_SESSION['tag_target:link']++;
+
 	if ($_SESSION['hardtag'] == 'link'){
-	    $_SESSION['tag_source:link']++;
-	    $_SESSION['tag_target:link']++;
 	    if (!isset($_SESSION['source_hard_'.$firstsrc])){
 		$_SESSION['source_hard_'.$firstsrc] = 1;
 		$_SESSION['nr_source_hard']++;

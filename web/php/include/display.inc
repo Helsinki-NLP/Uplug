@@ -145,7 +145,8 @@ function print_clue_matrix(){
 	    // tooltip popup for showing mathcing clues
 
 	    if (isset($_SESSION['clues:'.$i.':'.$j])){
-		echo "\n<span onMouseOver=\"this.T_FONTSIZE='14px';return escape('";
+//		echo "\n<span onMouseOver=\"this.T_FONTSIZE='14px';return escape('";
+		echo "\n<span onMouseOver=\"return escape('";
 		if (isset($_SESSION['link:'.$i.':'.$j])){
 		    $inlink = $_SESSION['inLink:'.$i.':'.$j];
 		    echo htmlentities(str_replace('"','&quot;',

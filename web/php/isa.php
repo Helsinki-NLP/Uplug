@@ -23,8 +23,6 @@ if ($_POST['reset']){                      // reset button pressed -->
     if (isset($hardtag)){
 	$_SESSION['hardtag']=$hardtag;
     }
-//    unset($_SESSION['hardtag']);
-//    $_SESSION['hardtag'] = get_best_hard_tag($SRCXML,$TRGXML);;
 }
 
 $PHP_SELF = $_SERVER['PHP_SELF'];
@@ -159,26 +157,20 @@ if (isset($_REQUEST['hardtag'])){
     }
 }
 
-if (file_exists($sentalign)){
-    if ((!$_SESSION['read_links_time']) ||
-	(filemtime($sentalign) > $_SESSION['read_links_time'])){
-	read_links($sent_align);
-    }
-}
-
 if (isset($_REQUEST['minlen']))
     $_SESSION['minlen'] = $_REQUEST['minlen'];
 if (isset($_REQUEST['win']))
     $_SESSION['win'] = $_REQUEST['win'];
 
 
-
 //////////////////////////////////////////////////////////////
 // set some defaults ....
 
 if (!isset($_SESSION['hardtag'])){
-//    $_SESSION['hardtag'] = 'p';
-    $_SESSION['hardtag'] = get_best_hard_tag($SRCXML,$TRGXML);
+    $_SESSION['hardtag'] = get_best_hard_tag($SRCXML,$TRGXML,$sentalign);
+    read_tag_file($SRCXML,'source');
+    read_tag_file($TRGXML,'target');
+    read_links($sentalign);
 }
 if (!isset($_SESSION['minlen'])){
     $_SESSION['minlen']=5;
@@ -255,8 +247,10 @@ elseif ($_POST['reset']){
     $_SESSION['nr_target_hard'] = 0;
     read_tag_file($SRCXML,'source');
     read_tag_file($TRGXML,'target');
-    if (file_exists($sentalign)){
-	read_links($sentalign);
+    if ($_REQUEST['hardtag'] == 'link'){
+	if (file_exists($sentalign)){
+	    read_links($sentalign);
+	}
     }
 }
 elseif ($_POST['cognates']){
