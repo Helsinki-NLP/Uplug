@@ -14,7 +14,9 @@
 <body>
 
 
-<h1>Interactive Clue Alignment</h1>
+<h1><a href="doc/isa.html">Interactive Clue Alignment</a></h1>
+
+<div class="help"><a  href="doc/ica.html">Help?</a></div>
 
 <?php
 

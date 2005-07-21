@@ -1,8 +1,5 @@
 <?php
 
-$DISABLE_SAVE = 0;
-$DISABLE_EMAIL = 0;
-
 if (file_exists('include/config.isa')){
     include('include/config.isa');
 }

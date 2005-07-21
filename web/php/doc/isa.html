@@ -178,6 +178,12 @@ used as "hard boundaries", meaning that the sentence alignmen will re-start at
 these boundaries. In other words, sentences from each source document segment
 will be aligned with sentences in the corresponding target segment.
 
+<p>
+
+Note that running the aligner is limited to 5 seconds. The call to the
+external program will be killed if this limit is exceded!
+
+
 <a name="send"></a>
 <h2>Sending alignment results</h2>
 
