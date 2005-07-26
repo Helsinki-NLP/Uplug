@@ -83,11 +83,11 @@ and go back to some initial segmentation using one of the XML tags available in 
 <li><a href="align">Run the automatic sentence aligner for the current portion
 of the document (using the existing segmentation as "hard boundaries")</a>
 <li><a href="#send">Send (parts) of the sentence alignments to a given e-mal
-adress (if this is not disabled in the script)</a>
+address (if this is not disabled in the script)</a>
 <li><a href="#save">Save the current alignment to a local file (on the server)
 if this feature is not disabled</a>
 <li><a href="#reload">Re-load existing sentence alignment and modify (this
-presumes that an alignment exists and is saved in a local file accible for the
+presumes that an alignment exists and is saved in a local file accessible for the
 server)</a>
 </ul>
 
@@ -98,7 +98,7 @@ server)</a>
 <b>Adding</b> boundaries is simply done by clicking on a sentence that should
 start a 
 new segment. Naturally, you cannot do this for the first sentence of an
-existing segment. Sentence for which this is possible are highligted with green
+existing segment. Sentence for which this is possible are highlighted with green
 when you move the mouse over the sentence string. Sentence boundaries are
 always added <b>in front</b> of the selected sentence! Wait until the screen is
 re-built again. All segments will be aligned in their order, i.e. adding
@@ -114,7 +114,7 @@ following segments in the document.
 
 <p>
 
-The changes in segment alignment might feel a little bi confusing in the
+The changes in segment alignment might feel a little bit confusing in the
 beginning. However, many sentence alignment mistakes are due to follow-up
 errors. Adding or removing boundaries may put things right for a large portion
 following in the document!
@@ -125,11 +125,11 @@ following in the document!
 
 You may use any XML tag from the original document that is <b>above and
 including</b> the sentence boundary markup for adding additional segment
-boundaries. Select the XML tag you like to ue from the selection box in the
+boundaries. Select the XML tag you like to use from the selection box in the
 last row of the form in the upper-right corner of the window. Segment
 boundaries according to the markup in the document will be added
 <b>immediately</b> after selecting a new tag from the box. Note that boundaries
-are <b>added</b> to the existing ones! No segment boundary wil disappear,
+are <b>added</b> to the existing ones! No segment boundary will disappear,
 regardless if it was added manually or automatically! The only way to remove
 all existing boundaries and to use only one specific XML tag for segmentation
 is to select an XML tag and to press on the 
@@ -140,9 +140,9 @@ is to select an XML tag and to press on the
 <h2>The cognate filter</h2>
 
 
-Another way of adding segmentaton boundaries automatically is to use a "cognate
+Another way of adding segmentation boundaries automatically is to use a "cognate
 filter". Many names and related words are spelled the same in different
-languages. This can be used to adjusted the segmentation of the documen. ISA
+languages. This can be used to adjusted the segmentation of the document. ISA
 implements a simple filter using a sliding window approach to find identical
 words. It adds new boundaries before each sentence pair containing such
 identical words. ISA uses a "sliding-window approach and prefers sentence
@@ -161,27 +161,27 @@ by this approach!
 <a name="reset"></a>
 <h2>The reset button</h2>
 
-You can always go back to the initial segmentation by presing the reset button
-in the form in the upper-right corner. Note that <b>all</b> existnig boundaries
+You can always go back to the initial segmentation by pressing the reset button
+in the form in the upper-right corner. Note that <b>all</b> existing boundaries
 for the <b>entire</b> document will be lost (if you didn't save them before)!
-The segementation will be initialized using the zurrently selected XML tag
+The segmentation will be initialized using the currently selected XML tag
 (look at the selection box to the left of the reset button).
 
 <a name="align"></a>
 <h2>Run the automatic sentence aligner</h2>
 
 
-The automatic sentence aligner is called ff you click on the align button in
+The automatic sentence aligner is called if you click on the align button in
 the form in the upper-right corner. ISA runs the aligner <b>only</b> for the
 part of the document currently shown on the screen. All segment boundaries are
-used as "hard boundaries", meaning that the sentence alignmen will re-start at
+used as "hard boundaries", meaning that the sentence alignment will re-start at
 these boundaries. In other words, sentences from each source document segment
 will be aligned with sentences in the corresponding target segment.
 
 <p>
 
 Note that running the aligner is limited to 5 seconds. The call to the
-external program will be killed if this limit is exceded!
+external program will be killed if this limit is exceeded!
 
 
 <a name="send"></a>
@@ -196,7 +196,7 @@ between 3 different formats:
 <li>plain text (only the currently shown part will be sent)
 </ul>
 
-Select the format you like and type your e-mail adress in the box to the left
+Select the format you like and type your e-mail address in the box to the left
 of the 'mail' button. Press 'mail' to send the data.
 
 <p>
