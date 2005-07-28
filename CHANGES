@@ -1,8 +1,17 @@
+* 28-07-2005 joerg
+
+- fixed a bug in learning bootstrapped clues with linkclue.pl
+  (target language feature strings were not produced correctly)
+- took away Makefile.PL (isn't used anyway and seems to confuse)
+  (there should be a proper installation script but there is none ...)
+
+
 * July 2005 joerg
 
 - added web interfaces for interactive alignment (web/php)
 - fixed some bugs in word alignment (problems with bitext segments
   other than 1:1 sentence)
+
 
 * 21-06-2005 joerg
 
