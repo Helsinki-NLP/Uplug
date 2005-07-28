@@ -1,5 +1,6 @@
 #!/usr/bin/perl
-#
+# -*-perl-*-
+# 
 # linkclue.pl
 #
 #---------------------------------------------------------------------------
@@ -23,9 +24,13 @@
 #
 # usage:  
 #
-use strict;
-use FindBin qw($Bin);
-use lib "$Bin/..";
+
+BEGIN{
+    use strict;
+    use FindBin qw($Bin);
+    use lib "$Bin/..";
+    $ENV{UPLUGHOME}="$Bin/../" unless (defined $ENV{UPLUGHOME});
+}
 
 use Uplug::Data::Align;
 use Uplug::Data;

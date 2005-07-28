@@ -439,8 +439,8 @@ sub OpenAlignDocs{
 	}
     }
     if (($self->{AccessMode} ne 'read') and
-	((-s $options->{toDoc}) or (-s "$options->{toDoc}.gz")) or
-	 ($self->{StreamOptions}->{SkipTrgFile})){
+	((-s $options->{toDoc}) or (-s "$options->{toDoc}.gz") or
+	 ($self->{StreamOptions}->{SkipTrgFile}))){
 	$self->{toDoc}='exists';
     }
     else{

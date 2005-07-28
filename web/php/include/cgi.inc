@@ -58,9 +58,11 @@ function AlignForm(){
     echo "<form action=\"$PHP_SELF\" method=\"post\">";
 
     $existing_clues = array();
+    $nr_selected = 0;
     foreach ($CLUES as $clue => $file){
 	if (file_exists($file)){
 	    $existing_clues[] = $clue;
+	    if ($_SESSION[$clue]) $nr_selected++;
 	}
     }
     $clues_per_column = round(count($existing_clues)/6);
@@ -81,7 +83,7 @@ function AlignForm(){
 	    }
 	    echo '<tr><td>';
 
-	    if ($_SESSION[$clue]){
+	    if ($_SESSION[$clue] || ($nr_selected == 0)){
 		echo "<input type=\"checkbox\" checked name=\"$clue\" value=\"1\">";
 	    }
 	    else{

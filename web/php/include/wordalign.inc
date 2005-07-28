@@ -239,7 +239,7 @@ function align($BITEXT,$ID,&$output){
 	//exec($command);
     }
     else{
-	echo "<h3 style=\"color:red\">Select one or more clues!</h3>";
+	echo "<h3 style=\"color:red\">You didn't select andy clues! Take all?</h3>";
 //	status("Select one or more clues!");
     }
 }

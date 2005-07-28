@@ -1,4 +1,4 @@
-#!/usr/bin/python2 -O
+#!/usr/bin/python -O
 # -*- coding: ISO-8859-1 -*-
 
 #  Beata Megyesi
@@ -100,13 +100,13 @@ blocks = lines_to_read / _BLOCK_SIZE
 rest = lines_to_read % _BLOCK_SIZE
 
 for i in xrange(blocks):
-    res = popen("/usr/bin/python2 -O parse.py %s %d %d <" % (opt, start, _BLOCK_SIZE) + args[2])
+    res = popen("/usr/bin/python -O parse.py %s %d %d <" % (opt, start, _BLOCK_SIZE) + args[2])
     out_file.write(res.read())
     res.close()
     start = start + _BLOCK_SIZE
 
 if rest:
-    res = popen("/usr/bin/python2 -O parse.py %s %d %d <" % (opt, start, rest) + args[2])
+    res = popen("/usr/bin/python -O parse.py %s %d %d <" % (opt, start, rest) + args[2])
     out_file.write(res.read())
     res.close()
 
