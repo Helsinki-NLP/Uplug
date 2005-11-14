@@ -294,6 +294,8 @@ sub Combined2Uplug{
 	    if (not $output->open('write',$links)){ # - open the output stream
 		return 0;                           #   (or die)
 	    }
+	    $output->setOption('SkipDataHeader',0); # don't skip headers and
+	    $output->setOption('SkipDataTail',0);   # footers (e.g. <linkGrp>)
 	}
 
 	$count++;
