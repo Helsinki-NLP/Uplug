@@ -354,7 +354,11 @@ sub printTokensWithID{
 	    if (my $id=$self->tokenID($lang,$_)){
 		print STDERR "$id:";
 	    }
-	    print STDERR $self->{token}->{$lang}->[$_];
+	    my $token = $self->{token}->{$lang}->[$_];
+	    $token=~s/^\s*//;
+#	    $token=~s/\s*$//;
+#	    print STDERR $self->{token}->{$lang}->[$_];
+	    print STDERR $token;
 	    print STDERR " ";
 	}
     }

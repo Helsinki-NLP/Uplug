@@ -141,6 +141,9 @@ sub Giza2Uplug{
     if (not ref($output)){return 0;}
     $output->addheader($BitextHeader);
     if (not $output->open('write',$links)){return 0;}
+    $output->setOption('SkipDataHeader',0); # don't skip headers and
+    $output->setOption('SkipDataTail',0);   # footers (e.g. <linkGrp>)
+
 
     #------------------------------------------------------------------------
     if ($viterbi=~/\.gz$/){
