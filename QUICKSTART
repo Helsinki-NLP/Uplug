@@ -41,7 +41,7 @@ Uplug - Quickstart
    Sentence alignment pointers are stored in 1988sven.xml.
    You can read the aligned bitext segments using the following command:
 
-   /cvs/tools/readlign 1988sven.xml | less
+   /cvs/tools/readalign 1988sven.xml | less
 
 
 3c) Word alignment (default)
