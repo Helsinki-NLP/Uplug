@@ -1,24 +1,37 @@
 <?php
 
+/*
 if (file_exists('include/config.isa')){
     include('include/config.isa');
 }
 else{
     include('include/config.inc');
 }
+*/
 include('include/xmldoc.inc');
 include('include/sentalign.inc');
 
 
 session_start();
+if (isset($_POST['newcorpus'])){
+    unset($_SESSION['corpus']);
+    $_POST['reset'] = 'reset';
+}
+    
 if ($_POST['reset']){                      // reset button pressed -->
     if (isset($_SESSION['hardtag'])){      // destroy the session
 	$hardtag = $_SESSION['hardtag'];   // but save the selected hard tag
+    }
+    if (isset($_SESSION['corpus'])){
+	$corpus = $_SESSION['corpus'];
     }
     session_destroy();
     session_start();
     if (isset($hardtag)){
 	$_SESSION['hardtag']=$hardtag;
+    }
+    if (isset($corpus)){
+	$_SESSION['corpus']=$corpus;
     }
 }
 
@@ -31,6 +44,9 @@ $PHP_SELF = $_SERVER['PHP_SELF'];
 // hard boundary counters are in 
 // $_SESSION['nr_source_hard'] and $_SESSION['nr_target_hard']
 
+if (isset($_POST['corpus'])){
+    $_SESSION['corpus'] = $_POST['corpus'];
+}
 
 
 ?>
@@ -46,10 +62,36 @@ $PHP_SELF = $_SERVER['PHP_SELF'];
 <body>
 
 <div class="title">
-<h1><a href="doc/isa.html">Interactive Sentence Alignment</a></h1>
+<h1><a href="index.php">ISA &amp; ICA</a> / Interactive Sentence Alignment
+<?php if (isset($_SESSION['corpus'])){echo " / ".$_SESSION['corpus'];} ?>
+</h1>
 </div>
 
 <?php
+
+
+if (isset($_SESSION['corpus'])){
+    if (file_exists('corpora/'.$_SESSION['corpus'].'/config.inc')){
+	include('corpora/'.$_SESSION['corpus'].'/config.inc');
+    }
+    elseif (file_exists('corpora/'.$_SESSION['corpus'].'/config.isa')){
+	include('corpora/'.$_SESSION['corpus'].'/config.isa');
+    }
+    else{
+	echo "<br /><br /><br /><h2 style=\"color:red\">Cannot find ISA configuration file for corpus '".$_SESSION['corpus']."'!</h2>";
+	echo '<h3>Select a corpus:</h3><p>';
+	select_corpus_radio();
+	echo '</p></body></html>';
+	exit;
+    }
+}
+else{
+    echo '<br /><br /><br /><br /><h3>Select a corpus:</h3><p>';
+    select_corpus_radio();
+    echo '</p></body></html>';
+    exit;
+}
+
 
 
 $srcbase = str_replace('.xml','',$SRCXML);
@@ -322,6 +364,9 @@ if (file_exists($sentalign)){
     $structags[] = 'link';
 }
 
+
+echo '<input type="submit" name="newcorpus" value="change corpus">';
+// select_corpus();
 if (count($structags)>1){
     echo '<select onChange="JavaScript:submit()" name="hardtag">';
     foreach ($structags as $tag){
@@ -354,7 +399,7 @@ echo '<li>save: save alignments on the server';
 echo '<li>align: run the automatic sentence aligner</ul>';
 echo 'click for more help ...';
 echo "')\"";
-echo ' href="doc/isa.html">Help?</a></div>';
+echo ' href="doc/isa.html" target="_blank">Help?</a></div>';
 
 show_bitext($src_sent_file,$trg_sent_file,
 	    $_SESSION['src_start'],

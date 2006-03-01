@@ -129,6 +129,7 @@ function AlignForm(){
     if (!$DISABLE_SAVE){
 	echo '<input type="submit" name="save" value="save">';
     }
+    echo '<input type="submit" name="newcorpus" value="change corpus">';
     if (isset($next_selected)){
 	if (!$DISABLE_SAVE){
 	    echo ' [ <a href="'.$PHP_SELF.'?save=save&align=align&id='.$next_selected.'">';

@@ -1,10 +1,23 @@
-<?php session_start() ?>
+<?php 
 
+session_start() ;
+
+if (isset($_POST['newcorpus'])){
+    unset($_SESSION['corpus']);
+    session_destroy();
+    session_start();
+}
+
+if (isset($_POST['corpus'])){
+    $_SESSION['corpus'] = $_POST['corpus'];
+}
+
+?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
                       "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>Interactive Clue Aligner (ICA)<</title>
+<title>Interactive Clue Aligner (ICA)</title>
 <link rel="stylesheet" href="ica.css" type="text/css">
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
 
@@ -14,9 +27,11 @@
 <body>
 
 
-<h1><a href="doc/isa.html">Interactive Clue Alignment</a></h1>
+<h1><a href="index.php">ISA &amp; ICA</a> / Interactive Clue Alignment
+<?php if (isset($_SESSION['corpus'])){echo " / ".$_SESSION['corpus'];} ?>
+</h1>
 
-<div class="help"><a  href="doc/ica.html">Help?</a></div>
+<div class="help"><a  target="_blank" href="doc/ica.html">Help?</a></div>
 
 <?php
 
@@ -35,16 +50,42 @@
 //    - learning from alignment changes would be nice!
 
 
+/*
 if (file_exists('include/config.ica')){
     include('include/config.ica');
 }
 else{
     include('include/config.inc');
 }
+*/
+
 include('include/display.inc');
 include('include/cgi.inc');
 include('include/wordalign.inc');
 include('include/xmldoc.inc');
+
+if (isset($_SESSION['corpus'])){
+    if (file_exists('corpora/'.$_SESSION['corpus'].'/config.inc')){
+	include('corpora/'.$_SESSION['corpus'].'/config.inc');
+    }
+    elseif (file_exists('corpora/'.$_SESSION['corpus'].'/config.ica')){
+	include('corpora/'.$_SESSION['corpus'].'/config.ica');
+    }
+    else{
+	echo "<br /><br /><br /><h2 style=\"color:red\">Cannot find ICA configuration file for corpus '".$_SESSION['corpus']."'!</h2>";
+	echo '<br /><h3>Select a corpus:</h3><p>';
+	select_corpus_radio('ica');
+	echo '</p></body></html>';
+	exit;
+    }
+}
+else{
+    echo '<br /><br /><br /><br /><h3>Select a corpus:</h3><p>';
+    select_corpus_radio('ica');
+    echo '</p></body></html>';
+    exit;
+}
+
 
 if (!file_exists($DATADIR)){
     mkdir($DATADIR);

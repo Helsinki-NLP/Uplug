@@ -13,7 +13,9 @@ function add_link($link){
 	$logfile = $DATADIR.'/.added';
 	$fh = fopen($logfile,'a');
 	if ($fh){
-	    fwrite($fh,$_SESSION['srcToken:'.$s]."\t".$_SESSION['trgToken:'.$t]."\n");
+	    fwrite($fh,
+		   $_SESSION['srcID:'.$s].' ('.$_SESSION['srcToken:'.$s].")\t".
+		   $_SESSION['trgID:'.$t].' ('.$_SESSION['trgToken:'.$s].")\n");
 	    fclose($fh);
 	}
     }
@@ -32,7 +34,9 @@ function remove_link($link){
 	$logfile = $DATADIR.'/.removed';
 	$fh = fopen($logfile,'a');
 	if ($fh){
-	    fwrite($fh,$_SESSION['srcToken:'.$s]."\t".$_SESSION['trgToken:'.$t]."\n");
+	    fwrite($fh,
+		   $_SESSION['srcID:'.$s].' ('.$_SESSION['srcToken:'.$s].")\t".
+		   $_SESSION['trgID:'.$t].' ('.$_SESSION['trgToken:'.$s].")\n");
 	    fclose($fh);
 	}
     }
@@ -207,8 +211,15 @@ function align($BITEXT,$ID,&$output){
 
     global $CLUES;
     global $UPLUG;
+    global $DATADIR;
 
-    $command = $UPLUG.' align/word/test/link -v -in '.$BITEXT;
+    // we have to go to the data directory to get the right clues!
+    // --> so we also have to make an absolute path from 
+    //     the relative path to the bitext
+
+    $pwd = realpath('./');
+    $command = 'cd '.$DATADIR.';';
+    $command .= $UPLUG.' align/word/test/link -v -in '.$pwd.'/'.$BITEXT;
 
     $ClueSelected = 0;
     foreach ($CLUES as $clue => $file){
@@ -241,6 +252,11 @@ function align($BITEXT,$ID,&$output){
     else{
 	echo "<h3 style=\"color:red\">You didn't select andy clues! Take all?</h3>";
 //	status("Select one or more clues!");
+	foreach ($CLUES as $clue => $file){
+	    $_SESSION[$clue] = 1;
+	    $_SESSION[$clue.'_w'] = 0.01;
+	}
+	return align($BITEXT,$ID,$output);
     }
 }
 

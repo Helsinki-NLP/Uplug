@@ -32,7 +32,7 @@ $SENTLINKTAG = 'link';                           // XML tag for sentence links
 $HARDTAGS = array('p' => 'paragraphs',           // possible XML tags to be
 		  'pb' => 'page breaks');        // used as hard boundaries
 $SHOWMAX = 20;                                   // max nr of sentences in ISA
-$CLUEDIR = 'data/runtime';
+$CLUEDIR = '%%DATADIR%%/data/runtime';
 $LANGCLUEDIR = $UPLUGHOME.'/lang/'.$LANGPAIR;
 
 $CLUES = array(

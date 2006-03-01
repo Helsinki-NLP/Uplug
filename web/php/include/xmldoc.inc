@@ -302,5 +302,56 @@ function LinkEndElement($parser, $name)
 }
 
 
+function select_corpus_radio($type='isa'){
+    $corpora = get_corpora();
+    echo "<form action=\"$PHP_SELF\" method=\"post\">";
+    foreach ($corpora as $corpus){
+	if ($type=='isa' || file_exists('corpora/'.$corpus.'.ces')){
+	    echo '<input type="radio" name="corpus" value="'.$corpus.'" ';
+	    if (isset($_SESSION['corpus']) && $_SESSION['corpus']===$corpus){
+		echo 'checked="1" ';
+	    }
+	    echo '/>'.$corpus.'<br/>';
+	}
+    }
+    if ($type == 'ica'){
+	echo '<p><input type="submit" name="submit" value="start ICA"></p>';
+    }
+    else{
+	echo '<p><input type="submit" name="submit" value="start ISA"></p>';
+    }
+    echo '</form>';
+}
+
+function select_corpus(){
+    $corpora = get_corpora();
+    echo '<select name="corpus" onchange="submit();">';
+    foreach ($corpora as $corpus){
+	if ($corpus === $_SESSION['corpus']){
+	    echo '<option selected="1">'.$corpus.'</option>';
+	}
+	else{
+	    echo '<option>'.$corpus.'</option>';
+	}
+	echo $corpus.'<br/>';
+    }
+    echo '</select>';
+}
+
+function get_corpora(){
+    $corpora = array();
+    if ($dh = opendir( 'corpora' ) ) {
+	while ( ( $file = readdir( $dh ) ) !== false ) {
+	    if ( $file !== '.' && $file !== '..' && $file !== 'CVS' ) {
+		if (is_dir('corpora/'.$file)){
+		    array_push($corpora,$file);
+		}
+	    }
+	}
+    }
+    return $corpora;
+}
+
+
 
 ?>

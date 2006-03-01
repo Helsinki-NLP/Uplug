@@ -1,3 +1,27 @@
+#
+# USAGE
+#
+#  make   ...................  make files needed for ISA (sentence alignment) 
+#                              with default corpus (1988sven)
+#  make sentalign ...........  make ISA files for default corpus
+#  make wordalign ...........  make ICA files (word alignment) for default corpus
+#  make ALIGN=xx wordalign ..  make ICA files using word alignment config 'xx'
+#                              (default is 'basic', check uplug/systems/align/word/
+#                               in your Uplug directory for alternatives)
+#  make C=cc sentalign ......  make files for ISA for corpus 'cc'
+#                              (corpus name should be nnXXYY where 
+#                               XX is the ID of the source language (2 characters!)
+#                               YY is the ID of the target language (2 characters!)
+#                               and nn is some name (without spaces)
+#                              the Makefile expects source and target files in
+#                              corpora/ with the names 'nnXX.txt' and 'nnYY.txt'
+#  make C=cc wordalign ......  make ICA files for corpus 'cc' (same as above)
+#
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+# Makefile expects Uplug to be installed in ./uplug
+# change the UPLUG variable below if this isn't the case
+# !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+#
 #############################################################################
 # set the following variables:
 
@@ -17,14 +41,16 @@
 
 #############################################################################
 
-UPLUG = uplug
-ALIGN = basic
+PWD = $(shell pwd)
 
+UPLUG = ${PWD}/uplug
+ALIGN = basic
 
 ## default: look for a *.ces file in the current directory
 
+C = 1988sven
 # CORPUS = $(patsubst %.ces,%,$(wildcard *.ces))
-CORPUS = corpora/1988sven
+CORPUS = corpora/$(C)
 
 ## default: first two characters of the corpus name (or path) = SRCLANG
 ## default: characters 3 and 4 of the corpus name (or path) = TRGLANG
@@ -58,12 +84,13 @@ WORDALIGN = $(CORPUS).$(ALIGN)
 #############################################################################
 
 
-CONFIG = include/config.inc
-ISACONFIG = include/config.isa
-ICACONFIG = include/config.ica
-
 CORPUSDIR = $(shell echo '$(CORPUS)' | sed 's|/[^/]*$$||')
 DATADIR = $(CORPUS)
+
+CONFIG = $(DATADIR)/config.inc
+ISACONFIG = $(DATADIR)/config.isa
+ICACONFIG = $(DATADIR)/config.ica
+
 
 # make all .............. make config and data-dirs to run ISA (sentalign)
 # make sentalign ........ prepare for ISA (interactice sentence aligner)
@@ -72,17 +99,17 @@ DATADIR = $(CORPUS)
 
 all: sentalign
 
-sentalign: $(SRCXML) $(TRGXML) $(DATADIR) $(ISACONFIG)
+sentalign: $(SRCXML) $(TRGXML) $(DATADIR) $(CONFIG)
 	chmod o+w $(CORPUSDIR)
 
-wordalign: $(SENTALIGN) $(SENTALIGNIDS) $(WORDALIGN) $(DATADIR) $(ICACONFIG)
+wordalign: $(DATADIR) $(SENTALIGN) $(SENTALIGNIDS) $(WORDALIGN) $(CONFIG)
 
 
 $(DATADIR):
 	mkdir -p $(DATADIR)
 	chmod o+w $(DATADIR)
-	mkdir -p data/runtime
-	chmod o+w data/runtime
+	mkdir -p $(DATADIR)/data/runtime
+	chmod o+w $(DATADIR)/data/runtime
 
 $(SRCXML):
 	$(UPLUG)/uplug pre/basic -ci '$(ENCODING)' -in $(SRCTXT) -out $@
@@ -101,10 +128,15 @@ $(SENTALIGNIDS): $(SENTALIGN)
 
 
 $(WORDALIGN): $(SENTALIGN)
-	$(UPLUG)/uplug align/word/$(ALIGN) -in $(SENTALIGN) -out $(WORDALIGN)
+	rm -f $(DATADIR)/corpora
+	ln -s $(PWD)/corpora $(DATADIR)/
+	( cd $(DATADIR);\
+	$(UPLUG)/uplug align/word/$(ALIGN) \
+	          -in ${PWD}/$(SENTALIGN) \
+	          -out $(PWD)/$(WORDALIGN) )
 
 
-$(CONFIG): %.inc: %.in $(SRCXML) $(TRGXML)
+$(CONFIG): $(DATADIR)/%.inc: include/%.in $(SRCXML) $(TRGXML)
 	sed 's#%%IDFILE%%#$(SENTALIGNIDS)#' $< |\
 	sed 's#%%DATADIR%%#$(DATADIR)#' |\
 	sed 's#%%SRCXML%%#$(SRCXML)#' |\
@@ -114,7 +146,7 @@ $(CONFIG): %.inc: %.in $(SRCXML) $(TRGXML)
 	sed 's#%%LANGPAIR%%#$(LANGPAIR)#' |\
 	sed 's#%%INVLANGPAIR%%#$(INVLANGPAIR)#' > $@
 
-$(ISACONFIG): %.isa: %.in $(SRCXML) $(TRGXML)
+$(ISACONFIG): $(DATADIR)/%.isa: include/%.in $(SRCXML) $(TRGXML)
 	sed 's#%%IDFILE%%#$(SENTALIGNIDS)#' $< |\
 	sed 's#%%DATADIR%%#$(DATADIR)#' |\
 	sed 's#%%SRCXML%%#$(SRCXML)#' |\
@@ -124,7 +156,7 @@ $(ISACONFIG): %.isa: %.in $(SRCXML) $(TRGXML)
 	sed 's#%%LANGPAIR%%#$(LANGPAIR)#' |\
 	sed 's#%%INVLANGPAIR%%#$(INVLANGPAIR)#' > $@
 
-$(ICACONFIG): %.ica: %.in $(SRCXML) $(TRGXML)
+$(ICACONFIG):$(DATADIR)/%.ica: include/%.in $(SRCXML) $(TRGXML)
 	sed 's#%%IDFILE%%#$(SENTALIGNIDS)#' $< |\
 	sed 's#%%DATADIR%%#$(DATADIR)#' |\
 	sed 's#%%SRCXML%%#$(SRCXML)#' |\

@@ -314,7 +314,7 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    echo '<a href="'.$PHP_SELF.'?prev">&lt;&lt; previous page</a> | ';
 	}
     }
-    foreach (array(10,20,50) as $max){
+    foreach (array(10,20,50,100,200) as $max){
 	if ($_SESSION['show_max'] == $max){
 	    echo $max.' | ';
 	}
@@ -322,12 +322,12 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    echo '<a href="'.$PHP_SELF.'?show='.$max.'">'.$max.'</a> | ';
 	}
     }
-    echo '<a href="'.$PHP_SELF.'?all">all</a>';
+//    echo '<a href="'.$PHP_SELF.'?all">all</a> | ';
     if (($src_count<count($src_ids)) || ($trg_count<count($trg_ids))){
 	$nextpage = $_SESSION['page']+1;
 	$_SESSION['src_page'.$nextpage] = $src_count;
 	$_SESSION['trg_page'.$nextpage] = $trg_count;
-	echo ' | <a href="'.$PHP_SELF.'?next">next page &gt;&gt;</a>';
+	echo '<a href="'.$PHP_SELF.'?next">next page &gt;&gt;</a>';
     }
     echo '</div>';
 
