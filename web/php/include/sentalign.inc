@@ -83,15 +83,19 @@ function add_cognate_boundaries($srcfile,$trgfile,$srcstart,$trgstart,$max,
 //	    echo "found boundary: ";
 //	    echo $src_ids[$src_count+$found_src].' - ';
 //	    echo $trg_ids[$trg_count+$found_trg].'<br>';
-	    $sid = $src_ids[$src_count+$found_src];
+	    global $highlight_word, $srcword, $trgword;
+	    $sid = $src_ids[$src_count+$found_src-1];
 	    if (!isset($_SESSION['source_hard_'.$sid])){
 		$_SESSION['source_hard_'.$sid] = 1;
 		$_SESSION['nr_source_hard']++;
+		// echo "sid = $sid, found_src = $found_src, word = $srcword<br/";
+		$highlight_word['src'][$sid]=$srcword;
 	    }
-	    $sid = $trg_ids[$trg_count+$found_trg];
+	    $sid = $trg_ids[$trg_count+$found_trg-1];
 	    if (!isset($_SESSION['target_hard_'.$sid])){
 		$_SESSION['target_hard_'.$sid] = 1;
 		$_SESSION['nr_target_hard']++;
+		$highlight_word['trg'][$sid]=$trgword;
 	    }
 	    for ($i=0;$i<$found_src;$i++){
 		array_shift($srcbuffer);
@@ -116,6 +120,7 @@ function add_cognate_boundaries($srcfile,$trgfile,$srcstart,$trgstart,$max,
 function cognates($src,$trg,$minlength){
     $srcwords = explode(' ',$src);
     $trgwords = explode(' ',$trg);
+    global $srcword,$trgword;
     while (count($srcwords)){
 	$srcword = array_shift($srcwords);
 	if (strlen($srcword)<$minlength) continue;
@@ -158,6 +163,8 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 
     echo '<table class="bitext">';
     $continue=1;
+
+    global $highlight_word;       // for highlighting words
 
     while ($continue){
 	$continue = 0;
@@ -208,7 +215,21 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 		    echo ' bgcolor="#CCFFCC"';
 		}
 	    }
+
+	    if (isset($highlight_word['src'])){
+		if (isset($highlight_word['src'][$src_ids[$src_count]])){
+		    $buffer = 
+			str_replace($highlight_word['src'][$src_ids[$src_count]],
+				    '<font style="background-color:#FFCCCC">'.
+				    $highlight_word['src'][$src_ids[$src_count]].
+				    '</font>',
+				    $buffer);
+		    unset($highlight_word['src'][$src_ids[$src_count]]);
+		}
+	    }
+
 	    echo '>'.$buffer.'</td></tr>';
+
 
 	    $first = 0;
 	    $src_count++;
@@ -261,6 +282,19 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 		    echo ' bgcolor="#CCFFCC"';
 		}
 	    }
+
+	    if (isset($highlight_word['trg'])){
+		if (isset($highlight_word['trg'][$trg_ids[$trg_count]])){
+		    $buffer = 
+			str_replace($highlight_word['trg'][$trg_ids[$trg_count]],
+				    '<font style="background-color:#FFCCCC">'.
+				    $highlight_word['trg'][$trg_ids[$trg_count]].
+				    '</font>',
+				    $buffer);
+		    unset($highlight_word['trg'][$trg_ids[$trg_count]]);
+		}
+	    }
+
 	    echo '>'.$buffer.'</td>';
 
 	    // print the sentence ID

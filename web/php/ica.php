@@ -152,6 +152,24 @@ else{
     if (isset($_REQUEST['rm'])){
 	remove_link($_REQUEST['rm']);
     }
+    if (isset($_REQUEST['ms'])){
+	$_SESSION['marked_src'] = $_REQUEST['ms'];
+    }
+    if (isset($_REQUEST['mt'])){
+	$_SESSION['marked_trg'] = $_REQUEST['mt'];
+    }
+    if (isset($_REQUEST['us'])){
+	unset($_SESSION['marked_src']);
+    }
+    if (isset($_REQUEST['ut'])){
+	unset($_SESSION['marked_trg']);
+    }
+    if (isset($_SESSION['marked_src']) && isset($_SESSION['marked_trg'])){
+	add_link($_SESSION['marked_src'].':'.$_SESSION['marked_trg']);
+	unset($_SESSION['marked_src']);
+	unset($_SESSION['marked_trg']);
+    }
+
 
     get_alignments();
     print_bitext_segment();

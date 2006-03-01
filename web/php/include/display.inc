@@ -40,13 +40,33 @@ function print_bitext_segment(){
     echo '<div class="bitext">';
     echo '<b>[1]</b> ';
     for ($i=0;$i<=$_SESSION['nrSrc'];$i++){
-	echo '<span id="ws'.$i.'">';
+	echo '<span id="ws'.$i.'" ';
+	if (isset($_SESSION['marked_src']) && $_SESSION['marked_src'] == $i){
+	    echo "style='background-color:#ccccff'";
+	    echo " onClick=\"window.location = '$PHP_SELF?us=$i'\"";
+	}
+	else{
+	    echo "onMouseOver=\"setStyle(this,'backgroundColor','#ccccff')\" ";
+	    echo "onMouseOut=\"setStyle(this,'backgroundColor','#ffffff')\"";
+	    echo " onClick=\"window.location = '$PHP_SELF?ms=$i'\"";
+	}
+	echo '>';
 	echo htmlentities($_SESSION['srcToken:'.$i]).'</span> ';
     }
     echo '<br>';
     echo '<b>[2]</b> ';
     for ($i=0;$i<=$_SESSION['nrTrg'];$i++){
-	echo '<span id="wt'.$i.'">';
+	echo '<span id="wt'.$i.'"';
+	if (isset($_SESSION['marked_trg']) && $_SESSION['marked_trg'] == $i){
+	    echo "style='background-color:#ccccff'";
+	    echo " onClick=\"window.location = '$PHP_SELF?ut=$i'\"";
+	}
+	else{
+	    echo "onMouseOver=\"setStyle(this,'backgroundColor','#ccccff')\" ";
+	    echo "onMouseOut=\"setStyle(this,'backgroundColor','#ffffff')\"";
+	    echo " onClick=\"window.location = '$PHP_SELF?mt=$i'\"";
+	}
+	echo '>';
 	echo htmlentities($_SESSION['trgToken:'.$i]).'</span> ';
     }
     echo '</div>';

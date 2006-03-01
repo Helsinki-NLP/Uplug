@@ -4,7 +4,7 @@
 // <![CDATA[
 
 	function setStyle(obj,style,value){
-		getRef(obj).style[style]= value;
+		obj.style[style] = value;
 	}
 	
 	function getRef(obj){
