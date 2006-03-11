@@ -49,6 +49,7 @@ if (isset($_POST['corpus'])){
 }
 
 
+header('Content-Type: text/html; charset=ISO-8859-1');
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
                       "http://www.w3.org/TR/html4/loose.dtd">
@@ -56,15 +57,15 @@ if (isset($_POST['corpus'])){
 <head>
 <title>Interactive Sentence Alignment (ISA)</title>
 <link rel="stylesheet" href="isa.css" type="text/css">
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1" >
 <?php include('include/java.inc'); ?>
 </head>
 <body>
 
 <div class="title">
-<h1><a href="index.php">ISA &amp; ICA</a> / Interactive Sentence Alignment
+<h2><a href="index.php">ISA &amp; ICA</a> / Interactive Sentence Alignment
 <?php if (isset($_SESSION['corpus'])){echo " / ".$_SESSION['corpus'];} ?>
-</h1>
+</h2>
 </div>
 
 <?php

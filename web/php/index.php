@@ -30,7 +30,7 @@ include('include/xmldoc.inc');
 <body>
 
 <div class="title">
-<h1>ISA &amp; ICA : Interactive Alignment of Bitexts</h1>
+<h2>ISA &amp; ICA : Interactive Alignment of Bitexts</h2>
 </div>
 <br clear="all" />
 <table border="0" align="center" cellspacing="35">
@@ -38,7 +38,7 @@ include('include/xmldoc.inc');
 
 
 <td valign="top" width="50%">
-<h2><a href="doc/isa.html">ISA: Interactive Sentence Alignment</a></h2>
+<h3><a href="doc/isa.html">ISA: Interactive Sentence Alignment</a></h3>
 
 ISA is a PHP based web interface for interactive sentence alignment of
 parallel XML documents. It uses as the backend the length-based Gale&amp;Church
@@ -59,7 +59,7 @@ external sentence IDs, plain text format or simple TMX).
 
 
 <td valign="top">
-<h2><a href="doc/ica.html">ICA: Interactive Clue Alignment</a></h2>
+<h3><a href="doc/ica.html">ICA: Interactive Clue Alignment</a></h3>
 
 ICA is a PHP based web interface for interactive word alignment. It uses as its
 backend the <a href="http://sourceforge.net/projects/uplug">Clue Aligner</a>
@@ -87,12 +87,12 @@ by the Clue Aligner off-line.
 <tr>
 
 <td valign="bottom">
-<h3>Select a corpus for sentence alignment:</h3><p>
+<h4>Select a corpus for sentence alignment:</h4><p>
 <?php select_corpus_radio(); ?>
 </td>
 
 <td valign="bottom">
-<h3>Select a corpus for word alignment:</h3>
+<h4>Select a corpus for word alignment:</h4>
 <?php select_corpus_radio('ica'); ?>
 </td>
 

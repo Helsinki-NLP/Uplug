@@ -27,9 +27,9 @@ if (isset($_POST['corpus'])){
 <body>
 
 
-<h1><a href="index.php">ISA &amp; ICA</a> / Interactive Clue Alignment
+<h2><a href="index.php">ISA &amp; ICA</a> / Interactive Clue Alignment
 <?php if (isset($_SESSION['corpus'])){echo " / ".$_SESSION['corpus'];} ?>
-</h1>
+</h2>
 
 <div class="help"><a  target="_blank" href="doc/ica.html">Help?</a></div>
 
