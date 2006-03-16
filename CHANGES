@@ -1,3 +1,10 @@
+
+* 16-03-2006 joerg
+
+- nothing really new, serveral bug-fixes done since last time
+- ISA & ICA - two web interfaces for interactive alignment (in web/php)
+
+
 * 28-07-2005 joerg
 
 - fixed a bug in learning bootstrapped clues with linkclue.pl

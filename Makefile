@@ -8,7 +8,7 @@ TODAY = `date`
 
 all: uplug-${VERSION}.zip
 
-ppp-blog-${VERSION}.zip:
+uplug-${VERSION}.zip:
 	mkdir /tmp/uplug
 	cp -R * /tmp/uplug/
 	find /tmp/uplug -name '*~' -exec rm {} \;
