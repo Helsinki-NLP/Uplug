@@ -172,6 +172,7 @@ sub split{
     my @spans=();
     my $text=$data->content();
     my @seg=&SplitText($text,\@spans);
+    @seg=&SplitText($text,\@spans);
     if (not @seg){return;}
 
     &RemoveEmptyNodes(\@seg,\@spans);
