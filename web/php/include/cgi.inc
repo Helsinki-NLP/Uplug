@@ -33,7 +33,7 @@ function WeightSelectionBox($name,$selected,$start,$end,$steps){
 function SearchSelectionBox($selected){
     if (!isset($selected)) $selected='best_first -adj';
     echo "<select name=\"search\">";
-    $methods = array('src','trg','union','intersection',
+    $methods = array('none','src','trg','union','intersection',
 		'refined','competitive','best_first','best_first -adj');
     foreach ($methods as $method){
 	if ($selected == $method){

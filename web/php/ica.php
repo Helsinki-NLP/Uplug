@@ -145,6 +145,9 @@ else{
 	parse_align_output($output);
 	unset($_REQUEST['add']);
 	unset($_REQUEST['rm']);
+	if ($_SESSION['search'] == 'none'){
+	    unalign();
+	}
     }
     if ($_REQUEST['read']){
 	$output = array();

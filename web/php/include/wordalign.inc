@@ -117,6 +117,17 @@ function read_alignments(){
 }
 
 
+function unalign(){
+    $nr_src = $_SESSION['nrSrc'];
+    $nr_trg = $_SESSION['nrTrg'];
+    for ($i=0;$i<=$nr_src;$i++){
+	for ($j=0;$j<=$nr_trg;$j++){
+	    if (isset($_SESSION['link:'.$i.':'.$j]))
+		unset($_SESSION['link:'.$i.':'.$j]);
+	}
+    }
+}
+
 
 function startTag($parser, $name, $attrs){
 
@@ -325,7 +336,9 @@ function align($BITEXT,$ID,&$output){
 	}
     }
     if (isset($_SESSION['search'])){
-	$command .= ' -search '.$_SESSION['search'];
+	if ($_SESSION['search'] != 'none'){
+	    $command .= ' -search '.$_SESSION['search'];
+	}
     }
     if (isset($_SESSION['minscore'])){
 	if ($_SESSION['minscore']>0){
