@@ -66,6 +66,7 @@ function AlignForm(){
 	}
     }
     $clues_per_column = round(count($existing_clues)/6);
+    $_SESSION['available_clues']=$existing_clues;
 
     $count = 0;
     echo '<table><tr>';
@@ -125,6 +126,11 @@ function AlignForm(){
     echo WeightSelectionBox('minscore',$_SESSION['minscore'],0,0.5,0.001);
 
     echo '<input type="submit" name="align" value="align">';
+    global $DATADIR;
+    $filename = $DATADIR.'/'.$_SESSION['id'];
+    if (file_exists($filename)){
+	echo '<input type="submit" name="read" value="read">';
+    }
     global $DISABLE_SAVE;
     if (!$DISABLE_SAVE){
 	echo '<input type="submit" name="save" value="save">';

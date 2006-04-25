@@ -146,6 +146,15 @@ else{
 	unset($_REQUEST['add']);
 	unset($_REQUEST['rm']);
     }
+    if ($_REQUEST['read']){
+	$output = array();
+//	clear_session();
+//	align($BITEXT,$_REQUEST['id'],$output);
+//	parse_align_output($output);
+	read_alignments();
+	unset($_REQUEST['add']);
+	unset($_REQUEST['rm']);
+    }
     if (isset($_REQUEST['add'])){
 	add_link($_REQUEST['add']);
     }

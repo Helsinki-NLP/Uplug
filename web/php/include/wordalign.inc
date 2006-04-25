@@ -74,6 +74,99 @@ function save_alignments(){
 }
 
 
+
+function read_alignments(){
+    global $DATADIR;
+//    $dir = $DATADIR.'/align';
+    $dir = $DATADIR;
+
+    $filename = $dir.'/'.$_SESSION['id'];
+    $in = fopen($filename,"r") or exit("unable to open $filename!");
+
+    // delete previous links in the clue matrix
+
+    $nr_src = $_SESSION['nrSrc'];
+    $nr_trg = $_SESSION['nrTrg'];
+    for ($i=0;$i<=$nr_src;$i++){
+	for ($j=0;$j<=$nr_trg;$j++){
+	    if (isset($_SESSION['link:'.$i.':'.$j]))
+		unset($_SESSION['link:'.$i.':'.$j]);
+	}
+    }
+
+    // create a new XML parser and parse the alignment file
+
+    $xml_parser = xml_parser_create();
+    xml_parser_set_option($xml_parser, XML_OPTION_CASE_FOLDING, false);
+    xml_set_element_handler($xml_parser, "startTag", "endTag");
+
+    xml_parse($xml_parser,'<?xml version="1.0" encoding="utf-8"?>');
+    xml_parse($xml_parser,'<document>');
+
+    while ($data = fread($in, 4096)) {
+//	if (!xml_parse($xml_parser, $data, feof($in))) {
+	if (!xml_parse($xml_parser, $data)) {
+	    die(sprintf("XML error: %s at line %d",
+			xml_error_string(xml_get_error_code($xml_parser)),
+			xml_get_current_line_number($xml_parser)));
+	}
+    }
+    xml_parse($xml_parser,'</document>',true);
+    xml_parser_free($xml_parser);
+    link_clusters();
+}
+
+
+
+function startTag($parser, $name, $attrs){
+
+    if ($name == 'link'){
+	$_SESSION['id'] = $attrs['id'];
+	$_SESSION['sentlink'] = '<link xtargets="'.$attrs['xtargets'];
+	$_SESSION['sentlink'] .= '" id="'.$attrs['id'].'">';
+	$count=0;
+	while (isset($_SESSION['alignLex:'.$count])){
+	    unset($_SESSION['alignLex:'.$count]);
+	    $count++;
+	}
+    }
+
+    elseif ($name == 'wordlink'){
+	$count=0;
+	while (isset($_SESSION['alignLex:'.$count])){
+	    $count++;
+	}
+	$_SESSION['alignLex:'.$count]=str_replace(';',':',$attrs['lexPair']);
+	$_SESSION['alignXtrg:'.$count]=str_replace(';',':',$attrs['xtargets']);
+	if (isset($attr['certainty'])){
+	    $_SESSION['alignScore:'.$count] = $attr['certainty'];
+	}
+
+	$nr_src = $_SESSION['nrSrc'];
+	$nr_trg = $_SESSION['nrTrg'];
+
+	list($src,$trg) = explode(';',$attrs['xtargets']);
+	$src_ids = explode('+',$src);
+	$trg_ids = explode('+',$trg);
+
+	for ($i=0;$i<=$nr_src;$i++){
+	    if (in_array($_SESSION['srcID:'.$i],$src_ids)){
+		for ($j=0;$j<=$nr_trg;$j++){
+		    if (in_array($_SESSION['trgID:'.$j],$trg_ids)){
+			$_SESSION['link:'.$i.':'.$j]=1;
+		    }
+		}
+	    }
+	}
+    }
+}
+
+
+function endTag($parser, $name){}
+
+
+
+
 ////////////////////////////////////////////////////////////////////
 // get the actual word alignments from the clue matrix
 
@@ -250,7 +343,9 @@ function align($BITEXT,$ID,&$output){
 	//exec($command);
     }
     else{
-	echo "<h3 style=\"color:red\">You didn't select andy clues! Take all?</h3>";
+	if ($_SESSIONS['available_clues']>0){
+	    echo "<h3 style=\"color:red\">You didn't select andy clues! Take all?</h3>";
+	}
 //	status("Select one or more clues!");
 	foreach ($CLUES as $clue => $file){
 	    $_SESSION[$clue] = 1;
@@ -282,7 +377,11 @@ function parse_align_output(&$output){
     foreach ($output as $line){
 
 	// get the sentence alignment tag
-	if (substr($line,0,6) == '<link ') $_SESSION['sentlink'] = $line;
+	if (substr($line,0,6) == '<link ') {
+	    $parts = explode('<',$line);
+	    $parts['1'] = str_replace('/',' ',$parts['1']);
+	    $_SESSION['sentlink'] = '<'.$parts['1'];
+	}
 
 	// skip some lines .....
 	if (substr($line,0,1) == '<') continue;         // skip xml
