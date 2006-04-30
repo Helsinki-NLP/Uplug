@@ -157,6 +157,9 @@ if (!isset($_POST['reset'])){
 		$_SESSION['nr_source_hard']--;
 		$removed_src_boundary = $src_ids[$idx];
 	    }
+	    if ($_SESSION['src_start'] == $idx){
+		$_SESSION['src_start']++;
+	    }
 	}
     }
     if (isset($_REQUEST['tadd'])){
@@ -176,6 +179,9 @@ if (!isset($_POST['reset'])){
 		unset($_SESSION['target_hard_'.$trg_ids[$idx]]);
 		$_SESSION['nr_target_hard']--;
 		$removed_trg_boundary = $trg_ids[$idx];
+	    }
+	    if ($_SESSION['trg_start'] == $idx){
+		$_SESSION['trg_start']++;
 	    }
 	}
     }
