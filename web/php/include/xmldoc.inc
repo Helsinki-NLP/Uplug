@@ -276,6 +276,17 @@ function LinkStartElement($parser, $name, $attrs)
 	$trgids = explode(' ',$trg);
 	$trgids = array_filter($trgids,"notempty");
 
+	if (count($srcids)==0){
+	    foreach ($trgids as $t){
+		$_SESSION['target_empty_'.$t] = 1;
+	    }
+	}
+	if (count($trgids)==0){
+	    foreach ($srcids as $s){
+		$_SESSION['source_empty_'.$s] = 1;
+	    }
+	}
+
 	$firstsrc = array_shift($srcids);
 	$firsttrg = array_shift($trgids);
 
@@ -345,6 +356,7 @@ function get_corpora(){
 	    if ( $file !== '.' && $file !== '..' && $file !== 'CVS' ) {
 		if (is_dir('corpora/'.$file)){
 		    array_push($corpora,$file);
+		    sort($corpora);
 		}
 	    }
 	}

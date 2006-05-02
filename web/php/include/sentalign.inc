@@ -171,7 +171,13 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 
 	$first = 1;
 	$anchor = '';
-	echo '<tr><td width="50%"><table width="100%" class="bitext-src">';
+	echo '<tr><td width="50%">';
+
+	// skip displaying source sentences if target sentences
+	// are aligned to empty
+	if (!isset($_SESSION['target_empty_'.$trg_ids[$trg_count]])){
+
+	echo '<table width="100%" class="bitext-src">';
 	while ($buffer = fgets($src,4096)) {
 	    echo '<a name="src'.$src_ids[$src_count].'">';
 	    if ($src_count>4){
@@ -240,10 +246,18 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    }
 	    if (($src_count-$srcstart)>$max*1.5) break;
 	}
+	echo '</table>';
+	}
+
+	echo '</td><td>';
+
+	// skip displaying target sentences if the previous source sentence
+	// is aligned to empty
+	if (!isset($_SESSION['source_empty_'.$src_ids[$src_count-1]])){
 
 	$first = 1;
 	$anchor = '';
-	echo '</table></td><td><table width="100%" class="bitext-trg">';
+	echo '<table width="100%" class="bitext-trg">';
 	while ($buffer = fgets($trg,4096)) {
 	    echo '<a name="trg'.$trg_ids[$trg_count].'">';
 	    if ($trg_count>4){
@@ -321,7 +335,10 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    }
 	    if (($trg_count-$trgstart)>$max*1.5) break;
 	}
-	echo '</table></td></tr>';
+	echo '</table>';
+	}
+
+	echo '</td></tr>';
 	if (($src_count-$srcstart)>=$max||($trg_count-$trgstart)>=$max) break;
     }
     echo '</table>';
