@@ -362,6 +362,7 @@
       'adj' => 'parameter:alignment:adjacent_only',
       'phr' => 'parameter:alignment:in_phrases_only',
       'min' => 'parameter:alignment:minimal score',
+      'dir' => 'parameter:runtime dir'
     }
   },
   'widgets' => {

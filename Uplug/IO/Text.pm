@@ -64,12 +64,14 @@ sub init{
     $self->{StreamOptions}->{file}=$self->{StreamOptions}->{FileName};
 
     my $ret;
-    if (not defined $self->{'FileName'}){
-	if ($self->{AccessMode} eq 'read'){
-	    $self->{FileHandle}=*STDIN;
-	}
-	else{
-	    $self->{FileHandle}=*STDOUT;
+    if (not defined $self->{FileName}){
+	if (not defined $self->{FileHandle}){
+	    if ($self->{AccessMode} eq 'read'){
+		$self->{FileHandle}=*STDIN;
+	    }
+	    else{
+		$self->{FileHandle}=*STDOUT;
+	    }
 	}
 	$ret=1;
     }

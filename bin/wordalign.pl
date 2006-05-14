@@ -33,9 +33,15 @@
 
 use strict;
 
-use FindBin qw($Bin);
+BEGIN{
+    use FindBin qw($Bin);
+    use lib "$Bin/..";
+    if (not defined $ENV{UPLUGHOME}){
+	$ENV{UPLUGHOME}=$Bin.'/..';
+    }
+}
+
 # use Time::HiRes qw(time);
-use lib "$Bin/..";
 
 use Uplug::Data::Align;
 use Uplug::IO::Any;
@@ -45,23 +51,75 @@ use Uplug::Align::Word;
 use Uplug::Align::Word::Clue;
 use Uplug::Align::Word::UWA;
 
+use Cwd;
+
+## global variable for socket handles
+use vars qw/*SOCKET/;
+
+## server mode: listen on port 1201 for requests
+##              read wordalign arguments and run word alignment
+##              write result and log info to socket
+if (grep($_ eq '-server',@ARGV)){
+    use IO::Socket;
+    my $request_sock = new IO::Socket::INET (
+					     LocalHost => 'localhost',
+					     LocalPort => '1201',
+					     Proto => 'tcp',
+					     Listen => 1,
+					     Reuse => 1,
+					     );
+    die "Could not create socket: $!\n" unless $request_sock;
+
+    while (*SOCKET = $request_sock->accept()){
+	my $request = <SOCKET>;
+	*STDERR=*SOCKET;
+	*STDOUT=*SOCKET;
+#	print STDERR "req: $request";
+	my @argv = split(/\s+/,$request);
+	&wordalign(@argv);
+#	print SOCKET "done!\n";
+	close(*SOCKET);
+    }
+    close($request_sock);
+}
+
+
+## standard mode: just run the word alignment with given parameters
+else{
+    &wordalign(@ARGV);
+}
+
+
+
+
+
+
+sub wordalign{
+    my @argv = @_;
+
 #---------------------------------------------------------------------------
 
 my $TmpCnt=0;
 
 my %IniData=&GetDefaultIni;
 my $IniFile='wordalign.ini';
-&CheckParameter(\%IniData,\@ARGV,$IniFile);
+&CheckParameter(\%IniData,\@argv,$IniFile);
 
 my $PrintProgr=$IniData{'parameter'}{'runtime'}{'print progress'};
 my $PrintHtml=$IniData{'parameter'}{'runtime'}{'print html'};
 my $PrintHtmlOnly=$IniData{'parameter'}{'runtime'}{'print html only'};
 
+
+    my $CurrentDir=getcwd();
+    if (defined $IniData{parameter}{'runtime dir'}){
+	chdir($IniData{parameter}{'runtime dir'});
+    }
+
 #---------------------------------------------------------------------------
 # input and output data streams
 #
 
-my $CorpusStream=&GetCorpusStream;
+my $CorpusStream=&GetCorpusStream(\%IniData);
 my ($OutputStreamName,$OutputStream)=each %{$IniData{'output'}};
 my $corpus=Uplug::IO::Any->new($CorpusStream);
 $corpus->open('read',$CorpusStream) ||
@@ -347,6 +405,10 @@ print STDERR "linked source tokens: $NrLinks/$NrToken = ";
 print STDERR "\% \n";
 
 
+    chdir($CurrentDir);
+
+}
+
 #--------------------------------------------------------------------------
 #--------------------------------------------------------------------------
 #--------------------------------------------------------------------------
@@ -411,7 +473,7 @@ sub PrintPrevNextLinks{
     if (defined $prev){
 	print $f "<a href=\"$prev.html\">\&lt;\&lt;</a>";
     }
-    print $f "</td><td>$idx[$id]</td>";
+    print $f "</td><td>$$idx[$id]</td>";
     if ($id<$max){
 	print $f "<td><a href=\"$next.html\">\&gt;\&gt;</a></td>";
     }
@@ -422,8 +484,8 @@ sub PrintPrevNextLinks{
 
 sub GetCorpusStream{
     my $IniData=shift;
-    foreach (keys %{$IniData{input}}){
-	if (/text/){return $IniData{input}{$_};}
+    foreach (keys %{$$IniData{input}}){
+	if (/text/){return $$IniData{input}{$_};}
     }
 }
 
@@ -432,8 +494,9 @@ sub OpenLinkStreams{
 
     my %LinkStream;
     foreach (keys %{$$IniData{input}}){
-	if (/text/){$CorpusStream=$$IniData{input}{$_};}
-	else{$LinkStream{$_}=$$IniData{input}{$_};}
+#	if (/text/){$CorpusStream=$$IniData{input}{$_};}
+#	else{$LinkStream{$_}=$$IniData{input}{$_};}
+	if ($_!~/text/){$LinkStream{$_}=$$IniData{input}{$_};}
     }
 
     #-----------------
@@ -441,12 +504,12 @@ sub OpenLinkStreams{
     # (open only defined clues)x
 
     my @clues=keys %LinkStream;
-    if (ref($IniData{parameter}{alignment}{clues}) eq 'ARRAY'){
-	@clues=@{$IniData{parameter}{alignment}{clues}};
+    if (ref($$IniData{parameter}{alignment}{clues}) eq 'ARRAY'){
+	@clues=@{$$IniData{parameter}{alignment}{clues}};
     }
-    elsif (ref($IniData{parameter}{alignment}{clues}) eq 'HASH'){
-	@clues=grep ($IniData{parameter}{alignment}{clues}{$_},
-		     keys %{$IniData{parameter}{alignment}{clues}});
+    elsif (ref($$IniData{parameter}{alignment}{clues}) eq 'HASH'){
+	@clues=grep ($$IniData{parameter}{alignment}{clues}{$_},
+		     keys %{$$IniData{parameter}{alignment}{clues}});
     }
 
     foreach my $l (keys %LinkStream){

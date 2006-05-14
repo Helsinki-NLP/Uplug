@@ -315,15 +315,33 @@ function align($BITEXT,$ID,&$output){
 
     global $CLUES;
     global $UPLUG;
+    global $UPLUGHOME;
     global $DATADIR;
+
+    // error_reporting(E_ALL);
+
+    $use_socket = false;
+
+    $service_port = 1201;
+    $address = 'localhost';
+    if ($socket = @socket_create(AF_INET, SOCK_STREAM, SOL_TCP)){
+       if ($result = @socket_connect($socket, $address, $service_port)){
+	$use_socket = true;
+      }
+    }
 
     // we have to go to the data directory to get the right clues!
     // --> so we also have to make an absolute path from 
     //     the relative path to the bitext
 
     $pwd = realpath('./');
-    $command = 'cd '.$DATADIR.';';
-    $command .= $UPLUG.' align/word/test/link -v -in '.$pwd.'/'.$BITEXT;
+    //    $command = 'cd '.$DATADIR.';';
+    //    $command .= $UPLUG.' align/word/test/link -v -in '.$pwd.'/'.$BITEXT;
+
+    $wordalign = $UPLUGHOME.'/bin/wordalign.pl';
+    $command = '-i '.$UPLUGHOME.'/systems/align/word/test/link -v -in ';
+    $command .= $pwd.'/'.$BITEXT;
+    $command .= ' -dir '.$pwd.'/'.$DATADIR;
 
     $ClueSelected = 0;
     foreach ($CLUES as $clue => $file){
@@ -345,15 +363,28 @@ function align($BITEXT,$ID,&$output){
 	    $command .= ' -min '.$_SESSION['minscore'];
 	}
     }
-    $command .= ' -id '.$ID;
+    $command .= ' -id '.$ID."\n";
 
     if ($ClueSelected){
-//	echo $command;
-	exec('ulimit -t 5;'.$command.' 2>&1',$output);
+      if ($use_socket){
+	//	echo 'socket: '.$command;
+	socket_write($socket, $command, strlen($command));
+	$outstr='';
+	while ($out = socket_read($socket, 2048)) {
+	  $outstr .= $out;
+	}
+	$outstr = utf8_decode($outstr);
+	$output = explode("\n",$outstr);
+	socket_close($socket);
+      }
+      else{
+		echo 'exec: '.$wordalign.' '.$command;
+	exec('ulimit -t 5;'.$wordalign.' '.$command.' 2>&1',$output);
 //	echo '<pre>';
 //	echo implode("\n",$output);
 //	echo '</pre>';
 	//exec($command);
+      }
     }
     else{
 	if ($_SESSIONS['available_clues']>0){
