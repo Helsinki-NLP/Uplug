@@ -3,6 +3,10 @@ body{
 /*  font-family: arial, helvetica, sans-serif; */
 }
 
+input, select{
+  font-size: 12px;
+}
+
 .title
 { 
   position:absolute; 

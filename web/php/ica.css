@@ -4,6 +4,10 @@ body{
 /*  font-family: arial, helvetica, sans-serif; */
 }
 
+input, select{
+  font-size: 12px;
+}
+
 .help
 { 
   padding:5px;

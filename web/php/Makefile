@@ -41,10 +41,11 @@
 
 #############################################################################
 
-PWD = $(shell pwd)
+# PWD = $(shell pwd)
 
 UPLUG = ${PWD}/uplug
 ALIGN = basic
+
 
 ## default: look for a *.ces file in the current directory
 
@@ -134,6 +135,48 @@ $(WORDALIGN): $(SENTALIGN)
 	$(UPLUG)/uplug align/word/$(ALIGN) \
 	          -in ${PWD}/$(SENTALIGN) \
 	          -out $(PWD)/$(WORDALIGN) )
+
+clues: basicclues gizarefined
+
+dynamicclues: $(WORDALIGN)
+	( cd $(DATADIR);\
+	$(UPLUG)/uplug align/word/dynamicclues \
+	          -in ${PWD}/$(WORDALIGN) )
+
+basicclues: $(SENTALIGN)
+	rm -f $(DATADIR)/corpora
+	ln -s $(PWD)/corpora $(DATADIR)/
+	( cd $(DATADIR);\
+	$(UPLUG)/uplug align/word/basicclues \
+	          -in ${PWD}/$(SENTALIGN) )
+
+gizarefined: $(DATADIR)/giza-refined.links
+gizaprefix: $(DATADIR)/giza-prefix.links
+gizapos: $(DATADIR)/giza-pos.links
+
+$(DATADIR)/giza-refined.links: $(SENTALIGN)
+	rm -f $(DATADIR)/corpora
+	ln -s $(PWD)/corpora $(DATADIR)/
+	( cd $(DATADIR);\
+	$(UPLUG)/uplug align/word/GIZA/giza-word-refined \
+	          -in ${PWD}/$(SENTALIGN) \
+		  -out $(DATADIR)/giza-refined.links )
+
+$(DATADIR)/giza-pos.links: $(SENTALIGN)
+	rm -f $(DATADIR)/corpora
+	ln -s $(PWD)/corpora $(DATADIR)/
+	( cd $(DATADIR);\
+	$(UPLUG)/uplug align/word/GIZA/gizaclue-pos \
+	          -in ${PWD}/$(SENTALIGN) \
+		  -out $(DATADIR)/giza-pos.links )
+
+$(DATADIR)/giza-prefix.links: $(SENTALIGN)
+	rm -f $(DATADIR)/corpora
+	ln -s $(PWD)/corpora $(DATADIR)/
+	( cd $(DATADIR);\
+	$(UPLUG)/uplug align/word/GIZA/gizaclue-word-prefix \
+	          -in ${PWD}/$(SENTALIGN) \
+		  -out $(DATADIR)/giza-pos.links )
 
 
 $(CONFIG): $(DATADIR)/%.inc: include/%.in $(SRCXML) $(TRGXML)

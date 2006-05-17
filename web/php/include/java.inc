@@ -13,7 +13,7 @@
 	}
 
         function markAligned(obj,s,t,l){
-	    obj.style["border"] = "2pt solid #0000ff";
+	  //	    obj.style["border"] = "2pt solid #0000ff";
 	    document.getElementById(t).style["color"] = "#bb0000";
 	    document.getElementById(s).style["color"] = "#bb0000";
 	    document.getElementById(t).style["backgroundColor"] = "#ffffcc";
@@ -27,7 +27,7 @@
         }
 
         function unmarkAligned(obj,s,t,color,l){
-	    obj.style["border"] = "2pt solid " + color;
+	  //	    obj.style["border"] = "2pt solid " + color;
 	    document.getElementById(t).style["color"] = "black";
 	    document.getElementById(s).style["color"] = "black";
 	    document.getElementById(t).style["backgroundColor"] = "#eeeeaa";
@@ -41,7 +41,8 @@
         }
 
         function markUnaligned(obj,s,t,l){
-	    obj.style["border"] = "2pt solid #0000ff";
+	  //	    obj.style["border"] = "2pt solid #0000ff";
+	  obj.style["color"] = "#bb3333";
 	    document.getElementById(t).style["color"] = "#bb0000";
 	    document.getElementById(s).style["color"] = "#bb0000";
 	    document.getElementById(t).style["backgroundColor"] = "#ffffcc";
@@ -53,7 +54,8 @@
         }
 
         function unmarkUnaligned(obj,s,t,color,l){
-	    obj.style["border"] = "2pt solid " + color;
+	  //	    obj.style["border"] = "2pt solid " + color;
+	  obj.style["color"] = "#000000";
 	    document.getElementById(t).style["color"] = "black";
 	    document.getElementById(s).style["color"] = "black";
 	    document.getElementById(t).style["backgroundColor"] = "#eeeeaa";
@@ -74,7 +76,7 @@
         }
 
         function unmarkCell(obj,s,t,color,l){
-	    obj.style["border"] = "2pt solid " + color;
+	  //	    obj.style["border"] = "2pt solid " + color;
 	    document.getElementById(t).style["color"] = "black";
 	    document.getElementById(s).style["color"] = "black";
 	    document.getElementById(l).style["color"] = "black";
