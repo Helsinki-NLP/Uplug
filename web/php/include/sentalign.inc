@@ -186,28 +186,30 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    if ($first){
 		echo "\n<tr
                 onMouseOver=\"setStyle(this,'backgroundColor','#fcc')\" 
-                onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
-                onClick=\"window.location='$PHP_SELF?srm=$src_count$anchor'\">";
+                onMouseOut=\"setStyle(this,'backgroundColor','white')\">";
 		echo "<td width=\"10%\"
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?sempty=$src_count$anchor'\">";
 		echo $src_ids[$src_count].'</td>';
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?srm=$src_count$anchor'\"";
 	    }
 	    else{
 		echo "\n<tr
                 onMouseOver=\"setStyle(this,'backgroundColor','#cfc')\" 
-                onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
-                onClick=\"window.location='$PHP_SELF?sadd=$src_count$anchor'\">";
+                onMouseOut=\"setStyle(this,'backgroundColor','white')\">";
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?sempty=$src_count$anchor'\">";
 		echo $src_ids[$src_count].'</td>';
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?sadd=$src_count$anchor'\"";
 	    }
 	    if (isset($new_src_boundary)){
 		if (($new_src_boundary == $src_ids[$src_count]) ||
@@ -269,20 +271,20 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    if ($first){
 		echo "\n<tr
                 onMouseOver=\"setStyle(this,'backgroundColor','#fcc')\" 
-                onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
-                onClick=\"window.location='$PHP_SELF?trm=$trg_count$anchor'\">";
+                onMouseOut=\"setStyle(this,'backgroundColor','white')\">";
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?trm=$trg_count$anchor'\"";
 	    }
 	    else{
 		echo "\n<tr
                 onMouseOver=\"setStyle(this,'backgroundColor','#cfc')\" 
-                onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
-                onClick=\"window.location='$PHP_SELF?tadd=$trg_count$anchor'\">";
+                onMouseOut=\"setStyle(this,'backgroundColor','white')\">";
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?tadd=$trg_count$anchor'\"";
 	    }
 	    if (isset($new_trg_boundary)){
 		if (($new_trg_boundary == $trg_ids[$trg_count]) ||
@@ -316,12 +318,14 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    if ($first){
 		echo "<td width=\"10%\"
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?tempty=$trg_count$anchor'\">";
 	    }
 	    else{
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?tempty=$trg_count$anchor'\">";
 	    }
 	    echo $trg_ids[$trg_count].'</td></tr>';
 
@@ -430,6 +434,7 @@ function save_sentence_alignment($srcdoc,$trgdoc,$aligndoc){
     fwrite($FH,'<linkGrp targType="s" fromDoc="');
     fwrite($FH,$srcdoc.'" toDoc="'.$trgdoc."\">\n");
 
+    $srcempty = array();
     $src = array();
     foreach ($src_ids as $id){
 	if (isset($_SESSION['source_hard_'.$id])){
@@ -438,9 +443,13 @@ function save_sentence_alignment($srcdoc,$trgdoc,$aligndoc){
 	else{
 	    $src[count($src)-1] .= $id.' ';
 	}
+	if (isset($_SESSION['source_empty_'.$id])){
+	  $srcempty[count($src)] = 1;
+	}
     }
     $src = array_map("rtrim",$src);
 
+    $trgempty = array();
     $trg = array();
     foreach ($trg_ids as $id){
 	if (isset($_SESSION['target_hard_'.$id])){
@@ -449,9 +458,34 @@ function save_sentence_alignment($srcdoc,$trgdoc,$aligndoc){
 	else{
 	    $trg[count($trg)-1] .= $id.' ';
 	}
+	if (isset($_SESSION['target_empty_'.$id])){
+	  $trgempty[count($trg)] = 1;
+	}
     }
     $trg = array_map("rtrim",$trg);
 
+    $s=0;
+    $t=0;
+    while ($s<count($src) || $t<count($trg)){
+      if ($srcempty[$s]){
+	fwrite($FH,'<link id="SL'.$i.'" xtargets="');
+	fwrite($FH,$src[$s].';" />'."\n");
+	$s++;
+      }
+      elseif ($trgempty[$t]){
+	fwrite($FH,'<link id="SL'.$i.'" xtargets="');
+	fwrite($FH,';'.$trg[$t].'" />'."\n");
+	$t++;
+      }
+      else{
+	fwrite($FH,'<link id="SL'.$i.'" xtargets="');
+	fwrite($FH,$src[$s].';'.$trg[$t].'" />'."\n");
+	$s++;
+	$t++;
+      }
+    }
+
+    /*
     $nr = count($src);
     if (count($trg)>$nr){$nr=count($trg);}
 
@@ -459,6 +493,8 @@ function save_sentence_alignment($srcdoc,$trgdoc,$aligndoc){
 	fwrite($FH,'<link id="SL'.$i.'" xtargets="');
 	fwrite($FH,$src[$i].';'.$trg[$i].'" />'."\n");
     }
+    */
+
     fwrite($FH,"</linkGrp>\n</cesAlign>\n");
     fclose($FH);
 

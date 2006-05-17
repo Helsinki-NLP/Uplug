@@ -162,6 +162,53 @@ if (!isset($_POST['reset'])){
 	    }
 	}
     }
+
+    // sempty --> align ALL source sentences in this block to empty!
+    //            (or take away the empty marker)
+    if (isset($_REQUEST['sempty'])){
+	$idx = $_REQUEST['sempty'];
+	if (isset($src_ids[$idx])){
+	  $unset=0;
+	    if (isset($_SESSION['source_empty_'.$src_ids[$idx]])){
+	      $unset=1;
+	    }
+	    $i=$idx;
+	    while ($i>=0 && ! isset($_SESSION['source_hard_'.$src_ids[$i]])){
+	      if ($unset){
+		unset($_SESSION['source_hard_'.$src_ids[$i]]);
+	      }
+	      else{
+		$_SESSION['source_hard_'.$src_ids[$i]]=1;
+	      }
+	      $i--;
+	    }
+	    while ($i<count($src_ids)){
+	      if ($i<count($src_ids)+1 && 
+		  isset($_SESSION['source_hard_'.$src_ids[$i+1]])){break;}
+	      if ($unset){
+		unset($_SESSION['source_hard_'.$src_ids[$i]]);
+	      }
+	      else{
+		$_SESSION['source_hard_'.$src_ids[$i]]=1;
+	      }
+	      $i++;
+	    }
+	}
+    }
+
+
+
+    if (isset($_REQUEST['tempty'])){
+	$idx = $_REQUEST['tempty'];
+	if (isset($trg_ids[$idx])){
+	    if (isset($_SESSION['target_empty_'.$trg_ids[$idx]])){
+	      unset($_SESSION['target_empty_'.$trg_ids[$idx]]);
+	    }
+	    else{
+	      $_SESSION['target_empty_'.$trg_ids[$idx]] = 1;
+	    }
+	}
+    }
     if (isset($_REQUEST['tadd'])){
 	$idx = $_REQUEST['tadd'];
 	if (isset($trg_ids[$idx])){
