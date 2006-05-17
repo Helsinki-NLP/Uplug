@@ -335,40 +335,40 @@ function align($BITEXT,$ID,&$output){
     //     the relative path to the bitext
 
     $pwd = realpath('./');
-    //    $command = 'cd '.$DATADIR.';';
-    //    $command .= $UPLUG.' align/word/test/link -v -in '.$pwd.'/'.$BITEXT;
+    $exec_cmd = 'cd '.$DATADIR.';';
+    $exec_cmd .= $UPLUG.' align/word/test/link';
 
-    $wordalign = $UPLUGHOME.'/bin/wordalign.pl';
-    $command = '-i '.$UPLUGHOME.'/systems/align/word/test/link -v -in ';
-    $command .= $pwd.'/'.$BITEXT;
-    $command .= ' -dir '.$pwd.'/'.$DATADIR;
+    $cmd_params = '-v -in ';
+    $cmd_params .= $pwd.'/'.$BITEXT;
 
     $ClueSelected = 0;
     foreach ($CLUES as $clue => $file){
 	if ($_SESSION[$clue]){
-	    $command .= ' -'.$clue;
+	    $cmd_params .= ' -'.$clue;
 	    if ($_SESSION[$clue.'_w']){
-		$command .= ' -'.$clue.'_w '.$_SESSION[$clue.'_w'];
+		$cmd_params .= ' -'.$clue.'_w '.$_SESSION[$clue.'_w'];
 	    }
 	    $ClueSelected ++;
 	}
     }
     if (isset($_SESSION['search'])){
 	if ($_SESSION['search'] != 'none'){
-	    $command .= ' -search '.$_SESSION['search'];
+	    $cmd_params .= ' -search '.$_SESSION['search'];
 	}
     }
     if (isset($_SESSION['minscore'])){
 	if ($_SESSION['minscore']>0){
-	    $command .= ' -min '.$_SESSION['minscore'];
+	    $cmd_params .= ' -min '.$_SESSION['minscore'];
 	}
     }
-    $command .= ' -id '.$ID."\n";
+    $cmd_params .= ' -id '.$ID;
 
     if ($ClueSelected){
       if ($use_socket){
-	//	echo 'socket: '.$command;
-	socket_write($socket, $command, strlen($command));
+	$cmd_params .= ' -i '.$UPLUGHOME.'/systems/align/word/test/link';
+	$cmd_params .= ' -dir '.$pwd.'/'.$DATADIR."\n";
+	//echo 'socket: -i '.$cmd_params;
+	socket_write($socket, $cmd_params, strlen($cmd_params));
 	$outstr='';
 	while ($out = socket_read($socket, 2048)) {
 	  $outstr .= $out;
@@ -378,12 +378,12 @@ function align($BITEXT,$ID,&$output){
 	socket_close($socket);
       }
       else{
-		echo 'exec: '.$wordalign.' '.$command;
-	exec('ulimit -t 5;'.$wordalign.' '.$command.' 2>&1',$output);
-//	echo '<pre>';
-//	echo implode("\n",$output);
-//	echo '</pre>';
-	//exec($command);
+	$command = 'ulimit -t 5;'.$exec_cmd.' '.$cmd_params.' 2>&1';
+	// echo 'exec: '.$command;
+	exec($command,$output);
+	//echo '<pre>';
+	//echo implode("\n",$output);
+	//echo '</pre>';
       }
     }
     else{
