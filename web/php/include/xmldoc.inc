@@ -313,17 +313,14 @@ function LinkEndElement($parser, $name)
 }
 
 
-function select_corpus_radio($type='isa'){
+function select_corpus_form($type='isa'){
     $corpora = get_corpora();
     echo "<form action=\"$PHP_SELF\" method=\"post\">";
-    foreach ($corpora as $corpus){
-	if ($type=='isa' || file_exists('corpora/'.$corpus.'.ces')){
-	    echo '<input type="radio" name="corpus" value="'.$corpus.'" ';
-	    if (isset($_SESSION['corpus']) && $_SESSION['corpus']===$corpus){
-		echo 'checked="1" ';
-	    }
-	    echo '/>'.$corpus.'<br/>';
-	}
+    if (count($corpora)>20){
+	select_corpus_pulldown($type);
+    }
+    else{
+	select_corpus_radio($type);
     }
     if ($type == 'ica'){
 	echo '<p><input type="submit" name="submit" value="start ICA"></p>';
@@ -333,6 +330,36 @@ function select_corpus_radio($type='isa'){
     }
     echo '</form>';
 }
+
+
+function select_corpus_radio($type='isa'){
+    $corpora = get_corpora();
+    foreach ($corpora as $corpus){
+	if ($type=='isa' || file_exists('corpora/'.$corpus.'.ces')){
+	    echo '<input type="radio" name="corpus" value="'.$corpus.'" ';
+	    if (isset($_SESSION['corpus']) && $_SESSION['corpus']===$corpus){
+		echo 'checked="1" ';
+	    }
+	    echo '/>'.$corpus.'<br/>';
+	}
+    }
+}
+
+function select_corpus_pulldown(){
+    $corpora = get_corpora();
+    echo '<select name="corpus">';
+    foreach ($corpora as $corpus){
+	if ($corpus === $_SESSION['corpus']){
+	    echo '<option selected="1">'.$corpus.'</option>';
+	}
+	else{
+	    echo '<option>'.$corpus.'</option>';
+	}
+	echo $corpus.'<br/>';
+    }
+    echo '</select>';
+}
+
 
 function select_corpus(){
     $corpora = get_corpora();

@@ -14,8 +14,10 @@ include('include/sentalign.inc');
 
 session_start();
 if (isset($_POST['newcorpus'])){
-    unset($_SESSION['corpus']);
-    $_POST['reset'] = 'reset';
+    session_destroy();
+    session_start();
+//    unset($_SESSION['corpus']);
+//    $_POST['reset'] = 'reset';
 }
     
 if ($_POST['reset']){                      // reset button pressed -->
@@ -34,6 +36,7 @@ if ($_POST['reset']){                      // reset button pressed -->
 	$_SESSION['corpus']=$corpus;
     }
 }
+
 
 $PHP_SELF = $_SERVER['PHP_SELF'];
 
@@ -81,14 +84,14 @@ if (isset($_SESSION['corpus'])){
     else{
 	echo "<br /><br /><br /><h2 style=\"color:red\">Cannot find ISA configuration file for corpus '".$_SESSION['corpus']."'!</h2>";
 	echo '<h3>Select a corpus:</h3><p>';
-	select_corpus_radio();
+	select_corpus_form();
 	echo '</p></body></html>';
 	exit;
     }
 }
 else{
     echo '<br /><br /><br /><br /><h3>Select a corpus:</h3><p>';
-    select_corpus_radio();
+    select_corpus_form();
     echo '</p></body></html>';
     exit;
 }
@@ -109,13 +112,12 @@ $trg_id_file = $trgbase . '.ids';
 if (isset($BITEXT)) $sentalign = $BITEXT;
 else $sentalign = $srcbase.'-'.$trgbase.'.ces';
 
-
 if (!file_exists($src_sent_file) ||
     (filemtime($SRCXML) > filemtime($src_sent_file))){
     doc2sent($SRCXML);
     $_SESSION['nr_source_hard'] = 0;
     read_tag_file($SRCXML,'source');
-    echo " nr hard boundaries: ".$_SESSION['nr_source_hard']."<br>";
+//    echo " nr hard boundaries: ".$_SESSION['nr_source_hard']."<br>";
 }
 
 if (! file_exists($trg_sent_file) ||
@@ -123,15 +125,32 @@ if (! file_exists($trg_sent_file) ||
     doc2sent($TRGXML);
     $_SESSION['nr_source_hard'] = 0;
     read_tag_file($TRGXML,'target');
-    echo " nr hard boundaries: ".$_SESSION['nr_target_hard']."<br>";
+//    echo " nr hard boundaries: ".$_SESSION['nr_target_hard']."<br>";
 }
-
 
 $src_ids = file($src_id_file);
 $trg_ids = file($trg_id_file);
 
 $src_ids = array_map("rtrim",$src_ids);
 $trg_ids = array_map("rtrim",$trg_ids);
+
+
+
+if ($_POST['evalnext']){
+    $file = $sentalign.'.eval';
+    count_eval($file);
+    $total = $_SESSION['total_links'];
+    echo '<div class="index">';
+    echo 'nr ok: '.$_SESSION['ok_links'];
+    printf(" (%6.2f)<br />",$_SESSION['ok_links']*100/$total);
+    echo 'nr partially ok: '.$_SESSION['parts_links'];
+    printf(" (%6.2f)<br />",$_SESSION['parts_links']*100/$total);
+    echo 'nr wrong: '.$_SESSION['wrong_links'];
+    printf(" (%6.2f)<br />",$_SESSION['wrong_links']*100/$total);
+    echo '</div>';
+    $_REQUEST['next']=1;
+}
+
 
 
 //////////////////////////////////////////////////////////////////
@@ -159,53 +178,6 @@ if (!isset($_POST['reset'])){
 	    }
 	    if ($_SESSION['src_start'] == $idx){
 		$_SESSION['src_start']++;
-	    }
-	}
-    }
-
-    // sempty --> align ALL source sentences in this block to empty!
-    //            (or take away the empty marker)
-    if (isset($_REQUEST['sempty'])){
-	$idx = $_REQUEST['sempty'];
-	if (isset($src_ids[$idx])){
-	  $unset=0;
-	    if (isset($_SESSION['source_empty_'.$src_ids[$idx]])){
-	      $unset=1;
-	    }
-	    $i=$idx;
-	    while ($i>=0 && ! isset($_SESSION['source_hard_'.$src_ids[$i]])){
-	      if ($unset){
-		unset($_SESSION['source_hard_'.$src_ids[$i]]);
-	      }
-	      else{
-		$_SESSION['source_hard_'.$src_ids[$i]]=1;
-	      }
-	      $i--;
-	    }
-	    while ($i<count($src_ids)){
-	      if ($i<count($src_ids)+1 && 
-		  isset($_SESSION['source_hard_'.$src_ids[$i+1]])){break;}
-	      if ($unset){
-		unset($_SESSION['source_hard_'.$src_ids[$i]]);
-	      }
-	      else{
-		$_SESSION['source_hard_'.$src_ids[$i]]=1;
-	      }
-	      $i++;
-	    }
-	}
-    }
-
-
-
-    if (isset($_REQUEST['tempty'])){
-	$idx = $_REQUEST['tempty'];
-	if (isset($trg_ids[$idx])){
-	    if (isset($_SESSION['target_empty_'.$trg_ids[$idx]])){
-	      unset($_SESSION['target_empty_'.$trg_ids[$idx]]);
-	    }
-	    else{
-	      $_SESSION['target_empty_'.$trg_ids[$idx]] = 1;
 	    }
 	}
     }
@@ -359,6 +331,18 @@ elseif ($_POST['cognates']){
 
 
 echo '<div class="alignform">';
+
+
+###########################################################################
+
+if ($ISA_MODE == 'eval'){
+    echo "<br /><br /><form action=\"$PHP_SELF\" method=\"post\">";
+    echo '<input type="submit" name="evalnext" value="save &amp; next">';
+}
+
+###########################################################################
+
+else{
 echo "<form action=\"$PHP_SELF\" method=\"post\">";
 
 //echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
@@ -453,13 +437,22 @@ echo '<li>save: save alignments on the server';
 echo '<li>align: run the automatic sentence aligner</ul>';
 echo 'click for more help ...';
 echo "')\"";
-echo ' href="doc/isa.html" target="_blank">Help?</a></div>';
+echo ' href="doc/isa.html" target="_blank">Help?</a>';
+}
+
+echo '</div>';
 
 show_bitext($src_sent_file,$trg_sent_file,
 	    $_SESSION['src_start'],
 	    $_SESSION['trg_start'],
 	    $_SESSION['show_max']);
 
+
+if ($ISA_MODE == 'eval'){
+    echo '<div class="alignform">';
+    echo '<input type="submit" name="evalnext" value="save &amp; next">';
+    echo '</div></form>';
+}
 
 
 ?>

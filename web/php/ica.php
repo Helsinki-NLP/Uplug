@@ -74,14 +74,14 @@ if (isset($_SESSION['corpus'])){
     else{
 	echo "<br /><br /><br /><h2 style=\"color:red\">Cannot find ICA configuration file for corpus '".$_SESSION['corpus']."'!</h2>";
 	echo '<br /><h3>Select a corpus:</h3><p>';
-	select_corpus_radio('ica');
+	select_corpus_form('ica');
 	echo '</p></body></html>';
 	exit;
     }
 }
 else{
     echo '<br /><br /><br /><br /><h3>Select a corpus:</h3><p>';
-    select_corpus_radio('ica');
+    select_corpus_form('ica');
     echo '</p></body></html>';
     exit;
 }
