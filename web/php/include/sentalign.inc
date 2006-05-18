@@ -187,28 +187,30 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    if ($first){
 		echo "\n<tr
                 onMouseOver=\"setStyle(this,'backgroundColor','#fcc')\" 
-                onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
-                onClick=\"window.location='$PHP_SELF?srm=$src_count$anchor'\">";
+                onMouseOut=\"setStyle(this,'backgroundColor','white')\">";
 		echo "<td width=\"10%\"
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?sempty=$src_count$anchor'\">";
 		echo $src_ids[$src_count].'</td>';
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?srm=$src_count$anchor'\"";
 	    }
 	    else{
 		echo "\n<tr
                 onMouseOver=\"setStyle(this,'backgroundColor','#cfc')\" 
-                onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
-                onClick=\"window.location='$PHP_SELF?sadd=$src_count$anchor'\">";
+                onMouseOut=\"setStyle(this,'backgroundColor','white')\">";
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?sempty=$src_count$anchor'\">";
 		echo $src_ids[$src_count].'</td>';
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?sadd=$src_count$anchor'\"";
 	    }
 	    if (isset($new_src_boundary)){
 		if (($new_src_boundary == $src_ids[$src_count]) ||
@@ -270,20 +272,20 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    if ($first){
 		echo "\n<tr
                 onMouseOver=\"setStyle(this,'backgroundColor','#fcc')\" 
-                onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
-                onClick=\"window.location='$PHP_SELF?trm=$trg_count$anchor'\">";
+                onMouseOut=\"setStyle(this,'backgroundColor','white')\">";
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?trm=$trg_count$anchor'\"";
 	    }
 	    else{
 		echo "\n<tr
                 onMouseOver=\"setStyle(this,'backgroundColor','#cfc')\" 
-                onMouseOut=\"setStyle(this,'backgroundColor','white')\" 
-                onClick=\"window.location='$PHP_SELF?tadd=$trg_count$anchor'\">";
+                onMouseOut=\"setStyle(this,'backgroundColor','white')\">";
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?tadd=$trg_count$anchor'\"";
 	    }
 	    if (isset($new_trg_boundary)){
 		if (($new_trg_boundary == $trg_ids[$trg_count]) ||
@@ -317,12 +319,14 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    if ($first){
 		echo "<td width=\"10%\"
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?tempty=$trg_count$anchor'\">";
 	    }
 	    else{
 		echo "<td
                 onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
-                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\">";
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?tempty=$trg_count$anchor'\">";
 	    }
 	    echo $trg_ids[$trg_count].'</td></tr>';
 
@@ -435,9 +439,66 @@ function read_next_segment(&$fh,&$text,$language){
 }
 
 
-function save_sentence_alignment($srcdoc,$trgdoc,$aligndoc){
+function get_sent_align_pairs(&$pairs){
 
     global $src_ids,$trg_ids;
+
+    $srcempty = array();
+    $src = array();
+    foreach ($src_ids as $id){
+	if (count($src) == 0 || isset($_SESSION['source_hard_'.$id])){
+	    $src[count($src)] = $id.' ';
+	}
+	else{
+	    $src[count($src)-1] .= $id.' ';
+	}
+	if (isset($_SESSION['source_empty_'.$id])){
+	    $srcempty[count($src)-1] = 1;
+	}
+    }
+    $src = array_map("rtrim",$src);
+
+    $trgempty = array();
+    $trg = array();
+    foreach ($trg_ids as $id){
+	if (count($trg) == 0 || isset($_SESSION['target_hard_'.$id])){
+	    $trg[count($trg)] = $id.' ';
+	}
+	else{
+	    $trg[count($trg)-1] .= $id.' ';
+	}
+	if (isset($_SESSION['target_empty_'.$id])){
+	  $trgempty[count($trg)-1] = 1;
+	}
+    }
+    $trg = array_map("rtrim",$trg);
+
+    $s=0;
+    $t=0;
+    while ($s<count($src) || $t<count($trg)){
+	$idx = count($pairs);
+	if ($srcempty[$s]){
+	    $pairs[$idx]['src']=$src[$s];
+	    $pairs[$idx]['trg']='';
+	    $s++;
+	}
+	elseif ($trgempty[$t]){
+	    $pairs[$idx]['trg']=$trg[$t];
+	    $pairs[$idx]['src']='';
+	    $t++;
+	}
+	else{
+	    $pairs[$idx]['src']=$src[$s];
+	    $pairs[$idx]['trg']=$trg[$t];
+	    $s++;
+	    $t++;
+	}
+    }
+}
+
+
+
+function save_sentence_alignment($srcdoc,$trgdoc,$aligndoc){
 
     $FH = fopen($aligndoc,"w") or exit("unable to open $aligndoc!");
     fwrite($FH,'<?xml version="1.0" encoding="utf-8"?>'."\n");
@@ -447,42 +508,15 @@ function save_sentence_alignment($srcdoc,$trgdoc,$aligndoc){
     fwrite($FH,'<linkGrp targType="s" fromDoc="');
     fwrite($FH,$srcdoc.'" toDoc="'.$trgdoc."\">\n");
 
-    $src = array();
-    foreach ($src_ids as $id){
-	if (isset($_SESSION['source_hard_'.$id])){
-	    $src[count($src)] = $id.' ';
-	}
-	else{
-	    $src[count($src)-1] .= $id.' ';
-	}
-    }
-    $src = array_map("rtrim",$src);
-
-    $trg = array();
-    foreach ($trg_ids as $id){
-	if (isset($_SESSION['target_hard_'.$id])){
-	    $trg[count($trg)] = $id.' ';
-	}
-	else{
-	    $trg[count($trg)-1] .= $id.' ';
-	}
-    }
-    $trg = array_map("rtrim",$trg);
-
-    $nr = count($src);
-    if (count($trg)>$nr){$nr=count($trg);}
-
-    for ($i=0;$i<$nr;$i++){
+    $pairs = array();
+    get_sent_align_pairs($pairs);
+    for ($i=0;$i<count($pairs);$i++){
 	fwrite($FH,'<link id="SL'.$i.'" xtargets="');
-	fwrite($FH,$src[$i].';'.$trg[$i].'" />'."\n");
+	fwrite($FH,$pairs[$i]['src'].';'.$pairs[$i]['trg'].'" />'."\n");
     }
-    fwrite($FH,"</linkGrp>\n</cesAlign>\n");
-    fclose($FH);
+}	
 
-    if (file_exists($aligndoc.'.ids')){    // if there is an link-ID-file:
-	unlink($aligndoc.'.ids');          // delete it (links are new now!)
-    }
-}
+
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -520,12 +554,13 @@ function send_sentence_alignment($srcdoc,$trgdoc,$aligndoc,$format,$email){
 }
 
 
+
+
 //////////////////////////////////////////////////////////////////////////
 // get the sentence alignments of the ENTIRE file in XCES align format
 // (external pointers to source and target documents)
 
 function sentence_align_xces($srcdoc,$trgdoc,$aligndoc){
-    global $src_ids,$trg_ids;
 
     $string = '<?xml version="1.0" encoding="utf-8"?>'."\n";
     $string .='<!DOCTYPE cesAlign PUBLIC "-//CES//DTD XML cesAlign//EN" "">'."\n";
@@ -534,38 +569,19 @@ function sentence_align_xces($srcdoc,$trgdoc,$aligndoc){
     $string .='<linkGrp targType="s" fromDoc="';
     $string .=$srcdoc.'" toDoc="'.$trgdoc."\">\n";
 
-    $src = array();
-    foreach ($src_ids as $id){
-	if (isset($_SESSION['source_hard_'.$id])){
-	    $src[count($src)] = $id.' ';
-	}
-	else{
-	    $src[count($src)-1] .= $id.' ';
-	}
-    }
-    $src = array_map("rtrim",$src);
 
-    $trg = array();
-    foreach ($trg_ids as $id){
-	if (isset($_SESSION['target_hard_'.$id])){
-	    $trg[count($trg)] = $id.' ';
-	}
-	else{
-	    $trg[count($trg)-1] .= $id.' ';
-	}
-    }
-    $trg = array_map("rtrim",$trg);
-
-    $nr = count($src);
-    if (count($trg)>$nr){$nr=count($trg);}
-
-    for ($i=0;$i<$nr;$i++){
+    $pairs = array();
+    get_sent_align_pairs($pairs);
+    for ($i=0;$i<count($pairs);$i++){
 	$string .='<link id="SL'.$i.'" xtargets="' ;
-	$string .=$src[$i].';'.$trg[$i].'" />'."\n" ;
+	$string .=$pairs[$i]['src'].';'.$pairs[$i]['trg'].'" />'."\n" ;
     }
     $string .="</linkGrp>\n</cesAlign>\n" ;
     return $string;
 }
+
+
+
 
 //////////////////////////////////////////////////////////////////////////
 // get the sentence alignment in plain text file format
@@ -612,24 +628,32 @@ function sentence_align_text($srcdoc,$trgdoc,$aligndoc){
 
     while ($continue){
 	$continue = 0;
-	while ($buffer = fgets($src,4096)) {
-	    $string .= '(src) ['.$src_ids[$src_count].'] '.$buffer;
-	    $src_count++;
-	    $continue++;
-	    if (isset($_SESSION['source_hard_'.$src_ids[$src_count]])){
-		break;
-	    }
-	    if (($src_count-$srcstart)>$max*1.5) break;
-	}
 
-	while ($buffer = fgets($trg,4096)) {
-	    $string .= '(trg) ['.$trg_ids[$trg_count].'] '.$buffer;
-	    $trg_count++;
-	    $continue++;
-	    if (isset($_SESSION['target_hard_'.$trg_ids[$trg_count]])){
-		break;
+	$src_empty = false;
+	if (!isset($_SESSION['target_empty_'.$trg_ids[$trg_count]])){
+	    while ($buffer = fgets($src,4096)) {
+		$string .= '(src) ['.$src_ids[$src_count].'] '.$buffer;
+		if (isset($_SESSION['source_empty_'.$src_ids[$src_count]])){
+		    $src_empty=true;
+		}
+		$src_count++;
+		$continue++;
+		if (isset($_SESSION['source_hard_'.$src_ids[$src_count]])){
+		    break;
+		}
+		if (($src_count-$srcstart)>$max*1.5) break;
 	    }
-	    if (($trg_count-$trgstart)>$max*1.5) break;
+	}
+	if (!$src_empty){
+	    while ($buffer = fgets($trg,4096)) {
+		$string .= '(trg) ['.$trg_ids[$trg_count].'] '.$buffer;
+		$trg_count++;
+		$continue++;
+		if (isset($_SESSION['target_hard_'.$trg_ids[$trg_count]])){
+		    break;
+		}
+		if (($trg_count-$trgstart)>$max*1.5) break;
+	    }
 	}
 	if (($src_count-$srcstart)>=$max||($trg_count-$trgstart)>=$max) break;
 	$string .= '---------------------------------------------------------------------------'."\n";
@@ -699,33 +723,44 @@ function sentence_align_tmx($srcdoc,$trgdoc,$aligndoc){
 	$continue = 0;
 	$string .= '    <tu changedate="'.$time.'">'."\n";
 
-	$string .= '      <tuv xml:lang="'.$srclang.'">';
-	while ($buffer = fgets($src,4096)) {
-	    $buffer = rtrim($buffer);
-	    $string .= '<seg id="SRC'.$src_ids[$src_count].'">';
-	    $string .= utf8_encode($buffer).'</seg>';
-	    $src_count++;
-	    $continue++;
-	    if (isset($_SESSION['source_hard_'.$src_ids[$src_count]])){
-		break;
-	    }
-	    if (($src_count-$srcstart)>$max*1.5) break;
-	}
-	$string .= '</tuv>'."\n";
+	$src_empty = false;
+	if (!isset($_SESSION['target_empty_'.$trg_ids[$trg_count]])){
 
-	$string .= '      <tuv xml:lang="'.$trglang.'">';
-	while ($buffer = fgets($trg,4096)) {
-	    $buffer = rtrim($buffer);
-	    $string .= '<seg id="TRG'.$trg_ids[$trg_count].'">';
-	    $string .= utf8_encode($buffer).'</seg>';
-	    $trg_count++;
-	    $continue++;
-	    if (isset($_SESSION['target_hard_'.$trg_ids[$trg_count]])){
-		break;
+	    $string .= '      <tuv xml:lang="'.$srclang.'">';
+	    while ($buffer = fgets($src,4096)) {
+		$buffer = rtrim($buffer);
+		$string .= "\n        ";
+		$string .= '<seg id="SRC'.$src_ids[$src_count].'">';
+		$string .= utf8_encode($buffer).'</seg>';
+		if (isset($_SESSION['source_empty_'.$src_ids[$src_count]])){
+		    $src_empty=true;
+		}
+		$src_count++;
+		$continue++;
+		if (isset($_SESSION['source_hard_'.$src_ids[$src_count]])){
+		    break;
+		}
+		if (($src_count-$srcstart)>$max*1.5) break;
 	    }
-	    if (($trg_count-$trgstart)>$max*1.5) break;
+	    $string .= "\n      </tuv>\n";
 	}
-	$string .= '</tuv>'."\n";
+
+	if (!$src_empty){
+	    $string .= '      <tuv xml:lang="'.$trglang.'">';
+	    while ($buffer = fgets($trg,4096)) {
+		$buffer = rtrim($buffer);
+		$string .= "\n        ";
+		$string .= '<seg id="TRG'.$trg_ids[$trg_count].'">';
+		$string .= utf8_encode($buffer).'</seg>';
+		$trg_count++;
+		$continue++;
+		if (isset($_SESSION['target_hard_'.$trg_ids[$trg_count]])){
+		    break;
+		}
+		if (($trg_count-$trgstart)>$max*1.5) break;
+	    }
+	    $string .= "\n      </tuv>\n";
+	}
 	$string .= '    </tu>'."\n";
 	if (($src_count-$srcstart)>=$max||($trg_count-$trgstart)>=$max) break;
     }
@@ -929,5 +964,9 @@ function count_eval($file){
     }
     fclose($fh);
 }
+
+
+
+
 
 ?>

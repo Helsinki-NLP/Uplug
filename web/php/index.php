@@ -88,12 +88,12 @@ by the Clue Aligner off-line.
 
 <td valign="bottom">
 <h4>Select a corpus for sentence alignment:</h4><p>
-<?php select_corpus_radio(); ?>
+<?php select_corpus_form(); ?>
 </td>
 
 <td valign="bottom">
 <h4>Select a corpus for word alignment:</h4>
-<?php select_corpus_radio('ica'); ?>
+<?php select_corpus_form('ica'); ?>
 </td>
 
 </tr>

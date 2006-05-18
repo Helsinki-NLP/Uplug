@@ -136,23 +136,23 @@ $(WORDALIGN): $(SENTALIGN)
 	          -in ${PWD}/$(SENTALIGN) \
 	          -out $(PWD)/$(WORDALIGN) )
 
-clues: basicclues gizarefined
+clues: basicclues gizarefined $(CONFIG)
 
-dynamicclues: $(WORDALIGN)
+dynamicclues: $(WORDALIGN) $(CONFIG)
 	( cd $(DATADIR);\
 	$(UPLUG)/uplug align/word/dynamicclues \
 	          -in ${PWD}/$(WORDALIGN) )
 
-basicclues: $(SENTALIGN)
+basicclues: $(SENTALIGN) $(CONFIG)
 	rm -f $(DATADIR)/corpora
 	ln -s $(PWD)/corpora $(DATADIR)/
 	( cd $(DATADIR);\
 	$(UPLUG)/uplug align/word/basicclues \
 	          -in ${PWD}/$(SENTALIGN) )
 
-gizarefined: $(DATADIR)/giza-refined.links
-gizaprefix: $(DATADIR)/giza-prefix.links
-gizapos: $(DATADIR)/giza-pos.links
+gizarefined: $(DATADIR)/giza-refined.links $(CONFIG)
+gizaprefix: $(DATADIR)/giza-prefix.links $(CONFIG)
+gizapos: $(DATADIR)/giza-pos.links $(CONFIG)
 
 $(DATADIR)/giza-refined.links: $(SENTALIGN)
 	rm -f $(DATADIR)/corpora
