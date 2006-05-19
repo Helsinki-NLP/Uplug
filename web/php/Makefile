@@ -50,7 +50,7 @@
 # PWD = $(shell pwd)
 
 UPLUG = ${PWD}/uplug
-UPLUGWEB = /tiedeman/homepages/align/uplug
+UPLUGWEB = ${PWD}/uplug
 ALIGN = basic
 
 
