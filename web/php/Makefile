@@ -15,6 +15,11 @@
 #                               and nn is some name (without spaces)
 #                              the Makefile expects source and target files in
 #                              corpora/ with the names 'nnXX.txt' and 'nnYY.txt'
+#  make C=cc clues ..........  make basic clues and (basic) giza clues
+#  make C=cc basicclues .....  string similarity and dice
+#  make C=cc gizaclues ......  GIZA refined and GIZA prefix
+#  make C=cc gizaposclues ...  GIZA with POS tags (useless if you don't have POS tags!)
+#  make C=cc dynamicclues ...  makes dynamic clues (requires word alignment
 #  make C=cc wordalign ......  make ICA files for corpus 'cc' (same as above)
 #
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -30,6 +35,7 @@
 # TRGLANG ..... target language identifier (eg. en, sv, ...)
 #
 # UPLUG ....... home directory of your Uplug distribution
+# UPLUGWEB .... location of uplug when accessed from PHP
 # ALIGN ....... type of word alignment to be run (to create clue DBMs)
 
 
@@ -43,8 +49,8 @@
 
 # PWD = $(shell pwd)
 
-# UPLUG = ${PWD}/uplug
-UPLUG = uplug
+UPLUG = ${PWD}/uplug
+UPLUGWEB = /tiedeman/homepages/align/uplug
 ALIGN = basic
 
 
@@ -137,37 +143,50 @@ $(WORDALIGN): $(SENTALIGN)
 	          -in ${PWD}/$(SENTALIGN) \
 	          -out $(PWD)/$(WORDALIGN) )
 
-clues: basicclues gizarefined $(CONFIG)
+clues: basicclues gizaclues
 
-dynamicclues: $(WORDALIGN) $(CONFIG)
+dynamicclues: $(WORDALIGN)
 	( cd $(DATADIR);\
 	$(UPLUG)/uplug align/word/dynamicclues \
 	          -in ${PWD}/$(WORDALIGN) )
 
-basicclues: $(SENTALIGN) $(CONFIG)
+basicclues: sentalign
 	rm -f $(DATADIR)/corpora
 	ln -s $(PWD)/corpora $(DATADIR)/
 	( cd $(DATADIR);\
 	$(UPLUG)/uplug align/word/basicclues \
 	          -in ${PWD}/$(SENTALIGN) )
 
-gizarefined: $(DATADIR)/giza-refined.links $(CONFIG)
-gizaprefix: $(DATADIR)/giza-prefix.links $(CONFIG)
-gizapos: $(DATADIR)/giza-pos.links $(CONFIG)
+gizaclues: gizarefined gizaprefix
+gizaposclues: gizapos gizaposword
+
+gizarefined: sentalign $(DATADIR)/giza-refined.links $(DATADIR)/giza-refined-i.links
+gizaprefix: sentalign $(DATADIR)/giza-prefix.links $(DATADIR)/giza-prefix-i.links
+gizapos: sentalign $(DATADIR)/giza-pos.links $(DATADIR)/giza-pos-i.links
+gizaposword: sentalign $(DATADIR)/giza-pos-word.links $(DATADIR)/giza-pos-word-i.links
 
 $(DATADIR)/giza-refined.links: $(SENTALIGN)
 	rm -f $(DATADIR)/corpora
 	ln -s $(PWD)/corpora $(DATADIR)/
 	( cd $(DATADIR);\
-	$(UPLUG)/uplug align/word/GIZA/giza-word-refined \
+	$(UPLUG)/uplug align/word/GIZA/giza-word-refined -c 1 \
 	          -in ${PWD}/$(SENTALIGN) \
 		  -out $(DATADIR)/giza-refined.links )
+
 
 $(DATADIR)/giza-pos.links: $(SENTALIGN)
 	rm -f $(DATADIR)/corpora
 	ln -s $(PWD)/corpora $(DATADIR)/
 	( cd $(DATADIR);\
 	$(UPLUG)/uplug align/word/GIZA/gizaclue-pos \
+	          -in ${PWD}/$(SENTALIGN) \
+		  -out $(DATADIR)/giza-pos.links )
+
+$(DATADIR)/giza-pos-word.links: $(SENTALIGN)
+	rm -f $(DATADIR)/corpora
+	ln -s $(PWD)/corpora $(DATADIR)/
+	( cd $(DATADIR);\
+	$(UPLUG)/uplug align/word/GIZA/gizaclue-pos-word \
 	          -in ${PWD}/$(SENTALIGN) \
 		  -out $(DATADIR)/giza-pos.links )
 
@@ -180,13 +199,41 @@ $(DATADIR)/giza-prefix.links: $(SENTALIGN)
 		  -out $(DATADIR)/giza-pos.links )
 
 
+
+$(DATADIR)/giza-pos-i.links: $(SENTALIGN)
+	rm -f $(DATADIR)/corpora
+	ln -s $(PWD)/corpora $(DATADIR)/
+	( cd $(DATADIR);\
+	$(UPLUG)/uplug align/word/GIZA/gizaclue-pos-i \
+	          -in ${PWD}/$(SENTALIGN) \
+		  -out $(DATADIR)/giza-pos.links )
+
+$(DATADIR)/giza-pos-word-i.links: $(SENTALIGN)
+	rm -f $(DATADIR)/corpora
+	ln -s $(PWD)/corpora $(DATADIR)/
+	( cd $(DATADIR);\
+	$(UPLUG)/uplug align/word/GIZA/gizaclue-pos-word-i \
+	          -in ${PWD}/$(SENTALIGN) \
+		  -out $(DATADIR)/giza-pos.links )
+
+$(DATADIR)/giza-prefix-i.links: $(SENTALIGN)
+	rm -f $(DATADIR)/corpora
+	ln -s $(PWD)/corpora $(DATADIR)/
+	( cd $(DATADIR);\
+	$(UPLUG)/uplug align/word/GIZA/gizaclue-word-prefix-i \
+	          -in ${PWD}/$(SENTALIGN) \
+		  -out $(DATADIR)/giza-pos.links )
+
+
+
+
 $(CONFIG): $(DATADIR)/%.inc: include/%.in $(SRCXML) $(TRGXML)
 	sed 's#%%IDFILE%%#$(SENTALIGNIDS)#' $< |\
 	sed 's#%%DATADIR%%#$(DATADIR)#' |\
 	sed 's#%%SRCXML%%#$(SRCXML)#' |\
 	sed 's#%%TRGXML%%#$(TRGXML)#' |\
 	sed 's#%%BITEXT%%#$(SENTALIGN)#' |\
-	sed 's#%%UPLUG%%#$(UPLUG)#' |\
+	sed 's#%%UPLUG%%#$(UPLUGWEB)#' |\
 	sed 's#%%LANGPAIR%%#$(LANGPAIR)#' |\
 	sed 's#%%INVLANGPAIR%%#$(INVLANGPAIR)#' > $@
 
@@ -196,7 +243,7 @@ $(ISACONFIG): $(DATADIR)/%.isa: include/%.in $(SRCXML) $(TRGXML)
 	sed 's#%%SRCXML%%#$(SRCXML)#' |\
 	sed 's#%%TRGXML%%#$(TRGXML)#' |\
 	sed 's#%%BITEXT%%#$(SENTALIGN)#' |\
-	sed 's#%%UPLUG%%#$(UPLUG)#' |\
+	sed 's#%%UPLUG%%#$(UPLUGWEB)#' |\
 	sed 's#%%LANGPAIR%%#$(LANGPAIR)#' |\
 	sed 's#%%INVLANGPAIR%%#$(INVLANGPAIR)#' > $@
 
@@ -206,7 +253,7 @@ $(ICACONFIG):$(DATADIR)/%.ica: include/%.in $(SRCXML) $(TRGXML)
 	sed 's#%%SRCXML%%#$(SRCXML)#' |\
 	sed 's#%%TRGXML%%#$(TRGXML)#' |\
 	sed 's#%%BITEXT%%#$(SENTALIGN)#' |\
-	sed 's#%%UPLUG%%#$(UPLUG)#' |\
+	sed 's#%%UPLUG%%#$(UPLUGWEB)#' |\
 	sed 's#%%LANGPAIR%%#$(LANGPAIR)#' |\
 	sed 's#%%INVLANGPAIR%%#$(INVLANGPAIR)#' > $@
 
