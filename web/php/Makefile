@@ -43,7 +43,8 @@
 
 # PWD = $(shell pwd)
 
-UPLUG = ${PWD}/uplug
+# UPLUG = ${PWD}/uplug
+UPLUG = uplug
 ALIGN = basic
 
 
