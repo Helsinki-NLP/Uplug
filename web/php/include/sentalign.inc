@@ -514,6 +514,10 @@ function save_sentence_alignment($srcdoc,$trgdoc,$aligndoc){
 	fwrite($FH,'<link id="SL'.$i.'" xtargets="');
 	fwrite($FH,$pairs[$i]['src'].';'.$pairs[$i]['trg'].'" />'."\n");
     }
+
+    fwrite($FH,"</linkGrp>\n</cesAlign>\n");
+    fclose($FH);
+
 }	
 
 
@@ -797,10 +801,11 @@ function sentence_align($srcfile,$trgfile){
 
     $command = $ALIGN.' -v -D "<hard>" -d "<soft>"';
     $command .= ' '.$srctokfile.' '.$trgtokfile;
+    $command .= ' > /dev/null 2>&1';
 
 //    status("aligning input files ... $command");
 
-    exec('ulimit -t 5;'.$command);
+    exec('ulimit -t 5;'.$command,$output,$return);
 
     parse_align_result($srctokfile.'.al','source');
     parse_align_result($trgtokfile.'.al','target');
