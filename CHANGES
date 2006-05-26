@@ -1,4 +1,11 @@
 
+* 26-05-2006
+
+- improved ISA & ICA (some fixes, allow empty alignments in ISA ...)
+- bin/wordalign.pl can bee run in server mode (hard-coded port, localhost) to 
+  serve ICA
+
+
 * 16-03-2006 joerg
 
 - nothing really new, serveral bug-fixes done since last time
