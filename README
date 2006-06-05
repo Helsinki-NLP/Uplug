@@ -10,7 +10,8 @@ bin/		  executable scripts (Uplug modules)
 systems/	  configuration files of Uplug modules
 ext/		  external programs/tools integrated in Uplug
 tools/		  simple tools (converting, dumping, etc)
-web/		  scripts for UplugWeb (not tested)
+web/		  scripts for UplugWeb (not tested a lot)
+web/php		  web interfaces for interactive alignment (ICA & ISA)
 
 ini/		  some configuration files
 lang/		  language specific data
@@ -23,3 +24,9 @@ XML/		  external XML libraries (just in case you don't have them)
 
 The project home page: https://sourceforge.net/projects/uplug/
 		       http://uplug.sourceforge.net/
+
+
+Installing/using Uplug: 	read INSTALL & QUICKSTART
+Installing/using ISA&ICA:	read web/php/README
+Installing UplugWeb:		read web/INSTALL
+

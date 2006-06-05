@@ -1,18 +1,58 @@
+
+
+ISA & ICA - 2 web interfaces for interactive alignment of parallel corpora
+==========================================================================
+
+
+* INSTALLING (on GNU/Linux)
+
+
+- you need a running web-server with PHP installed (PHP 4 should do ...)
+- copy all files and sub-directories from this directory to your web directory
+  (you probably want to create a separate directory for the interfaces)
+- change UPLUG and UPLUGWEB in the Makefile you just copied to your local 
+  installation of Uplug (UPLUGWEB is the adress from which the web-server 
+  can access Uplug)
+- go to your web directory whith the ISA & ICA scripts
+- run 'make' (a simple test run) or look at the Makefile to see some other 
+  options to prepare a bitext for alignment
+- open the index.php script in your web-browser
+
+
+
+
 isa.php - the Interactive Sentence Aligner
 ==========================================
 
 quickstart: run 'make' and open the isa.php script in your browser
-- change settings in the Makefile or in the include/config.isa if 
-  you want to use a different corpus
+            (this will make the files for an example corpus)
+
+- to use your own data: read the information at the top of the Makefile 
+  for make options or edit the Makefile according to your needs
+- you can also make your own sub-directory in corpora/ and place your own
+  configuration file there (look at the default one to see what you have
+  to include)
 
 
 ica.php - the Interactive Clue Aligner
 ======================================
 
 quickstart: run 'make wordalign' to create config files and some
-            basic clues and open the ica.php scriptin your browser
-- change the Makefile settings or the include/config.ica to use
-  another corpus
+            basic clues and open the ica.php script in your browser
+            (this will make the files for an example corpus)
+
+- to use your own data: read the information at the top of the Makefile 
+  for make options or edit the Makefile according to your needs
+- you can also make your own sub-directory in corpora/ and place your own
+  configuration file there (look at the default one to see what you have
+  to include)
+
+
+
+
+More information about using ISA & ICA can be found from the interfaces
+(click on the help link).
+
 
 
 

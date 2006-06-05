@@ -1,26 +1,26 @@
 #
 # USAGE
 #
-#  make   ...................  make files needed for ISA (sentence alignment) 
-#                              with default corpus (1988sven)
-#  make sentalign ...........  make ISA files for default corpus
-#  make wordalign ...........  make ICA files (word alignment) for default corpus
-#  make ALIGN=xx wordalign ..  make ICA files using word alignment config 'xx'
-#                              (default is 'basic', check uplug/systems/align/word/
-#                               in your Uplug directory for alternatives)
-#  make C=cc sentalign ......  make files for ISA for corpus 'cc'
-#                              (corpus name should be nnXXYY where 
-#                               XX is the ID of the source language (2 characters!)
-#                               YY is the ID of the target language (2 characters!)
-#                               and nn is some name (without spaces)
-#                              the Makefile expects source and target files in
-#                              corpora/ with the names 'nnXX.txt' and 'nnYY.txt'
-#  make C=cc clues ..........  make basic clues and (basic) giza clues
-#  make C=cc basicclues .....  string similarity and dice
-#  make C=cc gizaclues ......  GIZA refined and GIZA prefix
-#  make C=cc gizaposclues ...  GIZA with POS tags (useless if you don't have POS tags!)
-#  make C=cc dynamicclues ...  makes dynamic clues (requires word alignment
-#  make C=cc wordalign ......  make ICA files for corpus 'cc' (same as above)
+#  make   ................... make files needed for ISA (sentence alignment) 
+#                             with default corpus (1988sven)
+#  make sentalign ........... make ISA files for default corpus
+#  make wordalign ........... make ICA files (word alignment) for default corpus
+#  make ALIGN=xx wordalign .. make ICA files using word alignment config 'xx'
+#                             (default: 'basic', check uplug/systems/align/word
+#                              in your Uplug directory for alternatives)
+#  make C=cc sentalign ...... make files for ISA for corpus 'cc'
+#                             (corpus name should be nnXXYY where 
+#                              XX is the ID of the source language (2 chars!)
+#                              YY is the ID of the target language (2 chars!)
+#                              and nn is some name (without spaces)
+#                             the Makefile expects source and target files in
+#                             corpora/ with the names 'nnXX.txt' and 'nnYY.txt'
+#  make C=cc clues .......... make basic clues and (basic) giza clues
+#  make C=cc basicclues ..... string similarity and dice
+#  make C=cc gizaclues ...... GIZA refined and GIZA prefix
+#  make C=cc gizaposclues ... GIZA with POS tags (useless if you don't have POS tags!)
+#  make C=cc dynamicclues ... makes dynamic clues (requires word alignment
+#  make C=cc wordalign ...... make ICA files for corpus 'cc' (same as above)
 #
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 # Makefile expects Uplug to be installed in ./uplug
@@ -28,8 +28,8 @@
 # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 #
 #############################################################################
-# set the following variables:
-
+# set the following variables if necessary:
+#
 # CORPUS ...... name of the corpus (without extension)
 # SRCLANG ..... source language identifier (eg. en, sv, ...)
 # TRGLANG ..... target language identifier (eg. en, sv, ...)
@@ -37,14 +37,11 @@
 # UPLUG ....... home directory of your Uplug distribution
 # UPLUGWEB .... location of uplug when accessed from PHP
 # ALIGN ....... type of word alignment to be run (to create clue DBMs)
-
-
-#############################################################################
-# set the following variables if necessary:
-
+#
+#
 # SRCXML ...... source language document (default: $(CORPUS)$(SRCLANG).xml)
 # TRGXML ...... target language document (default: $(CORPUS)$(TRGLANG).xml)
-
+#
 #############################################################################
 
 # PWD = $(shell pwd)
