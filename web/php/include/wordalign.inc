@@ -62,7 +62,7 @@ function save_alignments(){
 	    list($src,$trg) = explode(':',$_SESSION['alignLex:'.$count]);
 	    list($sid,$tid) = explode(':',$_SESSION['alignXtrg:'.$count]);
 	    $score = $_SESSION['alignScore:'.$count];
-	    fwrite($fh,'<wordlink xtargets="'.$sid.';'.$tid.'" ');
+	    fwrite($fh,'<wordLink xtargets="'.$sid.';'.$tid.'" ');
 	    // fwrite($fh,'certainty="'.$_SESSION['alignScore:'.$count].'" ');
 	    fwrite($fh,'lexPair="'.utf8_encode($src).';'.utf8_encode($trg).'" />'."\n");
 	    $count++;
@@ -142,7 +142,7 @@ function startTag($parser, $name, $attrs){
 	}
     }
 
-    elseif ($name == 'wordlink'){
+    elseif ($name == 'wordlink' || $name == 'wordLink'){
 	$count=0;
 	while (isset($_SESSION['alignLex:'.$count])){
 	    $count++;
