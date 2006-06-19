@@ -63,11 +63,11 @@ function logged_in ( ) {
 
     if (!file_exists($passfile)){
 	echo "Create a user using the form below!<br/>";
-	echo "Single quotes are not allowed!<br /><br/>";
+	echo "Please use the following characters only: a-zA-Z0-9_<br /><br/>";
     }
     elseif ($ALLOW_NEW_USERS){
 	echo "Login or create a new user using the form below!<br/>";
-	echo "Please use the folowing characters only: a-zA-Z0-9_<br /><br/>";
+	echo "Please use the following characters only: a-zA-Z0-9_<br /><br/>";
     }
 
     echo "<form action=\"$PHP_SELF\" method=\"post\">";
