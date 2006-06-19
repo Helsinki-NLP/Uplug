@@ -486,6 +486,7 @@ echo "onMouseOver=\"return escape('";
 echo '<ul><li>click on green highlighting: add boundary';
 echo '<li>click on red highlighting: remove boundary';
 echo '<li>cognates: add boundaries before sentence pairs containing identical words';
+echo '<li>click on sentence IDs: add/remove empty links';
 echo '<li>mail: send sentence alignments via e-mail';
 echo '<li>reset: delete <b>all</b> boundaries in the <b>entire</b> document and restore initial boundaries';
 echo '<li>save: save alignments on the server';

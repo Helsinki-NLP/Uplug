@@ -78,10 +78,11 @@ document</a>
 <li><a href="#cognates">Add segmentation boundaries using "cognates" (we use
 cognates in terms of
 words that are spelled the same)</a>
-<li><a href="#cognates">Reset the segmentation of the <b>entire</b> document
+<li><a href="#reset">Reset the segmentation of the <b>entire</b> document
 and go back to some initial segmentation using one of the XML tags available in both documents</a>
 <li><a href="align">Run the automatic sentence aligner for the current portion
 of the document (using the existing segmentation as "hard boundaries")</a>
+<li><a href="empty">Add or remove empty sentence alignments</a>
 <li><a href="#send">Send (parts) of the sentence alignments to a given e-mal
 address (if this is not disabled in the script)</a>
 <li><a href="#save">Save the current alignment to a local file (on the server)
@@ -182,6 +183,17 @@ will be aligned with sentences in the corresponding target segment.
 
 Note that running the aligner is limited to 5 seconds. The call to the
 external program will be killed if this limit is exceeded!
+
+
+<a name="empty"></a>
+<h2>Add or remove empty sentence alignments</h2>
+
+Sometimes a sentence is not translated at all. In that case you can click on
+the sentence ID next to the sentence to align that sentence with
+nothing. Similarily, you can click on the sentence ID to remove existing empty
+alignments. This works also for blocks larger than 1 sentence. Simply use one
+of the sentence IDs in the block.
+
 
 
 <a name="send"></a>
