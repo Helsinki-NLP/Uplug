@@ -125,6 +125,7 @@ function add_user($passfile,$user,$password){
     if (file_exists($corpusdir) && !file_exists($userdir)){
 	if (@mkdir($userdir)){
 	    @copy($corpusdir.'/config.inc',$userdir.'/config.inc');
+	    @copy($corpusdir.'/link',$userdir.'/link');
 	    @symlink($path.'/data',$userdir.'/data');
 	}
     }

@@ -20,6 +20,29 @@ ISA & ICA - 2 web interfaces for interactive alignment of parallel corpora
 
 
 
+* USER MANAGEMENT
+
+Since 2006-06-19 there is a (very) simple user management integrated in 
+ISA & ICA. It can be disabled in the corpus specific configuration files
+(check corpora/your_corpus/config.inc). Simply set $USER_MANAGEMENT to 0
+and there will be no more login before aligning bitexts. The user management
+basically consists of logging in once you start an alignment session. The user
+name and password are set when logging in the first time on a particular
+corpus. Both, the username and the password have to contain ASCII characters
+only in the following range: a-zA-Z0-9_
+
+It is also possible to allow multiple users to use the system. You can either
+manually add users to the corpora/your_corpus/users.php file 
+(username => password pairs in the $USER array) or you can enable the 
+'new users allowed' option in the corpora/your_corpus/config.inc file. Using
+the latter you allow EVERYONE to add new users by simply specifying a new user
+name in the lgin form.
+
+If you use the user management, then alignment results will be stored
+separately for each user when hitting the 'save' buttons.
+
+
+
 
 isa.php - the Interactive Sentence Aligner
 ==========================================

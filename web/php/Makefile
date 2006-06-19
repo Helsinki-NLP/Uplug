@@ -47,7 +47,7 @@
 # PWD = $(shell pwd)
 
 UPLUG = ${PWD}/uplug
-UPLUGWEB = ${PWD}/uplug
+UPLUGWEB = uplug
 ALIGN = basic
 
 
@@ -132,7 +132,14 @@ $(SENTALIGNIDS): $(SENTALIGN)
 	rm -f config.inc
 
 
-$(WORDALIGN): $(SENTALIGN)
+pre_wordalign: $(SENTALIGN) $(DATADIR)/link
+
+$(DATADIR)/link: ${UPLUG}/systems/align/word/test/link
+	cp $< $@
+	chmod o+w $@
+
+
+$(WORDALIGN): pre_wordalign
 	rm -f $(DATADIR)/corpora
 	ln -s $(PWD)/corpora $(DATADIR)/
 	( cd $(DATADIR);\
@@ -140,27 +147,28 @@ $(WORDALIGN): $(SENTALIGN)
 	          -in ${PWD}/$(SENTALIGN) \
 	          -out $(PWD)/$(WORDALIGN) )
 
-clues: basicclues gizaclues
 
-dynamicclues: $(WORDALIGN)
+clues: pre_wordalign basicclues gizaclues
+
+dynamicclues: pre_wordalign $(WORDALIGN)
 	( cd $(DATADIR);\
 	$(UPLUG)/uplug align/word/dynamicclues \
 	          -in ${PWD}/$(WORDALIGN) )
 
-basicclues: sentalign
+basicclues: pre_wordalign
 	rm -f $(DATADIR)/corpora
 	ln -s $(PWD)/corpora $(DATADIR)/
 	( cd $(DATADIR);\
 	$(UPLUG)/uplug align/word/basicclues \
 	          -in ${PWD}/$(SENTALIGN) )
 
-gizaclues: gizarefined gizaprefix
-gizaposclues: gizapos gizaposword
+gizaclues: pre_wordalign gizarefined gizaprefix
+gizaposclues: pre_wordalign gizapos gizaposword
 
-gizarefined: sentalign $(DATADIR)/giza-refined.links $(DATADIR)/giza-refined-i.links
-gizaprefix: sentalign $(DATADIR)/giza-prefix.links $(DATADIR)/giza-prefix-i.links
-gizapos: sentalign $(DATADIR)/giza-pos.links $(DATADIR)/giza-pos-i.links
-gizaposword: sentalign $(DATADIR)/giza-pos-word.links $(DATADIR)/giza-pos-word-i.links
+gizarefined: pre_wordalign $(DATADIR)/giza-refined.links $(DATADIR)/giza-refined-i.links
+gizaprefix: pre_wordalign $(DATADIR)/giza-prefix.links $(DATADIR)/giza-prefix-i.links
+gizapos: pre_wordalign $(DATADIR)/giza-pos.links $(DATADIR)/giza-pos-i.links
+gizaposword: pre_wordalign $(DATADIR)/giza-pos-word.links $(DATADIR)/giza-pos-word-i.links
 
 $(DATADIR)/giza-refined.links: $(SENTALIGN)
 	rm -f $(DATADIR)/corpora

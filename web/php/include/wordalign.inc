@@ -336,7 +336,13 @@ function align($BITEXT,$ID,&$output){
 
     $pwd = realpath('./');
     $exec_cmd = 'cd '.$DATADIR.';';
-    $exec_cmd .= $UPLUG.' align/word/test/link';
+//    echo $pwd.'/'.$DATADIR.'/link<br />';
+    if (file_exists($pwd.'/'.$DATADIR.'/link')){
+	$exec_cmd .= $UPLUG.' '.$pwd.'/'.$DATADIR.'/link';
+    }
+    else{
+	$exec_cmd .= $UPLUG.' align/word/test/link';
+    }
 
     $cmd_params = '-v -in ';
     $cmd_params .= $pwd.'/'.$BITEXT;
