@@ -73,7 +73,6 @@ header('Content-Type: text/html; charset=ISO-8859-1');
 
 <?php
 
-
 if (isset($_SESSION['corpus'])){
     if (file_exists('corpora/'.$_SESSION['corpus'].'/config.inc')){
 	include('corpora/'.$_SESSION['corpus'].'/config.inc');
@@ -97,6 +96,22 @@ else{
 }
 
 
+// simple user management
+
+include('include/users.php');
+if (!logged_in()){
+    exit;
+}
+if (isset($_SESSION['user'])){
+    $dir = 'corpora/'.$_SESSION['corpus'].'/'.$_SESSION['user'];
+    if (file_exists($dir.'/config.inc')){
+	include($dir.'/config.inc');
+	$BITEXT .= '.'.$_SESSION['user'];
+	$DATADIR .= '/'.$_SESSION['user'];
+    }
+}
+
+
 
 $srcbase = str_replace('.xml','',$SRCXML);
 $trgbase = str_replace('.xml','',$TRGXML);
@@ -111,6 +126,7 @@ $trg_id_file = $trgbase . '.ids';
 
 if (isset($BITEXT)) $sentalign = $BITEXT;
 else $sentalign = $srcbase.'-'.$trgbase.'.ces';
+
 
 if (!file_exists($src_sent_file) ||
     (filemtime($SRCXML) > filemtime($src_sent_file))){

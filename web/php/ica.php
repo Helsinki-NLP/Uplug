@@ -87,6 +87,23 @@ else{
 }
 
 
+// simple user management
+
+include('include/users.php');
+if (!logged_in()){
+    exit;
+}
+if (isset($_SESSION['user'])){
+    $dir = 'corpora/'.$_SESSION['corpus'].'/'.$_SESSION['user'];
+    if (file_exists($dir.'/config.inc')){
+	include($dir.'/config.inc');
+//	$BITEXT .= '.'.$_SESSION['user'];
+	$DATADIR .= '/'.$_SESSION['user'];
+    }
+}
+
+
+
 if (!file_exists($DATADIR)){
     mkdir($DATADIR);
 }
