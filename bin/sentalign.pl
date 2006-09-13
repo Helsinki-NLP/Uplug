@@ -268,10 +268,10 @@ foreach (@segments){
 
 $output->close;
 
-#unlink $TmpSrc;
-#unlink $TmpTrg;
-#unlink $TmpSrc.'.al';
-#unlink $TmpTrg.'.al';
+unlink $TmpSrc;
+unlink $TmpTrg;
+unlink $TmpSrc.'.al';
+unlink $TmpTrg.'.al';
 
 ############################################################################
 

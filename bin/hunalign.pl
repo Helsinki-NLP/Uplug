@@ -73,7 +73,7 @@ if (not -e $TrgStream->{file}){
 my $ParBreak=$IniData{parameter}{'paragraph boundary'};
 my $DicFile=$IniData{parameter}{'dictionary'};
 
-my $AlignDir=$UplugHome.'ext/hunalign/';
+my $AlignDir=$UplugHome.'ext/hunalign/hunalign/';
 my $TmpSrc=Uplug::IO::Any::GetTempFileName;
 my $TmpTrg=Uplug::IO::Any::GetTempFileName;
 my $AlignPrg=$AlignDir.'hunalign';
@@ -116,6 +116,7 @@ while ($source->read($data)){
 	    my $before=$data->header;
 	    if ($before=~/\<$ParBreak[\s\/\>]/s){
 		print F '<p>'."\n";
+		push(@SrcSent,'p');
 	    }
 	    push (@SrcSent,$id);
 	    print F join " ",@tok;
@@ -144,6 +145,7 @@ while ($target->read($data)){
 	    my $before=$data->header;
 	    if ($before=~/\<$ParBreak[\s\/\>]/s){
 		print F '<p>'."\n";
+		push(@TrgSent,'p');
 	    }
 	    push (@TrgSent,$id);
 	    print F join " ",@tok;
@@ -152,7 +154,7 @@ while ($target->read($data)){
     }
 }
 close F;
-$source->close;
+$target->close;
 
 
 
@@ -169,15 +171,27 @@ my ($lastSrc,$lastTrg)=(0,0);
 my $id=0;
 foreach (@alignments){
     if (! /^[1-9]/){next;}       # skip (0,0) and dictionary output (realign)
-    $id++;
     chomp;
     my ($sid,$tid,$score)=split(/\s+/);
+
+    if ($SrcSent[$sid] eq 'p'){
+	if ($TrgSent[$tid] eq 'p'){
+	    $lastSrc=$sid;
+	    $lastTrg=$tid;
+	    next;
+	}
+	else{
+	    print STDERR "strange! non corresponding par boundaries!\n";
+	}
+    }
+
+    $id++;
     my @LinkSrc=();
     my @LinkTrg=();
-    foreach ($lastSrc .. $sid-1){
+    foreach ($lastSrc+1 .. $sid){
 	push(@LinkSrc,$SrcSent[$_]);
     }
-    foreach ($lastTrg .. $tid-1){
+    foreach ($lastTrg+1 .. $tid){
 	push(@LinkTrg,$TrgSent[$_]);
     }
 
