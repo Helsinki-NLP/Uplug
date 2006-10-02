@@ -165,7 +165,8 @@ function characterData($parser, $data)
     $data = rtrim($data);
 
     if (($sent_id != null) && ($data != "")){
-	fwrite($sentFH,utf8_decode($data)." ");
+//	fwrite($sentFH,utf8_decode($data)." ");
+       fwrite($sentFH,$data." ");
     }
 }
 

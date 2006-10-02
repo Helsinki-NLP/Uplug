@@ -96,7 +96,7 @@ while (<F>){
 	    else{print "================================\n";}
 	}
     }
-    if (/xtargets=\"([^\"]+)\s*\;\s*([^\"]+)\"/){
+    if (/xtargets=\"([^\"]*)\s*\;\s*([^\"]*)\"/){
 	my $srceof=1;
 	my $trgeof=1;
 	$count++;
