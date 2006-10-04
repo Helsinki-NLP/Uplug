@@ -12,6 +12,8 @@ if (isset($_POST['corpus'])){
     $_SESSION['corpus'] = $_POST['corpus'];
 }
 
+@setlocale(LC_ALL,'en_US.utf8');
+header('Content-Type: text/html; charset=UTF-8');
 ?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
                       "http://www.w3.org/TR/html4/loose.dtd">
@@ -19,7 +21,7 @@ if (isset($_POST['corpus'])){
 <head>
 <title>Interactive Clue Aligner (ICA)</title>
 <link rel="stylesheet" href="ica.css" type="text/css">
-<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" >
 
 <?php include('include/java.inc'); ?>
 
