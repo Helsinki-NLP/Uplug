@@ -43,6 +43,9 @@ Uplug - Quickstart
 
    /cvs/tools/readalign 1988sven.xml | less
 
+   Since version 0.2.0 there are additional sentence aligners integrated in
+   Uplug (hunalign, GMA). Look at the HOWTO file for details!
+
 
 3c) Word alignment (default)
 

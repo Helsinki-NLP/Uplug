@@ -22,11 +22,11 @@ Uplug/		  Uplug libraries
 XML/		  external XML libraries (just in case you don't have them)
 
 
-The project home page: https://sourceforge.net/projects/uplug/
+The project home page: http://sourceforge.net/projects/uplug/
 		       http://uplug.sourceforge.net/
 
 
-Installing/using Uplug: 	read INSTALL & QUICKSTART
+Installing/using Uplug: 	read INSTALL, QUICKSTART & HOWTO
 Installing/using ISA&ICA:	read web/php/README
 Installing UplugWeb:		read web/INSTALL
 
