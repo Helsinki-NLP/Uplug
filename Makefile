@@ -14,7 +14,7 @@ uplug-${VERSION}.tar.gz:
 	find /tmp/uplug -name '*~' -exec rm {} \;
 	find /tmp/uplug -type d -name 'CVS' | xargs rm -fr
 	rm -f /tmp/uplug/Makefile
-	sed "s/VERSION = .*$$/VERSION = $(VERSION)/" Uplug.pm > /tmp/uplug/Uplug.php |\
+	sed "s/VERSION = .*$$/VERSION = $(VERSION)/" Uplug.pm > /tmp/uplug/Uplug.pm |\
 	(cd /tmp;tar -czf $@ uplug)
 	mv /tmp/$@ .
 	rm -fr /tmp/uplug

@@ -1,5 +1,13 @@
 
-* 26-05-2006
+* 13-10-2006 joerg
+
+- ISA & ICa with simple user management (multiple users, password protection)
+- integrated hunalign sentence aligner
+- integrated GMA sentence aligner
+- alternative sentence aligner with cognate filter: uplugalign
+
+
+* 26-05-2006 joerg
 
 - improved ISA & ICA (some fixes, allow empty alignments in ISA ...)
 - bin/wordalign.pl can bee run in server mode (hard-coded port, localhost) to 
