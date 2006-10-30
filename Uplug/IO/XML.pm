@@ -63,11 +63,12 @@ my $DEFAULTROOTTAG='document';
 #
 
 %DEFAULTOPTIONS = (
-		  'root' => '.*',                     # sub-tree root: any tag!
+		  'root' => '.*',                   # sub-tree root: any tag!
 		  'encoding' => 'utf-8',
-#		  'attributes' => 1,                  # save attribute values
-#		  'delimiter' => ' ',                 # default delimiter
-		  'REMOVESPACES' => 1,
+#		  'attributes' => 1,                # save attribute values
+#		  'delimiter' => ' ',               # default delimiter
+		   'REMOVESPACES' => 1,
+		   'EXPANDBASICENT' => 1,           # expand &lt; %gt; $amp;
 #		  'DocRootTag' => 'document',
 		  );
 
@@ -570,6 +571,7 @@ sub parseXML{
 	# set some parameters for the parser:
 	#
 	$self->{XmlHandle}->{REMOVESPACES}=$self->option('REMOVESPACES');
+	$self->{XmlHandle}->{EXPANDBASICENT}=$self->option('EXPANDBASICENT');
 	$self->{XmlHandle}->{SubTreeRoot}=$self->option('root');
 	$self->{XmlHandle}->{DocRootTag}=$self->option('DocRootTag');
 	$self->{XmlHandle}->{DocBodyTag}=$self->option('DocBodyTag');
@@ -726,6 +728,12 @@ sub XmlChar{
 	if (($c!~/\S/) and $p->{REMOVESPACES}){
 	    return;
 	}
+	if ($p->{EXPANDBASICENT}){
+	    $c=~s/\&gt\;/\>/gis;
+	    $c=~s/\&lt\;/\</gis;
+	    $c=~s/\&amp\;/\&/gis;
+	}
+
 	$p->{XmlData}->addContent($p->{LastNode},$c);  # add new content!
 #	$p->{LastNode}->addTextNode($c);
 # 	$p->{LastNode}->addContent($c);
