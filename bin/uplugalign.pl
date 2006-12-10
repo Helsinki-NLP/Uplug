@@ -738,6 +738,10 @@ sub XmlChar{
 sub time2sec{
     my $time=shift;
     my ($h,$m,$s,$ms)=split(/[^0-9\-]/,$time);
+    if (not $h){$h=0;}
+    if (not $m){$m=0;}
+    if (not $s){$s=0;}
+    if (not $ms){$ms=0;}
     my $sec = 3600*$h+60*$m+$s+$ms/1000;
     return $sec;
 }
