@@ -1,5 +1,7 @@
 <?php
 
+// unlink('corpora/2_fast_2_furious_dutger/joerg/config.inc');
+
 /*
 if (file_exists('include/config.isa')){
     include('include/config.isa');
@@ -27,6 +29,9 @@ if ($_POST['reset']){                      // reset button pressed -->
     if (isset($_SESSION['corpus'])){
 	$corpus = $_SESSION['corpus'];
     }
+    if (isset($_SESSION['user'])){
+	$user = $_SESSION['user'];
+    }
     session_destroy();
     session_start();
     if (isset($hardtag)){
@@ -34,6 +39,9 @@ if ($_POST['reset']){                      // reset button pressed -->
     }
     if (isset($corpus)){
 	$_SESSION['corpus']=$corpus;
+    }
+    if (isset($user)){
+	$_SESSION['user']=$corpus;
     }
 }
 
@@ -326,33 +334,36 @@ if (!isset($_SESSION['trg_start'])) $_SESSION['trg_start']=0;
 if (!isset($_SESSION['show_max'])) $_SESSION['show_max']=$SHOWMAX;
 
 if (isset($_REQUEST['next'])){
-    if (isset($_SESSION['page'])){
-	$page = $_SESSION['page']+1;
-	if (isset($_SESSION['src_page'.$page]) &&
-	    isset($_SESSION['trg_page'.$page])){
-	    $_SESSION['src_start']=$_SESSION['src_page'.$page];
-	    $_SESSION['trg_start']=$_SESSION['trg_page'.$page];
-	    $_SESSION['page']++;
-	}
+    if (isset($_SESSION['src_end']) && isset($_SESSION['trg_end'])){
+	$_SESSION['src_start'] = $_SESSION['src_end'];
+	$_SESSION['trg_start'] = $_SESSION['trg_end'];
     }
 }
 if (isset($_REQUEST['prev'])){
     if (isset($_SESSION['page'])){
 	$page = $_SESSION['page']-1;
-	if (isset($_SESSION['src_page'.$page]) &&
-	    isset($_SESSION['trg_page'.$page])){
-	    $_SESSION['src_start']=$_SESSION['src_page'.$page];
-	    $_SESSION['trg_start']=$_SESSION['trg_page'.$page];
-	    $_SESSION['page']--;
-	}
     }
+    $srcend = $_SESSION['src_start'];
+    $trgend = $_SESSION['trg_start'];
+    list($_SESSION['src_start'],$_SESSION['trg_start']) = 
+	get_prev_start($srcend,$trgend,$_SESSION['show_max']);
 }
 if (isset($_REQUEST['all'])){
-    $_SESSION['page']=0;
     $_SESSION['src_start']=0;
     $_SESSION['trg_start']=0;
     $_SESSION['show_max'] = max(count($src_ids),count($trg_ids));
 }
+if (isset($_REQUEST['start'])){
+    $_SESSION['src_start']=0;
+    $_SESSION['trg_start']=0;
+}
+if (isset($_REQUEST['end'])){
+    list($_SESSION['src_start'],$_SESSION['trg_start']) = 
+	get_prev_start(count($src_ids)+1,count($trg_ids)+1,
+		       $_SESSION['show_max']);
+}
+
+
 if (isset($_REQUEST['show'])){
     $_SESSION['show_max'] = $_REQUEST['show'];
 }

@@ -360,27 +360,20 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
     }
     echo '</table>';
 
-//    $_SESSION['last_src_fpos'] = ftell($src);
-//    $_SESSION['last_trg_fpos'] = ftell($trg);
-
     fclose($src);
     fclose($trg);
 
 ////////////////////////////////////////////////////////////////////
+// navigation bar
 
-    global $SHOWMAX;
-    if (!isset($_SESSION['page'])){
-	$_SESSION['page'] = 0;
-	$_SESSION['src_page0'] = 0;
-	$_SESSION['trg_page0'] = 0;
-    }
+    $_SESSION['src_end'] = $src_count;
+    $_SESSION['trg_end'] = $trg_count;
 
     echo '<div class="index">';
-    if ($_SESSION['page'] > 0){
-	$prevpage = $_SESSION['page']-1;
-	if ($prevpage>=0 && ($ISA_MODE != 'eval')){
-	    echo '<a href="'.$PHP_SELF.'?prev">&lt;&lt; previous page</a> | ';
-	}
+    if (($_SESSION['src_start'] != 0 && $_SESSION['trg_start'] != 0) 
+	&& ($ISA_MODE != 'eval')){
+	echo '<a href="'.$PHP_SELF.'?start">&lt;&lt;</a> ';
+	echo '<a href="'.$PHP_SELF.'?prev"> previous page</a> | ';
     }
     foreach (array(10,20,50,100,200) as $max){
 	if (($ISA_MODE != 'eval')){
@@ -392,18 +385,63 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	    }
 	}
     }
-//    echo '<a href="'.$PHP_SELF.'?all">all</a> | ';
     if (($src_count<count($src_ids)) || ($trg_count<count($trg_ids))){
-	$nextpage = $_SESSION['page']+1;
-	$_SESSION['src_page'.$nextpage] = $src_count;
-	$_SESSION['trg_page'.$nextpage] = $trg_count;
 	if ($ISA_MODE != 'eval'){
-	    echo '<a href="'.$PHP_SELF.'?next">next page &gt;&gt;</a>';
+	    echo '<a href="'.$PHP_SELF.'?next">next page</a> ';
+	    echo '<a href="'.$PHP_SELF.'?end">&gt;&gt;</a>';
 	}
     }
     echo '</div>';
 
 }
+
+
+
+function get_prev_start($srcend,$trgend,$max){
+
+    $srccount=$srcend;
+    $trgcount=$trgend;
+
+    global $src_ids;
+    global $trg_ids;
+
+    while ($srcend-$srccount<$max && $trgend-$trgcount<$max){
+
+	while ($srcend-$srccount<$max*1.2){
+	    $srccount--;
+	    if (isset($_SESSION['source_hard_'.$src_ids[$srccount]])){
+		if (!isset($_SESSION['source_empty_'.$src_ids[$srccount]])){
+		    // echo "source break found at $srccount<br/>";
+		    break;
+		}
+	    }
+	    if ($srccount<0){
+		$srccount=0;
+		break;
+	    }
+	}
+	while ($trgend-$trgcount<$max*1.2){
+	    $trgcount--;
+	    if (isset($_SESSION['target_hard_'.$trg_ids[$trgcount]])){
+		if (!isset($_SESSION['target_empty_'.$trg_ids[$trgcount]])){
+		    // echo "target break found at $trgcount<br/>";
+		    break;
+		}
+	    }
+	    if ($trgount<0){
+		$trgcount=0;
+		break;
+	    }
+	}
+    }
+
+//    echo "<br /><br /><br /><br /><br />start at $srcend:$trgend<br />";
+//    echo "go to $srccount:$trgcount<br />";
+
+    return array($srccount,$trgcount);
+}
+
+
 
 
 
@@ -779,6 +817,36 @@ function sentence_align_tmx($srcdoc,$trgdoc,$aligndoc){
 
 
 
+function get_all_boundaries(&$SrcHard,&$TrgHard){
+
+    global $src_ids,$trg_ids;
+
+    $nrSrcHard = $_SESSION['nr_source_hard'];
+    $nrTrgHard = $_SESSION['nr_target_hard'];
+
+    $count=0;
+    $idx=0;
+    while ($count<$nrSrcHard){
+	if (isset($_SESSION['source_hard_'.$src_ids[$idx]])){
+	    // echo "found src $src_ids[$idx]<br />";
+	    array_push($SrcHard,$src_ids[$idx]);
+	    $count++;
+	}
+	$idx++;
+    }
+
+    $count=0;
+    $idx=0;
+    while ($count<$nrTrgHard){
+	if (isset($_SESSION['target_hard_'.$trg_ids[$idx]])){
+	    // echo "found trg $trg_ids[$idx]<br />";
+	    array_push($TrgHard,$trg_ids[$idx]);
+	    $count++;
+	}
+	$idx++;
+    }	
+}
+
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -793,34 +861,72 @@ function sentence_align($srcfile,$trgfile){
     $srctokfile = $srcbase . '.tok';
     $trgtokfile = $trgbase . '.tok';
 
-    make_align_input($srcfile,$trgfile,
-		     $srctokfile,$trgtokfile,
-		     $_SESSION['src_start'],
-		     $_SESSION['trg_start'],
-		     $_SESSION['show_max']);
+    $program = basename($ALIGN);
+    if ($program == 'srtalign.pl'){
+	$SrcHard=array();
+	$TrgHard=array();
+	get_all_boundaries($SrcHard,$TrgHard);
+	if (count($TrgHard)<count($SrcHard)){
+	    $min = count($TrgHard);
+	} else{
+	    $min = count($SrcHard);
+	}
+	$bound=array();
+	for ($i=0;$i<$min;$i++){
+	    array_push($bound,$SrcHard[$i].':'.$TrgHard[$i]);
+	}
+	global $SRCXML,$TRGXML, $sentalign;
+	// $tmpout = $sentalign.'.tmp';
 
-    $command = $ALIGN.' -v -D "<hard>" -d "<soft>"';
-    $command .= ' '.$srctokfile.' '.$trgtokfile;
-    $command .= ' > /dev/null 2>&1';
+	$command = $ALIGN;
+	if (count($bound)){
+	    $command .= ' -h '.implode('+',$bound);
+	}
+	$command .= ' '.$SRCXML;
+	$command .= ' '.$TRGXML;
+	// $command .= ' 2> /dev/null > '.$tmpout;
+	$command .= ' -v > '.$sentalign;
 
-//    status("aligning input files ... $command");
+	exec('ulimit -t 5;'.$command,$output,$return);
+	$info = 'srt-align';
+	if (count($bound)){
+	    $info .= 'with fixpoints at ';
+	    $info .= implode(', ',$bound);
+	}
+	status($info);
 
-    exec('ulimit -t 5;'.$command,$output,$return);
+	// read sentence alignment from file!
+	$_SESSION['hardtag'] = 'link';
+	read_links($sentalign);
 
-    parse_align_result($srctokfile.'.al','source');
-    parse_align_result($trgtokfile.'.al','target');
+    }
+    else{
+	make_align2_input($srcfile,$trgfile,
+			  $srctokfile,$trgtokfile,
+			  $_SESSION['src_start'],
+			  $_SESSION['trg_start'],
+			  $_SESSION['show_max']);
 
-    if (file_exists($srctokfile)) unlink($srctokfile);
-    if (file_exists($trgtokfile)) unlink($trgtokfile);
-    if (file_exists($srctokfile.'.al')) unlink($srctokfile.'.al');
-    if (file_exists($trgtokfile.'.al')) unlink($trgtokfile.'.al');
+	$command = $ALIGN.' -v -D "<hard>" -d "<soft>"';
+	$command .= ' '.$srctokfile.' '.$trgtokfile;
+	$command .= ' > /dev/null 2>&1';
+//	status("aligning input files ... $command");
 
-    status("input files aligned (if ulimit of 5 seconds not exceeded)!");
+	exec('ulimit -t 5;'.$command,$output,$return);
 
+	parse_align2_result($srctokfile.'.al','source');
+	parse_align2_result($trgtokfile.'.al','target');
+
+	if (file_exists($srctokfile)) unlink($srctokfile);
+	if (file_exists($trgtokfile)) unlink($trgtokfile);
+	if (file_exists($srctokfile.'.al')) unlink($srctokfile.'.al');
+	if (file_exists($trgtokfile.'.al')) unlink($trgtokfile.'.al');
+	status("input files aligned (if ulimit of 5 seconds not exceeded)!");
+    }
 }
 
 
-function parse_align_result($file,$language){
+function parse_align2_result($file,$language){
 
     $FH = fopen($file,"r") or exit("unable to open $file!");
     $sid = null;
@@ -854,10 +960,7 @@ function parse_align_result($file,$language){
 }
 
 
-
-
-
-function make_align_input($srcin,$trgin,$srcout,$trgout,
+function make_align2_input($srcin,$trgin,$srcout,$trgout,
 			  $srcstart,$trgstart,$max){
 
     global $src_ids,$trg_ids;

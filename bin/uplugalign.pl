@@ -703,11 +703,14 @@ sub XmlEnd{
 		$p->{TIME}->[$sidx]->{start} + $chars*$p->{SEC_PER_CHAR};
 	}
 	my $time = $p->{TIME}->[$sidx]->{end}-$p->{TIME}->[$sidx]->{start};
-	push (@{$p->{TIME_LENGTHS}},$p->{TIME_LENGTHS}->[-1]+$time);
-	if ($time<0){
-	    print STDERR "warning! sentence $sidx is $time seconds long\n";
+	if ($time>0){
+	    push (@{$p->{TIME_LENGTHS}},$p->{TIME_LENGTHS}->[-1]+$time);
 	}
-
+	else{
+	    ## don't allow time<=0 --> add small time length ...
+	    print STDERR "warning! sentence $sidx is $time seconds long\n";
+	    push (@{$p->{TIME_LENGTHS}},$p->{TIME_LENGTHS}->[-1]+0.001);
+	}
     }
 
 }

@@ -43,7 +43,8 @@ sub setFile{
     if (not -e $file){
 	sysopen (F,$file,O_CREAT);
 	close F;
-	system "chmod g+w $file";
+#	system "chmod g+w $file";
+	system "chmod o+w $file";
     }
     $self->{FILE}=$file;
 }
