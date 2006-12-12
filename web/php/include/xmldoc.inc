@@ -256,6 +256,7 @@ function read_links($xmlfile){
     }
     xml_parser_free($xml_parser);
     fclose($inFH);
+
 //    $_SESSION['tags_source'] .= ' link';
 //    $_SESSION['tags_target'] .= ' link';
 }
@@ -288,8 +289,14 @@ function LinkStartElement($parser, $name, $attrs)
 	    }
 	}
 
-	$firstsrc = array_shift($srcids);
-	$firsttrg = array_shift($trgids);
+	$firstsrc = $srcids[0];
+	$firsttrg = $trgids[0];
+
+	$lastsrc = array_pop($srcids);
+	$lasttrg = array_pop($trgids);
+
+//	$firstsrc = array_shift($srcids);
+//	$firsttrg = array_shift($trgids);
 
 	$_SESSION['tag_source:link']++;
 	$_SESSION['tag_target:link']++;
@@ -302,6 +309,28 @@ function LinkStartElement($parser, $name, $attrs)
 	    if (!isset($_SESSION['target_hard_'.$firsttrg])){
 		$_SESSION['target_hard_'.$firsttrg] = 1;
 		$_SESSION['nr_target_hard']++;
+	    }
+	    // add also hard boundaries after the sentence alignment
+	    // (need this if we have incomplete sentence alignment files ...)
+	    global $src_idxs,$src_ids;
+	    $lastsrcidx=$src_idxs[$lastsrc];
+	    if (count($src_ids)>$lastsrcidx){
+		$lastsrcidx++;
+		$nextsrc=$src_ids[$lastsrcidx];
+		if (!isset($_SESSION['source_hard_'.$nextsrc])){
+		    $_SESSION['source_hard_'.$nextsrc] = 1;
+		    $_SESSION['nr_source_hard']++;
+		}
+	    }
+	    global $trg_idxs,$trg_ids;
+	    $lasttrgidx=$trg_idxs[$lasttrg];
+	    if (count($trg_ids)>$lasttrgidx){
+		$lasttrgidx++;
+		$nexttrg=$trg_ids[$lasttrgidx];
+		if (!isset($_SESSION['target_hard_'.$nexttrg])){
+		    $_SESSION['target_hard_'.$nexttrg] = 1;
+		    $_SESSION['nr_target_hard']++;
+		}
 	    }
 	}
     }

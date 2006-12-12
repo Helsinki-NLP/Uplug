@@ -161,6 +161,8 @@ $trg_ids = file($trg_id_file);
 $src_ids = array_map("rtrim",$src_ids);
 $trg_ids = array_map("rtrim",$trg_ids);
 
+$src_idxs = array_flip($src_ids);
+$trg_idxs = array_flip($trg_ids);
 
 
 if ($_POST['evalnext']){
@@ -340,11 +342,11 @@ if (isset($_REQUEST['next'])){
 	if ($_POST['evalnext']){
 	    while (!isset($_SESSION['source_hard_'.$src_ids[$_SESSION['src_end']]])){
 		$_SESSION['src_end']++;
-		if ($_SESSION['src_end'] >= count($src_ids)){break;}
+		if ($_SESSION['src_end'] > count($src_ids)){break;}
 	    }
 	    while (!isset($_SESSION['target_hard_'.$trg_ids[$_SESSION['trg_end']]])){
 		$_SESSION['trg_end']++;
-		if ($_SESSION['trg_end'] >= count($trg_ids)){break;}
+		if ($_SESSION['trg_end'] > count($trg_ids)){break;}
 	    }
 	}
 	$_SESSION['src_start'] = $_SESSION['src_end'];
