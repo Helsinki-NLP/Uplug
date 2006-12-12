@@ -28,7 +28,6 @@ input, select{
   vertical-align: top;
 }
 
-
 .bitext-src
 {  
   border: 1px dashed #000;
@@ -56,6 +55,12 @@ input, select{
   padding-top: 0px;
   padding-bottom: 1px;
   margin: 0px;
+}
+
+.eval
+{  
+  padding-bottom: 1px;
+  border-bottom: 2pt solid #fff;
 }
 
 

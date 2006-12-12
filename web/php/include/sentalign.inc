@@ -174,9 +174,14 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	$anchor = '';
 	echo '<tr><td width="50%">';
 
+//	if (isset($_SESSION['target_empty_'.$trg_ids[$trg_count]])){
+//	    echo "empty target: $trg_count - don't display source<br>";
+//	}
+
 	// skip displaying source sentences if target sentences
 	// are aligned to empty
-	if (!isset($_SESSION['target_empty_'.$trg_ids[$trg_count]])){
+	if (!isset($_SESSION['target_empty_'.$trg_ids[$trg_count]]) ||
+	    isset($_SESSION['source_empty_'.$src_ids[$src_count]])){
 
 	echo '<table width="100%" class="bitext-src">';
 	while ($buffer = fgets($src,4096)) {
@@ -253,6 +258,11 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 	}
 
 	echo '</td><td>';
+
+
+//	if (isset($_SESSION['source_empty_'.$src_ids[$src_count-1]])){
+//	    echo "empty source: $src_count - don't display target<br>";
+//	}
 
 	// skip displaying target sentences if the previous source sentence
 	// is aligned to empty
@@ -345,14 +355,20 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 
 	echo '</td>';
 	if ($ISA_MODE == 'eval'){
-	    echo '<td width="100">';
-	    echo '<input type="radio" value="ok" name="eval_';
-	    echo $src_count.'_'.$trg_count.'" />ok<br />';
-	    echo '<input type="radio" value="parts" name="eval_';
-	    echo $src_count.'_'.$trg_count.'" />partially<br />';
-	    echo '<input type="radio" value="wrong" name="eval_';
-	    echo $src_count.'_'.$trg_count.'" />wrong';
-	    echo '</td>';
+	    if (isset($_SESSION['target_hard_'.$trg_ids[$trg_count]])){
+		echo '<td width="120">';
+		echo '<div class="eval">';
+		echo '<input type="radio" value="ok" name="eval_';
+		echo $src_count.'_'.$trg_count.'" />ok<br />';
+		echo '<input type="radio" value="parts" name="eval_';
+		echo $src_count.'_'.$trg_count.'" />partially&nbsp;ok<br />';
+		echo '<input type="radio" value="wrong" name="eval_';
+		echo $src_count.'_'.$trg_count.'" />wrong<br />';
+		echo '<input type="radio" value="dontknow" name="eval_';
+		echo $src_count.'_'.$trg_count.'" />don\'t&nbsp;know';
+		echo '</div>';
+		echo '</td>';
+	    }
 	}
 
 	echo '</tr>';
@@ -1066,6 +1082,9 @@ function count_eval($file){
 	    }
 	    if ($val == 'parts'){
 		$_SESSION['parts_links']++;
+	    }
+	    if ($val == 'dontknow'){
+		$_SESSION['dontknow_links']++;
 	    }
 	    $_SESSION['total_links']++;
 	}

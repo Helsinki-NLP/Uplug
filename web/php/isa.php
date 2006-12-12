@@ -169,11 +169,13 @@ if ($_POST['evalnext']){
     $total = $_SESSION['total_links'];
     echo '<div class="index">';
     echo 'nr ok: '.$_SESSION['ok_links'];
-    printf(" (%6.2f)<br />",$_SESSION['ok_links']*100/$total);
+    printf(" (%6.2f) ",$_SESSION['ok_links']*100/$total);
     echo 'nr partially ok: '.$_SESSION['parts_links'];
-    printf(" (%6.2f)<br />",$_SESSION['parts_links']*100/$total);
+    printf(" (%6.2f) ",$_SESSION['parts_links']*100/$total);
     echo 'nr wrong: '.$_SESSION['wrong_links'];
-    printf(" (%6.2f)<br />",$_SESSION['wrong_links']*100/$total);
+    printf(" (%6.2f) ",$_SESSION['wrong_links']*100/$total);
+    echo 'do not know: '.$_SESSION['dontknow_links'];
+    printf(" (%6.2f)",$_SESSION['dontknow_links']*100/$total);
     echo '</div>';
     $_REQUEST['next']=1;
 }
@@ -335,6 +337,16 @@ if (!isset($_SESSION['show_max'])) $_SESSION['show_max']=$SHOWMAX;
 
 if (isset($_REQUEST['next'])){
     if (isset($_SESSION['src_end']) && isset($_SESSION['trg_end'])){
+	if ($_POST['evalnext']){
+	    while (!isset($_SESSION['source_hard_'.$src_ids[$_SESSION['src_end']]])){
+		$_SESSION['src_end']++;
+		if ($_SESSION['src_end'] >= count($src_ids)){break;}
+	    }
+	    while (!isset($_SESSION['target_hard_'.$trg_ids[$_SESSION['trg_end']]])){
+		$_SESSION['trg_end']++;
+		if ($_SESSION['trg_end'] >= count($trg_ids)){break;}
+	    }
+	}
 	$_SESSION['src_start'] = $_SESSION['src_end'];
 	$_SESSION['trg_start'] = $_SESSION['trg_end'];
     }
