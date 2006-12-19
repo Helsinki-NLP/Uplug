@@ -48,6 +48,7 @@ function read_tag_file($xmlfile,$language){
     if (file_exists($tag_file)){
 	$lines = file($tag_file);
 	$lines = array_map("rtrim",$lines);
+	$first=true;
 	foreach ($lines as $line){
 	    $tags = explode(' ',$line);
 	    $sid = array_pop($tags);
@@ -56,11 +57,14 @@ function read_tag_file($xmlfile,$language){
 	    foreach ($tags as $tag){
 		$_SESSION['tag_'.$language.':'.$tag]++;
 		$struc_tag[$tag] = 1;
-		if ($tag == $_SESSION['hardtag']){
-		    $_SESSION[$language.'_hard_'.$sid] = 1;
-		    $_SESSION['nr_'.$language.'_hard']++;
+		if (! $first){       // don't need a boundary before first line
+		    if ($tag == $_SESSION['hardtag']){
+			$_SESSION[$language.'_hard_'.$sid] = 1;
+			$_SESSION['nr_'.$language.'_hard']++;
+		    }
 		}
 	    }
+	    $first=false;
 	}
 	$_SESSION['tags_'.$language]=implode(' ',array_keys($struc_tag));
     }
@@ -282,11 +286,13 @@ function LinkStartElement($parser, $name, $attrs)
 	    foreach ($trgids as $t){
 		$_SESSION['target_empty_'.$t] = 1;
 	    }
+	    return true;
 	}
 	if (count($trgids)==0){
 	    foreach ($srcids as $s){
 		$_SESSION['source_empty_'.$s] = 1;
 	    }
+	    return true;
 	}
 
 	$firstsrc = $srcids[0];
@@ -313,10 +319,12 @@ function LinkStartElement($parser, $name, $attrs)
 	    // add also hard boundaries after the sentence alignment
 	    // (need this if we have incomplete sentence alignment files ...)
 	    global $src_idxs,$src_ids;
-	    $lastsrcidx=$src_idxs[$lastsrc];
+	    $lastsrcidx=$src_idxs["$lastsrc"];
+
 	    if (count($src_ids)>$lastsrcidx){
 		$lastsrcidx++;
 		$nextsrc=$src_ids[$lastsrcidx];
+
 		if (!isset($_SESSION['source_hard_'.$nextsrc])){
 		    $_SESSION['source_hard_'.$nextsrc] = 1;
 		    $_SESSION['nr_source_hard']++;

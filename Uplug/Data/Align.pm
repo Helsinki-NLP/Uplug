@@ -290,6 +290,7 @@ sub getBitextPhrases{
     my ($param,$src,$trg,$token,$attr)=@_;
     if (ref($param) ne 'HASH'){$param={};}
 
+
     #----------------------------------------------------------------------
     my @srcTokNodes=();          # 1) get all tokens
     my @trgTokNodes=();
