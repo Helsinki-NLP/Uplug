@@ -1,4 +1,6 @@
 
+- added missing ';' at line 40 in Uplug.pm
+
 * 13-10-2006 joerg
 
 - ISA & ICa with simple user management (multiple users, password protection)
