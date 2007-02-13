@@ -35,6 +35,7 @@ use FindBin qw($Bin);
 use File::Copy;
 use File::Basename;
 use XML::Parser;
+use Cwd;
 
 #my $CWBBIN='/usr/local/bin';
 #my $ENCODE="$CWBBIN/cwb-encode";
@@ -60,7 +61,8 @@ if (not -d $DATDIR){die "cannot access data dir: $DATDIR!";}
 
 #-----------------------------------------------------------------------
 
-my $DIR    = $ENV{PWD};
+# my $DIR    = $ENV{PWD};
+my $DIR    = getcwd;
 my $TMPDIR = '/tmp/CORPUSINDEXER'.$$;
 mkdir $TMPDIR,0755;
 chdir $TMPDIR;

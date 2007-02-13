@@ -37,6 +37,7 @@ use FindBin qw($Bin);
 use File::Copy;
 use File::Basename;
 use XML::Parser;
+use Cwd;
 
 #use lib ('/home/staff/joerg/user_local/lib/perl5/site_perl/5.8.0/');
 #use WebCqp::Query;
@@ -70,7 +71,8 @@ if (not -d $DATDIR){mkdir $DATDIR,0755;}
 if (not -d $REGDIR){die "cannot access registry dir: $REGDIR!";}
 if (not -d $DATDIR){die "cannot access data dir: $DATDIR!";}
 
-my $DIR    = $ENV{PWD};
+# my $DIR    = $ENV{PWD};
+my $DIR    = getcwd;
 my $TMPDIR = '/tmp/BITEXTINDEXER'.$$;
 mkdir $TMPDIR,0755;
 chdir $TMPDIR;
@@ -122,10 +124,12 @@ sub GetXMLFiles{
 	    if (/fromDoc\s*=\s*\"([^\"]+)\"/){
 		my $srcdoc=$1;
 		$srcdoc=~s/\/\.\//\//g;
+		if (not -e $srcdoc){$srcdoc="$DIR/$srcdoc";}
 		if (not -e $srcdoc){$srcdoc="$bitextdir/$srcdoc";}
 		if (/toDoc\s*=\s*\"([^\"]+)\"/){
 		    my $trgdoc=$1;
 		    $trgdoc=~s/\/\.\//\//g;
+		    if (not -e $trgdoc){$trgdoc="$DIR/$trgdoc";}
 		    if (not -e $trgdoc){$trgdoc="$bitextdir/$trgdoc";}
 		    if (($srcdoc ne $$src[-1]) or ($trgdoc ne $$trg[-1])){
 			push (@{$src},$srcdoc);
