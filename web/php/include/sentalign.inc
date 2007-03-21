@@ -136,7 +136,259 @@ function cognates($src,$trg,$minlength){
 }
 
 
+function ReadNextSegment($seg,&$fh,&$count,&$ids,&$sents,$max){
+    $nr=0;
+    while ($buffer = fgets($fh,4096)) {
+	array_push($sents,$buffer);
+	$count++;
+	$nr++;
+	if (isset($_SESSION[$seg.'_hard_'.$ids[$count]])){
+	    return $nr;
+//		echo '<tr><td>hard</td><td>'.$src_ids[$src_count].'</td></tr>';
+	}
+
+	if ($nr>$max*1.5) return $nr;
+    }
+}
+
+
+
+
+function ShowSegment($prefix,$count,&$ids,&$sents){
+    // prefix is the 'src' or 'trg' (for source or target side)
+
+    global $highlight_word;       // for highlighting words
+    global $PHP_SELF;
+    global $ISA_MODE;
+
+    $first = 1;
+    $anchor = '';
+
+    $pref = substr($prefix,0,1);
+    if ($prefix == 'src'){
+	global $new_src_boundary,$removed_src_boundary;
+	$new_boundary = $new_src_boundary;
+	$removed_boundary = $removed_src_boundary;
+    }
+    else{
+	global $new_trg_boundary,$removed_src_boundary;
+	$new_boundary = $new_trg_boundary;
+	$removed_boundary = $removed_trg_boundary;
+    }
+
+    echo '<table width="100%" class="bitext-'.$prefix.'">';
+    foreach ($sents as $sent){
+	echo '<a name="'.$prefix.$ids[$count].'">';
+	    if ($count>4){
+		$anchor = '#'.$prefix.$ids[$count-4];
+	    }
+	    if ($first){
+		echo "\n<tr
+                onMouseOver=\"setStyle(this,'backgroundColor','#fcc')\" 
+                onMouseOut=\"setStyle(this,'backgroundColor','white')\">";
+		$id_field =  "<td width=\"10%\"
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?${pref}empty=$count$anchor'\">";
+		$id_field.= $ids[$count].'</td>';
+		$sent_field= "<td
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid red')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?${pref}rm=$count$anchor'\"";
+	    }
+	    else{
+		echo "\n<tr
+                onMouseOver=\"setStyle(this,'backgroundColor','#cfc')\" 
+                onMouseOut=\"setStyle(this,'backgroundColor','white')\">";
+		$id_field = "<td
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?${pref}empty=$count$anchor'\">";
+		$id_field .= $ids[$count].'</td>';
+		$sent_field = "<td
+                onMouseOver=\"setStyle(this,'borderTop','2pt solid #0a0')\" 
+                onMouseOut=\"setStyle(this,'borderTop','2pt solid white')\"
+                onClick=\"window.location='$PHP_SELF?${pref}add=$count$anchor'\"";
+	    }
+	    if (isset($new_boundary)){
+		if (($new_boundary == $ids[$count]) ||
+		    ($new_boundary == $ids[$count+1])){
+		    $sent_field .= ' bgcolor="#FFCCCC"';
+		}
+	    }
+	    if (isset($removed_boundary)){
+		if (($removed_boundary == $ids[$count]) ||
+		    ($removed_boundary == $ids[$count+1])){
+		    $sent_field .= ' bgcolor="#CCFFCC"';
+		}
+	    }
+
+	    if (isset($highlight_word[$prefix])){
+		if (isset($highlight_word[$prefix][$ids[$count]])){
+		    $sent = 
+			str_replace($highlight_word[$prefix][$ids[$count]],
+				    '<font style="background-color:#FFCCCC">'.
+				    $highlight_word[$prefix][$ids[$count]].
+				    '</font>',
+				    $sent);
+		    unset($highlight_word[$prefix][$ids[$count]]);
+		}
+	    }
+
+	    $sent_field .= '>'.$sent.'</td>';
+
+	    if ($prefix == 'src'){
+		echo $id_field;
+		echo $sent_field;
+		echo '</tr>';
+	    }
+	    else{
+		echo $sent_field;
+		echo $id_field;
+		echo '</tr>';
+	    }
+
+
+	    $first = 0;
+	    $count++;
+    }
+    echo '</table>';
+}
+
+
+
 function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
+    global $src_ids,$trg_ids;
+    global $new_src_boundary,$new_trg_boundary;
+    global $removed_src_boundary,$removed_trg_boundary;
+    global $PHP_SELF;
+    global $ISA_MODE;
+
+    $src = fopen($srcfile,"r") or exit("unable to open $srcfile!");
+    $trg = fopen($trgfile,"r") or exit("unable to open $trgfile!");
+
+    $src_count=0;
+    $trg_count=0;
+
+    if ($srcstart>0){
+	while ($buffer = fgets($src,4096)) {
+	    $src_count++;
+	    if ($src_count == $srcstart) break;
+	}
+    }
+    if ($trgstart>0){
+	while ($buffer = fgets($trg,4096)) {
+	    $trg_count++;
+	    if ($trg_count == $trgstart) break;
+	}
+    }
+
+    echo '<table class="bitext">';
+    $continue=1;
+
+    global $highlight_word;       // for highlighting words
+
+    while ($continue){
+
+	$first = 1;
+	$anchor = '';
+
+	echo '<tr><td width="50%">';
+
+	$src_sents=array();
+	$trg_sents=array();
+
+	// if source & target are empty alignments OR
+	//    target is not an empty alignment
+	// --> show next source segment
+
+	if ((isset($_SESSION['target_empty_'.$trg_ids[$trg_count]]) &&
+	    isset($_SESSION['source_empty_'.$src_ids[$src_count-1]])) ||
+	    (!isset($_SESSION['target_empty_'.$trg_ids[$trg_count]]))){
+
+	    ReadNextSegment('source',$src,$src_count,$src_ids,$src_sents,$max);
+	    $nr_src=count($src_sents);
+	    ShowSegment('src',$src_count-$nr_src,$src_ids,$src_sents);
+	}
+
+	echo '</td><td>';
+
+	// if source is not an empty alignment
+	// --> show next target segment
+
+	if (!isset($_SESSION['source_empty_'.$src_ids[$src_count-1]])){
+	    ReadNextSegment('target',$trg,$trg_count,$trg_ids,$trg_sents,$max);
+	    $nr_trg=count($trg_sents);
+	    ShowSegment('trg',$trg_count-$nr_trg,$trg_ids,$trg_sents);
+	}
+
+	if (!count($src_sents) && !count($trg_sents)) $continue = 0;
+
+	echo '</td>';
+	if ($ISA_MODE == 'eval'){
+	    if (isset($_SESSION['target_hard_'.$trg_ids[$trg_count]])){
+		echo '<td width="120">';
+		echo '<div class="eval">';
+		echo '<input type="radio" value="ok" name="eval_';
+		echo $src_count.'_'.$trg_count.'" />ok<br />';
+		echo '<input type="radio" value="parts" name="eval_';
+		echo $src_count.'_'.$trg_count.'" />partially&nbsp;ok<br />';
+		echo '<input type="radio" value="wrong" name="eval_';
+		echo $src_count.'_'.$trg_count.'" />wrong<br />';
+		echo '<input type="radio" value="dontknow" name="eval_';
+		echo $src_count.'_'.$trg_count.'" />don\'t&nbsp;know';
+		echo '</div>';
+		echo '</td>';
+	    }
+	}
+
+	echo '</tr>';
+	if (($src_count-$srcstart)>=$max||($trg_count-$trgstart)>=$max) break;
+    }
+    echo '</table>';
+
+    fclose($src);
+    fclose($trg);
+
+//    echo "$src_count ... $trg_count<br>";
+
+////////////////////////////////////////////////////////////////////
+// navigation bar
+
+    $_SESSION['src_end'] = $src_count;
+    $_SESSION['trg_end'] = $trg_count;
+
+    echo '<div class="index">';
+    if (($_SESSION['src_start'] != 0 && $_SESSION['trg_start'] != 0) 
+	&& ($ISA_MODE != 'eval')){
+	echo '<a href="'.$PHP_SELF.'?start">&lt;&lt;</a> ';
+	echo '<a href="'.$PHP_SELF.'?prev"> previous page</a> | ';
+    }
+    foreach (array(10,20,50,100,200) as $max){
+	if (($ISA_MODE != 'eval')){
+	    if ($_SESSION['show_max'] == $max){
+		echo $max.' | ';
+	    }
+	    else{
+		echo '<a href="'.$PHP_SELF.'?show='.$max.'">'.$max.'</a> | ';
+	    }
+	}
+    }
+    if (($src_count<count($src_ids)) || ($trg_count<count($trg_ids))){
+	if ($ISA_MODE != 'eval'){
+	    echo '<a href="'.$PHP_SELF.'?next">next page</a> ';
+	    echo '<a href="'.$PHP_SELF.'?end">&gt;&gt;</a>';
+	}
+    }
+    echo '</div>';
+
+}
+
+
+
+
+
+function show_bitext_old($srcfile,$trgfile,$srcstart,$trgstart,$max){
     global $src_ids,$trg_ids;
     global $new_src_boundary,$new_trg_boundary;
     global $removed_src_boundary,$removed_trg_boundary;
@@ -413,6 +665,7 @@ function show_bitext($srcfile,$trgfile,$srcstart,$trgstart,$max){
 
 
 
+
 function get_prev_start($srcend,$trgend,$max){
 
     $srccount=$srcend;
@@ -424,10 +677,11 @@ function get_prev_start($srcend,$trgend,$max){
     while ($srcend-$srccount<$max && $trgend-$trgcount<$max){
 
 	while ($srcend-$srccount<$max*1.2){
+//	    echo "check $srccount<br/>";
 	    $srccount--;
 	    if (isset($_SESSION['source_hard_'.$src_ids[$srccount]])){
-		if (!isset($_SESSION['source_empty_'.$src_ids[$srccount]])){
-		    // echo "source break found at $srccount<br/>";
+		if (!isset($_SESSION['source_empty_'.$src_ids[$srccount-1]])){
+//		    echo "source break found at $srccount<br/>";
 		    break;
 		}
 	    }
@@ -439,8 +693,8 @@ function get_prev_start($srcend,$trgend,$max){
 	while ($trgend-$trgcount<$max*1.2){
 	    $trgcount--;
 	    if (isset($_SESSION['target_hard_'.$trg_ids[$trgcount]])){
-		if (!isset($_SESSION['target_empty_'.$trg_ids[$trgcount]])){
-		    // echo "target break found at $trgcount<br/>";
+		if (!isset($_SESSION['target_empty_'.$trg_ids[$trgcount-1]])){
+//		    echo "target break found at $trgcount<br/>";
 		    break;
 		}
 	    }
@@ -456,8 +710,6 @@ function get_prev_start($srcend,$trgend,$max){
 
     return array($srccount,$trgcount);
 }
-
-
 
 
 
@@ -843,8 +1095,9 @@ function get_all_boundaries(&$SrcHard,&$TrgHard){
     $count=0;
     $idx=0;
     while ($count<$nrSrcHard){
+	if (! isset($src_ids[$idx])) break;
 	if (isset($_SESSION['source_hard_'.$src_ids[$idx]])){
-	    // echo "found src $src_ids[$idx]<br />";
+	    //echo "found src $src_ids[$idx]<br />";
 	    array_push($SrcHard,$src_ids[$idx]);
 	    $count++;
 	}
@@ -854,15 +1107,15 @@ function get_all_boundaries(&$SrcHard,&$TrgHard){
     $count=0;
     $idx=0;
     while ($count<$nrTrgHard){
+	if (! isset($trg_ids[$idx])) break;
 	if (isset($_SESSION['target_hard_'.$trg_ids[$idx]])){
-	    // echo "found trg $trg_ids[$idx]<br />";
+	    //echo "found trg $trg_ids[$idx]<br />";
 	    array_push($TrgHard,$trg_ids[$idx]);
 	    $count++;
 	}
 	$idx++;
     }	
 }
-
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -903,7 +1156,7 @@ function sentence_align($srcfile,$trgfile){
 	// $command .= ' 2> /dev/null > '.$tmpout;
 	$command .= ' -v > '.$sentalign;
 
-	exec('ulimit -t 5;'.$command,$output,$return);
+	exec('ulimit -t 10;'.$command,$output,$return);
 	$info = 'srt-align';
 	if (count($bound)){
 	    $info .= 'with fixpoints at ';
@@ -914,7 +1167,6 @@ function sentence_align($srcfile,$trgfile){
 	// read sentence alignment from file!
 	$_SESSION['hardtag'] = 'link';
 	read_links($sentalign);
-
     }
     else{
 	make_align2_input($srcfile,$trgfile,
