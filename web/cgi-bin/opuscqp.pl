@@ -123,20 +123,24 @@ print &end_html;
 
 sub FixString{
     my ($lang,$string)=@_;
-    if ($lang=~/^(ar|az|be|bg|bs|he|id|jp|ja|ko|ku|mi|mk|ru|ta|th|uk|vi|xh|zh_tw|zu)$/){
+    if ($lang=~/^(ar|az|be|bg|bs|he|id|jp|ja|ko|ku|mi|mk|ru|ta|th|uk|vi|xh|zh_tw|zu|bul|chi|rus)$/){
 	decode_entities($string);
 	$string=decode('utf-8',$string);
     }
-    if ($lang eq 'el'){decode_entities($string);}
-    if ($lang=~/^(cs|hr|hu|pl|ro|sk|sl|sr)$/){
+#    if ($lang eq 'el'){decode_entities($string);}
+    if ($lang=~/^(cs|hr|hu|pl|ro|sk|sl|sr|cze|hrv|rum|slv)$/){
 	decode_entities($string);
 	$string=decode('iso-8859-2',$string);
     }
-    if ($lang=~/^el$/){
+    if ($lang=~/^(et||lt|lv|ice|lit)$/){
+	decode_entities($string);
+	$string=decode('iso-8859-4',$string);
+    }
+    if ($lang=~/^(el|gre|ell)$/){
 	decode_entities($string);
 	$string=decode('iso-8859-7',$string);
     }
-    if ($lang=~/^tr$/){
+    if ($lang=~/^(tr|tur)$/){
 	decode_entities($string);
 	$string=decode('iso-8859-9',$string);
     }

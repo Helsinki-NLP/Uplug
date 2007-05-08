@@ -802,13 +802,24 @@ sub sentence_align {
 
   # parameters
   my %PRIOR;
-  $PRIOR{1}{1} = 0.89;
-  $PRIOR{1}{0} = 0.01/2;
-  $PRIOR{0}{1} = 0.01/2;
-  $PRIOR{2}{1} = 0.089/2;
-  $PRIOR{1}{2} = 0.089/2;
-#  $PRIOR{2}{2} = 0.011;
-  
+#  $PRIOR{1}{1} = 0.89;
+#  $PRIOR{1}{0} = 0.01/2;
+#  $PRIOR{0}{1} = 0.01/2;
+#  $PRIOR{2}{1} = 0.089/2;
+#  $PRIOR{1}{2} = 0.089/2;
+##  $PRIOR{2}{2} = 0.011;
+#  $PRIOR{3}{1} = 0.011/2;
+#  $PRIOR{1}{3} = 0.011/2;
+
+# for subtitles:
+  $PRIOR{1}{1} = 0.6829; # 896
+  $PRIOR{2}{1} = 0.0762; # 100
+  $PRIOR{0}{1} = 0.0694; # 91
+  $PRIOR{1}{0} = 0.0564; # 74
+  $PRIOR{1}{2} = 0.0549; # 72
+  $PRIOR{1}{3} = 0.0183; # 24
+  $PRIOR{3}{1} = 0.0122; # 16
+ 
 
   # dynamic programming
   my (@COST,@BACK);

@@ -4,7 +4,7 @@
 #
 # create CWB-indeces for Uplug bitexts
 #
-# usage: bitext-indexer.pl corpus src trg reg data bitexts
+# usage: bitext-indexer.pl [OPTIONS] corpus src trg reg data bitexts
 #
 #   corpus .... short name of the corpus (no spaces!)
 #   src ....... source language ID (e.g. sv, en, de)
@@ -12,6 +12,11 @@
 #   reg ....... CWB registry directory (a new sub-dir will be created here!)
 #   data ...... CWB data directory (a new sub-dir will be created here!)
 #   bitexts ... XCES align files (one or more)
+#
+# OPTIONS
+#
+#   -o ........ overwrite existing data (deletes entire data directory!!)
+#   -y ........ assumes yes (doesn't prompt before deleting data dir!)
 #
 #---------------------------------------------------------------------------
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
@@ -38,6 +43,13 @@ use File::Copy;
 use File::Basename;
 use XML::Parser;
 use Cwd;
+
+use vars qw($opt_o $opt_y);
+use Getopt::Std;
+getopts('oy');
+
+my $OVERWRITE = $opt_o;
+my $ASSUME_YES = $opt_y;
 
 #use lib ('/home/staff/joerg/user_local/lib/perl5/site_perl/5.8.0/');
 #use WebCqp::Query;
@@ -122,15 +134,21 @@ sub GetXMLFiles{
 
 	while(<F>){
 	    if (/fromDoc\s*=\s*\"([^\"]+)\"/){
-		my $srcdoc=$1;
-		$srcdoc=~s/\/\.\//\//g;
-		if (not -e $srcdoc){$srcdoc="$DIR/$srcdoc";}
-		if (not -e $srcdoc){$srcdoc="$bitextdir/$srcdoc";}
+		my $doc=$1;
+		$doc=~s/\/\.\//\//g;
+		my $srcdoc=$doc;
+		if (not -e $srcdoc){$srcdoc="$DIR/$doc";}
+		if (not -e $srcdoc){$srcdoc="$srcdoc.gz";}
+		if (not -e $srcdoc){$srcdoc="$bitextdir/$doc";}
+		if (not -e $srcdoc){$srcdoc="$bitextdir/$doc.gz";}
 		if (/toDoc\s*=\s*\"([^\"]+)\"/){
-		    my $trgdoc=$1;
-		    $trgdoc=~s/\/\.\//\//g;
+		    my $doc=$1;
+		    $doc=~s/\/\.\//\//g;
+		    my $trgdoc=$doc;
 		    if (not -e $trgdoc){$trgdoc="$DIR/$trgdoc";}
-		    if (not -e $trgdoc){$trgdoc="$bitextdir/$trgdoc";}
+		    if (not -e $trgdoc){$trgdoc="$trgdoc.gz";}
+		    if (not -e $trgdoc){$trgdoc="$bitextdir/$doc";}
+		    if (not -e $trgdoc){$trgdoc="$bitextdir/$doc.gz";}
 		    if (($srcdoc ne $$src[-1]) or ($trgdoc ne $$trg[-1])){
 			push (@{$src},$srcdoc);
 			push (@{$trg},$trgdoc);
@@ -172,11 +190,47 @@ sub XML2CWB{
     # (take only one of them to encode the entire corpus)
 
     if (-d "$datdir/$lang"){
-	system ("rm -fr $datdir/$lang");
+	if ($OVERWRITE){
+	    my $ok = $ASSUME_YES;
+	    if (! $ASSUME_YES){
+		print "$datdir/$lang exists! Overwrite [y|N]\n";
+		my $answer = <STDIN>;
+		if ($answer=~/^y/){
+		    $ok = 1;
+		}
+	    }
+	    if ($ok){
+		system ("rm -fr $datdir/$lang");  # this looks scary!!!!!!!!!
+	    }
+	    else{
+		unlink $lang;
+		return 0;
+	    }
+	}
+	else{
+	    warn "$datdir/$lang exists! (do not overwrite!)\n";
+	    unlink $lang;
+	    return 0;
+	}
+    }
+
+    ## save the ALIGNED lines!
+    my @extra=();
+    if (-e "$regdir/$lang"){
+	@extra = `grep 'ALIGNED' $regdir/$lang`;
     }
     mkdir "$datdir/$lang",0755;
     system ("$ENCODE -R $regdir/$lang -d $datdir/$lang -f $lang $attr");
     system ("$CWBMAKEALL -r $regdir -V $lang");
+
+    ## ... and add them to the new registry file
+    if (@extra){
+	open REG,">>$regdir/$lang";
+	foreach (@extra){
+	    print REG $_;
+	}
+	close REG;
+    }
 
     unlink $lang;
 }
@@ -308,13 +362,21 @@ sub Align2CWBinput{
 
 	while(<F>){
 	    if (/fromDoc\s*=\s*\"([^\"]+)\"/){
-		$srcdoc=$1;
-		$srcdoc=~s/\/\.\//\//g;
-		if (not -e $srcdoc){$srcdoc="$bitextdir/$srcdoc";}
+		my $doc=$1;
+		$doc=~s/\/\.\//\//g;
+		$srcdoc=$doc;
+		if (not -e $srcdoc){$srcdoc="$DIR/$doc";}
+		if (not -e $srcdoc){$srcdoc="$srcdoc.gz";}
+		if (not -e $srcdoc){$srcdoc="$bitextdir/$doc";}
+		if (not -e $srcdoc){$srcdoc="$bitextdir/$doc.gz";}
 		if (/toDoc\s*=\s*\"([^\"]+)\"/){
-		    $trgdoc=$1;
-		    $trgdoc=~s/\/\.\//\//g;
-		    if (not -e $trgdoc){$trgdoc="$bitextdir/$trgdoc";}
+		    my $doc=$1;
+		    $doc=~s/\/\.\//\//g;
+		    $trgdoc=$doc;
+		    if (not -e $trgdoc){$trgdoc="$DIR/$doc";}
+		    if (not -e $trgdoc){$trgdoc="$trgdoc.gz";}
+		    if (not -e $trgdoc){$trgdoc="$bitextdir/$doc";}
+		    if (not -e $trgdoc){$trgdoc="$bitextdir/$doc.gz";}
 		}
 	    }
 	    if (/(sentLink|link)\s.*xtargets=\"([^\"]+)\s*\;\s*([^\"]+)\"/){
@@ -407,7 +469,22 @@ sub XML2CWBinput{
     my ($language,$files);
     ($language,$files,$AllAttributes,$StrucAttrPattern,$WordAttrPattern)=@_;
 
+    ## non iso-latin1 language encodings ....
     my %LangCodes=(
+		   # some three letter language codes (more to add ...)
+	       'bul' => 'utf-8',
+	       'chi' => 'utf-8',
+	       'cze' => 'iso-8859-2',
+	       'ell' => 'iso-8859-7',
+	       'gre' => 'iso-8859-7',
+	       'hrv' => 'iso-8859-2',
+	       'ice' => 'iso-8859-4',
+	       'lit' => 'iso-8859-4',
+	       'rum' => 'iso-8859-2',
+	       'rus' => 'utf-8',
+	       'slv' => 'iso-8859-2',
+	       'tur' => 'iso-8859-9',
+		   # two letter codes (complete & correct ??)
 	       'ar' => 'utf-8',
 	       'az' => 'utf-8',
 	       'be' => 'utf-8',
@@ -468,6 +545,12 @@ sub XML2CWBinput{
     my $PosFile=$language.'.pos';
     open POS,">$PosFile";
     open OUT,">$OutFile";
+
+    my $encoding = 'iso-8859-1';
+    if (exists $LangCodes{$language}){
+	$encoding=$LangCodes{$language};
+    }
+    binmode (OUT,':encoding('.$encoding.')');
 
     while (@{$files}){
 	my $file=shift(@{$files});
