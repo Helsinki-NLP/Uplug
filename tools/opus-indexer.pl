@@ -32,9 +32,9 @@ use File::Copy;
 use File::Basename;
 use XML::Parser;
 
-use vars qw($opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f);
+use vars qw($opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m);
 use Getopt::Std;
-getopts('d:r:t:c:x:voyf:');
+getopts('d:r:t:c:x:voyf:m:');
 
 
 # script arguments
@@ -59,8 +59,8 @@ my $CWBALIGNENCODE='cwb-align-encode';
 
 # some more global variables
 
-my $TMPDIR = '/tmp/BITEXTINDEXER'.$$;
-mkdir $TMPDIR,0755;
+my $TMPDIR = $opt_m || '/tmp/BITEXTINDEXER'.$$;
+mkdir $TMPDIR,0755 unless (-d $TMPDIR);
 
 my $SentTag='s';                 # default sentence tag
 my $WordTag='w';                 # default word tag
@@ -157,6 +157,7 @@ if ($opt_f){
 ########################################################################
 # make monolingual corpus indeces
 
+if (not $opt_m){
 foreach my $l (@LANG){
     print STDERR "find all xml files for '$l'\n" if $VERBOSE;
     my @doc = FindDocuments("$XMLDIR/$l",'xml');
@@ -194,6 +195,7 @@ foreach my $l (@LANG){
     unlink $cwbtok;
     
 }
+}
 
 ########################################################################
 # make alignment index for each language pair
@@ -201,19 +203,20 @@ foreach my $l (@LANG){
 foreach my $s (@LANG){
     ## read token position file for source language
     my $srcpos = $TMPDIR.'/'.$s.'.pos';
-    my %SrcPos;
+    my %SrcPos=();
     ReadPosFile($srcpos,\%SrcPos);
 
     foreach my $t (@LANG){
 
-	## read token position file for target language
-	my $trgpos = $TMPDIR.'/'.$t.'.pos';
-	my %TrgPos;
-	ReadPosFile($trgpos,\%TrgPos);
-
 	my $dir = "$XMLDIR/$s-$t";
 	$dir = "$XMLDIR/$s$t" if (-d "$XMLDIR/$s$t");
 	next if (not -d $dir);
+
+	## read token position file for target language
+	my $trgpos = $TMPDIR.'/'.$t.'.pos';
+	my %TrgPos=();
+	ReadPosFile($trgpos,\%TrgPos);
+
 	print STDERR "find all alignment files for '$s-$t'\n" if $VERBOSE;
 	my @doc = FindDocuments($dir,$ALIGNTYPE);
 	if (not @doc){next;}
@@ -313,15 +316,26 @@ sub Align2CWB{
 
     local $/='>';              # read blocks end at '>'
     my ($srcdoc,$trgdoc);
+    my ($srcdocID,$trgdocID);
 
     while(<F>){
 	if (/fromDoc\s*=\s*\"([^\"]+)\"/){
 	    $srcdoc=$1;
 	    $srcdoc=~s/\/\.\//\//g;
+	    if (not exists $$srcPos{$srcdoc}){
+		if (exists $$srcPos{$srcdoc.'.gz'}){
+		    $srcdoc .= '.gz';
+		}
+	    }
 	}
 	if (/toDoc\s*=\s*\"([^\"]+)\"/){
 	    $trgdoc=$1;
 	    $trgdoc=~s/\/\.\//\//g;
+	    if (not exists $$trgPos{$trgdoc}){
+		if (exists $$trgPos{$trgdoc.'.gz'}){
+		    $trgdoc .= '.gz';
+		}
+	    }
 	}
 
 	if (/(sentLink|link)\s.*xtargets=\"([^\"]+)\s*\;\s*([^\"]+)\"/){
@@ -331,47 +345,42 @@ sub Align2CWB{
 	    my @trgsent=split(/\s/,$trg);
 
 	    if (not (@srcsent and @trgsent)){next;}
-	    if (not defined $$srcPos{$srcdoc}){
-		if (defined $$srcPos{$srcdoc.'.gz'}){$srcdoc.='.gz';}
-		if (not defined $$srcPos{$srcdoc}){next;}
-	    }
-	    if (not defined $$srcPos{$srcdoc}{$srcsent[0]}){next;}
-	    if (not defined $$srcPos{$srcdoc}{$srcsent[-1]}){next;}
-	    if (not defined $$trgPos{$trgdoc}){
-		if (defined $$trgPos{$trgdoc.'.gz'}){$trgdoc.='.gz';}
-		if (not defined $$trgPos{$trgdoc}){next;}
-	    }
-	    if (not defined $$trgPos{$trgdoc}{$trgsent[0]}){next;}
-	    if (not defined $$trgPos{$trgdoc}{$trgsent[-1]}){next;}
+	    next if (not defined $$srcPos{$srcdoc});
+	    next if (not defined $$srcPos{$srcdoc}{$srcsent[0]});
+	    next if (not defined $$srcPos{$srcdoc}{$srcsent[-1]});
+
+	    next if (not defined $$trgPos{$trgdoc});
+	    next if (not defined $$trgPos{$trgdoc}{$trgsent[0]});
+	    next if (not defined $$trgPos{$trgdoc}{$trgsent[-1]});
 
 	    #------------------------------------------
 	    # print alignment file (src --> trg)
 
-	    if ($lastsrc<$$srcPos{$srcdoc}{$srcsent[0]}{start}){
-		print ALG1 $$srcPos{$srcdoc}{$srcsent[0]}{start},"\t";
-		print ALG1 $$srcPos{$srcdoc}{$srcsent[-1]}{end},"\t";
-		print ALG1 $$trgPos{$trgdoc}{$trgsent[0]}{start},"\t";
-		print ALG1 $$trgPos{$trgdoc}{$trgsent[-1]}{end},"\t";
+	    if ($lastsrc<$$srcPos{$srcdoc}{$srcsent[0]}[0]){
+		print ALG1 $$srcPos{$srcdoc}{$srcsent[0]}[0],"\t";
+		print ALG1 $$srcPos{$srcdoc}{$srcsent[-1]}[1],"\t";
+		print ALG1 $$trgPos{$trgdoc}{$trgsent[0]}[0],"\t";
+		print ALG1 $$trgPos{$trgdoc}{$trgsent[-1]}[1],"\t";
 		print ALG1 scalar @srcsent;
 		print ALG1 ':';
 		print ALG1 scalar @trgsent;
 		print ALG1 "\n";
-		$lastsrc=$$srcPos{$srcdoc}{$srcsent[-1]}{end};
+		$lastsrc=$$srcPos{$srcdoc}{$srcsent[-1]}[1];
 	    }
 	    
 	    #------------------------------------------
 	    # print alignment file (trg --> src)
 
-	    if ($lasttrg<$$trgPos{$trgdoc}{$trgsent[0]}{start}){
-		print ALG2 $$trgPos{$trgdoc}{$trgsent[0]}{start},"\t";
-		print ALG2 $$trgPos{$trgdoc}{$trgsent[-1]}{end},"\t";
-		print ALG2 $$srcPos{$srcdoc}{$srcsent[0]}{start},"\t";
-		print ALG2 $$srcPos{$srcdoc}{$srcsent[-1]}{end},"\t";
+	    if ($lasttrg<$$trgPos{$trgdoc}{$trgsent[0]}[0]){
+		print ALG2 $$trgPos{$trgdoc}{$trgsent[0]}[0],"\t";
+		print ALG2 $$trgPos{$trgdoc}{$trgsent[-1]}[1],"\t";
+		print ALG2 $$srcPos{$srcdoc}{$srcsent[0]}[0],"\t";
+		print ALG2 $$srcPos{$srcdoc}{$srcsent[-1]}[1],"\t";
 		print ALG2 scalar @trgsent;
 		print ALG2 ':';
 		print ALG2 scalar @srcsent;
 		print ALG2 "\n";
-		$lasttrg=$$trgPos{$trgdoc}{$trgsent[-1]}{end};
+		$lasttrg=$$trgPos{$trgdoc}{$trgsent[-1]}[1];
 	    }
 	}
     }
@@ -394,8 +403,8 @@ sub ReadPosFile{
 	    next;
 	}
 	my ($id,$start,$end)=split(/\t/,$_);
-	$$pos{$f}{$id}{start}=$start;
-	$$pos{$f}{$id}{end}=$end;
+	$$pos{$f}{$id}[0]=$start;
+	$$pos{$f}{$id}[1]=$end;
     }
     close F;
 }
