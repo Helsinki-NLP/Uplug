@@ -581,7 +581,8 @@ sub ViewCorpus{
 		copy($file,"$file.links");                  # - create a word-
 #		open F,">$file.links.lock";close F;         #   align file and
 #		chmod 0664,"$file.links.lock";              #   a lock-file
-		chmod 0664,"$file.links";                   # - set permissions
+#		chmod 0664,"$file.links";                   # - set permissions
+		system "g+w $file.links";                   # - set permissions
 		$$DocConfig{file}="$file.links";            # - add info to the
 		$$DocConfig{status}='word';                 #   user configfile
 		my $DocBase=$$DocConfig{corpus}.' word';    #   (without lang)

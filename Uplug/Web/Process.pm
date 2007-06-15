@@ -208,7 +208,8 @@ sub MakeUplugProcess{
     copy ($DocConfig,                                # copy document config-
 	  "$ThisProcDir/ini/UserDataStreams.ini");   #   file to process-dir
     open F,">$ThisProcDir/uplugweb.log";close F;     # create a log-file
-    chmod 0664,"$ThisProcDir/uplugweb.log";          # make it writable
+#    chmod 0664,"$ThisProcDir/uplugweb.log";          # make it writable
+    system "chmod g+w $ThisProcDir/uplugweb.log";          # make it writable
 #    system "cp -R $UserDir/ini $ThisProcDir/";       # copy ini files
 #    system "chmod g+w $ThisProcDir";
     chdir $ThisProcDir;
@@ -287,7 +288,8 @@ sub PrepareProcess{
 	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$corpus,$lang);
 	$output=$dir.'/'.$trgname;
 	if (not -e $output){open F,">$output";close F;}
-	chmod 0664,$output;
+#	chmod 0664,$output;
+	system "chmod g+w $output";
 #	my $lockfile=$output.'.lock';
 #	if (not -e $lockfile){open F,">$lockfile";close F;}
 #	chmod 0664,$lockfile;
@@ -323,7 +325,8 @@ sub PrepareProcess{
 	my $dir=&Uplug::Web::Corpus::GetCorpusDir($user,$corpus,$lang);
 	$output=$dir.'/'.$name.'.links';
 	if (not -e $output){open F,">$output";close F;}
-	chmod 0664,$output;
+#	chmod 0664,$output;
+	system "chmod g+w $output";
 #	my $lockfile=$output.'.lock';
 #	if (not -e $lockfile){open F,">$lockfile";close F;}
 #	chmod 0664,$lockfile;
