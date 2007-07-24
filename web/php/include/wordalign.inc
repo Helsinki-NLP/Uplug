@@ -335,6 +335,13 @@ function align($BITEXT,$ID,&$output){
     //     the relative path to the bitext
 
     $pwd = realpath('./');
+    if (file_exists($pwd.'/'.$UPLUGHOME)){
+       $UPLUGHOME=$pwd.'/'.$UPLUGHOME;
+    }
+    if (file_exists($pwd.'/'.$UPLUG)){
+       $UPLUG=$pwd.'/'.$UPLUG;
+    }
+
     $exec_cmd = 'cd '.$DATADIR.';';
 //    echo $pwd.'/'.$DATADIR.'/link<br />';
     if (file_exists($pwd.'/'.$DATADIR.'/link')){
