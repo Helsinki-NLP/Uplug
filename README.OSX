@@ -1,0 +1,26 @@
+
+
+some issues when installing on Mac OS X
+
+* re-compile external programs (GIZA++, align, hunalign)
+  --> use GIZA++ patched for GCC 4
+  --> use align2.c for MAX OSX (some minor changes)
+  --> use g++ instead gcc in hunalign (change Makefile)
+
+* OS X is not case-sensitive! the startup program 'uplug' and the
+  subdirectory Uplug cannot be together in the Uplug root directory!
+
+ --> rename uplug to someting else (e.g. uplug_start) (and use
+     uplug_start to start Uplug modules) 
+ --> rename or delete systems/align/word/giza (because it blocks GIZA in the 
+     same directory)
+
+* install expat & XML::Parser via fink
+
+* in ICA: adjust uplug command to use fink environment (for XML::Parser)
+
+  change
+  $command = 'ulimit -t 5;'.$exec_cmd.' '.$cmd_params.' 2>&1';
+  to
+  $command = 'ulimit -t 5;/sw/bin/init.sh;'.$exec_cmd.' '.$cmd_params.' 2>&1';
+
