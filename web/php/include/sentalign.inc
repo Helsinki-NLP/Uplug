@@ -1131,7 +1131,8 @@ function sentence_align($srcfile,$trgfile){
     $trgtokfile = $trgbase . '.tok';
 
     $program = basename($ALIGN);
-    if ($program == 'srtalign.pl'){
+    if (substr($program,0,11) == 'srtalign.pl'){
+//    if ($program == 'srtalign.pl'){
 	$SrcHard=array();
 	$TrgHard=array();
 	get_all_boundaries($SrcHard,$TrgHard);
