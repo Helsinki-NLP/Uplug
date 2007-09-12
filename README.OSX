@@ -20,7 +20,7 @@ some issues when installing on Mac OS X
 * in ICA: adjust uplug command to use fink environment (for XML::Parser)
 
   change
-  $command = 'ulimit -t 5;'.$exec_cmd.' '.$cmd_params.' 2>&1';
+  $command = $exec_cmd;
   to
-  $command = 'ulimit -t 5;/sw/bin/init.sh;'.$exec_cmd.' '.$cmd_params.' 2>&1';
+  $command = 'test -r /sw/bin/init.sh && . /sw/bin/init.sh;'.$exec_cmd;
 

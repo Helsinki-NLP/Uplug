@@ -1156,6 +1156,11 @@ function sentence_align($srcfile,$trgfile){
 	$command .= ' '.$TRGXML;
 	// $command .= ' 2> /dev/null > '.$tmpout;
 	$command .= ' -v > '.$sentalign;
+	$tmpout = $sentalign.'.tmp';
+	$command .= ' 2> '.$tmpout;
+
+	// for OS X with fink ....
+	// $command = 'test -r /sw/bin/init.sh && . /sw/bin/init.sh;'.$command;
 
 	exec('ulimit -t 10;'.$command,$output,$return);
 	$info = 'srt-align';

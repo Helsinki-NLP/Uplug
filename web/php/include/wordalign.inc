@@ -392,6 +392,9 @@ function align($BITEXT,$ID,&$output){
       }
       else{
 	$command = 'ulimit -t 5;'.$exec_cmd.' '.$cmd_params.' 2>&1';
+	// for OS X with fink ....
+	// $command = 'test -r /sw/bin/init.sh && . /sw/bin/init.sh;'.$command;
+
 	// echo 'exec: '.$command;
 	exec($command,$output);
 	//echo '<pre>';
