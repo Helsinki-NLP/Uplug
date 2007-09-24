@@ -1156,8 +1156,7 @@ function sentence_align($srcfile,$trgfile){
 	$command .= ' '.$TRGXML;
 	// $command .= ' 2> /dev/null > '.$tmpout;
 	$command .= ' -v > '.$sentalign;
-	$tmpout = $sentalign.'.tmp';
-	$command .= ' 2> '.$tmpout;
+	$command .= " 2> $sentalign.tmp";
 
 	// for OS X with fink ....
 	// $command = 'test -r /sw/bin/init.sh && . /sw/bin/init.sh;'.$command;
@@ -1168,7 +1167,10 @@ function sentence_align($srcfile,$trgfile){
 	    $info .= 'with fixpoints at ';
 	    $info .= implode(', ',$bound);
 	}
-	status($info);
+	$log = file_get_contents("$sentalign.tmp");
+        echo '<div class="log"><pre>'.$log.'</pre></div>';
+//	status($info);
+	status($command);
 
 	// read sentence alignment from file!
 	$_SESSION['hardtag'] = 'link';
