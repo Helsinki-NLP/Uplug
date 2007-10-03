@@ -1,6 +1,6 @@
 #!/bin/sh
 
-prefix=/home/staff/joerg/user_local
+prefix=/storage/tiedeman/local
 exec_prefix=${prefix}
 sysconfdir=${prefix}/etc
 exec_prefix_set=no
