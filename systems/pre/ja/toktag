@@ -33,7 +33,7 @@
 #        'attribute' => 'pos',
         'attributes' => 'text:pos:base',
         'pattern' => '^(.*)\t+(.*)\t+(.*)$',
-        'token delimiter' => "\n",
+        'token delimiter' => '\n',
         'sentence delimiter' => "\n<s>\n",
         'tag delimiter' => '\s+',
 	'encoding' => 'utf-8',

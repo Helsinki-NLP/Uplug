@@ -172,6 +172,7 @@ print STDERR "Tagger.pl: read tagged file and create output data!\n";
 $input->open('read',$InputStream);
 $output->open('write',$OutputStream);
 open F,"<$TmpTagged";
+binmode(F,':encoding('.$OutEncoding.')');
 
 my $TextAttr;
 foreach my $j (0..$#Attr){
