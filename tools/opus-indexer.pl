@@ -218,7 +218,9 @@ foreach my $s (@LANG){
 	ReadPosFile($trgpos,\%TrgPos);
 
 	print STDERR "find all alignment files for '$s-$t'\n" if $VERBOSE;
-	my @doc = FindDocuments($dir,$ALIGNTYPE);
+
+#	my @doc = FindDocuments($dir,$ALIGNTYPE);    # (no genre-subcorpora):
+	my @doc = FindDocuments($dir,$ALIGNTYPE,1);  # mindepth = 1!!!!
 	if (not @doc){next;}
 	@doc = sort @doc;
 
@@ -480,16 +482,22 @@ sub MakeCWBindex{
 sub FindDocuments{
     my $dir=shift;
     my $ext=shift;
+    my $mindepth=shift;
+    my $depth=shift;
     my @docs=();
     if (opendir(DIR, $dir)){
 	my @files = grep { /^[^\.]/ } readdir(DIR);
 	closedir DIR;
 	foreach my $f (@files){
 	    if (-f "$dir/$f" && $f=~/\.$ext(.gz)?$/){
-		push (@docs,"$dir/$f");
+		if ((not defined($mindepth)) ||
+		    ($depth>=$mindepth)){
+		    push (@docs,"$dir/$f");
+		}
 	    }
 	    if (-d "$dir/$f"){
-		push (@docs,FindDocuments("$dir/$f",$ext));
+		$depth++;
+		push (@docs,FindDocuments("$dir/$f",$ext,$mindepth,$depth));
 	    }
 	}
     }

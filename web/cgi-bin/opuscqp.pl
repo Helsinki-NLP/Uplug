@@ -32,7 +32,7 @@ if (param('reg')){$CWBREG=param('reg');}
 if (url_param('reg')){$CWBREG=url_param('reg');}
 chdir $CWBREG;
 
-my $css="http://logos.uio.no/opus/index.css";
+my $css="http://www.let.rug.nl/tiedeman/OPUS/index.css";
 binmode (STDOUT,':encoding(utf-8)');
 
 
@@ -71,7 +71,7 @@ print &start_html(-title => 'corpus query (CWB)',
 		  -head=>meta({-http_equiv=>'Content-Type',
 			       -content=>'text/html;charset=utf-8'}));
 
-print &h2("OPUS - Corpus query (CWB)");
+print &h2(&a({-href=>'http://urd.let.rug.nl/tiedeman/OPUS/'},'OPUS')." - Corpus query (CWB)");
 
 my $url=url();
 my %corpora=();
@@ -123,7 +123,7 @@ print &end_html;
 
 sub FixString{
     my ($lang,$string)=@_;
-    if ($lang=~/^(ar|az|be|bg|bs|he|id|jp|ja|ko|ku|mi|mk|ru|ta|th|uk|vi|xh|zh_tw|zu|bul|chi|rus)$/){
+    if ($lang=~/^(ar|az|be|bg|bs|he|id|jp|ja|ko|ku|mi|mk|ru|ta|th|uk|vi|xh|zh_tw|zu|bul|chi|jap|jpn|heb|rus)$/){
 	decode_entities($string);
 	$string=decode('utf-8',$string);
     }
@@ -267,13 +267,13 @@ sub CorpusQueryForm{
     my $show='show max '.&textfield(-size=>'4',
 				    -default=>"$SHOWMAX",
 				    -name => 'showmax').' hits';
-    if (defined $align){
-	$show.=' and ';
-	$show.=&checkbox(-name=>'skipnoalign',
-#			  -checked=>'checked',
-			  -value=>'skip',
-			  -label=>'skip non-aligned segments');
-    }
+#    if (defined $align){
+#	$show.=' and ';
+#	$show.=&checkbox(-name=>'skipnoalign',
+##			  -checked=>'checked',
+#			  -value=>'skip',
+#			  -label=>'skip non-aligned segments');
+#    }
 
     #---------------------------------------------------
     # submit-query-button and other stuff
@@ -370,6 +370,10 @@ sub CorpusQuery{
 	    if (param("query_$_")){
 		my $l=uc($_);
 		$cqp.=" :$l ".param("query_$_");
+	    }
+	    else{
+		my $l=uc($_);
+		$cqp.=" :$l []";
 	    }
 	}
     }

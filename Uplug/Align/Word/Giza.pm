@@ -462,58 +462,75 @@ sub CombineLinks{
 	}
     }
     if ($method eq 'refined'){                   # refined combination:
-	foreach my $s (keys %{$src}){            # * start with the intersection
-	    foreach my $t (keys %{$$src{$s}}){   # * go iteratively through other links
-		if ((not defined $$srclinks{$s}) and
-		    (not defined $$trglinks{$t})){       #   - if both are not aligned yet:
-		    $$srclinks{$s}{$t}=1;                #     add the link
-		    $$trglinks{$t}{$s}=1;
-		}
-		elsif ((defined $$srclinks{$s-1}) or
-		       (defined $$srclinks{$s+1})){
-		    if (($$srclinks{$s-1}{$t}) or         # if the link is adjacent to
-			   ($$srclinks{$s+1}{$t})){       # another one horizontally:
-			if ($$srclinks{$s}{$t+1}){next;}  # do not accept if it is also
-			if ($$srclinks{$s}{$t-1}){next;}  # adjacent to other links vertically
-			if ($$srclinks{$s-1}{$t}){              # do not accept if the adjacent
-			    if ($$srclinks{$s-1}{$t-1}){next;}  # link is also adjacent to other
-			    if ($$srclinks{$s-1}{$t+1}){next;}  # links vertically
-			}
-			if ($$srclinks{$s+1}{$t}){              # the same for the other
-			    if ($$srclinks{$s+1}{$t-1}){next;}  # adjacency direction
-			    if ($$srclinks{$s+1}{$t+1}){next;}
-			}
-			$$srclinks{$s}{$t}=1;        # everything ok: add the link
-			$$trglinks{$t}{$s}=1;
-		    }
-		}
-		elsif ((defined $$trglinks{$t-1}) or
-		       (defined $$trglinks{$t+1})){
-		    if (($$srclinks{$s}{$t-1}) or         # if the link is adjacent to
-			($$srclinks{$s}{$t+1})){          # another one vertically:
-			if ($$srclinks{$s+1}{$t}){next;}  # do not accept if it is also
-			if ($$srclinks{$s-1}{$t}){next;}  # adjacent to other links horizontally
-			if ($$srclinks{$s}{$t-1}){              # do not accept if the adjacent
-			    if ($$srclinks{$s-1}{$t-1}){next;}  # link is also adjacent to other
-			    if ($$srclinks{$s+1}{$t-1}){next;}  # links horizontally
-			}
-			if ($$srclinks{$s}{$t+1}){              # the same for the other
-			    if ($$srclinks{$s-1}{$t+1}){next;}  # adjacency direction
-			    if ($$srclinks{$s+1}{$t+1}){next;}
-			}
-			$$srclinks{$s}{$t}=1;        # everything ok: add the link
-			$$trglinks{$t}{$s}=1;
-		    }
-		}
+	my @links=();
+	foreach my $s (keys %{$src}){
+ 	    foreach my $t (keys %{$$src{$s}}){
+		$links[$s][$t]=1;
 	    }
 	}
+	foreach my $t (keys %{$trg}){
+ 	    foreach my $s (keys %{$$trg{$t}}){
+		$links[$s][$t]=1;
+	    }
+	}
+	add_adjacent(\@links,$srclinks,$trglinks);
     }
 #    $src=\%srclinks;
 #    $trg=\%trglinks;
 }
 
 
-
+sub add_adjacent{
+    my $links=shift;
+    my $srclinks=shift;
+    my $trglinks=shift;
+    foreach my $s (0..$#{$links}){
+	foreach my $t (0..$#{$$links[$s]}){
+	    next if (not $$links[$s][$t]);
+	    if ((not defined $$srclinks{$s}) and
+		(not defined $$trglinks{$t})){       #   - if both are not aligned yet:
+		$$srclinks{$s}{$t}=1;                #     add the link
+		$$trglinks{$t}{$s}=1;
+	    }
+	    elsif ((defined $$srclinks{$s-1}) or
+		   (defined $$srclinks{$s+1})){
+		if (($$srclinks{$s-1}{$t}) or         # if the link is adjacent to
+		    ($$srclinks{$s+1}{$t})){       # another one horizontally:
+		    if ($$srclinks{$s}{$t+1}){next;}  # do not accept if it is also
+		    if ($$srclinks{$s}{$t-1}){next;}  # adjacent to other links vertically
+		    if ($$srclinks{$s-1}{$t}){              # do not accept if the adjacent
+			if ($$srclinks{$s-1}{$t-1}){next;}  # link is also adjacent to other
+			if ($$srclinks{$s-1}{$t+1}){next;}  # links vertically
+		    }
+		    if ($$srclinks{$s+1}{$t}){              # the same for the other
+			if ($$srclinks{$s+1}{$t-1}){next;}  # adjacency direction
+			if ($$srclinks{$s+1}{$t+1}){next;}
+		    }
+		    $$srclinks{$s}{$t}=1;        # everything ok: add the link
+		    $$trglinks{$t}{$s}=1;
+		}
+	    }
+	    elsif ((defined $$trglinks{$t-1}) or
+		   (defined $$trglinks{$t+1})){
+		if (($$srclinks{$s}{$t-1}) or         # if the link is adjacent to
+		    ($$srclinks{$s}{$t+1})){          # another one vertically:
+		    if ($$srclinks{$s+1}{$t}){next;}  # do not accept if it is also
+		    if ($$srclinks{$s-1}{$t}){next;}  # adjacent to other links horizontally
+		    if ($$srclinks{$s}{$t-1}){              # do not accept if the adjacent
+			if ($$srclinks{$s-1}{$t-1}){next;}  # link is also adjacent to other
+			if ($$srclinks{$s+1}{$t-1}){next;}  # links horizontally
+		    }
+		    if ($$srclinks{$s}{$t+1}){              # the same for the other
+			if ($$srclinks{$s-1}{$t+1}){next;}  # adjacency direction
+			if ($$srclinks{$s+1}{$t+1}){next;}
+		    }
+		    $$srclinks{$s}{$t}=1;        # everything ok: add the link
+		    $$trglinks{$t}{$s}=1;
+		}
+	    }
+	}
+    }
+}
 
 
 #----------------------------------------------------------------------------
