@@ -147,6 +147,27 @@ sub FixString{
     return $string;
 }
 
+sub EncodeString{
+    my ($lang,$string)=@_;
+    if ($lang=~/^(ar|az|be|bg|bs|he|id|jp|ja|ko|ku|mi|mk|ru|ta|th|uk|vi|xh|zh_tw|zu|bul|chi|jap|jpn|heb|rus)$/){
+	$string=encode('utf-8',$string);
+    }
+#    if ($lang eq 'el'){decode_entities($string);}
+    if ($lang=~/^(cs|hr|hu|pl|ro|sk|sl|sr|cze|hrv|rum|slv)$/){
+	$string=encode('iso-8859-2',$string);
+    }
+    if ($lang=~/^(et||lt|lv|ice|lit)$/){
+	$string=encode('iso-8859-4',$string);
+    }
+    if ($lang=~/^(el|gre|ell)$/){
+	$string=encode('iso-8859-7',$string);
+    }
+    if ($lang=~/^(tr|tur)$/){
+	$string=encode('iso-8859-9',$string);
+    }
+    return $string;
+}
+
 
 
 #------------------------------------------------------
@@ -337,7 +358,8 @@ sub CorpusQuery{
     use lib ('/home/staff/joerg/user_local/lib/perl5/site_perl/5.8.0/');
     use WebCqp::Query;
 
-    my ($corpus,$lang,$cqp,$aligned,$style)=@_;
+    my ($corpus,$lang,$utf8_cqp,$aligned,$style)=@_;
+    my $cqp = EncodeString($lang,$utf8_cqp);
 
     $WebCqp::Query::Registry = $corpus;
     my $query;
@@ -369,7 +391,12 @@ sub CorpusQuery{
 	foreach (@{$aligned}){
 	    if (param("query_$_")){
 		my $l=uc($_);
-		$cqp.=" :$l ".param("query_$_");
+		my $q = decode('utf-8',param("query_$_"));
+		param("query_$_",$q);
+		my $q = EncodeString($_,$q);
+		if ($q!~/^[\"\[]/){$q='"'.$q.'"';}
+		$cqp.=" :$l ".$q;
+#		$cqp.=" :$l ".EncodeString($_,param("query_$_"));
 	    }
 	    else{
 		my $l=uc($_);
@@ -399,7 +426,7 @@ sub CorpusQuery{
     my $nr_result = @result;
     #---------------------------------------------------------
 
-    my $html="Query string: \"$cqp\"".&br();
+    my $html="Query string: '".FixString($lang,$cqp)."'".&br();
     $html.="<b>$nr_result</b> hits found";
 
     my @rows=();

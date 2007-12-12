@@ -451,10 +451,10 @@ sub CombineLinks{
 	    }
 	}
     }
-    elsif (($method eq 'intersection') or ($method eq 'refined')){
+    elsif ($method eq 'intersection'){
 	foreach my $s (keys %{$src}){
 	    foreach my $t (keys %{$$src{$s}}){
-		if ($$trg{$t}{$s}){
+		if (exists $$trg{$t}{$s}){
 		    $$srclinks{$s}{$t}=1;
 		    $$trglinks{$t}{$s}=1;
 		}
@@ -462,25 +462,112 @@ sub CombineLinks{
 	}
     }
     if ($method eq 'refined'){                   # refined combination:
-	my @links=();
-	foreach my $s (keys %{$src}){
- 	    foreach my $t (keys %{$$src{$s}}){
-		$links[$s][$t]=1;
+	my %links=();
+	foreach my $s (keys %{$src}){               # 1) start with intersection
+	    foreach my $t (keys %{$$src{$s}}){
+		if (exists $$trg{$t}{$s}){
+		    $$srclinks{$s}{$t}=1;
+		    $$trglinks{$t}{$s}=1;
+		}
+		else{
+		    $links{"$s:$t"}=1;              # keep union of links
+		}
 	    }
 	}
 	foreach my $t (keys %{$trg}){
- 	    foreach my $s (keys %{$$trg{$t}}){
-		$links[$s][$t]=1;
+	    foreach my $s (keys %{$$trg{$t}}){
+		if (not exists $$src{$s}{$t}){
+		    $links{"$s:$t"}=1;
+		}
 	    }
 	}
-	add_adjacent(\@links,$srclinks,$trglinks);
+	add_unaligned(\%links,$srclinks,$trglinks); # 2) add unaligned pairs
+	add_adjacent(\%links,$srclinks,$trglinks);  # 3) add adjacent links
     }
 #    $src=\%srclinks;
 #    $trg=\%trglinks;
 }
 
 
+sub is_diagonal{
+    my ($s,$t,$srclinks,$trglinks)=@_;
+    if (defined $$srclinks{$s-1}){
+	return 1 if (defined $$trglinks{$t-1});
+	return 1 if (defined $$trglinks{$t+1});
+    }
+    if (defined $$srclinks{$s+1}){
+	return 1 if (defined $$trglinks{$t-1});
+	return 1 if (defined $$trglinks{$t+1});
+    }
+    return 0;
+}
+
+
+
+sub is_adjacent{
+    my ($s,$t,$srclinks,$trglinks)=@_;
+    if (exists $$srclinks{$s}){
+	return 1 if (exists $$srclinks{$s}{$t-1});
+	return 1 if (exists $$srclinks{$s}{$t+1});
+    }
+    elsif (exists $$trglinks{$t}){
+	return 1 if (exists $$trglinks{$t}{$s-1});
+	return 1 if (exists $$trglinks{$t}{$s+1});
+    }
+    return 0;
+}
+
+
 sub add_adjacent{
+    my $links=shift;
+    my $srclinks=shift;
+    my $trglinks=shift;
+
+    my $add=1;
+    while (%{$links} && $add){
+	$add=0;
+	foreach my $l (keys %{$links}){
+	    my ($l) = each %{$links};
+	    my ($s,$t) = split(/:/,$l);
+	    next if (exists $$srclinks{$s} && exists $$trglinks{$t});
+	    if (is_adjacent($s,$t,$srclinks,$trglinks)){
+		$$srclinks{$s}{$t}=1;
+		$$trglinks{$t}{$s}=1;
+		delete $$links{$l};
+		$add++;
+	    }
+	}
+    }
+}
+
+
+
+sub is_unaligned{
+    my ($s,$t,$srclinks,$trglinks)=@_;
+    if (not exists $$srclinks{$s}){
+	return 1 if (not exists $$trglinks{$t});
+    }
+    return 0;
+}
+
+sub add_unaligned{
+    my $links=shift;
+    my $srclinks=shift;
+    my $trglinks=shift;
+    foreach my $l (keys %{$links}){
+	my ($s,$t) = split(/:/,$l);
+	if (is_unaligned($s,$t,$srclinks,$trglinks)){
+	    $$srclinks{$s}{$t}=1;
+	    $$trglinks{$t}{$s}=1;
+	    delete $$links{$l};
+	}
+    }
+}
+
+
+
+
+sub add_adjacent_old{
     my $links=shift;
     my $srclinks=shift;
     my $trglinks=shift;
