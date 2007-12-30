@@ -240,6 +240,14 @@ while ($ret=$input->read($data)){
     }
     #-------------------------------------------------------
     my $root=$data->getRootNode();
+
+## if w exists already --> keep it
+## (unfortunately this doesn't work because of tokenization differences)
+##
+#    my @children=$data->findNodes($SegTag);
+#    if (not @children){
+#	@children=$data->splitContent($root,$SegTag,\@SegString);
+#    }
     my @children=$data->splitContent($root,$SegTag,\@SegString);
     foreach (0..$#children){
 	if (ref($SegAttr[$_]) ne 'HASH'){next;}
