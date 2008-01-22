@@ -166,18 +166,22 @@ my @alignments = `$AlignPrg $DicFile $TmpSrc $TmpTrg`;
 
 #---------------------------------------------------------------------------
 
-my ($lastSrc,$lastTrg)=(0,0);
+my ($lastSrc,$lastTrg,$lastScore)=(0,0,0);
 
 my $id=0;
 foreach (@alignments){
-    if (! /^[1-9]/){next;}       # skip (0,0) and dictionary output (realign)
     chomp;
     my ($sid,$tid,$score)=split(/\s+/);
+    if (! /^[1-9]/){            # skip (0,0) and dictionary output (realign)
+	$lastScore=$score;
+	next;              
+    }
 
-    if ($SrcSent[$sid] eq 'p'){
-	if ($TrgSent[$tid] eq 'p'){
+    if ($SrcSent[$sid-1] eq 'p'){
+	if ($TrgSent[$tid-1] eq 'p'){
 	    $lastSrc=$sid;
 	    $lastTrg=$tid;
+	    $lastScore=$score;
 	    next;
 	}
 	else{
@@ -188,10 +192,12 @@ foreach (@alignments){
     $id++;
     my @LinkSrc=();
     my @LinkTrg=();
-    foreach ($lastSrc+1 .. $sid){
+#    foreach ($lastSrc+1 .. $sid){
+    foreach ($lastSrc .. $sid-1){
 	push(@LinkSrc,$SrcSent[$_]);
     }
-    foreach ($lastTrg+1 .. $tid){
+#    foreach ($lastTrg+1 .. $tid){
+    foreach ($lastTrg .. $tid-1){
 	push(@LinkTrg,$TrgSent[$_]);
     }
 
@@ -203,11 +209,12 @@ foreach (@alignments){
     $out->setContent(undef,$output->option('root'));
     $out->setAttribute('id','SL'.$id);
     $out->setAttribute('xtargets',$link);
-    $out->setAttribute('certainty',$score);
+    $out->setAttribute('certainty',$lastScore);
     $output->write($out);
 
     $lastSrc=$sid;
     $lastTrg=$tid;
+    $lastScore=$score;
 }
 
 #---------------------------------------------------------------------------

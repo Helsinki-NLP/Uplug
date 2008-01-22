@@ -277,9 +277,11 @@ sub Combined2Uplug{
     #------------------------------------------------------------------------
     if ($giza0=~/\.gz$/){open F0,"gzip -cd <$giza0 |";}
     else{open F0,"<$giza0";}
+#    ($]>=5.008){binmode(F0, ":encoding(utf-8)");}
 
     if ($giza1=~/\.gz$/){open F1,"gzip -cd <$giza1 |";}
     else{open F1,"<$giza1";}
+#    ($]>=5.008){binmode(F1, ":encoding(utf-8)");}
     #------------------------------------------------------------------------
 
     my $TokenLabel='w';

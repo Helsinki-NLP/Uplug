@@ -144,6 +144,7 @@ sub FixString{
 	decode_entities($string);
 	$string=decode('iso-8859-9',$string);
     }
+    decode_entities($string);
     return $string;
 }
 
@@ -469,6 +470,14 @@ sub CorpusQuery{
 		$even=not $even;
 		if ($m->{$_}=~/\(no alignment found\)/){$noalign++;}
 		my $string=&FixString($_,$m->{$_});
+
+                ## highlight matching part (not always possible!)
+                my $q = param("query_$_");
+                $q=~s/\"//gs;
+                if ($q){
+                    $string =~s/($q)/\<b\>$q\<\/b\>/gs;
+                }
+
 		if ($style eq 'vertical'){           # vertical alignment
 		    $newrows[-1].=&td({-valign=>'top'},$string);
 		}

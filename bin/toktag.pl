@@ -56,6 +56,7 @@ use Uplug::Data;
 use Uplug::IO::Any;
 use Uplug::Config;
 use Uplug::Encoding;
+use Encode;
 
 my %IniData=&GetDefaultIni;
 my $IniFile='toktag.ini';
@@ -146,6 +147,13 @@ while ($input->read($data)){
 #	$txt=&Uplug::Encoding::convert($txt,$UplugEncoding,$OutEncoding);
 #    }
     if ($txt){
+	## handle malformed data by converting to octets and back
+	## the sub in encode ensures that malformed characters are ignored!
+	## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
+	if ($OutEncoding ne $UplugEncoding){
+	    my $octets = encode($OutEncoding, $txt,sub{ return '' });
+	    $txt = decode($OutEncoding, $octets);
+	}
 	$untagged->write($txt.$InSentDel);
 #	print F $txt;
 #	print F $InSentDel;
@@ -207,14 +215,20 @@ while ($ret=$input->read($data)){
     foreach my $i (0..$#tok){
 	$tok[$i]=~/$OutPattern/s;
 	my @Val=($1,$2,$3,$4,$5,$6,$7,$8,$9);
-	if ($OutEncoding ne $UplugEncoding){
-	    map ($Val[$_]=
-		 &Uplug::Encoding::convert($Val[$_],$OutEncoding,$UplugEncoding),
-		 (0..$#Val));
+
+#	if ($OutEncoding ne $UplugEncoding){
+#	    my $octets = encode($OutEncoding, $txt);
+#	    $txt = decode($OutEncoding, $octets);
+#	}
+#
+#	if ($OutEncoding ne $UplugEncoding){
 #	    map ($Val[$_]=
-#		 &Uplug::Data::encode($Val[$_],$OutEncoding,$UplugEncoding),
+#		 &Uplug::Encoding::convert($Val[$_],$OutEncoding,$UplugEncoding),
 #		 (0..$#Val));
-	}
+##	    map ($Val[$_]=
+##		 &Uplug::Data::encode($Val[$_],$OutEncoding,$UplugEncoding),
+##		 (0..$#Val));
+#	}
 	$SegString[$i]=$Val[$TextAttr];
 	%{$SegAttr[$i]}=();
 	foreach my $j (0..$#Attr){

@@ -4,7 +4,8 @@
     'submodules' => [
         '$UplugSystem/pre/markup',
 	'$UplugSystem/pre/sent',
-        '$UplugSystem/pre/tok',
+        '$UplugSystem/pre/es/toktag',
+#        '$UplugSystem/pre/tok',
         '$UplugSystem/pre/es/tagMBT',
     ],
     'submodule names' => [

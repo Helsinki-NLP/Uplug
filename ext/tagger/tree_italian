@@ -16,6 +16,25 @@ BIN=$ROOT/bin
 CMD=$ROOT/cmd
 LIB=$ROOT/lib
 
+OPTIONS="-token -lemma -sgml"
+
+TAGGER=${BIN}/tree-tagger
+TOKENIZER=${CMD}/tokenize.pl
+ABBR_LIST=${LIB}/italian-abbreviations
+PARFILE=${LIB}/italian.par
+
+# tagging with Stein's tagger
+$TOKENIZER -i -a $ABBR_LIST $* |
+$TAGGER $OPTIONS $PARFILE
+
+
+exit
+
+
+## old stuff ....
+
+
+
 # set your default options for the Tree Tagger
 TAGGEROPTS="-token -lemma -sgml"
 

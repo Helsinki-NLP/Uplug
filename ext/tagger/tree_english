@@ -6,17 +6,35 @@ BIN=$ROOT/bin
 CMD=$ROOT/cmd
 LIB=$ROOT/lib
 
-TOKENIZER=${BIN}/separate-punctuation
+
+OPTIONS="-token -lemma -sgml -pt-with-lemma"
+
+TOKENIZER=${CMD}/tokenize.pl
 TAGGER=${BIN}/tree-tagger
 ABBR_LIST=${LIB}/english-abbreviations
 PARFILE=${LIB}/english.par
+LEXFILE=${LIB}/english-lexicon.txt
 
-# put all on one line
-cat $* |
-# do tokenization
-$TOKENIZER +1 +s +l $ABBR_LIST |
+$TOKENIZER -e -a $ABBR_LIST $* |
 # remove empty lines
 grep -v '^$' |
+# external lexicon lookup
+perl $CMD/lookup.perl $LEXFILE |
 # tagging
-$TAGGER $PARFILE -token -lemma -sgml 
+$TAGGER $OPTIONS $PARFILE
+
+
+#TOKENIZER=${BIN}/separate-punctuation
+#TAGGER=${BIN}/tree-tagger
+#ABBR_LIST=${LIB}/english-abbreviations
+#PARFILE=${LIB}/english.par
+#
+## put all on one line
+#cat $* |
+## do tokenization
+#$TOKENIZER +1 +s +l $ABBR_LIST |
+## remove empty lines
+#grep -v '^$' |
+## tagging
+#$TAGGER $PARFILE -token -lemma -sgml 
 

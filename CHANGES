@@ -1,4 +1,8 @@
 
+- added startup scripts for spanish and dutch tree-tagger models
+- updated startup scripts for other treetagger models according to latest
+  TreeTagger distribution
+- fixed hunalign (bug in converting alignment output to xml)
 - added missing ';' at line 40 in Uplug.pm
 
 * 13-10-2006 joerg
