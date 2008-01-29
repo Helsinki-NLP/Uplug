@@ -1,4 +1,5 @@
 
+- robust conversion between encodings in bitext-indexer.pl/opus-indexer.pl
 - added startup scripts for spanish and dutch tree-tagger models
 - updated startup scripts for other treetagger models according to latest
   TreeTagger distribution

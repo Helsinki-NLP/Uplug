@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+#-*-perl-*-
 #
 # toktag.pl: a simple UPLUG wrapper for a tokenizer + (POS) tagger
 #

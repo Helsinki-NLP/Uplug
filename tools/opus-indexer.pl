@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+#-*-perl-*-
 #---------------------------------------------------------------------------
 # USAGE
 #
@@ -31,6 +32,7 @@ use FindBin qw($Bin);
 use File::Copy;
 use File::Basename;
 use XML::Parser;
+use Encode;
 
 use vars qw($opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m);
 use Getopt::Std;
@@ -85,6 +87,7 @@ my $WordDone=0;
 my $XmlStr;
 my %WordAttr=();
 
+my $OutputEncoding;
 
 ## non iso-latin1 language encodings ....
 my %LANGCODES=(
@@ -539,8 +542,8 @@ sub XML2CWB{
     open OUT,">>$cwbtok";
     open POS,">>$cwbpos";
 
-    my $encoding = GetLangEncoding($lang);
-    eval { binmode (OUT,':encoding('.$encoding.')'); };
+    $OutputEncoding = GetLangEncoding($lang);
+    eval { binmode (OUT,':encoding('.$OutputEncoding.')'); };
 
     print POS "# $file\n";
 
@@ -567,7 +570,7 @@ sub XML2CWB{
 	# can parse the encoding (otherwise I sometimes get 
         #    'panic: sv_setpvn called with negative strlen. ...'
 	#--------------------
-	system ("gzip -cd $file | sed 's/\&nbsp/ /g;' | recode -f utf8..$encoding | recode -f $encoding..utf8 > $TMPDIR/xml2cwb");
+	system ("gzip -cd $file | sed 's/\&nbsp/ /g;' | recode -f utf8..$OutputEncoding | recode -f $OutputEncoding..utf8 > $TMPDIR/xml2cwb");
 	$file="$TMPDIR/xml2cwb";
     }
 
@@ -736,6 +739,14 @@ sub printWord{
     $word=~tr/\n/ /;
     $word=~s/^\s+(\S)/$1/s;
     $word=~s/(\S)\s+$/$1/s;
+
+    ## handle malformed data by converting to octets and back
+    ## the sub in encode ensures that malformed characters are ignored!
+    ## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
+    if ($OutputEncoding ne 'utf-8'){
+	my $octets = encode($OutputEncoding, $word,sub{ return '' });
+	$word = decode($OutputEncoding, $octets);
+    }
     eval { print OUT $word; };
     foreach (@PATTR){
 	if (defined $attr->{$_}){

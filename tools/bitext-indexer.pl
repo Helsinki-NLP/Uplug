@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+#-*-perl-*-
 #---------------------------------------------------------------------------
 # bitext-indexer.pl
 #
@@ -43,6 +44,7 @@ use File::Copy;
 use File::Basename;
 use XML::Parser;
 use Cwd;
+use Encode;
 
 use vars qw($opt_o $opt_y);
 use Getopt::Std;
@@ -72,6 +74,7 @@ my $DATDIR    = shift(@ARGV);  # CWB data directory
 
 my @BITEXTS   = @ARGV;         # one or more bitext-files (XCES align)
 
+my $OutputEncoding = 'iso-8859-1';
 
 if (not -d $REGDIR){mkdir $REGDIR,0755;}  # make registry directory
 if (not -d $DATDIR){mkdir $DATDIR,0755;}  # make data directory if not existing
@@ -546,11 +549,11 @@ sub XML2CWBinput{
     open POS,">$PosFile";
     open OUT,">$OutFile";
 
-    my $encoding = 'iso-8859-1';
+    $OutputEncoding = 'iso-8859-1';
     if (exists $LangCodes{$language}){
-	$encoding=$LangCodes{$language};
+	$OutputEncoding=$LangCodes{$language};
     }
-    binmode (OUT,':encoding('.$encoding.')');
+    binmode (OUT,':encoding('.$OutputEncoding.')');
 
     while (@{$files}){
 	my $file=shift(@{$files});
@@ -730,6 +733,13 @@ sub printWord{
     $word=~tr/\n/ /;
     $word=~s/^\s+(\S)/$1/s;
     $word=~s/(\S)\s+$/$1/s;
+    ## handle malformed data by converting to octets and back
+    ## the sub in encode ensures that malformed characters are ignored!
+    ## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
+    if ($OutputEncoding ne 'utf-8'){
+	my $octets = encode($OutputEncoding, $word,sub{ return '' });
+	$word = decode($OutputEncoding, $octets);
+    }
     eval { print OUT $word; };
     foreach (@PATTR){
 	if (defined $attr->{$_}){
