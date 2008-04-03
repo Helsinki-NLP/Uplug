@@ -42,8 +42,12 @@
         'token delimiter' => " ",
         'sentence delimiter' => "\n<s>\n",
      },
+     'input replacements' => {
+        ## non breaking space --> normal space
+        ' ' => ' '
+     },
      'output replacements' => {
-        '<unknown>' => '',
+        '<unknown>' => ''
      },
   },
   'module' => {

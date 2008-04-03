@@ -1,4 +1,6 @@
 
+- robust conversion of encodings in tag.pl/toktag.pl/chunk.pl
+- added treetagger startup scripts for es and nl, replace "nbsp" to " "
 - robust conversion between encodings in bitext-indexer.pl/opus-indexer.pl
 - added startup scripts for spanish and dutch tree-tagger models
 - updated startup scripts for other treetagger models according to latest
@@ -8,7 +10,7 @@
 
 * 13-10-2006 joerg
 
-- ISA & ICa with simple user management (multiple users, password protection)
+- ISA & ICA with simple user management (multiple users, password protection)
 - integrated hunalign sentence aligner
 - integrated GMA sentence aligner
 - alternative sentence aligner with cognate filter: uplugalign

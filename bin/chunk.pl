@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+#-*-perl-*-
 #
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
@@ -58,6 +59,7 @@ use lib "$Bin/..";
 use Uplug::Data;
 use Uplug::IO::Any;
 use Uplug::Config;
+use Encode;
 
 my $UplugHome="$Bin/../";
 $ENV{UPLUGHOME}=$UplugHome;
@@ -136,7 +138,8 @@ open F,">$TmpUntagged";
 
 while ($input->read($data)){
 
-    my @nodes=$data->contentElements;
+#    my @nodes=$data->contentElements;
+    my @nodes=$data->findNodes('w');
     my @tok=$data->content(\@nodes);
     my @attr=$data->attribute(\@nodes);
 
@@ -154,11 +157,21 @@ while ($input->read($data)){
 	}
     }
     map($tok[$_]=&FixChunkerData($tok[$_],\%InputReplace),0..$#tok);
+#    if ($OutEncoding ne $UplugEncoding){
+#	map($tok[$_]=&Uplug::Encoding::convert($tok[$_],
+#					       $UplugEncoding,
+#					       $OutEncoding),
+#	    0..$#tok);
+#    }
+
+#	## handle malformed data by converting to octets and back
+#	## the sub in encode ensures that malformed characters are ignored!
+#	## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
     if ($OutEncoding ne $UplugEncoding){
-	map($tok[$_]=&Uplug::Encoding::convert($tok[$_],
-					       $UplugEncoding,
-					       $OutEncoding),
-	    0..$#tok);
+	foreach my $t (0..$#tok){
+	    my $octets = encode($OutEncoding, $tok[$t],sub{ return '' });
+	    $tok[$t] = decode($OutEncoding, $octets);
+	}
     }
     @tok=grep(/\S/,@tok);                  # take only non-empty tokens
     if (@tok){                             # print them if any left
@@ -190,7 +203,8 @@ open F,"<$TmpTagged";
 my $data=Uplug::Data->new;    # use a new data-object (new XML parser!)
 while ($input->read($data)){
     my $tagged=undef;
-    my @cont=$data->contentElements;
+#    my @cont=$data->contentElements;
+    my @cont=$data->findNodes('w');
     if (not @cont){$output->write($data);next;}
     my @tok=();
     $/=$OutSentDel;
@@ -199,6 +213,8 @@ while ($input->read($data)){
     chomp $tagged;
     @tok=split(/$OutTokDel/,$tagged);
     if (@cont != @tok){
+	print STDERR "# chunk.pl - warning: ";
+	print STDERR scalar @cont," tokens but ",scalar @tok," tags!!\n";
 	$output->write($data);
 	next;
     }

@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+#-*-perl-*-
 #
 # tag.pl: a simple UPLUG wrapper for a (POS) tagger
 #
@@ -56,7 +57,7 @@ use Uplug::Data;
 use Uplug::IO::Any;
 use Uplug::Config;
 use Uplug::Encoding;
-
+use Encode;
 
 my %IniData=&GetDefaultIni;
 my $IniFile='tag.ini';
@@ -130,23 +131,29 @@ if (not defined $OutEncoding){$OutEncoding=$UplugEncoding;}
 my $InEncoding=$IniData{parameter}{input}{encoding};
 if (not defined $InEncoding){$InEncoding=$OutEncoding;}
 
-open F,">$TmpUntagged";
 
+## read data from input stream and convert to input format needed 
+## by the external tagger
+
+open F,">$TmpUntagged";
 while ($input->read($data)){
-    my @nodes=$data->contentElements;
-    my @tok=$data->content(\@nodes);
+#    my @nodes=$data->contentElements;
+#    my @tok=$data->content(\@nodes);
 #     my @tok=$data->content('w');
+    my @tok=$data->content();
     map(s/^\s*//,@tok);                    # remove initial white-spaces
     map(s/\s*$//,@tok);                    # remove final white-spaces
 
     map($tok[$_]=&FixTaggerData($tok[$_],\%InputReplace),0..$#tok);
+
+#	## handle malformed data by converting to octets and back
+#	## the sub in encode ensures that malformed characters are ignored!
+#	## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
     if ($OutEncoding ne $UplugEncoding){
-	map($tok[$_]=&Uplug::Encoding::convert($tok[$_],
-					     $UplugEncoding,
-					     $OutEncoding),
-	    0..$#tok);
-#	map($tok[$_]=&Uplug::Data::encode($tok[$_],$UplugEncoding,$OutEncoding),
-#	    0..$#tok);
+	foreach my $t (0..$#tok){
+	    my $octets = encode($OutEncoding, $tok[$t],sub{ return '' });
+	    $tok[$t] = decode($OutEncoding, $octets);
+	}
     }
     @tok=grep(/\S/,@tok);                  # take only non-empty tokens
     if (@tok){                             # print them if any left
@@ -160,17 +167,21 @@ $input->close;
 
 
 #---------------------------------------------------------------------------
+# the call to the external tagger
+
 print STDERR "tag.pl: call external tagger!\n";
 print STDERR "   $TaggerPrg $TmpUntagged >$TmpTagged\n";
 
 if (my $sig=system "$TaggerPrg $TmpUntagged >$TmpTagged"){
     die "# tag: Got signal $? from tagger $TaggerPrg!\n";
 }
-
 #---------------------------------------------------------------------------
 
-my $InputSeperator=$/;
 
+## read the tagged data and the data from input stream again
+## and add tags to the data
+
+my $InputSeperator=$/;
 print STDERR "tag.pl: read tagged file and create output data!\n";
 
 $input->open('read',$InputStream);
@@ -180,23 +191,39 @@ open F,"<$TmpTagged";
 my $data=Uplug::Data->new;    # use a new data-object (new XML parser!)
 my $ret;
 while ($ret=$input->read($data)){
-    $/=$OutSentDel;
-    my $tagged=undef;
-    my @cont=$data->contentElements;
+
+    ## do the same as for preparing the data for tagging
+    ## (mainly to check if we have to ignore some content nodes)
+    my @nodes=$data->contentElements;
+    my @tokcont=$data->content();
+    my @cont=();
+    foreach (0..$#tokcont){
+	if ($OutEncoding ne $UplugEncoding){
+	    my $octets = encode($OutEncoding, $tokcont[$_],sub{ return '' });
+	    $tokcont[$_] = decode($OutEncoding, $octets);
+	}
+	if ($tokcont[$_]=~/\S/){
+	    push(@cont,$nodes[$_]);
+	}
+    }
+
+    ## no content nodes left --> just print the data
     if (not @cont){
 	$output->write($data);
 	$/=$InputSeperator;
 	next;
     }
+
+    ## read the tagged data and split into tokens
+    $/=$OutSentDel;
+    my $tagged=undef;
     my @tok=();
     $tagged=<F>;
     $tagged=&FixTaggerData($tagged,\%OutputReplace);
     chomp $tagged;
-    if ($InEncoding ne $UplugEncoding){
-	$tagged=&Uplug::Encoding::encode($tagged,$InEncoding,$UplugEncoding);
-#	$tagged=&Uplug::Data::encode($tagged,$InEncoding,$UplugEncoding);
-    }
     @tok=split(/$OutTokDel/,$tagged);
+
+    ## number nodes <> number tagged tokens --> do nothing
     if (@cont != @tok){
 	print STDERR "# tag.pl - warning: ";
 	print STDERR scalar @cont," tokens but ",scalar @tok," tags!!\n";
@@ -204,6 +231,8 @@ while ($ret=$input->read($data)){
 	$/=$InputSeperator;
 	next;
     }
+
+    ## insert tags in XML nodes
     my $WordAttr;
     foreach my $j (0..$#Attr){
 	if ($Attr[$j] eq 'word'){
@@ -237,7 +266,11 @@ while ($ret=$input->read($data)){
 	my @tag=@tok;
 	map(s/^.*$TagDel//,@tag);
 	map(s/^(.*)$TagDel[^$TagDel].*$/$1/,@tok);
-	$data->setContentAttribute($attr,\@tag);
+	foreach my $n (@cont){
+	    $data->setAttribute($n,$attr,shift(@tag));
+	    if (not @tag){last;}
+	}
+#	$data->setContentAttribute($attr,\@tag);
     }
     $output->write($data);
     $/=$InputSeperator;

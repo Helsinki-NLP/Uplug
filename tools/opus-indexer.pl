@@ -7,6 +7,9 @@
 #
 #   -o ........ overwrite existing data (deletes entire data directory!!)
 #   -y ........ assumes yes (doesn't prompt before deleting data dir!)
+#   -s ........ skip conversion via recode (used for OO)
+#   -m dir .... directory for temporary data (otherwise /tmp/BITEXTINDEXER...)
+#   -i depth .. min depth for finding alignment file (0 otherwise)
 #
 #---------------------------------------------------------------------------
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
@@ -34,9 +37,9 @@ use File::Basename;
 use XML::Parser;
 use Encode;
 
-use vars qw($opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m);
+use vars qw($opt_i $opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s);
 use Getopt::Std;
-getopts('d:r:t:c:x:voyf:m:');
+getopts('d:r:t:c:x:voyf:m:si:');
 
 
 # script arguments
@@ -146,6 +149,11 @@ my %LANGCODES=(
 	       'zu' => 'utf-8'
 		   );
 
+my $AllAttrParser = new XML::Parser(Handlers => {Start => \&XmlAttrStart});
+my $XmlParser = new XML::Parser(Handlers => {Start => \&XmlStart,
+					     End => \&XmlEnd,
+					     Default => \&XmlChar});
+
 
 mkdir $CWBDATA,0755  if (not -d $CWBDATA);
 mkdir $CWBREG,0755  if (not -d $CWBREG);
@@ -160,15 +168,21 @@ if ($opt_f){
 ########################################################################
 # make monolingual corpus indeces
 
-if (not $opt_m){
+# if (not $opt_m){
 foreach my $l (@LANG){
+
+    my $cwbtok = $TMPDIR.'/'.$l;
+    my $cwbpos = $TMPDIR.'/'.$l.'.pos';
+
+    if (-e $cwbpos){
+	print STDERR "$cwbpos found - re-use\n";
+	next;
+    }
+
     print STDERR "find all xml files for '$l'\n" if $VERBOSE;
     my @doc = FindDocuments("$XMLDIR/$l",'xml');
     if (not @doc){next;}
     @doc = sort @doc;
-
-    my $cwbtok = $TMPDIR.'/'.$l;
-    my $cwbpos = $TMPDIR.'/'.$l.'.pos';
 
     @PATTR=();
     %SATTR=();
@@ -187,6 +201,7 @@ foreach my $l (@LANG){
     %WordAttr=();
 
     foreach my $f (@doc){
+#	next if ($f ne 'xml/de/ep-01-09-05.xml.gz');
 	print STDERR "convert $f\n" if $VERBOSE;
 	XML2CWB($f,$cwbtok,$cwbpos,$l);
     }
@@ -198,7 +213,7 @@ foreach my $l (@LANG){
     unlink $cwbtok;
     
 }
-}
+# }
 
 ########################################################################
 # make alignment index for each language pair
@@ -223,8 +238,11 @@ foreach my $s (@LANG){
 	print STDERR "find all alignment files for '$s-$t'\n" if $VERBOSE;
 
 #	my @doc = FindDocuments($dir,$ALIGNTYPE);    # (no genre-subcorpora):
-	my @doc = FindDocuments($dir,$ALIGNTYPE,1);  # mindepth = 1!!!!
-	if (not @doc){next;}
+	my @doc = FindDocuments($dir,$ALIGNTYPE,$opt_i);  # mindepth = 1!!!!
+	if (not @doc){
+	    print STDERR "no alignment files found for $s-$t!\n";
+	    next;
+	}
 	@doc = sort @doc;
 
 	my $srctrg = "$TMPDIR/$s$t.alg";
@@ -252,14 +270,15 @@ foreach my $s (@LANG){
     }
 }
 
-foreach my $s (@LANG){
-    unlink($TMPDIR.'/'.$s.'.pos');
-    foreach my $t (@LANG){
-	unlink($TMPDIR.'/'.$t.'.pos');
+if (not $opt_m){
+    foreach my $s (@LANG){
+	unlink($TMPDIR.'/'.$s.'.pos');
+	foreach my $t (@LANG){
+	    unlink($TMPDIR.'/'.$t.'.pos');
+	}
     }
+    rmdir($TMPDIR);
 }
-rmdir($TMPDIR);
-
 
 # end of main ...
 #############################################################
@@ -570,26 +589,40 @@ sub XML2CWB{
 	# can parse the encoding (otherwise I sometimes get 
         #    'panic: sv_setpvn called with negative strlen. ...'
 	#--------------------
-	system ("gzip -cd $file | sed 's/\&nbsp/ /g;' | recode -f utf8..$OutputEncoding | recode -f $OutputEncoding..utf8 > $TMPDIR/xml2cwb");
+	if ($opt_s){
+	    system ("gzip -cd $file > $TMPDIR/xml2cwb");
+	}
+	else{
+	    system ("gzip -cd $file | sed 's/\&nbsp/ /g;' | recode -f utf8..$OutputEncoding | recode -f $OutputEncoding..utf8 > $TMPDIR/xml2cwb");
+	}
 	$file="$TMPDIR/xml2cwb";
     }
 
-    if ($AllAttributes){
-	my $parser1=
-	    new XML::Parser(Handlers => {Start => \&XmlAttrStart});
-	
-	eval { $parser1->parsefile($file); };
-	if ($@){warn "$@";}
-	@PATTR=sort keys %WordAttr;
+    if (not -e $file){
+	print STDERR "strange! file $file doesn't exist?!\n";
+	close POS;
+	close OUT;
+	return;
     }
 
-    my $parser2=
-	new XML::Parser(Handlers => {Start => \&XmlStart,
-				     End => \&XmlEnd,
-				     Default => \&XmlChar,
-				 },);
+    if ($AllAttributes){
+#	my $parser1=
+#	    new XML::Parser(Handlers => {Start => \&XmlAttrStart});
+	
+	eval { $AllAttrParser->parsefile($file); };
+	if ($@){warn "$@";}
+	@PATTR=sort keys %WordAttr;
+#	%{$parser1}=();
+#	$parser1 = undef;
+    }
 
-    eval { $parser2->parsefile($file); };
+#    my $parser2=
+#	new XML::Parser(Handlers => {Start => \&XmlStart,
+#				     End => \&XmlEnd,
+#				     Default => \&XmlChar,
+#				 },);
+
+    eval { $XmlParser->parsefile($file); };
     if ($@){warn "$@";}
 
     unlink $file if $zipped;
@@ -604,6 +637,10 @@ sub XML2CWB{
     eval { print OUT '</sub>'."\n" if ($CORPUS eq 'subtitles'); };
     eval { print OUT '</file>'."\n"; };
     eval { close OUT; };
+
+#    %{$parser2}=();
+#    $parser2 = undef;
+
 }
 
 
@@ -730,7 +767,22 @@ sub XmlAttrStart{
 }
 
 
+sub return_null{return '';}
 
+sub handle_encoding{
+    my ($string,$encoding)=@_;
+    ## handle malformed data by converting to octets and back
+    ## the sub in encode ensures that malformed characters are ignored!
+    ## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
+    if ($encoding ne 'utf-8'){
+#  the following causes a memory leak!
+#	my $octets = encode($encoding, $string,sub{ return '' });
+# don't know if this works (probably not ... has to be reference ...)
+	my $octets = encode($encoding, $string,&return_null);
+	$string = decode($OutputEncoding, $octets);
+    }
+    return $string;
+}
 
 
 sub printWord{
@@ -740,16 +792,18 @@ sub printWord{
     $word=~s/^\s+(\S)/$1/s;
     $word=~s/(\S)\s+$/$1/s;
 
-    ## handle malformed data by converting to octets and back
-    ## the sub in encode ensures that malformed characters are ignored!
-    ## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
-    if ($OutputEncoding ne 'utf-8'){
-	my $octets = encode($OutputEncoding, $word,sub{ return '' });
-	$word = decode($OutputEncoding, $octets);
-    }
+    $word = handle_encoding($word,$OutputEncoding);
+#    ## handle malformed data by converting to octets and back
+#    ## the sub in encode ensures that malformed characters are ignored!
+#    ## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
+#    if ($OutputEncoding ne 'utf-8'){
+#	my $octets = encode($OutputEncoding, $word,sub{ return '' });
+#	$word = decode($OutputEncoding, $octets);
+#    }
     eval { print OUT $word; };
     foreach (@PATTR){
 	if (defined $attr->{$_}){
+	    $attr->{$_} = handle_encoding($attr->{$_},$OutputEncoding);
 	    eval { print OUT "\t$attr->{$_}"; };
 	}
 	else{
@@ -762,9 +816,13 @@ sub printWord{
 sub printXmlStartTag{
     my $tag=shift;
     my %attr=@_;
+    $tag = handle_encoding($tag,$OutputEncoding);
+    return unless ($tag=~/\S/);
     eval { print OUT "<$tag"; };
     foreach (keys %attr){
 	if (defined $SATTR{$tag}{$_}){
+	    $attr{$_} = handle_encoding($attr{$_},$OutputEncoding);
+	    next unless ($attr{$_}=~/\S/);
 	    eval { print OUT " $_=\"$attr{$_}\""; };
 	}
     }
@@ -773,7 +831,8 @@ sub printXmlStartTag{
 
 sub printXmlEndTag{
     my $tag=shift;
-    my %attr=@_;
+    $tag = handle_encoding($tag,$OutputEncoding);
+    return unless ($tag=~/\S/);
     eval { print OUT "</$tag>\n"; };
 }
 

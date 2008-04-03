@@ -148,11 +148,14 @@ while ($input->read($data)){
 #	$txt=&Uplug::Encoding::convert($txt,$UplugEncoding,$OutEncoding);
 #    }
     if ($txt){
+
+	$txt=&FixTaggerData($txt,\%InputReplace);
+
 	## handle malformed data by converting to octets and back
 	## the sub in encode ensures that malformed characters are ignored!
 	## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
 	if ($OutEncoding ne $UplugEncoding){
-	    my $octets = encode($OutEncoding, $txt,sub{ return '' });
+	    my $octets = encode($OutEncoding, $txt,sub{ return ' ' });
 	    $txt = decode($OutEncoding, $octets);
 	}
 	$untagged->write($txt.$InSentDel);
@@ -302,7 +305,6 @@ sub FixTaggerData{
     }
     return $string;
 }
-
 
 sub GetDefaultIni{
 
