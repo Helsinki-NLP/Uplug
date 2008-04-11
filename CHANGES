@@ -1,4 +1,6 @@
 
+- added scripts to tools/subtitles to handle (pre-process and sentence align)
+  movie subtitle in srt format
 - robust conversion of encodings in tag.pl/toktag.pl/chunk.pl
 - added treetagger startup scripts for es and nl, replace "nbsp" to " "
 - robust conversion between encodings in bitext-indexer.pl/opus-indexer.pl

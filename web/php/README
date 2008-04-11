@@ -82,6 +82,11 @@ $ALIGNPRGS = array(
 );
 $ALIGN = $ALIGNPRGS['Subtitle+best cognates'];
 
+- using ISA for evaluation: add the following line to the corresponding 
+  config file:
+
+$ISA_MODE = 'eval'
+
 
 
 ica.php - the Interactive Clue Aligner
