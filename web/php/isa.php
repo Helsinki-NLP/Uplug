@@ -122,6 +122,13 @@ if ($USER_MANAGEMENT){
     }
 }
 
+if (isset($_POST['alignprg'])){
+  if (is_array($ALIGNPRGS)){
+    if (array_key_exists($_POST['alignprg'],$ALIGNPRGS)){
+       $ALIGN=$ALIGNPRGS[$_POST['alignprg']];
+    }
+  }
+}
 
 
 $srcbase = str_replace('.xml','',$SRCXML);
@@ -521,6 +528,21 @@ echo '<input type="submit" name="reset" value="reset">';
 if (!$DISABLE_SAVE){
     echo '<input type="submit" name="save" value="save">';
 }
+
+if (is_array($ALIGNPRGS)){
+   if (count($ALIGNPRGS)>1){
+   echo '<select name="alignprg">';
+   foreach ($ALIGNPRGS as $name => $command){
+	if ($command == $ALIGN){
+	  echo '<option selected value="'.$name.'">'.$name.'</option>';
+	} else {
+	  echo '<option value="'.$name.'">'.$name.'</option>';
+	}
+   }
+   echo '</select>';
+   }
+}
+
 echo '<input type="submit" name="align" value="align">';
 echo '</form>';
 echo '</div>';

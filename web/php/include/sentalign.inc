@@ -1131,8 +1131,9 @@ function sentence_align($srcfile,$trgfile){
     $trgtokfile = $trgbase . '.tok';
 
     $program = basename($ALIGN);
+
     if (substr($program,0,11) == 'srtalign.pl'){
-//    if ($program == 'srtalign.pl'){
+
 	$SrcHard=array();
 	$TrgHard=array();
 	get_all_boundaries($SrcHard,$TrgHard);
@@ -1146,7 +1147,6 @@ function sentence_align($srcfile,$trgfile){
 	    array_push($bound,$SrcHard[$i].':'.$TrgHard[$i]);
 	}
 	global $SRCXML,$TRGXML, $sentalign;
-	// $tmpout = $sentalign.'.tmp';
 
 	$command = $ALIGN;
 	if (count($bound)){
@@ -1154,7 +1154,6 @@ function sentence_align($srcfile,$trgfile){
 	}
 	$command .= ' '.$SRCXML;
 	$command .= ' '.$TRGXML;
-	// $command .= ' 2> /dev/null > '.$tmpout;
 	$command .= ' -v > '.$sentalign;
 	$command .= " 2> $sentalign.tmp";
 
@@ -1162,6 +1161,7 @@ function sentence_align($srcfile,$trgfile){
 	// $command = 'test -r /sw/bin/init.sh && . /sw/bin/init.sh;'.$command;
 
 	exec('ulimit -t 10;'.$command,$output,$return);
+
 	$info = 'srt-align';
 	if (count($bound)){
 	    $info .= 'with fixpoints at ';
@@ -1176,7 +1176,7 @@ function sentence_align($srcfile,$trgfile){
 	$_SESSION['hardtag'] = 'link';
 	read_links($sentalign);
     }
-    else{
+    elseif ($program == 'align2'){
 	make_align2_input($srcfile,$trgfile,
 			  $srctokfile,$trgtokfile,
 			  $_SESSION['src_start'],
@@ -1186,7 +1186,7 @@ function sentence_align($srcfile,$trgfile){
 	$command = $ALIGN.' -v -D "<hard>" -d "<soft>"';
 	$command .= ' '.$srctokfile.' '.$trgtokfile;
 	$command .= ' > /dev/null 2>&1';
-//	status("aligning input files ... $command");
+	status("aligning input files ... $command");
 
 	exec('ulimit -t 5;'.$command,$output,$return);
 
@@ -1198,6 +1198,29 @@ function sentence_align($srcfile,$trgfile){
 	if (file_exists($srctokfile.'.al')) unlink($srctokfile.'.al');
 	if (file_exists($trgtokfile.'.al')) unlink($trgtokfile.'.al');
 	status("input files aligned (if ulimit of 5 seconds not exceeded)!");
+    }
+    else{
+	global $SRCXML,$TRGXML, $sentalign;
+
+	$command = $ALIGN;
+	$command .= ' -src '.$SRCXML;
+	$command .= ' -trg '.$TRGXML;
+	$command .= ' > '.$sentalign;
+	$tmpout = $sentalign.'.tmp';
+	$command .= ' 2> '.$tmpout;
+
+	// for OS X with fink ....
+	// $command = 'test -r /sw/bin/init.sh && . /sw/bin/init.sh;'.$command;
+
+	exec('ulimit -t 10;'.$command,$output,$return);
+
+	$log = file_get_contents($tmpout);
+	echo '<div class="log"><pre>'.$log.'</pre></div>';
+	status($command);
+
+	// read sentence alignment from file!
+	$_SESSION['hardtag'] = 'link';
+	read_links($sentalign);
     }
 }
 

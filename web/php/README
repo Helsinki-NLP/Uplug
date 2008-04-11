@@ -55,6 +55,33 @@ quickstart: run 'make' and open the isa.php script in your browser
 - you can also make your own sub-directory in corpora/ and place your own
   configuration file there (look at the default one to see what you have
   to include)
+- if you want to use a different sentence aligner than the default one 
+  (Gale&Church's length-based aligner): change $ALIGN variable in 
+  the config-file for your corpus (usually in the corpora/corpusname directory)
+  For example to use the subtitle aligner based on time stamps (only useful 
+  for subtitle files with time information) set
+
+$ALIGN = $UPLUGHOME.'/tools/subtitles/srtalign.pl -v c 0.6 -b -w 50';
+
+- You can also specify several aligners in the config file using the $ALIGNPRGS
+  variable. If you do so an additional select-button will appear giving the
+  user the possibility to change the aligner wthout changing the config file
+  The aligners have to be either the default 'align2' tool or any of the other
+  sentence alignment tools included in Uplug. For example, to add subtitle
+  alignments with different settings, hunalign and gma you could add the 
+  following to your config file (using subtitle alignment with cognates as
+  default):
+
+$ALIGNPRGS = array(
+   'Gale&Church' => $UPLUGHOME.'/ext/align/align2',
+   'Hunalign' => $UPLUG.' align/hun',
+   "Melamed's GMA" => $UPLUG.' align/gma',
+   'Subtitle' => $UPLUGHOME.'/tools/subtitles/srtalign.pl -v',
+   'Subtitle+cognates'=>$UPLUGHOME.'/tools/subtitles/srtalign.pl -v -c 0.8',
+   'Subtitle+best cognates'=>$UPLUGHOME.'/tools/subtitles/srtalign.pl -v -c 0.6 -b',
+);
+$ALIGN = $ALIGNPRGS['Subtitle+best cognates'];
+
 
 
 ica.php - the Interactive Clue Aligner
