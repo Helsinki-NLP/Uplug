@@ -186,7 +186,16 @@ foreach (@alignments){
 	}
 	else{
 	    print STDERR "strange! non corresponding par boundaries!\n";
+	    $lastSrc=$sid;
+	    $lastScore=$score;
+	    next;
 	}
+    }
+    if ($TrgSent[$tid-1] eq 'p'){
+	print STDERR "strange! non corresponding par boundaries!\n";
+	$lastTrg=$tid;
+	$lastScore=$score;
+	next;
     }
 
     $id++;
