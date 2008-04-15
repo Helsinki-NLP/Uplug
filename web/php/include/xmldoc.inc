@@ -8,6 +8,7 @@ function get_best_hard_tag($srcxml,$trgxml,$sentalign){
 
     read_tag_file($srcxml,'source');
     read_tag_file($trgxml,'target');
+
     if (file_exists($sentalign)){
 	read_links($sentalign);
     }
@@ -20,6 +21,7 @@ function get_best_hard_tag($srcxml,$trgxml,$sentalign){
     $nr=0;
     $besttag='';
     foreach ($structags as $tag){
+
 //	echo $_SESSION['tag_source:'.$tag].' - '.$_SESSION['tag_target:'.$tag]."<br>";
 	if ($_SESSION['tag_source:'.$tag] == $_SESSION['tag_target:'.$tag]){
 	    if ($_SESSION['tag_source:'.$tag]>$nr){
@@ -126,7 +128,11 @@ function startElement($parser, $name, $attrs)
     global $idFH;
     global $tagFH;
 
-    // save structure tags before each sentence tag
+
+    global $GlobalData;
+    $GlobalData='';
+
+    // Save structure tags before each sentence tag
     // before checking the tag-name --> include sentence tags
 
     if ($sent_id == null){
@@ -155,6 +161,11 @@ function endElement($parser, $name)
     global $sent_id;
     global $sentFH;
 
+    global $GlobalData;
+
+    if (($sent_id != null) && ($GlobalData != "") && $name != $SENTTAG ){
+       fwrite($sentFH,$GlobalData." ");
+    }
     if ($name == $SENTTAG){
 	fwrite($sentFH,"\n");
 	$sent_id = null;
@@ -166,12 +177,17 @@ function characterData($parser, $data)
 {
     global $sent_id;
     global $sentFH;
+
+    global $GlobalData;
+    $GlobalData .= trim ($data);
+
     $data = rtrim($data);
 
-    if (($sent_id != null) && ($data != "")){
-//	fwrite($sentFH,utf8_decode($data)." ");
-       fwrite($sentFH,$data." ");
-    }
+//     if (($sent_id != null) && ($data != "")){
+// //	fwrite($sentFH,utf8_decode($data)." ");
+//        fwrite($sentFH,$data." ");
+//     }
+
 }
 
 

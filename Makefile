@@ -3,7 +3,7 @@
 # make all ---> make a release with version = ${VERSION}
 
 
-VERSION = 0.2.0c
+VERSION = 0.2.0d
 TODAY = `date`
 
 all: uplug-${VERSION}.tar.gz
