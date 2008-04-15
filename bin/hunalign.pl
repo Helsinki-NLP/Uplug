@@ -183,38 +183,38 @@ foreach (@alignments){
     ## (is this check of $score good enough?)
     next if ((not defined $score) || ($score=~/[^0-9\.\-]/));
 
-    ## if we reach corresponding 'p' tags or 
-    ## if we are at the end of the file:
-    ## --> align sentences from last anchor point up to now
-    if ($SrcSent[$sid] eq 'p' || (not defined $SrcSent[$sid])){
-	if ($TrgSent[$tid] eq 'p' || (not defined $TrgSent[$tid])){
-	    $id++;
-	    my @LinkSrc=();
-	    my @LinkTrg=();
-	    foreach ($lastSrc .. $sid-1){
-		next if ($SrcSent[$_] eq 'p');
-		push(@LinkSrc,$SrcSent[$_]);
-	    }
-	    foreach ($lastTrg .. $tid-1){
-		next if ($TrgSent[$_] eq 'p');
-		push(@LinkTrg,$TrgSent[$_]);
-	    }
-
-	    my $link = join(' ',@LinkSrc);
-	    $link .= ';';
-	    $link .= join(' ',@LinkTrg);
-
-	    my $out=Uplug::Data->new;
-	    $out->setContent(undef,$output->option('root'));
-	    $out->setAttribute('id','SL'.$id);
-	    $out->setAttribute('xtargets',$link);
-	    $out->setAttribute('certainty',$lastScore);
-	    $output->write($out);
-
-	    $lastSrc=$sid;
-	    $lastTrg=$tid;
-	    $lastScore=$score;
+    ## print out a new sentence alignment if both, srcID and trgID go one step
+    ## up in the "alginment ladder"
+    if ($sid>$lastSrc && $tid>$lastTrg){
+	$id++;
+	my @LinkSrc=();
+	my @LinkTrg=();
+	foreach ($lastSrc .. $sid-1){
+	    next if ($SrcSent[$_] eq 'p');
+	    push(@LinkSrc,$SrcSent[$_]);
 	}
+	foreach ($lastTrg .. $tid-1){
+	    next if ($TrgSent[$_] eq 'p');
+	    push(@LinkTrg,$TrgSent[$_]);
+	}
+
+	## if we have reached corresponding 'p' tags --> no link --> next
+	next if ((not @LinkSrc) && (not @LinkTrg));
+
+	my $link = join(' ',@LinkSrc);
+	$link .= ';';
+	$link .= join(' ',@LinkTrg);
+
+	my $out=Uplug::Data->new;
+	$out->setContent(undef,$output->option('root'));
+	$out->setAttribute('id','SL'.$id);
+	$out->setAttribute('xtargets',$link);
+	$out->setAttribute('certainty',$lastScore);
+	$output->write($out);
+
+	$lastSrc=$sid;
+	$lastTrg=$tid;
+	$lastScore=$score;
     }
 }
 
