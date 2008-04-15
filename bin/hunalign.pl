@@ -139,6 +139,7 @@ while ($target->read($data)){
 	my @tok=$data->content;
 	map(s/^\s*//,@tok);                    # remove initial white-spaces
 	map(s/\s*$//,@tok);                    # remove final white-spaces
+	map(s/\n//g,@tok);                     # remove all line-breaks
 	@tok=grep(/\S/,@tok);                  # take only non-empty tokens
 	if (@tok){                             # print them if any left
 
@@ -172,58 +173,49 @@ my $id=0;
 foreach (@alignments){
     chomp;
     my ($sid,$tid,$score)=split(/\s+/);
-    if (! /^[1-9]/){            # skip (0,0) and dictionary output (realign)
-	$lastScore=$score;
-	next;              
-    }
 
-    if ($SrcSent[$sid-1] eq 'p'){
-	if ($TrgSent[$tid-1] eq 'p'){
+    ## sum up scores (is this the best way to do it?)
+    $lastScore+=$score;
+
+    ## skip (0,0) and lines that do not start with a digit
+    next if (! /^[1-9]/);
+    ## skip other lines which are not part of the "alignment ladder"
+    ## (is this check of $score good enough?)
+    next if ((not defined $score) || ($score=~/[^0-9\.\-]/));
+
+    ## if we reach corresponding 'p' tags or 
+    ## if we are at the end of the file:
+    ## --> align sentences from last anchor point up to now
+    if ($SrcSent[$sid] eq 'p' || (not defined $SrcSent[$sid])){
+	if ($TrgSent[$tid] eq 'p' || (not defined $TrgSent[$tid])){
+	    $id++;
+	    my @LinkSrc=();
+	    my @LinkTrg=();
+	    foreach ($lastSrc .. $sid-1){
+		next if ($SrcSent[$_] eq 'p');
+		push(@LinkSrc,$SrcSent[$_]);
+	    }
+	    foreach ($lastTrg .. $tid-1){
+		next if ($TrgSent[$_] eq 'p');
+		push(@LinkTrg,$TrgSent[$_]);
+	    }
+
+	    my $link = join(' ',@LinkSrc);
+	    $link .= ';';
+	    $link .= join(' ',@LinkTrg);
+
+	    my $out=Uplug::Data->new;
+	    $out->setContent(undef,$output->option('root'));
+	    $out->setAttribute('id','SL'.$id);
+	    $out->setAttribute('xtargets',$link);
+	    $out->setAttribute('certainty',$lastScore);
+	    $output->write($out);
+
 	    $lastSrc=$sid;
 	    $lastTrg=$tid;
 	    $lastScore=$score;
-	    next;
-	}
-	else{
-	    print STDERR "strange! non corresponding par boundaries!\n";
-	    $lastSrc=$sid;
-	    $lastScore=$score;
-	    next;
 	}
     }
-    if ($TrgSent[$tid-1] eq 'p'){
-	print STDERR "strange! non corresponding par boundaries!\n";
-	$lastTrg=$tid;
-	$lastScore=$score;
-	next;
-    }
-
-    $id++;
-    my @LinkSrc=();
-    my @LinkTrg=();
-#    foreach ($lastSrc+1 .. $sid){
-    foreach ($lastSrc .. $sid-1){
-	push(@LinkSrc,$SrcSent[$_]);
-    }
-#    foreach ($lastTrg+1 .. $tid){
-    foreach ($lastTrg .. $tid-1){
-	push(@LinkTrg,$TrgSent[$_]);
-    }
-
-    my $link = join(' ',@LinkSrc);
-    $link .= ';';
-    $link .= join(' ',@LinkTrg);
-
-    my $out=Uplug::Data->new;
-    $out->setContent(undef,$output->option('root'));
-    $out->setAttribute('id','SL'.$id);
-    $out->setAttribute('xtargets',$link);
-    $out->setAttribute('certainty',$lastScore);
-    $output->write($out);
-
-    $lastSrc=$sid;
-    $lastTrg=$tid;
-    $lastScore=$score;
 }
 
 #---------------------------------------------------------------------------

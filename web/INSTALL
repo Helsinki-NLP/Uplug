@@ -1,26 +1,19 @@
 
 
-For the interactive alignment tools
-===================================
+For the interactive alignment tools (ICA & ISA)
+===============================================
 
-
-- move all files in the subdirectory php/ to a webdirectory
-  (your web-server must have PHP installed of course ...)
-- change the include/config.php file
-  + change at least the path to your Uplug installation
-  + change the corpus settings (if you don't want to use the example files)
-  + change permissions to the data/runtime directory and to the directory
-    where you store your corpus (must be writable for your browser)
-- open ica.php in your browser and enjoy
-
-Alternatively, you can copy the php directory to your web-directory and run
-'make'. Don't forget to change the path to Uplug in the Makefile!
+- look at the README in the sub-directory php/
 
 
 
 
-For UplugWeb
-============
+
+
+
+
+For UplugWeb (old and pretty much unsupported)
+==============================================
 
 
 

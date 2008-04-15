@@ -35,7 +35,7 @@
 # with the best scores)
 #
 
-## on cluster:
+## on cluster (for XML::Parser):
 use lib '/home/ruglt180/tiedeman/usr/lib/perl/5.8.4';
 
 use XML::Parser;
@@ -102,7 +102,7 @@ my %last=();    # matches in final part of the movie
 #parse_srt($trgfile,\@trgdata);
 #print STDERR "ok!\n";
 
-print STDERR "parse source & target files ... ";
+print STDERR "parse '$srcfile' & '$trgfile' ... ";
 parse_bitext($srcfile,$trgfile,\@srcdata,\@trgdata,\%first,\%last);
 print STDERR "ok!\n";
 
@@ -113,20 +113,6 @@ set_sent_times(\@trgdata);
 if (defined $opt_h){
     fit_hard_boundaries($opt_h,\@srcdata,\@trgdata);
 }
-
-
-# the following settings for time factor and offset fit to the following 
-# pair of subtitles:
-#
-# dut/Action/2003/1998_139002_190421_2_fast_2_furious.xml.gz
-# ger/Action/2003/1998_204406_269048_2_fast_2_furious.xml.gz
-#
-# (in this direction! (dut->ger))
-#
-# print STDERR "check start/end time ... ";
-# set_sent_times(\@srcdata,0.958846,0.786493);
-# set_sent_times(\@trgdata);
-# print STDERR "ok!\n";
 
 
 my @alignment=();

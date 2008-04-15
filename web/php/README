@@ -6,17 +6,20 @@ ISA & ICA - 2 web interfaces for interactive alignment of parallel corpora
 
 * INSTALLING (on GNU/Linux)
 
-
 - you need a running web-server with PHP installed (PHP 4 should do ...)
-- copy all files and sub-directories from this directory to your web directory
+- copy all files and subdirectories from uplug/web/php/ to your web directory
   (you probably want to create a separate directory for the interfaces)
-- change UPLUG and UPLUGWEB in the Makefile you just copied to your local 
+- change UPLUG and UPLUGWEB in the Makefile to point to your local 
   installation of Uplug (UPLUGWEB is the adress from which the web-server 
   can access Uplug)
-- go to your web directory whith the ISA & ICA scripts
 - run 'make' (a simple test run) or look at the Makefile to see some other 
-  options to prepare a bitext for alignment
+  options to prepare your own bitext for alignment
 - open the index.php script in your web-browser
+
+Alternatively, you may create your own config.inc file in a sub-directory of
+corpora/ (where your corpus files should be). Make sure that the corpus
+directories have to be writable for your web-browser to create necessary
+output files.
 
 
 
