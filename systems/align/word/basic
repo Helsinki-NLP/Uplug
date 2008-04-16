@@ -6,7 +6,7 @@
         '$UplugSystem/align/word/GIZA/giza-word-refined -c 1 -out giza-refined.links',
         '$UplugSystem/align/word/dynamicclues',
 #        '$UplugSystem/align/word/GIZA/gizaclue-word',
-        '$UplugSystem/align/word/link',
+        '$UplugSystem/align/word/link -adj',
 	],
 #    'loop' => '5:6',
 #    'iterations' => '3',

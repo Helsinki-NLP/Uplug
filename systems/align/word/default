@@ -9,9 +9,9 @@
 #        '$UplugSystem/align/word/GIZA/gizaclue-word',
 #        '$UplugSystem/align/word/GIZA/gizaclue-pos-word',
 #        '$UplugSystem/align/word/GIZA/gizaclue-word-suffix',
-        '$UplugSystem/align/word/link',
+        '$UplugSystem/align/word/link -adj',
         '$UplugSystem/align/word/dynamicclues',
-        '$UplugSystem/align/word/link',
+        '$UplugSystem/align/word/link -adj',
 	],
   },
   'description' => 'The clue aligner runs several sub-modules:

@@ -237,7 +237,11 @@ function IdStartElement($parser, $name, $attrs)
     global $SENTLINKTAG;
 
     if ($name == $SENTLINKTAG){
-	fwrite($sidFH,$attrs['id']."\n");
+	list($src,$trg) = explode(';',$attrs['xtargets']);
+	// skip x:0 sentence alignments!
+	if (($src != "") && ($trg != "")){
+	    fwrite($sidFH,$attrs['id']."\n");
+	}
     }
 }
 
