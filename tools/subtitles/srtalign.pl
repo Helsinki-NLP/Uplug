@@ -49,7 +49,8 @@ use Getopt::Std;
 
 getopts('c:w:l:i:d:vuh:s:t:qbf:r:');
 
-my $UPLUGHOME = $ENV{HOME}.'/cvs/uplug';
+my $UPLUGHOME = $ENV{HOME}.'/projects/Uplug/uplug';
+# my $UPLUGHOME = $ENV{HOME}.'/cvs/uplug';
 my $UPLUG = $UPLUGHOME.'/uplug';
 # my $FALLBACK = $UPLUG.' align/gma';
 my $FALLBACK = $opt_f;
@@ -210,6 +211,10 @@ sub best_align{
 	    ## compute slope and offset for this movie
 	    my ($slope,$offset) = ComputeOffset(\@anchor,$srcdata,$trgdata);
 	    print STDERR "time factor: $slope - offset: $offset\n" if $VERBOSE;
+	    if ($slope<=0){
+		print STDERR "strange scaling factor -> ignore\n";
+		next;
+	    }
 	    ## re-scale source language subtitles
 #	    set_sent_times($srcdata,$slope,$offset);
 	    synchronize($srcdata,$slope,$offset);
@@ -230,6 +235,7 @@ sub best_align{
     print STDERR "\n" if $VERBOSE;
     if ($bestratio < 2){
 	if ($FALLBACK && (-e $UPLUG)){
+	    print STDERR "best ratio < 2 --> fall back to $FALLBACK!\n";
 	    print `$UPLUG $FALLBACK -src $srcfile -trg $trgfile`;
 	    exit;
 	}
@@ -715,6 +721,11 @@ sub use_anchor_points{
 	## compute slope and offset for this movie
 	my ($slope,$offset) = ComputeOffset(\@fixpoints,$srcdata,$trgdata);
 	print STDERR "time factor: $slope - offset: $offset\n" if $VERBOSE;
+	if ($slope<=0){
+	    print STDERR "strange scaling factor -> ignore\n";
+	    delete $last->{$sortlast[0]};
+	    return use_anchor_points($srcdata,$trgdata,$first,$last);
+	}
 	## re-scale source language subtitles
 #	set_sent_times($srcdata,$slope,$offset);
 	synchronize($srcdata,$slope,$offset);
@@ -752,6 +763,13 @@ sub fit_hard_boundaries{
 	## compute slope and offset for this movie
 	my ($slope,$offset) = ComputeOffset(\@matches,$src,$trg);
 	print STDERR "time factor: $slope - offset: $offset\n" if $VERBOSE;
+	while (($slope<=0) && (@matches > 1)){
+	    print STDERR "strange scaling factor -> ignore\n";
+	    pop(@matches);
+	    return 0 if (@matches==0);
+	    ($slope,$offset) = ComputeOffset(\@matches,$src,$trg);
+	    print STDERR "time factor: $slope - offset: $offset\n" if $VERBOSE;
+	}
 	## re-scale source language subtitles
 #	set_sent_times($src,$slope,$offset);
 	synchronize($src,$slope,$offset);
@@ -987,14 +1005,20 @@ sub time2sec{
 
 
 sub find_match{
+    if ($USE_DICTIONARY){
+	if (my $ret=dictionary(@_)){
+	    return $ret;
+	}
+    }
     if ($USE_IDENTICAL){
-	return identical(@_,$USE_IDENTICAL,$CHAR_SET,$TOK_LEN);
+	if (my $ret=identical(@_,$USE_IDENTICAL,$CHAR_SET,$TOK_LEN)){
+	    return $ret;
+	}
     }
     if ($USE_COGNATES){
-	return cognates(@_,$MINLENGTH,$USE_COGNATES);
-    }
-    if ($USE_DICTIONARY){
-	return dictionary(@_);
+	if (my $ret=cognates(@_,$MINLENGTH,$USE_COGNATES)){
+	    return $ret;
+	}
     }
     return 0;
 }
