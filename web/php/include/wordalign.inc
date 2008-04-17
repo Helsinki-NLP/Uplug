@@ -527,7 +527,7 @@ function parse_align_output(&$output){
 		$tidxs = explode(':',$tidx);
 		foreach ($sidxs as $s){
 		    foreach ($tidxs as $t){
-			$clues[$s][$t][$clue.':'.$src.':'.$trg]=$score;
+			$clues[$s][$t][$clue.'||'.$src.'||'.$trg]=$score;
 		    }
 		}
 	    }
@@ -582,7 +582,7 @@ function make_clue_strings(&$clues){
 		    $str .= '<tr><th>type</th><th>source</th><th>target</th>';
 		    $str .= '<th>score</th></tr>';
 		    foreach ($clues[$i][$j] as $clue => $score){
-			list($type,$src,$trg) = explode(':',$clue);
+			list($type,$src,$trg) = explode('||',$clue);
 			$str .= '<tr><td>';
 			$str .= $type;
 			$str .= '</td><td>';
