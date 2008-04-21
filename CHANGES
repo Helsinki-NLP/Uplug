@@ -1,7 +1,8 @@
 
-- srtalign.pl: added check for illegal subtitle synchronization 
-  scaling factor (<=0) and made it possible to use cognates and dictionaries
-  together for automatic synchronization
+- tools/subtitles/srt2xml: handling of formating tags (<i> etc) is fixed!
+- tools/subtitles/srtalign.pl: added check for illegal subtitle
+  synchronization scaling factor (<=0) and made it possible to use cognates
+  and dictionaries together for automatic synchronization
 - ICA: show only non-empty sentence alignments (x:0 sentence alignments don't
   make sense for word alignment), changed in include/xmldoc.inc
 - added -adj to all word alignment config files for the 'link' step

@@ -504,9 +504,8 @@ sub tokenize{
     ##
     ## (now done in split_on_whitespace)
 
-#    $string=~s/<(\/?[ib])>/ [$1] /gs;
-#    $string=~s/<(\/?font[^>]*?)>/ [$1] /gs;
-
+    $string=~s/<(\/?[ib])>/ [$1] /gs;
+    $string=~s/<(\/?font[^>]*?)>/ [$1] /gs;
 
     # \p{P} ==> punctuations
     # \P{P} ==> non-punctuations
@@ -548,6 +547,8 @@ sub split_on_whitespaces{
     ## (quite a hack)
     $string=~s/<\s*(\/?)\s*([ib])\s*>/ <$1$2> /gs;
     $string=~s/<\s*(\/?)\s*(font[^>]*?)\s*>/ <$1$2> /gs;
+    $string=~s/^\s*//;
+    $string=~s/\s*$//;
 
     ## space within tags are not token delimiters!
     ## --> change them to '&nbsp;' (another hack)
