@@ -473,10 +473,12 @@ sub CorpusQuery{
 
                 ## highlight matching part (not always possible!)
                 my $q = param("query_$_");
-                $q=~s/\"//gs;
-                if ($q){
-                    $string =~s/($q)/\<b\>$q\<\/b\>/gs;
-                }
+		if ($q!~/[\[\<]/){
+		    $q=~s/\"//gs;
+		    if ($q){
+			$string =~s/($q)/\<b\>$q\<\/b\>/gs;
+		    }
+		}
 
 		if ($style eq 'vertical'){           # vertical alignment
 		    $newrows[-1].=&td({-valign=>'top'},$string);
