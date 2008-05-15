@@ -9,7 +9,6 @@
 #
 ##############################################################
 
-
 use WebCqp::Query;
 use HTML::Entities;
 use CGI qw/:standard escapeHTML escape/;
@@ -27,7 +26,7 @@ my $MAXWAIT=60;
 my $SHOWMAX=20;
 if (param('showmax')){$SHOWMAX=param('showmax');}
 
-my $CWBREG='/hf/logos/site/opus/cwb/reg';
+my $CWBREG='/Users/joerg/projects/OPUS/cwb/reg';
 if (param('reg')){$CWBREG=param('reg');}
 if (url_param('reg')){$CWBREG=url_param('reg');}
 chdir $CWBREG;
@@ -469,7 +468,21 @@ sub CorpusQuery{
 		if ($even){$color='#FFCC99';}        # align-color 2
 		$even=not $even;
 		if ($m->{$_}=~/\(no alignment found\)/){$noalign++;}
-		my $string=&FixString($_,$m->{$_});
+		my $string=$m->{$_};
+
+		my ($before,$after)=('','');
+		if ($bc ne 's' || $ac ne 's' ||
+		    $bcs != 1 || $acs != 1){
+		    
+		    ($before,$after) = 
+			AlgContext($corpus,$lang,$_,
+				   $m->{'cpos'},
+				   $bc,$ac,
+				   $bcs-1,$acs-1);
+		}
+		$string = $before.$string.' '.$after;
+
+		my $string=&FixString($_,$string);
 
                 ## highlight matching part (not always possible!)
                 my $q = param("query_$_");
@@ -615,4 +628,94 @@ sub timeout{
     print "Sorry for any inconvenience!",&hr();
     print &end_html;
     exit;
+}
+
+
+sub AlgContext{
+    use CL;
+    my ($corpus,$src,$trg,$cpos,$BeforeAttr,$AfterAttr,$before,$after)=@_;
+
+    $CL::Registry = $CWBREG.'/'.$corpus;
+    my $SrcCorpus = new CL::Corpus $src;
+
+    ## alignment attribute
+    my $AlgHandle = $SrcCorpus->attribute($trg,'a');
+    my $alg = $AlgHandle->cpos2alg($cpos);
+    my ($src_start,$src_end,$start,$end) = $AlgHandle->alg2cpos($alg);
+
+    my $TrgCorpus = new CL::Corpus $trg;
+    my $word = $TrgCorpus->attribute('word','p');
+
+    my ($BeforeContext,$AfterContext)=('','');
+
+    if ($before>0){
+	## attr = structural attribute! --> 's'
+	my $struc = $TrgCorpus->attribute($BeforeAttr,'s');
+	if (defined $struc){
+	    my $p_start = $struc->cpos2struc($start);
+	    foreach my $p ($p_start-$before .. $p_start-1){
+		next if ($p < 0);
+		my ($s,$e) = $struc->struc2cpos($p);
+		foreach my $cpos ($s..$e){
+		    $BeforeContext.=$word->cpos2str($cpos).' ';
+		}
+	    }
+	}
+    }
+    
+    if ($after>0){
+	my $struc = $TrgCorpus->attribute($AfterAttr,'s');
+	if (defined $struc){
+	    my $max_p = $struc->max_struc;
+	    my $p_end = $struc->cpos2struc($end);
+	    foreach my $p ($p_end+1 .. $p_end+$after){
+		last if ($p > $max_p);
+		my ($s,$e) = $struc->struc2cpos($p);
+		foreach my $cpos ($s..$e){
+		    $AfterContext.=$word->cpos2str($cpos).' ';
+		}
+	    }
+	}
+    }
+
+    return ($BeforeContext,$AfterContext);
+
+}
+
+
+
+sub context{
+    use CL;
+    my ($corpus,$lang,$cpos,$attr,$before,$after)=@_;
+
+    $CL::Registry = $CWBREG.'/'.$corpus;
+    my $CorpusHandle = new CL::Corpus $lang;
+
+    ## attr = structural attribute! --> 's'
+    my $struc = $CorpusHandle->attribute($attr,'s');
+    my $word = $CorpusHandle->attribute('word','p');
+ 
+    my $p_start = $struc->cpos2struc($cpos);
+    foreach my $p ($p_start-$before .. $p_start){
+	next if ($p < 0);
+#	print "---- struc $p ------<br>";
+#	print $struc->struc2str($p);
+	my ($s,$e) = $struc->struc2cpos($p);
+	foreach my $cpos ($s..$e){
+	    print $word->cpos2str($cpos);
+	}
+    }
+    
+    my $max_p = $struc->max_struc;
+    my $p_end = $struc->cpos2struc($cpos);
+    foreach my $p ($p_end .. $p_end+$after){
+	last if ($p > $max_p);
+#	print "==== struc $p =====<br>";
+	my ($s,$e) = $struc->struc2cpos($p);
+	foreach my $cpos ($s..$e){
+	    print $word->cpos2str($cpos);
+	}
+    }
+
+
 }
