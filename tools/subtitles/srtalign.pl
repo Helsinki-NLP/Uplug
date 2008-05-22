@@ -19,6 +19,8 @@
 # -r char_set ......... define a set of characters to be used for matching
 # -q .................. normalize length scores with (current) word frequencies
 # -b .................. use "best" alignment (least empty alignments)
+# -m MAX .............. in "best" alignment: use only MAX first & MAX last
+#                       (default = 10; 0 = all)
 # -f uplug-conf-file .. use fallback aligner if necessary
 # -v .................. verbose output
 #
@@ -44,10 +46,10 @@ use strict;
 
 
 use vars qw($opt_b $opt_l $opt_c $opt_w $opt_d $opt_i $opt_v $opt_u $opt_h 
-	    $opt_s $opt_t $opt_q $opt_f $opt_r);
+	    $opt_s $opt_t $opt_q $opt_f $opt_r $opt_m);
 use Getopt::Std;
 
-getopts('c:w:l:i:d:vuh:s:t:qbf:r:');
+getopts('c:w:l:i:d:vuh:s:t:qbf:r:m:');
 
 my $UPLUGHOME = $ENV{HOME}.'/projects/Uplug/uplug';
 # my $UPLUGHOME = $ENV{HOME}.'/cvs/uplug';
@@ -194,8 +196,10 @@ sub best_align{
     my @sortfirst = sort {$first{$b} <=> $first{$a} } keys %{$first};
     my @sortlast  = sort {$last{$b} <=> $last{$a} } keys %{$last};
 
-    @sortfirst = splice(@sortfirst,0,10) if (@sortfirst > 10);
-    @sortlast = splice(@sortlast,0,10) if (@sortlast > 10);
+    if ($opt_m){
+	@sortfirst = splice(@sortfirst,0,$opt_m) if (@sortfirst > $opt_m);
+	@sortlast = splice(@sortlast,0,$opt_m) if (@sortlast > $opt_m);
+    }
 
 
     foreach my $sf (@sortfirst){

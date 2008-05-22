@@ -259,13 +259,55 @@ while ($ret=$input->read($data)){
     #-------------------------------------------------------
     my $root=$data->getRootNode();
 
-## if w exists already --> keep it
-## (unfortunately this doesn't work because of tokenization differences)
-##
-#    my @children=$data->findNodes($SegTag);
-#    if (not @children){
-#	@children=$data->splitContent($root,$SegTag,\@SegString);
-#    }
+
+    ##---------------------------------------------------------------
+    ## if w exists already --> keep tokenization and add attributes
+
+    my @children=$data->findNodes($SegTag);
+    if (@children){
+
+	## number nodes <> number tagged tokens
+	if (@children != @SegAttr){
+	    print STDERR "# toktag.pl - warning: ";
+	    print STDERR scalar @children," tokens but ",
+	    scalar @SegAttr," tags!! (try to match them anyway)\n";
+	}
+
+	my @ChildString=();
+	foreach my $c (@children){
+	    push(@ChildString,$c->content);
+	}
+
+	## find tokens that match
+	my %matching=();
+	my ($x,$y)=(0,0);
+	while ($x<=$#children){
+	    if ($ChildString[$x] eq $SegString[$y]){
+		$matching{$x} = $y;
+		$x++;$y++;
+	    }
+	    elsif ($ChildString[$x] eq $SegString[$y+1]){$y++;}
+	    elsif ($ChildString[$x+1] eq $SegString[$y]){$x++;}
+	    else{$x++;$y++;}
+	}
+
+	## set attributes for matching tokens
+	foreach my $x (keys %matching){
+	    foreach my $j (keys %{$SegAttr[$matching{$x}]}){
+		if ($SegAttr[$matching{$x}]{$j}=~/\S/){
+		    $data->setAttribute($children[$x],$j,
+					$SegAttr[$matching{$x}]{$j});;
+		}
+	    }
+	}
+	$output->write($data);
+	$/=$InputSeperator;
+	next;
+    }
+
+    ##---------------------------------------------------------------
+    ## no segmentation exists --> split and create new content nodes
+
     my @children=$data->splitContent($root,$SegTag,\@SegString);
     foreach (0..$#children){
 	if (ref($SegAttr[$_]) ne 'HASH'){next;}

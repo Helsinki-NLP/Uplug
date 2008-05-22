@@ -134,15 +134,17 @@ while ($input->read($data)){
     }
 }
 
+# $untokenized->write($txt.$InSentDel);
 $untokenized->close;
 $input->close;
 
 
 #---------------------------------------------------------------------------
 print STDERR "tokext.pl: call external tokenizer!\n";
-print STDERR "   $Tokenizer $TmpUntokenized >$TmpTokenized\n";
+print STDERR "   $Tokenizer < $TmpUntokenized >$TmpTokenized\n";
 
-system "$Tokenizer < $TmpUntokenized > $TmpTokenized";
+eval { system "$Tokenizer < $TmpUntokenized > $TmpTokenized" };
+print $@ if $@;
 
 #---------------------------------------------------------------------------
 

@@ -1,4 +1,6 @@
 
+- toktag.pl: better handling of already tokenized documents
+- added wrapper for alpino (dutch) tokenizer)
 - tools/subtitles/srt2xml: handling of formating tags (<i> etc) is fixed!
 - tools/subtitles/srtalign.pl: added check for illegal subtitle
   synchronization scaling factor (<=0) and made it possible to use cognates

@@ -26,7 +26,8 @@ my $MAXWAIT=60;
 my $SHOWMAX=20;
 if (param('showmax')){$SHOWMAX=param('showmax');}
 
-my $CWBREG='/Users/joerg/projects/OPUS/cwb/reg';
+my $CWBREG='/hf/logos/site/opus/cwb/reg';
+
 if (param('reg')){$CWBREG=param('reg');}
 if (url_param('reg')){$CWBREG=url_param('reg');}
 chdir $CWBREG;
@@ -630,6 +631,21 @@ sub timeout{
     exit;
 }
 
+
+## ($BeforeContext,$AfterContext = AlgContext(@arguments)
+##
+## get additional context around an aligned region
+## (only returns positional 'word' elements concatenated by space characters)
+##
+## @arguments:
+##    corpus ...... name of the corpus registry relative to CWBREG
+##    src ......... name of source language corpus
+##    src ......... name of target language corpus
+##    cpos ........ corpus position
+##    BeforeAttr .. name of structural attribute for "before-context"
+##    AfterAttr ... name of structural attribute for "after-context"
+##    before ...... number of structural elements requested for before-context
+##    after ....... number of structural elements requested for after-context
 
 sub AlgContext{
     use CL;

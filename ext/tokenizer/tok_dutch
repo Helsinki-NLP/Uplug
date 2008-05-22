@@ -1,3 +1,4 @@
 #!/bin/sh
 
-sed 's/\([,.:?!]\)/ \1/g'
+${ALPINO_HOME}/Tokenization/tokenize.sh
+

@@ -350,6 +350,23 @@ sub Align2CWB{
 		if (exists $$srcPos{$srcdoc.'.gz'}){
 		    $srcdoc .= '.gz';
 		}
+		else{
+		    ## still doesn't exist?
+		    ## add 'xml' subdirectory
+		    $srcdoc=~s/^/xml\//;
+		    $srcdoc=~s/\.gz$//;
+		    ## still nothing?
+		    ## try compressed
+		    if (not exists $$srcPos{$srcdoc}){
+			if (exists $$srcPos{$srcdoc.'.gz'}){
+			    $srcdoc .= '.gz';
+			}
+			else{
+			    print STDERR "Give up! '$srcdoc does not exist'\n";
+			    next;
+			}
+		    }
+		}
 	    }
 	}
 	if (/toDoc\s*=\s*\"([^\"]+)\"/){
@@ -358,6 +375,23 @@ sub Align2CWB{
 	    if (not exists $$trgPos{$trgdoc}){
 		if (exists $$trgPos{$trgdoc.'.gz'}){
 		    $trgdoc .= '.gz';
+		}
+		else{
+		    ## still doesn't exist?
+		    ## add 'xml' subdirectory
+		    $trgdoc=~s/^/xml\//;
+		    $trgdoc=~s/\.gz$//;
+		    ## still nothing?
+		    ## try compressed
+		    if (not exists $$trgPos{$trgdoc}){
+			if (exists $$trgPos{$trgdoc.'.gz'}){
+			    $trgdoc .= '.gz';
+			}
+			else{
+			    print STDERR "Give up! '$trgdoc does not exist'\n";
+			    next;
+			}
+		    }
 		}
 	    }
 	}
