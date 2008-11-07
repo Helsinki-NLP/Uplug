@@ -169,6 +169,8 @@ my $pat;
 
 while ($ret=$input->read($data)){
     my $txt=$data->content;
+    my $txt_nospaces=$txt;     # in case the external tokenizer tokens together
+    $txt_nospaces=~s/\s//gs;   # --> take away all spaces in original string
 #    print STDERR "$txt ...";
     if (not $txt){
 	$output->write($data);
@@ -179,6 +181,9 @@ while ($ret=$input->read($data)){
     while (1){
 	if (not @tok){
 	    $tokenized=<F>;
+		if ($tokenized=~/Om een afbeelding direct vanaf de scanner/){
+		    print '';
+		}
 	    chomp $tokenized;
 	    last if (not defined $tokenized);
 	    my @newtok=split(/$OutTokDel/,$tokenized);
@@ -187,8 +192,27 @@ while ($ret=$input->read($data)){
 	my $t=$tok[0];
 	$pat=quotemeta($t);
 #	print STDERR "test if $txt=~\/--$pat--\/\n";
-	if ($txt=~s/$pat//){
+	if ($txt=~s/$pat// || ($txt_nospaces=~s/$pat//)){
 	    push(@seg,shift(@tok));
+	    ## read more to see if there is more to match ....
+	    if (not @tok){
+		$tokenized=<F>;
+		chomp $tokenized;
+		if ($tokenized=~/Om een afbeelding direct vanaf de scanner/){
+		    print '';
+		}
+		last if (not defined $tokenized);
+		my @newtok=split(/$OutTokDel/,$tokenized);
+		push (@tok,@newtok);
+
+		$pat=quotemeta($tok[0]);
+		if ($txt=~/$pat/){
+		    print '';
+		    if ($tokenized=~/Color , Gray en Binary/){
+			print '';
+		    }
+		}
+	    }
 	}
 	else{
 	    last;

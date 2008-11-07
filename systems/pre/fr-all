@@ -34,6 +34,7 @@
   'arguments' => {
     'shortcuts' => {
        'in' => 'input:text:file',
+       'out' => 'output:text:file',
        'ci' => 'input:text:encoding',
        'co' => 'output:text:encoding',
     }

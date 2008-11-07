@@ -11,7 +11,7 @@
       'root' => 's',
       'write_mode' => 'overwrite',
 #	'encoding' => 'iso-8859-1',
-	'status' => 'tagTnT'
+	'status' => 'tagTnT',
     }
   },
   'required' => {
@@ -40,16 +40,16 @@
      },
   },
   'module' => {
-    'program' => 'uplugTagger.pl',
+    'program' => 'tag.pl',
     'location' => '$UplugBin',
     'name' => 'TnT tagger (german)',
     'stdout' => 'text'
   },
   'arguments' => {
     'shortcuts' => {
+      'in' => 'input:text:file',
       'out' => 'output:text:file',
       'lang' => 'parameter:tagger:language',
-      'in' => 'input:text:file',
        'attr' => 'parameter:output:attribute',
        'char' => 'output:text:encoding',
        'outchar' => 'output:text:encoding',
@@ -63,5 +63,10 @@
 	    'stream name' => 'stream(format=xml,status=(tok|tag|chunk),language=de)'
 	  },
        },
+       'parameter' => {
+          'output' => {
+	     'attribute' => 'optionmenu (pos,tnt)',
+	  }
+       }
   }
 }

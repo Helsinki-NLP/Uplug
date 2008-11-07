@@ -9,6 +9,8 @@
 #
 ##############################################################
 
+use lib '/storage/tiedeman/local/share/perl/5.8.8';
+
 use WebCqp::Query;
 use HTML::Entities;
 use CGI qw/:standard escapeHTML escape/;
@@ -26,7 +28,8 @@ my $MAXWAIT=60;
 my $SHOWMAX=20;
 if (param('showmax')){$SHOWMAX=param('showmax');}
 
-my $CWBREG='/hf/logos/site/opus/cwb/reg';
+# my $CWBREG='/hf/logos/site/opus/cwb/reg';
+my $CWBREG='/storage/tiedeman/public_html/OPUS/cwb/reg';
 
 if (param('reg')){$CWBREG=param('reg');}
 if (url_param('reg')){$CWBREG=url_param('reg');}
@@ -381,6 +384,11 @@ sub CorpusQuery{
     if ($style ne 'KWIC'){
 	$query->context("$bcs $bc", "$acs $ac");
     }
+    ## hard-coded context size for KWIC style
+    ## ---> should change that!
+    else{
+        $query->context("50", "50");
+    }
     if ($cqp!~/^[\"\[]/){$cqp='"'.$cqp.'"';}
 
     #---------------------------------------------------------
@@ -442,6 +450,7 @@ sub CorpusQuery{
 	my $m = $result[$i];
 	my $pos = $m->{'cpos'};
 	my $ord = &FixString($lang,$m->{'kwic'}->{'match'});
+	$ord=~s/\s/\&nbsp;/g;
 	my $res_r = &FixString($lang,$m->{'kwic'}->{'right'});
 	my $res_l = &FixString($lang,$m->{'kwic'}->{'left'});
 	my $noalign=0;
