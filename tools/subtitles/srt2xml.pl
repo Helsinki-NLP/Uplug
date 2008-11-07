@@ -42,6 +42,7 @@ sub LangEncoding{
 # supported by Perl Encode:
 # http://perldoc.perl.org/Encode/Supported.html
 
+    return 'utf-8' if ($lang=~/^(utf8)$/);
     return 'iso-8859-4' if ($lang=~/^(ice)$/);
     ## what is scc?
     return 'cp1250' if ($lang=~/^(alb|bos|cze|pol|rum|scc|scr|slv|hrv)$/); 
@@ -117,7 +118,7 @@ my @closedtags=();
 
 while (my $line = <>){
     if (not defined $id){
-	if ($line=~/^([0-9]+)$/){
+	if ($line=~/^\s*([0-9]+)$/){
 	    $id = $1;
 	    next;
 	}

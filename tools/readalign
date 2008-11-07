@@ -65,6 +65,12 @@ while (<F>){
 	    if ((not -e $srcdoc) and (-e "$srcdoc.gz")){
 		$srcdoc="$srcdoc.gz";
 	    }
+	    if ((not -e $srcdoc) and (-e "xml/$srcdoc")){
+		$srcdoc="xml/$srcdoc";
+	    }
+	    if ((not -e $srcdoc) and (-e "xml/$srcdoc.gz")){
+		$srcdoc="xml/$srcdoc.gz";
+	    }
 	    if ($srcdoc=~/\.gz$/){
 		open SRC,"gzip -cd <$srcdoc |";
 	    }
@@ -80,6 +86,12 @@ while (<F>){
 	    if (not $firstTrg){close TRG;}
 	    if ((not -e $trgdoc) and (-e "$trgdoc.gz")){
 		$trgdoc="$trgdoc.gz";
+	    }
+	    if ((not -e $trgdoc) and (-e "xml/$trgdoc")){
+		$trgdoc="xml/$trgdoc";
+	    }
+	    if ((not -e $trgdoc) and (-e "xml/$trgdoc.gz")){
+		$srcdoc="xml/$trgdoc.gz";
 	    }
 	    if ($trgdoc=~/\.gz$/){
 		open TRG,"gzip -cd <$trgdoc |";
@@ -178,9 +190,9 @@ if ($html){&PrintHtmlTail();}
 
 sub Str2Html{
     my $string=shift;
-    $string=~s/\&/\&amp\;/gs;
-    $string=~s/\</\&lt\;/gs;
-    $string=~s/\>/\&gt\;/gs;
+#    $string=~s/\&/\&amp\;/gs;
+#    $string=~s/\</\&lt\;/gs;
+#    $string=~s/\>/\&gt\;/gs;
     return $string;
 }
 

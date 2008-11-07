@@ -70,6 +70,12 @@ while (<F>){
 	    if ((not -e $srcdoc) and (-e "$srcdoc.gz")){
 		$srcdoc="$srcdoc.gz";
 	    }
+	    elsif ((not -e $srcdoc) and (-e "xml/$srcdoc")){
+		$srcdoc="xml/$srcdoc";
+	    }
+	    elsif ((not -e $srcdoc) and (-e "xml/$srcdoc.gz")){
+		$srcdoc="xml/$srcdoc.gz";
+	    }
 	    if ($srcdoc=~/\.gz$/){
 		open SRC,"gzip -cd <$srcdoc |";
 	    }
@@ -85,6 +91,12 @@ while (<F>){
 	    if (not $firstTrg){close TRG;}
 	    if ((not -e $trgdoc) and (-e "$trgdoc.gz")){
 		$trgdoc="$trgdoc.gz";
+	    }
+	    elsif ((not -e $trgdoc) and (-e "xml/$trgdoc")){
+		$trgdoc="xml/$trgdoc";
+	    }
+	    elsif ((not -e $trgdoc) and (-e "xml/$trgdoc.gz")){
+		$trgdoc="xml/$trgdoc.gz";
 	    }
 	    if ($trgdoc=~/\.gz$/){
 		open TRG,"gzip -cd <$trgdoc |";

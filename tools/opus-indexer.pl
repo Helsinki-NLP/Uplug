@@ -10,6 +10,8 @@
 #   -s ........ skip conversion via recode (used for OO)
 #   -m dir .... directory for temporary data (otherwise /tmp/BITEXTINDEXER...)
 #   -i depth .. min depth for finding alignment file (0 otherwise)
+#   -u pattern  allowed structural patterns
+#   -p pattern  allowed positional patterns
 #
 #---------------------------------------------------------------------------
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
@@ -37,9 +39,9 @@ use File::Basename;
 use XML::Parser;
 use Encode;
 
-use vars qw($opt_i $opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s);
+use vars qw($opt_i $opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s $opt_u $opt_p);
 use Getopt::Std;
-getopts('d:r:t:c:x:voyf:m:si:');
+getopts('d:r:t:c:x:voyf:m:si:u:p:');
 
 
 # script arguments
@@ -70,8 +72,8 @@ mkdir $TMPDIR,0755 unless (-d $TMPDIR);
 my $SentTag='s';                 # default sentence tag
 my $WordTag='w';                 # default word tag
 my $AllAttributes = 1;           # use all attributes
-my $StrucAttrPattern = undef;    # structural attribute pattern
-my $WordAttrPattern = undef;     # token attribute pattern
+my $StrucAttrPattern = $opt_u || undef;    # structural attribute pattern
+my $WordAttrPattern = $opt_p || undef;     # token attribute pattern
 
 # global variables used in XML parser
 
@@ -171,8 +173,9 @@ if ($opt_f){
 # if (not $opt_m){
 foreach my $l (@LANG){
 
-    my $cwbtok = $TMPDIR.'/'.$l;
-    my $cwbpos = $TMPDIR.'/'.$l.'.pos';
+    my $llc = lc($l);
+    my $cwbtok = $TMPDIR.'/'.$llc;
+    my $cwbpos = $TMPDIR.'/'.$llc.'.pos';
 
     if (-e $cwbpos){
 	print STDERR "$cwbpos found - re-use\n";
@@ -181,7 +184,10 @@ foreach my $l (@LANG){
 
     print STDERR "find all xml files for '$l'\n" if $VERBOSE;
     my @doc = FindDocuments("$XMLDIR/$l",'xml');
-    if (not @doc){next;}
+    if (not @doc){
+	@doc = FindDocuments("$XMLDIR/$l",'html');
+	if (not @doc){next;}
+    }
     @doc = sort @doc;
 
     @PATTR=();
@@ -203,12 +209,12 @@ foreach my $l (@LANG){
     foreach my $f (@doc){
 #	next if ($f ne 'xml/de/ep-01-09-05.xml.gz');
 	print STDERR "convert $f\n" if $VERBOSE;
-	XML2CWB($f,$cwbtok,$cwbpos,$l);
+	XML2CWB($f,$cwbtok,$cwbpos,$llc);
     }
 
     my $attr = &AttrString;
     print STDERR "make CWB index for '$l'\n" if $VERBOSE;
-    MakeCWBindex($l,$cwbtok,$attr);
+    MakeCWBindex($llc,$cwbtok,$attr);
 
     unlink $cwbtok;
     
@@ -219,19 +225,40 @@ foreach my $l (@LANG){
 # make alignment index for each language pair
 
 foreach my $s (@LANG){
+
+    my $slc = lc($s);
+
     ## read token position file for source language
-    my $srcpos = $TMPDIR.'/'.$s.'.pos';
+    my $srcpos = $TMPDIR.'/'.$slc.'.pos';
     my %SrcPos=();
     ReadPosFile($srcpos,\%SrcPos);
 
     foreach my $t (@LANG){
 
+	my $tlc = lc($t);
+
+	my $AllAlignFile=undef;     # file with all sentence alignments
 	my $dir = "$XMLDIR/$s-$t";
 	$dir = "$XMLDIR/$s$t" if (-d "$XMLDIR/$s$t");
-	next if (not -d $dir);
+	if (not -d $dir){
+	    if (-e "$XMLDIR/$s$t.$ALIGNTYPE"){
+		$AllAlignFile="$XMLDIR/$s$t.$ALIGNTYPE";
+	    }
+	    elsif (-e "$XMLDIR/$s$t.$ALIGNTYPE.gz"){
+		$AllAlignFile="$XMLDIR/$s$t.$ALIGNTYPE.gz";
+	    }
+	    elsif (-e "$XMLDIR/$s-$t.$ALIGNTYPE"){
+		$AllAlignFile="$XMLDIR/$s-$t.$ALIGNTYPE";
+	    }
+	    elsif (-e "$XMLDIR/$s-$t.$ALIGNTYPE.gz"){
+		$AllAlignFile="$XMLDIR/$s-$t.$ALIGNTYPE.gz";
+	    }
+	    else{ next; }
+	}
+#	next if (not -d $dir);
 
 	## read token position file for target language
-	my $trgpos = $TMPDIR.'/'.$t.'.pos';
+	my $trgpos = $TMPDIR.'/'.$tlc.'.pos';
 	my %TrgPos=();
 	ReadPosFile($trgpos,\%TrgPos);
 
@@ -240,19 +267,24 @@ foreach my $s (@LANG){
 #	my @doc = FindDocuments($dir,$ALIGNTYPE);    # (no genre-subcorpora):
 	my @doc = FindDocuments($dir,$ALIGNTYPE,$opt_i);  # mindepth = 1!!!!
 	if (not @doc){
-	    print STDERR "no alignment files found for $s-$t!\n";
-	    next;
+	    if ((defined $AllAlignFile) && (-e $AllAlignFile)){
+		@doc = ($AllAlignFile);
+	    }
+	    else{
+		print STDERR "no alignment files found for $s-$t!\n";
+		next;
+	    }
 	}
 	@doc = sort @doc;
 
-	my $srctrg = "$TMPDIR/$s$t.alg";
-	my $trgsrc = "$TMPDIR/$t$s.alg";
+	my $srctrg = "$TMPDIR/$slc$tlc.alg";
+	my $trgsrc = "$TMPDIR/$tlc$slc.alg";
 
 	open ALG1,">$srctrg";
 	open ALG2,">$trgsrc";
 
-	print ALG1 "$s\ts\t$t\ts\n";
-	print ALG2 "$t\ts\t$s\ts\n";
+	print ALG1 "$slc\ts\t$tlc\ts\n";
+	print ALG2 "$tlc\ts\t$slc\ts\n";
 
 	foreach my $f (@doc){
 	    Align2CWB($f,$srcpos,$trgpos,\%SrcPos,\%TrgPos);
@@ -262,7 +294,7 @@ foreach my $s (@LANG){
 	close ALG2;
 
 	print STDERR "make alignment index for '$s-$t'\n" if $VERBOSE;
-	MakeCWBalg($srctrg,$trgsrc,$s,$t);
+	MakeCWBalg($srctrg,$trgsrc,$slc,$tlc);
 
 	unlink($srctrg);
 	unlink($trgsrc);
@@ -272,9 +304,11 @@ foreach my $s (@LANG){
 
 if (not $opt_m){
     foreach my $s (@LANG){
-	unlink($TMPDIR.'/'.$s.'.pos');
+	my $slc=lc($s);
+	unlink($TMPDIR.'/'.$slc.'.pos');
 	foreach my $t (@LANG){
-	    unlink($TMPDIR.'/'.$t.'.pos');
+	    my $tlc=lc($t);
+	    unlink($TMPDIR.'/'.$tlc.'.pos');
 	}
     }
     rmdir($TMPDIR);
@@ -327,7 +361,21 @@ sub MakeCWBalg{
 }
 
 
-
+sub check_alg_filename{
+    my $filename=shift;
+    my $filehash=shift;
+    $filename=~s/\/\.\//\//g;
+    return $filename if (exists $$filehash{$filename});
+    return $filename.'.gz' if (exists $$filehash{$filename.'.gz'});
+    return 'xml/'.$filename if (exists $$filehash{'xml/'.$filename});
+    return 'xml/'.$filename.'.gz' if (exists $$filehash{"xml/$filename.gz"});
+    $filename=~s/(oo_|kde_|php_)//;
+    return $filename if (exists $$filehash{$filename});
+    return $filename.'.gz' if (exists $$filehash{$filename.'.gz'});
+    return 'xml/'.$filename if (exists $$filehash{'xml/'.$filename});
+    return 'xml/'.$filename.'.gz' if (exists $$filehash{"xml/$filename.gz"});
+    return undef;
+}
 
 sub Align2CWB{
     my ($file,$srcPosFile,$trgPosFile,$srcPos,$trgPos)=@_;
@@ -344,56 +392,12 @@ sub Align2CWB{
 
     while(<F>){
 	if (/fromDoc\s*=\s*\"([^\"]+)\"/){
-	    $srcdoc=$1;
-	    $srcdoc=~s/\/\.\//\//g;
-	    if (not exists $$srcPos{$srcdoc}){
-		if (exists $$srcPos{$srcdoc.'.gz'}){
-		    $srcdoc .= '.gz';
-		}
-		else{
-		    ## still doesn't exist?
-		    ## add 'xml' subdirectory
-		    $srcdoc=~s/^/xml\//;
-		    $srcdoc=~s/\.gz$//;
-		    ## still nothing?
-		    ## try compressed
-		    if (not exists $$srcPos{$srcdoc}){
-			if (exists $$srcPos{$srcdoc.'.gz'}){
-			    $srcdoc .= '.gz';
-			}
-			else{
-			    print STDERR "Give up! '$srcdoc does not exist'\n";
-			    next;
-			}
-		    }
-		}
-	    }
+	    $srcdoc=check_alg_filename($1,$srcPos);
+	    next if (not defined $srcdoc);
 	}
 	if (/toDoc\s*=\s*\"([^\"]+)\"/){
-	    $trgdoc=$1;
-	    $trgdoc=~s/\/\.\//\//g;
-	    if (not exists $$trgPos{$trgdoc}){
-		if (exists $$trgPos{$trgdoc.'.gz'}){
-		    $trgdoc .= '.gz';
-		}
-		else{
-		    ## still doesn't exist?
-		    ## add 'xml' subdirectory
-		    $trgdoc=~s/^/xml\//;
-		    $trgdoc=~s/\.gz$//;
-		    ## still nothing?
-		    ## try compressed
-		    if (not exists $$trgPos{$trgdoc}){
-			if (exists $$trgPos{$trgdoc.'.gz'}){
-			    $trgdoc .= '.gz';
-			}
-			else{
-			    print STDERR "Give up! '$trgdoc does not exist'\n";
-			    next;
-			}
-		    }
-		}
-	    }
+	    $trgdoc=check_alg_filename($1,$trgPos);
+	    next if (not defined $trgdoc);
 	}
 
 	if (/(sentLink|link)\s.*xtargets=\"([^\"]+)\s*\;\s*([^\"]+)\"/){
@@ -604,7 +608,7 @@ sub XML2CWB{
 
     eval { print OUT "<file name=\"$file\">\n"; 
 	   $SATTR{file} = { name => $file };
-	   if ($CORPUS eq 'subtitles'){
+	   if ($CORPUS=~/[Ss]ubtitles/){
 	       $file=~/(\A|\/)([0-9]+)\_([0-9]+)\_([0-9]+)\_(.*)\.xml/;
 	       print OUT "<sub id=\"$3\" movie=\"$5\" movieID=\"$2\">\n";
 	       $SATTR{sub} = { id => $3,
@@ -668,7 +672,7 @@ sub XML2CWB{
 	@AllPATTR=@PATTR;                     # in global attribute array
     }
     close POS;
-    eval { print OUT '</sub>'."\n" if ($CORPUS eq 'subtitles'); };
+    eval { print OUT '</sub>'."\n" if ($CORPUS=~/[sS]ubtitles/); };
     eval { print OUT '</file>'."\n"; };
     eval { close OUT; };
 
@@ -731,7 +735,7 @@ sub XmlStart{
 	$XmlStr='';
 	%WordAttr=@_;
     }
-    elsif ($CORPUS eq 'subtitles' && $e eq 'time'){
+    elsif ($CORPUS=~/[Ss]ubtitles/ && $e eq 'time'){
 	if ($p->{OPENTIME}){
 	    printXmlEndTag($e,@_);
 	    $p->{OPENTIME} = 0;
@@ -762,7 +766,7 @@ sub XmlEnd{
 	printWord($XmlStr,\%WordAttr);
 	$pos++;
     }
-    elsif ($CORPUS eq 'subtitles' && $e eq 'time'){
+    elsif ($CORPUS=~/[Ss]ubtitles/ && $e eq 'time'){
 	return 1;
     }
     elsif (defined $SATTR{$e}){

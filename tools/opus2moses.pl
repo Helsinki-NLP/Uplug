@@ -125,6 +125,13 @@ $TRGOUT->close();
 sub OpenCorpora{
     my ($srcfile,$trgfile)=@_;
 
+    if ((! -e "$CORPUSHOME/$srcfile") && (-e "$CORPUSHOME/$srcfile.gz")){
+	$srcfile.='.gz';
+    }
+    if ((! -e "$CORPUSHOME/$trgfile") && (-e "$CORPUSHOME/$trgfile.gz")){
+	$trgfile.='.gz';
+    }
+
     ## check if file names match pattern of files to be skipped
     if (defined $opt_n){
 	if ($opt_i){
@@ -268,7 +275,7 @@ sub XmlChar{
     my ($p,$c)=@_;
     if ($p->{OPENW}){
 	if ($p->{OPENSID} eq $p->{IDS}->[0]){
-	    $c=~tr/ /_/;
+	    $c=~tr/| \n/___/;
 	    $p->{WATTR}->{word}.=$c;
 	}
     }
@@ -293,7 +300,7 @@ sub XmlTagEnd{
 	    $p->{OPENW} = 0;
 	    my @factors=();
 	    foreach my $f (@{$p->{FACTORS}}){
-		$p->{WATTR}->{$f}=~tr/| /__/;        # ' ' and '|' not allowed!
+		$p->{WATTR}->{$f}=~tr/| \n/___/;    # ' ' and '|' not allowed!
 		$p->{WATTR}->{$f} = 'UNKNOWN' if ($p->{WATTR}->{$f}!~/\S/);
 		if ($f eq 'lem'){
 		    if ($p->{WATTR}->{$f}=~/UNKNOWN/){
