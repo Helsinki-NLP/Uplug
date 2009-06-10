@@ -169,6 +169,15 @@ my $pat;
 
 while ($ret=$input->read($data)){
     my $txt=$data->content;
+
+    if ($OutEncoding ne $UplugEncoding){
+	my $octets = encode($OutEncoding, $txt,sub{ return ' ' });
+	$txt = decode($OutEncoding, $octets);
+    }
+
+    if ($txt=~/foto/){
+	print '';
+    }
     my $txt_nospaces=$txt;     # in case the external tokenizer tokens together
     $txt_nospaces=~s/\s//gs;   # --> take away all spaces in original string
 #    print STDERR "$txt ...";
@@ -181,9 +190,6 @@ while ($ret=$input->read($data)){
     while (1){
 	if (not @tok){
 	    $tokenized=<F>;
-		if ($tokenized=~/Om een afbeelding direct vanaf de scanner/){
-		    print '';
-		}
 	    chomp $tokenized;
 	    last if (not defined $tokenized);
 	    my @newtok=split(/$OutTokDel/,$tokenized);
@@ -198,20 +204,12 @@ while ($ret=$input->read($data)){
 	    if (not @tok){
 		$tokenized=<F>;
 		chomp $tokenized;
-		if ($tokenized=~/Om een afbeelding direct vanaf de scanner/){
-		    print '';
-		}
+
 		last if (not defined $tokenized);
 		my @newtok=split(/$OutTokDel/,$tokenized);
 		push (@tok,@newtok);
 
 		$pat=quotemeta($tok[0]);
-		if ($txt=~/$pat/){
-		    print '';
-		    if ($tokenized=~/Color , Gray en Binary/){
-			print '';
-		    }
-		}
 	    }
 	}
 	else{

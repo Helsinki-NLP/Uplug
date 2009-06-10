@@ -18,16 +18,21 @@
 # -e src-data-file ...... output file for source language data (default = src)
 # -f src-data-file ...... output file for target language data (default = trg)
 #
+# -p sentence-pair-file . stores sentence ID pairs of the extracted pairs
+# -l .................... convert to lower case
+# -1 .................... 1:1 links only
+# -x max ................ max size of sentences (in nr of words)
+#
 
 use strict;
 use XML::Parser;
 use FileHandle;
 
 
-use vars qw($opt_s $opt_t $opt_d $opt_n $opt_i $opt_e $opt_f $opt_h);
+use vars qw($opt_s $opt_t $opt_d $opt_n $opt_i $opt_e $opt_f $opt_h $opt_p $opt_l $opt_1 $opt_x);
 use Getopt::Std;
 
-getopts('s:t:d:n:ie:f:h');
+getopts('s:t:d:n:ie:f:hp:l1x:');
 
 if ($opt_h){
     print <<"EOH";
@@ -48,7 +53,8 @@ if ($opt_h){
  -i .................... inverse selection (only files matching file pattern)
  -e src-data-file ...... output file for source language data (default = src)
  -f src-data-file ...... output file for target language data (default = trg)
-
+ -1 .................... extract 1:1 sentence alignments only
+ -x max ................ maximum size of selected sentences (default=80)
 
 EOH
     exit;
@@ -67,6 +73,8 @@ my $TRGOUTFILE   = $opt_f || 'trg';
 
 my @SrcFactors = split(/:/,$SRCFACTORSTR);
 my @TrgFactors = split(/:/,$TRGFACTORSTR);
+
+my $MAX = $opt_x || 80;
 
 ## make XML parser object for parsing the sentence alignment file
 
@@ -92,6 +100,10 @@ $TRGOUT->open("> $TRGOUTFILE");
 binmode($SRCOUT, ":utf8");
 binmode($TRGOUT, ":utf8");
 
+if ($opt_p){
+    open P,">$opt_p" || warn "cannot open $opt_p ...\n";
+}
+
 ## use '>' as input delimiter when reading (usually end of XML tag)
 
 $/='>';
@@ -112,6 +124,11 @@ while (<>){
 
 $SRCOUT->close();
 $TRGOUT->close();
+
+if ($opt_p){
+    close P;
+}
+
 
 ## finished!
 ##--------------------------------------------------------------------------
@@ -214,6 +231,9 @@ sub AlignTagStart{
     my ($p,$e,%a)=@_;
 
     if ($e eq 'linkGrp'){
+	if ($opt_p){
+	    print P "## $a{fromDoc}\t$a{toDoc}\n";
+	}
 	return &OpenCorpora($a{fromDoc},$a{toDoc});
     }
 
@@ -222,10 +242,28 @@ sub AlignTagStart{
 	if (defined $SRC && defined $TRG){
 	    my ($src,$trg) = split(/\s*\;\s*/,$a{xtargets});
 	    if ($src=~/\S/ && $trg=~/\S/){
+		if ($opt_1){
+		    return if ($src=~/\S\s\S/);
+		    return if ($trg=~/\S\s\S/);
+		}
 		&ParseSentences($src,$SrcHandler,$SRC);
-		print $SRCOUT "\n" if (defined $SRCOUT);
 		&ParseSentences($trg,$TrgHandler,$TRG);
+
+		# skip if no words found
+		return if (not $SrcHandler->{NRWORDS});
+		return if (not $TrgHandler->{NRWORDS});
+		# skip if sentences are too long
+		return if ($SrcHandler->{NRWORDS} > $MAX);
+		return if ($TrgHandler->{NRWORDS} > $MAX);
+		# skip if ratio<=9 (like in clean_corpus for MOSES)
+		return if $SrcHandler->{NRWORDS}/$TrgHandler->{NRWORDS}>9;
+		return if $TrgHandler->{NRWORDS}/$SrcHandler->{NRWORDS}>9;
+
+		print $SRCOUT "\n" if (defined $SRCOUT);
 		print $TRGOUT "\n" if (defined $TRGOUT);
+		if ($opt_p){
+		    print P "$src\t$trg\n";
+		}
 	    }
 	}
     }
@@ -257,6 +295,7 @@ sub XmlTagStart{
     if ($e eq 's'){
 	$p->{OPENSID} = $a{id};
 	delete $p->{CLOSEDSID};
+	$p->{NRWORDS}=0;
 	return 1;
     }
     if ($e eq 'w'){
@@ -264,6 +303,7 @@ sub XmlTagStart{
 	    $p->{OPENW} = 1;
 	    %{$p->{WATTR}} = %a;
 	    $p->{WORD}='';
+	    $p->{NRWORDS}++;
 	}
     }
 }
@@ -275,7 +315,7 @@ sub XmlChar{
     my ($p,$c)=@_;
     if ($p->{OPENW}){
 	if ($p->{OPENSID} eq $p->{IDS}->[0]){
-	    $c=~tr/| \n/___/;
+#	    $c=~tr/| \n/___/;
 	    $p->{WATTR}->{word}.=$c;
 	}
     }
@@ -300,6 +340,8 @@ sub XmlTagEnd{
 	    $p->{OPENW} = 0;
 	    my @factors=();
 	    foreach my $f (@{$p->{FACTORS}}){
+		$p->{WATTR}->{$f}=~s/^\s+//s;
+		$p->{WATTR}->{$f}=~s/\s+$//s;
 		$p->{WATTR}->{$f}=~tr/| \n/___/;    # ' ' and '|' not allowed!
 		$p->{WATTR}->{$f} = 'UNKNOWN' if ($p->{WATTR}->{$f}!~/\S/);
 		if ($f eq 'lem'){
@@ -309,6 +351,9 @@ sub XmlTagEnd{
 		    elsif ($p->{WATTR}->{$f}=~/\@card\@/){
 			$p->{WATTR}->{$f}=$p->{WATTR}->{word};
 		    }
+		}
+		if ($opt_l){
+		    $p->{WATTR}->{$f}=lc($p->{WATTR}->{$f});
 		}
 		push(@factors,$p->{WATTR}->{$f});
 	    }

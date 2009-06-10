@@ -44,7 +44,6 @@ else{
 
 my $count = 0;
 while (<>){
-    $count++;
     chomp;
     my ($key,$val) = split(/ => /);
     $dbm{$key} = $val;

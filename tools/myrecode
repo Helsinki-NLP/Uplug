@@ -14,16 +14,23 @@ $in = solve_alias($in);
 $out = solve_alias($out);
 
 
-binmode(STDIN,":encoding($in)");
-binmode(STDIN,":encoding($out)");
+#binmode(STDIN,":encoding($in)");
+#binmode(STDOUT,":encoding($out)");
+
+binmode(STDIN);
+binmode(STDOUT);
 
 
 while (<>){
 
     ## handle malformed data by replacing them with ' '
-    my $octets = encode($out, $_,sub{ return ' ' });
-    my $text = decode($out, $octets);
+    my $octets = decode($in, $_,sub{ return ' ' });
+#    print $octets;
+    my $text = encode($out, $octets);
     print $text;
+
+#    print;
+#    print decode($out, $_);
 
 }
 

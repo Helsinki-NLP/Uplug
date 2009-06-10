@@ -31,6 +31,7 @@ use FindBin qw($Bin);
 my $time = localtime();
 my $srclang='en';
 my $trglang='nl';
+my $dir='xml';       # additional subdir for path (checked if doc's not found)
 
 my $max=0;
 while ($ARGV[0]=~/^\-/){
@@ -38,6 +39,7 @@ while ($ARGV[0]=~/^\-/){
     if ($o=~/^\-m/){$max=shift @ARGV;}
     if ($o=~/^\-s/){$srclang=shift @ARGV;}
     if ($o=~/^\-t/){$trglang=shift @ARGV;}
+    if ($o=~/^\-d/){$dir=shift @ARGV;}
 }
 
 my $ALIGN=shift(@ARGV);
@@ -70,11 +72,11 @@ while (<F>){
 	    if ((not -e $srcdoc) and (-e "$srcdoc.gz")){
 		$srcdoc="$srcdoc.gz";
 	    }
-	    elsif ((not -e $srcdoc) and (-e "xml/$srcdoc")){
-		$srcdoc="xml/$srcdoc";
+	    elsif ((not -e $srcdoc) and (-e "$dir/$srcdoc")){
+		$srcdoc="$dir/$srcdoc";
 	    }
-	    elsif ((not -e $srcdoc) and (-e "xml/$srcdoc.gz")){
-		$srcdoc="xml/$srcdoc.gz";
+	    elsif ((not -e $srcdoc) and (-e "$dir/$srcdoc.gz")){
+		$srcdoc="$dir/$srcdoc.gz";
 	    }
 	    if ($srcdoc=~/\.gz$/){
 		open SRC,"gzip -cd <$srcdoc |";
@@ -92,11 +94,11 @@ while (<F>){
 	    if ((not -e $trgdoc) and (-e "$trgdoc.gz")){
 		$trgdoc="$trgdoc.gz";
 	    }
-	    elsif ((not -e $trgdoc) and (-e "xml/$trgdoc")){
-		$trgdoc="xml/$trgdoc";
+	    elsif ((not -e $trgdoc) and (-e "$dir/$trgdoc")){
+		$trgdoc="$dir/$trgdoc";
 	    }
-	    elsif ((not -e $trgdoc) and (-e "xml/$trgdoc.gz")){
-		$trgdoc="xml/$trgdoc.gz";
+	    elsif ((not -e $trgdoc) and (-e "$dir/$trgdoc.gz")){
+		$trgdoc="$dir/$trgdoc.gz";
 	    }
 	    if ($trgdoc=~/\.gz$/){
 		open TRG,"gzip -cd <$trgdoc |";
@@ -108,7 +110,7 @@ while (<F>){
 	}
     }
     if (/xtargets=\"([^\"]*)\s*\;\s*([^\"]*)\"/){
-	print "    <tu>\n";
+
 
 	my $srceof=1;
 	my $trgeof=1;
@@ -119,11 +121,18 @@ while (<F>){
 	my @srcsent=split(/\s/,$src);
 	my @trgsent=split(/\s/,$trg);
 
+	next if (not @srcsent);    # skip empty alignments
+	next if (not @trgsent);
+
+	print "    <tu>\n";
 	print "      <tuv xml:lang=\"$srclang\">";
 
 	my $oldDel=$/;
 	$/='</s>';
 	foreach (@srcsent){
+	    if (/s12\.8/){
+		print '';
+	    }
 	    while (my $sent=<SRC>){
 		$srceof=0;
 		if ($sent=~/s [^\>]*id="$_"/s){
