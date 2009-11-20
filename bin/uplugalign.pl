@@ -14,6 +14,7 @@
 #  -c threshold .............. use LCSR cognate filter (with threshold)
 #  -w window ................. define size of sliding window (for all filters)
 #  -d dic-file ............... use dictionary filter (using dic-file)
+#                              (the dictionary has to be in UTF-8!)
 #  -t ........................ use time-slot length instead of char length
 #  -u ........................ cognate/identical filter for upper case words
 #  -v ........................ verbose mode
@@ -31,6 +32,7 @@ use strict;
 use vars qw($opt_h $opt_l $opt_c $opt_w $opt_d $opt_i $opt_v $opt_t $opt_u);
 use Getopt::Std;
 use XML::Parser;
+use Encode;
 
 
 getopts('h:c:w:l:i:d:vtu');
@@ -524,6 +526,7 @@ sub ReadDictionary{
 	else{
 	    open DIC,"< $file " || die "cannot open dictionary file $file!\n";
 	}
+	binmode(DIC,":encoding(utf8)");
 	while (<DIC>){
 	    chomp;
 	    my ($src,$trg) = split(/\s/);
