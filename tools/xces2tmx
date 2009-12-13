@@ -124,7 +124,7 @@ while (<F>){
 	next if (not @srcsent);    # skip empty alignments
 	next if (not @trgsent);
 
-	print "    <tu>\n";
+	print "    <tu srclang_=\"$srclang\"\n";
 	print "      <tuv xml:lang=\"$srclang\">";
 
 	my $oldDel=$/;
