@@ -124,8 +124,9 @@ while (<F>){
 	next if (not @srcsent);    # skip empty alignments
 	next if (not @trgsent);
 
-	print "    <tu srclang_=\"$srclang\"\n";
-	print "      <tuv xml:lang=\"$srclang\">";
+#	print "    <tu srclang=\"$srclang\">\n";
+	print "    <tu>\n";
+	print "      <tuv xml:lang=\"$srclang\">\n<seg>";
 
 	my $oldDel=$/;
 	$/='</s>';
@@ -141,17 +142,18 @@ while (<F>){
 		    $sent=~s/\<[^\>]*>//gs;
 		    $sent=~s/  +/ /gs;
 		    $sent=&Str2XML($sent);
-		    print "<seg id=\"$srclang$_.\">";
+# multiple seg's are not valid in TMX!
+#		    print "<seg id=\"$srclang$_.\">";
 		    print $sent;
-		    print '</seg>';
+#		    print '</seg>';
 		    last;
 		}
 		$srceof=1;
 	    }
 	}
 
-	print "</tuv>\n";
-	print "      <tuv xml:lang=\"$trglang\">";
+	print "</seg>\n      </tuv>\n";
+	print "      <tuv xml:lang=\"$trglang\">\n<seg>";
 
 	foreach (@trgsent){
 	    while (my $sent=<TRG>){
@@ -162,9 +164,10 @@ while (<F>){
 		    $sent=~s/\<[^\>]*>//gs;
 		    $sent=~s/  +/ /gs;
 		    $sent=&Str2XML($sent);
-		    print "<seg id=\"$trglang$_.\">";
+# multiple seg's are not valid in TMX!
+#		    print "<seg id=\"$trglang$_.\">";
 		    print $sent;
-		    print '</seg>';
+#		    print '</seg>';
 		    last;
 		}
 		$trgeof=1;
@@ -182,7 +185,7 @@ while (<F>){
         }
 	$/=$oldDel;
 
-	print "</tuv>\n";
+	print "</seg>\n      </tuv>\n";
 	print "    </tu>\n";
 
     }
@@ -214,6 +217,7 @@ sub PrintTMXHeader{
     print '<header creationdate="';
     print $time;
     print '"'."\n";
+    print '          srclang="'.$srclang."\"\n";
     print '          creationtool="Uplug"'."\n";
     print '          datatype="unknown" />'."\n";
     print '  <body>'."\n";
