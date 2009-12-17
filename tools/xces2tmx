@@ -126,7 +126,7 @@ while (<F>){
 
 #	print "    <tu srclang=\"$srclang\">\n";
 	print "    <tu>\n";
-	print "      <tuv xml:lang=\"$srclang\">\n<seg>";
+	print "      <tuv xml:lang=\"$srclang\"><seg>";
 
 	my $oldDel=$/;
 	$/='</s>';
@@ -152,8 +152,8 @@ while (<F>){
 	    }
 	}
 
-	print "</seg>\n      </tuv>\n";
-	print "      <tuv xml:lang=\"$trglang\">\n<seg>";
+	print "</seg></tuv>\n";
+	print "      <tuv xml:lang=\"$trglang\"><seg>";
 
 	foreach (@trgsent){
 	    while (my $sent=<TRG>){
@@ -185,7 +185,7 @@ while (<F>){
         }
 	$/=$oldDel;
 
-	print "</seg>\n      </tuv>\n";
+	print "</seg></tuv>\n";
 	print "    </tu>\n";
 
     }
