@@ -127,6 +127,7 @@ while (<F>){
 #	print "    <tu srclang=\"$srclang\">\n";
 	print "    <tu>\n";
 	print "      <tuv xml:lang=\"$srclang\"><seg>";
+#	print "      <tuv xml:lang=\"$srclang\">";
 
 	my $oldDel=$/;
 	$/='</s>';
@@ -144,7 +145,7 @@ while (<F>){
 		    $sent=&Str2XML($sent);
 # multiple seg's are not valid in TMX!
 #		    print "<seg id=\"$srclang$_.\">";
-		    print $sent;
+		    print $sent,' ';
 #		    print '</seg>';
 		    last;
 		}
@@ -153,7 +154,9 @@ while (<F>){
 	}
 
 	print "</seg></tuv>\n";
+#	print "</tuv>\n";
 	print "      <tuv xml:lang=\"$trglang\"><seg>";
+#	print "      <tuv xml:lang=\"$trglang\">";
 
 	foreach (@trgsent){
 	    while (my $sent=<TRG>){
@@ -166,7 +169,7 @@ while (<F>){
 		    $sent=&Str2XML($sent);
 # multiple seg's are not valid in TMX!
 #		    print "<seg id=\"$trglang$_.\">";
-		    print $sent;
+		    print $sent,' ';
 #		    print '</seg>';
 		    last;
 		}
@@ -186,6 +189,7 @@ while (<F>){
 	$/=$oldDel;
 
 	print "</seg></tuv>\n";
+#	print "</tuv>\n";
 	print "    </tu>\n";
 
     }
