@@ -246,6 +246,10 @@ sub AlignTagStart{
 		    return if ($src=~/\S\s\S/);
 		    return if ($trg=~/\S\s\S/);
 		}
+
+		$SrcHandler->{OUTSTR}='';   # reset output string
+		$TrgHandler->{OUTSTR}='';
+
 		&ParseSentences($src,$SrcHandler,$SRC);
 		&ParseSentences($trg,$TrgHandler,$TRG);
 
@@ -266,11 +270,10 @@ sub AlignTagStart{
 
 		print $SRCOUT $SrcHandler->{OUTSTR},"\n" if (defined $SRCOUT);
 		print $TRGOUT $TrgHandler->{OUTSTR},"\n" if (defined $TRGOUT);
+
 		if ($opt_p){
 		    print P "$src\t$trg\n";
 		}
-		$SrcHandler->{OUTSTR}='';   # reset output string
-		$TrgHandler->{OUTSTR}='';
 	    }
 	}
     }
