@@ -259,11 +259,18 @@ sub AlignTagStart{
 		return if $SrcHandler->{NRWORDS}/$TrgHandler->{NRWORDS}>9;
 		return if $TrgHandler->{NRWORDS}/$SrcHandler->{NRWORDS}>9;
 
-		print $SRCOUT "\n" if (defined $SRCOUT);
-		print $TRGOUT "\n" if (defined $TRGOUT);
+		$SrcHandler->{OUTSTR}=~s/^\s+//;  # remove leading spaces
+		$SrcHandler->{OUTSTR}=~s/\s+$//;  # remove final spaces
+		$TrgHandler->{OUTSTR}=~s/^\s+//;
+		$TrgHandler->{OUTSTR}=~s/\s+$//;
+
+		print $SRCOUT $SrcHandler->{OUTSTR},"\n" if (defined $SRCOUT);
+		print $TRGOUT $TrgHandler->{OUTSTR},"\n" if (defined $TRGOUT);
 		if ($opt_p){
 		    print P "$src\t$trg\n";
 		}
+		$SrcHandler->{OUTSTR}='';   # reset output string
+		$TrgHandler->{OUTSTR}='';
 	    }
 	}
     }
@@ -359,8 +366,10 @@ sub XmlTagEnd{
 	    }
 	    if (defined $p->{OUT}){
 		my $OUT = $p->{OUT};
-		print $OUT join('|',@factors);
-		print $OUT ' ';
+		$p->{OUTSTR}.=join('|',@factors);  # save string
+		$p->{OUTSTR}.=' ';
+#		print $OUT join('|',@factors);     # instead of printing
+#		print $OUT ' ';                    # directly!
 	    }
 	}
     }
