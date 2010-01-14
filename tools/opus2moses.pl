@@ -259,14 +259,37 @@ sub AlignTagStart{
 		# skip if sentences are too long
 		return if ($SrcHandler->{NRWORDS} > $MAX);
 		return if ($TrgHandler->{NRWORDS} > $MAX);
-		# skip if ratio<=9 (like in clean_corpus for MOSES)
-		return if $SrcHandler->{NRWORDS}/$TrgHandler->{NRWORDS}>9;
-		return if $TrgHandler->{NRWORDS}/$SrcHandler->{NRWORDS}>9;
+		# skip if ratio<=8 (a bit more restrictive than clean_corpus)
+		return if ($SrcHandler->{NRWORDS}/$TrgHandler->{NRWORDS}>8);
+		return if ($TrgHandler->{NRWORDS}/$SrcHandler->{NRWORDS}>8);
+#		# skip if ratio<=9 (like in clean_corpus for MOSES)
+#		return if ($SrcHandler->{NRWORDS}/$TrgHandler->{NRWORDS}>9);
+#		return if ($TrgHandler->{NRWORDS}/$SrcHandler->{NRWORDS}>9);
+		# skip if one of the strings is empty (shouldn't happen!)
+#		return if ($SrcHandler->{OUTSTR}=~/^\s*$/);
+#		return if ($TrgHandler->{OUTSTR}=~/^\s*$/);
+		if ($SrcHandler->{OUTSTR}=~/^\s*$/){
+		    print STDERR "empty src string but $SrcHandler->{NRWORDS} words! --> strange ... (trg = $TrgHandler->{NRWORDS} words)\n";
+		    return;
+		}
+		if ($TrgHandler->{OUTSTR}=~/^\s*$/){
+		    print STDERR "empty trg string but $TrgHandler->{NRWORDS} words! --> strange ... (src = $SrcHandler->{NRWORDS} words)\n";
+		    return;
+		}
 
 		$SrcHandler->{OUTSTR}=~s/^\s+//;  # remove leading spaces
 		$SrcHandler->{OUTSTR}=~s/\s+$//;  # remove final spaces
 		$TrgHandler->{OUTSTR}=~s/^\s+//;
 		$TrgHandler->{OUTSTR}=~s/\s+$//;
+
+# 		my @srcwords=split(/\s+/,$SrcHandler->{OUTSTR});
+# 		if (@srcwords!=$SrcHandler->{NRWORDS}){
+# 		    die "string has different number of words than counted\n";
+# 		}
+# 		my @trgwords=split(/\s+/,$TrgHandler->{OUTSTR});
+# 		if (@trgwords!=$TrgHandler->{NRWORDS}){
+# 		    die "string has different number of words than counted\n";
+# 		}
 
 		print $SRCOUT $SrcHandler->{OUTSTR},"\n" if (defined $SRCOUT);
 		print $TRGOUT $TrgHandler->{OUTSTR},"\n" if (defined $TRGOUT);
