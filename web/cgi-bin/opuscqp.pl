@@ -9,7 +9,13 @@
 #
 ##############################################################
 
-use lib '/storage/tiedeman/local/share/perl/5.8.8';
+# use lib '/storage/tiedeman/local/share/perl/5.8.8';
+# use lib '/storage/tiedeman/local/lib/perl/5.10.0';
+
+use lib '/storage/tiedeman/local/lib/perl/5.10.0';
+use lib '/storage/tiedeman/local/share/perl/5.10.0';
+# use lib '/usr/local/share/perl/5.8.8';
+# use lib '/usr/local/lib/perl/5.8.8';
 
 use WebCqp::Query;
 use HTML::Entities;
@@ -79,8 +85,6 @@ print &h2(&a({-href=>'http://urd.let.rug.nl/tiedeman/OPUS/'},'OPUS')." - Corpus 
 my $url=url();
 my %corpora=();
 
-
-
 my $corpus = url_param('corpus');
 my $lang = url_param('lang');
 my $advanced = url_param('adv');
@@ -89,10 +93,11 @@ my @alg = param('alg');
 ##------------------------------
 ## decode UTF-8 characters
 ## and set the parameter again
-## (seems to be necssary ....)
+## (seems to be necessary .... not anymore)
 ##
-my $cqp = decode('utf-8',param('query'));
-if ($cqp){param('query',$cqp);}
+# my $cqp = decode('utf-8',param('query'));
+# if ($cqp){param('query',$cqp);}
+my $cqp = param('query');
 ##------------------------------
 
 &ReadRegistry('.',\%corpora);
@@ -153,6 +158,7 @@ sub FixString{
 
 sub EncodeString{
     my ($lang,$string)=@_;
+#    $string = decode('utf-8',$string);
     if ($lang=~/^(ar|az|be|bg|bs|he|id|jp|ja|ko|ku|mi|mk|ru|ta|th|uk|vi|xh|zh_tw|zu|bul|chi|jap|jpn|heb|rus)$/){
 	$string=encode('utf-8',$string);
     }
@@ -263,10 +269,11 @@ sub CorpusQueryForm{
 		##------------------------------
 		## decode UTF-8 characters
 		## and set the parameter again
-		## (seems to be necssary ....)
+		## (seems to be necessary .... not anymore ...)
 		##
-		my $cqp = decode('utf-8',param('query_'.$l));
-		if ($cqp){param('query_'.$l,$cqp);}
+		# my $cqp = decode('utf-8',param('query_'.$l));
+		# if ($cqp){param('query_'.$l,$cqp);}
+		my $cqp = param('query_'.$l);
 		##------------------------------
 
 		$rows[$nr_rows].=
@@ -359,8 +366,8 @@ sub CorpusQueryForm{
 
 sub CorpusQuery{
 
-    use lib ('/home/staff/joerg/user_local/lib/perl5/site_perl/5.8.0/');
-    use WebCqp::Query;
+#    use lib ('/home/staff/joerg/user_local/lib/perl5/site_perl/5.8.0/');
+#    use WebCqp::Query;
 
     my ($corpus,$lang,$utf8_cqp,$aligned,$style)=@_;
     my $cqp = EncodeString($lang,$utf8_cqp);
@@ -400,8 +407,9 @@ sub CorpusQuery{
 	foreach (@{$aligned}){
 	    if (param("query_$_")){
 		my $l=uc($_);
-		my $q = decode('utf-8',param("query_$_"));
-		param("query_$_",$q);
+		# my $q = decode('utf-8',param("query_$_"));
+		# param("query_$_",$q);
+		my $q = param("query_$_");
 		my $q = EncodeString($_,$q);
 		if ($q!~/^[\"\[]/){$q='"'.$q.'"';}
 		$cqp.=" :$l ".$q;
