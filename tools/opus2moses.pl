@@ -149,6 +149,15 @@ sub OpenCorpora{
 	$trgfile.='.gz';
     }
 
+    if ((! -e "$CORPUSHOME/$srcfile") && ($srcfile=~/xml\//)){	
+	$srcfile=~s/xml\///;
+	return OpenCorpora($srcfile,$trgfile);
+    }
+    if ((! -e "$CORPUSHOME/$trgfile") && ($trgfile=~/xml\//)){	
+	$trgfile=~s/xml\///;
+	return OpenCorpora($srcfile,$trgfile);
+    }
+
     ## check if file names match pattern of files to be skipped
     if (defined $opt_n){
 	if ($opt_i){
