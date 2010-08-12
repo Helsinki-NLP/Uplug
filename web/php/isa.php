@@ -41,7 +41,7 @@ if ($_POST['reset']){                      // reset button pressed -->
 	$_SESSION['corpus']=$corpus;
     }
     if (isset($user)){
-	$_SESSION['user']=$corpus;
+	$_SESSION['user']=$user;
     }
 }
 
