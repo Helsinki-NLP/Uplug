@@ -222,8 +222,12 @@ sub PrintTMXHeader{
     print $time;
     print '"'."\n";
     print '          srclang="'.$srclang."\"\n";
+    print '          adminlang="'.$srclang."\"\n";
+    print "          o-tmf=\"unknown\"\n";
+    print "          segtype=\"sentence\"\n";
     print '          creationtool="Uplug"'."\n";
-    print '          datatype="unknown" />'."\n";
+    print '          creationtoolversion="unknown"'."\n";
+    print '          datatype="PlainText" />'."\n";
     print '  <body>'."\n";
 }
 
