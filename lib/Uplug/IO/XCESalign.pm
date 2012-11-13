@@ -44,7 +44,7 @@ $VERSION=0.1;
 		  'SkipDataHeader' => 1,
 		  'SkipDataTail' => 1,
 		  'DTDname' => 'cesAlign',
-#		  'DTDsystemID' => 'dtd/xcesAlign.dtd',
+		  'DTDsystemID' => 'dtd/xcesAlign.dtd',
 		  'DTDpublicID' => '-//CES//DTD XML cesAlign//EN'
 		  );
 $StreamOptions{DocRoot}{version}='1.0';

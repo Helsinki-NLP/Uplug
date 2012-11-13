@@ -43,6 +43,11 @@ foreach ('de','en','fr','sv'){
     is( compare( "1988$_.xml", "$DATA/xml/1988$_.basic.xml" ),0, "basic (1988$_)" );
 }
 
+unlink('1988de.xml');
+unlink('1988en.xml');
+unlink('1988fr.xml');
+unlink('1988sv.xml');
+
 # sentence alignment
 
 system("$UPLUG align/sent -src $DATA/xml/1988de.basic.xml -trg $DATA/xml/1988en.basic.xml -out align.xml $null");

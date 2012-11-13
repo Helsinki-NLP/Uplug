@@ -48,7 +48,7 @@
 use strict;
 
 use FindBin qw($Bin);
-use lib "$Bin/..";
+use lib "$Bin/../lib";
 
 my $UplugHome="$Bin/../";
 $ENV{UPLUGHOME}=$UplugHome;

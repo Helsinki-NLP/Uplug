@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# -*-perl-*-
 #
 #---------------------------------------------------------------------------
 # Copyright (C) 2004 Jörg Tiedemann
@@ -36,7 +37,7 @@
 
 use strict;
 use FindBin qw($Bin);
-use lib $Bin;
+use lib "$Bin/lib";
 use Uplug;
 
 $ENV{UPLUGHOME}=$Bin;

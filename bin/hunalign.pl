@@ -36,7 +36,7 @@
 
 use strict;
 use FindBin qw($Bin);
-use lib "$Bin/..";
+use lib "$Bin/../lib";
 
 use Uplug::Data;
 use Uplug::IO::Any;

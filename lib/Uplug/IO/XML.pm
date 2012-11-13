@@ -28,6 +28,7 @@
 package Uplug::IO::XML;
 
 use strict;
+
 use vars qw(@ISA $VERSION $PARSERENCODING $USESGGREP $SGGREP);
 use vars qw(%DEFAULTOPTIONS);
 use XML::Parser;
@@ -492,6 +493,9 @@ sub writeheader{
     }
     $self->{XmlHandle}->xmlDecl($self->{StreamOptions}->{encoding});
     if (defined $self->{StreamOptions}->{DTDname}){
+	# print STDERR "$self->{StreamOptions}->{DTDname}\n";
+	# print STDERR "$self->{StreamOptions}->{DTDpublicID}\n";
+	# print STDERR "$self->{StreamOptions}->{DTDsystemID}\n";
 	$self->{XmlHandle}->doctype($self->{StreamOptions}->{DTDname},
 				    $self->{StreamOptions}->{DTDpublicID},
 				    $self->{StreamOptions}->{DTDsystemID});

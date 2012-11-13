@@ -35,7 +35,7 @@ use strict;
 
 BEGIN{
     use FindBin qw($Bin);
-    use lib "$Bin/..";
+    use lib "$Bin/../lib";
     if (not defined $ENV{UPLUGHOME}){
 	$ENV{UPLUGHOME}=$Bin.'/..';
     }

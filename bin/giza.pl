@@ -28,7 +28,7 @@ use strict;
 use Cwd;
 use FindBin qw($Bin);
 use File::Copy;
-use lib "$Bin/..";
+use lib "$Bin/../lib";
 use strict;
 
 use Uplug::Data;

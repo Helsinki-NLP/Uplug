@@ -24,7 +24,7 @@
 #
 
 use FindBin qw($Bin);
-use lib "$Bin/..";
+use lib "$Bin/../lib";
 use strict;
 
 use Uplug::Data;

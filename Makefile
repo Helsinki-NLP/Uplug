@@ -1,24 +1,37 @@
+use inc::Module::Install;
 
+name          'Uplug';
+all_from      'lib/Uplug.pm';
 
-# make all ---> make a release with version = ${VERSION}
+install_script 'uplug';
 
+install_script 'bin/beaparse.pl';
+install_script 'bin/coocstat.pl';
+install_script 'bin/hunalign.pl';
+install_script 'bin/ngramstat.pl';
+install_script 'bin/tokext.pl';
+install_script 'bin/chunk.pl';
+install_script 'bin/coocstat_slow.pl';
+install_script 'bin/linkclue.pl';
+install_script 'bin/sentalign.pl';
+install_script 'bin/toktag.pl';
+install_script 'bin/convert.pl'; 
+install_script 'bin/evalalign.pl';
+install_script 'bin/markphr.pl'; 
+install_script 'bin/split.pl';   
+install_script 'bin/uplugalign.pl';
+install_script 'bin/coocfreq.pl';
+install_script 'bin/giza.pl';
+install_script 'bin/markup.pl';  
+install_script 'bin/strsim.pl';  
+install_script 'bin/wordalign.pl';
+install_script 'bin/coocfreq_slow.pl';
+install_script 'bin/gma.pl';
+install_script 'bin/ngramfreq.pl';
+install_script 'bin/tag.pl';
 
-VERSION = 0.2.0d
-TODAY = `date`
+install_share;
 
-all: uplug-${VERSION}.tar.gz
+requires 'XML::Parser'     => 0;
 
-uplug-${VERSION}.tar.gz:
-	mkdir /tmp/uplug
-	cp -R * /tmp/uplug/
-	find /tmp/uplug -name '*~' -exec rm {} \;
-	find /tmp/uplug -type d -name 'CVS' | xargs rm -fr
-	rm -f /tmp/uplug/Makefile
-	sed "s/VERSION = .*$$/VERSION = '$(VERSION)';/" Uplug.pm > /tmp/uplug/Uplug.pm |\
-	(cd /tmp;tar -czf $@ uplug)
-	mv /tmp/$@ .
-	rm -fr /tmp/uplug
-
-clean:
-	rm -f uplug-${VERSION}.tar.gz
-	rm -fr /tmp/uplug
+WriteAll;

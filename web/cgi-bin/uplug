@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+# -*-perl-*-
 #---------------------------------------------------------------------------
 # uplug - uplug-cgi-script
 #
@@ -56,7 +57,7 @@ BEGIN {
 
 
 
-use lib $UPLUGHOME;
+use lib "$UPLUGHOME/lib";
 use Uplug::Web;
 
 $SIG{ALRM}=\&timeout;               # catch SIGALRM
