@@ -25,7 +25,7 @@ import java.util.*;
  * A simple example of how to set up a pipeline.
  *
  * @author      Jason Baldridge
- * @version     $Revision$, $Date$
+ * @version     $Revision: 1.1.1.1 $, $Date: 2004/05/03 15:48:05 $
  */
 public class GrokTaggerSV {
 

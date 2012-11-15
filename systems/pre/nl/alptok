@@ -29,11 +29,13 @@
      'tokenizer' => {
 	 'language' => 'dutch',
 	 'startup base' => 'tok_',
+#	'encoding' => 'iso-8859-1',
+	'encoding' => 'utf-8',
      },
      'output' => {
         'token delimiter' => ' ',
         'sentence delimiter' => "\n",
-	'encoding' => 'iso-8859-1',
+#	'encoding' => 'iso-8859-1',
      },
      'input' => {
         'token delimiter' => " ",

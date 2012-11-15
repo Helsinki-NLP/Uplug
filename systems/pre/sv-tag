@@ -3,11 +3,15 @@
     'name' => 'English pre-processing',
     'submodules' => [
         '$UplugSystem/pre/tok',
+        '$UplugSystem/pre/sv/tagHunPos',
 #        '$UplugSystem/pre/sv/tagTnT',
 #        '$UplugSystem/pre/sv/parse',
+        '$UplugSystem/pre/sv/tagHunPos',
+        '$UplugSystem/pre/sv/malt',
     ],
     'submodule names' => [
         'English tokenizer',
+        'POS tagger',
 #        'English tagger (TnT)',
 #        'English chunker (Bea)',
     ],

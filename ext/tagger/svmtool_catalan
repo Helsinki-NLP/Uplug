@@ -1,0 +1,9 @@
+#!/usr/bin/perl
+
+use FindBin qw($Bin);
+my $SVMTOOL=$Bin.'/../svmtool/bin/SVMTagger';
+my $MODEL=$Bin.'/../svmtool/models/ca/cs/Ancora_ca';
+
+# hunpos needs piped input from STDIN!
+system "$SVMTOOL $MODEL < $ARGV[0]";
+

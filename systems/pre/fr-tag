@@ -3,9 +3,12 @@
     'name' => 'French pre-processing',
     'submodules' => [
         '$UplugSystem/pre/fr/toktag',
+        '$UplugSystem/pre/fr/tagMElt',
+        '$UplugSystem/pre/fr/malt',
     ],
     'submodule names' => [
         'French tokenizer+tagger',
+        'French MElt tagger',
     ],
     'stdin' => 'text',
     'stdout' => 'text',

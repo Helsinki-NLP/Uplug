@@ -2,7 +2,10 @@
 
 use FindBin qw($Bin);
 
-my $JAVA="$ENV{JAVA_HOME}/bin/java";
+# my $JAVA="$ENV{JAVA_HOME}/bin/java";
+my $JAVA=`which java`;
+chomp $JAVA;
+
 
 my $GROK_HOME = "$Bin/../grok";
 my $GROK_LIB  = "$GROK_HOME/lib";

@@ -3,12 +3,15 @@
     'name' => 'Spanish pre-processing',
     'submodules' => [
         '$UplugSystem/pre/es/toktag',
+        '$UplugSystem/pre/es/tagSvmTool',
 #        '$UplugSystem/pre/tok',
 #        '$UplugSystem/pre/es/tagMBT',
+        '$UplugSystem/pre/es/malt',
     ],
     'submodule names' => [
 	'tokenizer',
-        'Spanish tagger (MBT)',
+        'Spanish tagger',
+#        'Spanish tagger (MBT)',
     ],
     'stdin' => 'text',
     'stdout' => 'text',

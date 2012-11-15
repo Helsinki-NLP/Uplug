@@ -28,6 +28,7 @@
      'tagger' => {
       'language' => 'dutch',
       'startup base' => 'tree_',
+	'encoding' => 'iso-8859-1',
      },
      'output' => {
 #        'attribute' => 'pos',

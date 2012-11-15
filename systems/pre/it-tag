@@ -2,10 +2,12 @@
   'module' => {
     'name' => 'Italian pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/it/toktag',
+        '$UplugSystem/pre/tok',
+        '$UplugSystem/pre/cs/tagHunPos',
     ],
     'submodule names' => [
-        'Italian tokenizer+tagger',
+        'standard tokenizer',
+        'POS tagger',
     ],
     'stdin' => 'text',
     'stdout' => 'text',

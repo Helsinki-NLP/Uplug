@@ -25,7 +25,7 @@
       'startup base' => 'tnt_',
      },
      'output' => {
-        'attribute' => 'pos',
+        'attribute' => 'msd',
         'token delimiter' => "\n",
         'sentence delimiter' => "\n\n",
         'tag delimiter' => '\s+',

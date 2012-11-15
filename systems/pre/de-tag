@@ -3,10 +3,13 @@
     'name' => 'German pre-processing',
     'submodules' => [
         '$UplugSystem/pre/de/toktag',
+        '$UplugSystem/pre/de/tagHunPos',
 #        '$UplugSystem/pre/de/tagTnT',
+        '$UplugSystem/pre/de/malt',
     ],
     'submodule names' => [
         'German tokenizer+tagger',
+	'POS tagger',
 #        'German tagger (TnT)',
     ],
     'stdin' => 'text',
