@@ -32,12 +32,16 @@ use strict;
 use vars qw(@ISA $VERSION $PARSERENCODING $USESGGREP $SGGREP);
 use vars qw(%DEFAULTOPTIONS);
 use XML::Parser;
-use XML::Writer;
 use XML::Simple;
+
+# use our own copy of XML::Writer
+# (the latest version seems to break some things ...)
+use Uplug::XML::Writer;
 
 use Uplug::Encoding;
 use Uplug::IO::Text;
 use Uplug::Data;
+
 
 $VERSION='$Id $ ';
 @ISA = qw( Uplug::IO::Text );
@@ -131,7 +135,7 @@ sub open{
     else{
 	if (not defined $self->{XmlHandle}){
 	    $self->{XmlHandle}= 
-		new XML::Writer(
+		new Uplug::XML::Writer(
 				DATA_MODE => 1,
 				DATA_INDENT => 1,
 				UNSAFE => 1,
@@ -484,7 +488,7 @@ sub readheader{
 sub writeheader{
     my $self=shift;
     if (not defined $self->{XmlHandle}){
-	$self->{XmlHandle}= new XML::Writer(
+	$self->{XmlHandle}= new Uplug::XML::Writer(
 					    DATA_MODE => 1,
 					    DATA_INDENT => 1,
 					    UNSAFE => 1,
@@ -829,7 +833,7 @@ sub printXML{
     if (not $writer){
 	if (not $self->{XmlWriter}){
 	    $self->{XmlWriter}=
-		new XML::Writer(
+		new Uplug::XML::Writer(
 				DATA_MODE => $rmSpaces,
 				DATA_INDENT => $rmSpaces,
 				UNSAFE => $rmSpaces,

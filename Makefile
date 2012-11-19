@@ -34,6 +34,7 @@ install_script 'bin/uplugalign.pl';
 install_share;
 
 requires 'XML::Parser'     => 0;
+requires 'XML::Simple'     => 0;
 requires 'File::ShareDir'  => 0;
 
 WriteAll;

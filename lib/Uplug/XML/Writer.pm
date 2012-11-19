@@ -1,3 +1,7 @@
+#
+# this is renamed into Uplug::XML::Writer for compatibility reasons
+#
+
 ########################################################################
 # Writer.pm - write an XML document.
 # Copyright (c) 1999 by Megginson Technologies.
@@ -6,7 +10,7 @@
 # $Id$
 ########################################################################
 
-package XML::Writer;
+package Uplug::XML::Writer;
 
 require 5.004;
 
@@ -40,7 +44,7 @@ sub new {
 				# from within XML::Writer::Namespaces::new()
   if ($params{NAMESPACES}) {
     delete $params{NAMESPACES};
-    return new XML::Writer::Namespaces(%params);
+    return new Uplug::XML::Writer::Namespaces(%params);
   }
 
 				# Set up $self and basic parameters
@@ -643,12 +647,12 @@ sub _escapeLiteral {
 # XML::Writer::Namespaces - subclass for Namespace processing.
 ########################################################################
 
-package XML::Writer::Namespaces;
+package Uplug::XML::Writer::Namespaces;
 use strict;
 use vars qw(@ISA);
 use Carp;
 
-@ISA = qw(XML::Writer);
+@ISA = qw(Uplug::XML::Writer);
 
 #
 # Constructor
@@ -676,7 +680,7 @@ sub new {
   }
 
 				# Create an instance of the parent.
-  my $self = new XML::Writer(%params);
+  my $self = new Uplug::XML::Writer(%params);
 
 				# Snarf the parent's methods that we're
 				# going to override.

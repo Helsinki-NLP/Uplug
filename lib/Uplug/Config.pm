@@ -48,13 +48,6 @@ our @EXPORT   = qw/ReadConfig WriteConfig CheckParameter GetNamedIO
                       shared_lang
                       shared_systems/;
 
-## "named" IO streams are stored in %NamedIO
-## read them from the files below (in ENV{UPLUGHOME}/ini)
-
-&ReadNamed('DataStreams.ini');          # default "IO streams"
-&ReadNamed('UserDataStreams.ini');      # user "IO streams"
-
-
 # try to find the shared files for Uplug
 
 my $SHARED_HOME;
@@ -74,6 +67,16 @@ our $MACHINE_TYPE = $ENV{MACHINE_TYPE} || `uname -m`;
 
 chomp($OS_TYPE);
 chomp($MACHINE_TYPE);
+
+## "named" IO streams are stored in %NamedIO
+## read them from the files below (in ENV{UPLUGHOME}/ini)
+
+&ReadNamed('DataStreams.ini');          # default "IO streams"
+&ReadNamed('UserDataStreams.ini');      # user "IO streams"
+
+
+
+
 
 sub shared_home   { return defined($_[0]) ? $SHARED_HOME = $_[0] : $SHARED_HOME; }
 sub shared_bin    { return defined($_[0]) ? $SHARED_BIN = $_[0] : $SHARED_BIN; }
@@ -410,10 +413,18 @@ sub GetParam{
 sub ReadNamed{
     my $file=shift;
     if (! -f $file){
-	$file='ini/'.$file if (-f 'ini/'.$file);
-	$file=$ENV{UPLUGHOME}.'/'.$file if (-f $ENV{UPLUGHOME}.'/'.$file);
-	$file=$ENV{UPLUGHOME}.'/ini/'.$file 
-	    if (-f $ENV{UPLUGHOME}.'/ini/'.$file);
+	if (-f 'ini/'.$file){
+	    $file='ini/'.$file;
+	}
+	elsif (-f $SHARED_HOME.'/ini/'.$file){
+	    $file=$SHARED_HOME.'/ini/'.$file;
+	}
+	elsif (-f $ENV{UPLUGHOME}.'/'.$file){
+	    $file=$ENV{UPLUGHOME}.'/'.$file;
+	}
+	elsif (-f $ENV{UPLUGHOME}.'/ini/'.$file){
+	    $file=$ENV{UPLUGHOME}.'/ini/'.$file 
+	} 
     }
     if (! -f $file){return 0;}
     my $config=&ReadConfig($file);

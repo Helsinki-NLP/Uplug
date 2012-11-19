@@ -1,26 +1,6 @@
 
+* install perl modules with macports:
 
-some issues when installing on Mac OS X
+sudo port install p5-xml-parser p5-xml-simple p5-file-sharedir
 
-* re-compile external programs (GIZA++, align, hunalign)
-  --> use GIZA++ patched for GCC 4
-  --> use align2.c for MAX OSX (some minor changes)
-  --> use g++ instead gcc in hunalign (change Makefile)
-
-* OS X is not case-sensitive! the startup program 'uplug' and the
-  subdirectory Uplug cannot be together in the Uplug root directory!
-
- --> rename uplug to someting else (e.g. uplug_start) (and use
-     uplug_start to start Uplug modules) 
- --> rename or delete systems/align/word/giza (because it blocks GIZA in the 
-     same directory)
-
-* install expat & XML::Parser via fink
-
-* in ICA: adjust uplug command to use fink environment (for XML::Parser)
-
-  change
-  $command = $exec_cmd;
-  to
-  $command = 'test -r /sw/bin/init.sh && . /sw/bin/init.sh;'.$exec_cmd;
 
