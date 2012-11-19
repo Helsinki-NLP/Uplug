@@ -1,7 +1,7 @@
 {
   'module' => {
     'name' => 'beas parser (swedish)',
-    'program' => 'beaparse.pl',
+    'program' => 'uplug_parse_sv.pl',
     'location' => '$UplugBin',
 #    'stdout' => 'text',
   },

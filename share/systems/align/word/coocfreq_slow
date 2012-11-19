@@ -1,6 +1,6 @@
 {
   'module' => {
-    'program' => 'coocfreq_slow.pl',
+    'program' => 'uplug-coocfreq-slow',
     'location' => '$UplugBin',
     'name' => 'co-occurrence frequency counter',
 #    'stdin' => 'bitext',

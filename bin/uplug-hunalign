@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # -*-perl-*-
 #
 # hunalign.pl:
@@ -21,7 +21,7 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #---------------------------------------------------------------------------
 #
-# $Id$
+# $Id: hunalign.pl,v 1.8 2008/04/15 10:20:46 joerg72 Exp $
 #
 # usage: hunalign.pl <infile >outfile
 #        hunalign.pl [-i config] [-src file1] [-trg file2] [-out out] [-s sys]
@@ -73,13 +73,14 @@ if (not -e $TrgStream->{file}){
 my $ParBreak=$IniData{parameter}{'paragraph boundary'};
 my $DicFile=$IniData{parameter}{'dictionary'};
 
-my $AlignDir=$UplugHome.'ext/hunalign/hunalign/';
+my $AlignPrg = &find_executable('hunalign');
+my $AlignDir = &shared_home().'/ext/hunalign';
 my $TmpSrc=Uplug::IO::Any::GetTempFileName;
 my $TmpTrg=Uplug::IO::Any::GetTempFileName;
-my $AlignPrg=$AlignDir.'hunalign';
+
 if (not -e $DicFile){                            # if there is no dictionary:
     $DicFile=$AlignDir.'data/null.dic';          # - use an empty file
-    $AlignPrg=$AlignDir.'hunalign -realign';     # - ... and the realign flag
+    $AlignPrg.=' -realign';                      # - ... and the realign flag
 }
 
 #---------------------------------------------------------------------------
@@ -163,44 +164,49 @@ $target->close;
 #---------------------------------------------------------------------------
 
 print STDERR "$AlignPrg $DicFile $TmpSrc $TmpTrg\n";
-my @alignments = `$AlignPrg $DicFile $TmpSrc $TmpTrg`;
+my @alignments = `$AlignPrg $DicFile $TmpSrc $TmpTrg 2>/dev/null`;
 
 #---------------------------------------------------------------------------
 
-my ($lastSrc,$lastTrg,$lastScore)=(0,0,0);
+my ($prevSrc,$prevTrg,$prevScore)=(0,0,0);
+
+# add the final point of bitext space                                       
+my $lastSrc = $#SrcSent;
+my $lastTrg = $#TrgSent;
+push( @alignments, join(' ',$lastSrc,$lastTrg,0) );
+
 
 my $id=0;
 foreach (@alignments){
     chomp;
     my ($sid,$tid,$score)=split(/\s+/);
 
-    ## sum up scores (is this the best way to do it?)
-    $lastScore+=$score;
+    ## skip lines that do not start with a digit
+    next if ( !/^[0-9]/ );
 
-    ## skip (0,0) and lines that do not start with a digit
-    next if (! /^[1-9]/);
-    ## skip other lines which are not part of the "alignment ladder"
-    ## (is this check of $score good enough?)
-    next if ((not defined $score) || ($score=~/[^0-9\.\-]/));
+    ## split the line
+    my ( $sid, $tid, $score ) = split(/\s+/);
 
-    ## print out a new sentence alignment if both, srcID and trgID go one step
-    ## up in the "alginment ladder"
-    if ($sid>$lastSrc && $tid>$lastTrg){
+    ## add links
+    my @LinkSrc=();
+    my @LinkTrg=();
+
+    if ($sid > $prevSrc){
+	foreach ( $prevSrc .. $sid - 1 ) {
+	    next if ( $SrcSent[$_] eq 'p' );
+	    push( @LinkSrc, $SrcSent[$_] );
+	}
+    }
+    if ($tid > $prevTrg){
+	foreach ( $prevTrg .. $tid - 1 ) {
+	    next if ( $TrgSent[$_] eq 'p' );
+	    push( @LinkTrg, $TrgSent[$_] );
+	}
+    }
+
+    ## if there is at least one sentence in the link
+    if (@LinkSrc || @LinkTrg){
 	$id++;
-	my @LinkSrc=();
-	my @LinkTrg=();
-	foreach ($lastSrc .. $sid-1){
-	    next if ($SrcSent[$_] eq 'p');
-	    push(@LinkSrc,$SrcSent[$_]);
-	}
-	foreach ($lastTrg .. $tid-1){
-	    next if ($TrgSent[$_] eq 'p');
-	    push(@LinkTrg,$TrgSent[$_]);
-	}
-
-	## if we have reached corresponding 'p' tags --> no link --> next
-	next if ((not @LinkSrc) && (not @LinkTrg));
-
 	my $link = join(' ',@LinkSrc);
 	$link .= ';';
 	$link .= join(' ',@LinkTrg);
@@ -209,13 +215,14 @@ foreach (@alignments){
 	$out->setContent(undef,$output->option('root'));
 	$out->setAttribute('id','SL'.$id);
 	$out->setAttribute('xtargets',$link);
-	$out->setAttribute('certainty',$lastScore);
+	$out->setAttribute('certainty',$prevScore);
 	$output->write($out);
-
-	$lastSrc=$sid;
-	$lastTrg=$tid;
-	$lastScore=$score;
     }
+
+    $prevSrc=$sid;
+    $prevTrg=$tid;
+    $prevScore=$score;
+
 }
 
 #---------------------------------------------------------------------------

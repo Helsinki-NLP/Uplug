@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
-#  $Id$
+#  $Id: invlinks,v 1.1.1.1 2004/05/03 15:39:55 joerg72 Exp $
 #----------------------------------------------------------------------------
 
 while (<>){

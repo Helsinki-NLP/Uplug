@@ -44,7 +44,7 @@
     }
   },
   'module' => {
-    'program' => 'chunk.pl',
+    'program' => 'uplug-chunk',
     'location' => '$UplugBin',
     'name' => 'chunker (english)',
     'stdout' => 'text'

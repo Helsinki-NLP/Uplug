@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/bin/env perl -w
 #
 # this is a sentence aligner based on Phillip Koehn's implementation used
 # for aligning the EuroParl corpus

@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #
 # markup.pl: convert a plain text file to XML with basic markup
 #

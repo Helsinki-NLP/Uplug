@@ -1,6 +1,6 @@
 {
   'module' => {
-    'program' => 'coocfreq.pl',
+    'program' => 'uplug-coocfreq',
     'location' => '$UplugBin',
     'name' => 'co-occurrence frequency counter',
 #    'stdin' => 'bitext',

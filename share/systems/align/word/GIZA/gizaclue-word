@@ -1,7 +1,7 @@
 {
   'module' => {
     'name' => 'GIZA++ word alignment',
-    'program' => 'giza.pl',
+    'program' => 'uplug-giza',
     'location' => '$UplugBin',
     'stdout' => 'bitext',
   },

@@ -25,7 +25,7 @@ import java.util.*;
  * 
  *
  * @author      Joerg Tiedemann
- * @version     $Revision$, $Date$
+ * @version     $Revision: 1.1.1.1 $, $Date: 2004/05/03 15:47:28 $
  */
 public class GrokChunkerEN {
 

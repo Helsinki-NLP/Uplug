@@ -2,7 +2,7 @@
   'encoding' => 'iso-8859-1',
   'module' => {
     'name' => 'sentence splitter',
-    'program' => 'split.pl',
+    'program' => 'uplug-split',
     'location' => '$UplugBin',
     'stdin' => 'text',
     'stdout' => 'text',

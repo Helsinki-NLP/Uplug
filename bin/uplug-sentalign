@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # -*-perl-*-
 #
 # sentalign.pl:
@@ -42,8 +42,6 @@ use Uplug::Data;
 use Uplug::IO::Any;
 use Uplug::Config;
 
-my $UplugHome="$Bin/../";
-
 use strict;
 
 my %IniData=&GetDefaultIni;
@@ -76,13 +74,10 @@ my $HardRegion=$IniData{parameter}{'hard region'};
 my $PageBreak=$IniData{parameter}{'page break'};
 my $Section=$IniData{parameter}{'section'};
 
-my $AlignDir=$UplugHome.'ext/align/';
 my $TmpSrc=Uplug::IO::Any::GetTempFileName;
 my $TmpTrg=Uplug::IO::Any::GetTempFileName;
-# my $TmpSrc=$AlignDir.'AlignSrc.'.$$;
-# my $TmpTrg=$AlignDir.'AlignTrg.'.$$;
-my $AlignPrg=$AlignDir.'align2';
 
+my $AlignPrg = &find_executable('align2');
 
 #---------------------------------------------------------------------------
 # open data streams!
@@ -93,9 +88,6 @@ if (not $target->open('read',$TrgStream)){exit;}
 $OutputStream->{DocRoot}->{version}='1.0';
 $OutputStream->{DocRoot}->{fromDoc}=$SrcStream->{file},;
 $OutputStream->{DocRoot}->{toDoc}=$TrgStream->{file},;
-# $OutputStream->{DTDname}='liuAlign';
-# $OutputStream->{DTDsystemID}='liu-align.dtd';
-# $OutputStream->{DTDpublicID}='....';
 
 if (not $output->open('write',$OutputStream)){exit;}
 #---------------------------------------------------------------------------

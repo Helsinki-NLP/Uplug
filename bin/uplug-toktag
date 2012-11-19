@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #-*-perl-*-
 #
 # toktag.pl: a simple UPLUG wrapper for a tokenizer + (POS) tagger
@@ -30,7 +30,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #---------------------------------------------------------------------------
-# $Id$
+# $Id: toktag.pl,v 1.8 2008/05/22 08:31:00 joerg72 Exp $
 #----------------------------------------------------------------------------
 #
 #            * requires a startup script for an external POS tagger
@@ -134,7 +134,10 @@ print STDERR "Tagger.pl: create temporary text file!\n";
 $input->open('read',$InputStream);
 my $UplugEncoding=$input->getInternalEncoding();
 my $OutEncoding=$IniData{parameter}{output}{encoding};
+my $ModelEncoding=$IniData{parameter}{tagger}{encoding};
+
 if (not defined $OutEncoding){$OutEncoding=$UplugEncoding;}
+if (not defined $ModelEncoding){$ModelEncoding=$UplugEncoding;}
 
 my $untagged=Uplug::IO::Any->new('text');
 $untagged->open('write',{file=>$TmpUntagged,encoding=>$OutEncoding});
@@ -154,7 +157,8 @@ while ($input->read($data)){
 	## handle malformed data by converting to octets and back
 	## the sub in encode ensures that malformed characters are ignored!
 	## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
-	if ($OutEncoding ne $UplugEncoding){
+#	if ($OutEncoding ne $UplugEncoding){
+	if ($ModelEncoding ne $UplugEncoding){
 	    my $octets = encode($OutEncoding, $txt,sub{ return ' ' });
 	    $txt = decode($OutEncoding, $octets);
 	}
@@ -184,7 +188,8 @@ print STDERR "Tagger.pl: read tagged file and create output data!\n";
 $input->open('read',$InputStream);
 $output->open('write',$OutputStream);
 open F,"<$TmpTagged";
-binmode(F,':encoding('.$OutEncoding.')');
+#binmode(F,':encoding('.$OutEncoding.')');
+binmode(F,':encoding('.$ModelEncoding.')');
 
 my $TextAttr;
 foreach my $j (0..$#Attr){

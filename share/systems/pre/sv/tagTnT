@@ -40,7 +40,7 @@
      },
   },
   'module' => {
-    'program' => 'tag.pl',
+    'program' => 'uplug-tag',
     'location' => '$UplugBin',
     'name' => 'TnT tagger (swedish)',
     'stdout' => 'text'

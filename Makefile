@@ -5,33 +5,35 @@ all_from      'lib/Uplug.pm';
 
 install_script 'uplug';
 
-install_script 'bin/beaparse.pl';
-install_script 'bin/coocstat.pl';
-install_script 'bin/hunalign.pl';
-install_script 'bin/ngramstat.pl';
-install_script 'bin/tokext.pl';
-install_script 'bin/chunk.pl';
-install_script 'bin/coocstat_slow.pl';
-install_script 'bin/linkclue.pl';
-install_script 'bin/sentalign.pl';
-install_script 'bin/toktag.pl';
-install_script 'bin/convert.pl'; 
+install_script 'bin/uplug_parse_sv';
+install_script 'bin/uplug-coocstat';
+install_script 'bin/uplug-hunalign';
+install_script 'bin/uplug-ngramstat';
+install_script 'bin/uplug-tokext';
+install_script 'bin/uplug-chunk';
+install_script 'bin/uplug-coocstat-slow';
+install_script 'bin/uplug-linkclue';
+install_script 'bin/uplug-sentalign';
+install_script 'bin/uplug-toktag';
+install_script 'bin/uplug-convert'; 
+install_script 'bin/uplug-markphr'; 
+install_script 'bin/uplug-split';   
+install_script 'bin/uplug-coocfreq';
+install_script 'bin/uplug-giza';
+install_script 'bin/uplug-markup';  
+install_script 'bin/uplug-strsim';  
+install_script 'bin/uplug-wordalign';
+install_script 'bin/uplug-coocfreq-slow';
+install_script 'bin/uplug-gma';
+install_script 'bin/uplug-ngramfreq';
+install_script 'bin/uplug-tag';
+
 install_script 'bin/evalalign.pl';
-install_script 'bin/markphr.pl'; 
-install_script 'bin/split.pl';   
 install_script 'bin/uplugalign.pl';
-install_script 'bin/coocfreq.pl';
-install_script 'bin/giza.pl';
-install_script 'bin/markup.pl';  
-install_script 'bin/strsim.pl';  
-install_script 'bin/wordalign.pl';
-install_script 'bin/coocfreq_slow.pl';
-install_script 'bin/gma.pl';
-install_script 'bin/ngramfreq.pl';
-install_script 'bin/tag.pl';
 
 install_share;
 
 requires 'XML::Parser'     => 0;
+requires 'File::ShareDir'  => 0;
 
 WriteAll;

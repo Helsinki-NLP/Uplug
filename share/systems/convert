@@ -2,7 +2,7 @@
   'encoding' => 'iso-8859-1',
   'module' => {
     'name' => 'convert files',
-    'program' => 'convert.pl',
+    'program' => 'uplug-convert',
     'location' => '$UplugBin',
     'stdin' => 'text',
     'stdout' => 'text',

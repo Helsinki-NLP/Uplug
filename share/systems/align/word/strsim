@@ -1,6 +1,6 @@
 {
   'module' => {
-    'program' => 'strsim.pl',
+    'program' => 'uplug-strsim',
     'location' => '$UplugBin',
     'name' => 'LCSR - the longest common sub-sequence ratio',
 #    'stdin' => 'bitext',

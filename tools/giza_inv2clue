@@ -4,7 +4,7 @@
 #
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
-# $Id$
+# $Id: giza_inv2clue,v 1.1.1.1 2004/05/03 15:39:55 joerg72 Exp $
 #
 # this is nothing else than a call to declclue 
 # with specific arguments for converting GIZA word alignments to uplug clues!

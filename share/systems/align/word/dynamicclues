@@ -16,7 +16,7 @@
 
   'module' => {
     'location' => '$UplugBin',
-    'program' => 'linkclue.pl',
+    'program' => 'uplug-linkclue',
     'name' => 'dynamic alignment clues'
   },
   'description' => 'This module learns clues from word aligned

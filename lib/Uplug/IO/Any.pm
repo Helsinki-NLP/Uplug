@@ -76,7 +76,7 @@ sub new{
     if ($format=~/^text$/i){return Uplug::IO::Text->new();}
     elsif ($format=~/^koma(\s|\Z)/i){return Uplug::IO::LiuAlign->new();}
 #    elsif ($format=~/^align(\s|\Z)/i){return Uplug::IO::LiuAlign->new();}
-    elsif ($format=~/^align(\s|\Z)/i){return Uplug::IO::XCESlign->new();}
+    elsif ($format=~/^align(\s|\Z)/i){return Uplug::IO::XCESalign->new();}
     elsif ($format=~/^liu\s*xml$/i){return Uplug::IO::LiuAlign->new();}
     elsif ($format=~/^xces(\s|\Z)/i){return Uplug::IO::XCESalign->new();}
     elsif ($format=~/^xml$/i){return Uplug::IO::XML->new();}

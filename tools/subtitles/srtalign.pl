@@ -19,6 +19,7 @@
 # -r char_set ......... define a set of characters to be used for matching
 # -q .................. normalize length scores with (current) word frequencies
 # -b .................. use "best" alignment (least empty alignments)
+# -p nr ............... stop after <nr> candidates (when using -b)
 # -m MAX .............. in "best" alignment: use only MAX first & MAX last
 #                       (default = 10; 0 = all)
 # -f uplug-conf-file .. use fallback aligner if necessary
@@ -49,7 +50,12 @@ use vars qw($opt_b $opt_l $opt_c $opt_w $opt_d $opt_i $opt_v $opt_u $opt_h
 	    $opt_s $opt_t $opt_q $opt_f $opt_r $opt_m);
 use Getopt::Std;
 
-getopts('c:w:l:i:d:vuh:s:t:qbf:r:m:');
+
+# make sure we print error messages in UTF8 ....
+binmode(STDERR,":utf8");
+
+
+getopts('c:w:l:i:d:vuh:s:t:qbf:r:m:I');
 
 my $UPLUGHOME = $ENV{HOME}.'/projects/Uplug/uplug';
 # my $UPLUGHOME = $ENV{HOME}.'/cvs/uplug';
@@ -105,9 +111,9 @@ my %last=();    # matches in final part of the movie
 #parse_srt($trgfile,\@trgdata);
 #print STDERR "ok!\n";
 
-print STDERR "parse '$srcfile' & '$trgfile' ... ";
+print STDERR "parse '$srcfile' & '$trgfile' ... " if ($VERBOSE);
 parse_bitext($srcfile,$trgfile,\@srcdata,\@trgdata,\%first,\%last);
-print STDERR "ok!\n";
+print STDERR "ok!\n" if ($VERBOSE);
 
 ## fix start and end times (without scaling and offsets)
 set_sent_times(\@srcdata);
@@ -119,22 +125,29 @@ if (defined $opt_h){
 
 
 my @alignment=();
+my $score=undef;
+my $baseScore=undef;
 
-
-print STDERR "align sentences ... ";
+print STDERR "align sentences ... " if ($VERBOSE);
 if ($COGNATE_RANGE){
-    cognate_align(\@srcdata,\@trgdata,\%first,\%last,\@alignment);
+    $score = cognate_align(\@srcdata,\@trgdata,\%first,\%last,\@alignment);
 }
 if ($BEST_ALIGN){
-    best_align(\@srcdata,\@trgdata,\%first,\%last,\@alignment);
+    ($score,$baseScore) = 
+	best_align(\@srcdata,\@trgdata,\%first,\%last,\@alignment);
 }
 else{
-    standard_align(\@srcdata,\@trgdata,\%first,\%last,\@alignment);
+    $score = standard_align(\@srcdata,\@trgdata,\%first,\%last,\@alignment);
 }
 
 print_ces($srcfile,$trgfile,\@alignment);
-print STDERR "done!\n";
-
+print STDERR "done!\n" if ($VERBOSE);
+if ($baseScore){
+    print STDERR "ratio = $score ($baseScore)\n";
+}
+else {
+    print STDERR "ratio = $score\n";
+}
 
 
 
@@ -180,6 +193,7 @@ sub cognate_align{
 	}
 	print STDERR "\n";
     }
+    return $best;
 }
 
 sub best_align{
@@ -201,6 +215,7 @@ sub best_align{
 	@sortlast = splice(@sortlast,0,$opt_m) if (@sortlast > $opt_m);
     }
 
+    my $standard = $bestratio;
 
     foreach my $sf (@sortfirst){
 	foreach my $lf (@sortlast){
@@ -244,7 +259,7 @@ sub best_align{
 	    exit;
 	}
     }
-    return $bestratio;
+    return ($bestratio,$standard);
 }
 
 
@@ -263,6 +278,7 @@ sub standard_align{
 	@{$alg} = ();
 	align_srt($srcdata,$trgdata,$alg);
     }
+    return ($types{nonempty}+1)/($types{empty}+1);
 }
 
 
@@ -699,7 +715,6 @@ sub parse_bitext{
 	    }
 	}
     }
-    print '';
 }
 
 
@@ -785,10 +800,18 @@ sub ComputeOffset{
     my ($matches,$srcdata,$trgdata) = @_;
 
     my @params=();
+    return AverageOffset(\@params) unless (ref($srcdata) eq 'ARRAY');
+    return AverageOffset(\@params) unless (ref($trgdata) eq 'ARRAY');
+
     foreach my $i (0..$#{$matches}){
 	foreach my $j ($i+1..$#{$matches}){
 	    my ($s1,$t1) = split(/:/,$$matches[$i]);
 	    my ($s2,$t2) = split(/:/,$$matches[$j]);
+
+	    next unless (exists $srcdata->[$s1]);
+	    next unless (exists $srcdata->[$s2]);
+	    next unless (exists $trgdata->[$t1]);
+	    next unless (exists $trgdata->[$t2]);
 
 #	    my $x1=$srcdata->[$s1]->{start};
 #	    my $y1=$trgdata->[$t1]->{start};
@@ -799,7 +822,6 @@ sub ComputeOffset{
 	    my $y1=$trgdata->[$t1]->{end};
 	    my $x2=$srcdata->[$s2]->{end};
 	    my $y2=$trgdata->[$t2]->{end};
-
 
 #	    print STDERR "fit line from $x1:$y1 to $x2:$y2\n" if $VERBOSE;
 	    my ($slope,$offset)=FitLine($x1,$y1,$x2,$y2);
@@ -1239,6 +1261,7 @@ sub ReadDictionary{
 	else{
 	    open DIC,"< $file " || die "cannot open dictionary file $file!\n";
 	}
+	binmode(DIC,":utf8");
 	while (<DIC>){
 	    chomp;
 	    my ($src,$trg) = split(/\s/);
@@ -1255,11 +1278,11 @@ sub dictionary{
 
     my %src_words=();
     my %trg_words=();
-    foreach (@{$src}){
-	$src_words{$_}++;
+    foreach my $w (@{$src}){
+	$src_words{$w}++;
     }
-    foreach (@{$trg}){
-	$trg_words{$_}++;
+    foreach my $w (@{$trg}){
+	$trg_words{$w}++;
     }
 
     foreach my $s (keys %src_words){

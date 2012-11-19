@@ -28,7 +28,7 @@
     }
   },
   'module' => {
-    'program' => 'hunalign.pl',
+    'program' => 'uplug-hunalign',
     'location' => '$UplugBin',
     'name' => 'hunalign sentence aligner',
     'stdout' => 'bitext',

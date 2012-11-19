@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #-*-perl-*-
 #
 # tokext.pl: a simple UPLUG wrapper for a tokenizer
@@ -113,7 +113,10 @@ print STDERR "tokext.pl: create temporary text file!\n";
 $input->open('read',$InputStream);
 my $UplugEncoding=$input->getInternalEncoding();
 my $OutEncoding=$IniData{parameter}{output}{encoding};
+my $ModelEncoding=$IniData{parameter}{tokenizer}{encoding};
+
 if (not defined $OutEncoding){$OutEncoding=$UplugEncoding;}
+if (not defined $ModelEncoding){$ModelEncoding=$UplugEncoding;}
 
 my $untokenized=Uplug::IO::Any->new('text');
 $untokenized->open('write',{file=>$TmpUntokenized,encoding=>$OutEncoding});
@@ -121,12 +124,14 @@ $untokenized->open('write',{file=>$TmpUntokenized,encoding=>$OutEncoding});
 while ($input->read($data)){
 
     my $txt=$data->content;
+    chomp($txt);
     if ($txt){
 
 	## handle malformed data by converting to octets and back
 	## the sub in encode ensures that malformed characters are ignored!
 	## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
-	if ($OutEncoding ne $UplugEncoding){
+#	if ($OutEncoding ne $UplugEncoding){
+	if ($ModelEncoding ne $UplugEncoding){
 	    my $octets = encode($OutEncoding, $txt,sub{ return ' ' });
 	    $txt = decode($OutEncoding, $octets);
 	}
@@ -155,7 +160,8 @@ print STDERR "tokext.pl: read tokenized file and create output data!\n";
 $input->open('read',$InputStream);
 $output->open('write',$OutputStream);
 open F,"<$TmpTokenized";
-binmode(F,':encoding('.$OutEncoding.')');
+#binmode(F,':encoding('.$OutEncoding.')');
+binmode(F,':encoding('.$ModelEncoding.')');
 
 my $ret;
 my $id=0;
@@ -175,9 +181,6 @@ while ($ret=$input->read($data)){
 	$txt = decode($OutEncoding, $octets);
     }
 
-    if ($txt=~/foto/){
-	print '';
-    }
     my $txt_nospaces=$txt;     # in case the external tokenizer tokens together
     $txt_nospaces=~s/\s//gs;   # --> take away all spaces in original string
 #    print STDERR "$txt ...";
@@ -188,6 +191,8 @@ while ($ret=$input->read($data)){
     $/=$OutSentDel;
     my @seg = ();
     while (1){
+	last if ($txt!~/\S/);
+	last unless ($txt_nospaces);
 	if (not @tok){
 	    $tokenized=<F>;
 	    chomp $tokenized;
@@ -198,7 +203,8 @@ while ($ret=$input->read($data)){
 	my $t=$tok[0];
 	$pat=quotemeta($t);
 #	print STDERR "test if $txt=~\/--$pat--\/\n";
-	if ($txt=~s/$pat// || ($txt_nospaces=~s/$pat//)){
+	if (($txt=~s/$pat//) || ($txt_nospaces=~/$pat/)){
+	    $txt_nospaces=~s/$pat//;
 	    push(@seg,shift(@tok));
 	    ## read more to see if there is more to match ....
 	    if (not @tok){
@@ -280,7 +286,7 @@ sub GetDefaultIni{
       'format' => 'xml',
       'root' => 's',
       'write_mode' => 'overwrite',
-	'encoding' => 'iso-8859-1',
+#	'encoding' => 'iso-8859-1',
 	'status' => 'tok',
     }
   },
@@ -302,7 +308,7 @@ sub GetDefaultIni{
      'output' => {
         'token delimiter' => ' ',
         'sentence delimiter' => "\n",
-	'encoding' => 'iso-8859-1',
+#	'encoding' => 'iso-8859-1',
      },
      'input' => {
         'token delimiter' => " ",

@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 # -*-perl-*-
 #
 # gma.pl:
@@ -24,7 +24,7 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #---------------------------------------------------------------------------
 #
-# $Id$
+# $Id: gma.pl,v 1.1 2006/09/13 13:34:56 joerg72 Exp $
 #
 # usage: hunalign.pl <infile >outfile
 #        hunalign.pl [-i config] [-src file1] [-trg file2] [-out out] [-s sys]
@@ -56,11 +56,9 @@ my $IniFile='gma.ini';
 
 ## prepare external program call
 
-my $UPLUGHOME="$Bin/..";
-if (exists $ENV{UPLUGHOME}){$UPLUGHOME=$ENV{UPLUGHOME};}
-
-my $GMAHOME="$UplugHome/ext/gma";
-my $JAVA=$ENV{JAVA_HOME}.'/bin/java';
+my $GMAHOME = &shared_home().'/ext/gma';
+my $JAVA=`which java`;
+chomp $JAVA;
 $ENV{CLASSPATH}="$ENV{CLASSPATH}:$GMAHOME/lib/gma.jar";
 my $AlignPrg=$JAVA." -DGMApath=$GMAHOME -Xms128m -Xmx512m gma.GMA";
 my $GSMCONFIG="$GMAHOME/config/GMA.config.default";

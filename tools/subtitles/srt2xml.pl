@@ -5,6 +5,9 @@
 #
 # usage: ./srt2xml [-l lang-code] srt-file > xmlfile
 #
+# -e encoding ....
+# -r file  ....... raw xml output file (without tokenizations)
+# -s ............. always start a new sentence at new time frames
 
 
 use strict;
@@ -13,20 +16,41 @@ use Getopt::Std;
 use IPC::Open3;
 use FindBin qw($Bin);
 use Encode;
+use File::BOM qw( :all );
 
-use vars qw/$opt_l/;
+
+use vars qw/$opt_l $opt_e $opt_r $opt_s/;
 
 $opt_l = 'unknown';
-getopts('l:');
+getopts('l:e:r:s');
 
 
 my $PAUSETHR1 = 1;       # > 1 second --> most probably new sentence
 my $PAUSETHR2 = 3;       # > 3 second --> definitely new sentence
 
 
-if ($opt_l eq 'chi'){
-    $ENV{UPLUGHOME} = $ENV{HOME}.'/projects/Uplug/uplug';
+# for some languages: always split sentences at new time frames
+# (because we know too little about their writing system ....)
+
+my %SPLIT_AT_TIMEFRAME = (
+    'heb' => 1,
+    'ara' => 1,
+    'sin' => 1,
+    'tha' => 1,
+    'urd' => 1,
+    'zho' => 1,
+    'chi' => 1,
+    'far' => 1,
+    'kor' => 1,
+    'jpn' => 1
+    );
+
+
+if ($opt_l eq 'chi' || $opt_l eq 'zho'){
+#    $ENV{UPLUGHOME} = $ENV{HOME}.'/projects/Uplug/uplug';
+    $ENV{UPLUGHOME} = $Bin.'/../..';
     require "$ENV{UPLUGHOME}/ext/chinese/segment/segmenter.pl";
+#    require "$Bin/../../ext/chinese/segment/segmenter.pl";
 }
 
 ## read (non-breaking) abbreviations (if the file exists)
@@ -34,45 +58,7 @@ my %NONBREAKING=();
 read_non_breaking($Bin.'/nonbreaking_prefix.'.$opt_l,\%NONBREAKING);
 
 
-## get the appropriate language code for a given language (iso639-3)
-
-sub LangEncoding{
-    my $lang = shift;
-
-# supported by Perl Encode:
-# http://perldoc.perl.org/Encode/Supported.html
-
-    return 'utf-8' if ($lang=~/^(utf8)$/);
-    return 'iso-8859-4' if ($lang=~/^(ice)$/);
-    ## what is scc?
-    return 'cp1250' if ($lang=~/^(alb|bos|cze|pol|rum|scc|scr|slv|hrv)$/); 
-#    return 'iso-8859-2' if ($lang=~/^(alb|bos)$/);
-    return 'cp1251' if ($lang=~/^(bul|mac|rus|bel)$/);
-#    return 'cp1252' if ($lang=~/^(dan|dut|epo|est|fin|fre|ger|hun|ita|nor|pob|pol|por|spa|swe)$/);
-    return 'cp1253' if ($lang=~/^(ell|gre)$/);
-    return 'cp1254' if ($lang=~/^(tur)$/);
-    return 'cp1255' if ($lang=~/^(heb)$/);
-    return 'cp1256' if ($lang=~/^(ara)$/);
-    return 'cp1257' if ($lang=~/^(lat|lit)$/);  # correct?
-    return 'big5-eten' if ($lang=~/^(chi)$/);
-    return 'shiftjis' if ($lang=~/^(jpn)$/);
-#    return 'cp932' if ($lang=~/^(jpn)$/);
-    return 'euc-kr' if ($lang=~/^(kor)$/);
-#    return 'cp949' if ($lang=~/^(kor)$/);
-    return 'cp1252';
-#    return 'iso-8859-6' if ($lang=~/^(ara)$/);
-#    return 'iso-8859-7' if ($lang=~/^(ell|gre)$/);
-#    return 'iso-8859-1';
-
-## unknown: haw (hawaiian), hrv (crotioan), amh (amharic) gai (borei)
-##          ind (indonesian), max (North Moluccan Malay), may (Malay?)
-}
-
-
-
-
-
-my $enc=LangEncoding($opt_l);
+my $enc = $opt_e || LangEncoding($opt_l);
 
 #use IO::File;
 #use POSIX qw(tmpnam);
@@ -88,21 +74,46 @@ my $enc=LangEncoding($opt_l);
 #}
 
 # binmode(STDIN,':encoding(iso-8859-1)');
-binmode(STDIN,":encoding($enc)");
+# binmode(STDIN,":encoding($enc)");
+binmode(STDIN);
 binmode(STDOUT,':encoding(utf8)');
+
+# open second output file for raw, untokenized XML
+
+if ($opt_r){
+    if ($opt_r=~/\.gz$/){
+	open F,"| grep '.' | gzip -c > $opt_r" || warn "cannot open $opt_r";
+    }
+    else{
+	open F,"| grep '.' > $opt_r" || warn "cannot open $opt_r";
+    }
+    binmode(F,':encoding(utf8)');
+}
 
 
 print_xml_header();
 
 my $sid = 1;
 print "  <s id=\"$sid\">\n";
+print F "  <s id=\"$sid\">\n" if ($opt_r);
 $sid++;
 my $s_ended = 0;
 
-my $s_start = '([\"\']?[\¿\¡\p{Lu}])';
-my $s_start_maybe = '(\-?\s*[\"\']?[\p{N}\p{Ps}])';
-my $s_end = "([^\.]\.[\"\']?|[\.\!\?\:][\"\']?)";
-my $s_end_maybe = "([^\.]\.[\"\'\]\}\)]?\-?\s*|[\.\!\?\:][\"\'\]\}\)]?\-?\s*)";
+##
+## these RE's are not used at all ...
+##
+#my $s_start = '([\"\']?[\¿\¡\p{Lu}])';
+#my $s_start_maybe = '(\-?\s*[\"\'\¿\¡]?[\p{N}\p{Ps}])';
+#my $s_end = "([^\.]\.[\"\']?|[\.\!\?\:][\"\']?)";
+#my $s_end_maybe = "([^\.]\.[\"\'\]\}\)]?\-?\s*|[\.\!\?\:][\"\'\]\}\)]?\-?\s*)";
+
+# Greek: ';' is a question mark!
+
+if ($opt_l eq 'ell'){
+    my $s_end = "([^\.]\.[\"\']?|[\.\!\?\:\;][\"\']?)";
+}
+
+
 
 my $start=undef;
 my $end=undef;
@@ -115,8 +126,22 @@ my $newchunk = 0;
 my @opentags=();
 my @closedtags=();
 
+my $first=1;
 
 while (my $line = <>){
+
+    # check if the first line has a BOM
+    # --~ try to detect encoding!
+    if ($first){
+	my $check;
+	($line, $enc) = decode_from_bom($line,$enc,$check);
+	binmode(STDIN,":encoding($enc)");
+	$first=0;
+    }
+
+    # remove dos line endings
+    $line=~s/\r\n$/\n/;
+
     if (not defined $id){
 	if ($line=~/^\s*([0-9]+)$/){
 	    $id = $1;
@@ -145,16 +170,26 @@ while (my $line = <>){
 
     if ($line=~/^\s*$/){
 	if ($end){
+	    # always close all open tags at end of time frame
+	    closetags();
+	    @closedtags = (); # flush tag-stack ....
+
 	    print "    <time id=\"T${id}E\" value=\"$end\" />\n";
+	    print F "\n    <time id=\"T${id}E\" value=\"$end\" />\n" if ($opt_r);
 	    $lastend = $end;
 	    $id=undef;
 	    $start=undef;
 	    $end=undef;
 	    ## new fragment -> always a possible sentence end!
 	    if (not $s_ended){$s_ended = 1;}
+	    ## for some languages: always split here!
+	    if ($SPLIT_AT_TIMEFRAME{$opt_l} || $opt_s){$s_ended = 3;}
 	}
     }
     else{
+
+	# some strange markup in curly brackets in some files
+	$line=~s/\{.*?\}\#?//gs;
 
 	$line = fix_punctuation($line);
 	if ($opt_l eq 'en' || $opt_l eq 'eng'){
@@ -173,6 +208,10 @@ while (my $line = <>){
 		closetags();
 		print "  </s>\n";
 		print "  <s id=\"$sid\">\n";
+		if ($opt_r){
+		    print F "\n  </s>\n";
+		    print F "  <s id=\"$sid\">\n";
+		}
 		reopentags();
 		$sid++;
 		$wid=0;
@@ -182,6 +221,10 @@ while (my $line = <>){
 		closetags();
 		print "  </s>\n";
 		print "  <s id=\"$sid\">\n";
+		if ($opt_r){
+		    print F "\n  </s>\n";
+		    print F "  <s id=\"$sid\">\n";
+		}
 		reopentags();
 		$sid++;
 		$wid=0;
@@ -194,6 +237,10 @@ while (my $line = <>){
 		closetags();
 		print "  </s>\n";
 		print "  <s id=\"$sid\">\n";
+		if ($opt_r){
+		    print F "\n  </s>\n";
+		    print F "  <s id=\"$sid\">\n";
+		}
 		reopentags();
 		$sid++;
 		$wid=0;
@@ -205,22 +252,33 @@ while (my $line = <>){
 		closetags();
 		print "  </s>\n";
 		print "  <s id=\"$sid\">\n";
+		if ($opt_r){
+		    print F "\n  </s>\n";
+		    print F "  <s id=\"$sid\">\n";
+		}
 		reopentags();
 		$sid++;
 		$wid=0;
 	    }
 
-	    elsif ($opt_l=~/^(chi|kor|jpn)$/){
-		closetags();
-		print "  </s>\n";
-		print "  <s id=\"$sid\">\n";
-		reopentags();
-		$sid++;
-		$wid=0;
-	    }
+	    # elsif ($opt_l=~/^(chi|kor|jpn|zho)$/){
+	    # 	closetags();
+	    # 	print "  </s>\n";
+	    # 	print "  <s id=\"$sid\">\n";
+	    # 	if ($opt_r){
+	    # 	    print F "  </s>\n";
+	    # 	    print F "  <s id=\"$sid\">\n";
+	    # 	}
+	    # 	reopentags();
+	    # 	$sid++;
+	    # 	$wid=0;
+	    # }
 	}
 	if ($newchunk && $start){
 	    print "    <time id=\"T${id}S\" value=\"$start\" />\n";
+	    if ($opt_r){
+		print F "\n    <time id=\"T${id}S\" value=\"$start\" />\n";
+	    }
 	}
 	$newchunk=0;
 
@@ -242,7 +300,7 @@ while (my $line = <>){
 	    my $sentence_boundary = 0;
 	    if ($plain_before=~/([^.]\.|[!?:])[\'\"]?\s*$/){
 #		if ($plain_after=~/^\s+\-?\s*[\"\']?[\p{N}\p{Ps}\p{Lu}]/){
-		if ($plain_after=~/^\s+[\-\*\#]*\s*[\"\'\[]?[\p{N}\p{Ps}\p{Lu}]/){
+		if ($plain_after=~/^\s+[\-\*\#]*\s*[\¿\¡\"\'\[]?[\p{N}\p{Ps}\p{Lu}]/){
 		    $sentence_boundary = 1;
 		}
 	    }
@@ -261,10 +319,10 @@ while (my $line = <>){
 	    }
 
 
-	    ## for chinese/korean/japanese -> always split
-	    if ($opt_l=~/^(chi|kor|jpn)$/){
-		$sentence_boundary = 1;
-	    }
+	    # ## for chinese/korean/japanese -> always split
+	    # if ($opt_l=~/^(chi|kor|jpn|zho)$/){
+	    # 	$sentence_boundary = 1;
+	    # }
 
 	    ## tokenize
 	    my $last_token='';
@@ -281,6 +339,7 @@ while (my $line = <>){
 	    if ($sentence_boundary){
 		closetags();
 		print "  <\/s>\n  <s id=\"$sid\">\n";
+		print F "\n  <\/s>\n  <s id=\"$sid\">\n" if ($opt_r);
 		reopentags();
 		$sid++;
 		$wid=0;
@@ -341,6 +400,7 @@ while (my $line = <>){
 
 closetags();
 print "  </s>\n";
+print F "\n  </s>\n" if ($opt_r);
 
 print_xml_footer();
 
@@ -356,6 +416,7 @@ print_xml_footer();
 sub closetags{
     while (my $tag=pop(@opentags)){
 	print "    </$tag>\n";
+#	print F "    </$tag>\n" if ($opt_r);
 	push(@closedtags,$tag);
     }
 }
@@ -363,8 +424,20 @@ sub closetags{
 sub reopentags{
     while (my $tag=pop(@closedtags)){
 	print "    <$tag>\n";
+#	print F "    <$tag>\n" if ($opt_r);
 	push(@opentags,$tag);
     }
+}
+
+sub print_raw_string{
+    my $string = shift;
+    $string=~s/\<.*?\>//gs;  # remove all XML tags to keep it simple
+    $string=~s/&/&amp;/g;
+    $string=~s/</&lt;/g;
+    $string=~s/>/&gt;/g;
+    print F $string;
+#    $string=~s/\s*$//;
+#    print F $string,"\n" if ($string);
 }
 
 
@@ -376,16 +449,19 @@ sub print_word{
     print "    <w id=\"$sid.$wid\">",$w,"</w>\n";
 }
 
-
 sub print_tokens{
     my ($string,$sid,$wid)=@_;
 
+    # without tokenization
+    print_raw_string($string) if ($opt_r);
+
     # chinese tokenization
-    if ($opt_l=~/^chi$/){
+    if ($opt_l=~/^(chi|zho)$/){
 	return print_chinese_tokens($string,$sid,$wid);
     }
     # no japanese tokenization (leave it to Uplug and ChaSen)
     if ($opt_l=~/^jpn$/){
+	$string=~s/\<.*?\>//gs;  # remove all XML tags to keep it simple
 	$string=~s/&/&amp;/g;
 	$string=~s/</&lt;/g;
 	$string=~s/>/&gt;/g;
@@ -395,16 +471,21 @@ sub print_tokens{
 
     my @tokens=();
 
+    # FIXME: this does not seem to work anymore ....
+    # (get error messages from tokenize script ...)
+    #
     # Dutch tokenization using Alpino
-    if (($opt_l eq 'dut') && 
-	(-e "$ENV{ALPINO_HOME}/Tokenization/tokenize.sh")){
-	@tokens = tokenize_dutch($string);
-    }
+    # if (($opt_l eq 'dut') && 
+    # 	(-e "$ENV{ALPINO_HOME}/Tokenization/tokenize.sh")){
+    # 	@tokens = tokenize_dutch($string);
+    # }
 
-    # all other languages .... (which is most probably very bad!)
-    else{ 
-	@tokens = tokenize($string);
-    }
+    # # all other languages .... (which is most probably very bad!)
+    # else{ 
+    # 	@tokens = tokenize($string);
+    # }
+
+    @tokens = tokenize($string);
 
     foreach my $t (@tokens){
 
@@ -488,11 +569,18 @@ sub print_chinese_tokens{
 sub print_xml_header{
     print '<?xml version="1.0" encoding="utf-8"?>'."\n";
     print "<document>\n";
+    if ($opt_r){
+	print F '<?xml version="1.0" encoding="utf-8"?>'."\n";
+	print F "<document>\n";
+    }
 }
 
 
 sub print_xml_footer{
     print "</document>\n";
+    if ($opt_r){
+	print F "</document>\n";
+    }
 }
 
 
@@ -599,18 +687,28 @@ sub tokenize_dutch{
     my $TOKCOMMAND = "$ENV{ALPINO_HOME}/Tokenization/tokenize.sh";
     my ($TOKIN,$TOKOUT,$TOKERR);
     my $TOKPID=open3($TOKIN,$TOKOUT,$TOKERR,$TOKCOMMAND);
-    binmode($TOKIN, ":encoding(iso-8859-1)");
-    binmode($TOKOUT, ":encoding(iso-8859-1)");
+
+    # the verson installed on opus seems to require utf8 ...
+    #
+#    binmode($TOKIN, ":encoding(iso-8859-1)");
+#    binmode($TOKOUT, ":encoding(iso-8859-1)");
+    binmode($TOKIN, ":encoding(utf8)");
+    binmode($TOKOUT, ":encoding(utf8)");
+
 
     ## some europarl specific pre-preprocessing
     $text =~ s/\' ([a-zA-Z][^a-zA-Z])/\'$1/gs;
     $text =~ s/\n\n+/\n/sg;
     $text =~ s/^\(Applaus\)(.*)/\(Applaus\)\n$1/gs;
 
+    # the following is not necessary anymore as the version on OPUS takes utf8
+
     ## escape wide unicode characters
     ## using reference to existing subroutines avoids memory leak!
-    my $octets = encode('iso-8859-1', $text,\&escape_wide);
-    $text = decode('iso-8859-1', $octets);
+#
+#    my $octets = encode('iso-8859-1', $text,\&escape_wide);
+#    $text = decode('iso-8859-1', $octets);
+
 
     print $TOKIN $text;
     close $TOKIN;
@@ -707,3 +805,41 @@ sub read_non_breaking{
 	close(PREFIX);
     }
 }
+
+
+## get the appropriate language code for a given language (iso639-3)
+
+sub LangEncoding{
+    my $lang = shift;
+
+# supported by Perl Encode:
+# http://perldoc.perl.org/Encode/Supported.html
+
+    return 'utf-8' if ($lang=~/^(utf8)$/);
+    return 'iso-8859-4' if ($lang=~/^(ice)$/);
+    ## what is scc?
+    return 'cp1250' if ($lang=~/^(alb|bos|cze|pol|rum|scc|scr|slv|hrv)$/); 
+#    return 'iso-8859-2' if ($lang=~/^(alb|bos)$/);
+    return 'cp1251' if ($lang=~/^(bul|mac|rus|bel)$/);
+#    return 'cp1252' if ($lang=~/^(dan|dut|epo|est|fin|fre|ger|hun|ita|nor|pob|pol|por|spa|swe)$/);
+    return 'cp1253' if ($lang=~/^(ell|gre)$/);
+    return 'cp1254' if ($lang=~/^(tur)$/);
+    return 'cp1255' if ($lang=~/^(heb)$/);
+    return 'cp1256' if ($lang=~/^(ara)$/);
+    return 'cp1257' if ($lang=~/^(lat|lit)$/);  # correct?
+    return 'big5-eten' if ($lang=~/^(chi|zho)$/);
+#    return 'utf-8' if ($lang=~/^(jpn)$/);
+    return 'shiftjis' if ($lang=~/^(jpn)$/);
+#    return 'cp932' if ($lang=~/^(jpn)$/);
+    return 'euc-kr' if ($lang=~/^(kor)$/);
+#    return 'cp949' if ($lang=~/^(kor)$/);
+    return 'cp1252';
+#    return 'iso-8859-6' if ($lang=~/^(ara)$/);
+#    return 'iso-8859-7' if ($lang=~/^(ell|gre)$/);
+#    return 'iso-8859-1';
+
+## unknown: haw (hawaiian), hrv (crotioan), amh (amharic) gai (borei)
+##          ind (indonesian), max (North Moluccan Malay), may (Malay?)
+}
+
+

@@ -3,7 +3,7 @@
 # -*-perl-*-
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
-# $Id$
+# $Id: xces2text,v 1.1.1.1 2004/05/03 15:39:55 joerg72 Exp $
 #----------------------------------------------------------------------------
 # usage: koma2text [OPTIONS] koma-align-file src-output trg-output
 #

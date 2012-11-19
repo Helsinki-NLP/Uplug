@@ -52,7 +52,7 @@
      },
   },
   'module' => {
-    'program' => 'toktag.pl',
+    'program' => 'uplug-toktag',
     'location' => '$UplugBin',
     'name' => 'tree tagger (german)',
     'stdout' => 'text'

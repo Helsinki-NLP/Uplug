@@ -28,7 +28,7 @@
     }
   },
   'module' => {
-    'program' => 'hunalign.pl',
+    'program' => 'uplug-hunalign',
     'location' => '$UplugBin',
     'name' => 'GMA sentence aligner',
     'stdout' => 'bitext',

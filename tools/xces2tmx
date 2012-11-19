@@ -142,7 +142,7 @@ while (<F>){
 		    $sent=~s/\n/ /gs;
 		    $sent=~s/\<[^\>]*>//gs;
 		    $sent=~s/  +/ /gs;
-		    $sent=&Str2XML($sent);
+#		    $sent=&Str2XML($sent);
 # multiple seg's are not valid in TMX!
 #		    print "<seg id=\"$srclang$_.\">";
 		    print $sent,' ';
@@ -166,7 +166,7 @@ while (<F>){
 		    $sent=~s/\n/ /gs;
 		    $sent=~s/\<[^\>]*>//gs;
 		    $sent=~s/  +/ /gs;
-		    $sent=&Str2XML($sent);
+#		    $sent=&Str2XML($sent);
 # multiple seg's are not valid in TMX!
 #		    print "<seg id=\"$trglang$_.\">";
 		    print $sent,' ';

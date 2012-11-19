@@ -1,6 +1,6 @@
 {
   'module' => {
-    'program' => 'coocstat_slow.pl',
+    'program' => 'uplug-coocstat-slow',
     'location' => '$UplugBin',
     'name' => 'Co-occurence statistics',
   },

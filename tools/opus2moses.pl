@@ -27,12 +27,13 @@
 use strict;
 use XML::Parser;
 use FileHandle;
+use File::Basename;
 
 
-use vars qw($opt_s $opt_t $opt_d $opt_n $opt_i $opt_e $opt_f $opt_h $opt_p $opt_l $opt_1 $opt_x);
+use vars qw($opt_s $opt_t $opt_d $opt_n $opt_i $opt_e $opt_f $opt_h $opt_p $opt_l $opt_1 $opt_x $opt_r $opt_m);
 use Getopt::Std;
 
-getopts('s:t:d:n:ie:f:hp:l1x:');
+getopts('s:t:d:n:ie:f:hp:l1x:rm');
 
 if ($opt_h){
     print <<"EOH";
@@ -74,7 +75,7 @@ my $TRGOUTFILE   = $opt_f || 'trg';
 my @SrcFactors = split(/:/,$SRCFACTORSTR);
 my @TrgFactors = split(/:/,$TRGFACTORSTR);
 
-my $MAX = $opt_x || 80;
+my $MAX = $opt_x || 100;
 
 ## make XML parser object for parsing the sentence alignment file
 
@@ -94,11 +95,14 @@ my ($SRC,$TRG);         # filehandles for reading bitexts
 my $SRCOUT = new FileHandle;
 my $TRGOUT = new FileHandle;
 
-$SRCOUT->open("> $SRCOUTFILE");
-$TRGOUT->open("> $TRGOUTFILE");
+unless ($opt_m){
+    $SRCOUT->open("> $SRCOUTFILE");
+    $TRGOUT->open("> $TRGOUTFILE");
 
-binmode($SRCOUT, ":utf8");
-binmode($TRGOUT, ":utf8");
+    binmode($SRCOUT, ":utf8");
+    binmode($TRGOUT, ":utf8");
+}
+
 
 if ($opt_p){
     open P,">$opt_p" || warn "cannot open $opt_p ...\n";
@@ -194,6 +198,22 @@ sub OpenCorpora{
     $TrgHandler = $TrgParser->parse_start;
     $TrgHandler->{OUT} = $TRGOUT;
     @{$TrgHandler->{FACTORS}} = @TrgFactors;
+
+    # multiple file output (option -m): create new output files for each
+    # aligned document (use file basenames and the current directory)
+    # (use opt_e/opt_f as extension or 'src', 'trg' as default)
+    if ($opt_m){
+	my $srcout = basename($srcfile);
+	my $trgout = basename($trgfile);
+	$srcout =~s/\.xml(\.gz)?/.$SRCOUTFILE/;
+	$trgout =~s/\.xml(\.gz)?/.$TRGOUTFILE/;
+
+	$SRCOUT->open("> $srcout");
+	$TRGOUT->open("> $trgout");
+	binmode($SRCOUT, ":utf8");
+	binmode($TRGOUT, ":utf8");
+    }
+
 }
 
 sub CloseCorpora{
@@ -262,34 +282,46 @@ sub AlignTagStart{
 		&ParseSentences($src,$SrcHandler,$SRC);
 		&ParseSentences($trg,$TrgHandler,$TRG);
 
-		# skip if no words found
-		return if (not $SrcHandler->{NRWORDS});
-		return if (not $TrgHandler->{NRWORDS});
-		# skip if sentences are too long
-		return if ($SrcHandler->{NRWORDS} > $MAX);
-		return if ($TrgHandler->{NRWORDS} > $MAX);
-		# skip if ratio<=8 (a bit more restrictive than clean_corpus)
-		return if ($SrcHandler->{NRWORDS}/$TrgHandler->{NRWORDS}>8);
-		return if ($TrgHandler->{NRWORDS}/$SrcHandler->{NRWORDS}>8);
-#		# skip if ratio<=9 (like in clean_corpus for MOSES)
-#		return if ($SrcHandler->{NRWORDS}/$TrgHandler->{NRWORDS}>9);
-#		return if ($TrgHandler->{NRWORDS}/$SrcHandler->{NRWORDS}>9);
-		# skip if one of the strings is empty (shouldn't happen!)
-#		return if ($SrcHandler->{OUTSTR}=~/^\s*$/);
-#		return if ($TrgHandler->{OUTSTR}=~/^\s*$/);
+		unless ($opt_r){
+		    # skip if no words found
+		    return if (not $SrcHandler->{NRWORDS});
+		    return if (not $TrgHandler->{NRWORDS});
+		    # skip if sentences are too long
+		    return if ($SrcHandler->{NRWORDS} > $MAX);
+		    return if ($TrgHandler->{NRWORDS} > $MAX);
+		    # skip if ratio<=8 (a bit more restrictive than clean_corpus)
+		    return if ($SrcHandler->{NRWORDS}/$TrgHandler->{NRWORDS}>8);
+		    return if ($TrgHandler->{NRWORDS}/$SrcHandler->{NRWORDS}>8);
+#		    # skip if ratio<=9 (like in clean_corpus for MOSES)
+#		   return if ($SrcHandler->{NRWORDS}/$TrgHandler->{NRWORDS}>9);
+#		   return if ($TrgHandler->{NRWORDS}/$SrcHandler->{NRWORDS}>9);
+		   # skip if one of the strings is empty (shouldn't happen!)
+#		   return if ($SrcHandler->{OUTSTR}=~/^\s*$/);
+#		   return if ($TrgHandler->{OUTSTR}=~/^\s*$/);
+		}
 		if ($SrcHandler->{OUTSTR}=~/^\s*$/){
-		    print STDERR "empty src string but $SrcHandler->{NRWORDS} words! --> strange ... (trg = $TrgHandler->{NRWORDS} words)\n";
+		    unless ($opt_r){
+			print STDERR "empty src string but $SrcHandler->{NRWORDS} words! --> strange ... (trg = $TrgHandler->{NRWORDS} words)\n";
+		    }
 		    return;
 		}
 		if ($TrgHandler->{OUTSTR}=~/^\s*$/){
-		    print STDERR "empty trg string but $TrgHandler->{NRWORDS} words! --> strange ... (src = $SrcHandler->{NRWORDS} words)\n";
+		    unless ($opt_r){
+			print STDERR "empty trg string but $TrgHandler->{NRWORDS} words! --> strange ... (src = $SrcHandler->{NRWORDS} words)\n";
+		    }
 		    return;
 		}
 
-		$SrcHandler->{OUTSTR}=~s/^\s+//;  # remove leading spaces
-		$SrcHandler->{OUTSTR}=~s/\s+$//;  # remove final spaces
-		$TrgHandler->{OUTSTR}=~s/^\s+//;
-		$TrgHandler->{OUTSTR}=~s/\s+$//;
+		if ($opt_r){
+		    $SrcHandler->{OUTSTR} = &normalize($SrcHandler->{OUTSTR});
+		    $TrgHandler->{OUTSTR} = &normalize($TrgHandler->{OUTSTR});
+		}
+		else{
+		    $SrcHandler->{OUTSTR}=~s/^\s+//;  # remove leading spaces
+		    $SrcHandler->{OUTSTR}=~s/\s+$//;  # remove final spaces
+		    $TrgHandler->{OUTSTR}=~s/^\s+//;
+		    $TrgHandler->{OUTSTR}=~s/\s+$//;
+		}
 
 # 		my @srcwords=split(/\s+/,$SrcHandler->{OUTSTR});
 # 		if (@srcwords!=$SrcHandler->{NRWORDS}){
@@ -351,14 +383,16 @@ sub XmlTagStart{
 }
 
 ## strings within tags
-## - open w-tag? --> print string to SRCOUT
+## - open w-tag (or option -r = raw, untokenized text)? 
+##   --> print string to SRCOUT
 
 sub XmlChar{
     my ($p,$c)=@_;
-    if ($p->{OPENW}){
+    if ($p->{OPENW} || $opt_r){
 	if ($p->{OPENSID} eq $p->{IDS}->[0]){
 #	    $c=~tr/| \n/___/;
 	    $p->{WATTR}->{word}.=$c;
+	    $p->{WATTR}->{word}.=' ' if ($opt_r);
 	}
     }
 }
@@ -376,6 +410,10 @@ sub XmlTagEnd{
 	    shift(@{$p->{IDS}});
 	}
 	delete $p->{OPENSID};
+	if ($opt_r){
+	    $p->{OUTSTR} .= $p->{WATTR}->{word}.' ';
+	    $p->{WATTR}->{word} = '';
+	}
     }
     elsif ($e eq 'w'){
 	if ($p->{OPENSID} eq $p->{IDS}->[0]){
@@ -408,4 +446,17 @@ sub XmlTagEnd{
 	    }
 	}
     }
+}
+
+
+
+sub normalize {
+    $_[0] =~s/\s+/ /gs;  # normalize white space characters
+    $_[0] =~s/^\s*//;
+    $_[0] =~s/\s*$//;
+    $_[0] =~ s/[\x00-\x1f\x7f\n]//gs;             # control characters
+    $_[0] =~ s/\<(s|unk|\/s|\s*and\s*|)\>//gs;    # reserved words
+    $_[0] =~ s/\[\s*and\s*\]//gs;
+    $_[0] =~ s/\|/_/gs;                           # vertical bars
+    return $_[0];
 }

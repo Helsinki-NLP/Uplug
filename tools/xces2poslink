@@ -3,7 +3,7 @@
 # -*-perl-*-
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
-# $Id$
+# $Id: xces2poslink,v 1.1 2007/05/08 08:52:36 joerg72 Exp $
 #----------------------------------------------------------------------------
 # extract features from word alignments (default: text:POS)
 # USAGE: xces2poslink wordalign-file

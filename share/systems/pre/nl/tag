@@ -45,7 +45,7 @@
      },
   },
   'module' => {
-    'program' => 'tag.pl',
+    'program' => 'uplug-tag',
     'location' => '$UplugBin',
     'name' => 'tree tagger (english)',
     'stdout' => 'text'

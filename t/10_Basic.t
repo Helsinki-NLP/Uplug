@@ -48,14 +48,5 @@ unlink('1988en.xml');
 unlink('1988fr.xml');
 unlink('1988sv.xml');
 
-# sentence alignment
-
-system("$UPLUG align/sent -src $DATA/xml/1988de.basic.xml -trg $DATA/xml/1988en.basic.xml -out align.xml $null");
-is( compare( "align.xml", "$DATA/xml/de-en/1988.basic.sent.xml" ),0, "sentence alignment (de-en)" );
-
-
-unlink('align.xml');
-
-
 done_testing;
 

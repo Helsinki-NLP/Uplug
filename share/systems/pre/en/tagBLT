@@ -36,7 +36,7 @@
      },
   },
   'module' => {
-    'program' => 'tag.pl',
+    'program' => 'uplug-tag',
     'location' => '$UplugBin',
     'name' => 'Qtag tagger (English - BLT tagset)',
     'stdout' => 'text'

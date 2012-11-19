@@ -31,7 +31,7 @@
     }
   },
   'module' => {
-    'program' => 'sentalign.pl',
+    'program' => 'uplug-sentalign',
     'location' => '$UplugBin',
     'name' => 'sentence aligner',
     'stdout' => 'bitext',

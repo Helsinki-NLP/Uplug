@@ -2,7 +2,7 @@
 #
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
-# $Id$
+# $Id: swap-lang,v 1.1.1.1 2004/05/03 15:39:55 joerg72 Exp $
 
 use strict;
 use FindBin qw($Bin);

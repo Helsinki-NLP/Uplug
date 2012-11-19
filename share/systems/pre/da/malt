@@ -1,6 +1,6 @@
 {
   'module' => {
-    'program' => 'uplug_malt',
+    'program' => 'uplug-malt',
     'location' => '$UplugBin',
     'name' => 'MaltParser (Danish)',
   },

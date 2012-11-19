@@ -1,6 +1,6 @@
 {
   'module' => {
-    'program' => 'wordalign.pl',
+    'program' => 'uplug-wordalign',
     'location' => '$UplugBin',
     'name' => 'The clue aligner - linking words',
     'stdin' => 'bitext',

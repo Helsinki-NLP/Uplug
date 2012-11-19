@@ -1,8 +1,4 @@
-#####################################################################
-#
-# $Author$
-# $Id$
-#
+#-*-perl-*-
 #---------------------------------------------------------------------------
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
@@ -259,7 +255,7 @@ sub command{
     }
     my $bin=&GetParam($self->{CONFIG},'module','location');
     my $cmd=&GetParam($self->{CONFIG},'module','program');
-    if ($bin){$cmd=$bin.'/'.$cmd;}
+    if (-d $bin){$cmd=$bin.'/'.$cmd;}
     $cmd.=' -i '.$self->{MODULE};
 
     if ($DEBUG){

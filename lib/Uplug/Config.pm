@@ -31,20 +31,83 @@ use strict;
 use vars qw($VERSION @ISA @EXPORT);
 use vars qw(%NamedIO);
 
+use FindBin qw/$Bin/;
+use File::ShareDir qw/dist_dir/;
+use Exporter qw/import/;
 use Data::Dumper;
 
 $VERSION = 0.02;
 
-
-@ISA = qw( Exporter);
-@EXPORT = qw(&ReadConfig &WriteConfig &CheckParameter &GetNamedIO
-	     &CheckParam &GetParam &SetParam);
+our @EXPORT   = qw/ReadConfig WriteConfig CheckParameter GetNamedIO
+	           CheckParam GetParam SetParam
+                   find_executable 
+                      shared_home 
+                      shared_bin 
+                      shared_ini 
+                      shared_lib 
+                      shared_lang
+                      shared_systems/;
 
 ## "named" IO streams are stored in %NamedIO
 ## read them from the files below (in ENV{UPLUGHOME}/ini)
 
 &ReadNamed('DataStreams.ini');          # default "IO streams"
 &ReadNamed('UserDataStreams.ini');      # user "IO streams"
+
+
+# try to find the shared files for Uplug
+
+my $SHARED_HOME;
+eval{ $SHARED_HOME = dist_dir('Uplug') };
+$SHARED_HOME = $ENV{UPLUGHOME}.'/share' unless (-d  $SHARED_HOME);
+$SHARED_HOME = $Bin.'/share'            unless (-d  $SHARED_HOME);
+$SHARED_HOME = $Bin.'/../share'         unless (-d  $SHARED_HOME);
+
+our $SHARED_BIN  = $SHARED_HOME . '/bin';
+our $SHARED_INI  = $SHARED_HOME . '/ini';
+our $SHARED_LANG = $SHARED_HOME . '/lang';
+our $SHARED_LIB  = $SHARED_HOME . '/lib';
+our $SHARED_SYS  = $SHARED_HOME . '/systems';
+
+our $OS_TYPE      = $ENV{OS_TYPE} || `uname -s`;
+our $MACHINE_TYPE = $ENV{MACHINE_TYPE} || `uname -m`;
+
+chomp($OS_TYPE);
+chomp($MACHINE_TYPE);
+
+sub shared_home   { return defined($_[0]) ? $SHARED_HOME = $_[0] : $SHARED_HOME; }
+sub shared_bin    { return defined($_[0]) ? $SHARED_BIN = $_[0] : $SHARED_BIN; }
+sub shared_ini    { return defined($_[0]) ? $SHARED_INI = $_[0] : $SHARED_INI; }
+sub shared_lang   { return defined($_[0]) ? $SHARED_LANG = $_[0] : $SHARED_LANG; }
+sub shared_lib    { return defined($_[0]) ? $SHARED_LIB = $_[0] : $SHARED_LIB; }
+sub shared_systems{ return defined($_[0]) ? $SHARED_SYS = $_[0] : $SHARED_SYS; }
+
+
+sub find_executable{
+  my $name = shift;
+
+  # try to find in the path
+
+  my $path = `which $name`;
+  chomp($path);
+  return $path if (-e $path);
+
+  # try to find it in the shared tools dir
+
+  return join('/',$SHARED_BIN,$OS_TYPE,$MACHINE_TYPE,$name) 
+      if (-e join('/',$SHARED_BIN,$OS_TYPE,$MACHINE_TYPE,$name) );
+  return join('/',$SHARED_BIN,$OS_TYPE,$name) 
+      if (-e join('/',$SHARED_BIN,$OS_TYPE,$name) );
+  return $SHARED_BIN.'/'.$name if (-e $SHARED_BIN.'/'.$name);
+
+  # try to find it
+
+  $path = `find -name '$name' $SHARED_BIN`;
+  chomp($path);
+  return $path if (-x $path);
+
+  return $name;
+}
 
 
 #------------------------------------------------------------------------
@@ -104,7 +167,10 @@ sub ReadConfig{
     my @param=@_;
 
     if (! -f $file){
-	if (-f "$ENV{UPLUGHOME}/$file"){
+	if (-f ."$SHARED_SYS/$file"){
+	    $file = "$SHARED_SYS/$file";
+	}
+	elsif (-f "$ENV{UPLUGHOME}/$file"){
 	    $file = "$ENV{UPLUGHOME}/$file";
 	}
 	elsif (-f "$ENV{UPLUGHOME}/ini/$file"){
@@ -163,16 +229,17 @@ sub WriteConfig{
 
 sub ExpandVar{
     my $configtext=shift;
+
     $configtext=~s/\$UplugHome/$ENV{UPLUGHOME}/gs;
-    $configtext=~s/\$UplugLang/$ENV{UPLUGHOME}\/lang/gs;
+    $configtext=~s/\$UplugLang/$SHARED_LANG/gs;
     if (defined $ENV{UPLUGCONFIG}){
 	$configtext=~s/\$UplugSystem/$ENV{UPLUGCONFIG}/gs;
     }
     else{
-	$configtext=~s/\$UplugSystem/$ENV{UPLUGHOME}\/systems/gs;
+	$configtext=~s/\$UplugSystem/$SHARED_SYS/gs;
     }
     $configtext=~s/\$UplugData/data/gs;
-    $configtext=~s/\$UplugIni/$ENV{UPLUGHOME}\/ini/gs;
+    $configtext=~s/\$UplugIni/$SHARED_INI/gs;
     $configtext=~s/\$UplugBin/$ENV{UPLUGHOME}\/bin/gs;
     return $configtext;
 }

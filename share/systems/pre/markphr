@@ -1,7 +1,7 @@
 {
   'module' => {
     'name' => 'phrase marker',
-    'program' => 'markphr.pl',
+    'program' => 'uplug-markphr',
     'location' => '$UplugBin',
     'stin' => 'text',
     'stdout' => 'text',

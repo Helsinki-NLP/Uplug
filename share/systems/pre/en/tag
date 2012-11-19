@@ -42,7 +42,7 @@
      },
   },
   'module' => {
-    'program' => 'tag.pl',
+    'program' => 'uplug-tag',
     'location' => '$UplugBin',
     'name' => 'tagger (english)',
     'stdout' => 'text'

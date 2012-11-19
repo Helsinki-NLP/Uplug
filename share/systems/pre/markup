@@ -2,7 +2,7 @@
   'encoding' => 'iso-8859-1',
   'module' => {
     'name' => 'XML markup',
-    'program' => 'markup.pl',
+    'program' => 'uplug-markup',
     'location' => '$UplugBin',
     'stdin' => 'text',
     'stdout' => 'text',

@@ -1,6 +1,6 @@
 {
   'module' => {
-    'program' => 'coocstat.pl',
+    'program' => 'uplug-coocstat',
     'location' => '$UplugBin',
     'name' => 'co-occurrence measure (mutual information)',
   },

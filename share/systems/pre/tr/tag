@@ -41,7 +41,7 @@
      },
   },
   'module' => {
-    'program' => 'tag.pl',
+    'program' => 'uplug-tag',
     'location' => '$UplugBin',
     'name' => 'Tagger by Kemal Oflazer (turkish)',
     'stdout' => 'text'

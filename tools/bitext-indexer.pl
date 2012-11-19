@@ -498,6 +498,7 @@ sub XML2CWBinput{
 #	       'el' => 'utf-8',
 	       'eo' => 'iso-8859-3',
 	       'et' => 'iso-8859-4',
+	       'fa' => 'utf-8',
 	       'he' => 'utf-8',
 	       'hr' => 'iso-8859-2',
 	       'hu' => 'iso-8859-2',

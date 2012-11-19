@@ -27,7 +27,7 @@
     }
   },
   'module' => {
-    'program' => 'gma.pl',
+    'program' => 'uplug-gma',
     'location' => '$UplugBin',
     'name' => 'GMA sentence aligner',
     'stdout' => 'bitext',

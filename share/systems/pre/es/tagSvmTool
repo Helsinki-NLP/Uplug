@@ -41,7 +41,7 @@
      },
   },
   'module' => {
-    'program' => 'tag.pl',
+    'program' => 'uplug-tag',
     'location' => '$UplugBin',
     'name' => 'SvmTool tagger (spanish)',
     'stdout' => 'text'

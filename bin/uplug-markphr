@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 #
 # markphr.pl - mark given phrases in a corpus
 #

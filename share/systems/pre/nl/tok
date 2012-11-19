@@ -40,7 +40,7 @@
      },
   },
   'module' => {
-    'program' => 'tokext.pl',
+    'program' => 'uplug-tokext',
     'location' => '$UplugBin',
     'name' => 'tokenizer (dutch)',
     'stdout' => 'text'

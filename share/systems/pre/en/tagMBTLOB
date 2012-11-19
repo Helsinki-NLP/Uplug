@@ -37,7 +37,7 @@
      },
   },
   'module' => {
-    'program' => 'tag.pl',
+    'program' => 'uplug-tag',
     'location' => '$UplugBin',
     'name' => 'MBT tagger (english)',
     'stdout' => 'text'

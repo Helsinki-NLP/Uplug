@@ -1,7 +1,7 @@
 {
   'module' => {
     'name' => 'N-gram frequencies',
-    'program' => 'ngramfreq.pl',
+    'program' => 'uplug-ngramfreq',
     'location' => '$UplugBin',
     'stin' => 'text',
     'stdout' => 'text',
