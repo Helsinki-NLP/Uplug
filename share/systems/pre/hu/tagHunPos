@@ -21,8 +21,11 @@
   },
   'parameter' => {
      'tagger' => {
-      'language' => 'hungarian',
-      'startup base' => 'hunpos',
+       'program' => 'hunpos-tag',
+       'model'   => '$UplugLang/hunpos/hu_szeged_kr.model',
+       'input'   => 'stdin',
+#      'language' => 'hungarian',
+#      'startup base' => 'hunpos',
      },
      'output' => {
         'attribute' => 'pos',

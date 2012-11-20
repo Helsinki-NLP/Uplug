@@ -21,8 +21,11 @@
   },
   'parameter' => {
      'tagger' => {
-      'language' => 'czech',
-      'startup base' => 'hunpos_',
+       'program' => 'hunpos-tag',
+       'model'   => '$UplugLang/hunpos/cs_pdt.model',
+       'input'   => 'stdin',
+#      'language' => 'czech',
+#      'startup base' => 'hunpos_',
      },
      'output' => {
         'attribute' => 'hun',

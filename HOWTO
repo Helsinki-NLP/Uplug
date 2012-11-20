@@ -41,7 +41,7 @@ uplug/tools/declclue -o data/runtime/lexicon.dbm < lexicon.txt
    uplug/example (supposing that you copied the corpus to the
    current directory):
 
-uplug/uplug systems/align/word/link -in svenprf.xces
+uplug/uplug align/word/link -in svenprf.xces
 
 
 
@@ -55,7 +55,7 @@ How to use alternative sentence alignment approaches (since version 0.2.0)
 hunalign is taken from http://mokk.bme.hu/resources/hunalign
 It is licensed under a Creative Commons License
 http://creativecommons.org/licenses/by/2.0/
-In Uplug it is included in ext/hunalign (pre-compiled for GNU/Linux).
+In Uplug it is included in share/bin/Linux/hunalign (pre-compiled for GNU/Linux).
 
 You can run it in a similar way as the default sentence aligner.
 Assuming that you have 2 tokenized files (source.xm & target.xml) run the
@@ -93,7 +93,7 @@ ext/hunalign/data/hu-en.dic)
 
 GMA is taken from http://nlp.cs.nyu.edu/GMA/
 and licensed under the GPL (http://www.gnu.org/licenses/gpl.html)
-In Uplug it is include in ext/gma (pre-compiled for GNU/Linux)
+In Uplug it is include in share/ext/gma (pre-compiled for GNU/Linux)
 
 
 You can run it in the same way as the default sentence aligner:
@@ -103,9 +103,9 @@ You can run it in the same way as the default sentence aligner:
 However, it is recommended to use GMA with language specific
 configurations. There is only one pre-defined configuration file for GMA in
 Uplug, for English-French. Configuration files are in 
-    ext/gma/config/
+    share/ext/gma/config/
 for example
-    ext/gma/config/GMA.config.enfr
+    share/ext/gma/config/GMA.config.enfr
 You can write your own configuration files that points to resource files used
 by the algorithm (look at the example configuration file for enfr). It can be
 used by specifying source and target language when running GMA in Uplug:

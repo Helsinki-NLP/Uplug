@@ -21,8 +21,11 @@
   },
   'parameter' => {
      'tagger' => {
-      'language' => 'russian',
-      'startup base' => 'hunpos_',
+       'program' => 'hunpos-tag',
+       'model'   => '$UplugLang/hunpos/ru_rdt.model',
+       'input'   => 'stdin',
+#      'language' => 'russian',
+#      'startup base' => 'hunpos_',
      },
      'output' => {
         'attribute' => 'hun',

@@ -7,18 +7,22 @@ Installing Uplug
 There is no tool for installing Uplug yet.
 Most of the scripts should run on a standard GNU/Linux machine.
 
-* You need at least a recent version of Perl (I use 5.8.0)
+* You need at least a recent version of Perl
   You have to modify scripts in bin/ to point to your perl binary
   (the default setting is /usr/bin/perl)
+* You need the following Perl modules:
+  XML::Parser
+  XML::Simple
+  File::ShareDir
 * Some scripts in tools/ use bash (/bin/bash)
   You might have to adjust scripts in tools/ according to your
   installation
-* Check the external programs in ext/
-  External programs are pre-compiled for GNU/Linux (RedHat 9)
+* Check the external programs in share/ext/
+  Some external programs are pre-compiled for GNU/Linux (see share/bin)
   Starter scripts have to be modified if necessary
-	  ext/tagger
-	  ext/parser
-	  ext/chunker
+	  share/ext/tagger
+	  share/ext/parser
+	  share/ext/chunker
 
   Some of the external programs are not included in the package. You
   might want to install them on your local machine:

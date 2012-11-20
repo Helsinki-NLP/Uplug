@@ -21,8 +21,11 @@
   },
   'parameter' => {
      'tagger' => {
-      'language' => 'english',
-      'startup base' => 'hunpos',
+       'program' => 'hunpos-tag',
+       'model'   => '$UplugLang/hunpos/en_wsj.model',
+       'input'   => 'stdin',
+#      'language' => 'english',
+#      'startup base' => 'hunpos',
      },
      'output' => {
         'attribute' => 'hun',

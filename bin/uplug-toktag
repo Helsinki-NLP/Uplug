@@ -111,15 +111,8 @@ my @Attr=split(/:/,$OutAttr);
 #---------------------------------------------------------------------------
 
 
-
-if ($UplugHome!~/^[\\\/]/){
-    use Cwd;
-    $UplugHome=getcwd.'/'.$UplugHome;
-}
-
-my $TaggerDir=$UplugHome.'ext/tagger/';
-#my $TmpUntagged=$TaggerDir.'untagged.'.$$;
-#my $TmpTagged=$TaggerDir.'tagged.'.$$;
+my $UplugHome = &shared_home;
+my $TaggerDir=$UplugHome.'/ext/tagger/';
 my $TmpUntagged=Uplug::IO::Any::GetTempFileName;
 my $TmpTagged=Uplug::IO::Any::GetTempFileName;
 

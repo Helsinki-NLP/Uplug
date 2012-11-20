@@ -20,8 +20,7 @@
   and lemmatization',
   'input' => {
     'text' => {
-      'format' => 'xml',
-      'root' => 's',
+      'format' => 'text',
     }
   },
   'output' => {

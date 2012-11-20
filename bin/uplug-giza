@@ -1,4 +1,5 @@
 #!/usr/bin/env perl
+#-*-perl-*-
 #
 # giza.pl: wrapper for Giza++
 #
@@ -624,16 +625,26 @@ sub RunGiza{
     my $src=shift;
     my $trg=shift;
 
-    if (my $sig=system "$GIZADIR/plain2snt.out $src $trg"){
+    my $plain2snt = &find_executable('plain2snt.out');
+    my $snt2cooc = &find_executable('snt2cooc.out');
+    my $mkcls = &find_executable('mkcls');
+    my $GIZA = &find_executable('GIZA++');
+
+    if (my $sig=system "$plain2snt $src $trg"){
 	die "got signal $? from plain2snt!\n";
     }
-    my $command="PATH=\$\{PATH\}:$GIZADIR;";
-    my $snt="$src$trg\.snt";
-    if (not -e $snt){$snt="$src\_$trg\.snt";}
-    if (not -e $snt){die "cannot find alignment-file: $snt!\n";}
-    $command.="$GIZADIR/trainGIZA++.sh $src\.vcb $trg\.vcb $snt";
-    if (my $sig=system $command){
-	die "got signal $? from trainGIZA++.sh!\n";
+    my $snt="$src\_$trg\.snt";
+    if (my $sig=system "$snt2cooc $src.vcb $trg.vcb $snt > src_trg.cooc"){
+	die "got signal $? from snt2plain!\n";
+    }
+    if (my $sig=system "$mkcls -m2 -p$src -c50 -V$src.vcb.classes opt >& mkcls1.log"){
+	die "got signal $? from mkcls (src)!\n";
+    }
+    if (my $sig=system "$mkcls -m2 -p$trg -c50 -V$trg.vcb.classes opt >& mkcls2.log"){
+	die "got signal $? from mkcls (trg)!\n";
+    }
+    if (my $sig=system "$GIZA -S $src.vcb -T $trg.vcb -C $snt -p0 0.98 -cooc src_trg.cooc -o GIZA++ >& GIZA.log"){
+	die "got signal $? from GIZA++!\n";
     }
 }
 

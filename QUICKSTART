@@ -24,8 +24,8 @@ Uplug - Quickstart
 3a) Basic pre-processing (text --> xml)
    (a text in Swedish and English, encoded in ISO-8859-1 (latin1))
 
-   /cvs/uplug systems/pre/basic -ci 'iso-8859-1' -in 1988sv.txt > 1988sv.xml
-   /cvs/uplug systems/pre/basic -ci 'iso-8859-1' -in 1988en.txt > 1988en.xml
+   /cvs/uplug pre/basic -ci 'iso-8859-1' -in 1988sv.txt > 1988sv.xml
+   /cvs/uplug pre/basic -ci 'iso-8859-1' -in 1988en.txt > 1988en.xml
 
    Look at 1988sv.xml and 1988en.xml! Both files are (hopefully
    tokenised and marked with basic XML-tags)
@@ -36,7 +36,7 @@ Uplug - Quickstart
    source language file: 1988sv.xml
    target language file: 1988en.xml
 
-   /cvs/uplug systems/align/sent -src 1988sv.xml -trg 1988en.xml > 1988sven.xml
+   /cvs/uplug align/sent -src 1988sv.xml -trg 1988en.xml > 1988sven.xml
 
    Sentence alignment pointers are stored in 1988sven.xml.
    You can read the aligned bitext segments using the following command:
@@ -49,7 +49,7 @@ Uplug - Quickstart
 
 3c) Word alignment (default)
 
-   /cvs/uplug systems/align/word/default -in 1988sven.xml -out 1988sven.links
+   /cvs/uplug align/word/default -in 1988sven.xml -out 1988sven.links
 
    This will take some time! Word alignment is slow even for this
    little bitext. The word aligner will 
@@ -73,7 +73,7 @@ Uplug - Quickstart
    Use the following command for aligning tagged corpora (at least POS tags):
 
    cp /cvs/uplug/example/svenprf* .
-   /cvs/uplug systems/align/word/tagged -in svenprf.xces -out svenprf.links
+   /cvs/uplug align/word/tagged -in svenprf.xces -out svenprf.links
 
    This is essentially the same as the default word alignment with addiyional
    clues for POS and chunk labels.
@@ -86,7 +86,7 @@ Uplug - Quickstart
     scripts. The following command can be used to tag the English
     example corpus:
 
-    /cvs/uplug systems/pre/en/tagGrok -in 1988en.xml > 1988en.tag
+    /cvs/uplug pre/en/tagHunPos -in 1988en.xml > 1988en.tag
 
 
 3f) Chunking (using external chunkers)
@@ -94,7 +94,7 @@ Uplug - Quickstart
     There is a chunker for English that can be run on POS-tagged
     corpus files:
 
-    /cvs/uplug systems/pre/en/chunk -in 1988en.tag > 1988en.chunk
+    /cvs/uplug pre/en/chunk -in 1988en.tag > 1988en.chunk
 
 
 3g) Word alignment evaluation
@@ -120,7 +120,7 @@ Uplug - Quickstart
     for aligning words. The following command runs the word aligner
     with one clue type (GIZA++ translation probabilities):
 
-    /cvs/uplug systems/align/word/test/link -gw -in svenprf.xces -out links.new
+    /cvs/uplug align/word/test/link -gw -in svenprf.xces -out links.new
 
     Weights can be set independently for each clue type. For example,
     in the example above we can specify a clue weight (e.g. 0.01) for
@@ -161,7 +161,7 @@ Uplug - Quickstart
 
    There is another standard setting for word alignment:
 
-   /cvs/uplug systems/align/word/basic -in 1988sven.xml -out basic.links
+   /cvs/uplug align/word/basic -in 1988sven.xml -out basic.links
 
    The word aligner will 
      * create basic clues (Dice and LCSR)
@@ -181,7 +181,7 @@ Uplug - Quickstart
     last two steps will be repeated 3 times (learning clues from precious
     alignments). This is the slowest standard setting for word alignment.
 
-   /cvs/uplug systems/align/word/advanced -in svenprf.xces -out advanced.links
+   /cvs/uplug align/word/advanced -in svenprf.xces -out advanced.links
    /cvs/tools/xces2dic < advanced.links | less
 
 

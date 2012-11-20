@@ -21,8 +21,11 @@
   },
   'parameter' => {
      'tagger' => {
-      'language' => 'danish',
-      'startup base' => 'hunpos_',
+       'program' => 'hunpos-tag',
+       'model'   => '$UplugLang/hunpos/da_ddt.model',
+       'input'   => 'stdin',
+#      'language' => 'danish',
+#      'startup base' => 'hunpos_',
      },
      'output' => {
         'attribute' => 'hun',

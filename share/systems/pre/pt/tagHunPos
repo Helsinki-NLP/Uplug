@@ -21,8 +21,11 @@
   },
   'parameter' => {
      'tagger' => {
-      'language' => 'portuguese',
-      'startup base' => 'hunpos_',
+       'program' => 'hunpos-tag',
+       'model'   => '$UplugLang/hunpos/pt_bosque.model',
+       'input'   => 'stdin',
+#      'language' => 'portuguese',
+#      'startup base' => 'hunpos_',
      },
      'output' => {
         'attribute' => 'hun',

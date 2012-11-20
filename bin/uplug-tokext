@@ -43,9 +43,6 @@ use strict;
 use FindBin qw($Bin);
 use lib "$Bin/../lib";
 
-my $UplugHome="$Bin/../";
-$ENV{UPLUGHOME}=$UplugHome;
-
 use Uplug::Data;
 use Uplug::IO::Any;
 use Uplug::Config;
@@ -89,19 +86,12 @@ my $OutSentDel=$IniData{parameter}{output}{'sentence delimiter'};
 
 #---------------------------------------------------------------------------
 
-
-
-if ($UplugHome!~/^[\\\/]/){
-    use Cwd;
-    $UplugHome=getcwd.'/'.$UplugHome;
-}
-
-
+my $UplugHome = &shared_home;
 
 my $TmpUntokenized=Uplug::IO::Any::GetTempFileName;
 my $TmpTokenized=Uplug::IO::Any::GetTempFileName;
 
-my $TokenizerDir=$UplugHome.'ext/tokenizer/';
+my $TokenizerDir=$UplugHome.'/ext/tokenizer/';
 my $Tokenizer=$TokenizerDir.$prg.$lang;
 
 #---------------------------------------------------------------------------

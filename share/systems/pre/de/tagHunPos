@@ -21,8 +21,11 @@
   },
   'parameter' => {
      'tagger' => {
-      'language' => 'german',
-      'startup base' => 'hunpos_',
+       'program' => 'hunpos-tag',
+       'model'   => '$UplugLang/hunpos/de_tiger.model',
+       'input'   => 'stdin',
+#      'language' => 'german',
+#      'startup base' => 'hunpos_',
      },
      'output' => {
         'attribute' => 'hun',

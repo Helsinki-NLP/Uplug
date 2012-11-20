@@ -21,8 +21,11 @@
   },
   'parameter' => {
      'tagger' => {
-      'language' => 'slovene',
-      'startup base' => 'hunpos_',
+       'program' => 'hunpos-tag',
+       'model'   => '$UplugLang/hunpos/sl_jos.model',
+       'input'   => 'stdin',
+#      'language' => 'slovene',
+#      'startup base' => 'hunpos_',
      },
      'output' => {
         'attribute' => 'hun',

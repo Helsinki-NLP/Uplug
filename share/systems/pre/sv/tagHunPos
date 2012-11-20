@@ -21,8 +21,11 @@
   },
   'parameter' => {
      'tagger' => {
-      'language' => 'swedish',
-      'startup base' => 'hunpos_',
+       'program' => 'hunpos-tag',
+       'model'   => '$UplugLang/hunpos/se_Suc2x.model',
+       'input'   => 'stdin',
+#      'language' => 'swedish',
+#      'startup base' => 'hunpos_',
      },
      'output' => {
         'attribute' => 'hun',

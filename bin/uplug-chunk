@@ -110,16 +110,9 @@ if (ref($IniData{parameter}{'output replacements'}) eq 'HASH'){
 
 #---------------------------------------------------------------------------
 
+my $UplugHome = &shared_home;
 
-
-if ($UplugHome!~/^[\\\/]/){
-    use Cwd;
-    $UplugHome=getcwd.'/'.$UplugHome;
-}
-
-my $ChunkerDir=$UplugHome.'ext/chunker/';
-#my $TmpUntagged=$ChunkerDir.'untagged.'.$$;
-#my $TmpTagged=$ChunkerDir.'tagged.'.$$;
+my $ChunkerDir=$UplugHome.'/ext/chunker/';
 my $TmpUntagged=Uplug::IO::Any::GetTempFileName;
 my $TmpTagged=Uplug::IO::Any::GetTempFileName;
 

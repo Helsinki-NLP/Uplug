@@ -7,19 +7,18 @@ The whole package is in development - be patient!
 
 uplug		  script for running Uplug modules
 bin/		  executable scripts (Uplug modules)
-systems/	  configuration files of Uplug modules
-ext/		  external programs/tools integrated in Uplug
+share/systems/	  configuration files of Uplug modules
+share/ext/	  external programs/tools integrated in Uplug
 tools/		  simple tools (converting, dumping, etc)
 web/		  scripts for UplugWeb (not tested a lot)
 web/php		  web interfaces for interactive alignment (ICA & ISA)
 
-ini/		  some configuration files
-lang/		  language specific data
+share/ini/	  some configuration files
+share/lang/	  language specific data
 example/	  small example corpora
 
-Uplug.pm          main library for running Uplug modules
-Uplug/		  Uplug libraries
-XML/		  external XML libraries (just in case you don't have them)
+lib/Uplug.pm      main library for running Uplug modules
+lib/Uplug/	  Uplug libraries
 
 
 The project home page: http://sourceforge.net/projects/uplug/

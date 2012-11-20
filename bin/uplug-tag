@@ -50,9 +50,6 @@ use strict;
 use FindBin qw($Bin);
 use lib "$Bin/../lib";
 
-my $UplugHome="$Bin/../";
-$ENV{UPLUGHOME}=$UplugHome;
-
 use Uplug::Data;
 use Uplug::IO::Any;
 use Uplug::Config;
@@ -75,8 +72,21 @@ my $output=Uplug::IO::Any->new($OutputStream);
 
 #---------------------------------------------------------------------------
 
+# the tagger can either use a startup script in share/ext/tagger
 my $lang=$IniData{parameter}{tagger}{language};
-my $prg=$IniData{parameter}{tagger}{'startup base'};
+my $startup=$IniData{parameter}{tagger}{'startup base'};
+
+# ... or a specific program and a language specific model
+my $tagger=$IniData{parameter}{tagger}{program};
+
+# additional tagger arguments
+my $TaggerArgs=$IniData{parameter}{tagger}{parameter};
+# tagging model (will be appended as additional argument)
+my $TaggerModel=$IniData{parameter}{tagger}{model};
+
+# set to stdin if you the tagger needs piped data
+my $TaggerInput=$IniData{parameter}{tagger}{input} || 'last argument';
+
 my $attr=$IniData{parameter}{output}{attribute};
 my $OutAttr=$IniData{parameter}{output}{attributes};
 my $OutPattern=$IniData{parameter}{output}{pattern};
@@ -98,25 +108,21 @@ if (ref($IniData{parameter}{'output replacements'}) eq 'HASH'){
 my @Attr=split(/:/,$OutAttr);
 #---------------------------------------------------------------------------
 
-
-
-if ($UplugHome!~/^[\\\/]/){
-    use Cwd;
-    $UplugHome=getcwd.'/'.$UplugHome;
+my $TaggerPrg;
+if (defined $startup){
+    $TaggerPrg = &shared_home.'/ext/tagger/'.$startup;
+    if (not -e $TaggerPrg){
+	$TaggerPrg.=$lang;  # if necessary
+    }	
 }
+elsif (defined $tagger){
+    $TaggerPrg = &find_executable($tagger);
+}
+$TaggerPrg .= ' '.$TaggerArgs;
+$TaggerPrg .= ' '.$TaggerModel;
 
-my $TaggerDir=$UplugHome.'ext/tagger/';
-#my $TmpUntagged=$TaggerDir.'untagged.'.$$;
-#my $TmpTagged=$TaggerDir.'tagged.'.$$;
 my $TmpUntagged=Uplug::IO::Any::GetTempFileName;
 my $TmpTagged=Uplug::IO::Any::GetTempFileName;
-
-my $TaggerPrg=$TaggerDir.$prg.$lang;
-if (not -e $TaggerPrg){
-    if (-e "$TaggerDir$prg\_$lang"){           # add '_' to startup script
-	$TaggerPrg=$TaggerDir.$prg.'_'.$lang;  # if necessary
-    }
-}
 
 #---------------------------------------------------------------------------
 
@@ -137,18 +143,12 @@ if (not defined $InEncoding){$InEncoding=$OutEncoding;}
 
 open F,">$TmpUntagged";
 while ($input->read($data)){
-#    my @nodes=$data->contentElements;
-#    my @tok=$data->content(\@nodes);
-#     my @tok=$data->content('w');
     my @tok=$data->content();
     map(s/^\s*//,@tok);                    # remove initial white-spaces
     map(s/\s*$//,@tok);                    # remove final white-spaces
 
     map($tok[$_]=&FixTaggerData($tok[$_],\%InputReplace),0..$#tok);
 
-#	## handle malformed data by converting to octets and back
-#	## the sub in encode ensures that malformed characters are ignored!
-#	## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
     if ($OutEncoding ne $UplugEncoding){
 	foreach my $t (0..$#tok){
 	    my $octets = encode($OutEncoding, $tok[$t],sub{ return '' });
@@ -172,7 +172,15 @@ $input->close;
 print STDERR "tag.pl: call external tagger!\n";
 print STDERR "   $TaggerPrg $TmpUntagged >$TmpTagged\n";
 
-if (my $sig=system "$TaggerPrg $TmpUntagged >$TmpTagged"){
+my $command;
+if ($TaggerInput =~/stdin/i){
+    $command = "$TaggerPrg < $TmpUntagged >$TmpTagged";
+}
+else {
+    $command = "$TaggerPrg $TmpUntagged >$TmpTagged";
+}
+
+if (my $sig=system($command)){
     die "# tag: Got signal $? from tagger $TaggerPrg!\n";
 }
 #---------------------------------------------------------------------------

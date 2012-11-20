@@ -26,10 +26,7 @@
 
 use strict;
 use FindBin qw($Bin);
-use lib "$Bin/..";
-
-my $UplugHome="$Bin/../";
-$ENV{UPLUGHOME}=$UplugHome;
+use lib "$Bin/../lib";
 
 use Uplug::Data;
 use Uplug::IO::Any;
@@ -55,10 +52,8 @@ my $output=Uplug::IO::Any->new($OutputStream);
 #---------------------------------------------------------------------------
 
 
-if ($UplugHome!~/^[\\\/]/){
-    $UplugHome=getcwd.'/'.$UplugHome;
-}
-my $MaltHome  = $UplugHome.'ext/parser/malt';
+my $UplugHome = &shared_home;
+my $MaltHome  = $UplugHome.'/ext/parser/malt';
 my $MaltModel = $IniData{parameter}{parser}{model} || "engmalt.linear";
 my $JavaCmd   = $IniData{parameter}{java} || "java -Xmx2048m";
 

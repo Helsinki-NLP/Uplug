@@ -4,18 +4,23 @@
     'submodules' => [
         '$UplugSystem/pre/markup',
         '$UplugSystem/pre/sent',
-        '$UplugSystem/pre/en/toktag',
+        '$UplugSystem/pre/tok',
+#        '$UplugSystem/pre/markup',
+#        '$UplugSystem/pre/sent',
+#        '$UplugSystem/pre/en/toktag',
         '$UplugSystem/pre/en/tagHunPos',
-        '$UplugSystem/pre/en/tagGrok',
-        '$UplugSystem/pre/en/chunk',
+#        '$UplugSystem/pre/en/tagGrok',
+#        '$UplugSystem/pre/en/chunk',
         '$UplugSystem/pre/en/malt',
     ],
     'submodule names' => [
         'basic XML markup',
-        'sentence splitter',
-        'English tokenizer+tagger',
-        'English tagger (Grok)',
-        'English chunker (Grok)',
+#        'sentence splitter',
+#        'English tokenizer+tagger',
+#        'English tagger (Grok)',
+        'English tagger (hunpos)',
+#        'English chunker (Grok)',
+        'English dependency parser (MaltParser)',
     ],
     'stdin' => 'text',
     'stdout' => 'text',
@@ -37,7 +42,7 @@
       'format' => 'xml',
       'root' => 's',
       'write_mode' => 'overwrite',
-      'status' => 'chunk'
+      'status' => 'parsed'
     }
   },
   'arguments' => {
