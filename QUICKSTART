@@ -86,7 +86,7 @@ Uplug - Quickstart
     scripts. The following command can be used to tag the English
     example corpus:
 
-    /cvs/uplug pre/en/tagHunPos -in 1988en.xml > 1988en.tag
+    /cvs/uplug pre/en/tagGrok -in 1988en.xml > 1988en.tag
 
 
 3f) Chunking (using external chunkers)
