@@ -1,0 +1,19 @@
+
+
+
+general:
+
+- (simple) user management (multiple users, passwords ...)
+- (simple) file management (or integration in UplugWeb)
+
+
+ISA:
+
+- fixed links between sentences (to avoid changes after certain fix points)
+
+
+ICA:
+
+- add scripts to split automatic word alignments for post-editing one by one
+- browse/query clue DBs without calling external programs
+- edit/add clues or entire clue DBs

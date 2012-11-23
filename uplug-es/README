@@ -1,0 +1,21 @@
+
+========================
+Spanish tools for Uplug
+========================
+
+
+- tagging is based on SVMTool (http://www.lsi.upc.edu/~nlp/SVMTool/)
+  svmtool modules are inlcuded in svmtool (version 1.3.2)
+- MaltParser model is included in uplug/share/ext/parser/malt
+
+
+INSTALL
+
+run the usual makefile commands
+
+make all
+make test
+make install (run as sudo)
+
+This should call these targets for both, svmtool and uplug
+

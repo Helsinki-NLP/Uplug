@@ -1,2 +1,0 @@
-# features (source): {'pos' => '^(.).*$/$1'}
-# features (target): {'pos' => '^(..).*$/$1'}

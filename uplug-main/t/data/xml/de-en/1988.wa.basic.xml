@@ -1,0 +1,1692 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE cesAlign PUBLIC "-//CES//DTD XML cesAlign//EN" "dtd/xcesAlign.dtd">
+
+<cesAlign version="1.0"><linkGrp targType="s" toDoc="data/xml/1988en.basic.xml" fromDoc="data/xml/1988de.basic.xml">
+<link certainty="417" xtargets="s1.1;s1.1" id="SL0.1">
+ <wordLink certainty="0.0428571428571429" lexPair="Oktober;October" xtargets="w1.1.7;w1.1.25" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w1.1.9;w1.1.28" />
+ <wordLink certainty="0.0222222222222222" lexPair="abgegeben;Statement" xtargets="w1.1.2;w1.1.1" />
+ <wordLink certainty="0.0111111111111111" lexPair="am;by" xtargets="w1.1.5;w1.1.5" />
+ <wordLink certainty="0.0210526315789474" lexPair="Ministerpräsidenten;Minister" xtargets="w1.1.4;w1.1.8" />
+ <wordLink certainty="0.05" lexPair="1988;1988" xtargets="w1.1.8;w1.1.27" />
+</link>
+
+<link certainty="61" xtargets="s2.1;s2.1" id="SL1.1">
+ <wordLink certainty="0.0250924217569694" lexPair=", Herr;the" xtargets="w2.1.7+w2.1.8;w2.1.13" />
+ <wordLink certainty="0.07375" lexPair="Eure;Your" xtargets="w2.1.4;w2.1.1" />
+ <wordLink certainty="0.0214634146341463" lexPair=",;of" xtargets="w2.1.10;w2.1.12" />
+ <wordLink certainty="0.0485833333333333" lexPair="schwedischen;Swedish" xtargets="w2.1.13;w2.1.14" />
+ <wordLink certainty="0.0243445692883895" lexPair=",;." xtargets="w2.1.3;w2.1.16" />
+ <wordLink certainty="0.03" lexPair="Präsident;Parliament" xtargets="w2.1.9;w2.1.15" />
+ <wordLink certainty="0.035" lexPair="Majestäten;Majesties" xtargets="w2.1.2;w2.1.2" />
+ <wordLink certainty="0.07375" lexPair="Eure;Your" xtargets="w2.1.1;w2.1.4" />
+ <wordLink certainty="0.02" lexPair="Mitglieder;Members" xtargets="w2.1.11;w2.1.11" />
+ <wordLink certainty="0.02" lexPair="Hoheiten;Highnesses" xtargets="w2.1.6;w2.1.6" />
+</link>
+
+<link certainty="166" xtargets="s3.1;s3.1" id="SL2.1">
+ <wordLink certainty="0.0220474555940012" lexPair="Bedeutung für;for our" xtargets="w3.1.7+w3.1.8;w3.1.10+w3.1.11" />
+ <wordLink certainty="0.0125" lexPair="ist;is" xtargets="w3.1.4;w3.1.6" />
+ <wordLink certainty="0.0562280701754386" lexPair="Neutralitätspolitik;neutrality" xtargets="w3.1.3;w3.1.5" />
+ <wordLink certainty="0.04" lexPair="Unabhängigkeit;independence" xtargets="w3.1.13;w3.1.14" />
+ <wordLink certainty="0.0352141214569098" lexPair="und die;and" xtargets="w3.1.11+w3.1.12;w3.1.13" />
+ <wordLink certainty="0.04" lexPair="Landes;importance" xtargets="w3.1.15;w3.1.9" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w3.1.16;w3.1.15" />
+ <wordLink certainty="0.016" lexPair="von;s" xtargets="w3.1.5;w3.1.2" />
+ <wordLink certainty="0.0230769230769231" lexPair="Die;of" xtargets="w3.1.1;w3.1.7" />
+ <wordLink certainty="0.0111111111111111" lexPair="unseres;policy" xtargets="w3.1.14;w3.1.3" />
+ <wordLink certainty="0.0247435829652697" lexPair="den Frieden;Sweden'" xtargets="w3.1.9+w3.1.10;w3.1.1" />
+</link>
+
+<link certainty="17" xtargets="s3.2;s3.2" id="SL2.2">
+ <wordLink certainty="0.02" lexPair="Welt;world" xtargets="w3.2.12;w3.2.13" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w3.2.4;w3.2.8" />
+ <wordLink certainty="0.0165413533834586" lexPair="in;of" xtargets="w3.2.8;w3.2.11" />
+ <wordLink certainty="0.025" lexPair="Teil;the" xtargets="w3.2.10;w3.2.12" />
+ <wordLink certainty="0.0117647058823529" lexPair="unserem;our" xtargets="w3.2.9;w3.2.9" />
+ <wordLink certainty="0.02" lexPair="trägt;part" xtargets="w3.2.2;w3.2.10" />
+ <wordLink certainty="0.04" lexPair="Stabilität;stability" xtargets="w3.2.5;w3.2.5" />
+ <wordLink certainty="0.0222222222222222" lexPair="Sie;It" xtargets="w3.2.1;w3.2.1" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w3.2.11;w3.2.4" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w3.2.14;w3.2.14" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w3.2.6;w3.2.6" />
+</link>
+
+<link certainty="217" xtargets="s3.3;s3.3" id="SL2.3">
+ <wordLink certainty="0.0163398375531134" lexPair="der;is wide" xtargets="w3.3.7;w3.3.2+w3.3.3" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w3.3.12;w3.3.9" />
+ <wordLink certainty="0.0214285714285715" lexPair="unseres;There" xtargets="w3.3.10;w3.3.1" />
+ <wordLink certainty="0.0431428571428571" lexPair="Politik;policy" xtargets="w3.3.2;w3.3.8" />
+ <wordLink certainty="0.02" lexPair="Diese;this" xtargets="w3.3.1;w3.3.7" />
+ <wordLink certainty="0.0139784946236559" lexPair="in;for" xtargets="w3.3.6;w3.3.6" />
+</link>
+
+<link certainty="33" xtargets="s3.4;s3.4" id="SL2.4">
+ <wordLink certainty="0.0350862068965517" lexPair="mit;with" xtargets="w3.4.3;w3.4.5" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w3.4.8+w3.4.9;w3.4.9" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w3.4.5;w3.4.7" />
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w3.4.2;w3.4.2+w3.4.3" />
+ <wordLink certainty="0.0222222222222222" lexPair="Sie;It" xtargets="w3.4.1;w3.4.1" />
+ <wordLink certainty="0.0227272727272728" lexPair="Konsequenz;consistency" xtargets="w3.4.6;w3.4.8" />
+</link>
+
+<link certainty="-1517" xtargets="s4.1;s4.1 s4.2" id="SL3.1">
+ <wordLink certainty="0.025" lexPair="starke;strong" xtargets="w4.1.7;w4.1.9" />
+ <wordLink certainty="0.0230940107675851" lexPair="Unabhängigkeit;our independence" xtargets="w4.1.12;w4.2.3+w4.2.4" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w4.1.13;w4.1.11" />
+ <wordLink certainty="0.0129099444873581" lexPair="auf;by a" xtargets="w4.1.5;w4.1.7+w4.1.8" />
+ <wordLink certainty="0.0562280701754386" lexPair="Neutralitätspolitik;neutrality" xtargets="w4.1.2;w4.1.4" />
+ <wordLink certainty="0.0234146341463415" lexPair="Die;." xtargets="w4.1.1;w4.2.5" />
+ <wordLink certainty="0.0227272727272728" lexPair="unserer;underpinned" xtargets="w4.1.11;w4.1.6" />
+ <wordLink certainty="0.0214285714285715" lexPair="eine;defence" xtargets="w4.1.6;w4.1.10" />
+</link>
+
+<link certainty="76" xtargets="s4.2;s4.3" id="SL3.2">
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w4.2.7+w4.2.8;w4.3.9" />
+ <wordLink certainty="0.0254901960784314" lexPair="werden;will" xtargets="w4.2.4;w4.3.5" />
+ <wordLink certainty="0.0333333333333333" lexPair="Territoriums;territory" xtargets="w4.2.3;w4.3.4" />
+ <wordLink certainty="0.0485833333333333" lexPair="schwedischen;Swedish" xtargets="w4.2.2;w4.3.3" />
+ <wordLink certainty="0.025" lexPair="akzeptiert;accepted" xtargets="w4.2.6;w4.3.8" />
+</link>
+
+<link certainty="0" xtargets="s4.3;s4.4" id="SL3.3">
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w4.3.4;w4.4.3+w4.4.4" />
+ <wordLink certainty="0.0318181818181818" lexPair="organisiert;reorganized" xtargets="w4.3.8;w4.4.5" />
+ <wordLink certainty="0.025" lexPair="Heer;the" xtargets="w4.3.3;w4.4.7" />
+ <wordLink certainty="0.02" lexPair="reformiert;effective" xtargets="w4.3.5;w4.4.13" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w4.3.9+w4.3.10;w4.4.14" />
+ <wordLink certainty="0.0243243243243244" lexPair="und;of" xtargets="w4.3.6;w4.4.9" />
+</link>
+
+<link certainty="163" xtargets="s4.4;s4.5" id="SL3.4">
+ <wordLink certainty="0.0150346910965813" lexPair="Die Regierung;are of" xtargets="w4.4.1+w4.4.2;w4.5.14+w4.5.15" />
+ <wordLink certainty="0.0278105478807336" lexPair="für die;for" xtargets="w4.4.21+w4.4.22;w4.5.17" />
+ <wordLink certainty="0.0447213595499958" lexPair="Lösungen;broad solutions" xtargets="w4.4.12;w4.5.9+w4.5.10" />
+ <wordLink certainty="0.0231998228477561" lexPair=", die;the" xtargets="w4.4.17+w4.4.18;w4.5.3" />
+ <wordLink certainty="0.016" lexPair="von;s" xtargets="w4.4.8;w4.5.5" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w4.4.27;w4.5.21" />
+ <wordLink certainty="0.0375" lexPair="hat;that" xtargets="w4.4.3;w4.5.13" />
+ <wordLink certainty="0.025" lexPair="Sicherheit;security" xtargets="w4.4.23;w4.5.20" />
+ <wordLink certainty="0.0163299316185545" lexPair="des;It is" xtargets="w4.4.24;w4.5.1+w4.5.2" />
+ <wordLink certainty="0.0218274111675127" lexPair=",;to" xtargets="w4.4.7;w4.5.7" />
+ <wordLink certainty="0.0214285714285715" lexPair="Kreisen;issues" xtargets="w4.4.10;w4.5.12" />
+ <wordLink certainty="0.0162790697674419" lexPair="für;our" xtargets="w4.4.13;w4.5.18" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w4.4.15;w4.5.11" />
+ <wordLink certainty="0.0222222222222222" lexPair="finden;intention" xtargets="w4.4.16;w4.5.6" />
+ <wordLink certainty="0.04" lexPair="Landes;importance" xtargets="w4.4.25;w4.5.16" />
+ <wordLink certainty="0.0227272727272728" lexPair="getragene;Government'" xtargets="w4.4.11;w4.5.4" />
+</link>
+
+<link certainty="31" xtargets="s5.1;s5.1" id="SL4.1">
+ <wordLink certainty="0.0227272727272728" lexPair="Sowjetunion;Union" xtargets="w5.1.12;w5.1.13" />
+ <wordLink certainty="0.0230769230769231" lexPair="Vereinigten;intermediate-" xtargets="w5.1.8;w5.1.20" />
+ <wordLink certainty="0.06" lexPair="nuklearen;nuclear weapons" xtargets="w5.1.18;w5.1.22+w5.1.23" />
+ <wordLink certainty="0.0222222222222222" lexPair="hat;United" xtargets="w5.1.3;w5.1.8" />
+ <wordLink certainty="0.0318787878787879" lexPair="Regierung;Government" xtargets="w5.1.2;w5.1.2" />
+ <wordLink certainty="0.0230769230769231" lexPair="Die;of" xtargets="w5.1.1;w5.1.17" />
+ <wordLink certainty="0.0213709677419355" lexPair="die;the" xtargets="w5.1.14;w5.1.15" />
+ <wordLink certainty="0.0155172413793104" lexPair="den;on" xtargets="w5.1.7;w5.1.14" />
+ <wordLink certainty="0.02" lexPair="das;based" xtargets="w5.1.4;w5.1.19" />
+ <wordLink certainty="0.02" lexPair="über;between" xtargets="w5.1.13;w5.1.6" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w5.1.21;w5.1.24" />
+ <wordLink certainty="0.0172566371681416" lexPair="der;the" xtargets="w5.1.16;w5.1.4" />
+ <wordLink certainty="0.0357142857142857" lexPair="Staaten;States" xtargets="w5.1.9;w5.1.9" />
+ <wordLink certainty="0.0273128070545067" lexPair="und der;and the" xtargets="w5.1.10+w5.1.11;w5.1.10+w5.1.11" />
+ <wordLink certainty="0.0222222222222222" lexPair="Abkommen;agreement" xtargets="w5.1.5;w5.1.5" />
+</link>
+
+<link certainty="337" xtargets="s5.2;s5.2" id="SL4.2">
+ <wordLink certainty="0.0346153846153846" lexPair="strategischen;strategic" xtargets="w5.2.12;w5.2.12" />
+ <wordLink certainty="0.0214285714285715" lexPair="Vertrag;treaty" xtargets="w5.2.18;w5.2.21" />
+ <wordLink certainty="0.02" lexPair="über;other" xtargets="w5.2.19;w5.2.6" />
+ <wordLink certainty="0.02" lexPair="Jetzt;test" xtargets="w5.2.1;w5.2.19" />
+ <wordLink certainty="0.0166666666666667" lexPair="zu;," xtargets="w5.2.24;w5.2.8" />
+ <wordLink certainty="0.0166666666666667" lexPair="u. a;at" xtargets="w5.2.9+w5.2.10;w5.2.10" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w5.2.26;w5.2.22" />
+ <wordLink certainty="0.014307020359128" lexPair="werden ,;," xtargets="w5.2.7+w5.2.8;w5.2.4" />
+ <wordLink certainty="0.0222222222222222" lexPair="Rüstungen;reducing" xtargets="w5.2.13;w5.2.11" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w5.2.16;w5.2.14" />
+ <wordLink certainty="0.0375" lexPair="bringen;bringing" xtargets="w5.2.25;w5.2.15" />
+</link>
+
+<link certainty="33" xtargets="s5.3;s5.3" id="SL4.3">
+ <wordLink certainty="0.02" lexPair="Ziel;inter" xtargets="w5.3.3;w5.3.8" />
+ <wordLink certainty="0.0222222222222222" lexPair="Rahmen;framework" xtargets="w5.3.10;w5.3.12" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w5.3.16;w5.3.18" />
+ <wordLink certainty="0.0166666666666667" lexPair="ein;support" xtargets="w5.3.15;w5.3.5" />
+ <wordLink certainty="0.0106382978723405" lexPair="im;is" xtargets="w5.3.9;w5.3.2" />
+ <wordLink certainty="0.0535416666666666" lexPair="Schweden;Sweden" xtargets="w5.3.5;w5.3.1" />
+ <wordLink certainty="0.0271441761659491" lexPair="Staaten- Initiative;Nation Initiative" xtargets="w5.3.13+w5.3.14;w5.3.16+w5.3.17" />
+ <wordLink certainty="0.0198757763975155" lexPair="der;of" xtargets="w5.3.11;w5.3.6" />
+ <wordLink certainty="0.025" lexPair="sich;Six" xtargets="w5.3.6;w5.3.15" />
+</link>
+
+<link certainty="36" xtargets="s6.1;s6.1" id="SL5.1">
+ <wordLink certainty="0.0333333333333333" lexPair="Norden;Nordic" xtargets="w6.1.12;w6.1.18" />
+ <wordLink certainty="0.025" lexPair="eine;free" xtargets="w6.1.8;w6.1.14" />
+ <wordLink certainty="0.0458333333333333" lexPair="wird;will" xtargets="w6.1.3;w6.1.3" />
+ <wordLink certainty="0.0333333333333333" lexPair="freien;free" xtargets="w6.1.18;w6.1.27" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w6.1.23;w6.1.32" />
+ <wordLink certainty="0.0318787878787879" lexPair="Regierung;Government" xtargets="w6.1.2;w6.1.2" />
+ <wordLink certainty="0.04375" lexPair="Korridor;corridor" xtargets="w6.1.19;w6.1.23" />
+ <wordLink certainty="0.0230769230769231" lexPair="Die;of" xtargets="w6.1.1;w6.1.28" />
+ <wordLink certainty="0.012" lexPair="auf;a" xtargets="w6.1.7;w6.1.11" />
+ <wordLink certainty="0.0341995189335339" lexPair="von nuklearen;nuclear weapons" xtargets="w6.1.15+w6.1.16;w6.1.30+w6.1.31" />
+ <wordLink certainty="0.05" lexPair="Zone;zone" xtargets="w6.1.10;w6.1.15" />
+ <wordLink certainty="0.02762307906824" lexPair="und;and of a" xtargets="w6.1.13;w6.1.20+w6.1.21+w6.1.22" />
+ <wordLink certainty="0.0208333333333334" lexPair="Mitteleuropa;Europe" xtargets="w6.1.21;w6.1.26" />
+ <wordLink certainty="0.0181818181818182" lexPair="weiterhin;continue" xtargets="w6.1.5;w6.1.4" />
+ <wordLink certainty="0.0102272727272728" lexPair="im;in" xtargets="w6.1.11;w6.1.16" />
+ <wordLink certainty="0.0165413533834586" lexPair="in;of" xtargets="w6.1.20;w6.1.10" />
+ <wordLink certainty="0.0333333333333333" lexPair="aktiv;active" xtargets="w6.1.6;w6.1.6" />
+</link>
+
+<link certainty="-1768" xtargets="s7.1 s7.2;s7.1" id="SL6.1">
+ <wordLink certainty="0.02" lexPair="armen;Government" xtargets="w7.1.22;w7.1.11" />
+ <wordLink certainty="0.0211288563682129" lexPair="sozialen Entwicklung;social" xtargets="w7.1.6+w7.1.7;w7.1.5" />
+ <wordLink certainty="0.0230562445758921" lexPair=". Die;to" xtargets="w7.1.30+w7.2.1;w7.1.13" />
+ <wordLink certainty="0.0230769230769231" lexPair="Schuldenkrise;countries" xtargets="w7.1.27;w7.1.23" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w7.1.3;w7.1.15" />
+ <wordLink certainty="0.0239045721866879" lexPair="eine pflegliche;decline" xtargets="w7.2.10+w7.2.11;w7.1.19" />
+ <wordLink certainty="0.0227272727272728" lexPair="Entwicklung;alleviating" xtargets="w7.1.19;w7.1.26" />
+ <wordLink certainty="0.0213709677419355" lexPair="die;the" xtargets="w7.1.17;w7.1.21" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w7.1.28;w7.1.20" />
+ <wordLink certainty="0.0213709677419355" lexPair="die;the" xtargets="w7.1.26;w7.1.10" />
+ <wordLink certainty="0.0125" lexPair="mit;progress" xtargets="w7.2.7;w7.1.6" />
+ <wordLink certainty="0.0333333333333333" lexPair="Regierung;reversing" xtargets="w7.1.13;w7.1.16" />
+ <wordLink certainty="0.02" lexPair="Behandlung;developing" xtargets="w7.2.12;w7.1.8" />
+ <wordLink certainty="0.025" lexPair="den;debt" xtargets="w7.1.21;w7.1.28" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w7.1.16;w7.1.27" />
+ <wordLink certainty="0.0162272266272626" lexPair="in den;in" xtargets="w7.1.8+w7.1.9;w7.1.7" />
+ <wordLink certainty="0.0368639299318509" lexPair="und;and to" xtargets="w7.2.9;w7.1.24+w7.1.25" />
+ <wordLink certainty="0.0236" lexPair="und;the" xtargets="w7.1.5;w7.1.17" />
+ <wordLink certainty="0.0230769230769231" lexPair="weitsichtiges;wishes" xtargets="w7.2.5;w7.1.12" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w7.1.25;w7.1.4" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w7.2.16;w7.1.30" />
+ <wordLink certainty="0.0133333333333333" lexPair="Umwelt;countries" xtargets="w7.2.14;w7.1.9" />
+</link>
+
+<link certainty="25" xtargets="s7.3;s7.2" id="SL6.2">
+ <wordLink certainty="0.0142857142857143" lexPair="Entwicklung;promote" xtargets="w7.3.18;w7.2.5" />
+ <wordLink certainty="0.0298" lexPair="Regierung;protection" xtargets="w7.3.2;w7.2.13" />
+ <wordLink certainty="0.0227272727272728" lexPair="einberufen;environment" xtargets="w7.3.19;w7.2.16" />
+ <wordLink certainty="0.0230769230769231" lexPair="Die;of" xtargets="w7.3.1;w7.2.9" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w7.3.17;w7.2.12" />
+ <wordLink certainty="0.0232499477906379" lexPair=",;of the" xtargets="w7.3.7;w7.2.14+w7.2.15" />
+ <wordLink certainty="0.0264769886474095" lexPair="wird .;." xtargets="w7.3.20+w7.3.21;w7.2.17" />
+ <wordLink certainty="0.02" lexPair="sich;shall" xtargets="w7.3.4;w7.2.3" />
+ <wordLink certainty="0.0166666666666667" lexPair="Umwelt;resources" xtargets="w7.3.16;w7.2.11" />
+ <wordLink certainty="0.0176470588235294" lexPair="eine;a" xtargets="w7.3.11;w7.2.6" />
+ <wordLink certainty="0.02" lexPair="einsetzen;assistance" xtargets="w7.3.6;w7.2.2" />
+</link>
+
+<link certainty="-2229" xtargets="s8.1 s8.2;s8.1" id="SL7.1">
+ <wordLink certainty="0.0392668411863487" lexPair="Iran und;and" xtargets="w8.2.4+w8.2.5;w8.1.19" />
+ <wordLink certainty="0.02" lexPair="Schweden;Nations" xtargets="w8.1.12;w8.1.14" />
+ <wordLink certainty="0.02" lexPair="haben;The" xtargets="w8.1.3;w8.1.1" />
+ <wordLink certainty="0.025" lexPair="sind;actively" xtargets="w8.2.2;w8.1.4" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w8.1.17;w8.1.21" />
+ <wordLink certainty="0.0198978468329632" lexPair=".;of a" xtargets="w8.2.9;w8.1.10+w8.1.11" />
+ <wordLink certainty="0.0227272727272728" lexPair="einen;environment" xtargets="w8.1.7;w8.1.18" />
+ <wordLink certainty="0.0213709677419355" lexPair="die;the" xtargets="w8.1.4;w8.1.6" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w8.1.10;w8.1.17" />
+ <wordLink certainty="0.025" lexPair="unterstützt;development" xtargets="w8.1.15;w8.1.20" />
+ <wordLink certainty="0.0222222222222222" lexPair="hat;United" xtargets="w8.1.16;w8.1.13" />
+ <wordLink certainty="0.0230769230769231" lexPair="unterzeichnet;conference" xtargets="w8.1.9;w8.1.15" />
+ <wordLink certainty="0.02" lexPair="ganzen Herzens;Government" xtargets="w8.1.13+w8.1.14;w8.1.2" />
+ <wordLink certainty="0.0190909090909091" lexPair="den;in" xtargets="w8.1.11;w8.1.8" />
+</link>
+
+<link certainty="-2199" xtargets="s8.3;" id="SL7.2" />
+
+<link certainty="31" xtargets="s9.1;s9.1" id="SL8.1">
+ <wordLink certainty="0.0458928571428572" lexPair="leisten;given" xtargets="w9.1.12;w9.1.15" />
+ <wordLink certainty="0.0231455024943138" lexPair="den meisten;Sweden" xtargets="w9.1.2+w9.1.3;w9.1.13" />
+ <wordLink certainty="0.025" lexPair="Vereinten;Presidents" xtargets="w9.1.8;w9.1.6" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w9.1.14;w9.1.19" />
+ <wordLink certainty="0.0231143720128492" lexPair="die;the five" xtargets="w9.1.7;w9.1.4+w9.1.5" />
+ <wordLink certainty="0.02" lexPair="regionalen;Central" xtargets="w9.1.4;w9.1.2" />
+ <wordLink certainty="0.025" lexPair="wichtige;which" xtargets="w9.1.10;w9.1.12" />
+ <wordLink certainty="0.02" lexPair="Nationen;has" xtargets="w9.1.9;w9.1.14" />
+ <wordLink certainty="0.0494" lexPair="haben;have" xtargets="w9.1.6;w9.1.7" />
+</link>
+
+<link certainty="-274" xtargets="s9.2;s9.2 s9.3" id="SL8.2">
+ <wordLink certainty="0.05" lexPair="Afghanistan;Afghanistan" xtargets="w9.2.12;w9.3.11" />
+ <wordLink certainty="0.0199155476886833" lexPair="der;. The" xtargets="w9.2.8;w9.2.11+w9.3.1" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w9.2.18;w9.3.12" />
+ <wordLink certainty="0.0445" lexPair="Schweden;between" xtargets="w9.2.1;w9.2.7" />
+ <wordLink certainty="0.0133630620956212" lexPair="mit;progress on" xtargets="w9.2.17;w9.2.4+w9.2.5" />
+ <wordLink certainty="0.025" lexPair="Nationen;Negotiations" xtargets="w9.2.10;w9.2.1" />
+ <wordLink certainty="0.0695833333333333" lexPair="Irak;Iraq" xtargets="w9.2.16;w9.2.10" />
+ <wordLink certainty="0.04" lexPair="Iran/;Iran" xtargets="w9.2.15;w9.2.8" />
+ <wordLink certainty="0.0214285714285715" lexPair="Vereinten;peace" xtargets="w9.2.9;w9.2.6" />
+ <wordLink certainty="0.0119737252210697" lexPair="in;are in the" xtargets="w9.2.5;w9.3.4+w9.3.5+w9.3.6" />
+ <wordLink certainty="0.0319457051910531" lexPair="und in;and" xtargets="w9.2.13+w9.2.14;w9.2.9" />
+ <wordLink certainty="0.0165413533834586" lexPair="in;of" xtargets="w9.2.11;w9.3.8" />
+ <wordLink certainty="0.0190909090909091" lexPair="den;in" xtargets="w9.2.6;w9.2.3" />
+</link>
+
+<link certainty="-2097" xtargets="s10.1 s10.2;s10.1" id="SL9.1">
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w10.1.8;w10.1.2" />
+ <wordLink certainty="0.0333333333333333" lexPair="hat;has" xtargets="w10.2.2;w10.1.11" />
+ <wordLink certainty="0.0283749154866696" lexPair="Vereinten Nationen;United Nations" xtargets="w10.1.16+w10.1.17;w10.1.9+w10.1.10" />
+ <wordLink certainty="0.03" lexPair="allen;able" xtargets="w10.2.8;w10.1.13" />
+ <wordLink certainty="0.0172566371681416" lexPair="der;the" xtargets="w10.1.10;w10.1.8" />
+ <wordLink certainty="0.025" lexPair="den;been" xtargets="w10.1.13;w10.1.12" />
+ <wordLink certainty="0.0323178657161088" lexPair="haben wir;make" xtargets="w10.1.3+w10.1.4;w10.1.15" />
+ <wordLink certainty="0.0282472774462231" lexPair=".;of the" xtargets="w10.1.21;w10.1.4+w10.1.5" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w10.1.15;w10.1.14" />
+ <wordLink certainty="0.0153846153846154" lexPair="dass;regional" xtargets="w10.1.9;w10.1.6" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w10.2.14;w10.1.18" />
+ <wordLink certainty="0.0129640744710433" lexPair="sich an;In" xtargets="w10.2.3+w10.2.4;w10.1.1" />
+</link>
+
+<link certainty="1157" xtargets="s10.3;s10.2" id="SL9.2">
+ <wordLink certainty="0.0214599417643455" lexPair=",;, the" xtargets="w10.3.8;w10.2.9+w10.2.10" />
+ <wordLink certainty="0.0125" lexPair="mit;Afghanistan" xtargets="w10.3.18;w10.2.17" />
+ <wordLink certainty="0.025" lexPair="Leiter;other" xtargets="w10.3.23;w10.2.7" />
+ <wordLink certainty="0.0142857142857143" lexPair="ist;among" xtargets="w10.3.2;w10.2.6" />
+ <wordLink certainty="0.0190909090909091" lexPair="den;in" xtargets="w10.3.19;w10.2.4" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w10.3.31;w10.2.19" />
+ <wordLink certainty="0.03125" lexPair="unserer;Observer" xtargets="w10.3.24;w10.2.14" />
+ <wordLink certainty="0.0214285714285715" lexPair="Beratschlagung;participating" xtargets="w10.3.17;w10.2.3" />
+ <wordLink certainty="0.0190909090909091" lexPair="den;in" xtargets="w10.3.28;w10.2.16" />
+ <wordLink certainty="0.0535416666666666" lexPair="Schweden;Sweden" xtargets="w10.3.7;w10.2.1" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w10.3.40;w10.2.18" />
+ <wordLink certainty="0.0140350877192983" lexPair="eine;is" xtargets="w10.3.4;w10.2.2" />
+ <wordLink certainty="0.0695833333333333" lexPair="Irak;Iraq" xtargets="w10.3.41;w10.2.21" />
+ <wordLink certainty="0.0372239293335978" lexPair="Vereinten Nationen;Nations" xtargets="w10.3.29+w10.3.30;w10.2.12" />
+ <wordLink certainty="0.0182857142857143" lexPair=",;," xtargets="w10.3.21;w10.2.5" />
+ <wordLink certainty="0.04" lexPair="Iran;Iran/" xtargets="w10.3.39;w10.2.20" />
+ <wordLink certainty="0.021629522817435" lexPair="Vereinten Nationen;United" xtargets="w10.3.13+w10.3.14;w10.2.11" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w10.3.44;w10.2.22" />
+</link>
+
+<link certainty="269" xtargets="s11.1;s11.1" id="SL10.1">
+ <wordLink certainty="0.0333333333333333" lexPair="werden;were" xtargets="w11.1.8;w11.1.2" />
+ <wordLink certainty="0.0157894736842105" lexPair="Das;that" xtargets="w11.1.1;w11.1.6" />
+ <wordLink certainty="0.0129333958136573" lexPair="in;to the" xtargets="w11.1.4;w11.1.16+w11.1.17" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w11.1.9;w11.1.23" />
+ <wordLink certainty="0.0174077655955698" lexPair="Südafrika;United Nations" xtargets="w11.1.5;w11.1.18+w11.1.19" />
+</link>
+
+<link certainty="130" xtargets="s11.2;s11.2 s11.3" id="SL10.2">
+ <wordLink certainty="0.0174077655955698" lexPair="Südafrika;United Nations" xtargets="w11.2.12;w11.3.22+w11.3.23" />
+ <wordLink certainty="0.025" lexPair="über;negotiations" xtargets="w11.2.8;w11.3.33" />
+ <wordLink certainty="0.0214285714285715" lexPair="diesem;parties" xtargets="w11.2.18;w11.3.17" />
+ <wordLink certainty="0.0163299316185545" lexPair="des;It is" xtargets="w11.2.3;w11.3.1+w11.3.2" />
+ <wordLink certainty="0.02" lexPair="Zweck;peace" xtargets="w11.2.19;w11.3.32" />
+ <wordLink certainty="0.0162221421130763" lexPair="Ein;this kind" xtargets="w11.2.1;w11.2.12+w11.2.13" />
+ <wordLink certainty="0.0213709677419355" lexPair="die;the" xtargets="w11.2.14;w11.2.7" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w11.2.17;w11.2.4" />
+ <wordLink certainty="0.0352103121524269" lexPair="Nationen;United Nations" xtargets="w11.2.7;w11.2.8+w11.2.9" />
+ <wordLink certainty="0.021875" lexPair="Sicherheitsrates;representative" xtargets="w11.2.4;w11.3.29" />
+ <wordLink certainty="0.025" lexPair="Sanktionen;operations" xtargets="w11.2.10;w11.2.10" />
+ <wordLink certainty="0.025" lexPair="Massnahme;Ambassador" xtargets="w11.2.16;w11.3.24" />
+ <wordLink certainty="0.0222222222222222" lexPair="bindende;appointed" xtargets="w11.2.9;w11.3.20" />
+ <wordLink certainty="0.0242152466367713" lexPair="der;." xtargets="w11.2.5;w11.2.14" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w11.2.20;w11.3.38" />
+ <wordLink certainty="0.025" lexPair="gegen;Sweden" xtargets="w11.2.11;w11.2.1" />
+ <wordLink certainty="0.0277555466595484" lexPair="Vereinten;between Iran" xtargets="w11.2.6;w11.3.34+w11.3.35" />
+</link>
+
+<link certainty="153" xtargets="s12.1;s12.1" id="SL11.1">
+ <wordLink certainty="0.0117647058823529" lexPair="unserer;must" xtargets="w12.1.14;w12.1.8" />
+ <wordLink certainty="0.012556533569337" lexPair="zu den;be" xtargets="w12.1.7+w12.1.8;w12.1.9" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w12.1.16;w12.1.11" />
+ <wordLink certainty="0.014142135623731" lexPair="im Nahen;The" xtargets="w12.1.3+w12.1.4;w12.1.1" />
+ <wordLink certainty="0.025" lexPair="Osten;system" xtargets="w12.1.5;w12.1.4" />
+ <wordLink certainty="0.0210818510677892" lexPair="lösenden Konflikten;abolished" xtargets="w12.1.12+w12.1.13;w12.1.10" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w12.1.11;w12.1.5" />
+</link>
+
+<link certainty="7" xtargets="s12.2;s12.2" id="SL11.2">
+ <wordLink certainty="0.025" lexPair="eine;end" xtargets="w12.2.8;w12.2.23" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w12.2.18;w12.2.24" />
+ <wordLink certainty="0.0131578947368421" lexPair="Regierung;on" xtargets="w12.2.2;w12.2.9" />
+ <wordLink certainty="0.0201492537313433" lexPair="Die;be" xtargets="w12.2.1;w12.2.16" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w12.2.14;w12.2.21" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w12.2.7;w12.2.4" />
+ <wordLink certainty="0.02" lexPair="aktiv;this" xtargets="w12.2.4;w12.2.22" />
+ <wordLink certainty="0.0313432460591019" lexPair="Vereinten Nationen;Nations Security" xtargets="w12.2.15+w12.2.16;w12.2.6+w12.2.7" />
+ <wordLink certainty="0.0222222222222222" lexPair="Patronat;mandatory sanctions" xtargets="w12.2.13;w12.2.10+w12.2.11" />
+ <wordLink certainty="0.0213709677419355" lexPair="die;the" xtargets="w12.2.5;w12.2.17" />
+ <wordLink certainty="0.0333333333333333" lexPair="unter;United" xtargets="w12.2.11;w12.2.5" />
+</link>
+
+<link certainty="10" xtargets="s13.1;s13.1" id="SL12.1">
+ <wordLink certainty="0.01607864195984" lexPair="den;in the" xtargets="w13.1.8;w13.1.3+w13.1.4" />
+ <wordLink certainty="0.0176776695296637" lexPair="ist;East is" xtargets="w13.1.3;w13.1.6+w13.1.7" />
+ <wordLink certainty="0.02" lexPair="Land;among" xtargets="w13.1.2;w13.1.8" />
+ <wordLink certainty="0.02" lexPair="Unser;solve" xtargets="w13.1.1;w13.1.13" />
+ <wordLink certainty="0.0239045721866879" lexPair="unter;the most" xtargets="w13.1.7;w13.1.9+w13.1.10" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w13.1.11;w13.1.14" />
+</link>
+
+<link certainty="112" xtargets="s13.2;s13.2" id="SL12.2">
+ <wordLink certainty="0.0166666666666667" lexPair="beteiligt;United" xtargets="w13.2.12;w13.2.18" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w13.2.18;w13.2.20" />
+ <wordLink certainty="0.025" lexPair="sind;actively" xtargets="w13.2.2;w13.2.3" />
+ <wordLink certainty="0.0213709677419355" lexPair="die;the" xtargets="w13.2.14;w13.2.14" />
+ <wordLink certainty="0.0230769230769231" lexPair="Verhandlungen;Government" xtargets="w13.2.7;w13.2.2" />
+ <wordLink certainty="0.0111111111111111" lexPair="des;an" xtargets="w13.2.10;w13.2.9" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w13.2.13;w13.2.5" />
+ <wordLink certainty="0.0227272727272728" lexPair="Freihandels;endeavours" xtargets="w13.2.11;w13.2.6" />
+ <wordLink certainty="0.02" lexPair="den;under" xtargets="w13.2.6;w13.2.13" />
+ <wordLink certainty="0.0217192585158009" lexPair="aktiv an;Nations" xtargets="w13.2.4+w13.2.5;w13.2.19" />
+</link>
+
+<link certainty="-880" xtargets="s14.1 s14.2;s14.1" id="SL13.1">
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w14.1.36;w14.1.14" />
+ <wordLink certainty="0.0416666666666667" lexPair="werden;Sweden" xtargets="w14.2.7;w14.1.1" />
+ <wordLink certainty="0.0133333333333333" lexPair="in;is" xtargets="w14.1.23;w14.1.2" />
+ <wordLink certainty="0.02" lexPair="dies;goods" xtargets="w14.1.30;w14.1.8" />
+ <wordLink certainty="0.0319457051910531" lexPair="und in;and" xtargets="w14.1.9+w14.1.10;w14.1.9" />
+ <wordLink certainty="0.0248451997499977" lexPair="Bereichen vertiefen;services" xtargets="w14.1.26+w14.1.27;w14.1.10" />
+ <wordLink certainty="0.02" lexPair="entwickelt;national" xtargets="w14.2.6;w14.1.12" />
+ <wordLink certainty="0.0222222222222222" lexPair="Ländern;dependent" xtargets="w14.1.16;w14.1.3" />
+ <wordLink certainty="0.02" lexPair="nordische;boundaries" xtargets="w14.2.3;w14.1.13" />
+ <wordLink certainty="0.015" lexPair="im;free" xtargets="w14.1.5;w14.1.5" />
+ <wordLink certainty="0.0296943231441048" lexPair=".;of" xtargets="w14.2.8;w14.1.7" />
+ <wordLink certainty="0.014888750009564" lexPair="mit den;on" xtargets="w14.1.12+w14.1.13;w14.1.4" />
+</link>
+
+<link certainty="209" xtargets="s14.3 s14.4;s14.2" id="SL13.2">
+ <wordLink certainty="0.0214285714285715" lexPair="Grenzen;free" xtargets="w14.4.14;w14.2.12" />
+ <wordLink certainty="0.02929254743105" lexPair="werden .;trade ." xtargets="w14.4.18+w14.4.19;w14.2.13+w14.2.14" />
+ <wordLink certainty="0.02" lexPair="Dabei;are" xtargets="w14.3.1;w14.2.2" />
+ <wordLink certainty="0.025" lexPair="über;negotiations" xtargets="w14.4.12;w14.2.9" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w14.3.7;w14.2.7" />
+ <wordLink certainty="0.0202380952380952" lexPair="und;in" xtargets="w14.4.7;w14.2.6" />
+ <wordLink certainty="0.0214285714285715" lexPair="einer;setting" xtargets="w14.3.10;w14.2.3" />
+ <wordLink certainty="0.0230562445758921" lexPair=". Die;to" xtargets="w14.3.19+w14.4.1;w14.2.10" />
+ <wordLink certainty="0.0214285714285715" lexPair="guten Umwelt;current" xtargets="w14.3.11+w14.3.12;w14.2.8" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w14.3.9;w14.2.4" />
+ <wordLink certainty="0.025" lexPair="nach;pace" xtargets="w14.3.5;w14.2.5" />
+ <wordLink certainty="0.035" lexPair="Studenten;strengthen" xtargets="w14.4.6;w14.2.11" />
+</link>
+
+<link certainty="-2498" xtargets="s15.1;s15.1 s15.2" id="SL14.1">
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w15.1.12;w15.1.6" />
+ <wordLink certainty="0.02" lexPair="mehrfacher;framework" xtargets="w15.1.8;w15.1.3" />
+ <wordLink certainty="0.0318787878787879" lexPair="Regierung;Government" xtargets="w15.1.2;w15.1.16" />
+ <wordLink certainty="0.0234146341463415" lexPair="Die;." xtargets="w15.1.1;w15.1.38" />
+ <wordLink certainty="0.0117647058823529" lexPair="stärken;with" xtargets="w15.1.14;w15.1.9" />
+ <wordLink certainty="0.0165413533834586" lexPair="in;of" xtargets="w15.1.7;w15.1.36" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w15.1.4;w15.1.2" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w15.1.10;w15.1.24" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w15.1.13;w15.1.7" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w15.1.15;w15.2.8" />
+ <wordLink certainty="0.0222222222222222" lexPair="Hinsicht;intensify" xtargets="w15.1.9;w15.1.18" />
+ <wordLink certainty="0.0147041315484403" lexPair="den;to the" xtargets="w15.1.5;w15.1.27+w15.1.28" />
+ <wordLink certainty="0.025" lexPair="festigen;extent" xtargets="w15.1.11;w15.1.29" />
+</link>
+
+<link certainty="-1012" xtargets=";s15.3" id="SL14.2" />
+
+<link certainty="-1674" xtargets=";s15.4" id="SL14.3" />
+
+<link certainty="167" xtargets="s16.1;s16.1" id="SL15.1">
+ <wordLink certainty="0.025" lexPair="ihre;rule" xtargets="w16.1.8;w16.1.9" />
+ <wordLink certainty="0.0163793103448276" lexPair="der;The" xtargets="w16.1.3;w16.1.1" />
+ <wordLink certainty="0.0223606797749979" lexPair="werden verbessert;Government" xtargets="w16.1.14+w16.1.15;w16.1.2" />
+ <wordLink certainty="0.048" lexPair="Voraussetzungen;strengthen" xtargets="w16.1.2;w16.1.7" />
+ <wordLink certainty="0.0230769230769231" lexPair="Die;of" xtargets="w16.1.1;w16.1.10" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w16.1.7;w16.1.8" />
+ <wordLink certainty="0.0218274111675127" lexPair=",;to" xtargets="w16.1.13;w16.1.4" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w16.1.16;w16.1.15" />
+ <wordLink certainty="0.0222222222222222" lexPair="wichtigen;intends" xtargets="w16.1.9;w16.1.3" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w16.1.5;w16.1.6" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w16.1.11;w16.1.12" />
+</link>
+
+<link certainty="50" xtargets="s17.1;s17.1" id="SL16.1">
+ <wordLink certainty="0.0249616766752701" lexPair="Regierung wird;work will be" xtargets="w17.1.2+w17.1.3;w17.1.14+w17.1.15+w17.1.16" />
+ <wordLink certainty="0.0184466019417476" lexPair="Die;for" xtargets="w17.1.1;w17.1.3" />
+ <wordLink certainty="0.0214285714285715" lexPair="Polizei;public" xtargets="w17.1.14;w17.1.6" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w17.1.17;w17.1.5" />
+ <wordLink certainty="0.02" lexPair="einen;their" xtargets="w17.1.4;w17.1.12" />
+ <wordLink certainty="0.0163793103448276" lexPair="der;The" xtargets="w17.1.13;w17.1.1" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w17.1.21;w17.1.18" />
+ <wordLink certainty="0.0218274111675127" lexPair=",;to" xtargets="w17.1.9;w17.1.9" />
+ <wordLink certainty="0.02" lexPair="Vorschlag;improved" xtargets="w17.1.5;w17.1.17" />
+</link>
+
+<link certainty="5" xtargets="s18.1;s18.1" id="SL17.1">
+ <wordLink certainty="0.0365148371670111" lexPair="vorgeschlagen;put forward" xtargets="w18.1.12;w18.1.4+w18.1.5" />
+ <wordLink certainty="0.0526666666666667" lexPair="für;for" xtargets="w18.1.8;w18.1.7" />
+ <wordLink certainty="0.0458333333333333" lexPair="wird;will" xtargets="w18.1.3;w18.1.3" />
+ <wordLink certainty="0.0111111111111111" lexPair="Reichstag;work" xtargets="w18.1.2;w18.1.10" />
+ <wordLink certainty="0.0171246936312685" lexPair="Trunkenheit im;Government" xtargets="w18.1.9+w18.1.10;w18.1.2" />
+ <wordLink certainty="0.01" lexPair="eine;The" xtargets="w18.1.4;w18.1.1" />
+ <wordLink certainty="0.0214285714285715" lexPair="Senkung;making" xtargets="w18.1.5;w18.1.12" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w18.1.13+w18.1.14;w18.1.16" />
+ <wordLink certainty="0.0221556886227545" lexPair="der;and" xtargets="w18.1.6;w18.1.11" />
+</link>
+
+<link certainty="-1372" xtargets="s19.1 s19.2;s19.1" id="SL18.1">
+ <wordLink certainty="0.0197641263316943" lexPair="und;for the" xtargets="w19.2.5;w19.1.8+w19.1.9" />
+ <wordLink certainty="0.0125047507877307" lexPair="Dem Kampf gegen;with" xtargets="w19.2.1+w19.2.2+w19.2.3;w19.1.13" />
+ <wordLink certainty="0.025" lexPair="lokale;legal" xtargets="w19.1.2;w19.1.6" />
+ <wordLink certainty="0.0192592592592593" lexPair="Die;to" xtargets="w19.1.1;w19.1.21" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w19.2.10;w19.1.23" />
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w19.2.7;w19.1.18+w19.1.19" />
+ <wordLink certainty="0.0296943231441048" lexPair=".;of" xtargets="w19.1.7;w19.1.11" />
+ <wordLink certainty="0.02" lexPair="ermuntert;Parliament" xtargets="w19.1.5;w19.1.22" />
+ <wordLink certainty="0.0158113883008419" lexPair="werden;a lower" xtargets="w19.1.6;w19.1.4+w19.1.5" />
+</link>
+
+<link certainty="133" xtargets="s20.1;s20.1" id="SL19.1">
+ <wordLink certainty="0.0153846153846154" lexPair="muss;at" xtargets="w20.1.3;w20.1.4" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w20.1.7;w20.1.5" />
+ <wordLink certainty="0.0161320455419374" lexPair="und;is to" xtargets="w20.1.10;w20.1.8+w20.1.9" />
+ <wordLink certainty="0.02" lexPair="betrieben;prevention" xtargets="w20.1.5;w20.1.2" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w20.1.13+w20.1.14;w20.1.12" />
+ <wordLink certainty="0.0225806451612903" lexPair="werden;be" xtargets="w20.1.6;w20.1.10" />
+</link>
+
+<link certainty="239" xtargets="s20.2;s20.2" id="SL19.2">
+ <wordLink certainty="0.02" lexPair="die;given" xtargets="w20.2.8;w20.2.10" />
+ <wordLink certainty="0.0369656705023203" lexPair="und der;and" xtargets="w20.2.5+w20.2.6;w20.2.5" />
+ <wordLink certainty="0.02" lexPair="die;crime" xtargets="w20.2.3;w20.2.7" />
+ <wordLink certainty="0.0166666666666667" lexPair="müssen;economic" xtargets="w20.2.2;w20.2.6" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w20.2.14;w20.2.12" />
+ <wordLink certainty="0.0191942973987478" lexPair="der;will be" xtargets="w20.2.11;w20.2.8+w20.2.9" />
+</link>
+
+<link certainty="-1295" xtargets="s21.1;s21.1 s21.2" id="SL20.1">
+ <wordLink certainty="0.02" lexPair="ganze;are" xtargets="w21.1.12;w21.1.15" />
+ <wordLink certainty="0.025" lexPair="steigender;offenders" xtargets="w21.1.8;w21.1.4" />
+ <wordLink certainty="0.0195655126228033" lexPair="der;the term in" xtargets="w21.1.3;w21.2.5+w21.2.6+w21.2.7" />
+ <wordLink certainty="0.025" lexPair="Ziel;time" xtargets="w21.1.2;w21.2.4" />
+ <wordLink certainty="0.0222222222222222" lexPair="Das;such" xtargets="w21.1.1;w21.1.9" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w21.1.14;w21.2.18" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w21.1.7;w21.2.9" />
+ <wordLink certainty="0.02" lexPair="für;after" xtargets="w21.1.10;w21.2.16" />
+ <wordLink certainty="0.025" lexPair="ist;must" xtargets="w21.1.5;w21.2.13" />
+ <wordLink certainty="0.015" lexPair="das;must" xtargets="w21.1.11;w21.1.5" />
+</link>
+
+<link certainty="1570" xtargets="s22.1;" id="SL21.1" />
+
+<link certainty="-305" xtargets="s22.2 s22.3;s22.1" id="SL21.2">
+ <wordLink certainty="0.0188982236504614" lexPair="nur in;our" xtargets="w22.3.4+w22.3.5;w22.1.4" />
+ <wordLink certainty="0.0133333333333333" lexPair="in;is" xtargets="w22.3.10;w22.1.7" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w22.2.16+w22.2.17;w22.1.17" />
+ <wordLink certainty="0.0204819277108434" lexPair="wird;The" xtargets="w22.3.26;w22.1.1" />
+ <wordLink certainty="0.025" lexPair="Reformen;employment" xtargets="w22.3.2;w22.1.9" />
+ <wordLink certainty="0.0166666666666667" lexPair="müssen;economic" xtargets="w22.2.14;w22.1.5" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w22.3.9;w22.1.14" />
+ <wordLink certainty="0.025" lexPair="restriktiv;prosperity" xtargets="w22.2.7;w22.1.12" />
+ <wordLink certainty="0.02" lexPair="dafür;for" xtargets="w22.3.24;w22.1.13" />
+ <wordLink certainty="0.0114332390095006" lexPair="im;whole nation" xtargets="w22.3.20;w22.1.15+w22.1.16" />
+ <wordLink certainty="0.025" lexPair="erhalten;greater" xtargets="w22.2.15;w22.1.11" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w22.3.18;w22.1.10" />
+ <wordLink certainty="0.0273275883253198" lexPair="öffentlichen Sektor Spielraum;full" xtargets="w22.3.21+w22.3.22+w22.3.23;w22.1.8" />
+ <wordLink certainty="0.0296943231441048" lexPair=".;of" xtargets="w22.3.27;w22.1.3" />
+</link>
+
+<link certainty="339" xtargets="s23.1;s23.1" id="SL22.1">
+ <wordLink certainty="0.0166666666666667" lexPair="das;too" xtargets="w23.1.8;w23.1.6" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w23.1.18;w23.1.12" />
+ <wordLink certainty="0.025" lexPair="Höhe;high" xtargets="w23.1.17;w23.1.7" />
+ <wordLink certainty="0.0204545454545454" lexPair="und;be" xtargets="w23.1.4;w23.1.10" />
+ <wordLink certainty="0.0130639452948436" lexPair="in die;is" xtargets="w23.1.15+w23.1.16;w23.1.5" />
+ <wordLink certainty="0.0243243243243244" lexPair="und;of" xtargets="w23.1.10;w23.1.3" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w23.1.13;w23.1.8" />
+ <wordLink certainty="0.0214285714285715" lexPair="treiben Preise;reduced" xtargets="w23.1.11+w23.1.12;w23.1.11" />
+ <wordLink certainty="0.0142857142857143" lexPair="Sparen;must" xtargets="w23.1.6;w23.1.9" />
+</link>
+
+<link certainty="192" xtargets="s23.2;s23.2" id="SL22.2">
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w23.2.22;w23.2.15" />
+ <wordLink certainty="0.0201436336551271" lexPair="werden ,;to" xtargets="w23.2.6+w23.2.7;w23.2.7" />
+ <wordLink certainty="0.0333333333333333" lexPair="zur;Our" xtargets="w23.2.18;w23.2.1" />
+ <wordLink certainty="0.0225806451612903" lexPair="werden;be" xtargets="w23.2.2;w23.2.8" />
+ <wordLink certainty="0.025" lexPair="Arbeit;budget" xtargets="w23.2.19;w23.2.2" />
+ <wordLink certainty="0.02" lexPair="Menschen;government" xtargets="w23.2.17;w23.2.12" />
+ <wordLink certainty="0.025" lexPair="Massnahmen;maintained" xtargets="w23.2.4;w23.2.14" />
+ <wordLink certainty="0.025" lexPair="Sparen;strong" xtargets="w23.2.10;w23.2.11" />
+ <wordLink certainty="0.015" lexPair="das;must" xtargets="w23.2.9;w23.2.4" />
+ <wordLink certainty="0.0222222222222222" lexPair="ergriffen;therefore" xtargets="w23.2.5;w23.2.5" />
+ <wordLink certainty="0.0288912540823906" lexPair="und den;and" xtargets="w23.2.13+w23.2.14;w23.2.10" />
+</link>
+
+<link certainty="49" xtargets="s23.3;s23.3" id="SL22.3">
+ <wordLink certainty="0.0184675223762163" lexPair=", den;the" xtargets="w23.3.17+w23.3.18;w23.3.23" />
+ <wordLink certainty="0.0191256830601093" lexPair="die;of" xtargets="w23.3.12;w23.3.17" />
+ <wordLink certainty="0.0138888888888889" lexPair="auf;by" xtargets="w23.3.8;w23.3.20" />
+ <wordLink certainty="0.0225806451612903" lexPair="werden;be" xtargets="w23.3.2;w23.3.5" />
+ <wordLink certainty="0.0142857142857143" lexPair="Es;economic" xtargets="w23.3.1;w23.3.13" />
+ <wordLink certainty="0.0143790849673203" lexPair="die;," xtargets="w23.3.14;w23.3.15" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w23.3.26;w23.3.26" />
+ <wordLink certainty="0.0154303349962092" lexPair="um;carried through" xtargets="w23.3.7;w23.3.6+w23.3.7" />
+ <wordLink certainty="0.0352141214569098" lexPair="und die;and" xtargets="w23.3.22+w23.3.23;w23.3.19" />
+ <wordLink certainty="0.0218274111675127" lexPair=",;to" xtargets="w23.3.10;w23.3.8" />
+ <wordLink certainty="0.025" lexPair="Inflation;rationalizations" xtargets="w23.3.15;w23.3.21" />
+ <wordLink certainty="0.025" lexPair="Gebieten;extent" xtargets="w23.3.9;w23.3.10" />
+ <wordLink certainty="0.0254901960784314" lexPair="werden;will" xtargets="w23.3.5;w23.3.3" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w23.3.20;w23.3.22" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w23.3.6;w23.3.9" />
+</link>
+
+<link certainty="1951" xtargets=";s24.1" id="SL23.1" />
+
+<link certainty="-1398" xtargets="s24.1;s24.2 s24.3" id="SL23.2">
+ <wordLink certainty="0.0333333333333333" lexPair="erster;better" xtargets="w24.1.12;w24.2.14" />
+ <wordLink certainty="0.0174280899055808" lexPair="eine;desire to" xtargets="w24.1.3;w24.2.19+w24.2.20" />
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w24.1.2;w24.3.2+w24.3.3" />
+ <wordLink certainty="0.0142857142857143" lexPair="1989;s" xtargets="w24.1.1;w24.2.18" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w24.1.17;w24.3.21" />
+ <wordLink certainty="0.0153846153846154" lexPair="um;therefore" xtargets="w24.1.7;w24.2.4" />
+ <wordLink certainty="0.0333333333333333" lexPair="Senkung;put" xtargets="w24.1.4;w24.3.4" />
+ <wordLink certainty="0.0526666666666667" lexPair="für;for" xtargets="w24.1.10;w24.3.6" />
+ <wordLink certainty="0.02" lexPair="Linie;price" xtargets="w24.1.13;w24.3.16" />
+ <wordLink certainty="0.04" lexPair="vorgeschlagen;forward" xtargets="w24.1.15;w24.3.5" />
+ <wordLink certainty="0.0333333333333333" lexPair="werden;where" xtargets="w24.1.16;w24.3.15" />
+ <wordLink certainty="0.0223961702441743" lexPair="der;in order to" xtargets="w24.1.5;w24.2.7+w24.2.8+w24.2.9" />
+ <wordLink certainty="0.017948717948718" lexPair="in;." xtargets="w24.1.11;w24.2.22" />
+</link>
+
+<link certainty="2639" xtargets="s25.1;" id="SL24.1" />
+
+<link certainty="1278" xtargets="s25.2;" id="SL24.2" />
+
+<link certainty="6383" xtargets="s25.3;" id="SL24.3" />
+
+<link certainty="-1478" xtargets="s25.4 s25.5;s25.1" id="SL24.4">
+ <wordLink certainty="0.025" lexPair="Die;time" xtargets="w25.5.1;w25.1.24" />
+ <wordLink certainty="0.0105263157894737" lexPair="soll;1989" xtargets="w25.4.8;w25.1.10" />
+ <wordLink certainty="0.0187444877258841" lexPair="und der;in" xtargets="w25.4.5+w25.4.6;w25.1.18" />
+ <wordLink certainty="0.02" lexPair="soll;full-" xtargets="w25.4.3;w25.1.23" />
+ <wordLink certainty="0.0260044132446153" lexPair="wird in;will" xtargets="w25.5.3+w25.5.4;w25.1.15" />
+ <wordLink certainty="0.02" lexPair="reformiert;first" xtargets="w25.5.12;w25.1.20" />
+ <wordLink certainty="0.0138888888888889" lexPair="auf;by" xtargets="w25.5.6;w25.1.11" />
+ <wordLink certainty="0.0227272727272728" lexPair="vereinfacht;percentage" xtargets="w25.4.4;w25.1.13" />
+ <wordLink certainty="0.0225806451612903" lexPair="werden;be" xtargets="w25.4.10;w25.1.16" />
+ <wordLink certainty="0.0222222222222222" lexPair="Richtung;reduction" xtargets="w25.5.5;w25.1.2" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w25.5.13+w25.5.14;w25.1.26" />
+ <wordLink certainty="0.0236" lexPair="und;the" xtargets="w25.5.9;w25.1.19" />
+ <wordLink certainty="0.0282472774462231" lexPair=".;of the" xtargets="w25.4.11;w25.1.3+w25.1.4" />
+</link>
+
+<link certainty="-2585" xtargets="s25.6;" id="SL24.5" />
+
+<link certainty="-2170" xtargets="s26.1;s26.1 s26.2" id="SL25.1">
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w26.1.12;w26.1.8+w26.1.9" />
+ <wordLink certainty="0.02" lexPair="entwickeln;extensive" xtargets="w26.1.18;w26.1.14" />
+ <wordLink certainty="0.0159663865546219" lexPair="den;to" xtargets="w26.1.2;w26.2.4" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w26.1.19;w26.2.9" />
+ <wordLink certainty="0.0122448979591837" lexPair="Regierung;is" xtargets="w26.1.14;w26.2.3" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w26.1.7;w26.2.7" />
+ <wordLink certainty="0.02" lexPair="weiter;tax" xtargets="w26.1.4;w26.1.18" />
+ <wordLink certainty="0.0213709677419355" lexPair="die;the" xtargets="w26.1.13;w26.1.3" />
+ <wordLink certainty="0.025" lexPair="aktive;Later" xtargets="w26.1.16;w26.1.1" />
+ <wordLink certainty="0.0165672872672101" lexPair="die;. The" xtargets="w26.1.15;w26.1.20+w26.2.1" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w26.1.5;w26.1.2" />
+ <wordLink certainty="0.0232499477906379" lexPair=",;of the" xtargets="w26.1.11;w26.1.16+w26.1.17" />
+ <wordLink certainty="0.04" lexPair="erhöhen;reform" xtargets="w26.1.6;w26.1.15" />
+</link>
+
+<link certainty="-1472" xtargets="s26.2;s26.3 s26.4" id="SL25.2">
+ <wordLink certainty="0.02" lexPair="Rolle;will" xtargets="w26.2.12;w26.4.4" />
+ <wordLink certainty="0.0214285714285715" lexPair="spielen;capital" xtargets="w26.2.8;w26.3.8" />
+ <wordLink certainty="0.0105263157894737" lexPair="im;system" xtargets="w26.2.3;w26.4.3" />
+ <wordLink certainty="0.02" lexPair="Ausbildung;avoidance" xtargets="w26.2.2;w26.4.9" />
+ <wordLink certainty="0.0166666666666667" lexPair="Erwerbsleben;tax" xtargets="w26.2.4;w26.3.3" />
+ <wordLink certainty="0.0214285714285715" lexPair="eine;income-" xtargets="w26.2.10;w26.3.2" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w26.2.13;w26.4.11" />
+ <wordLink certainty="0.02" lexPair="dabei;taxes" xtargets="w26.2.9;w26.3.9" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w26.2.5;w26.4.7" />
+ <wordLink certainty="0.025" lexPair="wichtige;increased" xtargets="w26.2.11;w26.3.10" />
+</link>
+
+<link certainty="18" xtargets="s26.3;s26.5" id="SL25.3">
+ <wordLink certainty="0.0214285714285715" lexPair="der;broader" xtargets="w26.3.3;w26.5.15" />
+ <wordLink certainty="0.0241610738255033" lexPair="Die;and" xtargets="w26.3.1;w26.5.14" />
+ <wordLink certainty="0.025" lexPair="Erwerbsleben;taxation" xtargets="w26.3.7;w26.5.2" />
+ <wordLink certainty="0.0207046855361797" lexPair=",;in the" xtargets="w26.3.9;w26.5.6+w26.5.7" />
+ <wordLink certainty="0.0214634146341463" lexPair=",;of" xtargets="w26.3.5;w26.5.12" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w26.3.13+w26.3.14;w26.5.18" />
+ <wordLink certainty="0.025" lexPair="weiter;lower" xtargets="w26.3.11;w26.5.10" />
+</link>
+
+<link certainty="196" xtargets="s26.4;s26.6" id="SL25.4">
+ <wordLink certainty="0.0206324161073599" lexPair="der;to be" xtargets="w26.4.3;w26.6.4+w26.6.5" />
+ <wordLink certainty="0.025" lexPair="Eintritt;Indirect" xtargets="w26.4.2;w26.6.1" />
+ <wordLink certainty="0.025" lexPair="Erwerbsleben;taxation" xtargets="w26.4.7;w26.6.2" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w26.4.10+w26.4.11;w26.6.8" />
+ <wordLink certainty="0.0133333333333333" lexPair="in;is" xtargets="w26.4.5;w26.6.3" />
+ <wordLink certainty="0.0166666666666667" lexPair="das;too" xtargets="w26.4.6;w26.6.7" />
+</link>
+
+<link certainty="-972" xtargets="s27.1;s27.1 s27.2" id="SL26.1">
+ <wordLink certainty="0.0238810556318691" lexPair="werden;. Recurrent" xtargets="w27.1.8;w27.1.22+w27.2.1" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w27.1.2;w27.2.6" />
+ <wordLink certainty="0.02" lexPair="Sicherheit;increase" xtargets="w27.1.1;w27.1.5" />
+ <wordLink certainty="0.0352631578947369" lexPair="gefördert;Government" xtargets="w27.1.7;w27.1.14" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w27.1.9;w27.2.18" />
+ <wordLink certainty="0.0176776695296637" lexPair="sollen;important role" xtargets="w27.1.6;w27.2.13+w27.2.14" />
+ <wordLink certainty="0.0161164592805076" lexPair="im Erwerbsleben;employment" xtargets="w27.1.4+w27.1.5;w27.1.6" />
+</link>
+
+<link certainty="-1335" xtargets=";s27.3" id="SL26.2" />
+
+<link certainty="-1685" xtargets=";s27.4" id="SL26.3" />
+
+<link certainty="-220" xtargets="s28.1 s28.2;s28.1" id="SL27.1">
+ <wordLink certainty="0.0302865370648816" lexPair=". Die;." xtargets="w28.1.37+w28.2.1;w28.1.11" />
+ <wordLink certainty="0.0136363636363636" lexPair="wird;more" xtargets="w28.1.3;w28.1.7" />
+ <wordLink certainty="0.0222222222222222" lexPair="Regierung;Working" xtargets="w28.1.2;w28.1.1" />
+ <wordLink certainty="0.025" lexPair="Die;life" xtargets="w28.1.1;w28.1.2" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w28.1.7;w28.1.9" />
+ <wordLink certainty="0.025" lexPair="die;made" xtargets="w28.1.4;w28.1.6" />
+ <wordLink certainty="0.0237678530280107" lexPair=".;is to be" xtargets="w28.2.24;w28.1.3+w28.1.4+w28.1.5" />
+ <wordLink certainty="0.0247435829652697" lexPair="gesehen bessere;secure" xtargets="w28.2.12+w28.2.13;w28.1.8" />
+</link>
+
+<link certainty="1016" xtargets="s29.1;s29.1" id="SL28.1">
+ <wordLink certainty="0.0214285714285715" lexPair="sechste;special" xtargets="w29.1.8;w29.1.26" />
+ <wordLink certainty="0.01955332912251" lexPair="der;and the" xtargets="w29.1.2;w29.1.11+w29.1.12" />
+ <wordLink certainty="0.0214285714285715" lexPair="Während;working" xtargets="w29.1.1;w29.1.22" />
+ <wordLink certainty="0.025" lexPair="eine;invite" xtargets="w29.1.7;w29.1.4" />
+ <wordLink certainty="0.0458333333333333" lexPair="wird;will" xtargets="w29.1.4;w29.1.3" />
+ <wordLink certainty="0.0227272727272728" lexPair="eingeführt;environment" xtargets="w29.1.10;w29.1.23" />
+ <wordLink certainty="0.0208333333333334" lexPair="Urlaubswoche;workplaces" xtargets="w29.1.9;w29.1.32" />
+ <wordLink certainty="0.025" lexPair="durch;organizations" xtargets="w29.1.5;w29.1.6" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w29.1.11;w29.1.37" />
+ <wordLink certainty="0.0214285714285715" lexPair="Gesetz;exposed" xtargets="w29.1.6;w29.1.34" />
+</link>
+
+<link certainty="858" xtargets="s29.2;s29.2" id="SL28.2">
+ <wordLink certainty="0.0243094600060957" lexPair="wird;and which will" xtargets="w29.2.3;w29.2.17+w29.2.18+w29.2.19" />
+ <wordLink certainty="0.025" lexPair="Reform;for" xtargets="w29.2.2;w29.2.7" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w29.2.6;w29.2.25" />
+</link>
+
+<link certainty="-1268" xtargets="s30.1 s30.2;s30.1" id="SL29.1">
+ <wordLink certainty="0.0277777777777778" lexPair="leichter;electoral" xtargets="w30.2.6;w30.1.3" />
+ <wordLink certainty="0.0182857142857143" lexPair=",;," xtargets="w30.1.8;w30.1.5" />
+ <wordLink certainty="0.0140495867768595" lexPair="und;a" xtargets="w30.2.2;w30.1.8" />
+ <wordLink certainty="0.0285714285714285" lexPair="gemacht;enacted" xtargets="w30.2.7;w30.1.18" />
+ <wordLink certainty="0.025" lexPair="ist;this" xtargets="w30.1.2;w30.1.2" />
+ <wordLink certainty="0.0198293267296599" lexPair="mit ihrer Verantwortung;with" xtargets="w30.2.11+w30.2.12+w30.2.13;w30.1.14" />
+ <wordLink certainty="0.0155172413793104" lexPair="den;on" xtargets="w30.1.10;w30.1.7" />
+ <wordLink certainty="0.0296943231441048" lexPair=".;of" xtargets="w30.1.16;w30.1.11" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w30.2.19;w30.1.19" />
+ <wordLink certainty="0.0208897426887611" lexPair="werden ,;will be" xtargets="w30.2.8+w30.2.9;w30.1.16+w30.1.17" />
+ <wordLink certainty="0.0208333333333334" lexPair="aufgeteilten Arbeitsmarkt;legislation" xtargets="w30.1.13+w30.1.14;w30.1.6" />
+</link>
+
+<link certainty="660" xtargets="s30.3;s30.2" id="SL29.2">
+ <wordLink certainty="0.04" lexPair="erhöhen;reform" xtargets="w30.3.18;w30.2.2" />
+ <wordLink certainty="0.0333333333333333" lexPair="Zukunft;This" xtargets="w30.3.3;w30.2.1" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w30.3.19;w30.2.9" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w30.3.17;w30.2.7" />
+ <wordLink certainty="0.020889742688761" lexPair="werden ,;will be" xtargets="w30.3.7+w30.3.8;w30.2.3+w30.2.4" />
+ <wordLink certainty="0.02" lexPair="Vertretung;through" xtargets="w30.3.11;w30.2.6" />
+ <wordLink certainty="0.0222222222222222" lexPair="ergriffen;carried" xtargets="w30.3.6;w30.2.5" />
+</link>
+
+<link certainty="-2528" xtargets="s31.1;s31.1 s31.2" id="SL30.1">
+ <wordLink certainty="0.0227272727272728" lexPair="verbesserte;essential" xtargets="w31.1.22;w31.1.3" />
+ <wordLink certainty="0.0333333333333333" lexPair="den;men" xtargets="w31.1.8;w31.2.7" />
+ <wordLink certainty="0.0275907593226428" lexPair="wird;work of" xtargets="w31.1.27;w31.1.6+w31.1.7" />
+ <wordLink certainty="0.0178271496702581" lexPair=", die;on the" xtargets="w31.1.18+w31.1.19;w31.1.12+w31.1.13" />
+ <wordLink certainty="0.0231998228477561" lexPair=", die;the" xtargets="w31.1.5+w31.1.6;w31.1.5" />
+ <wordLink certainty="0.0221556886227545" lexPair="der;and" xtargets="w31.1.3;w31.2.14" />
+ <wordLink certainty="0.02" lexPair="Ausweitung;breaking" xtargets="w31.1.2;w31.1.8" />
+ <wordLink certainty="0.0224439600624217" lexPair="Die;be made" xtargets="w31.1.1;w31.2.3+w31.2.4" />
+ <wordLink certainty="0.02" lexPair="die;to" xtargets="w31.1.14;w31.2.10" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w31.1.30;w31.1.25" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w31.1.26;w31.1.10" />
+ <wordLink certainty="0.0153225806451613" lexPair="in;be" xtargets="w31.1.7;w31.1.23" />
+ <wordLink certainty="0.0117647058823529" lexPair="fortgesetzt;that" xtargets="w31.1.28;w31.1.4" />
+ <wordLink certainty="0.0256637168141593" lexPair="werden;." xtargets="w31.1.29;w31.2.17" />
+ <wordLink certainty="0.02" lexPair="Strukturpolitik;responsibility" xtargets="w31.1.4;w31.2.16" />
+ <wordLink certainty="0.025" lexPair="Jahren;parental" xtargets="w31.1.10;w31.2.15" />
+ <wordLink certainty="0.0138888888888889" lexPair="auf;by" xtargets="w31.1.13;w31.1.20" />
+ <wordLink certainty="0.02" lexPair="des;sexes" xtargets="w31.1.16;w31.1.22" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w31.1.21;w31.2.8" />
+ <wordLink certainty="0.04" lexPair="Ausbildung;both" xtargets="w31.1.20;w31.1.21" />
+ <wordLink certainty="0.0167248402001418" lexPair="durch;labour market" xtargets="w31.1.11;w31.1.14+w31.1.15" />
+</link>
+
+<link certainty="-2483" xtargets=";s31.3" id="SL30.2" />
+
+<link certainty="-1962" xtargets="s32.1 s32.2;s32.1" id="SL31.1">
+ <wordLink certainty="0.0333333333333333" lexPair="tragen;taken" xtargets="w32.1.3;w32.1.8" />
+ <wordLink certainty="0.0250924217569694" lexPair=", gute;the" xtargets="w32.2.3+w32.2.4;w32.1.14" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w32.2.8;w32.1.10" />
+ <wordLink certainty="0.0230769230769231" lexPair="Die;of" xtargets="w32.1.1;w32.1.16" />
+ <wordLink certainty="0.0208333333333334" lexPair="Bestrebungen;broadening" xtargets="w32.2.2;w32.1.2" />
+ <wordLink certainty="0.02" lexPair="Wirtschaft;direction" xtargets="w32.1.14;w32.1.15" />
+ <wordLink certainty="0.02" lexPair="der;years" xtargets="w32.1.7;w32.1.12" />
+ <wordLink certainty="0.0254901960784314" lexPair="werden;will" xtargets="w32.2.11;w32.1.26" />
+ <wordLink certainty="0.0117647058823529" lexPair="fortgesetzt;that" xtargets="w32.2.13;w32.1.6" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w32.2.14;w32.1.28" />
+ <wordLink certainty="0.0261773491976901" lexPair=". Die;of" xtargets="w32.1.15+w32.2.1;w32.1.3" />
+ <wordLink certainty="0.0144444444444444" lexPair="für;," xtargets="w32.2.6;w32.1.25" />
+ <wordLink certainty="0.0154746115147543" lexPair="in der;in" xtargets="w32.1.11+w32.1.12;w32.1.13" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w32.1.9;w32.1.21" />
+ <wordLink certainty="0.0182857142857143" lexPair=",;," xtargets="w32.2.10;w32.1.19" />
+ <wordLink certainty="0.0316227766016838" lexPair="einen grossen;recent" xtargets="w32.1.4+w32.1.5;w32.1.11" />
+ <wordLink certainty="0.025" lexPair="Teil;The" xtargets="w32.1.6;w32.1.1" />
+</link>
+
+<link certainty="185" xtargets="s33.1;s33.1" id="SL32.1">
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w33.1.8;w33.1.17" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w33.1.3;w33.1.15" />
+ <wordLink certainty="0.0227272727272728" lexPair="grosszügige;responsible" xtargets="w33.1.2;w33.1.4" />
+ <wordLink certainty="0.0241610738255033" lexPair="Die;and" xtargets="w33.1.1;w33.1.10" />
+ <wordLink certainty="0.0208333333333334" lexPair="solidarische;Swedish" xtargets="w33.1.4;w33.1.13" />
+</link>
+
+<link certainty="102" xtargets="s33.2 s33.3;s33.2" id="SL32.2">
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w33.3.6+w33.3.7;w33.2.15" />
+ <wordLink certainty="0.0278105478807336" lexPair="für die;for" xtargets="w33.2.6+w33.2.7;w33.2.12" />
+ <wordLink certainty="0.0223760675609669" lexPair="in der Welt soll;will" xtargets="w33.2.9+w33.2.10+w33.2.11+w33.2.12;w33.2.2" />
+ <wordLink certainty="0.0226519440594324" lexPair="werden .;to" xtargets="w33.2.16+w33.2.17;w33.2.7" />
+ <wordLink certainty="0.0223606797749979" lexPair="Arbeit;create favourable" xtargets="w33.2.2;w33.2.8+w33.2.9" />
+ <wordLink certainty="0.02" lexPair="stark;small" xtargets="w33.2.14;w33.2.13" />
+ <wordLink certainty="0.0222222222222222" lexPair="Vereinten;therefore" xtargets="w33.2.4;w33.2.3" />
+ <wordLink certainty="0.0181818181818182" lexPair="weiterhin;efforts" xtargets="w33.2.13;w33.2.6" />
+ <wordLink certainty="0.025" lexPair="unterstützt;development" xtargets="w33.2.15;w33.2.10" />
+ <wordLink certainty="0.0206430705961193" lexPair="Nationen;continue our" xtargets="w33.2.5;w33.2.4+w33.2.5" />
+</link>
+
+<link certainty="-985" xtargets="s34.1;s34.1 s34.2" id="SL33.1">
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w34.1.12;w34.2.16" />
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w34.1.3;w34.2.10+w34.2.11" />
+ <wordLink certainty="0.0105263157894737" lexPair="Dem;with" xtargets="w34.1.1;w34.1.6" />
+ <wordLink certainty="0.02" lexPair="einem neuen;given" xtargets="w34.1.7+w34.1.8;w34.2.12" />
+ <wordLink certainty="0.0166666666666667" lexPair="ein;support" xtargets="w34.1.4;w34.2.15" />
+ <wordLink certainty="0.0222222222222222" lexPair="vorgelegt;refugees" xtargets="w34.1.10;w34.2.9" />
+ <wordLink certainty="0.0179858897124915" lexPair="werden;. The" xtargets="w34.1.11;w34.1.10+w34.2.1" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w34.1.6;w34.1.4" />
+</link>
+
+<link certainty="102" xtargets="s34.2;s34.3" id="SL33.2">
+ <wordLink certainty="0.0150356530279795" lexPair="in;will be" xtargets="w34.2.3;w34.3.4+w34.3.5" />
+ <wordLink certainty="0.0241610738255033" lexPair="Die;and" xtargets="w34.2.1;w34.3.2" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w34.2.8+w34.2.9;w34.3.8" />
+</link>
+
+<link certainty="271" xtargets="s35.1;s35.1" id="SL34.1">
+ <wordLink certainty="0.0333333333333333" lexPair="allen;Aliens" xtargets="w35.1.12;w35.1.10" />
+ <wordLink certainty="0.012" lexPair="auf;a" xtargets="w35.1.2;w35.1.8" />
+ <wordLink certainty="0.0222222222222222" lexPair="Gebieten;submitted" xtargets="w35.1.14;w35.1.4" />
+ <wordLink certainty="0.02" lexPair="Natur;Act" xtargets="w35.1.7;w35.1.11" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w35.1.16;w35.1.12" />
+ <wordLink certainty="0.02" lexPair="prägen;Parliament" xtargets="w35.1.15;w35.1.6" />
+ <wordLink certainty="0.0146853146853147" lexPair="die;for" xtargets="w35.1.9;w35.1.7" />
+ <wordLink certainty="0.0214117712915877" lexPair="und;will be" xtargets="w35.1.5;w35.1.2+w35.1.3" />
+ <wordLink certainty="0.02" lexPair="die;to" xtargets="w35.1.6;w35.1.5" />
+</link>
+
+<link certainty="36" xtargets="s35.2;s35.2" id="SL34.2">
+ <wordLink certainty="0.0222222222222222" lexPair="Bedeutung;relating" xtargets="w35.2.8;w35.2.5" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w35.2.3;w35.2.6" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w35.2.9;w35.2.13" />
+</link>
+
+<link certainty="-480" xtargets="s36.1 s36.2;s36.1" id="SL35.1">
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w36.2.18;w36.1.11" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w36.2.24+w36.2.25;w36.1.14" />
+ <wordLink certainty="0.0142857142857143" lexPair="über;all" xtargets="w36.2.5;w36.1.12" />
+ <wordLink certainty="0.0197594260129035" lexPair=". Die;for the" xtargets="w36.1.9+w36.2.1;w36.1.2+w36.1.3" />
+ <wordLink certainty="0.0288912540823906" lexPair="und den;and" xtargets="w36.2.11+w36.2.12;w36.1.5" />
+ <wordLink certainty="0.0212347308881455" lexPair=", werden;the" xtargets="w36.2.20+w36.2.21;w36.1.6" />
+ <wordLink certainty="0.0230769230769231" lexPair="Übereinkommen;developments" xtargets="w36.2.4;w36.1.10" />
+ <wordLink certainty="0.025" lexPair="Luft;must" xtargets="w36.2.7;w36.1.8" />
+ <wordLink certainty="0.0208333333333334" lexPair="Bestrebungen;environment" xtargets="w36.2.2;w36.1.4" />
+</link>
+
+<link certainty="6" xtargets="s36.3;s36.2" id="SL35.2">
+ <wordLink certainty="0.0135593220338983" lexPair="wird;on" xtargets="w36.3.8;w36.2.4" />
+ <wordLink certainty="0.0125" lexPair="für;s" xtargets="w36.3.3;w36.2.2" />
+ <wordLink certainty="0.0214285714285715" lexPair="Freonen;context" xtargets="w36.3.7;w36.2.13" />
+ <wordLink certainty="0.0156463651743592" lexPair="die;is of" xtargets="w36.3.4;w36.2.7+w36.2.8" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w36.3.9;w36.2.11" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w36.3.12+w36.3.13;w36.2.14" />
+ <wordLink certainty="0.0214285714285715" lexPair="geführt;great" xtargets="w36.3.11;w36.2.9" />
+ <wordLink certainty="0.0166666666666667" lexPair="von;importance" xtargets="w36.3.6;w36.2.10" />
+</link>
+
+<link certainty="449" xtargets="s37.1;s37.1" id="SL36.1">
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w37.1.18+w37.1.19;w37.1.9" />
+ <wordLink certainty="0.0115942028985507" lexPair="Die;policy" xtargets="w37.1.1;w37.1.4" />
+ <wordLink certainty="0.025" lexPair="sollen;strong" xtargets="w37.1.7;w37.1.7" />
+ <wordLink certainty="0.0272727272727272" lexPair="Prozesse;presupposes" xtargets="w37.1.4;w37.1.5" />
+ <wordLink certainty="0.0140495867768595" lexPair="und;a" xtargets="w37.1.11;w37.1.6" />
+</link>
+
+<link certainty="-538" xtargets="s37.2 s37.3;s37.2" id="SL36.2">
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w37.3.13;w37.2.25" />
+ <wordLink certainty="0.0272076124785211" lexPair=". Die;and" xtargets="w37.2.5+w37.3.1;w37.2.14" />
+ <wordLink certainty="0.0185897435897436" lexPair="werden;to" xtargets="w37.2.3;w37.2.6" />
+ <wordLink certainty="0.0230769230769231" lexPair="Genehmigungen;agreements" xtargets="w37.2.2;w37.2.8" />
+ <wordLink certainty="0.02" lexPair="Erteilte;protection" xtargets="w37.2.1;w37.2.19" />
+ <wordLink certainty="0.0125" lexPair="Anforderungen;are" xtargets="w37.3.2;w37.2.2" />
+ <wordLink certainty="0.025" lexPair="Produkte;reduced" xtargets="w37.3.5;w37.2.12" />
+ <wordLink certainty="0.025" lexPair="werden;water" xtargets="w37.3.11;w37.2.15" />
+ <wordLink certainty="0.0235452534719918" lexPair="und die;and on" xtargets="w37.3.8+w37.3.9;w37.2.17+w37.2.18" />
+ <wordLink certainty="0.0232499477906379" lexPair=",;of the" xtargets="w37.3.6;w37.2.20+w37.2.21" />
+</link>
+
+<link certainty="53" xtargets="s37.4;s37.3" id="SL36.3">
+ <wordLink certainty="0.0333333333333333" lexPair="Für;for" xtargets="w37.4.1;w37.3.3" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w37.4.9;w37.3.10" />
+ <wordLink certainty="0.0204819277108434" lexPair="wird;The" xtargets="w37.4.5;w37.3.1" />
+ <wordLink certainty="0.0205195670417031" lexPair="eine;is being" xtargets="w37.4.6;w37.3.7+w37.3.8" />
+</link>
+
+<link certainty="-1990" xtargets="s38.1;s38.1 s38.2" id="SL37.1">
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w38.1.8;w38.1.3" />
+ <wordLink certainty="0.0256637168141593" lexPair="werden;." xtargets="w38.1.3;w38.1.18" />
+ <wordLink certainty="0.0117647058823529" lexPair="1989;are" xtargets="w38.1.2;w38.1.5" />
+ <wordLink certainty="0.025" lexPair="eingeführt;stringent" xtargets="w38.1.10;w38.1.10" />
+ <wordLink certainty="0.0150793650793651" lexPair="für;and" xtargets="w38.1.5;w38.1.12" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w38.1.11;w38.2.7" />
+ <wordLink certainty="0.02" lexPair="organische;granted" xtargets="w38.1.6;w38.2.2" />
+</link>
+
+<link certainty="-2060" xtargets="s38.2;s38.3 s38.4" id="SL37.2">
+ <wordLink certainty="0.0194160790836906" lexPair="für andere;and" xtargets="w38.2.6+w38.2.7;w38.3.9" />
+ <wordLink certainty="0.025" lexPair="Stoffe;waste" xtargets="w38.2.8;w38.3.11" />
+ <wordLink certainty="0.02" lexPair="vorgelegt;management" xtargets="w38.2.18;w38.3.13" />
+ <wordLink certainty="0.0166666666666667" lexPair="zu;," xtargets="w38.2.3;w38.3.7" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w38.2.19;w38.3.17" />
+ <wordLink certainty="0.04" lexPair="Ein;substances" xtargets="w38.2.1;w38.4.6" />
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w38.2.14;w38.3.14+w38.3.15" />
+ <wordLink certainty="0.02" lexPair="einer;new" xtargets="w38.2.4;w38.4.4" />
+ <wordLink certainty="0.0214634146341463" lexPair=",;of" xtargets="w38.2.13;w38.4.3" />
+ <wordLink certainty="0.0191942973987478" lexPair="der;will be" xtargets="w38.2.16;w38.4.7+w38.4.8" />
+ <wordLink certainty="0.0243445692883895" lexPair=",;." xtargets="w38.2.9;w38.4.10" />
+ <wordLink certainty="0.025" lexPair="u. a;tightened" xtargets="w38.2.10+w38.2.11;w38.3.16" />
+</link>
+
+<link certainty="67" xtargets="s39.1;s39.1" id="SL38.1">
+ <wordLink certainty="0.0214285714285715" lexPair="gesamte;charges" xtargets="w39.1.2;w39.1.2" />
+ <wordLink certainty="0.0201492537313433" lexPair="Die;be" xtargets="w39.1.1;w39.1.9" />
+ <wordLink certainty="0.0227272727272728" lexPair="koordiniert;chlorine" xtargets="w39.1.7;w39.1.4" />
+ <wordLink certainty="0.0364095744680851" lexPair="soll;will" xtargets="w39.1.4;w39.1.8" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w39.1.8+w39.1.9;w39.1.15" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w39.1.6;w39.1.6" />
+</link>
+
+<link certainty="58" xtargets="s39.2;s39.2" id="SL38.2">
+ <wordLink certainty="0.0186079555957455" lexPair="werden;, will be" xtargets="w39.2.12;w39.2.13+w39.2.14+w39.2.15" />
+ <wordLink certainty="0.0526666666666667" lexPair="für;for" xtargets="w39.2.3;w39.2.5" />
+ <wordLink certainty="0.04" lexPair="Ein;substances" xtargets="w39.2.1;w39.2.7" />
+ <wordLink certainty="0.0222911285030141" lexPair="der;term of" xtargets="w39.2.14;w39.2.19+w39.2.20" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w39.2.17;w39.2.22" />
+ <wordLink certainty="0.0346969386404681" lexPair="sowie weitere;other" xtargets="w39.2.7+w39.2.8;w39.2.6" />
+ <wordLink certainty="0.0111111111111111" lexPair="des;for" xtargets="w39.2.10;w39.2.2" />
+ <wordLink certainty="0.0222222222222222" lexPair="während;presented" xtargets="w39.2.13;w39.2.16" />
+</link>
+
+<link certainty="34" xtargets="s40.1;s40.1" id="SL39.1">
+ <wordLink certainty="0.0125" lexPair="zur;co-" xtargets="w40.1.8;w40.1.11" />
+ <wordLink certainty="0.0208333333333334" lexPair="öffentlichen;environment" xtargets="w40.1.2;w40.1.6" />
+ <wordLink certainty="0.0239913541247419" lexPair="werden;will be" xtargets="w40.1.4;w40.1.7+w40.1.8" />
+ <wordLink certainty="0.02" lexPair="Verfügung;pertaining" xtargets="w40.1.9;w40.1.3" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w40.1.11;w40.1.13" />
+</link>
+
+<link certainty="26" xtargets="s40.2;s40.2" id="SL39.2">
+ <wordLink certainty="0.025" lexPair="westlichen;tightening" xtargets="w40.2.12;w40.2.11" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w40.2.8;w40.2.21" />
+ <wordLink certainty="0.0239913541247419" lexPair="werden;will be" xtargets="w40.2.3;w40.2.17+w40.2.18" />
+ <wordLink certainty="0.0153846153846154" lexPair="Massnahmen;life" xtargets="w40.2.2;w40.2.22" />
+ <wordLink certainty="0.02" lexPair="Timrå;this" xtargets="w40.2.19;w40.2.24" />
+ <wordLink certainty="0.0222222222222222" lexPair="Besondere;presented" xtargets="w40.2.1;w40.2.19" />
+ <wordLink certainty="0.0243243243243244" lexPair="und;of" xtargets="w40.2.14;w40.2.12" />
+ <wordLink certainty="0.0117647058823529" lexPair="von;Environment" xtargets="w40.2.17;w40.2.14" />
+ <wordLink certainty="0.0396" lexPair="Regionen;Parliament" xtargets="w40.2.7;w40.2.25" />
+ <wordLink certainty="0.0165413533834586" lexPair="in;of" xtargets="w40.2.4;w40.2.23" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w40.2.22+w40.2.23;w40.2.26" />
+ <wordLink certainty="0.0208333333333334" lexPair="Schonen;Conservation" xtargets="w40.2.13;w40.2.6" />
+ <wordLink certainty="0.0125" lexPair="dem;Act" xtargets="w40.2.15;w40.2.7" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w40.2.20;w40.2.13" />
+ <wordLink certainty="0.0125" lexPair="dem;Act" xtargets="w40.2.11;w40.2.16" />
+</link>
+
+<link certainty="-1739" xtargets="s41.1;s41.1 s41.2" id="SL40.1">
+ <wordLink certainty="0.0256637168141593" lexPair="werden;." xtargets="w41.1.22;w41.1.12" />
+ <wordLink certainty="0.025" lexPair="drei;area" xtargets="w41.1.8;w41.2.19" />
+ <wordLink certainty="0.0139784946236559" lexPair="in;for" xtargets="w41.1.18;w41.2.11" />
+ <wordLink certainty="0.0223606797749979" lexPair="kann;Skåne and" xtargets="w41.1.23;w41.2.14+w41.2.15" />
+ <wordLink certainty="0.0298" lexPair="Regierung;protection" xtargets="w41.1.2;w41.1.5" />
+ <wordLink certainty="0.0230769230769231" lexPair="Die;of" xtargets="w41.1.1;w41.1.3" />
+ <wordLink certainty="0.025" lexPair="Umwelt;west" xtargets="w41.1.17;w41.2.13" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w41.1.14;w41.2.16" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w41.1.24;w41.2.20" />
+ <wordLink certainty="0.0197368421052632" lexPair="der;be" xtargets="w41.1.7;w41.1.7" />
+ <wordLink certainty="0.0198101453923265" lexPair="wie die;will" xtargets="w41.1.15+w41.1.16;w41.1.6" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w41.1.10;w41.2.6" />
+ <wordLink certainty="0.025" lexPair="diesen Gebieten;given" xtargets="w41.1.19+w41.1.20;w41.1.8" />
+ <wordLink certainty="0.0213807324270766" lexPair="wird in;will be" xtargets="w41.1.3+w41.1.4;w41.2.3+w41.2.4" />
+ <wordLink certainty="0.0275020660380932" lexPair="verbessert;increased resources" xtargets="w41.1.21;w41.1.10+w41.1.11" />
+</link>
+
+<link certainty="-2506" xtargets="s42.1 s42.2;s42.1" id="SL41.1">
+ <wordLink certainty="0.0214285714285715" lexPair="abnimmt;invite" xtargets="w42.2.10;w42.1.8" />
+ <wordLink certainty="0.02" lexPair="dass;environment" xtargets="w42.2.7;w42.1.23" />
+ <wordLink certainty="0.02" lexPair="die;to" xtargets="w42.2.8;w42.1.28" />
+ <wordLink certainty="0.0236" lexPair="und;the" xtargets="w42.1.18;w42.1.5" />
+ <wordLink certainty="0.0162272266272626" lexPair="in den;in" xtargets="w42.1.14+w42.1.15;w42.1.18" />
+ <wordLink certainty="0.0458333333333333" lexPair="wird;will" xtargets="w42.2.17;w42.1.7" />
+ <wordLink certainty="0.0128571428571428" lexPair="wird;is" xtargets="w42.1.2;w42.1.27" />
+ <wordLink certainty="0.03" lexPair="verändert;Government" xtargets="w42.2.5;w42.1.6" />
+ <wordLink certainty="0.0225806451612903" lexPair="werden;be" xtargets="w42.1.24;w42.1.29" />
+ <wordLink certainty="0.025" lexPair="derart;part" xtargets="w42.2.4;w42.1.17" />
+ <wordLink certainty="0.0296943231441048" lexPair=".;of" xtargets="w42.1.26;w42.1.24" />
+ <wordLink certainty="0.02" lexPair="des;these" xtargets="w42.2.14;w42.1.25" />
+ <wordLink certainty="0.0135593220338983" lexPair="wird;on" xtargets="w42.2.3;w42.1.20" />
+ <wordLink certainty="0.0243243243243244" lexPair="und;of" xtargets="w42.2.11;w42.1.10" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w42.1.10;w42.1.11" />
+ <wordLink certainty="0.02" lexPair="Kernkraftwerken;representatives" xtargets="w42.1.16;w42.1.9" />
+ <wordLink certainty="0.0236" lexPair="und;the" xtargets="w42.1.21;w42.1.22" />
+ <wordLink certainty="0.0185897435897436" lexPair="werden;to" xtargets="w42.1.9;w42.1.15" />
+ <wordLink certainty="0.0233549683248457" lexPair="einer;near future" xtargets="w42.2.12;w42.1.3+w42.1.4" />
+ <wordLink certainty="0.0111111111111111" lexPair="sollen;In" xtargets="w42.1.25;w42.1.1" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w42.2.18;w42.1.31" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w42.2.6;w42.1.2" />
+ <wordLink certainty="0.02" lexPair="Vorschlag;improved" xtargets="w42.1.6;w42.1.30" />
+</link>
+
+<link certainty="-1372" xtargets="s43.1 s43.2;s43.1" id="SL42.1">
+ <wordLink certainty="0.0352141214569098" lexPair="und die;and" xtargets="w43.2.28+w43.2.29;w43.1.32" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w43.1.22;w43.1.34" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w43.1.3;w43.1.8" />
+ <wordLink certainty="0.0142857142857143" lexPair="mit;on" xtargets="w43.1.19;w43.1.10" />
+ <wordLink certainty="0.0230769230769231" lexPair="Die;of" xtargets="w43.1.1;w43.1.28" />
+ <wordLink certainty="0.02" lexPair="Produktion;stations" xtargets="w43.2.9;w43.1.21" />
+ <wordLink certainty="0.02" lexPair="muss;submitted" xtargets="w43.2.2;w43.1.7" />
+ <wordLink certainty="0.0396" lexPair="Regionen;Parliament" xtargets="w43.2.34;w43.1.9" />
+ <wordLink certainty="0.02" lexPair="der;power" xtargets="w43.2.6;w43.1.20" />
+ <wordLink certainty="0.0214285714285715" lexPair="eine;service" xtargets="w43.1.7;w43.1.29" />
+ <wordLink certainty="0.025" lexPair="erreicht;reactors" xtargets="w43.2.15;w43.1.13" />
+ <wordLink certainty="0.0306382978723404" lexPair=".;and" xtargets="w43.2.36;w43.1.17" />
+ <wordLink certainty="0.015" lexPair="Regierung;nuclear" xtargets="w43.1.4;w43.1.19" />
+ <wordLink certainty="0.0231998228477561" lexPair=", die;the" xtargets="w43.2.17+w43.2.18;w43.1.11" />
+ <wordLink certainty="0.025" lexPair="keinen;taken" xtargets="w43.1.13;w43.1.26" />
+ <wordLink certainty="0.0190909090909091" lexPair="den;in" xtargets="w43.2.20;w43.1.30" />
+ <wordLink certainty="0.0195748111493891" lexPair=", die;to be" xtargets="w43.1.11+w43.1.12;w43.1.24+w43.1.25" />
+ <wordLink certainty="0.025" lexPair="Einfluss;Ringhals" xtargets="w43.1.15;w43.1.18" />
+ <wordLink certainty="0.0239913541247419" lexPair="werden;will be" xtargets="w43.2.16;w43.1.5+w43.1.6" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w43.2.24;w43.1.15" />
+ <wordLink certainty="0.0176470588235294" lexPair="eine;a" xtargets="w43.2.3;w43.1.3" />
+ <wordLink certainty="0.0115727512471569" lexPair="in Richtung;are" xtargets="w43.2.10+w43.2.11;w43.1.23" />
+ <wordLink certainty="0.0117647058823529" lexPair="sich;In" xtargets="w43.1.20;w43.1.1" />
+</link>
+
+<link certainty="-1308" xtargets="s43.3 s43.4;s43.2" id="SL42.2">
+ <wordLink certainty="0.025" lexPair="offene;energy" xtargets="w43.4.2;w43.2.2" />
+ <wordLink certainty="0.0142857142857143" lexPair="sollen;such" xtargets="w43.3.3;w43.2.7" />
+ <wordLink certainty="0.025" lexPair="Alternative;counteracted" xtargets="w43.3.1;w43.2.15" />
+ <wordLink certainty="0.0194747631746632" lexPair="soll;will be" xtargets="w43.4.4;w43.2.4+w43.2.5" />
+ <wordLink certainty="0.0306382978723404" lexPair=".;and" xtargets="w43.4.7;w43.2.12" />
+ <wordLink certainty="0.0286597851943994" lexPair="werden . Die;." xtargets="w43.3.5+w43.3.6+w43.4.1;w43.2.16" />
+</link>
+
+<link certainty="252" xtargets="s44.1;s44.1" id="SL43.1">
+ <wordLink certainty="0.0231998228477561" lexPair=", die;the" xtargets="w44.1.17+w44.1.18;w44.1.17" />
+ <wordLink certainty="0.01" lexPair="auf;policy" xtargets="w44.1.12;w44.1.5" />
+ <wordLink certainty="0.0214285714285715" lexPair="internationale;environment" xtargets="w44.1.3;w44.1.18" />
+ <wordLink certainty="0.0133333333333333" lexPair="bedeuten;that" xtargets="w44.1.23;w44.1.10" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w44.1.24;w44.1.19" />
+ <wordLink certainty="0.0142857142857143" lexPair="mit;on" xtargets="w44.1.14;w44.1.16" />
+ <wordLink certainty="0.0222222222222222" lexPair="nach;agricultural" xtargets="w44.1.7;w44.1.4" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w44.1.10;w44.1.7" />
+ <wordLink certainty="0.0247435829652697" lexPair="Formen;promote farming" xtargets="w44.1.13;w44.1.8+w44.1.9" />
+ <wordLink certainty="0.0214285714285715" lexPair="bringen;having" xtargets="w44.1.16;w44.1.13" />
+ <wordLink certainty="0.0173913043478261" lexPair="des;s" xtargets="w44.1.21;w44.1.3" />
+ <wordLink certainty="0.0204819277108434" lexPair="wird;The" xtargets="w44.1.5;w44.1.1" />
+ <wordLink certainty="0.0272727272727272" lexPair="Forderungen;Government'" xtargets="w44.1.6;w44.1.2" />
+</link>
+
+<link certainty="-200" xtargets="s44.2;s44.2 s44.3" id="SL43.2">
+ <wordLink certainty="0.0288912540823906" lexPair="und den;and" xtargets="w44.2.17+w44.2.18;w44.2.23" />
+ <wordLink certainty="0.017816091954023" lexPair="die;be" xtargets="w44.2.12;w44.2.3" />
+ <wordLink certainty="0.0285714285714285" lexPair="Preisen;respect" xtargets="w44.2.23;w44.2.19" />
+ <wordLink certainty="0.0277777777777778" lexPair="Regierung;regional" xtargets="w44.2.2;w44.2.24" />
+ <wordLink certainty="0.0230769230769231" lexPair="Die;of" xtargets="w44.2.1;w44.3.3" />
+ <wordLink certainty="0.0222222222222222" lexPair="angeboten;intensive" xtargets="w44.2.24;w44.2.9" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w44.2.26;w44.2.26" />
+ <wordLink certainty="0.0218274111675127" lexPair=",;to" xtargets="w44.2.10;w44.2.11" />
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w44.2.15;w44.3.5+w44.3.6" />
+ <wordLink certainty="0.0232499477906379" lexPair=",;of the" xtargets="w44.2.16;w44.2.20+w44.2.21" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w44.2.21;w44.2.18" />
+ <wordLink certainty="0.0227272727272728" lexPair="entwickeln;environment" xtargets="w44.2.9;w44.2.22" />
+ <wordLink certainty="0.0256637168141593" lexPair="werden;." xtargets="w44.2.25;w44.3.8" />
+ <wordLink certainty="0.0231998228477561" lexPair=", die;the" xtargets="w44.2.4+w44.2.5;w44.2.16" />
+</link>
+
+<link certainty="166" xtargets="s44.3;s44.4" id="SL43.3">
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w44.3.3;w44.4.2+w44.4.3" />
+ <wordLink certainty="0.0185454822326788" lexPair="Die;of the" xtargets="w44.3.1;w44.4.10+w44.4.11" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w44.3.5;w44.4.14" />
+</link>
+
+<link certainty="91" xtargets="s45.1;s45.1" id="SL44.1">
+ <wordLink certainty="0.025" lexPair="Sektor;developments" xtargets="w45.1.3;w45.1.2" />
+ <wordLink certainty="0.0231455024943138" lexPair="erneuert werden;require" xtargets="w45.1.5+w45.1.6;w45.1.4" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w45.1.23;w45.1.14" />
+ <wordLink certainty="0.0222222222222222" lexPair="Diensten;subsidies" xtargets="w45.1.19;w45.1.8" />
+ <wordLink certainty="0.0285714285714285" lexPair="besser;changes" xtargets="w45.1.17;w45.1.5" />
+ <wordLink certainty="0.0364095744680851" lexPair="soll;will" xtargets="w45.1.4;w45.1.3" />
+ <wordLink certainty="0.0222222222222222" lexPair="nach;agricultural" xtargets="w45.1.13;w45.1.7" />
+ <wordLink certainty="0.0220338983050848" lexPair="und;to" xtargets="w45.1.15;w45.1.9" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w45.1.21;w45.1.6" />
+</link>
+
+<link certainty="96" xtargets="s45.2 s45.3;s45.2 s45.3" id="SL44.2">
+ <wordLink certainty="0.0286597851943994" lexPair="werden . Die;." xtargets="w45.2.8+w45.2.9+w45.3.1;w45.3.6" />
+ <wordLink certainty="0.0194747631746632" lexPair="soll;will be" xtargets="w45.3.3;w45.3.3+w45.3.4" />
+ <wordLink certainty="0.0214285714285715" lexPair="indem;intends" xtargets="w45.3.9;w45.2.3" />
+ <wordLink certainty="0.025" lexPair="u. a;tightened" xtargets="w45.3.7+w45.3.8;w45.3.5" />
+ <wordLink certainty="0.02" lexPair="die;price" xtargets="w45.3.10;w45.2.12" />
+ <wordLink certainty="0.0187317162316339" lexPair="Das;such that" xtargets="w45.2.1;w45.2.9+w45.2.10" />
+ <wordLink certainty="0.0161069538480791" lexPair="werden;trend is" xtargets="w45.3.5;w45.2.13+w45.2.14" />
+ <wordLink certainty="0.0105263157894737" lexPair="Spielraum;policy" xtargets="w45.3.15;w45.2.8" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w45.3.17;w45.2.24" />
+ <wordLink certainty="0.0352631578947369" lexPair="gefördert;Government" xtargets="w45.3.4;w45.2.2" />
+ <wordLink certainty="0.0281217586618708" lexPair="und die;and the" xtargets="w45.2.3+w45.2.4;w45.2.16+w45.2.17" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w45.3.6;w45.2.11" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w45.3.12;w45.2.4" />
+ <wordLink certainty="0.02" lexPair="sollen;reasonable" xtargets="w45.2.6;w45.2.22" />
+</link>
+
+<link certainty="-1556" xtargets="s46.1 s46.2;s46.1" id="SL45.1">
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w46.1.3;w46.1.4+w46.1.5" />
+ <wordLink certainty="0.0185854369052649" lexPair="Die;in order to" xtargets="w46.1.1;w46.1.7+w46.1.8+w46.1.9" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w46.2.7;w46.1.21" />
+ <wordLink certainty="0.0111111111111111" lexPair="von;service" xtargets="w46.1.4;w46.1.12" />
+ <wordLink certainty="0.0214285714285715" lexPair="erfolgt;people" xtargets="w46.2.3;w46.1.14" />
+ <wordLink certainty="0.0133333333333333" lexPair="dem;according" xtargets="w46.2.5;w46.1.15" />
+ <wordLink certainty="0.0272076124785211" lexPair=". Die;and" xtargets="w46.1.10+w46.2.1;w46.1.19" />
+ <wordLink certainty="0.0333333333333333" lexPair="ausgebaut;their" xtargets="w46.1.9;w46.1.17" />
+ <wordLink certainty="0.02" lexPair="neun;needs" xtargets="w46.1.5;w46.1.18" />
+ <wordLink certainty="0.010377358490566" lexPair="auf;to" xtargets="w46.1.6;w46.1.13" />
+</link>
+
+<link certainty="73" xtargets="s46.3;s46.2" id="SL45.2">
+ <wordLink certainty="0.0194747631746632" lexPair="soll;will be" xtargets="w46.3.3;w46.2.6+w46.2.7" />
+ <wordLink certainty="0.0166666666666667" lexPair="Der;choice" xtargets="w46.3.1;w46.2.5" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w46.3.7;w46.2.9" />
+ <wordLink certainty="0.0214285714285715" lexPair="beendet;freedom" xtargets="w46.3.5;w46.2.3" />
+ <wordLink certainty="0.0214285714285715" lexPair="sein;Service" xtargets="w46.3.6;w46.2.1" />
+</link>
+
+<link certainty="38" xtargets="s46.4;s46.3" id="SL45.3">
+ <wordLink certainty="0.0218915514308237" lexPair="weitere drei;among other" xtargets="w46.4.18+w46.4.19;w46.3.9+w46.3.10" />
+ <wordLink certainty="0.02" lexPair="erste;power" xtargets="w46.4.2;w46.3.19" />
+ <wordLink certainty="0.0230769230769231" lexPair="Die;of" xtargets="w46.4.1;w46.3.20" />
+ <wordLink certainty="0.0526666666666667" lexPair="für;for" xtargets="w46.4.17;w46.3.16" />
+ <wordLink certainty="0.0218274111675127" lexPair=",;to" xtargets="w46.4.13;w46.3.3" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w46.4.21;w46.3.22" />
+ <wordLink certainty="0.0222222222222222" lexPair="Bezahlung;allowing" xtargets="w46.4.16;w46.3.13" />
+ <wordLink certainty="0.0140350877192983" lexPair="eine;is" xtargets="w46.4.15;w46.3.2" />
+ <wordLink certainty="0.0214285714285715" lexPair="Kraft;greater" xtargets="w46.4.11;w46.3.14" />
+ <wordLink certainty="0.025" lexPair="Monate;promoted" xtargets="w46.4.20;w46.3.5" />
+ <wordLink certainty="0.0183391435145252" lexPair=", die;be" xtargets="w46.4.4+w46.4.5;w46.3.4" />
+ <wordLink certainty="0.0111111111111111" lexPair="am;by" xtargets="w46.4.6;w46.3.7" />
+</link>
+
+<link certainty="-2212" xtargets="s47.1;s47.1 s47.2" id="SL46.1">
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w47.1.12;w47.1.8" />
+ <wordLink certainty="0.0350862068965517" lexPair="mit;with" xtargets="w47.1.8;w47.1.11" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w47.1.18;w47.2.8" />
+ <wordLink certainty="0.0198757763975155" lexPair="der;of" xtargets="w47.1.3;w47.1.18" />
+ <wordLink certainty="0.0285714285714285" lexPair="fortgesetzt;extended" xtargets="w47.1.17;w47.1.5" />
+ <wordLink certainty="0.02" lexPair="Übereinstimmung;earnings" xtargets="w47.1.7;w47.1.19" />
+ <wordLink certainty="0.0165492115973657" lexPair=",;. The" xtargets="w47.1.10;w47.1.22+w47.2.1" />
+ <wordLink certainty="0.0222222222222222" lexPair="Reichstag;Parental" xtargets="w47.1.13;w47.1.1" />
+ <wordLink certainty="0.0234462660644928" lexPair=",;to the" xtargets="w47.1.16;w47.1.14+w47.1.15" />
+ <wordLink certainty="0.0133333333333333" lexPair="dem;according" xtargets="w47.1.9;w47.1.13" />
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w47.1.5;w47.1.3+w47.1.4" />
+ <wordLink certainty="0.0150356530279795" lexPair="in;will be" xtargets="w47.1.6;w47.2.3+w47.2.4" />
+</link>
+
+<link certainty="-1296" xtargets=";s47.3" id="SL46.2" />
+
+<link certainty="276" xtargets="s48.1;s48.1" id="SL47.1">
+ <wordLink certainty="0.0111111111111111" lexPair="für;with" xtargets="w48.1.18;w48.1.11" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w48.1.23;w48.1.15" />
+ <wordLink certainty="0.0115942028985507" lexPair="die;The" xtargets="w48.1.2;w48.1.1" />
+ <wordLink certainty="0.0156626506024097" lexPair="die;in" xtargets="w48.1.19;w48.1.9" />
+ <wordLink certainty="0.02" lexPair="Durch;child" xtargets="w48.1.1;w48.1.4" />
+ <wordLink certainty="0.0208333333333334" lexPair="Kompensation;decision" xtargets="w48.1.17;w48.1.14" />
+ <wordLink certainty="0.0243243243243244" lexPair="und;of" xtargets="w48.1.14;w48.1.3" />
+ <wordLink certainty="0.025" lexPair="Rentner;continue" xtargets="w48.1.13;w48.1.8" />
+ <wordLink certainty="0.03" lexPair="Pensionäre;extension" xtargets="w48.1.15;w48.1.2" />
+ <wordLink certainty="0.02" lexPair="volle;will" xtargets="w48.1.16;w48.1.7" />
+ <wordLink certainty="0.0117647058823529" lexPair="von;Parliament'" xtargets="w48.1.21;w48.1.12" />
+ <wordLink certainty="0.0173913043478261" lexPair="des;s" xtargets="w48.1.5;w48.1.13" />
+</link>
+
+<link certainty="-708" xtargets="s49.1 s49.2;s49.1" id="SL48.1">
+ <wordLink certainty="0.0214285714285715" lexPair="hoher;Through" xtargets="w49.1.36;w49.1.1" />
+ <wordLink certainty="0.0239594251611773" lexPair="und;of the" xtargets="w49.1.33;w49.1.5+w49.1.6" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w49.2.11+w49.2.12;w49.1.24" />
+ <wordLink certainty="0.0208333333333334" lexPair="kommenden;compensation" xtargets="w49.1.18;w49.1.19" />
+ <wordLink certainty="0.02" lexPair="verbessert;increase" xtargets="w49.2.10;w49.1.4" />
+ <wordLink certainty="0.0166666666666667" lexPair="zu;," xtargets="w49.1.23;w49.1.14" />
+ <wordLink certainty="0.0222222222222222" lexPair="Regierung;receive" xtargets="w49.1.2;w49.1.17" />
+ <wordLink certainty="0.0236" lexPair="und;the" xtargets="w49.2.6;w49.1.21" />
+ <wordLink certainty="0.0214285714285715" lexPair="Anrecht;amount" xtargets="w49.1.30;w49.1.8" />
+ <wordLink certainty="0.02" lexPair="durch;full" xtargets="w49.1.7;w49.1.18" />
+ <wordLink certainty="0.03" lexPair="Einwohner;pensioners" xtargets="w49.1.28;w49.1.15" />
+ <wordLink certainty="0.025" lexPair="dass alle;base" xtargets="w49.1.26+w49.1.27;w49.1.7" />
+ <wordLink certainty="0.0261773491976901" lexPair=". Die;of" xtargets="w49.1.39+w49.2.1;w49.1.10" />
+ <wordLink certainty="0.02" lexPair="der;extra" xtargets="w49.1.10;w49.1.3" />
+ <wordLink certainty="0.0224137931034483" lexPair="und;will" xtargets="w49.1.13;w49.1.16" />
+ <wordLink certainty="0.0526666666666667" lexPair="für;for" xtargets="w49.2.3;w49.1.20" />
+ <wordLink certainty="0.01" lexPair="von;as" xtargets="w49.1.35;w49.1.9" />
+ <wordLink certainty="0.0214285714285715" lexPair="andere;January" xtargets="w49.2.7;w49.1.12" />
+ <wordLink certainty="0.0227272727272728" lexPair="erhalten;devaluation" xtargets="w49.1.38;w49.1.23" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w49.1.25;w49.1.2" />
+</link>
+
+<link certainty="-1606" xtargets="s50.1;s50.1 s50.2" id="SL49.1">
+ <wordLink certainty="0.0177343188427887" lexPair="wird;the work of the" xtargets="w50.1.12;w50.1.10+w50.1.11+w50.1.12+w50.1.13" />
+ <wordLink certainty="0.0214285714285715" lexPair="Kinder;intends" xtargets="w50.1.8;w50.1.3" />
+ <wordLink certainty="0.0242152466367713" lexPair="der;." xtargets="w50.1.3;w50.2.10" />
+ <wordLink certainty="0.0278254082702182" lexPair="werden .;service ." xtargets="w50.1.16+w50.1.17;w50.1.35+w50.1.36" />
+ <wordLink certainty="0.0227272727272728" lexPair="behinderten;recruitment" xtargets="w50.1.7;w50.2.2" />
+ <wordLink certainty="0.02" lexPair="ihrer;the" xtargets="w50.1.10;w50.1.23" />
+ <wordLink certainty="0.025" lexPair="besondere;considerable" xtargets="w50.1.13;w50.1.20" />
+ <wordLink certainty="0.025" lexPair="geschenkt;Government" xtargets="w50.1.15;w50.1.2" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w50.1.9;w50.1.33" />
+ <wordLink certainty="0.0274873708374511" lexPair="sowie;among other" xtargets="w50.1.5;w50.1.6+w50.1.7" />
+ <wordLink certainty="0.02" lexPair="Familien;Commission" xtargets="w50.1.11;w50.1.17" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w50.1.6;w50.1.22" />
+</link>
+
+<link certainty="60" xtargets="s51.1;s51.1" id="SL50.1">
+ <wordLink certainty="0.02" lexPair="Ziel;given" xtargets="w51.1.8;w51.1.16" />
+ <wordLink certainty="0.025" lexPair="Menschen;children" xtargets="w51.1.18;w51.1.10" />
+ <wordLink certainty="0.0163793103448276" lexPair="der;The" xtargets="w51.1.3;w51.1.1" />
+ <wordLink certainty="0.0241610738255033" lexPair="Die;and" xtargets="w51.1.1;w51.1.11" />
+ <wordLink certainty="0.031950494293125" lexPair="und;and for" xtargets="w51.1.14;w51.1.7+w51.1.8" />
+ <wordLink certainty="0.0277777777777778" lexPair="Senioren;attention" xtargets="w51.1.4;w51.1.18" />
+ <wordLink certainty="0.0526666666666667" lexPair="für;for" xtargets="w51.1.16;w51.1.3" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w51.1.21;w51.1.19" />
+ <wordLink certainty="0.0333333333333333" lexPair="ausgebaut;their" xtargets="w51.1.9;w51.1.12" />
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w51.1.5;w51.1.14+w51.1.15" />
+ <wordLink certainty="0.025" lexPair="schaffen;situation" xtargets="w51.1.20;w51.1.2" />
+</link>
+
+<link certainty="142" xtargets="s52.1;s52.1" id="SL51.1">
+ <wordLink certainty="0.0157894736842105" lexPair="gegen;with" xtargets="w52.1.8;w52.1.8" />
+ <wordLink certainty="0.0392668411863487" lexPair="und AIDS;and" xtargets="w52.1.5+w52.1.6;w52.1.16" />
+ <wordLink certainty="0.02" lexPair="Kampf;aim" xtargets="w52.1.2;w52.1.10" />
+ <wordLink certainty="0.0214285714285715" lexPair="Der;elderly" xtargets="w52.1.1;w52.1.4" />
+ <wordLink certainty="0.025" lexPair="sowie;choice" xtargets="w52.1.7;w52.1.19" />
+ <wordLink certainty="0.0194747631746632" lexPair="soll;will be" xtargets="w52.1.10;w52.1.5+w52.1.6" />
+ <wordLink certainty="0.02" lexPair="Rauschgift;security" xtargets="w52.1.9;w52.1.13" />
+ <wordLink certainty="0.0285714285714285" lexPair="fortgesetzt;extended" xtargets="w52.1.11;w52.1.7" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w52.1.12+w52.1.13;w52.1.20" />
+</link>
+
+<link certainty="2141" xtargets="s53.1;" id="SL52.1" />
+
+<link certainty="1560" xtargets="s53.2;" id="SL52.2" />
+
+<link certainty="-1111" xtargets="s53.3 s53.4;s53.1" id="SL52.3">
+ <wordLink certainty="0.0258231202980471" lexPair="werden .;and" xtargets="w53.4.12+w53.4.13;w53.1.5" />
+ <wordLink certainty="0.02" lexPair="Allen;also" xtargets="w53.4.1;w53.1.10" />
+ <wordLink certainty="0.0163793103448276" lexPair="der;The" xtargets="w53.3.8;w53.1.1" />
+ <wordLink certainty="0.025" lexPair="Dies;AIDS" xtargets="w53.3.1;w53.1.6" />
+ <wordLink certainty="0.025" lexPair="unter;against" xtargets="w53.4.3;w53.1.3" />
+ <wordLink certainty="0.0364095744680851" lexPair="soll;will" xtargets="w53.4.6;w53.1.7" />
+ <wordLink certainty="0.0172566371681416" lexPair="der;the" xtargets="w53.3.5;w53.1.11" />
+ <wordLink certainty="0.02" lexPair="der;drugs" xtargets="w53.4.9;w53.1.14" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w53.3.11;w53.1.15" />
+</link>
+
+<link certainty="2236" xtargets=";s54.1" id="SL53.1" />
+
+<link certainty="3754" xtargets=";s54.2" id="SL53.2" />
+
+<link certainty="-1478" xtargets="s54.1;s54.3 s54.4" id="SL53.3">
+ <wordLink certainty="0.025" lexPair="sollen;school" xtargets="w54.1.12;w54.4.6" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w54.1.3;w54.4.15" />
+ <wordLink certainty="0.0230769230769231" lexPair="Die;of" xtargets="w54.1.1;w54.4.17" />
+ <wordLink certainty="0.0149071198499986" lexPair="dem;people under" xtargets="w54.1.7;w54.4.13+w54.4.14" />
+ <wordLink certainty="0.0236734693877551" lexPair="die;." xtargets="w54.1.4;w54.4.19" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w54.1.15+w54.1.16;w54.3.12" />
+ <wordLink certainty="0.0213709677419355" lexPair="die;the" xtargets="w54.1.10;w54.3.6" />
+ <wordLink certainty="0.0285714285714285" lexPair="besser;changes" xtargets="w54.1.13;w54.3.3" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w54.1.9;w54.3.8" />
+ <wordLink certainty="0.04" lexPair="Ausbildung;both" xtargets="w54.1.5;w54.3.5" />
+ <wordLink certainty="0.0110477465836693" lexPair="auf;will be" xtargets="w54.1.6;w54.4.7+w54.4.8" />
+</link>
+
+<link certainty="-2168" xtargets="s55.1 s55.2;s55.1" id="SL54.1">
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w55.1.21+w55.1.22;w55.1.17" />
+ <wordLink certainty="0.0285577026809808" lexPair="und eine;and" xtargets="w55.1.6+w55.1.7;w55.1.14" />
+ <wordLink certainty="0.0333333333333333" lexPair="Situation;education" xtargets="w55.2.5;w55.1.9" />
+ <wordLink certainty="0.0206462413311961" lexPair=", werden;be" xtargets="w55.1.18+w55.1.19;w55.1.3" />
+ <wordLink certainty="0.0182857142857143" lexPair=",;," xtargets="w55.1.3;w55.1.10" />
+ <wordLink certainty="0.03" lexPair="Hier;There" xtargets="w55.2.1;w55.1.1" />
+ <wordLink certainty="0.0458333333333333" lexPair="wird;will" xtargets="w55.2.2;w55.1.2" />
+ <wordLink certainty="0.0240707587583367" lexPair="werden .;of" xtargets="w55.2.9+w55.2.10;w55.1.7" />
+ <wordLink certainty="0.02" lexPair="auf allen;adult" xtargets="w55.1.13+w55.1.14;w55.1.8" />
+ <wordLink certainty="0.0277777777777778" lexPair="besonders;personnel" xtargets="w55.2.3;w55.1.15" />
+</link>
+
+<link certainty="53" xtargets="s56.1;s56.1" id="SL55.1">
+ <wordLink certainty="0.02" lexPair="immer;more" xtargets="w56.1.12;w56.1.9" />
+ <wordLink certainty="0.0222222222222222" lexPair="Forschung;efforts" xtargets="w56.1.8;w56.1.2" />
+ <wordLink certainty="0.025" lexPair="internationale;intensified" xtargets="w56.1.2;w56.1.19" />
+ <wordLink certainty="0.0166666666666667" lexPair="Die;in" xtargets="w56.1.1;w56.1.13" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w56.1.14;w56.1.20" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w56.1.7;w56.1.3" />
+ <wordLink certainty="0.0142857142857143" lexPair="Entwicklung;social" xtargets="w56.1.10;w56.1.11" />
+ <wordLink certainty="0.0222222222222222" lexPair="wichtiger;achieve" xtargets="w56.1.13;w56.1.4" />
+ <wordLink certainty="0.0294366061446672" lexPair="und;and a" xtargets="w56.1.9;w56.1.7+w56.1.8" />
+ <wordLink certainty="0.0103448275862069" lexPair="dem;The" xtargets="w56.1.5;w56.1.1" />
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w56.1.11;w56.1.17+w56.1.18" />
+</link>
+
+<link certainty="748" xtargets="s56.2;s56.2" id="SL55.2">
+ <wordLink certainty="0.0233333333333334" lexPair="internationalen;attention" xtargets="w56.2.22;w56.2.6" />
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w56.2.3;w56.2.7+w56.2.8" />
+ <wordLink certainty="0.02" lexPair="Teilnahme;particular" xtargets="w56.2.19;w56.2.5" />
+ <wordLink certainty="0.02" lexPair="Wirtschaft;immigrants" xtargets="w56.2.14;w56.2.15" />
+ <wordLink certainty="0.0166666666666667" lexPair="zu;," xtargets="w56.2.24;w56.2.4" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w56.2.26;w56.2.16" />
+ <wordLink certainty="0.0239531405171689" lexPair=", gute;to the" xtargets="w56.2.8+w56.2.9;w56.2.10+w56.2.11" />
+ <wordLink certainty="0.0220564386628142" lexPair="und;of young" xtargets="w56.2.15;w56.2.13+w56.2.14" />
+ <wordLink certainty="0.025" lexPair="schaffen;situation" xtargets="w56.2.25;w56.2.12" />
+ <wordLink certainty="0.0142857142857143" lexPair="an;In" xtargets="w56.2.20;w56.2.1" />
+ <wordLink certainty="0.0108695652173913" lexPair="für;this" xtargets="w56.2.11;w56.2.2" />
+</link>
+
+<link certainty="235" xtargets="s57.1;s57.1" id="SL56.1">
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w57.1.12;w57.1.6" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w57.1.18+w57.1.19;w57.1.12" />
+ <wordLink certainty="0.0214285714285715" lexPair="Während;within" xtargets="w57.1.1;w57.1.4" />
+ <wordLink certainty="0.0133333333333333" lexPair="des;is" xtargets="w57.1.14;w57.1.8" />
+ <wordLink certainty="0.0125" lexPair="sollen;important" xtargets="w57.1.5;w57.1.11" />
+ <wordLink certainty="0.02" lexPair="Erneuerung;research" xtargets="w57.1.11;w57.1.5" />
+</link>
+
+<link certainty="-1589" xtargets="s57.2 s57.3;s57.2" id="SL56.2">
+ <wordLink certainty="0.0230769230769231" lexPair="künstlerische;researchers" xtargets="w57.2.22;w57.2.16" />
+ <wordLink certainty="0.0329411764705883" lexPair="sich;Swedish" xtargets="w57.2.8;w57.2.15" />
+ <wordLink certainty="0.0165289256198347" lexPair="der;for" xtargets="w57.2.27;w57.2.11" />
+ <wordLink certainty="0.0227272727272728" lexPair="Tätigkeiten;participate" xtargets="w57.2.23;w57.2.18" />
+ <wordLink certainty="0.0171428571428572" lexPair="und;The" xtargets="w57.2.2;w57.2.1" />
+ <wordLink certainty="0.0285714285714285" lexPair="Theater;create" xtargets="w57.2.19;w57.2.8" />
+ <wordLink certainty="0.025" lexPair="Kinder;industry" xtargets="w57.2.1;w57.2.13" />
+ <wordLink certainty="0.0230769230769231" lexPair="Literatur;international" xtargets="w57.2.28;w57.2.20" />
+ <wordLink certainty="0.0329411764705883" lexPair="sich;Swedish" xtargets="w57.2.26;w57.2.12" />
+ <wordLink certainty="0.0277777777777778" lexPair="erhalten;operation" xtargets="w57.2.4;w57.2.23" />
+ <wordLink certainty="0.0214285714285715" lexPair="treffen;efforts" xtargets="w57.2.10;w57.2.6" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w57.3.7+w57.3.8;w57.2.24" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w57.2.9;w57.2.19" />
+ <wordLink certainty="0.0249965246402835" lexPair=". Die;will" xtargets="w57.2.31+w57.3.1;w57.2.3" />
+ <wordLink certainty="0.02" lexPair="grössere;Government" xtargets="w57.2.5;w57.2.2" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w57.2.25;w57.2.14" />
+ <wordLink certainty="0.015938019319044" lexPair="sollen verbessert;research co-" xtargets="w57.3.5+w57.3.6;w57.2.21+w57.2.22" />
+ <wordLink certainty="0.0220338983050848" lexPair="und;to" xtargets="w57.2.11;w57.2.17" />
+ <wordLink certainty="0.0220338983050848" lexPair="und;to" xtargets="w57.2.20;w57.2.7" />
+</link>
+
+<link certainty="-1742" xtargets="s57.4;" id="SL56.3" />
+
+<link certainty="-1462" xtargets="s58.1;s58.1 s58.2" id="SL57.1">
+ <wordLink certainty="0.0458928571428572" lexPair="leisten;given" xtargets="w58.1.12;w58.2.7" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w58.1.22;w58.2.28" />
+ <wordLink certainty="0.0351213304617456" lexPair="und;and young" xtargets="w58.1.18;w58.2.2+w58.2.3" />
+ <wordLink certainty="0.0227488151658768" lexPair=",;and" xtargets="w58.1.3;w58.2.12" />
+ <wordLink certainty="0.0223606797749979" lexPair="die gefördert;life" xtargets="w58.1.16+w58.1.17;w58.1.20" />
+ <wordLink certainty="0.0272727272727272" lexPair="erleichtert;literature" xtargets="w58.1.19;w58.2.21" />
+ <wordLink certainty="0.0241610738255033" lexPair="Die;and" xtargets="w58.1.1;w58.2.24" />
+ <wordLink certainty="0.025" lexPair="Arbeit;artistic" xtargets="w58.1.14;w58.2.26" />
+ <wordLink certainty="0.02" lexPair="nicht;music" xtargets="w58.1.4;w58.2.15" />
+ <wordLink certainty="0.0230769230769231" lexPair="Sportbewegung;opportunities" xtargets="w58.1.10;w58.2.9" />
+ <wordLink certainty="0.025" lexPair="wichtige;increased" xtargets="w58.1.13;w58.2.8" />
+ <wordLink certainty="0.0352141214569098" lexPair="und die;and" xtargets="w58.1.8+w58.1.9;w58.1.16" />
+ <wordLink certainty="0.0194747631746632" lexPair="soll;will be" xtargets="w58.1.21;w58.1.10+w58.1.11" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w58.1.15;w58.1.2" />
+ <wordLink certainty="0.0256637168141593" lexPair="werden;." xtargets="w58.1.20;w58.1.21" />
+ <wordLink certainty="0.0195344238442563" lexPair=",;for the" xtargets="w58.1.11;w58.1.13+w58.1.14" />
+ <wordLink certainty="0.0191256830601093" lexPair="die;of" xtargets="w58.1.6;w58.1.18" />
+</link>
+
+<link certainty="-3223" xtargets=";s58.3" id="SL57.2" />
+
+<link certainty="-3407" xtargets=";s58.4" id="SL57.3" />
+
+<link certainty="2383" xtargets="s59.1;" id="SL58.1" />
+
+<link certainty="-1600" xtargets="s59.2 s59.3;s59.1" id="SL58.2">
+ <wordLink certainty="0.03" lexPair="Leute;least" xtargets="w59.2.8;w59.1.6" />
+ <wordLink certainty="0.0285714285714285" lexPair="Regionen;out" xtargets="w59.3.13;w59.1.15" />
+ <wordLink certainty="0.0182857142857143" lexPair=",;," xtargets="w59.2.3;w59.1.4" />
+ <wordLink certainty="0.0214285714285715" lexPair="anderer;carry" xtargets="w59.3.9;w59.1.14" />
+ <wordLink certainty="0.02" lexPair="Bemühungen;movement" xtargets="w59.2.2;w59.1.12" />
+ <wordLink certainty="0.0254901960784314" lexPair="werden;will" xtargets="w59.3.5;w59.1.19" />
+ <wordLink certainty="0.0241610738255033" lexPair="Die;and" xtargets="w59.2.1;w59.1.22" />
+ <wordLink certainty="0.0227272727272728" lexPair="Bauvorhaben;valuable" xtargets="w59.3.10;w59.1.16" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w59.2.14;w59.1.24" />
+ <wordLink certainty="0.0286927515314799" lexPair=".;and the" xtargets="w59.3.15;w59.1.9+w59.1.10" />
+ <wordLink certainty="0.0206462413311961" lexPair=", werden;be" xtargets="w59.2.11+w59.2.12;w59.1.20" />
+ <wordLink certainty="0.02" lexPair="Ressourcen;supported" xtargets="w59.3.1;w59.1.21" />
+ <wordLink certainty="0.0166666666666667" lexPair="zu;," xtargets="w59.2.9;w59.1.13" />
+ <wordLink certainty="0.0125" lexPair="in;The" xtargets="w59.3.11;w59.1.1" />
+ <wordLink certainty="0.0223606797749979" lexPair="durch;youth organizations" xtargets="w59.3.6;w59.1.7+w59.1.8" />
+</link>
+
+<link certainty="-2280" xtargets="s59.4;" id="SL58.3" />
+
+<link certainty="-1667" xtargets="s60.1;s60.1 s60.2" id="SL59.1">
+ <wordLink certainty="0.0242152466367713" lexPair="der;." xtargets="w60.1.8;w60.1.14" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w60.1.3;w60.2.2" />
+ <wordLink certainty="0.0214285714285715" lexPair="Gepräge;produce" xtargets="w60.1.18;w60.2.3" />
+ <wordLink certainty="0.0285714285714285" lexPair="Politik;number" xtargets="w60.1.2;w60.1.3" />
+ <wordLink certainty="0.02" lexPair="geben;needs" xtargets="w60.1.19;w60.1.9" />
+ <wordLink certainty="0.0230769230769231" lexPair="Die;of" xtargets="w60.1.1;w60.1.4" />
+ <wordLink certainty="0.0111111111111111" lexPair="des;for" xtargets="w60.1.14;w60.2.6" />
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w60.1.7;w60.2.9+w60.2.10" />
+ <wordLink certainty="0.0148541294356257" lexPair="in;to be" xtargets="w60.1.10;w60.1.11+w60.1.12" />
+ <wordLink certainty="0.04" lexPair="nächsten;housing" xtargets="w60.1.15;w60.2.5" />
+ <wordLink certainty="0.0222222222222222" lexPair="unserem Land;people" xtargets="w60.1.11+w60.1.12;w60.2.8" />
+ <wordLink certainty="0.0153846153846154" lexPair="Entwicklung;intensified" xtargets="w60.1.9;w60.2.11" />
+ <wordLink certainty="0.025" lexPair="drei;more" xtargets="w60.1.5;w60.2.4" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w60.1.20;w60.2.12" />
+ <wordLink certainty="0.03" lexPair="Jahre;are" xtargets="w60.1.6;w60.1.10" />
+</link>
+
+<link certainty="-1726" xtargets="s60.2;s60.3 s60.4" id="SL59.2">
+ <wordLink certainty="0.04" lexPair="nächsten;housing" xtargets="w60.2.3;w60.3.10" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w60.2.18;w60.3.19" />
+ <wordLink certainty="0.0190909090909091" lexPair="den;in" xtargets="w60.2.2;w60.3.16" />
+ <wordLink certainty="0.03225" lexPair="haben;other" xtargets="w60.2.17;w60.3.13" />
+ <wordLink certainty="0.0333333333333333" lexPair="vor;for" xtargets="w60.2.7;w60.3.6" />
+ <wordLink certainty="0.025" lexPair="Jahren;taken" xtargets="w60.2.4;w60.4.9" />
+ <wordLink certainty="0.0138888888888889" lexPair="auf;by" xtargets="w60.2.13;w60.3.11" />
+ <wordLink certainty="0.0214285714285715" lexPair="nächste;cost" xtargets="w60.2.15;w60.4.5" />
+ <wordLink certainty="0.0231998228477561" lexPair=", die;the" xtargets="w60.2.10+w60.2.11;w60.3.7" />
+ <wordLink certainty="0.0256637168141593" lexPair="werden;." xtargets="w60.2.5;w60.4.10" />
+ <wordLink certainty="0.025" lexPair="wir;will" xtargets="w60.2.6;w60.3.2" />
+</link>
+
+<link certainty="-2466" xtargets="s61.1;s61.1 s61.2" id="SL60.1">
+ <wordLink certainty="0.0285714285714285" lexPair="Volkswirtschaft;have" xtargets="w61.1.36;w61.2.9" />
+ <wordLink certainty="0.0285714285714285" lexPair=":;we" xtargets="w61.1.34;w61.1.3" />
+ <wordLink certainty="0.0214285714285715" lexPair="genutzt;century" xtargets="w61.1.12;w61.2.18" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w61.1.22;w61.1.16" />
+ <wordLink certainty="0.0198605203978478" lexPair="zu den;in" xtargets="w61.1.6+w61.1.7;w61.1.5" />
+ <wordLink certainty="0.0208333333333334" lexPair="neunziger;consequences" xtargets="w61.1.8;w61.2.14" />
+ <wordLink certainty="0.0111111111111111" lexPair="von;during" xtargets="w61.1.3;w61.1.19" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w61.1.43;w61.1.24" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w61.1.19;w61.2.2" />
+ <wordLink certainty="0.02" lexPair="Der;years" xtargets="w61.1.1;w61.1.9" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w61.1.14;w61.1.6" />
+ <wordLink certainty="0.025" lexPair="jene;next" xtargets="w61.1.17;w61.1.7" />
+ <wordLink certainty="0.0526666666666667" lexPair="für;for" xtargets="w61.1.28;w61.2.15" />
+ <wordLink certainty="0.02" lexPair="die;to" xtargets="w61.1.26;w61.1.22" />
+ <wordLink certainty="0.0333333333333333" lexPair="und;And" xtargets="w61.1.40;w61.2.1" />
+ <wordLink certainty="0.0156976744186047" lexPair="die;will" xtargets="w61.1.29;w61.2.8" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w61.1.37;w61.1.20" />
+ <wordLink certainty="0.0155172413793104" lexPair="den;on" xtargets="w61.1.4;w61.1.14" />
+ <wordLink certainty="0.0109756097560976" lexPair="den;The" xtargets="w61.1.41;w61.1.1" />
+ <wordLink certainty="0.0254901960784314" lexPair="werden;will" xtargets="w61.1.13;w61.1.10" />
+ <wordLink certainty="0.0279352226720648" lexPair="und;." xtargets="w61.1.21;w61.2.19" />
+ <wordLink certainty="0.0142857142857143" lexPair="um;their" xtargets="w61.1.15;w61.1.12" />
+ <wordLink certainty="0.025" lexPair="Jahren;three" xtargets="w61.1.9;w61.1.8" />
+ <wordLink certainty="0.0285714285714285" lexPair="Beschäftigung;developments" xtargets="w61.1.39;w61.1.15" />
+ <wordLink certainty="0.02" lexPair="achtziger;challenges" xtargets="w61.1.5;w61.2.12" />
+ <wordLink certainty="0.02" lexPair="die;to" xtargets="w61.1.35;w61.2.10" />
+ <wordLink certainty="0.0231998228477561" lexPair=", die;the" xtargets="w61.1.24+w61.1.25;w61.2.3" />
+ <wordLink certainty="0.0213709677419355" lexPair="die;the" xtargets="w61.1.38;w61.2.16" />
+ <wordLink certainty="0.0117647058823529" lexPair="festigen;with" xtargets="w61.1.20;w61.2.13" />
+</link>
+
+<link certainty="909" xtargets="s62.1;s62.1" id="SL61.1">
+ <wordLink certainty="0.0222222222222222" lexPair="Erwerbsleben;too" xtargets="w62.1.34;w62.1.25" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w62.1.54;w62.1.34" />
+ <wordLink certainty="0.0278105478807336" lexPair="für die;for" xtargets="w62.1.6+w62.1.7;w62.1.22" />
+ <wordLink certainty="0.0222222222222222" lexPair="wir;we" xtargets="w62.1.3;w62.1.8" />
+ <wordLink certainty="0.02" lexPair="Damit;basis" xtargets="w62.1.1;w62.1.21" />
+ <wordLink certainty="0.019089789487994" lexPair="und die;be" xtargets="w62.1.9+w62.1.10;w62.1.19" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w62.1.28;w62.1.2" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w62.1.26;w62.1.32" />
+ <wordLink certainty="0.025" lexPair="mit;must" xtargets="w62.1.51;w62.1.18" />
+ <wordLink certainty="0.025" lexPair="dem;term" xtargets="w62.1.37;w62.1.16" />
+ <wordLink certainty="0.025" lexPair="auch;future" xtargets="w62.1.4;w62.1.23" />
+ <wordLink certainty="0.0243243243243244" lexPair="und;of" xtargets="w62.1.41;w62.1.4" />
+ <wordLink certainty="0.0162221421130763" lexPair="im öffentlichen;strengthen" xtargets="w62.1.29+w62.1.30;w62.1.12" />
+ <wordLink certainty="0.0154746115147543" lexPair="in der;in" xtargets="w62.1.22+w62.1.23;w62.1.13" />
+ <wordLink certainty="0.0214285714285715" lexPair="anderen;welfare" xtargets="w62.1.52;w62.1.33" />
+ <wordLink certainty="0.0181818181818182" lexPair="zur;should" xtargets="w62.1.42;w62.1.9" />
+ <wordLink certainty="0.0285714285714285" lexPair=":;developments" xtargets="w62.1.21;w62.1.24" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w62.1.48;w62.1.11" />
+ <wordLink certainty="0.0222222222222222" lexPair="einer;what" xtargets="w62.1.15;w62.1.17" />
+ <wordLink certainty="0.0129770992366412" lexPair="der;," xtargets="w62.1.39;w62.1.7" />
+ <wordLink certainty="0.0251976315339485" lexPair="Spielraum;full employment" xtargets="w62.1.5;w62.1.30+w62.1.31" />
+ <wordLink certainty="0.0240374928384568" lexPair="wichtiger Gebiete vonnöten;nineties" xtargets="w62.1.17+w62.1.18+w62.1.19;w62.1.6" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w62.1.35;w62.1.14" />
+ <wordLink certainty="0.0222222222222222" lexPair="Zusammenarbeit;economy" xtargets="w62.1.50;w62.1.28" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w62.1.46;w62.1.27" />
+ <wordLink certainty="0.0231998228477561" lexPair=", die;the" xtargets="w62.1.12+w62.1.13;w62.1.20" />
+ <wordLink certainty="0.025" lexPair="sind;:" xtargets="w62.1.20;w62.1.26" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w62.1.32;w62.1.5" />
+</link>
+
+<link certainty="2484" xtargets="s63.1;s63.1" id="SL62.1">
+ <wordLink certainty="0.0431428571428571" lexPair="Politik;policy" xtargets="w63.1.8;w63.1.31" />
+ <wordLink certainty="0.0526666666666667" lexPair="für;for" xtargets="w63.1.3;w63.1.8" />
+ <wordLink certainty="0.048" lexPair="Voraussetzungen;strengthen" xtargets="w63.1.2;w63.1.52" />
+ <wordLink certainty="0.0241610738255033" lexPair="Die;and" xtargets="w63.1.1;w63.1.29" />
+ <wordLink certainty="0.0223961702441743" lexPair="der;in order to" xtargets="w63.1.7;w63.1.49+w63.1.50+w63.1.51" />
+ <wordLink certainty="0.025" lexPair="eine;life" xtargets="w63.1.4;w63.1.40" />
+ <wordLink certainty="0.025" lexPair="sind;and" xtargets="w63.1.9;w63.1.13" />
+ <wordLink certainty="0.0277777777777778" lexPair="derartige;operation" xtargets="w63.1.5;w63.1.55" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w63.1.11;w63.1.66" />
+</link>
+
+<link certainty="529" xtargets="s64.1;s64.1" id="SL63.1">
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w64.1.23;w64.1.14" />
+ <wordLink certainty="0.0214285714285715" lexPair="internationale;preconditions" xtargets="w64.1.2;w64.1.2" />
+ <wordLink certainty="0.0166666666666667" lexPair="Nationen;favourable" xtargets="w64.1.19;w64.1.13" />
+ <wordLink certainty="0.0184466019417476" lexPair="Die;for" xtargets="w64.1.1;w64.1.3" />
+ <wordLink certainty="0.0105263157894737" lexPair="weitere;this" xtargets="w64.1.7;w64.1.4" />
+ <wordLink certainty="0.0222222222222222" lexPair="Richtung;direction" xtargets="w64.1.10;w64.1.8" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w64.1.13;w64.1.5" />
+ <wordLink certainty="0.0243243243243244" lexPair="und;of" xtargets="w64.1.15;w64.1.9" />
+ <wordLink certainty="0.0113998396445113" lexPair="auf Frieden;our policy" xtargets="w64.1.11+w64.1.12;w64.1.10+w64.1.11" />
+ <wordLink certainty="0.0125" lexPair="in;The" xtargets="w64.1.9;w64.1.1" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w64.1.20;w64.1.7" />
+</link>
+
+<link certainty="-1753" xtargets="s65.1 s65.2;s65.1" id="SL64.1">
+ <wordLink certainty="0.0378181818181818" lexPair="verbessert;increased" xtargets="w65.1.12;w65.1.13" />
+ <wordLink certainty="0.03" lexPair="hohen;hope" xtargets="w65.2.9;w65.1.4" />
+ <wordLink certainty="0.0375" lexPair="Land;and" xtargets="w65.2.5;w65.1.12" />
+ <wordLink certainty="0.025" lexPair="Die;give" xtargets="w65.1.1;w65.1.3" />
+ <wordLink certainty="0.0214285714285715" lexPair="unserem;freedom" xtargets="w65.2.4;w65.1.11" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w65.2.11;w65.1.19" />
+ <wordLink certainty="0.0285714285714285" lexPair="Beschäftigung;developments" xtargets="w65.2.2;w65.1.2" />
+ <wordLink certainty="0.02" lexPair="einem;peace" xtargets="w65.2.8;w65.1.9" />
+ <wordLink certainty="0.0165413533834586" lexPair="in;of" xtargets="w65.2.3;w65.1.5" />
+ <wordLink certainty="0.0272076124785211" lexPair=". Die;and" xtargets="w65.1.13+w65.2.1;w65.1.17" />
+ <wordLink certainty="0.0207019667802706" lexPair="stark;steps towards" xtargets="w65.1.11;w65.1.7+w65.1.8" />
+ <wordLink certainty="0.0272335577306136" lexPair="Schweden hat;between" xtargets="w65.1.4+w65.1.5;w65.1.15" />
+</link>
+
+<link certainty="-1707" xtargets="s65.3;" id="SL64.2" />
+
+<link certainty="-1701" xtargets="s66.1;s66.1 s66.2" id="SL65.1">
+ <wordLink certainty="0.0396" lexPair="dafür;years" xtargets="w66.1.12;w66.1.10" />
+ <wordLink certainty="0.02" lexPair="eine;level" xtargets="w66.1.8;w66.2.2" />
+ <wordLink certainty="0.0466666666666666" lexPair="einen;recent" xtargets="w66.1.3;w66.1.9" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w66.1.19;w66.2.10" />
+ <wordLink certainty="0.0129640744710433" lexPair="Es;s economic" xtargets="w66.1.1;w66.1.2+w66.1.3" />
+ <wordLink certainty="0.0218835447658991" lexPair="und;. The" xtargets="w66.1.7;w66.1.11+w66.2.1" />
+ <wordLink certainty="0.0227272727272728" lexPair="umfassenden;Sweden'" xtargets="w66.1.4;w66.1.1" />
+ <wordLink certainty="0.0117647058823529" lexPair="mit;situation" xtargets="w66.1.16;w66.1.4" />
+ <wordLink certainty="0.0202608604378095" lexPair=", die;of" xtargets="w66.1.13+w66.1.14;w66.2.3" />
+ <wordLink certainty="0.0111111111111111" lexPair="Meinung;this" xtargets="w66.1.11;w66.2.6" />
+</link>
+
+<link certainty="-1732" xtargets=";s66.3" id="SL65.2" />
+
+<link certainty="125" xtargets="s67.1;s67.1" id="SL66.1">
+ <wordLink certainty="0.0221556886227545" lexPair="der;and" xtargets="w67.1.8;w67.1.6" />
+ <wordLink certainty="0.02" lexPair="gute;There" xtargets="w67.1.3;w67.1.1" />
+ <wordLink certainty="0.0143222974807887" lexPair="Es;is broad" xtargets="w67.1.1;w67.1.2+w67.1.3" />
+ <wordLink certainty="0.0288675134594813" lexPair="Zukunft optimistisch;political" xtargets="w67.1.9+w67.1.10;w67.1.4" />
+ <wordLink certainty="0.02" lexPair="angesichts;consensus" xtargets="w67.1.7;w67.1.5" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w67.1.13;w67.1.14" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w67.1.5;w67.1.10" />
+ <wordLink certainty="0.0142857142857143" lexPair="zu;for" xtargets="w67.1.11;w67.1.8" />
+</link>
+
+<link certainty="-455" xtargets="s68.1 s68.2;s68.1" id="SL67.1">
+ <wordLink certainty="0.0272338261707711" lexPair=".;to the" xtargets="w68.1.22;w68.1.10+w68.1.11" />
+ <wordLink certainty="0.0169030850945703" lexPair="Volkswirtschaft von;have" xtargets="w68.2.11+w68.2.12;w68.1.2" />
+ <wordLink certainty="0.025" lexPair="den;when" xtargets="w68.2.4;w68.1.8" />
+ <wordLink certainty="0.025" lexPair="Jahren;reason" xtargets="w68.2.6;w68.1.4" />
+ <wordLink certainty="0.025" lexPair="auch;future" xtargets="w68.1.4;w68.1.12" />
+ <wordLink certainty="0.025" lexPair="eine;feel" xtargets="w68.1.13;w68.1.6" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w68.2.22;w68.1.13" />
+ <wordLink certainty="0.0218274111675127" lexPair=",;to" xtargets="w68.1.6;w68.1.5" />
+</link>
+
+<link certainty="2734" xtargets=";s69.1" id="SL68.1" />
+
+<link certainty="-1905" xtargets="s69.1;s69.2 s69.3" id="SL68.2">
+ <wordLink certainty="0.0222222222222222" lexPair="gefordert;operate" xtargets="w69.1.33;w69.3.31" />
+ <wordLink certainty="0.0222222222222222" lexPair="schneller;severest" xtargets="w69.1.12;w69.2.16" />
+ <wordLink certainty="0.02" lexPair="Kraft;rapid" xtargets="w69.1.22;w69.3.13" />
+ <wordLink certainty="0.0317077706651649" lexPair="werden .;." xtargets="w69.1.34+w69.1.35;w69.3.39" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w69.1.8;w69.2.15" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w69.1.18;w69.3.22" />
+ <wordLink certainty="0.016881394379732" lexPair="zu;in the" xtargets="w69.1.23;w69.2.5+w69.2.6" />
+ <wordLink certainty="0.0201007563051842" lexPair="zur Zusammenarbeit;economy" xtargets="w69.1.28+w69.1.29;w69.2.11" />
+ <wordLink certainty="0.017471609294726" lexPair="dass;tasks we have" xtargets="w69.1.19;w69.3.2+w69.3.3+w69.3.4" />
+ <wordLink certainty="0.0166721101363803" lexPair="Die;, and" xtargets="w69.1.1;w69.3.20+w69.3.21" />
+ <wordLink certainty="0.0165413533834586" lexPair="in;of" xtargets="w69.1.31;w69.3.12" />
+ <wordLink certainty="0.0333333333333333" lexPair="dramatischer;dramatic" xtargets="w69.1.14;w69.3.14" />
+ <wordLink certainty="0.0133333333333333" lexPair="bedeuten;that" xtargets="w69.1.17;w69.3.18" />
+ <wordLink certainty="0.0204124145231931" lexPair="auch;future too" xtargets="w69.1.30;w69.3.37+w69.3.38" />
+ <wordLink certainty="0.0368639299318509" lexPair="und;and to" xtargets="w69.1.26;w69.3.28+w69.3.29" />
+ <wordLink certainty="0.0165672872672101" lexPair="die;. The" xtargets="w69.1.10;w69.2.21+w69.3.1" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w69.1.13;w69.2.19" />
+ <wordLink certainty="0.0231998228477561" lexPair=", die;the" xtargets="w69.1.3+w69.1.4;w69.2.9" />
+ <wordLink certainty="0.0207046855361797" lexPair=",;in the" xtargets="w69.1.21;w69.3.35+w69.3.36" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w69.1.16;w69.2.3" />
+ <wordLink certainty="0.0270170032013492" lexPair="und;, and the" xtargets="w69.1.9;w69.3.8+w69.3.9+w69.3.10" />
+ <wordLink certainty="0.0142857142857143" lexPair="vor;by" xtargets="w69.1.5;w69.2.14" />
+ <wordLink certainty="0.0285714285714285" lexPair="Handeln;changes" xtargets="w69.1.25;w69.3.15" />
+ <wordLink certainty="0.025" lexPair="Gefahr;danger" xtargets="w69.1.11;w69.3.11" />
+ <wordLink certainty="0.04" lexPair="Zukunft;political" xtargets="w69.1.32;w69.3.26" />
+ <wordLink certainty="0.0333333333333333" lexPair="uns;responsibility" xtargets="w69.1.6;w69.3.19" />
+</link>
+
+<link certainty="68" xtargets="s70.1;s70.1" id="SL69.1">
+ <wordLink certainty="0.025" lexPair="ersten;first" xtargets="w70.1.2;w70.1.3" />
+ <wordLink certainty="0.0106382978723405" lexPair="im;is" xtargets="w70.1.14;w70.1.11" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w70.1.17;w70.1.15" />
+ <wordLink certainty="0.025" lexPair="neue;new" xtargets="w70.1.10;w70.1.9" />
+ <wordLink certainty="0.0167514848565122" lexPair="eine;time in" xtargets="w70.1.9;w70.1.4+w70.1.5" />
+ <wordLink certainty="0.0223606797749979" lexPair="ihre Sitze;the" xtargets="w70.1.12+w70.1.13;w70.1.2" />
+ <wordLink certainty="0.0333333333333333" lexPair="Partei;party" xtargets="w70.1.11;w70.1.10" />
+ <wordLink certainty="0.02" lexPair="Jahren;Parliament" xtargets="w70.1.6;w70.1.14" />
+</link>
+
+<link certainty="162" xtargets="s70.2;s70.2" id="SL69.2">
+ <wordLink certainty="0.025" lexPair="die;like" xtargets="w70.2.8;w70.2.3" />
+ <wordLink certainty="0.025" lexPair="Arbeit;I" xtargets="w70.2.18;w70.2.1" />
+ <wordLink certainty="0.0213709677419355" lexPair="die;the" xtargets="w70.2.3;w70.2.12" />
+ <wordLink certainty="0.03" lexPair="hoffe;hope" xtargets="w70.2.23;w70.2.17" />
+ <wordLink certainty="0.0192450089729875" lexPair="- einer;what" xtargets="w70.2.16+w70.2.17;w70.2.15" />
+ <wordLink certainty="0.0232499477906379" lexPair=",;of the" xtargets="w70.2.19;w70.2.8+w70.2.9" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w70.2.24;w70.2.6" />
+ <wordLink certainty="0.025" lexPair="willkommen;welcome" xtargets="w70.2.14;w70.2.5" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w70.2.30;w70.2.23" />
+ <wordLink certainty="0.030403449605253" lexPair="wird;will be" xtargets="w70.2.29;w70.2.18+w70.2.19" />
+ <wordLink certainty="0.0208333333333334" lexPair="Abgeordneten;Environment" xtargets="w70.2.4;w70.2.10" />
+ <wordLink certainty="0.0181818181818182" lexPair="zur;should" xtargets="w70.2.10;w70.2.2" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w70.2.21;w70.2.14" />
+ <wordLink certainty="0.0333333333333333" lexPair="Grünen;Greens" xtargets="w70.2.9;w70.2.13" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w70.2.5;w70.2.4" />
+ <wordLink certainty="0.0111111111111111" lexPair="im Reichstag;work" xtargets="w70.2.12+w70.2.13;w70.2.22" />
+ <wordLink certainty="0.025" lexPair="Arbeit;I" xtargets="w70.2.11;w70.2.16" />
+</link>
+
+<link certainty="104" xtargets="s71.1;s71.1" id="SL70.1">
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w71.1.34;w71.1.33" />
+ <wordLink certainty="0.0222222222222222" lexPair="Einwohner;other" xtargets="w71.1.22;w71.1.42" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w71.1.8;w71.1.24" />
+ <wordLink certainty="0.0218274111675127" lexPair=",;to" xtargets="w71.1.27;w71.1.7" />
+ <wordLink certainty="0.0615625" lexPair="alle;all" xtargets="w71.1.3;w71.1.2" />
+ <wordLink certainty="0.0494" lexPair="haben;have" xtargets="w71.1.2;w71.1.48" />
+ <wordLink certainty="0.0111111111111111" lexPair="zu;with" xtargets="w71.1.31;w71.1.41" />
+ <wordLink certainty="0.0214285714285715" lexPair="unser;country" xtargets="w71.1.17;w71.1.17" />
+ <wordLink certainty="0.0222222222222222" lexPair="unserem;people" xtargets="w71.1.45;w71.1.43" />
+ <wordLink certainty="0.02" lexPair="dass die;daily" xtargets="w71.1.9+w71.1.10;w71.1.37" />
+ <wordLink certainty="0.0203334195009498" lexPair="für die;for this" xtargets="w71.1.35+w71.1.36;w71.1.15+w71.1.16" />
+ <wordLink certainty="0.0292807845025585" lexPair="für;for our" xtargets="w71.1.28;w71.1.34+w71.1.35" />
+ <wordLink certainty="0.0125" lexPair="Umwelt;We" xtargets="w71.1.26;w71.1.1" />
+ <wordLink certainty="0.0222222222222222" lexPair="unsere;countries" xtargets="w71.1.29;w71.1.32" />
+ <wordLink certainty="0.03" lexPair="unter;other" xtargets="w71.1.41;w71.1.31" />
+ <wordLink certainty="0.04" lexPair="Jahre;relations" xtargets="w71.1.15;w71.1.29" />
+ <wordLink certainty="0.02" lexPair="seine;joint" xtargets="w71.1.21;w71.1.5" />
+ <wordLink certainty="0.023263919763432" lexPair="für die;for our" xtargets="w71.1.24+w71.1.25;w71.1.27+w71.1.28" />
+ <wordLink certainty="0.02" lexPair="drei;three" xtargets="w71.1.11;w71.1.10" />
+ <wordLink certainty="0.02" lexPair="unserer;we" xtargets="w71.1.32;w71.1.47" />
+ <wordLink certainty="0.0272727272727272" lexPair="herkommen;environment" xtargets="w71.1.54;w71.1.25" />
+ <wordLink certainty="0.0480918623587285" lexPair="Land und;and" xtargets="w71.1.18+w71.1.19;w71.1.18" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w71.1.23;w71.1.9" />
+ <wordLink certainty="0.0333333333333333" lexPair="werden;where" xtargets="w71.1.47;w71.1.46" />
+ <wordLink certainty="0.025" lexPair="Wir;with" xtargets="w71.1.1;w71.1.30" />
+ <wordLink certainty="0.0396" lexPair="dafür;years" xtargets="w71.1.7;w71.1.12" />
+ <wordLink certainty="0.0182857142857143" lexPair=",;," xtargets="w71.1.51;w71.1.22" />
+ <wordLink certainty="0.03125" lexPair="Kontakte;contacts" xtargets="w71.1.37;w71.1.38" />
+ <wordLink certainty="0.025" lexPair="eine;ones" xtargets="w71.1.4;w71.1.14" />
+ <wordLink certainty="0.0333333333333333" lexPair="uns;responsibility" xtargets="w71.1.42;w71.1.6" />
+ <wordLink certainty="0.04" lexPair="Jahre;relations" xtargets="w71.1.13;w71.1.40" />
+ <wordLink certainty="0.0526666666666667" lexPair="für;for" xtargets="w71.1.16;w71.1.23" />
+ <wordLink certainty="0.0182857142857143" lexPair=",;," xtargets="w71.1.48;w71.1.26" />
+ <wordLink certainty="0.025" lexPair="wir;make" xtargets="w71.1.53;w71.1.8" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w71.1.38;w71.1.39" />
+ <wordLink certainty="0.0615625" lexPair="alle;all" xtargets="w71.1.20;w71.1.19" />
+ <wordLink certainty="0.0107142857142857" lexPair="in;our" xtargets="w71.1.44;w71.1.49" />
+ <wordLink certainty="0.025" lexPair="Verantwortung;good" xtargets="w71.1.6;w71.1.13" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w71.1.55;w71.1.51" />
+</link>
+
+<link certainty="41" xtargets="s72.1;s72.1" id="SL71.1">
+ <wordLink certainty="0.0176470588235294" lexPair="eine;a" xtargets="w72.1.22;w72.1.25" />
+ <wordLink certainty="0.0215686274509804" lexPair="der;to" xtargets="w72.1.8;w72.1.11" />
+ <wordLink certainty="0.0213709677419355" lexPair="die;the" xtargets="w72.1.3;w72.1.28" />
+ <wordLink certainty="0.0447213595499958" lexPair="Lösungen;broad solutions" xtargets="w72.1.19;w72.1.20+w72.1.21" />
+ <wordLink certainty="0.0391752577319587" lexPair=".;." xtargets="w72.1.31;w72.1.34" />
+ <wordLink certainty="0.0108108108108108" lexPair="auf;for" xtargets="w72.1.17;w72.1.19" />
+ <wordLink certainty="0.0187269842917139" lexPair="Regierung ,;of the" xtargets="w72.1.9+w72.1.10;w72.1.30+w72.1.31" />
+ <wordLink certainty="0.025" lexPair="Volkes;whole" xtargets="w72.1.28;w72.1.32" />
+ <wordLink certainty="0.0163299316185545" lexPair="des;It is" xtargets="w72.1.26;w72.1.1+w72.1.2" />
+ <wordLink certainty="0.0176923076923077" lexPair="zu;to" xtargets="w72.1.29;w72.1.9" />
+ <wordLink certainty="0.025" lexPair="nutzen;nation" xtargets="w72.1.15;w72.1.33" />
+ <wordLink certainty="0.0368639299318509" lexPair="und;and to" xtargets="w72.1.21;w72.1.22+w72.1.23" />
+ <wordLink certainty="0.0444444444444445" lexPair="Interesse;interests" xtargets="w72.1.25;w72.1.29" />
+ <wordLink certainty="0.0615625" lexPair="alle;all" xtargets="w72.1.11;w72.1.13" />
+ <wordLink certainty="0.0114332390095006" lexPair="Es ist;s" xtargets="w72.1.1+w72.1.2;w72.1.5" />
+ <wordLink certainty="0.02" lexPair="guten;put" xtargets="w72.1.12;w72.1.10" />
+ <wordLink certainty="0.0431428571428571" lexPair="Politik;policy" xtargets="w72.1.23;w72.1.26" />
+ <wordLink certainty="0.0206611570247934" lexPair="zu;in" xtargets="w72.1.14;w72.1.27" />
+ <wordLink certainty="0.0111111111111111" lexPair="im;work" xtargets="w72.1.24;w72.1.18" />
+ <wordLink certainty="0.025" lexPair="Verantwortung;good" xtargets="w72.1.4;w72.1.14" />
+ <wordLink certainty="0.0454545454545454" lexPair="Initiative;initiatives" xtargets="w72.1.13;w72.1.15" />
+ <wordLink certainty="0.0251851851851852" lexPair=",;the" xtargets="w72.1.16;w72.1.3" />
+ <wordLink certainty="0.0616753926701571" lexPair="und;and" xtargets="w72.1.5;w72.1.7" />
+</link></cesAlign>

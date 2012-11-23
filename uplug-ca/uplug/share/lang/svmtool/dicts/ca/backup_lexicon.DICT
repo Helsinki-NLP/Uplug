@@ -1,0 +1,860 @@
+'en 0 1 PP3 0
+'hi 0 1 PP3 0
+'ho 0 1 PP3 0
+'l 0 1 PP3 0
+'ls 0 1 PP3 0
+'m 0 1 PP1 0
+'n 0 1 PP3 0
+'ns 0 2 P01 0 PP1 0
+'s 0 2 P03 0 PP3 0
+'t 0 1 PP2 0
+-el 0 1 PP3 0
+-els 0 1 PP3 0
+-em 0 1 PP1 0
+-en 0 1 PP3 0
+-ens 0 1 PP1 0
+-hi 0 1 PP3 0
+-ho 0 1 PP3 0
+-l 0 1 PP3 0
+-la 0 1 PP3 0
+-les 0 1 PP3 0
+-li 0 1 PP3 0
+-lo 0 1 PP3 0
+-los 0 1 PP3 0
+-m 0 1 PP1 0
+-me 0 1 PP1 0
+-n 0 1 PP3 0
+-ne 0 1 PP3 0
+-nos 0 1 PP1 0
+-s 0 2 PP3 0 P03 0
+-se 0 3 P03 0 PP3 0 P00 0
+-t 0 1 PP2 0
+-te 0 1 PP2 0
+-us 0 1 PP2 0
+-vos 0 1 PP2 0
+Vè 0 1 PP2 0
+ad 0 1 SP 0
+adéu-siau 0 1 I 0
+ah 0 1 I 0
+això 0 1 PD0 0
+algun 0 2 DI 0 PI0 0
+alguna 0 2 DI 0 PI0 0
+algunes 0 2 DI 0 PI0 0
+alguns 0 2 DI 0 PI0 0
+algú 0 1 PI0 0
+als 0 1 SP 0
+altra 0 2 DI 0 PI0 0
+altrament 0 1 CS 0
+altre 0 2 DI 0 PI0 0
+altres 0 2 DI 0 PI0 0
+altri 0 1 PI0 0
+amb 0 1 SP 0
+ambdues 0 2 DN 0 PN0 0
+ambdós 0 2 DN 0 PN0 0
+amén 0 1 I 0
+antepenúltim 0 1 AO 0
+antepenúltima 0 1 AO 0
+antepenúltimes 0 1 AO 0
+antepenúltims 0 1 AO 0
+apa 0 1 I 0
+aqueix 0 2 DD 0 PD0 0
+aqueixos 0 2 DD 0 PD0 0
+aquell 0 2 DD 0 PD0 0
+aquella 0 2 DD 0 PD0 0
+aquelles 0 2 DD 0 PD0 0
+aquells 0 2 DD 0 PD0 0
+aquest 0 2 DD 0 PD0 0
+aquesta 0 2 DD 0 PD0 0
+aquestes 0 2 DD 0 PD0 0
+aquests 0 2 DD 0 PD0 0
+arr 0 1 I 0
+arri 0 1 I 0
+arruix 0 1 I 0
+açò 0 1 PD0 0
+bah 0 1 I 0
+banyuga 0 1 I 0
+bastants 0 2 DI 0 PI0 0
+benhaja 0 1 I 0
+bilionèsim 0 3 AO 0 DN 0 PN0 0
+bilionèsima 0 3 AO 0 DN 0 PN0 0
+bilionèsimes 0 3 AO 0 DN 0 PN0 0
+bilionèsims 0 3 AO 0 DN 0 PN0 0
+bitps 0 1 Y 0
+bps 0 1 Y 0
+cada 0 1 DI 0
+cadascun 0 1 PI0 0
+cadascuna 0 1 PI0 0
+cadascú 0 1 PI0 0
+canxa 0 1 I 0
+carai 0 1 I 0
+caraina 0 1 I 0
+caram 0 1 I 0
+carat 0 1 I 0
+caratxos 0 1 I 0
+cascun 0 1 DI 0
+cascuna 0 1 DI 0
+cascunes 0 1 DI 0
+cascuns 0 1 DI 0
+cascú 0 1 PI0 0
+catorzena 0 3 AO 0 DN 0 PN0 0
+catorzenes 0 3 AO 0 DN 0 PN0 0
+catorzens 0 3 AO 0 DN 0 PN0 0
+catorzè 0 3 AO 0 DN 0 PN0 0
+cc 0 1 Y 0
+centmilionèsim 0 3 AO 0 DN 0 PN0 0
+centmilionèsima 0 3 AO 0 DN 0 PN0 0
+centmilionèsimes 0 3 AO 0 DN 0 PN0 0
+centmilionèsims 0 3 AO 0 DN 0 PN0 0
+centmilmilionèsim 0 3 AO 0 DN 0 PN0 0
+centmilmilionèsima 0 3 AO 0 DN 0 PN0 0
+centmilmilionèsimes 0 3 AO 0 DN 0 PN0 0
+centmilmilionèsims 0 3 AO 0 DN 0 PN0 0
+centmil·lèsim 0 3 AO 0 DN 0 PN0 0
+centmil·lèsima 0 3 AO 0 DN 0 PN0 0
+centmil·lèsimes 0 3 AO 0 DN 0 PN0 0
+centmil·lèsims 0 3 AO 0 DN 0 PN0 0
+centèsim 0 3 AO 0 DN 0 PN0 0
+centèsima 0 3 AO 0 DN 0 PN0 0
+centèsimes 0 3 AO 0 DN 0 PN0 0
+centèsims 0 3 AO 0 DN 0 PN0 0
+cinc-centena 0 3 AO 0 DN 0 PN0 0
+cinc-centenes 0 3 AO 0 DN 0 PN0 0
+cinc-centens 0 3 AO 0 DN 0 PN0 0
+cinc-centes 0 2 DN 0 PN0 0
+cinc-centè 0 3 AO 0 DN 0 PN0 0
+cinquanta-cinquena 0 3 AO 0 DN 0 PN0 0
+cinquanta-cinquenes 0 3 AO 0 DN 0 PN0 0
+cinquanta-cinquens 0 3 AO 0 DN 0 PN0 0
+cinquanta-cinquè 0 3 AO 0 DN 0 PN0 0
+cinquanta-dosena 0 3 AO 0 DN 0 PN0 0
+cinquanta-dosenes 0 3 AO 0 DN 0 PN0 0
+cinquanta-dosens 0 3 AO 0 DN 0 PN0 0
+cinquanta-dosè 0 3 AO 0 DN 0 PN0 0
+cinquanta-dues 0 2 DN 0 PN0 0
+cinquanta-novena 0 3 AO 0 DN 0 PN0 0
+cinquanta-novenes 0 3 AO 0 DN 0 PN0 0
+cinquanta-novens 0 3 AO 0 DN 0 PN0 0
+cinquanta-novè 0 3 AO 0 DN 0 PN0 0
+cinquanta-quatrena 0 3 AO 0 DN 0 PN0 0
+cinquanta-quatrenes 0 3 AO 0 DN 0 PN0 0
+cinquanta-quatrens 0 3 AO 0 DN 0 PN0 0
+cinquanta-quatrè 0 3 AO 0 DN 0 PN0 0
+cinquanta-setena 0 3 AO 0 DN 0 PN0 0
+cinquanta-setenes 0 3 AO 0 DN 0 PN0 0
+cinquanta-setens 0 3 AO 0 DN 0 PN0 0
+cinquanta-setè 0 3 AO 0 DN 0 PN0 0
+cinquanta-sisena 0 3 AO 0 DN 0 PN0 0
+cinquanta-sisenes 0 3 AO 0 DN 0 PN0 0
+cinquanta-sisens 0 3 AO 0 DN 0 PN0 0
+cinquanta-sisè 0 3 AO 0 DN 0 PN0 0
+cinquanta-tresena 0 3 AO 0 DN 0 PN0 0
+cinquanta-tresenes 0 3 AO 0 DN 0 PN0 0
+cinquanta-tresens 0 3 AO 0 DN 0 PN0 0
+cinquanta-tresè 0 3 AO 0 DN 0 PN0 0
+cinquanta-un 0 2 DN 0 PN0 0
+cinquanta-una 0 2 DN 0 PN0 0
+cinquanta-unena 0 3 AO 0 DN 0 PN0 0
+cinquanta-unenes 0 3 AO 0 DN 0 PN0 0
+cinquanta-unens 0 3 AO 0 DN 0 PN0 0
+cinquanta-unè 0 3 AO 0 DN 0 PN0 0
+cinquanta-vuitena 0 3 AO 0 DN 0 PN0 0
+cinquanta-vuitenes 0 3 AO 0 DN 0 PN0 0
+cinquanta-vuitens 0 3 AO 0 DN 0 PN0 0
+cinquanta-vuitè 0 3 AO 0 DN 0 PN0 0
+cinquantens 0 3 AO 0 DN 0 PN0 0
+cinquantè 0 3 AO 0 DN 0 PN0 0
+cinquens 0 3 AO 0 DN 0 PN0 0
+cinquè 0 3 AO 0 DN 0 PN0 0
+cit 0 1 Y 0
+cit. 0 1 Y 0
+com 0 4 CS 0 I 0 PR0 0 PT0 0
+cu-cut 0 1 I 0
+cv 0 1 Y 0
+cèntupla 0 2 DN 0 PN0 0
+cèntuple 0 2 DN 0 PN0 0
+cèntuples 0 2 DN 0 PN0 0
+d' 0 1 SP 0
+darrer 0 1 AO 0
+darrera 0 1 AO 0
+darrers 0 1 AO 0
+dawai 0 1 I 0
+del 0 1 SP 0
+dels 0 1 SP 0
+dementre 0 1 CS 0
+desens 0 3 AO 0 DN 0 PN0 0
+desè 0 3 AO 0 DN 0 PN0 0
+deumilionèsim 0 3 AO 0 DN 0 PN0 0
+deumilionèsima 0 3 AO 0 DN 0 PN0 0
+deumilionèsimes 0 3 AO 0 DN 0 PN0 0
+deumilionèsims 0 3 AO 0 DN 0 PN0 0
+deumilmilionèsim 0 3 AO 0 DN 0 PN0 0
+deumilmilionèsima 0 3 AO 0 DN 0 PN0 0
+deumilmilionèsimes 0 3 AO 0 DN 0 PN0 0
+deumilmilionèsims 0 3 AO 0 DN 0 PN0 0
+deumil·lèsim 0 3 AO 0 DN 0 PN0 0
+deumil·lèsima 0 3 AO 0 DN 0 PN0 0
+deumil·lèsimes 0 3 AO 0 DN 0 PN0 0
+deumil·lèsims 0 3 AO 0 DN 0 PN0 0
+devers 0 1 SP 0
+dinovena 0 3 AO 0 DN 0 PN0 0
+dinovenes 0 3 AO 0 DN 0 PN0 0
+dinovens 0 3 AO 0 DN 0 PN0 0
+dinovè 0 3 AO 0 DN 0 PN0 0
+dissetena 0 3 AO 0 DN 0 PN0 0
+dissetenes 0 3 AO 0 DN 0 PN0 0
+dissetens 0 3 AO 0 DN 0 PN0 0
+dissetè 0 3 AO 0 DN 0 PN0 0
+divuitena 0 3 AO 0 DN 0 PN0 0
+divuitenes 0 3 AO 0 DN 0 PN0 0
+dos-centena 0 3 AO 0 DN 0 PN0 0
+dos-centenes 0 3 AO 0 DN 0 PN0 0
+dos-centens 0 3 AO 0 DN 0 PN0 0
+dos-centè 0 3 AO 0 DN 0 PN0 0
+dosbilionèsim 0 3 AO 0 DN 0 PN0 0
+dosbilionèsima 0 3 AO 0 DN 0 PN0 0
+dosbilionèsimes 0 3 AO 0 DN 0 PN0 0
+dosbilionèsims 0 3 AO 0 DN 0 PN0 0
+dues-centes 0 2 DN 0 PN0 0
+duodècupla 0 2 DN 0 PN0 0
+duodècuple 0 2 DN 0 PN0 0
+duodècuples 0 2 DN 0 PN0 0
+dupla 0 2 DN 0 PN0 0
+duple 0 2 DN 0 PN0 0
+duples 0 2 DN 0 PN0 0
+dècupla 0 2 DN 0 PN0 0
+dècuple 0 2 DN 0 PN0 0
+dècuples 0 2 DN 0 PN0 0
+ec 0 1 I 0
+ecs 0 1 I 0
+eh 0 1 I 0
+ehem 0 1 I 0
+ei 0 1 I 0
+eia 0 1 I 0
+eixa 0 2 DD 0 PD0 0
+eixes 0 2 DD 0 PD0 0
+el 0 2 DA 0 PP3 0
+elis 0 1 I 0
+ell 0 1 PP3 0
+ella 0 1 PP3 0
+elles 0 1 PP3 0
+ells 0 1 PP3 0
+els 0 2 DA 0 PP3 0
+em 0 2 P01 0 PP1 0
+en 0 3 DA 0 PP3 0 SP 0
+entre 0 1 SP 0
+entrò 0 1 SP 0
+envers 0 1 SP 0
+enèsim 0 1 AO 0
+enèsima 0 1 AO 0
+enèsimes 0 1 AO 0
+enèsims 0 1 AO 0
+ep 0 1 I 0
+ergo 0 1 CC 0
+et 0 2 P02 0 PP2 0
+etc 0 1 Fs 0
+etc. 0 1 Fs 0
+eureka 0 1 I 0
+excepte 0 1 SP 0
+gaires 0 1 DI 0
+gbitps 0 1 Y 0
+gbps 0 1 Y 0
+ha. 0 1 Y 0
+hi 0 1 PP3 0
+hola 0 1 I 0
+hom 0 1 PI0 0
+hop 0 1 I 0
+huitanta 0 2 DN 0 PN0 0
+huitantena 0 3 AO 0 DN 0 PN0 0
+huitantenes 0 3 AO 0 DN 0 PN0 0
+huitantens 0 3 AO 0 DN 0 PN0 0
+huitantè 0 3 AO 0 DN 0 PN0 0
+hum 0 1 I 0
+hurra 0 1 I 0
+inadequada 0 1 AQP 0
+inadequades 0 1 AQP 0
+inadequat 0 1 AQP 0
+inadequats 0 1 AQP 0
+jas 0 1 I 0
+kbitps 0 1 Y 0
+kbps 0 1 Y 0
+kwh 0 1 Y 0
+l' 0 2 DA 0 PP3 0
+llur 0 2 DP 0 PX3 0
+llurs 0 2 DP 0 PX3 0
+loc 0 1 Y 0
+loc. 0 1 Y 0
+m' 0 2 P01 0 PP1 0
+ma 0 1 DP 0
+malgrat 0 1 SP 0
+malhaja 0 1 I 0
+malviatge 0 1 I 0
+manoi 0 1 I 0
+mant 0 1 DI 0
+mants 0 1 DI 0
+mark 0 1 I 0
+mateixos 0 2 DI 0 PI0 0
+mau 0 1 I 0
+mbitps 0 1 Y 0
+mbps 0 1 Y 0
+me 0 2 P01 0 PP1 0
+mentre 0 1 CS 0
+meua 0 1 DP 0
+meues 0 1 DP 0
+meva 0 1 DP 0
+meves 0 1 DP 0
+milena 0 3 AO 0 DN 0 PN0 0
+milenes 0 3 AO 0 DN 0 PN0 0
+milens 0 3 AO 0 DN 0 PN0 0
+milionèsim 0 3 AO 0 DN 0 PN0 0
+milionèsima 0 3 AO 0 DN 0 PN0 0
+milionèsimes 0 3 AO 0 DN 0 PN0 0
+milionèsims 0 3 AO 0 DN 0 PN0 0
+milmilionèsim 0 3 AO 0 DN 0 PN0 0
+milmilionèsima 0 3 AO 0 DN 0 PN0 0
+milmilionèsimes 0 3 AO 0 DN 0 PN0 0
+milmilionèsims 0 3 AO 0 DN 0 PN0 0
+mil·lèsim 0 3 AO 0 DN 0 PN0 0
+mil·lèsima 0 3 AO 0 DN 0 PN0 0
+mil·lèsimes 0 3 AO 0 DN 0 PN0 0
+mil·lèsims 0 3 AO 0 DN 0 PN0 0
+milè 0 3 AO 0 DN 0 PN0 0
+moixoni 0 1 I 0
+molta 0 2 DI 0 PI0 0
+moltes 0 2 DI 0 PI0 0
+molts 0 2 DI 0 PI0 0
+mon 0 1 DP 0
+monitoritzada 0 1 AQP 0
+monitoritzades 0 1 AQP 0
+monitoritzat 0 1 AQP 0
+monitoritzats 0 1 AQP 0
+n' 0 2 DA 0 PP3 0
+ningun 0 2 DI 0 PI0 0
+ninguna 0 2 DI 0 PI0 0
+ningunes 0 2 DI 0 PI0 0
+ninguns 0 2 DI 0 PI0 0
+nonagèsim 0 3 AO 0 DN 0 PN0 0
+nonagèsima 0 3 AO 0 DN 0 PN0 0
+nonagèsimes 0 3 AO 0 DN 0 PN0 0
+nonagèsims 0 3 AO 0 DN 0 PN0 0
+noranta-cinquena 0 3 AO 0 DN 0 PN0 0
+noranta-cinquenes 0 3 AO 0 DN 0 PN0 0
+noranta-cinquens 0 3 AO 0 DN 0 PN0 0
+noranta-cinquè 0 3 AO 0 DN 0 PN0 0
+noranta-dosena 0 3 AO 0 DN 0 PN0 0
+noranta-dosenes 0 3 AO 0 DN 0 PN0 0
+noranta-dosens 0 3 AO 0 DN 0 PN0 0
+noranta-dosè 0 3 AO 0 DN 0 PN0 0
+noranta-dues 0 2 DN 0 PN0 0
+noranta-novena 0 3 AO 0 DN 0 PN0 0
+noranta-novenes 0 3 AO 0 DN 0 PN0 0
+noranta-novens 0 3 AO 0 DN 0 PN0 0
+noranta-novè 0 3 AO 0 DN 0 PN0 0
+noranta-quatrena 0 3 AO 0 DN 0 PN0 0
+noranta-quatrenes 0 3 AO 0 DN 0 PN0 0
+noranta-quatrens 0 3 AO 0 DN 0 PN0 0
+noranta-quatrè 0 3 AO 0 DN 0 PN0 0
+noranta-setena 0 3 AO 0 DN 0 PN0 0
+noranta-setenes 0 3 AO 0 DN 0 PN0 0
+noranta-setens 0 3 AO 0 DN 0 PN0 0
+noranta-setè 0 3 AO 0 DN 0 PN0 0
+noranta-sisena 0 3 AO 0 DN 0 PN0 0
+noranta-sisenes 0 3 AO 0 DN 0 PN0 0
+noranta-sisens 0 3 AO 0 DN 0 PN0 0
+noranta-sisè 0 3 AO 0 DN 0 PN0 0
+noranta-tresena 0 3 AO 0 DN 0 PN0 0
+noranta-tresenes 0 3 AO 0 DN 0 PN0 0
+noranta-tresens 0 3 AO 0 DN 0 PN0 0
+noranta-tresè 0 3 AO 0 DN 0 PN0 0
+noranta-un 0 2 DN 0 PN0 0
+noranta-una 0 2 DN 0 PN0 0
+noranta-unena 0 3 AO 0 DN 0 PN0 0
+noranta-unenes 0 3 AO 0 DN 0 PN0 0
+noranta-unens 0 3 AO 0 DN 0 PN0 0
+noranta-unè 0 3 AO 0 DN 0 PN0 0
+noranta-vuitena 0 3 AO 0 DN 0 PN0 0
+noranta-vuitenes 0 3 AO 0 DN 0 PN0 0
+noranta-vuitens 0 3 AO 0 DN 0 PN0 0
+noranta-vuitè 0 3 AO 0 DN 0 PN0 0
+norantens 0 3 AO 0 DN 0 PN0 0
+norantè 0 3 AO 0 DN 0 PN0 0
+nosaltres 0 1 PP1 0
+nostre 0 2 DP 0 PX1 0
+nou-centena 0 3 AO 0 DN 0 PN0 0
+nou-centenes 0 3 AO 0 DN 0 PN0 0
+nou-centens 0 3 AO 0 DN 0 PN0 0
+nou-centes 0 2 DN 0 PN0 0
+nou-centè 0 3 AO 0 DN 0 PN0 0
+novens 0 3 AO 0 DN 0 PN0 0
+novè 0 3 AO 0 DN 0 PN0 0
+ntra 0 1 PX1 0
+ntra. 0 1 PX1 0
+ntre 0 1 PX1 0
+ntre. 0 1 PX1 0
+nyiclis 0 1 I 0
+nònupla 0 2 DN 0 PN0 0
+nònuple 0 2 DN 0 PN0 0
+nònuples 0 2 DN 0 PN0 0
+nós 0 1 PP1 0
+octau 0 3 AO 0 DN 0 PN0 0
+octaus 0 3 AO 0 DN 0 PN0 0
+octogèsim 0 3 AO 0 DN 0 PN0 0
+octogèsima 0 3 AO 0 DN 0 PN0 0
+octogèsimes 0 3 AO 0 DN 0 PN0 0
+octogèsims 0 3 AO 0 DN 0 PN0 0
+oh 0 1 I 0
+oidà 0 1 I 0
+oixque 0 1 I 0
+ollaó 0 1 I 0
+on 0 3 CS 0 PR0 0 PT0 0
+onzena 0 3 AO 0 DN 0 PN0 0
+onzenes 0 3 AO 0 DN 0 PN0 0
+onzens 0 3 AO 0 DN 0 PN0 0
+onzè 0 3 AO 0 DN 0 PN0 0
+op 0 1 Y 0
+op. 0 1 Y 0
+pel 0 1 SP 0
+pels 0 1 SP 0
+penúltim 0 1 AO 0
+penúltima 0 1 AO 0
+penúltimes 0 1 AO 0
+penúltims 0 1 AO 0
+perhom 0 1 PI0 0
+pmp 0 1 Y 0
+poca 0 2 DI 0 PI0 0
+poques 0 2 DI 0 PI0 0
+poqueta 0 2 DI 0 PI0 0
+poquetes 0 2 DI 0 PI0 0
+poquets 0 2 DI 0 PI0 0
+poquíssima 0 2 DI 0 PI0 0
+poquíssimes 0 2 DI 0 PI0 0
+poquíssims 0 2 DI 0 PI0 0
+ppm 0 1 Y 0
+ppp 0 1 Y 0
+precuinada 0 1 AQP 0
+precuinades 0 1 AQP 0
+precuinat 0 1 AQP 0
+precuinats 0 1 AQP 0
+primera 0 1 AO 0
+primeres 0 1 AO 0
+primers 0 1 AO 0
+pròsit 0 1 I 0
+ps 0 1 Y 0
+ps. 0 1 Y 0
+pst 0 1 I 0
+puix 0 1 CS 0
+quadragèsim 0 3 AO 0 DN 0 PN0 0
+quadragèsims 0 3 AO 0 DN 0 PN0 0
+qual 0 2 DR 0 PR0 0
+qualcun 0 2 DI 0 PI0 0
+qualcuna 0 2 DI 0 PI0 0
+qualcunes 0 2 DI 0 PI0 0
+qualcuns 0 2 DI 0 PI0 0
+qualcú 0 1 PI0 0
+qualque 0 1 DI 0
+quals 0 1 PR0 0
+qualsevulla 0 2 DI 0 PI0 0
+qualssevulla 0 2 DI 0 PI0 0
+quan 0 3 CS 0 PR0 0 PT0 0
+quanta 0 4 DI 0 DT 0 PI0 0 PT0 0
+quantes 0 4 DI 0 DT 0 PI0 0 PT0 0
+quants 0 4 DI 0 PI0 0 DT 0 PT0 0
+quaranta-cinquena 0 3 AO 0 DN 0 PN0 0
+quaranta-cinquenes 0 3 AO 0 DN 0 PN0 0
+quaranta-cinquens 0 3 AO 0 DN 0 PN0 0
+quaranta-cinquè 0 3 AO 0 DN 0 PN0 0
+quaranta-dosena 0 3 AO 0 DN 0 PN0 0
+quaranta-dosenes 0 3 AO 0 DN 0 PN0 0
+quaranta-dosens 0 3 AO 0 DN 0 PN0 0
+quaranta-dosè 0 3 AO 0 DN 0 PN0 0
+quaranta-dues 0 2 DN 0 PN0 0
+quaranta-novena 0 3 AO 0 DN 0 PN0 0
+quaranta-novenes 0 3 AO 0 DN 0 PN0 0
+quaranta-novens 0 3 AO 0 DN 0 PN0 0
+quaranta-novè 0 3 AO 0 DN 0 PN0 0
+quaranta-quatrena 0 3 AO 0 DN 0 PN0 0
+quaranta-quatrenes 0 3 AO 0 DN 0 PN0 0
+quaranta-quatrens 0 3 AO 0 DN 0 PN0 0
+quaranta-quatrè 0 3 AO 0 DN 0 PN0 0
+quaranta-setena 0 3 AO 0 DN 0 PN0 0
+quaranta-setenes 0 3 AO 0 DN 0 PN0 0
+quaranta-setens 0 3 AO 0 DN 0 PN0 0
+quaranta-setè 0 3 AO 0 DN 0 PN0 0
+quaranta-sisena 0 3 AO 0 DN 0 PN0 0
+quaranta-sisenes 0 3 AO 0 DN 0 PN0 0
+quaranta-sisens 0 3 AO 0 DN 0 PN0 0
+quaranta-sisè 0 3 AO 0 DN 0 PN0 0
+quaranta-tresena 0 3 AO 0 DN 0 PN0 0
+quaranta-tresenes 0 3 AO 0 DN 0 PN0 0
+quaranta-tresens 0 3 AO 0 DN 0 PN0 0
+quaranta-tresè 0 3 AO 0 DN 0 PN0 0
+quaranta-un 0 2 DN 0 PN0 0
+quaranta-una 0 2 DN 0 PN0 0
+quaranta-unena 0 3 AO 0 DN 0 PN0 0
+quaranta-unenes 0 3 AO 0 DN 0 PN0 0
+quaranta-unens 0 3 AO 0 DN 0 PN0 0
+quaranta-unè 0 3 AO 0 DN 0 PN0 0
+quaranta-vuitena 0 3 AO 0 DN 0 PN0 0
+quaranta-vuitenes 0 3 AO 0 DN 0 PN0 0
+quaranta-vuitens 0 3 AO 0 DN 0 PN0 0
+quaranta-vuitè 0 3 AO 0 DN 0 PN0 0
+quarantens 0 3 AO 0 DN 0 PN0 0
+quarantè 0 3 AO 0 DN 0 PN0 0
+quatre-centena 0 3 AO 0 DN 0 PN0 0
+quatre-centenes 0 3 AO 0 DN 0 PN0 0
+quatre-centens 0 3 AO 0 DN 0 PN0 0
+quatre-centes 0 2 DN 0 PN0 0
+quatre-centè 0 3 AO 0 DN 0 PN0 0
+que 0 2 CS 0 PR0 0
+qui 0 2 PR0 0 PT0 0
+qui-sap-la 0 1 PI0 0
+qui-sap-les 0 1 PI0 0
+qui-sap-los 0 1 PI0 0
+quin 0 3 DE 0 DT 0 PT0 0
+quinquagèsim 0 3 AO 0 DN 0 PN0 0
+quinquagèsims 0 3 AO 0 DN 0 PN0 0
+quins 0 3 DE 0 DT 0 PT0 0
+quinzens 0 3 AO 0 DN 0 PN0 0
+quinzè 0 3 AO 0 DN 0 PN0 0
+quisvulla 0 2 DI 0 PI0 0
+quàdrupla 0 2 DN 0 PN0 0
+quàdruple 0 2 DN 0 PN0 0
+quàdruples 0 2 DN 0 PN0 0
+què 0 2 PR0 0 PT0 0
+quíntupla 0 2 DN 0 PN0 0
+quíntuple 0 2 DN 0 PN0 0
+quíntuples 0 2 DN 0 PN0 0
+renoi 0 1 I 0
+rpm 0 1 Y 0
+s' 0 4 P03 0 PP3 0 DA 0 P00 0
+sa 0 2 DA 0 DP 0
+seixanta-cinquena 0 3 AO 0 DN 0 PN0 0
+seixanta-cinquenes 0 3 AO 0 DN 0 PN0 0
+seixanta-cinquens 0 3 AO 0 DN 0 PN0 0
+seixanta-cinquè 0 3 AO 0 DN 0 PN0 0
+seixanta-dosena 0 3 AO 0 DN 0 PN0 0
+seixanta-dosenes 0 3 AO 0 DN 0 PN0 0
+seixanta-dosens 0 3 AO 0 DN 0 PN0 0
+seixanta-dosè 0 3 AO 0 DN 0 PN0 0
+seixanta-dues 0 2 DN 0 PN0 0
+seixanta-novena 0 3 AO 0 DN 0 PN0 0
+seixanta-novenes 0 3 AO 0 DN 0 PN0 0
+seixanta-novens 0 3 AO 0 DN 0 PN0 0
+seixanta-novè 0 3 AO 0 DN 0 PN0 0
+seixanta-quatrena 0 3 AO 0 DN 0 PN0 0
+seixanta-quatrenes 0 3 AO 0 DN 0 PN0 0
+seixanta-quatrens 0 3 AO 0 DN 0 PN0 0
+seixanta-quatrè 0 3 AO 0 DN 0 PN0 0
+seixanta-setena 0 3 AO 0 DN 0 PN0 0
+seixanta-setenes 0 3 AO 0 DN 0 PN0 0
+seixanta-setens 0 3 AO 0 DN 0 PN0 0
+seixanta-setè 0 3 AO 0 DN 0 PN0 0
+seixanta-sisena 0 3 AO 0 DN 0 PN0 0
+seixanta-sisenes 0 3 AO 0 DN 0 PN0 0
+seixanta-sisens 0 3 AO 0 DN 0 PN0 0
+seixanta-sisè 0 3 AO 0 DN 0 PN0 0
+seixanta-tresena 0 3 AO 0 DN 0 PN0 0
+seixanta-tresenes 0 3 AO 0 DN 0 PN0 0
+seixanta-tresens 0 3 AO 0 DN 0 PN0 0
+seixanta-tresè 0 3 AO 0 DN 0 PN0 0
+seixanta-un 0 2 DN 0 PN0 0
+seixanta-una 0 2 DN 0 PN0 0
+seixanta-unena 0 3 AO 0 DN 0 PN0 0
+seixanta-unenes 0 3 AO 0 DN 0 PN0 0
+seixanta-unens 0 3 AO 0 DN 0 PN0 0
+seixanta-unè 0 3 AO 0 DN 0 PN0 0
+seixanta-vuitena 0 3 AO 0 DN 0 PN0 0
+seixanta-vuitenes 0 3 AO 0 DN 0 PN0 0
+seixanta-vuitens 0 3 AO 0 DN 0 PN0 0
+seixanta-vuitè 0 3 AO 0 DN 0 PN0 0
+seixantens 0 3 AO 0 DN 0 PN0 0
+seixantè 0 3 AO 0 DN 0 PN0 0
+sengles 0 1 DI 0
+sense 0 1 SP 0
+septuagèsim 0 3 AO 0 DN 0 PN0 0
+septuagèsims 0 3 AO 0 DN 0 PN0 0
+set-centena 0 3 AO 0 DN 0 PN0 0
+set-centenes 0 3 AO 0 DN 0 PN0 0
+set-centens 0 3 AO 0 DN 0 PN0 0
+set-centes 0 2 DN 0 PN0 0
+set-centè 0 3 AO 0 DN 0 PN0 0
+setanta-cinquena 0 3 AO 0 DN 0 PN0 0
+setanta-cinquenes 0 3 AO 0 DN 0 PN0 0
+setanta-cinquens 0 3 AO 0 DN 0 PN0 0
+setanta-cinquè 0 3 AO 0 DN 0 PN0 0
+setanta-dosena 0 3 AO 0 DN 0 PN0 0
+setanta-dosenes 0 3 AO 0 DN 0 PN0 0
+setanta-dosens 0 3 AO 0 DN 0 PN0 0
+setanta-dosè 0 3 AO 0 DN 0 PN0 0
+setanta-dues 0 2 DN 0 PN0 0
+setanta-novena 0 3 AO 0 DN 0 PN0 0
+setanta-novenes 0 3 AO 0 DN 0 PN0 0
+setanta-novens 0 3 AO 0 DN 0 PN0 0
+setanta-novè 0 3 AO 0 DN 0 PN0 0
+setanta-quatrena 0 3 AO 0 DN 0 PN0 0
+setanta-quatrenes 0 3 AO 0 DN 0 PN0 0
+setanta-quatrens 0 3 AO 0 DN 0 PN0 0
+setanta-quatrè 0 3 AO 0 DN 0 PN0 0
+setanta-setena 0 3 AO 0 DN 0 PN0 0
+setanta-setenes 0 3 AO 0 DN 0 PN0 0
+setanta-setens 0 3 AO 0 DN 0 PN0 0
+setanta-setè 0 3 AO 0 DN 0 PN0 0
+setanta-sisena 0 3 AO 0 DN 0 PN0 0
+setanta-sisenes 0 3 AO 0 DN 0 PN0 0
+setanta-sisens 0 3 AO 0 DN 0 PN0 0
+setanta-sisè 0 3 AO 0 DN 0 PN0 0
+setanta-tresena 0 3 AO 0 DN 0 PN0 0
+setanta-tresenes 0 3 AO 0 DN 0 PN0 0
+setanta-tresens 0 3 AO 0 DN 0 PN0 0
+setanta-tresè 0 3 AO 0 DN 0 PN0 0
+setanta-un 0 2 DN 0 PN0 0
+setanta-una 0 2 DN 0 PN0 0
+setanta-unena 0 3 AO 0 DN 0 PN0 0
+setanta-unenes 0 3 AO 0 DN 0 PN0 0
+setanta-unens 0 3 AO 0 DN 0 PN0 0
+setanta-unè 0 3 AO 0 DN 0 PN0 0
+setanta-vuitena 0 3 AO 0 DN 0 PN0 0
+setanta-vuitenes 0 3 AO 0 DN 0 PN0 0
+setanta-vuitens 0 3 AO 0 DN 0 PN0 0
+setanta-vuitè 0 3 AO 0 DN 0 PN0 0
+setantens 0 3 AO 0 DN 0 PN0 0
+setantè 0 3 AO 0 DN 0 PN0 0
+setens 0 3 AO 0 DN 0 PN0 0
+setè 0 3 AO 0 DN 0 PN0 0
+seua 0 1 DP 0
+seues 0 1 DP 0
+seva 0 1 DP 0
+seves 0 1 DP 0
+sexagèsim 0 3 AO 0 DN 0 PN0 0
+sexagèsims 0 3 AO 0 DN 0 PN0 0
+sext 0 3 AO 0 DN 0 PN0 0
+sextos 0 3 AO 0 DN 0 PN0 0
+sinó 0 1 CC 0
+sis-centena 0 3 AO 0 DN 0 PN0 0
+sis-centenes 0 3 AO 0 DN 0 PN0 0
+sis-centens 0 3 AO 0 DN 0 PN0 0
+sis-centes 0 2 DN 0 PN0 0
+sis-centè 0 3 AO 0 DN 0 PN0 0
+sisena 0 3 AO 0 DN 0 PN0 0
+sisenes 0 3 AO 0 DN 0 PN0 0
+sobreexplotada 0 1 AQP 0
+sobreexplotades 0 1 AQP 0
+sobreexplotat 0 1 AQP 0
+sobreexplotats 0 1 AQP 0
+sos 0 2 DP 0 Y 0
+sèptim 0 3 AO 0 DN 0 PN0 0
+sèptims 0 3 AO 0 DN 0 PN0 0
+sèptupla 0 2 DN 0 PN0 0
+sèptuple 0 2 DN 0 PN0 0
+sèptuples 0 2 DN 0 PN0 0
+sèxtupla 0 2 DN 0 PN0 0
+sèxtuple 0 2 DN 0 PN0 0
+sèxtuples 0 2 DN 0 PN0 0
+súbdupla 0 2 DN 0 PN0 0
+súbduple 0 2 DN 0 PN0 0
+súbduples 0 2 DN 0 PN0 0
+t' 0 2 P02 0 PP2 0
+tafoi 0 1 I 0
+tal 0 2 DD 0 PD0 0
+tals 0 2 DD 0 PD0 0
+tanta 0 2 DI 0 PI0 0
+tantes 0 2 DI 0 PI0 0
+tantíssim 0 2 DI 0 PI0 0
+tantíssima 0 2 DI 0 PI0 0
+tantíssimes 0 2 DI 0 PI0 0
+tantíssims 0 2 DI 0 PI0 0
+tariraró 0 1 I 0
+tatatxan 0 1 I 0
+tbps 0 1 Y 0
+teu 0 2 DP 0 PX2 0
+teua 0 1 DP 0
+teues 0 1 DP 0
+teus 0 2 DP 0 PX2 0
+teva 0 1 DP 0
+teves 0 1 DP 0
+tota 0 2 DI 0 PI0 0
+totes 0 2 DI 0 PI0 0
+tothom 0 1 PI0 0
+trenta-cinquena 0 3 AO 0 DN 0 PN0 0
+trenta-cinquenes 0 3 AO 0 DN 0 PN0 0
+trenta-cinquens 0 3 AO 0 DN 0 PN0 0
+trenta-cinquè 0 3 AO 0 DN 0 PN0 0
+trenta-dosena 0 3 AO 0 DN 0 PN0 0
+trenta-dosenes 0 3 AO 0 DN 0 PN0 0
+trenta-dosens 0 3 AO 0 DN 0 PN0 0
+trenta-dosè 0 3 AO 0 DN 0 PN0 0
+trenta-dues 0 2 DN 0 PN0 0
+trenta-novena 0 3 AO 0 DN 0 PN0 0
+trenta-novenes 0 3 AO 0 DN 0 PN0 0
+trenta-novens 0 3 AO 0 DN 0 PN0 0
+trenta-novè 0 3 AO 0 DN 0 PN0 0
+trenta-quatrena 0 3 AO 0 DN 0 PN0 0
+trenta-quatrenes 0 3 AO 0 DN 0 PN0 0
+trenta-quatrens 0 3 AO 0 DN 0 PN0 0
+trenta-quatrè 0 3 AO 0 DN 0 PN0 0
+trenta-setena 0 3 AO 0 DN 0 PN0 0
+trenta-setenes 0 3 AO 0 DN 0 PN0 0
+trenta-setens 0 3 AO 0 DN 0 PN0 0
+trenta-setè 0 3 AO 0 DN 0 PN0 0
+trenta-sisena 0 3 AO 0 DN 0 PN0 0
+trenta-sisenes 0 3 AO 0 DN 0 PN0 0
+trenta-sisens 0 3 AO 0 DN 0 PN0 0
+trenta-sisè 0 3 AO 0 DN 0 PN0 0
+trenta-tresena 0 3 AO 0 DN 0 PN0 0
+trenta-tresenes 0 3 AO 0 DN 0 PN0 0
+trenta-tresens 0 3 AO 0 DN 0 PN0 0
+trenta-tresè 0 3 AO 0 DN 0 PN0 0
+trenta-un 0 2 DN 0 PN0 0
+trenta-una 0 2 DN 0 PN0 0
+trenta-unena 0 3 AO 0 DN 0 PN0 0
+trenta-unenes 0 3 AO 0 DN 0 PN0 0
+trenta-unens 0 3 AO 0 DN 0 PN0 0
+trenta-unè 0 3 AO 0 DN 0 PN0 0
+trenta-vuitena 0 3 AO 0 DN 0 PN0 0
+trenta-vuitenes 0 3 AO 0 DN 0 PN0 0
+trenta-vuitens 0 3 AO 0 DN 0 PN0 0
+trenta-vuitè 0 3 AO 0 DN 0 PN0 0
+trentens 0 3 AO 0 DN 0 PN0 0
+trentè 0 3 AO 0 DN 0 PN0 0
+tres-centena 0 3 AO 0 DN 0 PN0 0
+tres-centenes 0 3 AO 0 DN 0 PN0 0
+tres-centens 0 3 AO 0 DN 0 PN0 0
+tres-centes 0 2 DN 0 PN0 0
+tres-centè 0 3 AO 0 DN 0 PN0 0
+trigèsim 0 3 AO 0 DN 0 PN0 0
+trigèsima 0 3 AO 0 DN 0 PN0 0
+trigèsimes 0 3 AO 0 DN 0 PN0 0
+trigèsims 0 3 AO 0 DN 0 PN0 0
+trilionèsim 0 3 AO 0 DN 0 PN0 0
+trilionèsima 0 3 AO 0 DN 0 PN0 0
+trilionèsimes 0 3 AO 0 DN 0 PN0 0
+trilionèsims 0 3 AO 0 DN 0 PN0 0
+tu 0 1 PP2 0
+tururut 0 1 I 0
+uah 0 1 I 0
+uf 0 1 I 0
+ui 0 1 I 0
+un 0 4 DI 0 DN 0 PI0 0 PN0 0
+unes 0 2 DI 0 PI0 0
+up 0 1 I 0
+vaja 0 1 I 0
+vatua 0 1 I 0
+veg 0 1 Y 0
+veg. 0 1 Y 0
+vejam 0 1 I 0
+versus 0 1 SP 0
+vg 0 1 Y 0
+vg. 0 1 Y 0
+vid 0 1 Y 0
+vid. 0 1 Y 0
+vigèsim 0 3 AO 0 DN 0 PN0 0
+vigèsima 0 3 AO 0 DN 0 PN0 0
+vigèsimes 0 3 AO 0 DN 0 PN0 0
+vigèsims 0 3 AO 0 DN 0 PN0 0
+vint-i-cinquena 0 3 AO 0 DN 0 PN0 0
+vint-i-cinquenes 0 3 AO 0 DN 0 PN0 0
+vint-i-cinquens 0 3 AO 0 DN 0 PN0 0
+vint-i-cinquè 0 3 AO 0 DN 0 PN0 0
+vint-i-dosena 0 3 AO 0 DN 0 PN0 0
+vint-i-dosenes 0 3 AO 0 DN 0 PN0 0
+vint-i-dosens 0 3 AO 0 DN 0 PN0 0
+vint-i-dosè 0 3 AO 0 DN 0 PN0 0
+vint-i-novena 0 3 AO 0 DN 0 PN0 0
+vint-i-novenes 0 3 AO 0 DN 0 PN0 0
+vint-i-novens 0 3 AO 0 DN 0 PN0 0
+vint-i-novè 0 3 AO 0 DN 0 PN0 0
+vint-i-quatrena 0 3 AO 0 DN 0 PN0 0
+vint-i-quatrenes 0 3 AO 0 DN 0 PN0 0
+vint-i-quatrens 0 3 AO 0 DN 0 PN0 0
+vint-i-quatrè 0 3 AO 0 DN 0 PN0 0
+vint-i-setena 0 3 AO 0 DN 0 PN0 0
+vint-i-setenes 0 3 AO 0 DN 0 PN0 0
+vint-i-setens 0 3 AO 0 DN 0 PN0 0
+vint-i-setè 0 3 AO 0 DN 0 PN0 0
+vint-i-sisena 0 3 AO 0 DN 0 PN0 0
+vint-i-sisenes 0 3 AO 0 DN 0 PN0 0
+vint-i-sisens 0 3 AO 0 DN 0 PN0 0
+vint-i-sisè 0 3 AO 0 DN 0 PN0 0
+vint-i-tresena 0 3 AO 0 DN 0 PN0 0
+vint-i-tresenes 0 3 AO 0 DN 0 PN0 0
+vint-i-tresens 0 3 AO 0 DN 0 PN0 0
+vint-i-tresè 0 3 AO 0 DN 0 PN0 0
+vint-i-un 0 2 DN 0 PN0 0
+vint-i-unena 0 3 AO 0 DN 0 PN0 0
+vint-i-unenes 0 3 AO 0 DN 0 PN0 0
+vint-i-unens 0 3 AO 0 DN 0 PN0 0
+vint-i-unè 0 3 AO 0 DN 0 PN0 0
+vint-i-vuitena 0 3 AO 0 DN 0 PN0 0
+vint-i-vuitenes 0 3 AO 0 DN 0 PN0 0
+vint-i-vuitens 0 3 AO 0 DN 0 PN0 0
+vint-i-vuitè 0 3 AO 0 DN 0 PN0 0
+vintens 0 3 AO 0 DN 0 PN0 0
+vintè 0 3 AO 0 DN 0 PN0 0
+vosaltres 0 1 PP2 0
+vostra 0 1 DP 0
+vostre 0 2 DP 0 PX2 0
+vostres 0 1 DP 0
+vostè 0 1 PP2 0
+vostès 0 1 PP2 0
+vs 0 1 SP 0
+vs. 0 1 SP 0
+vuit-centena 0 3 AO 0 DN 0 PN0 0
+vuit-centenes 0 3 AO 0 DN 0 PN0 0
+vuit-centens 0 3 AO 0 DN 0 PN0 0
+vuit-centes 0 2 DN 0 PN0 0
+vuit-centè 0 3 AO 0 DN 0 PN0 0
+vuitanta-cinquena 0 3 AO 0 DN 0 PN0 0
+vuitanta-cinquenes 0 3 AO 0 DN 0 PN0 0
+vuitanta-cinquens 0 3 AO 0 DN 0 PN0 0
+vuitanta-cinquè 0 3 AO 0 DN 0 PN0 0
+vuitanta-dosena 0 3 AO 0 DN 0 PN0 0
+vuitanta-dosenes 0 3 AO 0 DN 0 PN0 0
+vuitanta-dosens 0 3 AO 0 DN 0 PN0 0
+vuitanta-dosè 0 3 AO 0 DN 0 PN0 0
+vuitanta-dues 0 2 DN 0 PN0 0
+vuitanta-novena 0 3 AO 0 DN 0 PN0 0
+vuitanta-novenes 0 3 AO 0 DN 0 PN0 0
+vuitanta-novens 0 3 AO 0 DN 0 PN0 0
+vuitanta-novè 0 3 AO 0 DN 0 PN0 0
+vuitanta-quatrena 0 3 AO 0 DN 0 PN0 0
+vuitanta-quatrenes 0 3 AO 0 DN 0 PN0 0
+vuitanta-quatrens 0 3 AO 0 DN 0 PN0 0
+vuitanta-quatrè 0 3 AO 0 DN 0 PN0 0
+vuitanta-setena 0 3 AO 0 DN 0 PN0 0
+vuitanta-setenes 0 3 AO 0 DN 0 PN0 0
+vuitanta-setens 0 3 AO 0 DN 0 PN0 0
+vuitanta-setè 0 3 AO 0 DN 0 PN0 0
+vuitanta-sisena 0 3 AO 0 DN 0 PN0 0
+vuitanta-sisenes 0 3 AO 0 DN 0 PN0 0
+vuitanta-sisens 0 3 AO 0 DN 0 PN0 0
+vuitanta-sisè 0 3 AO 0 DN 0 PN0 0
+vuitanta-tresena 0 3 AO 0 DN 0 PN0 0
+vuitanta-tresenes 0 3 AO 0 DN 0 PN0 0
+vuitanta-tresens 0 3 AO 0 DN 0 PN0 0
+vuitanta-tresè 0 3 AO 0 DN 0 PN0 0
+vuitanta-un 0 2 DN 0 PN0 0
+vuitanta-una 0 2 DN 0 PN0 0
+vuitanta-unena 0 3 AO 0 DN 0 PN0 0
+vuitanta-unenes 0 3 AO 0 DN 0 PN0 0
+vuitanta-unens 0 3 AO 0 DN 0 PN0 0
+vuitanta-unè 0 3 AO 0 DN 0 PN0 0
+vuitanta-vuitena 0 3 AO 0 DN 0 PN0 0
+vuitanta-vuitenes 0 3 AO 0 DN 0 PN0 0
+vuitanta-vuitens 0 3 AO 0 DN 0 PN0 0
+vuitanta-vuitè 0 3 AO 0 DN 0 PN0 0
+vuitantens 0 3 AO 0 DN 0 PN0 0
+vuitantè 0 3 AO 0 DN 0 PN0 0
+vós 0 1 PP2 0
+xang 0 1 I 0
+xo 0 1 I 0
+xung 0 1 I 0
+àngela 0 1 I 0
+ço 0 1 PD0 0
+òctupla 0 2 DN 0 PN0 0
+òctuple 0 2 DN 0 PN0 0
+òctuples 0 2 DN 0 PN0 0
+òndia 0 1 I 0
+òndima 0 1 I 0
+últim 0 1 AO 0
+última 0 1 AO 0
+últimes 0 1 AO 0
+últims 0 1 AO 0

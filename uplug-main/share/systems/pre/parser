@@ -1,0 +1,21 @@
+{
+  'encoding' => 'iso-8859-1',
+  'module' => {
+    'name' => '(Shallow) parser',
+    'submodules' => [
+        '$UplugSystem/pre/en/chunk',
+        '$UplugSystem/pre/sv/parse',
+    ],
+    'submodule names' => [
+        'English (Grok)',
+        'Swedish (Bea`s Parser)',
+    ],
+  },
+  'description' => 'This is a collection of (shallow)
+  parsers. Additional tools for other languages will be added soon.
+  More information can be found on external pages:
+  <ul><li>the <a href="http://grok.sourceforge.net/">Grok system</a> for
+  English
+  <li><a href="http://www.speech.kth.se/~bea/">Beata Megyesis</a> home page
+  </ul>',
+}

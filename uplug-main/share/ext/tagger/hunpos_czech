@@ -1,0 +1,11 @@
+#!/usr/bin/perl
+
+use FindBin qw($Bin);
+my $HUNPOS=$Bin.'/../hunpos/hunpos-tag';
+my $MODEL=$Bin.'/../hunpos/models/cs_pdt.model';
+
+# system ($HUNPOS,$MODEL,@ARGV);
+
+# hunpos needs piped input from STDIN!
+system "$HUNPOS $MODEL < $ARGV[0]";
+

@@ -1,0 +1,11 @@
+# -------------------------------------------------------------
+# SVMT configuration file
+# ------------- location of the training set-------------------
+TRAINSET = /home/users/dummy/CORPORA/WSJTP/WSJTP.TRAIN
+# ------------- location of the Joachims svmlight software ----
+SVMDIR = /home/users/dummy/SVMT/soft/
+# ------------- name of the model to create -------------------
+NAME = WSJTP
+# ------- action items ----------------------------------------
+do M0 LRL
+# -------------------------------------------------------------

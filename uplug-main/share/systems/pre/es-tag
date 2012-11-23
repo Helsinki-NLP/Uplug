@@ -1,0 +1,58 @@
+{
+  'module' => {
+    'name' => 'Spanish pre-processing',
+    'submodules' => [
+        '$UplugSystem/pre/es/toktag',
+        '$UplugSystem/pre/es/tagSvmTool',
+#        '$UplugSystem/pre/tok',
+#        '$UplugSystem/pre/es/tagMBT',
+        '$UplugSystem/pre/es/malt',
+    ],
+    'submodule names' => [
+	'tokenizer',
+        'Spanish tagger',
+#        'Spanish tagger (MBT)',
+    ],
+    'stdin' => 'text',
+    'stdout' => 'text',
+  },
+  'description' => 'This is the pre-processing module for Swedish
+  corpora. It includes a basic XML markup tool, a general sentence
+  splitter, and the general tokenizer, 
+  the Memory-Based Part-of-Speech tagger for Spanish from Tilburg University.
+<p>
+(Walter Daelemans, Jakub
+Zavrel, Peter Berck, and Steven Gillis (1996). MBT: A Memory-Based
+Part of Speech Tagger-Generator. in: E. Ejerhed and I. Dagan (eds.)
+Proceedings of the Fourth Workshop on Very Large Corpora, Copenhagen,
+Denmark, 14-27, 1996)',
+  'input' => {
+    'text' => {
+      'format' => 'xml',
+      'root' => 's',
+    }
+  },
+  'output' => {
+    'text' => {
+      'format' => 'xml',
+      'root' => 's',
+      'write_mode' => 'overwrite',
+      'status' => 'chunk'
+    }
+  },
+  'arguments' => {
+    'shortcuts' => {
+       'in' => 'input:text:file',
+	'out' => 'output:text:file',
+       'ci' => 'input:text:encoding',
+       'co' => 'output:text:encoding',
+    }
+  },
+  'widgets' => {
+       'input' => {
+	  'text' => {
+	    'stream name' => 'stream(format=text,language=sv)'
+	  },
+       },
+  }
+}

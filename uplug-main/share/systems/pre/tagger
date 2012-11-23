@@ -1,0 +1,51 @@
+{
+  'module' => {
+    'name' => 'Part-of-speech tagger',
+    'submodules' => [
+        '$UplugSystem/pre/en/tagBrill',
+        '$UplugSystem/pre/en/tagGrok',
+        '$UplugSystem/pre/en/tagQtag',
+        '$UplugSystem/pre/en/tagBLT',
+        '$UplugSystem/pre/en/tagTnT',
+        '$UplugSystem/pre/en/tagTree',
+        '$UplugSystem/pre/fr/tagTree',
+        '$UplugSystem/pre/de/tagQtag',
+        '$UplugSystem/pre/de/tagTnT',
+        '$UplugSystem/pre/de/tagTree',
+        '$UplugSystem/pre/it/tagTree',
+        '$UplugSystem/pre/ja/toktag',
+        '$UplugSystem/pre/pt/tag',
+        '$UplugSystem/pre/sv/tagTnT',
+        '$UplugSystem/pre/sv/tagGrok',
+    ],
+    'submodule names' => [
+        'English (Brill)',
+        'English (Grok)',
+        'English (Qtag)',
+        'English (Qtag-BLT)',
+        'English (TnT)',
+        'English (TreeTagger)',
+        'French (TreeTagger)',
+        'German (Qtag)',
+        'German (TnT)',
+        'German (TreeTagger)',
+        'Italian (TreeTagger)',
+        'Japanese (ChaSen)',
+        'Portuguese (Qtag)',
+        'Swedish (TnT)',
+        'Swedish (Grok)',
+    ],
+  },
+  'description' => 'This is a collection of part-of-speech
+  taggers. More information can be found on external pages:
+  <ul><li> the <a href="http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a>
+  for English, French, Italian, and German
+  <li>the <a href="http://www.coli.uni-sb.de/~thorsten/tnt/">TnT
+  tagger</a> for English, German and Swedish
+  <li>the <a href="http://grok.sourceforge.net/">Grok system</a> for
+  English
+  <li>the morphological analyzer 
+  <a href="http://chasen.aist-nara.ac.jp/">ChaSen</a> for Japanese
+  </ul>',
+}
+

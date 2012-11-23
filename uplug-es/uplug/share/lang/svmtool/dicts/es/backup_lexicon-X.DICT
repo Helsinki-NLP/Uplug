@@ -1,0 +1,988 @@
+Sniff 0 1 I 0
+abur 0 1 I 0
+achalay 0 1 I 0
+achís 0 1 I 0
+ad 0 1 SP 0
+adonde 0 2 CS 0 PR0 0
+adónde 0 1 PT0 0
+agur 0 1 I 0
+ah 0 1 I 0
+ahijuna 0 1 I 0
+ajajá 0 1 I 0
+ajá 0 1 I 0
+al 0 1 SP 0
+alguien 0 1 PI0 0
+alguna 0 2 DI 0 PI0 0
+algunas 0 2 DI 0 PI0 0
+alguno 0 2 DI 0 PI0 0
+algunos 0 2 DI 0 PI0 0
+algún 0 1 DI 0
+alt 0 1 Y 0
+alá 0 1 I 0
+aló 0 1 I 0
+antepenúltima 0 1 AO 0
+antepenúltimas 0 1 AO 0
+antepenúltimo 0 1 AO 0
+antepenúltimos 0 1 AO 0
+apl 0 1 Y 0
+apud 0 1 SP 0
+aquel 0 2 DD 0 PD0 0
+aquella 0 2 DD 0 PD0 0
+aquellas 0 2 DD 0 PD0 0
+aquello 0 1 PD0 0
+aquellos 0 2 DD 0 PD0 0
+aquél 0 1 PD0 0
+aquélla 0 1 PD0 0
+aquéllas 0 1 PD0 0
+aquéllos 0 1 PD0 0
+arrarray 0 1 I 0
+arsa 0 1 I 0
+atatay 0 1 I 0
+atm 0 1 Y 0
+aunque 0 1 CS 0
+ax 0 1 I 0
+ay 0 1 I 0
+bah 0 1 I 0
+banzai 0 1 I 0
+bastantes 0 2 DI 0 PI0 0
+bh 0 1 Y 0
+bienintencionada 0 1 AQP 0
+bienintencionadas 0 1 AQP 0
+bienintencionado 0 1 AQP 0
+bienintencionados 0 1 AQP 0
+billonésima 0 1 AO 0
+billonésimas 0 1 AO 0
+billonésimo 0 1 AO 0
+billonésimos 0 1 AO 0
+bla 0 1 I 0
+bps 0 1 Y 0
+buf 0 1 I 0
+bum 0 1 I 0
+cada 0 1 DI 0
+caguendiós 0 1 I 0
+carape 0 1 I 0
+cataplum 0 1 I 0
+catorceava 0 2 DN 0 PN0 0
+catorceavas 0 2 DN 0 PN0 0
+catorceavo 0 2 DN 0 PN0 0
+catorceavos 0 2 DN 0 PN0 0
+catorzava 0 2 DN 0 PN0 0
+catorzavas 0 2 DN 0 PN0 0
+catorzavo 0 2 DN 0 PN0 0
+catorzavos 0 2 DN 0 PN0 0
+centésimo 0 1 AO 0
+centésimos 0 1 AO 0
+cfc 0 1 Y 0
+cfr 0 1 Y 0
+cgs 0 1 Y 0
+chao 0 1 I 0
+chau 0 1 I 0
+chist 0 1 I 0
+cho 0 1 I 0
+chus 0 1 I 0
+cienmillonésima 0 1 AO 0
+cienmillonésimas 0 1 AO 0
+cienmillonésimo 0 1 AO 0
+cienmillonésimos 0 1 AO 0
+cienmilmillonésima 0 1 AO 0
+cienmilmillonésimas 0 1 AO 0
+cienmilmillonésimo 0 1 AO 0
+cienmilmillonésimos 0 1 AO 0
+cienmilésima 0 1 AO 0
+cienmilésimas 0 1 AO 0
+cienmilésimo 0 1 AO 0
+cienmilésimos 0 1 AO 0
+cientochava 0 2 DN 0 PN0 0
+cientochavas 0 2 DN 0 PN0 0
+cientochavo 0 2 DN 0 PN0 0
+cientochavos 0 2 DN 0 PN0 0
+cientocincoava 0 2 DN 0 PN0 0
+cientocincoavas 0 2 DN 0 PN0 0
+cientocincoavo 0 2 DN 0 PN0 0
+cientocincoavos 0 2 DN 0 PN0 0
+cientocuatroava 0 2 DN 0 PN0 0
+cientocuatroavas 0 2 DN 0 PN0 0
+cientocuatroavo 0 2 DN 0 PN0 0
+cientocuatroavos 0 2 DN 0 PN0 0
+cientodosava 0 2 DN 0 PN0 0
+cientodosavas 0 2 DN 0 PN0 0
+cientodosavo 0 2 DN 0 PN0 0
+cientodosavos 0 2 DN 0 PN0 0
+cientonueveava 0 2 DN 0 PN0 0
+cientonueveavas 0 2 DN 0 PN0 0
+cientonueveavo 0 2 DN 0 PN0 0
+cientonueveavos 0 2 DN 0 PN0 0
+cientoseisava 0 2 DN 0 PN0 0
+cientoseisavas 0 2 DN 0 PN0 0
+cientoseisavo 0 2 DN 0 PN0 0
+cientoseisavos 0 2 DN 0 PN0 0
+cientosieteava 0 2 DN 0 PN0 0
+cientosieteavas 0 2 DN 0 PN0 0
+cientosieteavo 0 2 DN 0 PN0 0
+cientosieteavos 0 2 DN 0 PN0 0
+cientotresava 0 2 DN 0 PN0 0
+cientotresavas 0 2 DN 0 PN0 0
+cientotresavo 0 2 DN 0 PN0 0
+cientotresavos 0 2 DN 0 PN0 0
+cientounava 0 2 DN 0 PN0 0
+cientounavas 0 2 DN 0 PN0 0
+cientounavo 0 2 DN 0 PN0 0
+cientounavos 0 2 DN 0 PN0 0
+cincuentaicincoava 0 2 DN 0 PN0 0
+cincuentaicincoavas 0 2 DN 0 PN0 0
+cincuentaicincoavo 0 2 DN 0 PN0 0
+cincuentaicincoavos 0 2 DN 0 PN0 0
+cincuentaicuatroava 0 2 DN 0 PN0 0
+cincuentaicuatroavas 0 2 DN 0 PN0 0
+cincuentaicuatroavo 0 2 DN 0 PN0 0
+cincuentaicuatroavos 0 2 DN 0 PN0 0
+cincuentaidosava 0 2 DN 0 PN0 0
+cincuentaidosavas 0 2 DN 0 PN0 0
+cincuentaidosavo 0 2 DN 0 PN0 0
+cincuentaidosavos 0 2 DN 0 PN0 0
+cincuentainueveava 0 2 DN 0 PN0 0
+cincuentainueveavas 0 2 DN 0 PN0 0
+cincuentainueveavo 0 2 DN 0 PN0 0
+cincuentainueveavos 0 2 DN 0 PN0 0
+cincuentaiochava 0 2 DN 0 PN0 0
+cincuentaiochavas 0 2 DN 0 PN0 0
+cincuentaiochavo 0 2 DN 0 PN0 0
+cincuentaiochavos 0 2 DN 0 PN0 0
+cincuentaiseisava 0 2 DN 0 PN0 0
+cincuentaiseisavas 0 2 DN 0 PN0 0
+cincuentaiseisavo 0 2 DN 0 PN0 0
+cincuentaiseisavos 0 2 DN 0 PN0 0
+cincuentaisieteava 0 2 DN 0 PN0 0
+cincuentaisieteavas 0 2 DN 0 PN0 0
+cincuentaisieteavo 0 2 DN 0 PN0 0
+cincuentaisieteavos 0 2 DN 0 PN0 0
+cincuentaitresava 0 2 DN 0 PN0 0
+cincuentaitresavas 0 2 DN 0 PN0 0
+cincuentaitresavo 0 2 DN 0 PN0 0
+cincuentaitresavos 0 2 DN 0 PN0 0
+cincuentaiunava 0 2 DN 0 PN0 0
+cincuentaiunavas 0 2 DN 0 PN0 0
+cincuentaiunavo 0 2 DN 0 PN0 0
+cincuentaiunavos 0 2 DN 0 PN0 0
+cincuentava 0 2 DN 0 PN0 0
+cincuentavas 0 2 DN 0 PN0 0
+cincuentavo 0 2 DN 0 PN0 0
+cincuentavos 0 2 DN 0 PN0 0
+cincuentésima 0 1 AO 0
+cincuentésimas 0 1 AO 0
+cincuentésimo 0 1 AO 0
+cincuentésimos 0 1 AO 0
+clo 0 1 I 0
+cochi 0 1 I 0
+con 0 1 SP 0
+conmigo 0 1 PP1 0
+contigo 0 1 PP2 0
+csf 0 1 Y 0
+cuadragésima 0 1 AO 0
+cuadragésimas 0 1 AO 0
+cuadragésimo 0 1 AO 0
+cuadragésimos 0 1 AO 0
+cuadringentésima 0 1 AO 0
+cuadringentésimas 0 1 AO 0
+cuadringentésimo 0 1 AO 0
+cuadringentésimos 0 1 AO 0
+cual 0 3 DD 0 PI0 0 PR0 0
+cuales 0 1 PR0 0
+cualesquier 0 1 DI 0
+cualesquiera 0 2 DI 0 PI0 0
+cualquier 0 1 DI 0
+cualquiera 0 2 DI 0 PI0 0
+cuantas 0 2 DI 0 PR0 0
+cuarentaicincoava 0 2 DN 0 PN0 0
+cuarentaicincoavas 0 2 DN 0 PN0 0
+cuarentaicincoavo 0 2 DN 0 PN0 0
+cuarentaicincoavos 0 2 DN 0 PN0 0
+cuarentaicuatroava 0 2 DN 0 PN0 0
+cuarentaicuatroavas 0 2 DN 0 PN0 0
+cuarentaicuatroavo 0 2 DN 0 PN0 0
+cuarentaicuatroavos 0 2 DN 0 PN0 0
+cuarentaidosava 0 2 DN 0 PN0 0
+cuarentaidosavas 0 2 DN 0 PN0 0
+cuarentaidosavo 0 2 DN 0 PN0 0
+cuarentaidosavos 0 2 DN 0 PN0 0
+cuarentainueveava 0 2 DN 0 PN0 0
+cuarentainueveavas 0 2 DN 0 PN0 0
+cuarentainueveavo 0 2 DN 0 PN0 0
+cuarentainueveavos 0 2 DN 0 PN0 0
+cuarentaiochava 0 2 DN 0 PN0 0
+cuarentaiochavas 0 2 DN 0 PN0 0
+cuarentaiochavo 0 2 DN 0 PN0 0
+cuarentaiochavos 0 2 DN 0 PN0 0
+cuarentaiseisava 0 2 DN 0 PN0 0
+cuarentaiseisavas 0 2 DN 0 PN0 0
+cuarentaiseisavo 0 2 DN 0 PN0 0
+cuarentaiseisavos 0 2 DN 0 PN0 0
+cuarentaisieteava 0 2 DN 0 PN0 0
+cuarentaisieteavas 0 2 DN 0 PN0 0
+cuarentaisieteavo 0 2 DN 0 PN0 0
+cuarentaisieteavos 0 2 DN 0 PN0 0
+cuarentaitresava 0 2 DN 0 PN0 0
+cuarentaitresavas 0 2 DN 0 PN0 0
+cuarentaitresavo 0 2 DN 0 PN0 0
+cuarentaitresavos 0 2 DN 0 PN0 0
+cuarentaiunava 0 2 DN 0 PN0 0
+cuarentaiunavas 0 2 DN 0 PN0 0
+cuarentaiunavo 0 2 DN 0 PN0 0
+cuarentaiunavos 0 2 DN 0 PN0 0
+cuarentava 0 2 DN 0 PN0 0
+cuarentavas 0 2 DN 0 PN0 0
+cuarentavo 0 2 DN 0 PN0 0
+cuarentavos 0 2 DN 0 PN0 0
+cuatrocientosava 0 2 DN 0 PN0 0
+cuatrocientosavas 0 2 DN 0 PN0 0
+cuatrocientosavo 0 2 DN 0 PN0 0
+cuatrocientosavos 0 2 DN 0 PN0 0
+cuádrupla 0 2 DN 0 PN0 0
+cuádruplas 0 2 DN 0 PN0 0
+cuádruple 0 2 DN 0 PN0 0
+cuádruples 0 2 DN 0 PN0 0
+cuádruplo 0 2 DN 0 PN0 0
+cuádruplos 0 2 DN 0 PN0 0
+cuál 0 1 PT0 0
+cuáles 0 1 PT0 0
+cuándo 0 1 PT0 0
+cuánta 0 3 DE 0 DT 0 PT0 0
+cuántas 0 3 DE 0 DT 0 PT0 0
+cuánto 0 3 DE 0 DT 0 PT0 0
+cuántos 0 3 DE 0 DT 0 PT0 0
+cv 0 1 Y 0
+cáspita 0 1 I 0
+céntuplo 0 2 DN 0 PN0 0
+céntuplos 0 2 DN 0 PN0 0
+córcholis 0 1 I 0
+decimoctava 0 1 AO 0
+decimoctavas 0 1 AO 0
+decimoctavo 0 1 AO 0
+decimoctavos 0 1 AO 0
+decimonovena 0 1 AO 0
+decimonovenas 0 1 AO 0
+decimonoveno 0 1 AO 0
+decimonovenos 0 1 AO 0
+decimoquinta 0 1 AO 0
+decimoquintas 0 1 AO 0
+decimoquinto 0 1 AO 0
+decimoquintos 0 1 AO 0
+decimosexta 0 1 AO 0
+decimosextas 0 1 AO 0
+decimosexto 0 1 AO 0
+decimosextos 0 1 AO 0
+decimoséptima 0 1 AO 0
+decimoséptimas 0 1 AO 0
+decimoséptimo 0 1 AO 0
+decimoséptimos 0 1 AO 0
+del 0 1 SP 0
+desangelada 0 1 AQP 0
+desangeladas 0 1 AQP 0
+desangelado 0 1 AQP 0
+desangelados 0 1 AQP 0
+deslocalizada 0 1 AQP 0
+deslocalizadas 0 1 AQP 0
+deslocalizado 0 1 AQP 0
+deslocalizados 0 1 AQP 0
+despiadada 0 1 AQP 0
+despiadadas 0 1 AQP 0
+despiadado 0 1 AQP 0
+despiadados 0 1 AQP 0
+desque 0 1 C0 0
+diecinueveava 0 2 DN 0 PN0 0
+diecinueveavas 0 2 DN 0 PN0 0
+diecinueveavo 0 2 DN 0 PN0 0
+diecinueveavos 0 2 DN 0 PN0 0
+dieciochava 0 2 DN 0 PN0 0
+dieciochavas 0 2 DN 0 PN0 0
+dieciochavo 0 2 DN 0 PN0 0
+dieciochavos 0 2 DN 0 PN0 0
+dieciochoava 0 2 DN 0 PN0 0
+dieciochoavas 0 2 DN 0 PN0 0
+dieciseisava 0 2 DN 0 PN0 0
+dieciseisavas 0 2 DN 0 PN0 0
+diecisieteava 0 2 DN 0 PN0 0
+diecisieteavas 0 2 DN 0 PN0 0
+diecisieteavo 0 2 DN 0 PN0 0
+diecisieteavos 0 2 DN 0 PN0 0
+diezmillonésima 0 1 AO 0
+diezmillonésimas 0 1 AO 0
+diezmillonésimo 0 1 AO 0
+diezmillonésimos 0 1 AO 0
+diezmilmillonésima 0 1 AO 0
+diezmilmillonésimas 0 1 AO 0
+diezmilmillonésimo 0 1 AO 0
+diezmilmillonésimos 0 1 AO 0
+diezmilésima 0 1 AO 0
+diezmilésimas 0 1 AO 0
+diezmilésimo 0 1 AO 0
+diezmilésimos 0 1 AO 0
+dil 0 1 Y 0
+dis 0 1 Y 0
+diz 0 1 Y 0
+doceava 0 2 DN 0 PN0 0
+doceavas 0 2 DN 0 PN0 0
+donde 0 2 CS 0 PR0 0
+doscientosava 0 2 DN 0 PN0 0
+doscientosavas 0 2 DN 0 PN0 0
+doscientosavo 0 2 DN 0 PN0 0
+doscientosavos 0 2 DN 0 PN0 0
+dozava 0 2 DN 0 PN0 0
+dozavas 0 2 DN 0 PN0 0
+ducentésima 0 1 AO 0
+ducentésimas 0 1 AO 0
+ducentésimo 0 1 AO 0
+ducentésimos 0 1 AO 0
+duodécuplo 0 2 DN 0 PN0 0
+duodécuplos 0 2 DN 0 PN0 0
+duplo 0 2 DN 0 PN0 0
+duplos 0 2 DN 0 PN0 0
+durante 0 1 SP 0
+décuplo 0 2 DN 0 PN0 0
+décuplos 0 2 DN 0 PN0 0
+ea 0 1 I 0
+eh 0 1 I 0
+ejem 0 1 I 0
+el 0 1 DA 0
+ella 0 1 PP3 0
+ellas 0 1 PP3 0
+ello 0 1 PP3 0
+ellos 0 1 PP3 0
+empero 0 1 CC 0
+en 0 1 SP 0
+enésima 0 1 AO 0
+enésimas 0 1 AO 0
+enésimo 0 1 AO 0
+enésimos 0 1 AO 0
+epa 0 1 I 0
+equilicuá 0 1 I 0
+ergo 0 1 CS 0
+esa 0 2 DD 0 PD0 0
+esas 0 2 DD 0 PD0 0
+eso 0 1 PD0 0
+esos 0 2 DD 0 PD0 0
+esotra 0 1 PD0 0
+esotro 0 1 PD0 0
+esta 0 2 DD 0 PD0 0
+estas 0 2 DD 0 PD0 0
+esto 0 1 PD0 0
+estos 0 2 DD 0 PD0 0
+estotra 0 1 PD0 0
+estotro 0 1 PD0 0
+etc 0 1 Fs 0
+etc. 0 1 Fs 0
+eureka 0 1 I 0
+evohé 0 1 I 0
+excepto 0 1 SP 0
+exentos 0 1 AQP 0
+fc 0 1 Y 0
+fo 0 1 I 0
+fob 0 1 Y 0
+for 0 1 Y 0
+gp 0 1 Y 0
+gualá 0 1 I 0
+guarte 0 1 I 0
+hacia 0 1 SP 0
+hidrocarbonada 0 1 AQP 0
+hidrocarbonadas 0 1 AQP 0
+hidrocarbonado 0 1 AQP 0
+hidrocarbonados 0 1 AQP 0
+hin 0 1 I 0
+hola 0 1 I 0
+hpa 0 1 Y 0
+hs 0 1 Y 0
+huesque 0 1 I 0
+huifa 0 1 I 0
+huy 0 1 I 0
+ilimitada 0 1 AQP 0
+ilimitadas 0 1 AQP 0
+ilimitado 0 1 AQP 0
+ilimitados 0 1 AQP 0
+inadvertida 0 1 AQP 0
+inadvertidas 0 1 AQP 0
+inadvertido 0 1 AQP 0
+inadvertidos 0 1 AQP 0
+infinitésima 0 1 AO 0
+infinitésimas 0 1 AO 0
+infinitésimo 0 1 AO 0
+infinitésimos 0 1 AO 0
+intencionada 0 1 AQP 0
+intencionadas 0 1 AQP 0
+intencionado 0 1 AQP 0
+intencionados 0 1 AQP 0
+ja 0 1 I 0
+jajajá 0 1 I 0
+jajay 0 1 I 0
+jau 0 1 I 0
+jobar 0 1 I 0
+jolín 0 1 I 0
+kWh 0 1 Y 0
+kbps 0 1 Y 0
+lcd 0 1 Y 0
+ld 0 1 Y 0
+le 0 1 PP3 0
+les 0 1 PP3 0
+lg 0 1 Y 0
+lh 0 1 Y 0
+log 0 1 Y 0
+mbps 0 1 Y 0
+me 0 2 P01 0 PP1 0
+mecachis 0 1 I 0
+millonésimo 0 1 AO 0
+millonésimos 0 1 AO 0
+milmillonésima 0 1 AO 0
+milmillonésimas 0 1 AO 0
+milmillonésimo 0 1 AO 0
+milmillonésimos 0 1 AO 0
+milésima 0 1 AO 0
+milésimas 0 1 AO 0
+milésimo 0 1 AO 0
+milésimos 0 1 AO 0
+misma 0 2 DI 0 PI0 0
+mismas 0 2 DI 0 PI0 0
+mismos 0 2 DI 0 PI0 0
+miéchica 0 1 I 0
+mmhg 0 1 Y 0
+monocargada 0 1 AQP 0
+monocargadas 0 1 AQP 0
+monocargado 0 1 AQP 0
+monocargados 0 1 AQP 0
+moste 0 1 I 0
+ms 0 1 Y 0
+mtm 0 1 Y 0
+mucha 0 2 DI 0 PI0 0
+muchas 0 2 DI 0 PI0 0
+muchos 0 2 DI 0 PI0 0
+mí 0 1 PP1 0
+nadie 0 1 PI0 0
+naide 0 1 PI0 0
+nanay 0 1 I 0
+ni 0 1 CC 0
+ninguna 0 2 DI 0 PI0 0
+ningunas 0 2 DI 0 PI0 0
+ninguno 0 2 DI 0 PI0 0
+ningunos 0 2 DI 0 PI0 0
+ningún 0 1 DI 0
+nonagésima 0 1 AO 0
+nonagésimas 0 1 AO 0
+nonagésimo 0 1 AO 0
+nonagésimos 0 1 AO 0
+nonigentésima 0 1 AO 0
+nonigentésimas 0 1 AO 0
+nonigentésimo 0 1 AO 0
+nonigentésimos 0 1 AO 0
+noningentésima 0 1 AO 0
+noningentésimas 0 1 AO 0
+noningentésimo 0 1 AO 0
+noningentésimos 0 1 AO 0
+nos 0 2 P01 0 PP1 0
+nosotras 0 1 PP1 0
+nosotros 0 1 PP1 0
+novecientosava 0 2 DN 0 PN0 0
+novecientosavas 0 2 DN 0 PN0 0
+novecientosavo 0 2 DN 0 PN0 0
+novecientosavos 0 2 DN 0 PN0 0
+noventaicincoava 0 2 DN 0 PN0 0
+noventaicincoavas 0 2 DN 0 PN0 0
+noventaicincoavo 0 2 DN 0 PN0 0
+noventaicincoavos 0 2 DN 0 PN0 0
+noventaicuatroava 0 2 DN 0 PN0 0
+noventaicuatroavas 0 2 DN 0 PN0 0
+noventaicuatroavo 0 2 DN 0 PN0 0
+noventaicuatroavos 0 2 DN 0 PN0 0
+noventaidosava 0 2 DN 0 PN0 0
+noventaidosavas 0 2 DN 0 PN0 0
+noventaidosavo 0 2 DN 0 PN0 0
+noventaidosavos 0 2 DN 0 PN0 0
+noventainueveava 0 2 DN 0 PN0 0
+noventainueveavas 0 2 DN 0 PN0 0
+noventainueveavo 0 2 DN 0 PN0 0
+noventainueveavos 0 2 DN 0 PN0 0
+noventaiochava 0 2 DN 0 PN0 0
+noventaiochavas 0 2 DN 0 PN0 0
+noventaiochavo 0 2 DN 0 PN0 0
+noventaiochavos 0 2 DN 0 PN0 0
+noventaiseisava 0 2 DN 0 PN0 0
+noventaiseisavas 0 2 DN 0 PN0 0
+noventaiseisavo 0 2 DN 0 PN0 0
+noventaiseisavos 0 2 DN 0 PN0 0
+noventaisieteava 0 2 DN 0 PN0 0
+noventaisieteavas 0 2 DN 0 PN0 0
+noventaisieteavo 0 2 DN 0 PN0 0
+noventaisieteavos 0 2 DN 0 PN0 0
+noventaitresava 0 2 DN 0 PN0 0
+noventaitresavas 0 2 DN 0 PN0 0
+noventaitresavo 0 2 DN 0 PN0 0
+noventaitresavos 0 2 DN 0 PN0 0
+noventaiunava 0 2 DN 0 PN0 0
+noventaiunavas 0 2 DN 0 PN0 0
+noventaiunavo 0 2 DN 0 PN0 0
+noventaiunavos 0 2 DN 0 PN0 0
+noventava 0 2 DN 0 PN0 0
+noventavas 0 2 DN 0 PN0 0
+noventavo 0 2 DN 0 PN0 0
+noventavos 0 2 DN 0 PN0 0
+nto 0 1 Y 0
+nuestra 0 1 DP 0
+nuestras 0 1 DP 0
+nuestro 0 2 DP 0 PX1 0
+nuestros 0 1 DP 0
+nónuplo 0 2 DN 0 PN0 0
+nónuplos 0 2 DN 0 PN0 0
+obpo 0 1 Y 0
+ochentaicincoava 0 2 DN 0 PN0 0
+ochentaicincoavas 0 2 DN 0 PN0 0
+ochentaicincoavo 0 2 DN 0 PN0 0
+ochentaicincoavos 0 2 DN 0 PN0 0
+ochentaicuatroava 0 2 DN 0 PN0 0
+ochentaicuatroavas 0 2 DN 0 PN0 0
+ochentaicuatroavo 0 2 DN 0 PN0 0
+ochentaicuatroavos 0 2 DN 0 PN0 0
+ochentaidosava 0 2 DN 0 PN0 0
+ochentaidosavas 0 2 DN 0 PN0 0
+ochentaidosavo 0 2 DN 0 PN0 0
+ochentaidosavos 0 2 DN 0 PN0 0
+ochentainueveava 0 2 DN 0 PN0 0
+ochentainueveavas 0 2 DN 0 PN0 0
+ochentainueveavo 0 2 DN 0 PN0 0
+ochentainueveavos 0 2 DN 0 PN0 0
+ochentaiochava 0 2 DN 0 PN0 0
+ochentaiochavas 0 2 DN 0 PN0 0
+ochentaiochavo 0 2 DN 0 PN0 0
+ochentaiochavos 0 2 DN 0 PN0 0
+ochentaiseisava 0 2 DN 0 PN0 0
+ochentaiseisavas 0 2 DN 0 PN0 0
+ochentaiseisavo 0 2 DN 0 PN0 0
+ochentaiseisavos 0 2 DN 0 PN0 0
+ochentaisieteava 0 2 DN 0 PN0 0
+ochentaisieteavas 0 2 DN 0 PN0 0
+ochentaisieteavo 0 2 DN 0 PN0 0
+ochentaisieteavos 0 2 DN 0 PN0 0
+ochentaitresava 0 2 DN 0 PN0 0
+ochentaitresavas 0 2 DN 0 PN0 0
+ochentaitresavo 0 2 DN 0 PN0 0
+ochentaitresavos 0 2 DN 0 PN0 0
+ochentaiunava 0 2 DN 0 PN0 0
+ochentaiunavas 0 2 DN 0 PN0 0
+ochentaiunavo 0 2 DN 0 PN0 0
+ochentaiunavos 0 2 DN 0 PN0 0
+ochentava 0 2 DN 0 PN0 0
+ochentavas 0 2 DN 0 PN0 0
+ochentavo 0 2 DN 0 PN0 0
+ochentavos 0 2 DN 0 PN0 0
+ochocientosava 0 2 DN 0 PN0 0
+ochocientosavas 0 2 DN 0 PN0 0
+ochocientosavo 0 2 DN 0 PN0 0
+ochocientosavos 0 2 DN 0 PN0 0
+octagésima 0 1 AO 0
+octagésimas 0 1 AO 0
+octagésimo 0 1 AO 0
+octagésimos 0 1 AO 0
+octingentésima 0 1 AO 0
+octingentésimas 0 1 AO 0
+octingentésimo 0 1 AO 0
+octingentésimos 0 1 AO 0
+octogésima 0 1 AO 0
+octogésimas 0 1 AO 0
+octogésimo 0 1 AO 0
+octogésimos 0 1 AO 0
+oh 0 1 I 0
+ojalá 0 1 I 0
+okay 0 1 I 0
+olé 0 1 I 0
+onceava 0 2 DN 0 PN0 0
+onceavas 0 2 DN 0 PN0 0
+onceavo 0 2 DN 0 PN0 0
+onceavos 0 2 DN 0 PN0 0
+onzava 0 2 DN 0 PN0 0
+onzavas 0 2 DN 0 PN0 0
+onzavo 0 2 DN 0 PN0 0
+onzavos 0 2 DN 0 PN0 0
+os 0 2 P02 0 PP2 0
+oste 0 1 I 0
+otra 0 2 DI 0 PI0 0
+otras 0 2 DI 0 PI0 0
+otro 0 2 DI 0 PI0 0
+otros 0 2 DI 0 PI0 0
+ox 0 1 I 0
+oxte 0 1 I 0
+paf 0 1 I 0
+pardiez 0 1 I 0
+pbro 0 1 Y 0
+penúltima 0 1 AO 0
+penúltimas 0 1 AO 0
+penúltimo 0 1 AO 0
+penúltimos 0 1 AO 0
+perfectamente 0 1 I 0
+pert 0 1 Y 0
+pk 0 1 Y 0
+poca 0 2 DI 0 PI0 0
+pocas 0 2 DI 0 PI0 0
+pocos 0 2 DI 0 PI0 0
+policonjugada 0 1 AQP 0
+policonjugadas 0 1 AQP 0
+policonjugado 0 1 AQP 0
+policonjugados 0 1 AQP 0
+por 0 1 SP 0
+porque 0 1 CS 0
+primer 0 1 AO 0
+pues 0 1 CS 0
+pva 0 1 Y 0
+qbsm 0 1 Y 0
+qbsp 0 1 Y 0
+qepd 0 1 Y 0
+qesm 0 1 Y 0
+qsgh 0 1 Y 0
+que 0 2 CS 0 PR0 0
+quia 0 1 I 0
+quien 0 1 PR0 0
+quienes 0 1 PR0 0
+quienesquiera 0 1 PI0 0
+quienquier 0 1 PI0 0
+quienquiera 0 1 PI0 0
+quinceava 0 2 DN 0 PN0 0
+quinceavas 0 2 DN 0 PN0 0
+quinceavo 0 2 DN 0 PN0 0
+quinceavos 0 2 DN 0 PN0 0
+quincuagésima 0 1 AO 0
+quincuagésimas 0 1 AO 0
+quincuagésimo 0 1 AO 0
+quincuagésimos 0 1 AO 0
+quingentésima 0 1 AO 0
+quingentésimas 0 1 AO 0
+quingentésimo 0 1 AO 0
+quingentésimos 0 1 AO 0
+quinientosava 0 2 DN 0 PN0 0
+quinientosavas 0 2 DN 0 PN0 0
+quinientosavo 0 2 DN 0 PN0 0
+quinientosavos 0 2 DN 0 PN0 0
+quinzava 0 2 DN 0 PN0 0
+quinzavas 0 2 DN 0 PN0 0
+quinzavo 0 2 DN 0 PN0 0
+quinzavos 0 2 DN 0 PN0 0
+quién 0 1 PT0 0
+quiénes 0 1 PT0 0
+quiúbole 0 1 I 0
+quíntuple 0 2 DN 0 PN0 0
+quíntuples 0 2 DN 0 PN0 0
+quíntuplo 0 2 DN 0 PN0 0
+quíntuplos 0 2 DN 0 PN0 0
+radiocontrolada 0 1 AQP 0
+radiocontroladas 0 1 AQP 0
+radiocontrolado 0 1 AQP 0
+radiocontrolados 0 1 AQP 0
+recórcholis 0 1 I 0
+rediez 0 1 I 0
+rediós 0 1 I 0
+rpm 0 1 Y 0
+sanseacabó 0 1 I 0
+se 0 3 P00 0 P03 0 PP3 0
+secam 0 1 Y 0
+según 0 1 SP 0
+seiscientosava 0 2 DN 0 PN0 0
+seiscientosavas 0 2 DN 0 PN0 0
+seiscientosavo 0 2 DN 0 PN0 0
+seiscientosavos 0 2 DN 0 PN0 0
+sendos 0 1 DI 0
+septingentésima 0 1 AO 0
+septingentésimas 0 1 AO 0
+septingentésimo 0 1 AO 0
+septingentésimos 0 1 AO 0
+septuagésima 0 1 AO 0
+septuagésimas 0 1 AO 0
+septuagésimo 0 1 AO 0
+septuagésimos 0 1 AO 0
+sesentaicincoava 0 2 DN 0 PN0 0
+sesentaicincoavas 0 2 DN 0 PN0 0
+sesentaicincoavo 0 2 DN 0 PN0 0
+sesentaicincoavos 0 2 DN 0 PN0 0
+sesentaicuatroava 0 2 DN 0 PN0 0
+sesentaicuatroavas 0 2 DN 0 PN0 0
+sesentaidosava 0 2 DN 0 PN0 0
+sesentaidosavas 0 2 DN 0 PN0 0
+sesentaidosavo 0 2 DN 0 PN0 0
+sesentaidosavos 0 2 DN 0 PN0 0
+sesentainueveava 0 2 DN 0 PN0 0
+sesentainueveavas 0 2 DN 0 PN0 0
+sesentainueveavo 0 2 DN 0 PN0 0
+sesentainueveavos 0 2 DN 0 PN0 0
+sesentaiochava 0 2 DN 0 PN0 0
+sesentaiochavas 0 2 DN 0 PN0 0
+sesentaiochavo 0 2 DN 0 PN0 0
+sesentaiochavos 0 2 DN 0 PN0 0
+sesentaiseisava 0 2 DN 0 PN0 0
+sesentaiseisavas 0 2 DN 0 PN0 0
+sesentaiseisavo 0 2 DN 0 PN0 0
+sesentaiseisavos 0 2 DN 0 PN0 0
+sesentaisieteava 0 2 DN 0 PN0 0
+sesentaisieteavas 0 2 DN 0 PN0 0
+sesentaisieteavo 0 2 DN 0 PN0 0
+sesentaisieteavos 0 2 DN 0 PN0 0
+sesentaitresava 0 2 DN 0 PN0 0
+sesentaitresavas 0 2 DN 0 PN0 0
+sesentaitresavo 0 2 DN 0 PN0 0
+sesentaitresavos 0 2 DN 0 PN0 0
+sesentaiunava 0 2 DN 0 PN0 0
+sesentaiunavas 0 2 DN 0 PN0 0
+sesentaiunavo 0 2 DN 0 PN0 0
+sesentaiunavos 0 2 DN 0 PN0 0
+sesentava 0 2 DN 0 PN0 0
+sesentavas 0 2 DN 0 PN0 0
+sesentavo 0 2 DN 0 PN0 0
+sesentavos 0 2 DN 0 PN0 0
+setecientosava 0 2 DN 0 PN0 0
+setecientosavas 0 2 DN 0 PN0 0
+setecientosavo 0 2 DN 0 PN0 0
+setecientosavos 0 2 DN 0 PN0 0
+setentaicincoava 0 2 DN 0 PN0 0
+setentaicincoavas 0 2 DN 0 PN0 0
+setentaicincoavo 0 2 DN 0 PN0 0
+setentaicincoavos 0 2 DN 0 PN0 0
+setentaicuatroava 0 2 DN 0 PN0 0
+setentaicuatroavas 0 2 DN 0 PN0 0
+setentaicuatroavo 0 2 DN 0 PN0 0
+setentaicuatroavos 0 2 DN 0 PN0 0
+setentaidosava 0 2 DN 0 PN0 0
+setentaidosavas 0 2 DN 0 PN0 0
+setentaidosavo 0 2 DN 0 PN0 0
+setentaidosavos 0 2 DN 0 PN0 0
+setentainueveava 0 2 DN 0 PN0 0
+setentainueveavas 0 2 DN 0 PN0 0
+setentainueveavo 0 2 DN 0 PN0 0
+setentainueveavos 0 2 DN 0 PN0 0
+setentaiochava 0 2 DN 0 PN0 0
+setentaiochavas 0 2 DN 0 PN0 0
+setentaiochavo 0 2 DN 0 PN0 0
+setentaiochavos 0 2 DN 0 PN0 0
+setentaiseisava 0 2 DN 0 PN0 0
+setentaiseisavas 0 2 DN 0 PN0 0
+setentaiseisavo 0 2 DN 0 PN0 0
+setentaiseisavos 0 2 DN 0 PN0 0
+setentaisieteava 0 2 DN 0 PN0 0
+setentaisieteavas 0 2 DN 0 PN0 0
+setentaisieteavo 0 2 DN 0 PN0 0
+setentaisieteavos 0 2 DN 0 PN0 0
+setentaitresava 0 2 DN 0 PN0 0
+setentaitresavas 0 2 DN 0 PN0 0
+setentaitresavo 0 2 DN 0 PN0 0
+setentaitresavos 0 2 DN 0 PN0 0
+setentaiunava 0 2 DN 0 PN0 0
+setentaiunavas 0 2 DN 0 PN0 0
+setentaiunavo 0 2 DN 0 PN0 0
+setentaiunavos 0 2 DN 0 PN0 0
+setentava 0 2 DN 0 PN0 0
+setentavas 0 2 DN 0 PN0 0
+setentavo 0 2 DN 0 PN0 0
+setentavos 0 2 DN 0 PN0 0
+sexagésima 0 1 AO 0
+sexagésimas 0 1 AO 0
+sexagésimo 0 1 AO 0
+sexagésimos 0 1 AO 0
+sexcentésima 0 1 AO 0
+sexcentésimas 0 1 AO 0
+sexcentésimo 0 1 AO 0
+sexcentésimos 0 1 AO 0
+sf 0 1 Y 0
+sin 0 1 SP 0
+sl 0 1 Y 0
+sniff 0 1 I 0
+src 0 1 Y 0
+su 0 1 DP 0
+subdupla 0 2 DN 0 PN0 0
+subduplas 0 2 DN 0 PN0 0
+subduplo 0 2 DN 0 PN0 0
+subduplos 0 2 DN 0 PN0 0
+sus 0 2 DP 0 I 0
+suya 0 1 DP 0
+suyas 0 1 DP 0
+suyo 0 2 DP 0 PX3 0
+suyos 0 1 DP 0
+séptuplo 0 2 DN 0 PN0 0
+séptuplos 0 2 DN 0 PN0 0
+séxtuple 0 2 DN 0 PN0 0
+séxtuples 0 2 DN 0 PN0 0
+séxtuplo 0 2 DN 0 PN0 0
+séxtuplos 0 2 DN 0 PN0 0
+ta 0 1 I 0
+tal 0 2 DD 0 PD0 0
+tate 0 1 I 0
+tercer 0 1 AO 0
+terciodécupla 0 2 DN 0 PN0 0
+terciodécuplas 0 2 DN 0 PN0 0
+terciodécuplo 0 2 DN 0 PN0 0
+terciodécuplos 0 2 DN 0 PN0 0
+ti 0 1 PP2 0
+toda 0 2 DI 0 PI0 0
+todas 0 2 DI 0 PI0 0
+treceava 0 2 DN 0 PN0 0
+treceavas 0 2 DN 0 PN0 0
+treceavo 0 2 DN 0 PN0 0
+treceavos 0 2 DN 0 PN0 0
+trecésima 0 1 AO 0
+trecésimas 0 1 AO 0
+trecésimo 0 1 AO 0
+trecésimos 0 1 AO 0
+treintaicincoava 0 2 DN 0 PN0 0
+treintaicincoavas 0 2 DN 0 PN0 0
+treintaicincoavo 0 2 DN 0 PN0 0
+treintaicincoavos 0 2 DN 0 PN0 0
+treintaicuatroava 0 2 DN 0 PN0 0
+treintaicuatroavas 0 2 DN 0 PN0 0
+treintaicuatroavo 0 2 DN 0 PN0 0
+treintaicuatroavos 0 2 DN 0 PN0 0
+treintaidosava 0 2 DN 0 PN0 0
+treintaidosavas 0 2 DN 0 PN0 0
+treintainueveava 0 2 DN 0 PN0 0
+treintainueveavas 0 2 DN 0 PN0 0
+treintainueveavo 0 2 DN 0 PN0 0
+treintainueveavos 0 2 DN 0 PN0 0
+treintaiochava 0 2 DN 0 PN0 0
+treintaiochavas 0 2 DN 0 PN0 0
+treintaiochavo 0 2 DN 0 PN0 0
+treintaiochavos 0 2 DN 0 PN0 0
+treintaiseisava 0 2 DN 0 PN0 0
+treintaiseisavas 0 2 DN 0 PN0 0
+treintaiseisavo 0 2 DN 0 PN0 0
+treintaiseisavos 0 2 DN 0 PN0 0
+treintaisieteava 0 2 DN 0 PN0 0
+treintaisieteavas 0 2 DN 0 PN0 0
+treintaisieteavo 0 2 DN 0 PN0 0
+treintaisieteavos 0 2 DN 0 PN0 0
+treintaitresava 0 2 DN 0 PN0 0
+treintaitresavas 0 2 DN 0 PN0 0
+treintaitresavo 0 2 DN 0 PN0 0
+treintaitresavos 0 2 DN 0 PN0 0
+treintaiunava 0 2 DN 0 PN0 0
+treintaiunavas 0 2 DN 0 PN0 0
+treintaiunavo 0 2 DN 0 PN0 0
+treintaiunavos 0 2 DN 0 PN0 0
+treintava 0 2 DN 0 PN0 0
+treintavas 0 2 DN 0 PN0 0
+treintavo 0 2 DN 0 PN0 0
+treintavos 0 2 DN 0 PN0 0
+trescientosava 0 2 DN 0 PN0 0
+trescientosavas 0 2 DN 0 PN0 0
+trescientosavo 0 2 DN 0 PN0 0
+trescientosavos 0 2 DN 0 PN0 0
+trezava 0 2 DN 0 PN0 0
+trezavas 0 2 DN 0 PN0 0
+trezavo 0 2 DN 0 PN0 0
+trezavos 0 2 DN 0 PN0 0
+tricentésima 0 1 AO 0
+tricentésimas 0 1 AO 0
+tricentésimo 0 1 AO 0
+tricentésimos 0 1 AO 0
+tricésima 0 1 AO 0
+tricésimas 0 1 AO 0
+tricésimo 0 1 AO 0
+tricésimos 0 1 AO 0
+trigésima 0 1 AO 0
+trigésimas 0 1 AO 0
+trigésimo 0 1 AO 0
+trigésimos 0 1 AO 0
+tsh 0 1 Y 0
+tu 0 1 DP 0
+tus 0 1 DP 0
+tuyo 0 2 DP 0 PX2 0
+tuyos 0 1 DP 0
+tú 0 1 PP2 0
+uf 0 1 I 0
+uh 0 1 I 0
+uhf 0 1 Y 0
+uht 0 1 Y 0
+ui 0 1 I 0
+un 0 3 DI 0 DN 0 PN0 0
+undécuplo 0 2 DN 0 PN0 0
+undécuplos 0 2 DN 0 PN0 0
+uste 0 1 I 0
+usted 0 1 PP2 0
+ustedes 0 1 PP2 0
+uy 0 1 I 0
+veintava 0 2 DN 0 PN0 0
+veintavas 0 2 DN 0 PN0 0
+veintavo 0 2 DN 0 PN0 0
+veintavos 0 2 DN 0 PN0 0
+veinteava 0 2 DN 0 PN0 0
+veinteavas 0 2 DN 0 PN0 0
+veinteavo 0 2 DN 0 PN0 0
+veinteavos 0 2 DN 0 PN0 0
+veinticincoava 0 2 DN 0 PN0 0
+veinticincoavas 0 2 DN 0 PN0 0
+veinticincoavo 0 2 DN 0 PN0 0
+veinticincoavos 0 2 DN 0 PN0 0
+veinticuatroava 0 2 DN 0 PN0 0
+veinticuatroavas 0 2 DN 0 PN0 0
+veintidosava 0 2 DN 0 PN0 0
+veintidosavas 0 2 DN 0 PN0 0
+veintidosavo 0 2 DN 0 PN0 0
+veintidosavos 0 2 DN 0 PN0 0
+veintinueveava 0 2 DN 0 PN0 0
+veintinueveavas 0 2 DN 0 PN0 0
+veintinueveavo 0 2 DN 0 PN0 0
+veintinueveavos 0 2 DN 0 PN0 0
+veintiochava 0 2 DN 0 PN0 0
+veintiochavas 0 2 DN 0 PN0 0
+veintiochavo 0 2 DN 0 PN0 0
+veintiochavos 0 2 DN 0 PN0 0
+veintiseisava 0 2 DN 0 PN0 0
+veintiseisavas 0 2 DN 0 PN0 0
+veintiseisavo 0 2 DN 0 PN0 0
+veintiseisavos 0 2 DN 0 PN0 0
+veintisieteava 0 2 DN 0 PN0 0
+veintisieteavas 0 2 DN 0 PN0 0
+veintisieteavo 0 2 DN 0 PN0 0
+veintisieteavos 0 2 DN 0 PN0 0
+veintitodas 0 2 DN 0 PN0 0
+veintitodos 0 2 DN 0 PN0 0
+veintitresava 0 2 DN 0 PN0 0
+veintitresavas 0 2 DN 0 PN0 0
+veintitresavo 0 2 DN 0 PN0 0
+veintitresavos 0 2 DN 0 PN0 0
+veintiunava 0 2 DN 0 PN0 0
+veintiunavas 0 2 DN 0 PN0 0
+veintiunavo 0 2 DN 0 PN0 0
+veintiunavos 0 2 DN 0 PN0 0
+veintiún 0 2 DN 0 PN0 0
+veintésima 0 1 AO 0
+veintésimas 0 1 AO 0
+veintésimo 0 1 AO 0
+veintésimos 0 1 AO 0
+versus 0 1 SP 0
+vg 0 1 Y 0
+vgr 0 1 Y 0
+vicésima 0 1 AO 0
+vicésimas 0 1 AO 0
+vicésimo 0 1 AO 0
+vicésimos 0 1 AO 0
+vigésima 0 1 AO 0
+vigésimas 0 1 AO 0
+vigésimo 0 1 AO 0
+vigésimos 0 1 AO 0
+vos 0 1 PP2 0
+vosotras 0 1 PP2 0
+vosotros 0 1 PP2 0
+vuestra 0 1 DP 0
+vuestras 0 1 DP 0
+vuestro 0 2 DP 0 PX2 0
+vuestros 0 1 DP 0
+za 0 1 I 0
+zas 0 1 I 0
+él 0 1 PP3 0
+ésa 0 1 PD0 0
+ésas 0 1 PD0 0
+ése 0 1 PD0 0
+ésos 0 1 PD0 0
+ésta 0 1 PD0 0
+éstas 0 1 PD0 0
+éste 0 1 PD0 0
+éstos 0 1 PD0 0
+ó 0 1 CC 0
+óctuple 0 2 DN 0 PN0 0
+óctuples 0 2 DN 0 PN0 0
+óctuplo 0 2 DN 0 PN0 0
+óctuplos 0 2 DN 0 PN0 0
+órdiga 0 1 I 0
+última 0 1 AO 0
+últimas 0 1 AO 0
+último 0 1 AO 0
+últimos 0 1 AO 0

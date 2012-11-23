@@ -1,11 +1,26 @@
-TODO-list
 
-* all filenames should be relative to $UPLUGHOME
-  (now there are several environment variables and some
-  FindBin-hacks in the code).
-* documentation
-* XML-based configuration files
-* faster XML-parsing/writing
-* DOM, XSLT, LibXML??
-* optimise for larger corpora
-* lots of other things ....
+
+- uplug-webalign: ICA & ISA package
+- integrate Moses tokenizer & sentence splitter (+ non-breaking abbr)
+- opennlp package with pre-trained models (tokenization, sentence splitting, ...)
+- word alignment output in Moses format
+- separate package for uplug/opus-tools
+- separate package for subalign
+- package for cwb-related tools?
+- cleanup config files!
+
+Annotation:
+
+- uplug-fr: tagging and parsing
+- uplug-tr: all annotation (Note: non-free tools!)
+- uplug-it: annotation pipeline from trento
+- uplug-is: integrate icelandic toolbox
+- alternative tagger for some languages
+- treetagger package (separate from all? not standard in pipeline!)
+
+
+Maybe:
+
+- integration with Lingua::Align
+- integration with LetsMT tools
+- webinterface for trainable sentence splitters / tokenizers

@@ -1,0 +1,919 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%         Japanese Morphological Analysis
+%%%               System ChaSen Manual
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%  This file is for ASCII jLaTeX.  %%%
+%%%  Use `j-article' for NTT jLaTeX. %%%
+
+\documentstyle[ascmac,titlepage]{article}
+%\documentstyle[11pt,epsf,titlepage]{article}
+
+\topmargin -10mm
+\textheight 240mm
+\oddsidemargin -5mm
+\textwidth 165mm
+
+%\input a4
+
+\title{\vspace{-3cm}
+%{\small \sf \hfill NAIST Technical Report\\
+%\vspace{-3mm}\hfill NAIST-IS-TR99009}\\
+\vspace{3cm}
+\bf Morphological Analysis System\\
+ ChaSen version 2.2.9 Manual}
+\author{Yuji Matsumoto, Akira Kitauchi, Tatsuo Yamashita, Yoshitaka Hirano,\\
+    Hiroshi Matsuda, Kazuma Takaoka and Masayuki Asahara}
+\date{February 2002
+\rule{0mm}{110mm}Copyright \copyright\ 2002
+		Nara Institute of Science and Technology.}  
+
+\def\|{\verb|}
+\def\*{\verb**}
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty}
+
+\vspace*{\fill}
+
+\begin{footnotesize}
+\noindent
+Morphological Analysis System ChaSen Manual
+
+\noindent
+Yuji Matsumoto, Akira Kitauchi, Tatsuo Yamashita, Yoshitaka Hirano, Hiroshi Matsuda, Kazuma Takaoka and Masayuki Asahara
+
+\noindent
+\noindent
+Copyright (c) 2002 Nara Institute of Science and Technology
+All rights reserved.
+
+\vspace{.5em}
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+\begin{enumerate}
+ \item Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+ \item Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+ \item  All advertising materials mentioning features or use of this software
+   must display the following acknowledgement:
+     This product includes software developed by Nara Institute of 
+     Science and Technology.
+ \item The name Nara Institute of Science and Technology may not be used to
+   endorse or promote products derived from this software without specific
+   prior written permission.
+\end{enumerate}
+   
+\vspace{.5em}
+THIS SOFTWARE IS PROVIDED BY Nara Institute of Science and Technology 
+``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT 
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A 
+PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE Nara Institute
+of Science and Technology BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR 
+PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
+LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING 
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS 
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+\vspace*{1em}
+
+\noindent
+\begin{tabular}{ll}
+JUMAN\\
+~ ~ version 0.6 & 17 February 1992\\
+~ ~ version 0.8 & 14 April 1992\\
+~ ~ version 1.0 & 25 February 1993\\
+~ ~ version 2.0 & 11 July 1994\\
+ChaSen\\
+% ~ ~ version 1.0b1 & 14 October 1996\\
+% ~ ~ version 1.0b2 & 15 October 1996\\
+% ~ ~ version 1.0b3 & 15 October 1996\\
+% ~ ~ version 1.0b4 & 17 October 1996\\
+% ~ ~ version 1.0b5 & 15 November 1996\\
+% ~ ~ version 1.0b6 & 16 January 1997\\
+% ~ ~ version 1.0b7 & 21 January 1997\\
+~ ~ version 1.0 & 19 February 1997\\
+~ ~ version 1.5 & 7 July 1997\\
+~ ~ version 1.51 & 29 July 1997\\
+%~ ~ version 2.0b6 & 20 April 1999\\
+~ ~ version 2.0 & 15 December 1999\\
+%~ ~ version 2.01 & 20 December 1999\\
+%~ ~ version 2.02 & 29 December 1999\\
+~ ~ version 2.2.0 & 06 December 2000\\
+~ ~ version 2.2.1 & 20 December 2000\\
+~ ~ version 2.2.2 & 22 February 2001\\
+~ ~ version 2.2.3 & 24 February 2001\\
+~ ~ version 2.2.4 & 18 March 2001\\
+~ ~ version 2.2.5 & 24 March 2001\\
+~ ~ version 2.2.6 & 17 April 2001\\
+~ ~ version 2.2.7 & 22 June 2001\\
+~ ~ version 2.2.8 & 23 July 2001\\
+~ ~ version 2.2.9 & 08 February 2002\\
+ChaSen for Windows\\
+~ ~ version 1.0 & 29 March 1997\\
+~ ~ version 2.0 & 15 December 1999\\
+NAIST Technical Report (NAIST-IS-TR99009)\\
+~ ~ 1st edition & 20 April 1999\\
+~ ~ 2nd edition & 15 December 1999\\
+\end{tabular}
+\end{footnotesize}
+
+\clearpage
+
+\pagenumbering{roman}
+\tableofcontents
+
+\clearpage
+\pagenumbering{arabic}
+%----------------------------------------%
+%           body                         %
+%----------------------------------------%
+
+%----------------------------------------%
+\section{Introduction}
+
+ChaSen is a morphological analysis system which basically has
+the following facilities and features.
+
+\begin{itemize}
+  \item It segments Japanese text (sentences) string into morphemes
+	and tags  those morphemes with their parts of speech and pronunciations.
+	It also tokenizes conjugative morphemes, 
+	i.e., it tags the conjugative morphemes with
+	their base forms and conjugation types/forms.
+
+  \item In its grammar and dictionaries,
+	morphemes as well as connectivity of two morphemes 
+	/ parts of speech 
+	are defined, where some costs are assigned to their definition.
+
+  \item In its morphological analysis process,
+	ChaSen sums up those costs of morphemes
+	and their connectivities, 
+	then outputs results with the minimum cost.
+
+  \item Basically, connectivity of two morphemes / parts of speech is defined
+	in the form of their bi-grams.
+	In the case of the current dictionary (ipadic1.0),
+	connectivity of two morphemes / parts of speech and its costs
+	are automatically extracted from a parts-of-speech tagged Japanese newspaper
+	article corpus.
+	In order to tune its costs,
+	part of speech bi-gram Markov model is employed,
+	and the probability parameters of maximum likelihood estimate (MLE) model
+	is transformed into its connectivity costs.
+	Similarly, costs of morphemes are also obtained from the MLE model.
+
+\end{itemize}
+
+
+%----------------------------------------%
+\section{Grammar and Dictionaries}
+\label{sec:grdic}
+
+\begin{table}[htbp]
+  \begin{center}
+%    \leavevmode
+    \begin{tabular}{|l||l|l|}
+\hline
+              & \multicolumn{1}{|c|}{Morpheme Files} 
+		      & \multicolumn{1}{|c|}{Grammar Files} \\
+\hline
+\hline
+Definition Files  & Morpheme Definition Files         & Grammar Definition Files \\
+              & \hspace{5mm}Morpheme Dictionaries     
+					& \hspace{5mm}Parts of speech File \\
+              &                            & \hspace{5mm}Conjugation Types File \\
+              &                            & \hspace{5mm}Conjugation Forms File \\
+              &                            & \hspace{5mm}Connectivity Rules File \\
+\hline
+System Files & System Dictionaries               & Connectivity Table \\
+                 & Index Files       & Connectivity Matrix \\
+\hline
+    \end{tabular}
+  \end{center}
+  \caption{Grammar/Dictionary Files}
+  \label{tab:files}
+\end{table}
+
+As shown in Table~\ref{tab:files},
+grammar and dictionary files of ChaSen system
+can be classified using two dimensions.
+According to the first dimension,
+they can be classified into 
+{\it Definition Files} and {\it System Files}.
+Definition Files include definitions of the grammar and the morphemes
+of ChaSen, and are automatically compiled into System Files which are used
+in the morphological analysis.
+Using the second dimension,
+they can be classified into {\it Morpheme Files} and {\it Grammar Files}
+according to the linguistic type of the contents of the files.
+
+The description of those grammar and dictionary files is
+summarized below.
+
+\begin{enumerate}
+  \item {\bf Definition Files}
+
+	\begin{enumerate}
+	  \item Morpheme Definition Files
+
+		\begin{itemize}
+		  \item {\it Morpheme Dictionaries} ({\tt Noun.dic}, etc.)    
+
+			define morphemes of each part of speech.
+			A morpheme is defined as a list
+			of its surface form (or its base form if conjugative),
+			pronunciation, conjugation type if conjugative,
+			and semantic information.
+			A surface form cost (to be used in the morphological analysis)
+			can be assigned to each morpheme definition.
+		\end{itemize}
+
+	  \item Grammar Definition Files
+		\begin{itemize}
+		  \item {\it Parts of speech File} ({\tt grammar.cha})
+
+			defines the set of parts of speech.
+
+		  \item {\it Conjugation Types File} ({\tt ctypes.cha})
+
+			defines the set of conjugation types for each 
+			conjugative part of speech.
+
+		  \item {\it Conjugation Forms File} ({\tt cforms.cha})
+
+			defines possible conjugation forms 
+			for each conjugation type.
+
+		  \item {\it Connectivity Rules File}  
+			({\tt connect.cha})
+
+			defines connectivity of two morphemes / parts of speech
+			in the form of their bi-grams.
+			A connectivity cost has to be assigned to each bi-gram
+			of morphemes / parts of speech.
+
+		\end{itemize}
+
+	\end{enumerate}
+
+  \item {\bf System Files}
+
+	\begin{enumerate}
+	  \item Morpheme Files
+
+		\begin{itemize}
+		  \item {\it System Dictionaries} (\|*.int|)
+
+			is obtained by compiling morpheme dictionaries 
+			and encoding morpheme information.
+
+		  \item {\it Index Files} (\|*.pat|)
+
+			include Patricia tree indices of system dictionaries.
+
+		\end{itemize}
+
+	  \item Grammar Files
+
+		\begin{itemize}
+		  \item {\it Connectivity Table} ({\tt table.cha})
+
+			defines the correspondence between the rows/columns
+			of the connectivity matrix and 
+			the morphemes / parts of speech listed in the connectivity rules file.
+
+		  \item {\it Connectivity Matrix} ({\tt matrix.cha})
+
+			defines connectivity of two morphemes / parts of speech
+			in the form of a matrix.
+
+		\end{itemize}
+
+
+	\end{enumerate}
+\end{enumerate}
+
+
+%----------------------------------------%
+\section{Morphological Analysis}
+
+%----------------------------------------%
+\subsection{Algorithm}
+\label{subsec:algo}
+
+For the string of the input Japanese sentence,
+ChaSen consults its morpheme dictionaries and records
+all the possible morphemes that are any sub-strings of the input string.
+Next, ChaSen calculates following two types of costs.
+\begin{description}
+  \item[Morpheme Cost] 
+	A cost that is assigned to each morpheme,
+	and is calculated as the product of 
+	\begin{itemize}
+	  \item the cost of the corresponding part of speech 
+		(defined in the {\tt chasenrc} resource file),
+	  \item relative weight of morpheme costs
+		(defined in the {\tt chasenrc} resource file), 
+	  \item and the surface form cost
+		(defined in the morpheme dictionaries).
+	\end{itemize}
+
+  \item[Connectivity Cost] 
+	A cost that is assigned to each bi-gram of morphemes,
+	and is calculated as the product of 
+	\begin{itemize}
+	  \item the connectivity cost defined in the connectivity rules file, 
+	  \item and the relative weight of connectivity costs
+		(defined in the {\tt chasenrc} resource file).
+	\end{itemize}
+\end{description}
+For the string of the input Japanese sentence,
+every possible segmentation into morpheme sequences
+and their parts of speech tagging is considered 
+and sum of the above morpheme costs and their connectivity costs
+are calculated.
+Then, the results with the minimum cost are returned.
+Some cost width of beam search is defined in the {\tt chasenrc} resource file,
+and at every position in the input string, 
+morphological analysis results are pruned using this cost width of beam search.
+
+%----------------------------------------%
+\subsection{Coping with Unknown Words}
+\label{subsec:unk}
+
+When ChaSen consults its morpheme dictionaries with some sub-string
+of the input string and can not find any morphemes,
+it assumes that the sub-string should be considered as a morpheme
+and behaves as if the sub-string were contained in its morpheme dictionaries,
+although the sub-string is assigned an extremely high cost compared with 
+those morphemes existing in its morpheme dictionaries.
+Details of this facility of coping with unknown words
+are as follows:
+\begin{itemize}
+  \item For hiragana (Japanese), kanji (Chinese), numbers, and symbols
+        character types,
+        ChaSen assumes each one character as a possible unknown
+        morpheme
+        that is not contained in its morpheme dictionaries.
+        On the other hand, for other character types (katakana
+        (foreign),
+        (English) alphabet, etc.),
+        ChaSen assumes the longest string each character of which
+        is of the same character type as a possible unknown morpheme
+        that is not contained in its morpheme dictionaries.
+
+  \item Those morphemes that are not contained in the morpheme dictionaries
+	are considered as having the {\it part of speech for unknown words},
+	which is defined in the {\tt chasenrc} resource file.
+
+  \item Those morphemes that are not contained in the morpheme dictionaries
+	are assigned the {\it cost for unknown words},
+	which is defined in the {\tt chasenrc} resource file.
+\end{itemize}
+
+%----------------------------------------%
+\subsection{Unknown Connectivity Cost}
+\label{subsec:unkc}
+
+Basically, bi-grams of morphemes that does not
+match any rules listed in the connectivity rules file
+are not allowed in the morphological analysis results.
+However, users can allow those prohibited bi-grams 
+in the morphological analysis by giving them an extremely high cost.
+This can be done by defining {\it unknown connectivity cost} 
+in the {\tt chasenrc} resource file 
+(how to define the unknown connectivity cost 
+are described in the next section).
+
+
+%----------------------------------------%
+\section{Installation}
+
+\begin{enumerate}
+\item Type `{\tt ./configure}' to configure the package for your system.
+
+\begin{screen}\begin{verbatim}
+% ./configure
+\end{verbatim}\end{screen}
+
+You can give `{\tt configure}' initial values for variables by setting
+them in the environment.
+
+\begin{screen}\begin{verbatim}
+% env CC=cc CFLAGS="-O2 -Wall" ./configure
+\end{verbatim}\end{screen}
+
+See the file `{\tt INSTALL}' for detail usage of configure.
+
+\item Type `{\tt make}'.
+
+\begin{screen}\begin{verbatim}
+% make
+\end{verbatim}\end{screen}
+
+This produces the system. You might have to use GNU make.
+
+\item Type `{\tt make install}' to install programs.
+
+\begin{screen}\begin{verbatim}
+# make install
+\end{verbatim}\end{screen}
+
+This will install the following files.
+{\tt PREFIX} is defined by {\tt ./configure --prefix}.
+(default setting is {\tt /usr/local})．
+
+\begin{tabular}{ll}
+ {\tt PREFIX/bin/chasen}           & ChaSen command \\
+ {\tt PREFIX/libexec/chasen/}      & programs for building dictionaries \\
+ {\tt PREFIX/lib/libchasen.*}      & ChaSen libraries \\
+ {\tt PREFIX/include/chasen.h}     & header files \\
+ {\tt PREFIX/share/chasen/doc/}    & manuals \\
+ {\tt PREFIX/share/chasen/prolog/} & Prolog programs to use ChaSen \\
+\end{tabular}
+
+The following files will not be installed.
+\begin{tabular}{ll}
+ {\tt chasen/chasen.el}     	      & Emacs lisp to use ChaSen \\
+ {\tt perl/ChaSen.pm}       	      & Perl modules to use ChaSen \\
+\end{tabular}
+
+To remove old version of ChaSen programs, type the command below:
+
+\begin{screen}\begin{verbatim}
+# rm -rf PREFIX/lib/chasen
+\end{verbatim}\end{screen}
+
+{\tt chasenrc} is not installed when system is installed.
+You need to put chasenrc file on PREFIX/etc, when you install a dictionary
+package.
+
+
+\end{enumerate}
+
+%----------------------------------------%
+\section{How to Use ChaSen System}
+
+%----------------------------------------%
+\subsection{Running ChaSen Program}
+
+   Suppose a Japanese text file "{\sl nihongo}", which should be encoded in
+   Japanese EUC (Extended UNIX Code) or JIS (ISO-2022-JP). Issue the
+   following command:
+	\begin{quote}
+	\|chasen| {\sl nihongo}
+	\end{quote}
+   The result of the morphological analysis is shown on the standard
+   output.  If your terminal has a direct input facility of Japanese
+   characters, simply type 
+   \begin{quote}
+   \|chasen|
+   \end{quote}
+   then input a Japanese sentence followed by a carrige return.
+
+
+%----------------------------------------%
+\subsection{Options}
+
+   There are several options:
+   \begin{itemize}
+
+     \item how to run
+    \begin{quote}
+    \begin{tabular}{ll}
+     {\tt -s} &             start ChaSen server \\
+     {\tt -P} {\sl port} &         specify ChaSen server's port number 
+		     (use with {\tt -s}, the default is 31000)\\
+     {\tt -D} {\sl host[:port]} & connect to ChaSen server \\
+     {\tt -R}      &       with {\tt -D}, do not read chasenrc file, \\
+	           &       without {\tt -D}, read the default chasenrc file \\
+     {\tt -a}      &       run standalone even if environment variable {\tt CHASENSERVER} is set 
+    \end{tabular}
+    \end{quote}
+
+   \item how to print ambiguous results
+    \begin{quote}
+    \begin{tabular}{ll}
+     {\tt -b}  &             print one result with the least cost (default) \\
+     {\tt -m}  &             print ambiguous parts explicitly \\
+     {\tt -p}  &           print all possible results independently
+    \end{tabular}
+    \end{quote}
+
+   \item output format
+    \begin{quote}
+    \begin{tabular}{ll}
+     {\tt -f} &              print the result in a table like format (default)\\
+     {\tt -e} &             print all information of each morpheme separated by a blank \\
+     {\tt -c} &             print all information of each morpheme in internal codes\\
+     {\tt -d} &             print detailed morpheme data for Prolog.\\
+     {\tt -v} &             print detailed morpheme data for ViCha.\\
+     {\tt -F} {\sl format} &             print morpheme data with formetted output \\
+     {\tt -Fh} &            print help of the format of {\tt -F} option \\
+    \end{tabular}
+    \end{quote}
+
+   \item miscellaneous
+    \begin{quote}
+    \begin{tabular}{ll}
+     {\tt -j} &             Japanese sentence mode \\
+              &      (assume a punctuation mark as a sentence delimiter) \\
+     {\tt -o} {\sl file} &     write output to {\sl file} \\
+     {\tt -w} {\sl width} &       specify the cost width\\
+     {\tt -C}  &             use command mode\\
+     {\tt -r} {\sl rc\_file}     & use {\sl rc\_file} as a chasenrc file other than the default\\
+     {\tt -L} {\sl lang} & specify the language of the input text \\
+     {\tt -lp} & print the list of parts of speech \\
+     {\tt -lt} & print the list of conjugation types \\
+     {\tt -lf} & print the list of conjugation forms \\
+     {\tt -h} &              print the help message \\
+     {\tt -V}   &          print ChaSen version number
+    \end{tabular}
+    \end{quote}
+
+   \end{itemize}
+
+   For example, compare the default output with the results of the following.
+   \begin{quote}
+   {\tt chasen -m -e} {\sl nihongo}
+    \end{quote}
+       
+
+%----------------------------------------%
+\subsection{ChaSen Server and Client}
+
+   You can use ChaSen server and its client. First, type
+   \begin{quote}
+     \|chasen -s|
+   \end{quote}
+   to start ChaSen server. 
+
+   \noindent
+   Type
+   \begin{quote}
+    \|chasen| -D{\sl host} {\sl nihongo}
+   \end{quote}
+   (`{\sl host}' should be the hostname of ChaSen server) to run ChaSen
+   client.
+
+
+%----------------------------------------%
+\subsection{Output Format}
+
+   Notes about {\tt -F} option.\\
+
+   \noindent
+   format characters:
+    \begin{quote}
+    \begin{tabular}{ll}
+     \|%m| &    surface form (conjugated form) \\
+     \|%M| &    surface form (base form) \\
+     \|%y| &    first candidate of reading (conjugated form) \\
+     \|%Y| &    first candidate of reading (base form) \\
+     \|%y0| &   reading (conjugated form) \\
+     \|%Y0| &   reading (base form) \\
+     \|%a| &    first candidate of pronunciation (conjugated form) \\
+     \|%A| &    first candidate of pronunciation (base form) \\
+     \|%a0| &   pronunciation (conjugated form) \\
+     \|%A0| &   pronunciation (base form) \\
+     \|%rABC| & surface form with ruby \\
+     \|%i|  &   first candidate of semantic information \\
+     \|%i0|  &  semantic information \\
+     \|%Ic| &   semantic information (if NIL, print character 'c'.) \\
+     \|%Pc| & parts of speech (name) of all the layers of the parts of
+		speech hierarchy, \\
+		& concatenated with the character 'c' \\
+     \|%Pnc| & parts of speech (name) of the layers 1--n of the parts of 
+		speech hierarchy, \\
+		& concatenated with the character 'c' \\
+     \|%h| &    part of speech (code) \\
+     \|%H| &    part of speech (name) \\
+     \|%Hn| & the part of speech (name) at the n-th layer (if NIL,
+		the part of speech \\
+		& at the most specific layer) \\
+     \|%b| &     0 (only for the backward compatibility) \\
+     \|%BB| &    sub-part of speech (name) (if NIL, print part of speech) \\
+     \|%Bc| &    sub-part of speech (name) (if NIL, print character 'c') \\
+     \|%t| &     conjugation type (code) \\
+     \|%Tc| &    conjugation type (name) (if NIL, print character 'c') \\
+     \|%f| &     conjugated form (code) \\
+     \|%Fc| &    conjugated form (name) (if NIL, print character 'c')\\
+     \|%c| &     cost value of the morpheme \\
+     \|%S| & the input sentence \\
+     \|%pb| & if the best path, ``\|*|'', otherwise ``\* *'' \\
+     \|%pi| & the index of the path of the output lattice \\
+     \|%ps| & the starting position of the morpheme
+		at the path of the output lattice \\
+     \|%pe| & the ending position of the morpheme
+		at the path of the output lattice \\
+     \|%pc| & the cost of the path of the output lattice \\
+     \|%ppiC| & the indices of the preceding paths,
+		concatenated with the character 'C' \\
+     \|%ppcC| & the costs of the preceding paths,
+		concatenated with the character 'C' \\
+     \|%?B/STR1/STR2/| &
+		if sub-part of speech exists, STR1, otherwise, STR2 \\
+     \|%?I/STR1/STR2/| &
+		unless the semantic information is NIL and "", STR1, 
+		otherwise, STR2 \\
+     \|%?T/STR1/STR2/| &
+		if conjugative, STR1, otherwise, STR2 \\
+     \|%?F/STR1/STR2/| &
+		same as \|%?T/STR1/STR2/| \\
+     \|%?U/STR1/STR2/| &
+		if unknown word, STR1, otherwise, STR2 \\
+     \|%U/STR/| &
+		if unknown word, "未知語", otherwise, STR \\
+     \|%%| &     '\%' \\
+     \|.| &      specify the field width \\
+     \|-| &      specify the field width \\
+     \|1-9| &    specify the field width\\
+     \|\n|  &    carrige return\\
+     \|\t|  &    tab \\
+     \|\\| &     back slash \\
+     \|\'| &    single quotation mark \\
+     \|\"| &      double quotation mark\\
+    \end{tabular}
+    \end{quote}
+
+   example:
+
+\begin{itemize}
+\item same as the default output ({\tt -f} option)
+
+\*"%m\t%y\t%M\t%U(%P-)\t%T \t%F \n"* or \*"-f"*
+
+\item surface forms, readings, and parts of speech separated by TAB characters
+
+\*"%m\t%y\t%P-\n"*
+
+\item surface forms only
+
+\*"%m\n"*
+
+\item surface forms separated by space characters
+
+\*"%m "*
+
+\item kanji to kana conversion
+
+\*"%y"*
+
+\item surface forms with ruby
+
+\*"%r ()"*
+
+\end{itemize}
+
+%----------------------------------------%
+\section{{\tt chasenrc} Resource File}
+\label{sec:chasenrc}
+
+The {\tt chasenrc} resource file is used for defining various
+options necessary for running ChaSen morphological analysis program.
+As for which {\tt chasenrc} resource file to be used in the morphological 
+analysis process, the following preference order holds.
+\begin{enumerate}
+  \item the one given with {\tt -r} option when running ChaSen program.
+  \item the one given as the environmental variable {\tt CHASENRC}.
+  \item {\tt .chasenrc} file at the user's home directory.
+  \item the default file given as the variable {\tt RCPATH} 
+	in the top level {\tt Makefile}.
+        Usually {\tt PREFIX/etc/chasenrc}.
+\end{enumerate}
+
+The following gives options that are defined in the {\tt chasenrc} resource file,
+as well as their examples.
+\begin{enumerate}
+\item Directory of grammar files (section~\ref{sec:grdic}).
+
+\begin{screen}\begin{verbatim}
+(GRAMMAR /usr/local/lib/chasen/dic/ipadic)
+\end{verbatim}\end{screen}
+
+When this option is omitted,
+the directory which contains {\tt chasenrc} file
+is used as the directory of grammar files.
+
+\item System dictionaries (section~\ref{sec:grdic}).
+The suffix `{\tt .int}' has to be omitted.
+More than one system dictionaries can be used.
+
+\begin{screen}\begin{verbatim}
+(PATDIC chadic
+        /home/rikyu/mydic/chadic)
+\end{verbatim}\end{screen}
+
+In the description above, the following two directories will be read.
+
+\begin{enumerate}
+\item {\tt chadic.int} and {\tt chadic.pat} in the same directory as grammar files.
+\item {\tt chadic.int} and {\tt chadic.pat} in {\tt /home/rikyu/mydic/}.
+\end{enumerate}
+
+To use a package for string search, SUFARY, use {\tt SUFDIC} option.
+
+\begin{screen}\begin{verbatim}
+(SUFDIC chadic)
+\end{verbatim}\end{screen}
+
+In the description above, {\tt chadic.int} and {\tt chadic.ary} in the
+same directory as grammar files will be read.
+
+{\tt chadic.ary} is not created by default.
+To create it, type `{\tt make ary}' in the same directory as
+dictionary.
+
+The index file will be read for a shorter time with SUFDIC than PATDIC,
+but the time for search is longer.
+You had better use SUFDIC for small sentences,
+PATDIC for large sentences.
+
+The maximum number of directories is 5 for both PATDIC and SUFDIC.
+To change this number, edit the valude {\tt MAX\_DIC\_NUMBER} in
+{\tt chasen/pat.h} and re-compile.
+
+\item Part of speech for unknown words (section~\ref{subsec:unk}).
+
+\begin{screen}\begin{verbatim}
+(UNKNOWN_POS (名詞 サ変接続))              ; a part of speech
+(UNKNOWN_POS (名詞 サ変接続) (名詞 一般))  ; two parts of speech
+\end{verbatim}\end{screen}
+
+\item Cost of each part of speech (section~\ref{subsec:algo}).
+
+\begin{screen}\begin{verbatim}
+(POS_COST
+        ((*)                1)
+        ((未知語)           500)
+        ((名詞)             2)
+        ((名詞 固有名詞)    3)
+)
+\end{verbatim}\end{screen}
+
+\item Relative weights of connectivity and morpheme costs
+(section~\ref{subsec:algo}).
+
+\begin{screen}\begin{verbatim}
+(CONN_WEIGHT 1)     ; defalut vaule
+(MORPH_WEIGHT 1)    ; default value
+\end{verbatim}\end{screen}
+
+\item Cost width of beam search
+(section~\ref{subsec:algo}).
+
+\begin{screen}\begin{verbatim}
+(COST_WIDTH 0)    ; default value
+\end{verbatim}\end{screen}
+
+\item Unknown connectivity cost.
+(section~\ref{subsec:unkc}).
+
+\begin{screen}\begin{verbatim}
+(DEF_CONN_COST 500)
+\end{verbatim}\end{screen}
+
+\item Output format.
+
+Users can specify the output format.
+For example, if there is the following line in
+{\tt .chasenrc}, the surface form, the reading,
+and the part of speech will be printed.
+
+\begin{verbatim}
+(OUTPUT_FORMAT "%m\t%y\t%P-\n")
+\end{verbatim}
+
+Note that {\tt -f}, {\tt -e}, {\tt -c}, {\tt -d} and {\tt -F} 
+command line options override the format defined in {\tt .chasenrc}.
+
+\item String for the beginning of the sentence.
+
+\begin{screen}\begin{verbatim}
+(BOS_STRING "sentence: [%S]\n")
+\end{verbatim}\end{screen}
+
+\item String for the end of the sentence.
+
+\begin{screen}\begin{verbatim}
+(EOS_STRING "end_of_sentence\n")
+\end{verbatim}\end{screen}
+
+\item Parts of speech for space and tab characters.
+
+ChaSen ignores space (ASCII code is 32) and tab (ASCII code is 9)
+characters in the analysis process, whose information is not
+output by default.
+Set `{\tt SPACE\_POS}' to output those information.
+
+\begin{screen}\begin{verbatim}
+(SPACE_POS (記号 空白))
+\end{verbatim}\end{screen}
+
+\item Annotations.
+
+ChaSen can analyze sentences ignoring the certain strings like
+annotations, and output the information about each string as one
+morpheme.
+
+\begin{screen}\begin{verbatim}
+(ANNOTATION (("<" ">") "%m\n")
+            (("「") (記号 一般))
+            (("」") (記号 一般))
+            (("\"" "\"") (名詞 引用文字列))
+            (("［" "］"))
+            )
+\end{verbatim}\end{screen}
+
+In the descripation above, ChaSen will analyze and output in the
+following way.
+
+\begin{itemize}
+\item Output the strings as it is which begin with ``\|<|'' and end
+with ``\|>|'' such as {\tt <img src="cha.gif">}.
+\item Output the strings ``「'' or ``」'' as {\tt 記号-一般}
+\item Output the strings surrounded by double quotations such as
+``{\tt "hello(again)"}'' as {\tt 名詞-引用文字列}.
+\item Analyze ignoring the strings which begin with ``［''
+and end with ``］'' such as ``{\tt ［ちゃせん］}'' and
+output no information about the strings.
+\end{itemize}
+
+\item Parts of speech for concatenated morphemes output.
+
+ChaSen concatenates morphemes of the same part of speech
+if the part of speech is among those specified
+for concatenated morphemes output.
+
+\begin{screen}\begin{verbatim}
+(COMPOSIT_POS (名詞 数) (記号))
+\end{verbatim}\end{screen}
+
+\item Sentence delimiter characters.
+
+Users can define sentence delimiter characters 
+that are used when the ChaSen program is called 
+with {\tt -j} option.
+
+\begin{screen}\begin{verbatim*}
+(DELIMITER "。．、，！？.,!? ")
+\end{verbatim*}\end{screen}
+
+\end{enumerate}
+
+%----------------------------------------%
+\section{ChaSen Library}
+
+   You can use ChaSen library 
+   {\tt \$CHASEN/lib/libchasen.a} to put ChaSen's module into other
+   programs.
+
+%----------------------------------------%
+\section{Calling ChaSen from Other Languages}
+
+% %----------------------------------------%
+% \subsection{Calling ChaSen from Prolog}
+% 
+%----------------------------------------%
+\subsection{Emacs Lisp Version of ChaSen Client}
+
+   Copy \|$CHASEN/chasen/chasen.el| to the Emacs Lisp directory to
+   install. Specify hostname and port number of ChaSen server, and
+   describe autoloaded functions in your .emacs.
+
+\begin{verbatim}
+     (setq chasen-server-host "kyusu")
+     (setq chasen-server-port 31234)	  ; the default is 31000
+
+     (autoload 'chasen-region "chasen" "ChaSen client" t)
+     (autoload 'chasen-line "chasen" "ChaSen client" t)
+     (autoload 'chasen-highlight-class-region "chasen" "ChaSen client" t)
+     (autoload 'chasen-property-class-region "chasen" "ChaSen client" t)
+\end{verbatim}  
+
+
+%----------------------------------------%
+\section{Contact}
+
+For further information, send an email to:
+\begin{quote}
+{\sf chasen@is.aist-nara.ac.jp}  
+\end{quote}
+
+\end{document}
+% Local Variables: 
+% mode: latex
+% TeX-master: t
+% End: 

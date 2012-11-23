@@ -1,0 +1,74 @@
+{
+  'input' => {
+    'text' => {
+      'format' => 'xml',
+      'root' => 's',
+    }
+  },
+  'output' => {
+    'text' => {
+      'format' => 'xml',
+      'root' => 's',
+      'write_mode' => 'overwrite',
+#	'encoding' => 'iso-8859-1',
+	'status' => 'tagMElt',
+    }
+  },
+  'required' => {
+    'text' => {
+      'words' => undef,
+    }
+  },
+  'parameter' => {
+     'tagger' => {
+      'language' => 'french',
+      'startup base' => 'melt',
+     },
+     'output' => {
+        'attribute' => 'melt',
+        'token delimiter' => "\n",
+        'sentence delimiter' => "\n\n",
+        'tag delimiter' => '\/',
+	'encoding' => 'utf8',
+     },
+     'input' => {
+	'encoding' => 'utf8',
+        'token delimiter' => "\n",
+        'sentence delimiter' => "\n\n",
+     },
+     'output replacements' => {
+#        '(\G|\A|\n)\%\%[^\n]*(\Z|\n)' => '',
+#        '\t\n' => "\n",
+     },
+  },
+  'module' => {
+    'program' => 'uplug-tag',
+    'location' => '$UplugBin',
+    'name' => 'MElt tagger (french)',
+    'stdout' => 'text'
+  },
+  'arguments' => {
+    'shortcuts' => {
+       'in' => 'input:text:file',
+       'out' => 'output:text:file',
+      'lang' => 'parameter:tagger:language',
+       'attr' => 'parameter:output:attribute',
+       'char' => 'output:text:encoding',
+       'outchar' => 'output:text:encoding',
+       'inchar' => 'input:text:encoding',
+       'inroot' => 'input:text:root',
+    }
+  },
+  'widgets' => {
+       'input' => {
+	  'text' => {
+	    'stream name' => 'stream(format=xml,status=(tok|tag|chunk),language=en)'
+	  },
+       },
+       'parameter' => {
+          'output' => {
+	     'attribute' => 'optionmenu (pos,hunpos)',
+	  }
+       }
+  }
+}

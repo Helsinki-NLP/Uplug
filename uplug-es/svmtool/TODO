@@ -1,0 +1,14 @@
+TO DO
+-----
+
+  * actualitzar la web de SVMTool (http://trac.edgewall.org/ open source wiki/track project)
+  * pujar SVMTool a CPAN i SourceForge
+  * SVMTool/SVMTool++ possible BUG? "John and Mary love pizza ."
+  * SVMTool++ possible BUG reported by Hugh Myers
+  * SVMTool Aleksandar TEST M1 and M2
+  * SVMTool http_client (use POST instead of GET)
+  * SVMTool (add possible tags in the input using Ga‘l suggested format)
+  * unsupervised learning
+
+
+  

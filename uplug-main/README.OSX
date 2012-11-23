@@ -1,0 +1,6 @@
+
+* install perl modules with macports:
+
+sudo port install p5-xml-parser p5-xml-simple p5-file-sharedir
+
+
