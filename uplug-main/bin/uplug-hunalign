@@ -79,7 +79,7 @@ my $TmpSrc=Uplug::IO::Any::GetTempFileName;
 my $TmpTrg=Uplug::IO::Any::GetTempFileName;
 
 if (not -e $DicFile){                            # if there is no dictionary:
-    $DicFile=$AlignDir.'data/null.dic';          # - use an empty file
+    $DicFile=$AlignDir.'/data/null.dic';          # - use an empty file
     $AlignPrg.=' -realign';                      # - ... and the realign flag
 }
 

@@ -33,13 +33,21 @@
 #     uplug pre/basic -in 1988en.txt -ci 'iso-8859-1' -out 1988en.xml
 
 use strict;
+
+# make it possible to use local copies of Uplug without installing
 use FindBin qw($Bin);
 use lib "$Bin/lib";
-use Uplug;
 
-$ENV{UPLUGHOME}=$Bin;
+use Uplug;
+use Uplug::Config;
+
+# set some essential locations in the environment
+$ENV{UPLUGHOME}  = $Bin;
+$ENV{UPLUGSHARE} = &shared_home();
 
 my $uplug=Uplug->new(@ARGV);   # create a new uplug module
 $uplug->load();                # load it
 $uplug->run();                 # and run it
 
+
+# TODO: add documentation ....
