@@ -1,0 +1,103 @@
+
+body{
+  font-size: 12px;
+/*  font-family: arial, helvetica, sans-serif; */
+}
+
+input, select{
+  font-size: 12px;
+}
+
+.help
+{ 
+  padding:5px;
+  position: absolute;
+  right:10px;
+  font-size: 12px;
+  top: 90px;
+ }
+
+.status {
+           padding: 5px;
+           position: absolute;
+           right: 10px;
+           top: 10px;
+           background-color: #eeaaaa;
+}
+
+.statusOld {
+  float: right;
+  margin: 1em 5px;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid #000000;
+  background-color: #eeaaaa;
+}
+
+.bitext { 
+          border: 1px solid #000000; 
+          margin: 0 5px;
+          padding: 5px;
+}
+
+.alignments {
+  float: left;
+  margin: 1em 10px;
+  border: 1px solid #000000;
+}
+
+
+.alignments th {
+  background-color: #cceeee;
+                 }
+
+.alignments tr {
+  background-color: #eeeeaa
+                 }
+
+
+.cluematrix {
+  float: left;
+  margin: 1em 5px;
+}
+
+.cluematrix th {
+  padding-left: 2px;
+  padding-right: 2px;
+  background-color: #eeeeaa;
+}
+
+.cluematrix table{
+  border-spacing: 0;
+  border: 1px solid #000000;
+}
+
+
+.cluematrix td {
+/*  font-size: small; */
+  font-size: 10px;
+  text-align: center;
+}
+
+.aligned { 
+  border: 2pt solid #ff0000;
+ }
+
+.notaligned { 
+  border: 2pt solid #ffffff;
+ }
+
+.dbm table{
+  border: 1px solid #000000;
+}
+
+.dbm td{
+  text-align: left;
+  width: 10em;
+}
+
+.dbm th{
+  width: 10em;
+}

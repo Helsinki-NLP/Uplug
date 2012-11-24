@@ -2,20 +2,14 @@
   'module' => {
     'name' => 'German pre-processing',
     'submodules' => [
-#        '$UplugSystem/pre/basic',
-        '$UplugSystem/pre/markup',
-        '$UplugSystem/pre/sent',
-        '$UplugSystem/pre/de/toktag',
+        '$UplugSystem/pre/basic',
         '$UplugSystem/pre/de/tagHunPos',
-#        '$UplugSystem/pre/de/tagTnT',
         '$UplugSystem/pre/de/malt',
     ],
     'submodule names' => [
         'basic XML markup',
-        'sentence splitter',
-        'German tokenizer+tagger',
-	'POS tagger',
-#        'German tagger (TnT)',
+	'POS tagger (hunpos)',
+        'dependency parser (malt)',
     ],
     'stdin' => 'text',
     'stdout' => 'text',

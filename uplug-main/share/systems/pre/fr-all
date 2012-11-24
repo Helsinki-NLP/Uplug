@@ -2,17 +2,14 @@
   'module' => {
     'name' => 'French pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/markup',
-        '$UplugSystem/pre/sent',
-        '$UplugSystem/pre/fr/toktag',
+        '$UplugSystem/pre/basic',
         '$UplugSystem/pre/fr/tagMElt',
         '$UplugSystem/pre/fr/malt',
     ],
     'submodule names' => [
         'basic XML markup',
-        'sentence splitter',
-        'French tokenizer+tagger',
         'French MElt tagger',
+        'French dependency parser (malt)',
     ],
     'stdin' => 'text',
     'stdout' => 'text',

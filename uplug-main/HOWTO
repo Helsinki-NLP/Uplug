@@ -62,7 +62,7 @@ Assuming that you have 2 tokenized files (source.xm & target.xml) run the
 following command:
 
 
-    uplug align/hunalign -src source.xml -trg target.xml -out aligned.xml
+    uplug align/hun -src source.xml -trg target.xml -out aligned.xml
 
 
 This will run hunalign with default settings and the '-realign' flag set
@@ -72,7 +72,7 @@ You may use your own dictionary using the -dic flag (in that case it won't run
 -realign!):
 
 
-    uplug align/hunalign -dic my-dic.txt -src source.xml -trg target.xml
+    uplug align/hun -dic my-dic.txt -src source.xml -trg target.xml
 
 
 The format of a dictionary is as follows 

@@ -142,6 +142,8 @@ if (not defined $InEncoding){$InEncoding=$OutEncoding;}
 ## by the external tagger
 
 open F,">$TmpUntagged";
+binmode(F,":encoding($OutEncoding)");
+
 while ($input->read($data)){
     my @tok=$data->content();
     map(s/^\s*//,@tok);                    # remove initial white-spaces
@@ -149,12 +151,14 @@ while ($input->read($data)){
 
     map($tok[$_]=&FixTaggerData($tok[$_],\%InputReplace),0..$#tok);
 
-    if ($OutEncoding ne $UplugEncoding){
-	foreach my $t (0..$#tok){
-	    my $octets = encode($OutEncoding, $tok[$t],sub{ return '' });
-	    $tok[$t] = decode($OutEncoding, $octets);
-	}
-    }
+    # TODO: the code below is weird ... not needed anymore?
+    # if ($OutEncoding ne $UplugEncoding){
+    # 	foreach my $t (0..$#tok){
+    # 	    my $octets = encode($OutEncoding, $tok[$t],sub{ return '' });
+    # 	    $tok[$t] = decode($OutEncoding, $octets);
+    # 	}
+    # }
+
     @tok=grep(/\S/,@tok);                  # take only non-empty tokens
     if (@tok){                             # print them if any left
 	print F join $InTokDel,@tok;

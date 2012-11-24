@@ -2,27 +2,21 @@
   'module' => {
     'name' => 'English pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/markup',
-        '$UplugSystem/pre/sent',
-        '$UplugSystem/pre/en/toktag',
-        '$UplugSystem/pre/tok',
+        '$UplugSystem/pre/basic',
         '$UplugSystem/pre/en/tagHunPos',
         '$UplugSystem/pre/en/tagGrok',
         '$UplugSystem/pre/en/chunk',
         '$UplugSystem/pre/en/malt',
     ],
     'submodule names' => [
-        'basic XML markup',
-        'sentence splitter',
-        'English tokenizer+tagger',  # TreeTagger (optional)
-        'English tokenizer',         # general tokenizer (if not tokenized yet)
+        'basic pre-processing',
         'English tagger (hunpos)',
         'English tagger (Grok)',
         'English chunker (Grok)',
         'English dependency parser (MaltParser)',
     ],
-#    'stdin' => 'text',
-#    'stdout' => 'text',
+    'stdin' => 'text',
+    'stdout' => 'text',
   },
   'description' => 'This is the pre-processing module for English
   corpora. It includes a basic XML markup tool, a general sentence
