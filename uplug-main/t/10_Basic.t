@@ -39,7 +39,7 @@ unlink('1988en.tok.xml');
 # basic markup for different languages
 
 foreach ('de','en','fr','sv'){
-    system("$UPLUG pre/basic -ci 'iso-8859-1' -in $DATA/txt/1988$_.txt -out 1988$_.xml $null");
+    system("$UPLUG pre/$_/basic -ci 'iso-8859-1' -in $DATA/txt/1988$_.txt -out 1988$_.xml $null");
     is( compare( "1988$_.xml", "$DATA/xml/1988$_.basic.xml" ),0, "basic (1988$_)" );
 }
 

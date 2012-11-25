@@ -54,8 +54,8 @@
 
 <p id="3">
 <s id="s3.1">
- <w pos="NNP" id="w3.1.1">Sweden'</w>
- <w pos="VBZ" id="w3.1.2">s</w>
+ <w pos="NNP" id="w3.1.1">Sweden</w>
+ <w pos="POS" id="w3.1.2">'s</w>
  <w pos="NN" id="w3.1.3">policy</w>
  <w pos="IN" id="w3.1.4">of</w>
  <w pos="NN" id="w3.1.5">neutrality</w>
@@ -175,8 +175,8 @@
  <w pos="PRP" id="w4.5.1">It</w>
  <w pos="VBZ" id="w4.5.2">is</w>
  <w pos="DT" id="w4.5.3">the</w>
- <w pos="NNP" id="w4.5.4">Government'</w>
- <w pos="VBZ" id="w4.5.5">s</w>
+ <w pos="NNP" id="w4.5.4">Government</w>
+ <w pos="POS" id="w4.5.5">'s</w>
  <w pos="NN" id="w4.5.6">intention</w>
  <w pos="TO" id="w4.5.7">to</w>
  <w pos="VB" id="w4.5.8">seek</w>
@@ -214,13 +214,11 @@
  <w pos="DT" id="w5.1.15">the</w>
  <w pos="NN" id="w5.1.16">elimination</w>
  <w pos="IN" id="w5.1.17">of</w>
- <w pos="NN" id="w5.1.18">land-</w>
- <w pos="VBN" id="w5.1.19">based</w>
- <w pos="JJ" id="w5.1.20">intermediate-</w>
- <w pos="JJ" id="w5.1.21">range</w>
- <w pos="JJ" id="w5.1.22">nuclear</w>
- <w pos="NNS" id="w5.1.23">weapons</w>
- <w pos="." id="w5.1.24">.</w>
+ <w pos="JJ" id="w5.1.18">land-based</w>
+ <w pos="JJ" id="w5.1.19">intermediate-range</w>
+ <w pos="JJ" id="w5.1.20">nuclear</w>
+ <w pos="NNS" id="w5.1.21">weapons</w>
+ <w pos="." id="w5.1.22">.</w>
 </s> 
  
 
@@ -284,27 +282,25 @@
  <w pos="NN" id="w6.1.9">behalf</w>
  <w pos="IN" id="w6.1.10">of</w>
  <w pos="DT" id="w6.1.11">a</w>
- <w pos="JJ" id="w6.1.12">nuclear-</w>
- <w pos="NN" id="w6.1.13">weapon-</w>
- <w pos="JJ" id="w6.1.14">free</w>
- <w pos="NN" id="w6.1.15">zone</w>
- <w pos="IN" id="w6.1.16">in</w>
- <w pos="DT" id="w6.1.17">the</w>
- <w pos="JJ" id="w6.1.18">Nordic</w>
- <w pos="NN" id="w6.1.19">area</w>
- <w pos="CC" id="w6.1.20">and</w>
- <w pos="IN" id="w6.1.21">of</w>
- <w pos="DT" id="w6.1.22">a</w>
- <w pos="NN" id="w6.1.23">corridor</w>
- <w pos="IN" id="w6.1.24">in</w>
- <w pos="NNP" id="w6.1.25">Central</w>
- <w pos="NNP" id="w6.1.26">Europe</w>
- <w pos="NN" id="w6.1.27">free</w>
- <w pos="IN" id="w6.1.28">of</w>
- <w pos="JJ" id="w6.1.29">battlefield</w>
- <w pos="JJ" id="w6.1.30">nuclear</w>
- <w pos="NNS" id="w6.1.31">weapons</w>
- <w pos="." id="w6.1.32">.</w>
+ <w pos="JJ" id="w6.1.12">nuclear-weapon-free</w>
+ <w pos="NN" id="w6.1.13">zone</w>
+ <w pos="IN" id="w6.1.14">in</w>
+ <w pos="DT" id="w6.1.15">the</w>
+ <w pos="JJ" id="w6.1.16">Nordic</w>
+ <w pos="NN" id="w6.1.17">area</w>
+ <w pos="CC" id="w6.1.18">and</w>
+ <w pos="IN" id="w6.1.19">of</w>
+ <w pos="DT" id="w6.1.20">a</w>
+ <w pos="NN" id="w6.1.21">corridor</w>
+ <w pos="IN" id="w6.1.22">in</w>
+ <w pos="NNP" id="w6.1.23">Central</w>
+ <w pos="NNP" id="w6.1.24">Europe</w>
+ <w pos="NN" id="w6.1.25">free</w>
+ <w pos="IN" id="w6.1.26">of</w>
+ <w pos="JJ" id="w6.1.27">battlefield</w>
+ <w pos="JJ" id="w6.1.28">nuclear</w>
+ <w pos="NNS" id="w6.1.29">weapons</w>
+ <w pos="." id="w6.1.30">.</w>
 </s></p>
 
 <p id="7">
@@ -484,9 +480,10 @@
  <w pos="NNP" id="w10.2.17">Afghanistan</w>
  <w pos="CC" id="w10.2.18">and</w>
  <w pos="IN" id="w10.2.19">in</w>
- <w pos="NNP" id="w10.2.20">Iran/</w>
- <w pos="NNP" id="w10.2.21">Iraq</w>
- <w pos="." id="w10.2.22">.</w>
+ <w pos="NNP" id="w10.2.20">Iran</w>
+ <w pos="NNP" id="w10.2.21">/</w>
+ <w pos="NNP" id="w10.2.22">Iraq</w>
+ <w pos="." id="w10.2.23">.</w>
 </s></p>
 
 <p id="11">
@@ -510,10 +507,9 @@
  <w pos="DT" id="w11.1.17">the</w>
  <w pos="NNP" id="w11.1.18">United</w>
  <w pos="NNP" id="w11.1.19">Nations</w>
- <w pos="NN" id="w11.1.20">peace-</w>
- <w pos="NN" id="w11.1.21">keeping</w>
- <w pos="NNS" id="w11.1.22">forces</w>
- <w pos="." id="w11.1.23">.</w>
+ <w pos="NN" id="w11.1.20">peace-keeping</w>
+ <w pos="NNS" id="w11.1.21">forces</w>
+ <w pos="." id="w11.1.22">.</w>
 </s> 
  
 
@@ -545,35 +541,34 @@
  <w pos="NNP" id="w11.3.7">Sweden</w>
  <w pos="IN" id="w11.3.8">that</w>
  <w pos="DT" id="w11.3.9">the</w>
- <w pos="NNP" id="w11.3.10">Secretary-</w>
- <w pos="NNP" id="w11.3.11">General</w>
- <w pos="," id="w11.3.12">,</w>
- <w pos="IN" id="w11.3.13">in</w>
- <w pos="NN" id="w11.3.14">consultation</w>
- <w pos="IN" id="w11.3.15">with</w>
- <w pos="DT" id="w11.3.16">the</w>
- <w pos="NNS" id="w11.3.17">parties</w>
- <w pos="," id="w11.3.18">,</w>
- <w pos="VBZ" id="w11.3.19">has</w>
- <w pos="VBN" id="w11.3.20">appointed</w>
- <w pos="PRP$" id="w11.3.21">our</w>
- <w pos="NNP" id="w11.3.22">United</w>
- <w pos="NNP" id="w11.3.23">Nations</w>
- <w pos="NN" id="w11.3.24">Ambassador</w>
- <w pos="TO" id="w11.3.25">to</w>
- <w pos="VB" id="w11.3.26">be</w>
- <w pos="PRP$" id="w11.3.27">his</w>
- <w pos="JJ" id="w11.3.28">personal</w>
- <w pos="NN" id="w11.3.29">representative</w>
- <w pos="IN" id="w11.3.30">at</w>
- <w pos="DT" id="w11.3.31">the</w>
- <w pos="NN" id="w11.3.32">peace</w>
- <w pos="NNS" id="w11.3.33">negotiations</w>
- <w pos="IN" id="w11.3.34">between</w>
- <w pos="NNP" id="w11.3.35">Iran</w>
- <w pos="CC" id="w11.3.36">and</w>
- <w pos="NNP" id="w11.3.37">Iraq</w>
- <w pos="." id="w11.3.38">.</w>
+ <w pos="NNP" id="w11.3.10">Secretary-General</w>
+ <w pos="," id="w11.3.11">,</w>
+ <w pos="IN" id="w11.3.12">in</w>
+ <w pos="NN" id="w11.3.13">consultation</w>
+ <w pos="IN" id="w11.3.14">with</w>
+ <w pos="DT" id="w11.3.15">the</w>
+ <w pos="NNS" id="w11.3.16">parties</w>
+ <w pos="," id="w11.3.17">,</w>
+ <w pos="VBZ" id="w11.3.18">has</w>
+ <w pos="VBN" id="w11.3.19">appointed</w>
+ <w pos="PRP$" id="w11.3.20">our</w>
+ <w pos="NNP" id="w11.3.21">United</w>
+ <w pos="NNP" id="w11.3.22">Nations</w>
+ <w pos="NN" id="w11.3.23">Ambassador</w>
+ <w pos="TO" id="w11.3.24">to</w>
+ <w pos="VB" id="w11.3.25">be</w>
+ <w pos="PRP$" id="w11.3.26">his</w>
+ <w pos="JJ" id="w11.3.27">personal</w>
+ <w pos="NN" id="w11.3.28">representative</w>
+ <w pos="IN" id="w11.3.29">at</w>
+ <w pos="DT" id="w11.3.30">the</w>
+ <w pos="NN" id="w11.3.31">peace</w>
+ <w pos="NNS" id="w11.3.32">negotiations</w>
+ <w pos="IN" id="w11.3.33">between</w>
+ <w pos="NNP" id="w11.3.34">Iran</w>
+ <w pos="CC" id="w11.3.35">and</w>
+ <w pos="NNP" id="w11.3.36">Iraq</w>
+ <w pos="." id="w11.3.37">.</w>
 </s></p>
 
 <p id="12">
@@ -717,38 +712,36 @@
  <w pos="NNP" id="w15.1.16">Government</w>
  <w pos="MD" id="w15.1.17">will</w>
  <w pos="VB" id="w15.1.18">intensify</w>
- <w pos="JJ" id="w15.1.19">co-</w>
- <w pos="NN" id="w15.1.20">operation</w>
- <w pos="VBD" id="w15.1.21">wit</w>
- <w pos="DT" id="w15.1.22">the</w>
- <w pos="NNP" id="w15.1.23">EC</w>
- <w pos="IN" id="w15.1.24">in</w>
- <w pos="DT" id="w15.1.25">all</w>
- <w pos="NNS" id="w15.1.26">fields</w>
- <w pos="TO" id="w15.1.27">to</w>
- <w pos="DT" id="w15.1.28">the</w>
- <w pos="NN" id="w15.1.29">extent</w>
- <w pos="PRP" id="w15.1.30">it</w>
- <w pos="VBZ" id="w15.1.31">is</w>
- <w pos="VBN" id="w15.1.32">compatible</w>
- <w pos="IN" id="w15.1.33">with</w>
- <w pos="PRP$" id="w15.1.34">our</w>
- <w pos="NN" id="w15.1.35">policy</w>
- <w pos="IN" id="w15.1.36">of</w>
- <w pos="NN" id="w15.1.37">neutrality</w>
- <w pos="." id="w15.1.38">.</w>
+ <w pos="NN" id="w15.1.19">co-operation</w>
+ <w pos="VBD" id="w15.1.20">wit</w>
+ <w pos="DT" id="w15.1.21">the</w>
+ <w pos="NNP" id="w15.1.22">EC</w>
+ <w pos="IN" id="w15.1.23">in</w>
+ <w pos="DT" id="w15.1.24">all</w>
+ <w pos="NNS" id="w15.1.25">fields</w>
+ <w pos="TO" id="w15.1.26">to</w>
+ <w pos="DT" id="w15.1.27">the</w>
+ <w pos="NN" id="w15.1.28">extent</w>
+ <w pos="PRP" id="w15.1.29">it</w>
+ <w pos="VBZ" id="w15.1.30">is</w>
+ <w pos="VBN" id="w15.1.31">compatible</w>
+ <w pos="IN" id="w15.1.32">with</w>
+ <w pos="PRP$" id="w15.1.33">our</w>
+ <w pos="NN" id="w15.1.34">policy</w>
+ <w pos="IN" id="w15.1.35">of</w>
+ <w pos="NN" id="w15.1.36">neutrality</w>
+ <w pos="." id="w15.1.37">.</w>
 </s> 
  
 
 <s id="s15.2">
  <w pos="JJ" id="w15.2.1">Nordic</w>
- <w pos="JJ" id="w15.2.2">co-</w>
- <w pos="NN" id="w15.2.3">operation</w>
- <w pos="MD" id="w15.2.4">will</w>
- <w pos="RB" id="w15.2.5">also</w>
- <w pos="VB" id="w15.2.6">be</w>
- <w pos="VBN" id="w15.2.7">developed</w>
- <w pos="." id="w15.2.8">.</w>
+ <w pos="NN" id="w15.2.2">co-operation</w>
+ <w pos="MD" id="w15.2.3">will</w>
+ <w pos="RB" id="w15.2.4">also</w>
+ <w pos="VB" id="w15.2.5">be</w>
+ <w pos="VBN" id="w15.2.6">developed</w>
+ <w pos="." id="w15.2.7">.</w>
 </s> 
  
 
@@ -951,15 +944,14 @@
  <w pos="IN" id="w21.2.7">in</w>
  <w pos="NN" id="w21.2.8">prison</w>
  <w pos="CC" id="w21.2.9">and</w>
- <w pos="JJ" id="w21.2.10">non-</w>
- <w pos="JJ" id="w21.2.11">institutional</w>
- <w pos="NN" id="w21.2.12">care</w>
- <w pos="MD" id="w21.2.13">must</w>
- <w pos="VB" id="w21.2.14">facilitate</w>
- <w pos="NN" id="w21.2.15">rehabilitation</w>
- <w pos="IN" id="w21.2.16">after</w>
- <w pos="NN" id="w21.2.17">discharge</w>
- <w pos="." id="w21.2.18">.</w>
+ <w pos="JJ" id="w21.2.10">non-institutional</w>
+ <w pos="NN" id="w21.2.11">care</w>
+ <w pos="MD" id="w21.2.12">must</w>
+ <w pos="VB" id="w21.2.13">facilitate</w>
+ <w pos="NN" id="w21.2.14">rehabilitation</w>
+ <w pos="IN" id="w21.2.15">after</w>
+ <w pos="NN" id="w21.2.16">discharge</w>
+ <w pos="." id="w21.2.17">.</w>
 </s></p>
 
 <p id="22">
@@ -1086,11 +1078,11 @@
  <w pos="JJR" id="w24.2.14">better</w>
  <w pos="NN" id="w24.2.15">use</w>
  <w pos="IN" id="w24.2.16">of</w>
- <w pos="JJ" id="w24.2.17">people'</w>
- <w pos="NNS" id="w24.2.18">s</w>
- <w pos="VBP" id="w24.2.19">desire</w>
+ <w pos="NNS" id="w24.2.17">people</w>
+ <w pos="POS" id="w24.2.18">'s</w>
+ <w pos="NN" id="w24.2.19">desire</w>
  <w pos="TO" id="w24.2.20">to</w>
- <w pos="VB" id="w24.2.21">work</w>
+ <w pos="NN" id="w24.2.21">work</w>
  <w pos="." id="w24.2.22">.</w>
 </s> 
  
@@ -1126,27 +1118,25 @@
  <w pos="IN" id="w25.1.3">of</w>
  <w pos="DT" id="w25.1.4">the</w>
  <w pos="JJ" id="w25.1.5">marginal</w>
- <w pos="JJ" id="w25.1.6">income-</w>
- <w pos="NN" id="w25.1.7">tax</w>
- <w pos="NN" id="w25.1.8">rate</w>
- <w pos="IN" id="w25.1.9">in</w>
- <w pos="CD" id="w25.1.10">1989</w>
- <w pos="IN" id="w25.1.11">by</w>
- <w pos="CD" id="w25.1.12">3</w>
- <w pos="NN" id="w25.1.13">percentage</w>
- <w pos="NNS" id="w25.1.14">points</w>
- <w pos="MD" id="w25.1.15">will</w>
- <w pos="VB" id="w25.1.16">be</w>
- <w pos="VBN" id="w25.1.17">proposed</w>
- <w pos="IN" id="w25.1.18">in</w>
- <w pos="DT" id="w25.1.19">the</w>
- <w pos="JJ" id="w25.1.20">first</w>
- <w pos="NN" id="w25.1.21">place</w>
- <w pos="IN" id="w25.1.22">for</w>
- <w pos="JJ" id="w25.1.23">full-</w>
- <w pos="NN" id="w25.1.24">time</w>
- <w pos="NNS" id="w25.1.25">employees</w>
- <w pos="." id="w25.1.26">.</w>
+ <w pos="JJ" id="w25.1.6">income-tax</w>
+ <w pos="NN" id="w25.1.7">rate</w>
+ <w pos="IN" id="w25.1.8">in</w>
+ <w pos="CD" id="w25.1.9">1989</w>
+ <w pos="IN" id="w25.1.10">by</w>
+ <w pos="CD" id="w25.1.11">3</w>
+ <w pos="NN" id="w25.1.12">percentage</w>
+ <w pos="NNS" id="w25.1.13">points</w>
+ <w pos="MD" id="w25.1.14">will</w>
+ <w pos="VB" id="w25.1.15">be</w>
+ <w pos="VBN" id="w25.1.16">proposed</w>
+ <w pos="IN" id="w25.1.17">in</w>
+ <w pos="DT" id="w25.1.18">the</w>
+ <w pos="JJ" id="w25.1.19">first</w>
+ <w pos="NN" id="w25.1.20">place</w>
+ <w pos="IN" id="w25.1.21">for</w>
+ <w pos="JJ" id="w25.1.22">full-time</w>
+ <w pos="NNS" id="w25.1.23">employees</w>
+ <w pos="." id="w25.1.24">.</w>
 </s></p>
 
 <p id="26">
@@ -1189,16 +1179,15 @@
 
 <s id="s26.3">
  <w pos="NNP" id="w26.3.1">State</w>
- <w pos="JJ" id="w26.3.2">income-</w>
- <w pos="NN" id="w26.3.3">tax</w>
- <w pos="MD" id="w26.3.4">will</w>
- <w pos="VB" id="w26.3.5">be</w>
- <w pos="VBN" id="w26.3.6">reduced</w>
- <w pos="CC" id="w26.3.7">and</w>
- <w pos="NN" id="w26.3.8">capital</w>
- <w pos="NNS" id="w26.3.9">taxes</w>
- <w pos="VBD" id="w26.3.10">increased</w>
- <w pos="." id="w26.3.11">.</w>
+ <w pos="NN" id="w26.3.2">income-tax</w>
+ <w pos="MD" id="w26.3.3">will</w>
+ <w pos="VB" id="w26.3.4">be</w>
+ <w pos="VBN" id="w26.3.5">reduced</w>
+ <w pos="CC" id="w26.3.6">and</w>
+ <w pos="NN" id="w26.3.7">capital</w>
+ <w pos="NNS" id="w26.3.8">taxes</w>
+ <w pos="VBD" id="w26.3.9">increased</w>
+ <w pos="." id="w26.3.10">.</w>
 </s> 
  
 
@@ -1377,14 +1366,13 @@
  <w pos="NNS" id="w29.1.27">efforts</w>
  <w pos="IN" id="w29.1.28">for</w>
  <w pos="DT" id="w29.1.29">the</w>
- <w pos="CD" id="w29.1.30">400,</w>
- <w pos="CD" id="w29.1.31">000</w>
- <w pos="NNS" id="w29.1.32">workplaces</w>
- <w pos="RB" id="w29.1.33">most</w>
- <w pos="VBN" id="w29.1.34">exposed</w>
- <w pos="TO" id="w29.1.35">to</w>
- <w pos="NNS" id="w29.1.36">hazards</w>
- <w pos="." id="w29.1.37">.</w>
+ <w pos="CD" id="w29.1.30">400,000</w>
+ <w pos="VBZ" id="w29.1.31">workplaces</w>
+ <w pos="RB" id="w29.1.32">most</w>
+ <w pos="VBN" id="w29.1.33">exposed</w>
+ <w pos="TO" id="w29.1.34">to</w>
+ <w pos="NNS" id="w29.1.35">hazards</w>
+ <w pos="." id="w29.1.36">.</w>
 </s> 
  
 
@@ -1517,10 +1505,9 @@
  <w pos="NNS" id="w31.3.11">women</w>
  <w pos="IN" id="w31.3.12">in</w>
  <w pos="JJ" id="w31.3.13">various</w>
- <w pos="JJ" id="w31.3.14">decision-</w>
- <w pos="NN" id="w31.3.15">making</w>
- <w pos="NNS" id="w31.3.16">assemblies</w>
- <w pos="." id="w31.3.17">.</w>
+ <w pos="JJ" id="w31.3.14">decision-making</w>
+ <w pos="NNS" id="w31.3.15">assemblies</w>
+ <w pos="." id="w31.3.16">.</w>
 </s></p>
 
 <p id="32">
@@ -1694,8 +1681,8 @@
  
 
 <s id="s36.2">
- <w pos="NNP" id="w36.2.1">Parliament'</w>
- <w pos="VBZ" id="w36.2.2">s</w>
+ <w pos="NNP" id="w36.2.1">Parliament</w>
+ <w pos="POS" id="w36.2.2">'s</w>
  <w pos="NN" id="w36.2.3">decision</w>
  <w pos="IN" id="w36.2.4">on</w>
  <w pos="NN" id="w36.2.5">traffic</w>
@@ -1746,8 +1733,8 @@
  <w pos="NN" id="w37.2.19">protection</w>
  <w pos="IN" id="w37.2.20">of</w>
  <w pos="DT" id="w37.2.21">the</w>
- <w pos="NN" id="w37.2.22">earth'</w>
- <w pos="VBZ" id="w37.2.23">s</w>
+ <w pos="NN" id="w37.2.22">earth</w>
+ <w pos="POS" id="w37.2.23">'s</w>
  <w pos="NN" id="w37.2.24">climate</w>
  <w pos="." id="w37.2.25">.</w>
 </s> 
@@ -1794,9 +1781,8 @@
  <w pos="VBN" id="w38.2.2">granted</w>
  <w pos="MD" id="w38.2.3">will</w>
  <w pos="VB" id="w38.2.4">be</w>
- <w pos="JJ" id="w38.2.5">re-</w>
- <w pos="JJ" id="w38.2.6">examined</w>
- <w pos="." id="w38.2.7">.</w>
+ <w pos="JJ" id="w38.2.5">re-examined</w>
+ <w pos="." id="w38.2.6">.</w>
 </s> 
  
 
@@ -1891,9 +1877,8 @@
  <w pos="VB" id="w40.1.8">be</w>
  <w pos="VBN" id="w40.1.9">reviewed</w>
  <w pos="CC" id="w40.1.10">and</w>
- <w pos="JJ" id="w40.1.11">co-</w>
- <w pos="JJ" id="w40.1.12">ordinated</w>
- <w pos="." id="w40.1.13">.</w>
+ <w pos="JJ" id="w40.1.11">co-ordinated</w>
+ <w pos="." id="w40.1.12">.</w>
 </s> 
  
 
@@ -1960,10 +1945,11 @@
  <w pos="NNP" id="w41.2.14">Skåne</w>
  <w pos="CC" id="w41.2.15">and</w>
  <w pos="DT" id="w41.2.16">the</w>
- <w pos="NNP" id="w41.2.17">Sundsvall/</w>
- <w pos="NNP" id="w41.2.18">Timrå</w>
- <w pos="NN" id="w41.2.19">area</w>
- <w pos="." id="w41.2.20">.</w>
+ <w pos="NNP" id="w41.2.17">Sundsvall</w>
+ <w pos="NNP" id="w41.2.18">/</w>
+ <w pos="NNP" id="w41.2.19">Timrå</w>
+ <w pos="NN" id="w41.2.20">area</w>
+ <w pos="." id="w41.2.21">.</w>
 </s></p>
 
 <p id="42">
@@ -2062,8 +2048,8 @@
 <p id="44">
 <s id="s44.1">
  <w pos="DT" id="w44.1.1">The</w>
- <w pos="NNP" id="w44.1.2">Government'</w>
- <w pos="VBZ" id="w44.1.3">s</w>
+ <w pos="NNP" id="w44.1.2">Government</w>
+ <w pos="POS" id="w44.1.3">'s</w>
  <w pos="JJ" id="w44.1.4">agricultural</w>
  <w pos="NN" id="w44.1.5">policy</w>
  <w pos="NNS" id="w44.1.6">aims</w>
@@ -2090,8 +2076,8 @@
  <w pos="DT" id="w44.2.4">a</w>
  <w pos="NN" id="w44.2.5">move</w>
  <w pos="IN" id="w44.2.6">from</w>
- <w pos="JJ" id="w44.2.7">today'</w>
- <w pos="NNS" id="w44.2.8">s</w>
+ <w pos="NN" id="w44.2.7">today</w>
+ <w pos="POS" id="w44.2.8">'s</w>
  <w pos="JJ" id="w44.2.9">intensive</w>
  <w pos="NN" id="w44.2.10">production</w>
  <w pos="TO" id="w44.2.11">to</w>
@@ -2338,8 +2324,8 @@
  <w pos="IN" id="w48.1.9">in</w>
  <w pos="NN" id="w48.1.10">accordance</w>
  <w pos="IN" id="w48.1.11">with</w>
- <w pos="NNP" id="w48.1.12">Parliament'</w>
- <w pos="NNP" id="w48.1.13">s</w>
+ <w pos="NNP" id="w48.1.12">Parliament</w>
+ <w pos="POS" id="w48.1.13">'s</w>
  <w pos="NN" id="w48.1.14">decision</w>
  <w pos="." id="w48.1.15">.</w>
 </s></p>
@@ -2499,16 +2485,15 @@
  <w pos="NN" id="w54.1.3">bill</w>
  <w pos="IN" id="w54.1.4">on</w>
  <w pos="DT" id="w54.1.5">the</w>
- <w pos="JJ" id="w54.1.6">nine-</w>
- <w pos="NN" id="w54.1.7">year</w>
- <w pos="JJ" id="w54.1.8">compulsory</w>
- <w pos="NN" id="w54.1.9">school</w>
- <w pos="VBZ" id="w54.1.10">is</w>
- <w pos="RB" id="w54.1.11">now</w>
- <w pos="JJ" id="w54.1.12">available</w>
- <w pos="IN" id="w54.1.13">for</w>
- <w pos="NN" id="w54.1.14">consideration</w>
- <w pos="." id="w54.1.15">.</w>
+ <w pos="JJ" id="w54.1.6">nine-year</w>
+ <w pos="NN" id="w54.1.7">compulsory</w>
+ <w pos="NN" id="w54.1.8">school</w>
+ <w pos="VBZ" id="w54.1.9">is</w>
+ <w pos="RB" id="w54.1.10">now</w>
+ <w pos="JJ" id="w54.1.11">available</w>
+ <w pos="IN" id="w54.1.12">for</w>
+ <w pos="NN" id="w54.1.13">consideration</w>
+ <w pos="." id="w54.1.14">.</w>
 </s> 
  
 
@@ -2568,19 +2553,18 @@
  <w pos="MD" id="w55.1.2">will</w>
  <w pos="VB" id="w55.1.3">be</w>
  <w pos="VBN" id="w55.1.4">improved</w>
- <w pos="JJ" id="w55.1.5">co-</w>
- <w pos="NN" id="w55.1.6">ordination</w>
- <w pos="IN" id="w55.1.7">of</w>
- <w pos="NN" id="w55.1.8">adult</w>
- <w pos="NN" id="w55.1.9">education</w>
- <w pos="," id="w55.1.10">,</w>
- <w pos="JJ" id="w55.1.11">labour</w>
- <w pos="NN" id="w55.1.12">market</w>
- <w pos="NN" id="w55.1.13">training</w>
- <w pos="CC" id="w55.1.14">and</w>
- <w pos="JJ" id="w55.1.15">personnel</w>
- <w pos="NN" id="w55.1.16">training</w>
- <w pos="." id="w55.1.17">.</w>
+ <w pos="NN" id="w55.1.5">co-ordination</w>
+ <w pos="IN" id="w55.1.6">of</w>
+ <w pos="NN" id="w55.1.7">adult</w>
+ <w pos="NN" id="w55.1.8">education</w>
+ <w pos="," id="w55.1.9">,</w>
+ <w pos="JJ" id="w55.1.10">labour</w>
+ <w pos="NN" id="w55.1.11">market</w>
+ <w pos="NN" id="w55.1.12">training</w>
+ <w pos="CC" id="w55.1.13">and</w>
+ <w pos="JJ" id="w55.1.14">personnel</w>
+ <w pos="NN" id="w55.1.15">training</w>
+ <w pos="." id="w55.1.16">.</w>
 </s></p>
 
 <p id="56">
@@ -2629,18 +2613,17 @@
 
 <p id="57">
 <s id="s57.1">
- <w pos="JJ" id="w57.1.1">International</w>
- <w pos="JJ" id="w57.1.2">co-</w>
- <w pos="NN" id="w57.1.3">operation</w>
- <w pos="IN" id="w57.1.4">within</w>
- <w pos="NN" id="w57.1.5">research</w>
- <w pos="CC" id="w57.1.6">and</w>
- <w pos="NN" id="w57.1.7">development</w>
- <w pos="VBZ" id="w57.1.8">is</w>
- <w pos="VBG" id="w57.1.9">becoming</w>
- <w pos="RB" id="w57.1.10">increasingly</w>
- <w pos="JJ" id="w57.1.11">important</w>
- <w pos="." id="w57.1.12">.</w>
+ <w pos="NNP" id="w57.1.1">International</w>
+ <w pos="NN" id="w57.1.2">co-operation</w>
+ <w pos="IN" id="w57.1.3">within</w>
+ <w pos="NN" id="w57.1.4">research</w>
+ <w pos="CC" id="w57.1.5">and</w>
+ <w pos="NN" id="w57.1.6">development</w>
+ <w pos="VBZ" id="w57.1.7">is</w>
+ <w pos="VBG" id="w57.1.8">becoming</w>
+ <w pos="RB" id="w57.1.9">increasingly</w>
+ <w pos="JJ" id="w57.1.10">important</w>
+ <w pos="." id="w57.1.11">.</w>
 </s> 
  
 
@@ -2666,9 +2649,8 @@
  <w pos="IN" id="w57.2.19">in</w>
  <w pos="JJ" id="w57.2.20">international</w>
  <w pos="NN" id="w57.2.21">research</w>
- <w pos="NN" id="w57.2.22">co-</w>
- <w pos="NN" id="w57.2.23">operation</w>
- <w pos="." id="w57.2.24">.</w>
+ <w pos="NN" id="w57.2.22">co-operation</w>
+ <w pos="." id="w57.2.23">.</w>
 </s></p>
 
 <p id="58">
@@ -3001,19 +2983,18 @@
  <w pos="TO" id="w63.1.51">to</w>
  <w pos="VB" id="w63.1.52">strengthen</w>
  <w pos="PRP$" id="w63.1.53">our</w>
- <w pos="JJ" id="w63.1.54">co-</w>
- <w pos="NN" id="w63.1.55">operation</w>
- <w pos=":" id="w63.1.56">-</w>
- <w pos="JJ" id="w63.1.57">economic</w>
- <w pos="," id="w63.1.58">,</w>
- <w pos="JJ" id="w63.1.59">social</w>
- <w pos="CC" id="w63.1.60">and</w>
- <w pos="JJ" id="w63.1.61">cultural</w>
- <w pos="NN" id="w63.1.62">-</w>
- <w pos="IN" id="w63.1.63">with</w>
- <w pos="JJ" id="w63.1.64">other</w>
- <w pos="NNS" id="w63.1.65">countries</w>
- <w pos="." id="w63.1.66">.</w>
+ <w pos="NN" id="w63.1.54">co-operation</w>
+ <w pos=":" id="w63.1.55">-</w>
+ <w pos="JJ" id="w63.1.56">economic</w>
+ <w pos="," id="w63.1.57">,</w>
+ <w pos="JJ" id="w63.1.58">social</w>
+ <w pos="CC" id="w63.1.59">and</w>
+ <w pos="JJ" id="w63.1.60">cultural</w>
+ <w pos="NN" id="w63.1.61">-</w>
+ <w pos="IN" id="w63.1.62">with</w>
+ <w pos="JJ" id="w63.1.63">other</w>
+ <w pos="NNS" id="w63.1.64">countries</w>
+ <w pos="." id="w63.1.65">.</w>
 </s></p>
 
 <p id="64">
@@ -3059,8 +3040,8 @@
 
 <p id="66">
 <s id="s66.1">
- <w pos="NNP" id="w66.1.1">Sweden'</w>
- <w pos="VBZ" id="w66.1.2">s</w>
+ <w pos="NNP" id="w66.1.1">Sweden</w>
+ <w pos="POS" id="w66.1.2">'s</w>
  <w pos="JJ" id="w66.1.3">economic</w>
  <w pos="NN" id="w66.1.4">situation</w>
  <w pos="VBZ" id="w66.1.5">has</w>
@@ -3215,16 +3196,15 @@
  <w pos="NN" id="w69.3.27">action</w>
  <w pos="CC" id="w69.3.28">and</w>
  <w pos="TO" id="w69.3.29">to</w>
- <w pos="JJ" id="w69.3.30">co-</w>
- <w pos="NN" id="w69.3.31">operate</w>
- <w pos="MD" id="w69.3.32">will</w>
- <w pos="VB" id="w69.3.33">be</w>
- <w pos="VBN" id="w69.3.34">required</w>
- <w pos="IN" id="w69.3.35">in</w>
- <w pos="DT" id="w69.3.36">the</w>
- <w pos="NN" id="w69.3.37">future</w>
- <w pos="RB" id="w69.3.38">too</w>
- <w pos="." id="w69.3.39">.</w>
+ <w pos="NN" id="w69.3.30">co-operate</w>
+ <w pos="MD" id="w69.3.31">will</w>
+ <w pos="VB" id="w69.3.32">be</w>
+ <w pos="VBN" id="w69.3.33">required</w>
+ <w pos="IN" id="w69.3.34">in</w>
+ <w pos="DT" id="w69.3.35">the</w>
+ <w pos="NN" id="w69.3.36">future</w>
+ <w pos="RB" id="w69.3.37">too</w>
+ <w pos="." id="w69.3.38">.</w>
 </s></p>
 
 <p id="70">
@@ -3333,9 +3313,9 @@
  <w pos="PRP" id="w72.1.1">It</w>
  <w pos="VBZ" id="w72.1.2">is</w>
  <w pos="DT" id="w72.1.3">the</w>
- <w pos="NNP" id="w72.1.4">Government'</w>
- <w pos="NNP" id="w72.1.5">s</w>
- <w pos="NNP" id="w72.1.6">resposibility</w>
+ <w pos="NNP" id="w72.1.4">Government</w>
+ <w pos="POS" id="w72.1.5">'s</w>
+ <w pos="NN" id="w72.1.6">resposibility</w>
  <w pos="CC" id="w72.1.7">and</w>
  <w pos="NN" id="w72.1.8">aim</w>
  <w pos="TO" id="w72.1.9">to</w>
