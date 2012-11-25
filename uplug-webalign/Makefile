@@ -44,6 +44,10 @@
 #
 #############################################################################
 
+VERSION  = 0.01
+CONTENTS = $(shell ls) 
+
+
 PWD = $(shell pwd)
 
 # UPLUG = path to uplug start script
@@ -292,3 +296,15 @@ test:
 	echo $(LANGPAIR)
 	echo $(INVLANGPAIR)
 
+
+
+
+manifest: clean
+
+dist: clean
+	rm -f */Makefile.old
+	mkdir -p $(notdir $(shell pwd))-$(VERSION)
+	mv $(CONTENTS) $(notdir $(shell pwd))-$(VERSION)
+	tar -czf $(notdir $(shell pwd))-$(VERSION).tar.gz $(notdir $(shell pwd))-$(VERSION)
+	mv $(notdir $(shell pwd))-$(VERSION)/* .
+	rmdir $(notdir $(shell pwd))-$(VERSION)
