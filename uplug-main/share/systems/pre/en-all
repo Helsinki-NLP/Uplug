@@ -2,7 +2,7 @@
   'module' => {
     'name' => 'English pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/basic',
+        '$UplugSystem/pre/en/basic',
         '$UplugSystem/pre/en/tagHunPos',
         '$UplugSystem/pre/en/tagGrok',
         '$UplugSystem/pre/en/chunk',

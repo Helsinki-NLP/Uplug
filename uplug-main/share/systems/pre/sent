@@ -2,18 +2,12 @@
   'encoding' => 'iso-8859-1',
   'module' => {
     'name' => 'sentence splitter',
-    'program' => 'uplug-split',
+    'program' => 'uplug-sent',
     'location' => '$UplugBin',
     'stdin' => 'text',
     'stdout' => 'text',
   },
-  'description' => 'This is a simple sentence splitter which splits
-  paragraphs into sentences at positions which match simple regular
-  expressions. Basically, it adds sentence boundary tags after common
-  punctuation marks [.!?¿:] which are followed by at least one
-  white-space character and a capital letter or the end of the
-  string. Obviously, this will not work properly for all cases and all
-  languages.',
+  'description' => 'This is the Europarl sentence boundary detection tool adapted to Uplug.',
   'input' => {
     'text' => {
       'format' => 'xml',
@@ -23,36 +17,15 @@
     'text' => {
       'format' => 'xml',
       'write_mode' => 'overwrite',
-	'status' => 'sent',
-	'root' => 's'
+      'status' => 'sent',
+      'root' => 's'
     }
   },
   'parameter' => {
-    'segments' => {
+    'SentDetect' => {
        'tag' => 's',
        'add IDs' => 1,
-	'add parent id' => 1,
-    },
-    'split pattern' => {
-
-       # 10: full stop + maybe ["'] + 0 or more whitespaces + end-of-line
-       # 20: full stop + 
-       #     maybe ["'] + 
-       #     1 or more whitespaces + 
-       #     maybe ["'] +
-       #     (upper case letter|number|opening punctuation)
-
-       10 => '([\.\!\?\:][\"\']?)\s*(\Z)',
-       20 => '([\.\!\?\:][\"\']?)\s+([\"\']?[\¿\¡\p{Lu}\p{N}\p{Ps}])',
-#       30 => '(\A)\s*(\-\s+)',
-
-    },
-    'exceptions' => {
-#       't.ex.' => 'abbr',
-#	'el.' => 'abbr',
-    },
-    'word delimiter' => {
-       'exceptions' => '\b',
+       'add parent id' => 1,
     },
     'runtime' => {
        'verbose' => 0,
@@ -77,9 +50,9 @@
        'char' => 'output:text:encoding',
        'inchar' => 'input:text:encoding',
        'outchar' => 'output:text:encoding',
-       'span' => 'parameter:segments:add spans',
-       'id' => 'parameter:segments:add IDs',
-       'space' => 'parameter:segments:keep spaces',
+       'l' => 'parameter:SentDetect:language',
+       'id' => 'parameter:SentDetect:add IDs',
+       'space' => 'parameter:SentDetect:keep spaces',
        'ci' => 'input:text:encoding',
        'co' => 'output:text:encoding',
        'v' => 'parameter:runtime:verbose'

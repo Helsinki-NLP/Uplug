@@ -2,7 +2,8 @@
   'module' => {
     'name' => 'English pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/en/toktag',
+#        '$UplugSystem/pre/en/toktag',
+        '$UplugSystem/pre/tok -l en',
         '$UplugSystem/pre/en/tagHunPos',
         '$UplugSystem/pre/en/tagGrok',
         '$UplugSystem/pre/en/chunk',

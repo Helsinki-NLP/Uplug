@@ -2,9 +2,7 @@
   'module' => {
     'name' => 'English pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/markup',
-        '$UplugSystem/pre/sent',
-        '$UplugSystem/pre/tok',
+        '$UplugSystem/pre/sv/basic',
 #        '$UplugSystem/pre/sv/tagTnT',
 #        '$UplugSystem/pre/sv/parse',
         '$UplugSystem/pre/sv/tagHunPos',
@@ -12,10 +10,8 @@
     ],
     'submodule names' => [
         'basic XML markup',
-        'sentence splitter',
-        'English tokenizer',
-#        'English tagger (TnT)',
-#        'English chunker (Bea)',
+        'tagger (hunpos)',
+        'dependency parser (malt)',
     ],
     'stdin' => 'text',
     'stdout' => 'text',

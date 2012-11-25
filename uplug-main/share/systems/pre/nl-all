@@ -2,17 +2,11 @@
   'module' => {
     'name' => 'Spanish pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/markup',
-	'$UplugSystem/pre/sent',
-        '$UplugSystem/pre/nl/alptok',  # does nothing if Alpino is not present
-        '$UplugSystem/pre/nl/toktag',
-#        '$UplugSystem/pre/tok',
+        '$UplugSystem/pre/nl/basic',
 #        '$UplugSystem/pre/nl/tagMBT',
     ],
     'submodule names' => [
         'basic XML markup',
-	'sentence splitter',
-	'tokenizer',
         'Dutch tagger (MBT)',
     ],
     'stdin' => 'text',

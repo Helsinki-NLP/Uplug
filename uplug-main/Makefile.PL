@@ -1,10 +1,13 @@
 use inc::Module::Install;
 
 name          'Uplug';
+license       'gpl';
 all_from      'lib/Uplug.pm';
 
 install_script 'uplug';
 
+install_script 'bin/uplug-tok';
+install_script 'bin/uplug-sent';
 install_script 'bin/uplug-malt';
 install_script 'bin/uplug-parse-sv';
 install_script 'bin/uplug-coocstat';

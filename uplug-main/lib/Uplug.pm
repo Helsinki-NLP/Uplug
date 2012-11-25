@@ -29,11 +29,14 @@ use POSIX qw(tmpnam);
 use Uplug::Config;
 use File::Basename;
 
-use vars qw($VERSION $DEBUG);
+use FindBin qw($Bin);
+
+use vars qw($VERSION $AUTHOR $DEBUG);
 use vars qw(@TempFiles);
 
 
-$VERSION = 0.02;
+$VERSION = '0.03';
+$AUTHOR  = 'Joerg Tiedemann';
 $DEBUG = 0;
 
 #-----------------------------------------------------------------------
@@ -256,7 +259,8 @@ sub command{
     }
     my $bin=&GetParam($self->{CONFIG},'module','location');
     my $cmd=&GetParam($self->{CONFIG},'module','program');
-    if (-d $bin){$cmd=$bin.'/'.$cmd;}
+    if (-f $bin.'/'.$cmd){$cmd=$bin.'/'.$cmd;}
+    # if (-f $Bin.'/'.$cmd){$cmd=$Bin.'/'.$cmd;}
     $cmd.=' -i '.$self->{MODULE};
 
     if ($DEBUG){

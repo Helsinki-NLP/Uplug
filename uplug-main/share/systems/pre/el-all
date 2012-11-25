@@ -2,14 +2,10 @@
   'module' => {
     'name' => 'basic pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/markup',
-        '$UplugSystem/pre/el/sent',
-        '$UplugSystem/pre/tok',
+        '$UplugSystem/pre/el/basic',
     ],
     'submodule names' => [
         'basic XML markup',
-        'Greek sentence splitter',
-        'tokenizer',
     ],
     'stdin' => 'text',
     'stdout' => 'text',

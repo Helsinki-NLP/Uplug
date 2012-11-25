@@ -2,9 +2,9 @@
   'module' => {
     'name' => 'Spanish pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/es/toktag',
+#        '$UplugSystem/pre/es/toktag',
+        '$UplugSystem/pre/tok -l es',
         '$UplugSystem/pre/es/tagSvmTool',
-#        '$UplugSystem/pre/tok',
 #        '$UplugSystem/pre/es/tagMBT',
         '$UplugSystem/pre/es/malt',
     ],

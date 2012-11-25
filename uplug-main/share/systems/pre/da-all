@@ -2,7 +2,7 @@
   'module' => {
     'name' => 'Danish pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/basic',
+        '$UplugSystem/pre/da/basic',
         '$UplugSystem/pre/da/tagHunPos',
         '$UplugSystem/pre/da/malt',
     ],

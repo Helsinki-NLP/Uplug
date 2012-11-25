@@ -2,7 +2,7 @@
   'module' => {
     'name' => 'Italian pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/tok',
+        '$UplugSystem/pre/tok -l ca',
         '$UplugSystem/pre/ca/tagSvmTool',
         '$UplugSystem/pre/ca/malt',
     ],

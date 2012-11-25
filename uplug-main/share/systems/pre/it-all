@@ -2,14 +2,10 @@
   'module' => {
     'name' => 'Italian pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/markup',
-        '$UplugSystem/pre/sent',
-        '$UplugSystem/pre/it/toktag',
+        '$UplugSystem/pre/it/basic',
     ],
     'submodule names' => [
         'basic XML markup',
-        'sentence splitter',
-        'Italian tokenizer+tagger',
     ],
     'stdin' => 'text',
     'stdout' => 'text',

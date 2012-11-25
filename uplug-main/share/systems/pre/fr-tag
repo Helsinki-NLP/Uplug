@@ -2,7 +2,8 @@
   'module' => {
     'name' => 'French pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/fr/toktag',
+#        '$UplugSystem/pre/fr/toktag',
+        '$UplugSystem/pre/tok -l fr',
         '$UplugSystem/pre/fr/tagMElt',
         '$UplugSystem/pre/fr/malt',
     ],

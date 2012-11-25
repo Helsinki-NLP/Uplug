@@ -25,6 +25,8 @@
        'src' => 'input:source text:file',
        'trg' => 'input:target text:file',
        'out' => 'output:bitext:file',
+       'p' => 'parameter:paragraph boundary',
+       'dic' => 'parameter:dictionary',
     }
   },
   'module' => {

@@ -2,7 +2,7 @@
   'module' => {
     'name' => 'French pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/basic',
+        '$UplugSystem/pre/fr/basic',
         '$UplugSystem/pre/fr/tagMElt',
         '$UplugSystem/pre/fr/malt',
     ],
