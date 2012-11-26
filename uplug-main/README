@@ -9,6 +9,7 @@ bin/		  executable scripts (Uplug modules)
 share/systems/	  configuration files of Uplug modules
 share/ext/	  external programs/tools integrated in Uplug
 tools/		  simple tools (converting, dumping, etc)
+web/		  experimental web interface (not maintained)
 
 share/ini/	  some configuration files
 share/lang/	  language specific data
@@ -23,5 +24,4 @@ The old pages at SourceForge:	http://sourceforge.net/projects/uplug/
 		       		http://uplug.sourceforge.net/
 
 Installing/using Uplug: 	read INSTALL, QUICKSTART & HOWTO
-Using CWB from IMS Stuttgart:   read HOWTO
 

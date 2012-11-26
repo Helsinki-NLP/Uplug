@@ -21,7 +21,7 @@ Uplug - Quickstart
      cp /cvs/uplug/example/1988en.txt .
    
 
-3a) Basic pre-processing (text --> xml)
+4a) Basic pre-processing (text --> xml)
    (a text in Swedish and English, encoded in ISO-8859-1 (latin1))
 
    /cvs/uplug pre/basic -ci 'iso-8859-1' -in 1988sv.txt > 1988sv.xml
@@ -31,7 +31,7 @@ Uplug - Quickstart
    tokenised and marked with basic XML-tags)
 
 
-3b) Sentence alignment
+4b) Sentence alignment
 
    source language file: 1988sv.xml
    target language file: 1988en.xml
@@ -47,7 +47,7 @@ Uplug - Quickstart
    Uplug (hunalign, GMA). Look at the HOWTO file for details!
 
 
-3c) Word alignment (default)
+5a) Word alignment (default)
 
    /cvs/uplug align/word/default -in 1988sven.xml -out 1988sven.links
 
@@ -68,19 +68,44 @@ Uplug - Quickstart
    /cvs/tools/xces2dic < 1988sven.links | less
 
 
-3d) Word alignment (tagged)
+5b) Word alignment (tagged)
 
    Use the following command for aligning tagged corpora (at least POS tags):
 
    cp /cvs/uplug/example/svenprf* .
    /cvs/uplug align/word/tagged -in svenprf.xces -out svenprf.links
 
-   This is essentially the same as the default word alignment with addiyional
+   This is essentially the same as the default word alignment with additional
    clues for POS and chunk labels.
 
 
+5c) Word alignment in Moses output format (using default)
 
-3e) Tagging (using external taggers)
+    Use the following command if you like to get the word alignments
+    in Moses format (links between word positions like in Moses after
+    word alignment symmetrization)
+
+   /cvs/uplug align/word/default -in 1988sven.xml -out 1988sven.links -of moses
+
+   The Parameter '-of' is used to set the output format. The same
+   parameter is available for other word alignment settings like
+   'basic' and 'advanced'
+
+   Note that you can easily convert your parallel corpus into Moses
+   format as well. There are actually three options:
+
+   cvs/uplug/tools/xces2text 1988sven.xml output.sv output.en
+   cvs/uplug/tools/xces2moses -s sv -t en 1988sven.xml output
+   cvs/uplug/tools/opus2moses.pl -d . -e output.sv -f output.en < 1988sven.xml
+
+   The three tools use different ways of extracting the text from the
+   aligned XML files. Look at the code and the usage information about
+   how they differ. The first option os probably the safest one as
+   this uses the same Uplug modules for extracting the text as they
+   are used for word alignemnt.
+
+
+6a) Tagging (using external taggers)
 
     There are several taggers that can be called from the Uplug
     scripts. The following command can be used to tag the English
@@ -89,7 +114,7 @@ Uplug - Quickstart
     /cvs/uplug pre/en/tagGrok -in 1988en.xml > 1988en.tag
 
 
-3f) Chunking (using external chunkers)
+6b) Chunking (using external chunkers)
 
     There is a chunker for English that can be run on POS-tagged
     corpus files:
@@ -97,7 +122,7 @@ Uplug - Quickstart
     /cvs/uplug pre/en/chunk -in 1988en.tag > 1988en.chunk
 
 
-3g) Word alignment evaluation
+7a) Word alignment evaluation
 
     Word alignment can be evaluated using a gold standard (reference
     links stored in another file using the same format as for the
@@ -111,7 +136,7 @@ Uplug - Quickstart
     with links proposed by the system.
 
 
-3h) Word alignment (using existing clues)
+7b) Word alignment (using existing clues)
 
     3c) and 3f) explained how to run the aligner with all its
     sub-processes. However, existing clues do not have to be computed
@@ -157,7 +182,7 @@ Uplug - Quickstart
 
 
 
-3i) Word alignment (basic)
+7c) Word alignment (basic)
 
    There is another standard setting for word alignment:
 
@@ -175,7 +200,7 @@ Uplug - Quickstart
 
 
 
-3j) Word alignment (advanced)
+7d) Word alignment (advanced)
 
     This settings is similar to the tagged word alignmen settings (3i) but the
     last two steps will be repeated 3 times (learning clues from precious

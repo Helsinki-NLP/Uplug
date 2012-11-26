@@ -1,10 +1,10 @@
 
+- documentation! (POD etc)
 - opennlp package with pre-trained models (tokenization, sentence splitting, ...)
-- word alignment output in Moses format
 - separate package for uplug/opus-tools
-- separate package for subalign
-- package for cwb-related tools?
 - cleanup config files!
+- code optimization
+
 
 Annotation:
 

@@ -336,6 +336,17 @@ while ($align->read($alignIndex)){
 	print STDERR "\n===================================================\n";
     }
 
+    my @LinkedWords = ();
+    my %SrcId2Pos = ();
+    my %TrgId2Pos = ();
+    if ($OutputStream->{format}=~/moses/i){
+	my @SrcIDs = $data->getSrcTokens({'use attribute' => 'id'});
+	my @TrgIDs =$data->getTrgTokens({'use attribute' => 'id'});
+	foreach (0..$#SrcIDs){ $SrcId2Pos{$SrcIDs[$_]}=$_; }
+	foreach (0..$#TrgIDs){ $TrgId2Pos{$TrgIDs[$_]}=$_; }
+	next unless (@SrcIDs and @TrgIDs);
+    }
+
     foreach my $s (keys %Links){
 
 #	if ($Links{$s}{score}<$MinScore){next;}
@@ -344,7 +355,17 @@ while ($align->read($alignIndex)){
 	if ($verboseAlign){
 	    $align->printBitextLink($id,$Links{$s});
 	}
-	if ($PWASTYLE){
+
+	if ($OutputStream->{format}=~/moses/i){
+	    my @SrcLinked=split(/\:/,$Links{$s}{source});
+	    my @TrgLinked=split(/\:/,$Links{$s}{target});
+	    foreach my $s (@SrcLinked){
+		foreach my $t (@TrgLinked){
+		    push(@LinkedWords,$SrcId2Pos{$s}.'-'.$TrgId2Pos{$t});
+		}
+	    }
+	}
+	elsif ($PWASTYLE){
 	    my $data=Uplug::Data::Align->new;
 	    my ($src,$trg)=split(/;/,$Links{$s}{link});
 	    $data->setAttribute('source_id',$Links{$s}{source});
@@ -378,7 +399,10 @@ while ($align->read($alignIndex)){
 	}
 
     }
-    if (($OutputStream->{format}=~/(koma|align|xces|xml)/i) or
+    if ($OutputStream->{format}=~/moses/i){
+	$output->write(\@LinkedWords);
+    }
+    elsif (($OutputStream->{format}=~/(koma|align|xces|xml)/i) or
 	   ($OutputStream->{style}=~/(liu|koma|xces|xml)/i)){
 	my $OutData=$data->{link};
 	$output->write($OutData);

@@ -1,8 +1,0 @@
-TODO-list
-
-* documentation
-* optimize for larger corpora
-* word alignment output in Moses format
-* integration with Lingua::Align, LetsMT tools, other tools
-* more languages
-

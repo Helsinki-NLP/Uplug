@@ -1,0 +1,22 @@
+
+Tools for indexing annotated parallel corpora with the Corpus Work Bench (cwb)
+-------------------------------------------------------------------------------
+
+scripts		various scripts for converting and indexing parallel corpora
+cgi-bin		webinterface
+
+
+
+How to use CWB from IMS Stuttgart with Uplug
+============================================
+
+
+- download CWB from
+  ftp://ftp.ims.uni-stuttgart.de/pub/outgoing/cwb-beta/index.html
+- install it on your machine (make sure that the cwb scripts are in the global
+  path to be found by other scripts and programs)
+- use bitext-indexer.pl and corpus-indexer.pl from scripts/
+  (there is information abut usage of these scripts in the header)
+- a web interface for searching CWB databases is in 
+  cgi-bin/opuscqp.pl
+

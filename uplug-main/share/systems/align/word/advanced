@@ -61,6 +61,7 @@
        'iter' => 'module:iterations',
        'in' => 'input:bitext:file',
        'out' => 'output:bitext links:file',
+       'of' =>  'output:bitext links:format',
     }
   },
   'widgets' => {

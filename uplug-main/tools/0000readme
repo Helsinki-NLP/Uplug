@@ -1,29 +1,50 @@
 
+Scripts and tools for various tasks (some are outdated)
+-------------------------------------------------------
+
+* Reading and converting (parallel) corpus files
+
+readalign		read sentence alignments from XCES files
+opus2moses.pl		converts OPUS/Uplug corpora into Moses format (including factors!)
+tab2tmx			simplistic conversion of TAB-separated parallel corpora to TMX
+xces2moses		simplistic converter from XCES format to Moses format
+xces2tab		convert parallel corpora in XCES format to TAB format
+xces2text		convert parallel corpora in XCES format to text format (KOMA?)
+xces2moses		simplistic converter from XCES format to TMX
+
+
+* Related to the Uplug clue aligner (word alignment)
 
 declclue		convert text-files to clue-DBMs
 dumpdbm			dump content of DBM-files
-etap2gold		convert gold-standard-files from the ETAP project
-etap2koma		convert ETAP-corpora to XCES
-etap2unicode		convert ETAP character encoding to Unicode
+dump2dbm		convert DBM-dump back to a DBM
 giza2clue		convert lexical prob's from GIZA++ to clue DBMs
 giza2links		convert GIZA++ Viterbi alignments to token links
 giza2uplug		convert GIZA++ Viterbi alignments to Uplug XML
 giza_inv2clue		same as giza2clue for GIZA++ in inverse align direction
 giza_inv2uplug		same as giza2uplug for GIZA++ in inverse align direction
-gold2koma		convert UWA gold standards to Uplug XCES
 invlinks		swap alignment direction (in XCES align files)
-koma2dic		get type links from XCES align files (sorted by freq)
-koma2text		convert XCES align files to plain text files
-koma2xces		convert Liu XML to XCES XML (sentence align files)
-optimize		run evolutionary optimization (requires remote)
-plug2koma		convert PLUG XML to XCES align files (still working?)
-readalign		read sentence alignments from XCES files
-run-optimize-settings	run settings from an optimize-logfile on other corpora
-summarize-eval		summarize word alignmet evaluation-files 
+myrecode		a perlish character encoding conversion (handles malformed data?)
+readdump		read a DB dump file and create a DBM file
+searchkey		search a specific key in a DBM file
 swap-lang		swap languages in clue-DBMs
-uwa2koma		convert UWA-token-link files to XCES align files
-xces2dic		get type links from XCES align files (UWA-style)
-xces2koma		convert XCES align files to Liu XML
-xces2link		convert token links from XML to plain text
-xces2text		convert XCES bitext files to plain text
 
+
+* Process Uplug word alignment files
+
+xces2dic		extract all word alignments from Uplug format and sort
+xces2link		extract all word alignments from Uplug format
+xces2poslink		extract features from aligned words (default=pos)
+
+
+* Other scripts
+
+phrase2dice		compute dice scores out of Moses phrase tables
+
+
+* Project-related scripts (not maintained anymore)
+
+ETAP		http://stp.ling.uu.se/etap/
+KOMA		http://www.ida.liu.se/~nlplab/koma/
+SCANIA
+align		experiments with parameter optimization

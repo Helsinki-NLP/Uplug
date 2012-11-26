@@ -47,6 +47,8 @@ use Uplug::IO::DBM;
 use Uplug::IO::XCESalign;
 use Uplug::IO::LWA;
 use Uplug::IO::Storable;
+use Uplug::IO::MosesWordAlign;
+
 
 $VERSION='0.1';
 @ISA = qw( Uplug::IO );
@@ -74,8 +76,8 @@ sub new{
     ## create data stream object according to format settings
 
     if ($format=~/^text$/i){return Uplug::IO::Text->new();}
+    elsif ($format=~/^moses/i){return Uplug::IO::MosesWordAlign->new();}
     elsif ($format=~/^koma(\s|\Z)/i){return Uplug::IO::LiuAlign->new();}
-#    elsif ($format=~/^align(\s|\Z)/i){return Uplug::IO::LiuAlign->new();}
     elsif ($format=~/^align(\s|\Z)/i){return Uplug::IO::XCESalign->new();}
     elsif ($format=~/^liu\s*xml$/i){return Uplug::IO::LiuAlign->new();}
     elsif ($format=~/^xces(\s|\Z)/i){return Uplug::IO::XCESalign->new();}

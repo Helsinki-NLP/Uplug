@@ -1,4 +1,21 @@
 
+* v0.3 - Mon Nov 26 11:57:26 CET 2012
+
+- re-arranging modules, scripts, config-files
+- include installation routines
+- divide Uplug in several packages (language packs etc)
+- integrate MaltParser and pre-trained models
+- new pre-compiled binaries (also for Mac OSX)
+- improved pre-processing pipelines for several languages
+- pre-trained hunpos models
+- integration of Europarl/Moses sentence splitter/tokenizer
+- (some) unit tests
+- moved to git and bitbucket
+- added Moses-style word alignment format for clue alignment output
+
+
+* unversioned
+
 - toktag.pl: better handling of already tokenized documents
 - added wrapper for alpino (dutch) tokenizer)
 - tools/subtitles/srt2xml: handling of formating tags (<i> etc) is fixed!

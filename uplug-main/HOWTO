@@ -150,17 +150,3 @@ sort of sliding window. Hard boundaries will be added after sentence pairs
 containing cognates/dictionary entries identified by the filters.
 
 
-
-How to use CWB from IMS Stuttgart with Uplug
-============================================
-
-
-- download CWB from
-  ftp://ftp.ims.uni-stuttgart.de/pub/outgoing/cwb-beta/index.html
-- install it on your machine (make sure that the cwb scripts are in the global
-  path to be found by other scripts and programs)
-- use bitext-indexer.pl and corpus-indexer.pl from uplug/tools/
-  (there is information abut usage of these scripts in the header)
-- a web interface for searching CWB databases is in 
-  uplug/web/cgi-bin/opuscqp.pl
-

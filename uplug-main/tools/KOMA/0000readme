@@ -1,4 +1,3 @@
-$Id$
 
 KOMA/		scripts from the KOMA project 
 		(http://www.ida.liu.se/~nlplab/koma/)
@@ -11,4 +10,3 @@ plug2koma		convert PLUG XML to XCES align files (still working?)
 uwa2koma		convert UWA-token-link files to XCES align files
 xces2koma		convert XCES align files to Liu XML
 xces2uwadic             get type links from XCES align files (UWA-style)
-

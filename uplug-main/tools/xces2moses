@@ -1,4 +1,5 @@
 #!/usr/bin/perl
+#-*-perl-*-
 #
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
@@ -125,26 +126,24 @@ while (<F>){
 	my $trgtxt='';
 
 	local $/='</s>';
-	foreach (@srcsent){
+	foreach my $id (@srcsent){
 	    while (my $sent=<SRC>){
 		$srceof=0;
-		if ($sent=~/s [^\>]*id="$_"/s){
+		if ($sent=~/s [^\>]*id="$id"/s){
 		    &xml2txt($sent);
-		    $srctxt=$sent.' ';
-#		    print S $sent,' ';
+		    $srctxt.=$sent;
 		    last;
 		}
 		$srceof=1;
 	    }
 	}
 
-	foreach (@trgsent){
+	foreach my $id (@trgsent){
 	    while (my $sent=<TRG>){
 		$trgeof=0;
-		if ($sent=~/s [^\>]*id="$_"/s){
+		if ($sent=~/s [^\>]*id="$id"/s){
 		    &xml2txt($sent);
-		    $trgtxt=$sent.' ';
-#		    print T $sent,' ';
+		    $trgtxt.=$sent;
 		    last;
 		}
 		$trgeof=1;
@@ -203,6 +202,6 @@ sub xml2txt{
     $_[0]=~s/\&amp;/&/gs;
     $_[0]=~s/\&quot;/"/gs;
     $_[0]=~s/\&apos;/'/gs;
-
+    $_[0]=~s/^\s+//;
 }
 
