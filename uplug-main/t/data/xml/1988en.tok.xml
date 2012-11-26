@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<text>
-<p id="1">
+<text><p id="1">
 <s id="s1.1">
  <w id="w1.1.1">Statement</w> 
  <w id="w1.1.2">of</w> 
@@ -30,9 +29,7 @@
  <w id="w1.1.26">,</w> 
  <w id="w1.1.27">1988</w>
  <w id="w1.1.28">.</w>
-</s></p>
-
-<p id="2">
+</s></p><p id="2">
 <s id="s2.1">
  <w id="w2.1.1">Your</w> 
  <w id="w2.1.2">Majesties</w>
@@ -50,12 +47,10 @@
  <w id="w2.1.14">Swedish</w> 
  <w id="w2.1.15">Parliament</w>
  <w id="w2.1.16">.</w>
-</s></p>
-
-<p id="3">
+</s></p><p id="3">
 <s id="s3.1">
- <w id="w3.1.1">Sweden'</w>
- <w id="w3.1.2">s</w> 
+ <w id="w3.1.1">Sweden</w>
+ <w id="w3.1.2">'s</w> 
  <w id="w3.1.3">policy</w> 
  <w id="w3.1.4">of</w> 
  <w id="w3.1.5">neutrality</w> 
@@ -110,9 +105,7 @@
  <w id="w3.4.7">and</w> 
  <w id="w3.4.8">consistency</w>
  <w id="w3.4.9">.</w>
-</s></p>
-
-<p id="4">
+</s></p><p id="4">
 <s id="s4.1">
  <w id="w4.1.1">Our</w> 
  <w id="w4.1.2">policy</w> 
@@ -168,8 +161,8 @@
  <w id="w4.5.1">It</w> 
  <w id="w4.5.2">is</w> 
  <w id="w4.5.3">the</w> 
- <w id="w4.5.4">Government'</w>
- <w id="w4.5.5">s</w> 
+ <w id="w4.5.4">Government</w>
+ <w id="w4.5.5">'s</w> 
  <w id="w4.5.6">intention</w> 
  <w id="w4.5.7">to</w> 
  <w id="w4.5.8">seek</w> 
@@ -186,9 +179,7 @@
  <w id="w4.5.19">national</w> 
  <w id="w4.5.20">security</w>
  <w id="w4.5.21">.</w>
-</s></p>
-
-<p id="5">
+</s></p><p id="5">
 <s id="s5.1">
  <w id="w5.1.1">The</w> 
  <w id="w5.1.2">Government</w> 
@@ -207,13 +198,11 @@
  <w id="w5.1.15">the</w> 
  <w id="w5.1.16">elimination</w> 
  <w id="w5.1.17">of</w> 
- <w id="w5.1.18">land-</w>
- <w id="w5.1.19">based</w> 
- <w id="w5.1.20">intermediate-</w>
- <w id="w5.1.21">range</w> 
- <w id="w5.1.22">nuclear</w> 
- <w id="w5.1.23">weapons</w>
- <w id="w5.1.24">.</w>
+ <w id="w5.1.18">land-based</w> 
+ <w id="w5.1.19">intermediate-range</w> 
+ <w id="w5.1.20">nuclear</w> 
+ <w id="w5.1.21">weapons</w>
+ <w id="w5.1.22">.</w>
 </s> 
  
 <s id="s5.2">
@@ -260,9 +249,7 @@
  <w id="w5.3.16">Nation</w> 
  <w id="w5.3.17">Initiative</w>
  <w id="w5.3.18">.</w>
-</s></p>
-
-<p id="6">
+</s></p><p id="6">
 <s id="s6.1">
  <w id="w6.1.1">The</w> 
  <w id="w6.1.2">Government</w> 
@@ -275,30 +262,26 @@
  <w id="w6.1.9">behalf</w> 
  <w id="w6.1.10">of</w> 
  <w id="w6.1.11">a</w> 
- <w id="w6.1.12">nuclear-</w>
- <w id="w6.1.13">weapon-</w>
- <w id="w6.1.14">free</w> 
- <w id="w6.1.15">zone</w> 
- <w id="w6.1.16">in</w> 
- <w id="w6.1.17">the</w> 
- <w id="w6.1.18">Nordic</w> 
- <w id="w6.1.19">area</w> 
- <w id="w6.1.20">and</w> 
- <w id="w6.1.21">of</w> 
- <w id="w6.1.22">a</w> 
- <w id="w6.1.23">corridor</w> 
- <w id="w6.1.24">in</w> 
- <w id="w6.1.25">Central</w> 
- <w id="w6.1.26">Europe</w> 
- <w id="w6.1.27">free</w> 
- <w id="w6.1.28">of</w> 
- <w id="w6.1.29">battlefield</w> 
- <w id="w6.1.30">nuclear</w> 
- <w id="w6.1.31">weapons</w>
- <w id="w6.1.32">.</w>
-</s></p>
-
-<p id="7">
+ <w id="w6.1.12">nuclear-weapon-free</w> 
+ <w id="w6.1.13">zone</w> 
+ <w id="w6.1.14">in</w> 
+ <w id="w6.1.15">the</w> 
+ <w id="w6.1.16">Nordic</w> 
+ <w id="w6.1.17">area</w> 
+ <w id="w6.1.18">and</w> 
+ <w id="w6.1.19">of</w> 
+ <w id="w6.1.20">a</w> 
+ <w id="w6.1.21">corridor</w> 
+ <w id="w6.1.22">in</w> 
+ <w id="w6.1.23">Central</w> 
+ <w id="w6.1.24">Europe</w> 
+ <w id="w6.1.25">free</w> 
+ <w id="w6.1.26">of</w> 
+ <w id="w6.1.27">battlefield</w> 
+ <w id="w6.1.28">nuclear</w> 
+ <w id="w6.1.29">weapons</w>
+ <w id="w6.1.30">.</w>
+</s></p><p id="7">
 <s id="s7.1">
  <w id="w7.1.1">By</w> 
  <w id="w7.1.2">supporting</w> 
@@ -350,9 +333,7 @@
  <w id="w7.2.15">the</w> 
  <w id="w7.2.16">environment</w>
  <w id="w7.2.17">.</w>
-</s></p>
-
-<p id="8">
+</s></p><p id="8">
 <s id="s8.1">
  <w id="w8.1.1">The</w> 
  <w id="w8.1.2">Government</w> 
@@ -375,9 +356,7 @@
  <w id="w8.1.19">and</w> 
  <w id="w8.1.20">development</w>
  <w id="w8.1.21">.</w>
-</s></p>
-
-<p id="9">
+</s></p><p id="9">
 <s id="s9.1">
  <w id="w9.1.1">In</w> 
  <w id="w9.1.2">Central</w> 
@@ -427,9 +406,7 @@
  <w id="w9.3.10">from</w> 
  <w id="w9.3.11">Afghanistan</w>
  <w id="w9.3.12">.</w>
-</s></p>
-
-<p id="10">
+</s></p><p id="10">
 <s id="s10.1">
  <w id="w10.1.1">In</w> 
  <w id="w10.1.2">the</w> 
@@ -471,12 +448,11 @@
  <w id="w10.2.17">Afghanistan</w> 
  <w id="w10.2.18">and</w> 
  <w id="w10.2.19">in</w> 
- <w id="w10.2.20">Iran/</w>
- <w id="w10.2.21">Iraq</w>
- <w id="w10.2.22">.</w>
-</s></p>
-
-<p id="11">
+ <w id="w10.2.20">Iran</w>
+ <w id="w10.2.21">/</w>
+ <w id="w10.2.22">Iraq</w>
+ <w id="w10.2.23">.</w>
+</s></p><p id="11">
 <s id="s11.1">
  <w id="w11.1.1">We</w> 
  <w id="w11.1.2">were</w> 
@@ -497,10 +473,9 @@
  <w id="w11.1.17">the</w> 
  <w id="w11.1.18">United</w> 
  <w id="w11.1.19">Nations</w> 
- <w id="w11.1.20">peace-</w>
- <w id="w11.1.21">keeping</w> 
- <w id="w11.1.22">forces</w>
- <w id="w11.1.23">.</w>
+ <w id="w11.1.20">peace-keeping</w> 
+ <w id="w11.1.21">forces</w>
+ <w id="w11.1.22">.</w>
 </s> 
  
 <s id="s11.2">
@@ -530,38 +505,35 @@
  <w id="w11.3.7">Sweden</w> 
  <w id="w11.3.8">that</w> 
  <w id="w11.3.9">the</w> 
- <w id="w11.3.10">Secretary-</w>
- <w id="w11.3.11">General</w>
- <w id="w11.3.12">,</w> 
- <w id="w11.3.13">in</w> 
- <w id="w11.3.14">consultation</w> 
- <w id="w11.3.15">with</w> 
- <w id="w11.3.16">the</w> 
- <w id="w11.3.17">parties</w>
- <w id="w11.3.18">,</w> 
- <w id="w11.3.19">has</w> 
- <w id="w11.3.20">appointed</w> 
- <w id="w11.3.21">our</w> 
- <w id="w11.3.22">United</w> 
- <w id="w11.3.23">Nations</w> 
- <w id="w11.3.24">Ambassador</w> 
- <w id="w11.3.25">to</w> 
- <w id="w11.3.26">be</w> 
- <w id="w11.3.27">his</w> 
- <w id="w11.3.28">personal</w> 
- <w id="w11.3.29">representative</w> 
- <w id="w11.3.30">at</w> 
- <w id="w11.3.31">the</w> 
- <w id="w11.3.32">peace</w> 
- <w id="w11.3.33">negotiations</w> 
- <w id="w11.3.34">between</w> 
- <w id="w11.3.35">Iran</w> 
- <w id="w11.3.36">and</w> 
- <w id="w11.3.37">Iraq</w>
- <w id="w11.3.38">.</w>
-</s></p>
-
-<p id="12">
+ <w id="w11.3.10">Secretary-General</w>
+ <w id="w11.3.11">,</w> 
+ <w id="w11.3.12">in</w> 
+ <w id="w11.3.13">consultation</w> 
+ <w id="w11.3.14">with</w> 
+ <w id="w11.3.15">the</w> 
+ <w id="w11.3.16">parties</w>
+ <w id="w11.3.17">,</w> 
+ <w id="w11.3.18">has</w> 
+ <w id="w11.3.19">appointed</w> 
+ <w id="w11.3.20">our</w> 
+ <w id="w11.3.21">United</w> 
+ <w id="w11.3.22">Nations</w> 
+ <w id="w11.3.23">Ambassador</w> 
+ <w id="w11.3.24">to</w> 
+ <w id="w11.3.25">be</w> 
+ <w id="w11.3.26">his</w> 
+ <w id="w11.3.27">personal</w> 
+ <w id="w11.3.28">representative</w> 
+ <w id="w11.3.29">at</w> 
+ <w id="w11.3.30">the</w> 
+ <w id="w11.3.31">peace</w> 
+ <w id="w11.3.32">negotiations</w> 
+ <w id="w11.3.33">between</w> 
+ <w id="w11.3.34">Iran</w> 
+ <w id="w11.3.35">and</w> 
+ <w id="w11.3.36">Iraq</w>
+ <w id="w11.3.37">.</w>
+</s></p><p id="12">
 <s id="s12.1">
  <w id="w12.1.1">The</w> 
  <w id="w12.1.2">degrading</w> 
@@ -601,9 +573,7 @@
  <w id="w12.2.22">this</w> 
  <w id="w12.2.23">end</w>
  <w id="w12.2.24">.</w>
-</s></p>
-
-<p id="13">
+</s></p><p id="13">
 <s id="s13.1">
  <w id="w13.1.1">The</w> 
  <w id="w13.1.2">conflict</w> 
@@ -642,9 +612,7 @@
  <w id="w13.2.18">United</w> 
  <w id="w13.2.19">Nations</w>
  <w id="w13.2.20">.</w>
-</s></p>
-
-<p id="14">
+</s></p><p id="14">
 <s id="s14.1">
  <w id="w14.1.1">Sweden</w> 
  <w id="w14.1.2">is</w> 
@@ -677,9 +645,7 @@
  <w id="w14.2.12">free</w> 
  <w id="w14.2.13">trade</w>
  <w id="w14.2.14">.</w>
-</s></p>
-
-<p id="15">
+</s></p><p id="15">
 <s id="s15.1">
  <w id="w15.1.1">Within</w> 
  <w id="w15.1.2">the</w> 
@@ -699,37 +665,35 @@
  <w id="w15.1.16">Government</w> 
  <w id="w15.1.17">will</w> 
  <w id="w15.1.18">intensify</w> 
- <w id="w15.1.19">co-</w>
- <w id="w15.1.20">operation</w> 
- <w id="w15.1.21">wit</w> 
- <w id="w15.1.22">the</w> 
- <w id="w15.1.23">EC</w> 
- <w id="w15.1.24">in</w> 
- <w id="w15.1.25">all</w> 
- <w id="w15.1.26">fields</w> 
- <w id="w15.1.27">to</w> 
- <w id="w15.1.28">the</w> 
- <w id="w15.1.29">extent</w> 
- <w id="w15.1.30">it</w> 
- <w id="w15.1.31">is</w> 
- <w id="w15.1.32">compatible</w> 
- <w id="w15.1.33">with</w> 
- <w id="w15.1.34">our</w> 
- <w id="w15.1.35">policy</w> 
- <w id="w15.1.36">of</w> 
- <w id="w15.1.37">neutrality</w>
- <w id="w15.1.38">.</w>
+ <w id="w15.1.19">co-operation</w> 
+ <w id="w15.1.20">wit</w> 
+ <w id="w15.1.21">the</w> 
+ <w id="w15.1.22">EC</w> 
+ <w id="w15.1.23">in</w> 
+ <w id="w15.1.24">all</w> 
+ <w id="w15.1.25">fields</w> 
+ <w id="w15.1.26">to</w> 
+ <w id="w15.1.27">the</w> 
+ <w id="w15.1.28">extent</w> 
+ <w id="w15.1.29">it</w> 
+ <w id="w15.1.30">is</w> 
+ <w id="w15.1.31">compatible</w> 
+ <w id="w15.1.32">with</w> 
+ <w id="w15.1.33">our</w> 
+ <w id="w15.1.34">policy</w> 
+ <w id="w15.1.35">of</w> 
+ <w id="w15.1.36">neutrality</w>
+ <w id="w15.1.37">.</w>
 </s> 
  
 <s id="s15.2">
  <w id="w15.2.1">Nordic</w> 
- <w id="w15.2.2">co-</w>
- <w id="w15.2.3">operation</w> 
- <w id="w15.2.4">will</w> 
- <w id="w15.2.5">also</w> 
- <w id="w15.2.6">be</w> 
- <w id="w15.2.7">developed</w>
- <w id="w15.2.8">.</w>
+ <w id="w15.2.2">co-operation</w> 
+ <w id="w15.2.3">will</w> 
+ <w id="w15.2.4">also</w> 
+ <w id="w15.2.5">be</w> 
+ <w id="w15.2.6">developed</w>
+ <w id="w15.2.7">.</w>
 </s> 
  
 <s id="s15.3">
@@ -776,9 +740,7 @@
  <w id="w15.4.13">be</w> 
  <w id="w15.4.14">extended</w>
  <w id="w15.4.15">.</w>
-</s></p>
-
-<p id="16">
+</s></p><p id="16">
 <s id="s16.1">
  <w id="w16.1.1">The</w> 
  <w id="w16.1.2">Government</w> 
@@ -795,9 +757,7 @@
  <w id="w16.1.13">several</w> 
  <w id="w16.1.14">ways</w>
  <w id="w16.1.15">.</w>
-</s></p>
-
-<p id="17">
+</s></p><p id="17">
 <s id="s17.1">
  <w id="w17.1.1">The</w> 
  <w id="w17.1.2">possibilities</w> 
@@ -817,9 +777,7 @@
  <w id="w17.1.16">be</w> 
  <w id="w17.1.17">improved</w>
  <w id="w17.1.18">.</w>
-</s></p>
-
-<p id="18">
+</s></p><p id="18">
 <s id="s18.1">
  <w id="w18.1.1">The</w> 
  <w id="w18.1.2">Government</w> 
@@ -837,9 +795,7 @@
  <w id="w18.1.14">more</w> 
  <w id="w18.1.15">effective</w>
  <w id="w18.1.16">.</w>
-</s></p>
-
-<p id="19">
+</s></p><p id="19">
 <s id="s19.1">
  <w id="w19.1.1">A</w> 
  <w id="w19.1.2">proposal</w> 
@@ -864,9 +820,7 @@
  <w id="w19.1.21">to</w> 
  <w id="w19.1.22">Parliament</w>
  <w id="w19.1.23">.</w>
-</s></p>
-
-<p id="20">
+</s></p><p id="20">
 <s id="s20.1">
  <w id="w20.1.1">Crime</w> 
  <w id="w20.1.2">prevention</w> 
@@ -895,9 +849,7 @@
  <w id="w20.2.10">given</w> 
  <w id="w20.2.11">priority</w>
  <w id="w20.2.12">.</w>
-</s></p>
-
-<p id="21">
+</s></p><p id="21">
 <s id="s21.1">
  <w id="w21.1.1">The</w> 
  <w id="w21.1.2">treatment</w> 
@@ -928,18 +880,15 @@
  <w id="w21.2.7">in</w> 
  <w id="w21.2.8">prison</w> 
  <w id="w21.2.9">and</w> 
- <w id="w21.2.10">non-</w>
- <w id="w21.2.11">institutional</w> 
- <w id="w21.2.12">care</w> 
- <w id="w21.2.13">must</w> 
- <w id="w21.2.14">facilitate</w> 
- <w id="w21.2.15">rehabilitation</w> 
- <w id="w21.2.16">after</w> 
- <w id="w21.2.17">discharge</w>
- <w id="w21.2.18">.</w>
-</s></p>
-
-<p id="22">
+ <w id="w21.2.10">non-institutional</w> 
+ <w id="w21.2.11">care</w> 
+ <w id="w21.2.12">must</w> 
+ <w id="w21.2.13">facilitate</w> 
+ <w id="w21.2.14">rehabilitation</w> 
+ <w id="w21.2.15">after</w> 
+ <w id="w21.2.16">discharge</w>
+ <w id="w21.2.17">.</w>
+</s></p><p id="22">
 <s id="s22.1">
  <w id="w22.1.1">The</w> 
  <w id="w22.1.2">goal</w> 
@@ -958,9 +907,7 @@
  <w id="w22.1.15">whole</w> 
  <w id="w22.1.16">nation</w>
  <w id="w22.1.17">.</w>
-</s></p>
-
-<p id="23">
+</s></p><p id="23">
 <s id="s23.1">
  <w id="w23.1.1">The</w> 
  <w id="w23.1.2">rate</w> 
@@ -1021,9 +968,7 @@
  <w id="w23.3.24">public</w> 
  <w id="w23.3.25">sector</w>
  <w id="w23.3.26">.</w>
-</s></p>
-
-<p id="24">
+</s></p><p id="24">
 <s id="s24.1">
  <w id="w24.1.1">A</w> 
  <w id="w24.1.2">shortage</w> 
@@ -1060,8 +1005,8 @@
  <w id="w24.2.14">better</w> 
  <w id="w24.2.15">use</w> 
  <w id="w24.2.16">of</w> 
- <w id="w24.2.17">people'</w>
- <w id="w24.2.18">s</w> 
+ <w id="w24.2.17">people</w>
+ <w id="w24.2.18">'s</w> 
  <w id="w24.2.19">desire</w> 
  <w id="w24.2.20">to</w> 
  <w id="w24.2.21">work</w>
@@ -1090,39 +1035,33 @@
  <w id="w24.3.19">boosting</w> 
  <w id="w24.3.20">inflation</w>
  <w id="w24.3.21">.</w>
-</s></p>
-
-<p id="25">
+</s></p><p id="25">
 <s id="s25.1">
  <w id="w25.1.1">A</w> 
  <w id="w25.1.2">reduction</w> 
  <w id="w25.1.3">of</w> 
  <w id="w25.1.4">the</w> 
  <w id="w25.1.5">marginal</w> 
- <w id="w25.1.6">income-</w>
- <w id="w25.1.7">tax</w> 
- <w id="w25.1.8">rate</w> 
- <w id="w25.1.9">in</w> 
- <w id="w25.1.10">1989</w> 
- <w id="w25.1.11">by</w> 
- <w id="w25.1.12">3</w> 
- <w id="w25.1.13">percentage</w> 
- <w id="w25.1.14">points</w> 
- <w id="w25.1.15">will</w> 
- <w id="w25.1.16">be</w> 
- <w id="w25.1.17">proposed</w> 
- <w id="w25.1.18">in</w> 
- <w id="w25.1.19">the</w> 
- <w id="w25.1.20">first</w> 
- <w id="w25.1.21">place</w> 
- <w id="w25.1.22">for</w> 
- <w id="w25.1.23">full-</w>
- <w id="w25.1.24">time</w> 
- <w id="w25.1.25">employees</w>
- <w id="w25.1.26">.</w>
-</s></p>
-
-<p id="26">
+ <w id="w25.1.6">income-tax</w> 
+ <w id="w25.1.7">rate</w> 
+ <w id="w25.1.8">in</w> 
+ <w id="w25.1.9">1989</w> 
+ <w id="w25.1.10">by</w> 
+ <w id="w25.1.11">3</w> 
+ <w id="w25.1.12">percentage</w> 
+ <w id="w25.1.13">points</w> 
+ <w id="w25.1.14">will</w> 
+ <w id="w25.1.15">be</w> 
+ <w id="w25.1.16">proposed</w> 
+ <w id="w25.1.17">in</w> 
+ <w id="w25.1.18">the</w> 
+ <w id="w25.1.19">first</w> 
+ <w id="w25.1.20">place</w> 
+ <w id="w25.1.21">for</w> 
+ <w id="w25.1.22">full-time</w> 
+ <w id="w25.1.23">employees</w>
+ <w id="w25.1.24">.</w>
+</s></p><p id="26">
 <s id="s26.1">
  <w id="w26.1.1">Later</w> 
  <w id="w26.1.2">in</w> 
@@ -1160,16 +1099,15 @@
  
 <s id="s26.3">
  <w id="w26.3.1">State</w> 
- <w id="w26.3.2">income-</w>
- <w id="w26.3.3">tax</w> 
- <w id="w26.3.4">will</w> 
- <w id="w26.3.5">be</w> 
- <w id="w26.3.6">reduced</w> 
- <w id="w26.3.7">and</w> 
- <w id="w26.3.8">capital</w> 
- <w id="w26.3.9">taxes</w> 
- <w id="w26.3.10">increased</w>
- <w id="w26.3.11">.</w>
+ <w id="w26.3.2">income-tax</w> 
+ <w id="w26.3.3">will</w> 
+ <w id="w26.3.4">be</w> 
+ <w id="w26.3.5">reduced</w> 
+ <w id="w26.3.6">and</w> 
+ <w id="w26.3.7">capital</w> 
+ <w id="w26.3.8">taxes</w> 
+ <w id="w26.3.9">increased</w>
+ <w id="w26.3.10">.</w>
 </s> 
  
 <s id="s26.4">
@@ -1216,9 +1154,7 @@
  <w id="w26.6.6">reformed</w> 
  <w id="w26.6.7">too</w>
  <w id="w26.6.8">.</w>
-</s></p>
-
-<p id="27">
+</s></p><p id="27">
 <s id="s27.1">
  <w id="w27.1.1">In</w> 
  <w id="w27.1.2">order</w> 
@@ -1294,9 +1230,7 @@
  <w id="w27.4.9">be</w> 
  <w id="w27.4.10">facilitated</w>
  <w id="w27.4.11">.</w>
-</s></p>
-
-<p id="28">
+</s></p><p id="28">
 <s id="s28.1">
  <w id="w28.1.1">Working</w> 
  <w id="w28.1.2">life</w> 
@@ -1309,9 +1243,7 @@
  <w id="w28.1.9">and</w> 
  <w id="w28.1.10">just</w>
  <w id="w28.1.11">.</w>
-</s></p>
-
-<p id="29">
+</s></p><p id="29">
 <s id="s29.1">
  <w id="w29.1.1">The</w> 
  <w id="w29.1.2">Government</w> 
@@ -1342,14 +1274,13 @@
  <w id="w29.1.27">efforts</w> 
  <w id="w29.1.28">for</w> 
  <w id="w29.1.29">the</w> 
- <w id="w29.1.30">400,</w>
- <w id="w29.1.31">000</w> 
- <w id="w29.1.32">workplaces</w> 
- <w id="w29.1.33">most</w> 
- <w id="w29.1.34">exposed</w> 
- <w id="w29.1.35">to</w> 
- <w id="w29.1.36">hazards</w>
- <w id="w29.1.37">.</w>
+ <w id="w29.1.30">400,000</w> 
+ <w id="w29.1.31">workplaces</w> 
+ <w id="w29.1.32">most</w> 
+ <w id="w29.1.33">exposed</w> 
+ <w id="w29.1.34">to</w> 
+ <w id="w29.1.35">hazards</w>
+ <w id="w29.1.36">.</w>
 </s> 
  
 <s id="s29.2">
@@ -1378,9 +1309,7 @@
  <w id="w29.2.23">work</w> 
  <w id="w29.2.24">injuries</w>
  <w id="w29.2.25">.</w>
-</s></p>
-
-<p id="30">
+</s></p><p id="30">
 <s id="s30.1">
  <w id="w30.1.1">During</w> 
  <w id="w30.1.2">this</w> 
@@ -1413,9 +1342,7 @@
  <w id="w30.2.7">in</w> 
  <w id="w30.2.8">stages</w>
  <w id="w30.2.9">.</w>
-</s></p>
-
-<p id="31">
+</s></p><p id="31">
 <s id="s31.1">
  <w id="w31.1.1">It</w> 
  <w id="w31.1.2">is</w> 
@@ -1478,13 +1405,10 @@
  <w id="w31.3.11">women</w> 
  <w id="w31.3.12">in</w> 
  <w id="w31.3.13">various</w> 
- <w id="w31.3.14">decision-</w>
- <w id="w31.3.15">making</w> 
- <w id="w31.3.16">assemblies</w>
- <w id="w31.3.17">.</w>
-</s></p>
-
-<p id="32">
+ <w id="w31.3.14">decision-making</w> 
+ <w id="w31.3.15">assemblies</w>
+ <w id="w31.3.16">.</w>
+</s></p><p id="32">
 <s id="s32.1">
  <w id="w32.1.1">The</w> 
  <w id="w32.1.2">broadening</w> 
@@ -1514,9 +1438,7 @@
  <w id="w32.1.26">will</w> 
  <w id="w32.1.27">continue</w>
  <w id="w32.1.28">.</w>
-</s></p>
-
-<p id="33">
+</s></p><p id="33">
 <s id="s33.1">
  <w id="w33.1.1">Small</w> 
  <w id="w33.1.2">companies</w> 
@@ -1553,9 +1475,7 @@
  <w id="w33.2.13">small</w> 
  <w id="w33.2.14">companies</w>
  <w id="w33.2.15">.</w>
-</s></p>
-
-<p id="34">
+</s></p><p id="34">
 <s id="s34.1">
  <w id="w34.1.1">Our</w> 
  <w id="w34.1.2">generous</w> 
@@ -1597,9 +1517,7 @@
  <w id="w34.3.6">forcefully</w> 
  <w id="w34.3.7">combated</w>
  <w id="w34.3.8">.</w>
-</s></p>
-
-<p id="35">
+</s></p><p id="35">
 <s id="s35.1">
  <w id="w35.1.1">Proposals</w> 
  <w id="w35.1.2">will</w> 
@@ -1629,9 +1547,7 @@
  <w id="w35.2.11">up</w> 
  <w id="w35.2.12">considerably</w>
  <w id="w35.2.13">.</w>
-</s></p>
-
-<p id="36">
+</s></p><p id="36">
 <s id="s36.1">
  <w id="w36.1.1">Consideration</w> 
  <w id="w36.1.2">for</w> 
@@ -1650,8 +1566,8 @@
 </s> 
  
 <s id="s36.2">
- <w id="w36.2.1">Parliament'</w>
- <w id="w36.2.2">s</w> 
+ <w id="w36.2.1">Parliament</w>
+ <w id="w36.2.2">'s</w> 
  <w id="w36.2.3">decision</w> 
  <w id="w36.2.4">on</w> 
  <w id="w36.2.5">traffic</w> 
@@ -1664,9 +1580,7 @@
  <w id="w36.2.12">this</w> 
  <w id="w36.2.13">context</w>
  <w id="w36.2.14">.</w>
-</s></p>
-
-<p id="37">
+</s></p><p id="37">
 <s id="s37.1">
  <w id="w37.1.1">A</w> 
  <w id="w37.1.2">radical</w> 
@@ -1701,8 +1615,8 @@
  <w id="w37.2.19">protection</w> 
  <w id="w37.2.20">of</w> 
  <w id="w37.2.21">the</w> 
- <w id="w37.2.22">earth'</w>
- <w id="w37.2.23">s</w> 
+ <w id="w37.2.22">earth</w>
+ <w id="w37.2.23">'s</w> 
  <w id="w37.2.24">climate</w>
  <w id="w37.2.25">.</w>
 </s> 
@@ -1718,9 +1632,7 @@
  <w id="w37.3.8">being</w> 
  <w id="w37.3.9">fulfilled</w>
  <w id="w37.3.10">.</w>
-</s></p>
-
-<p id="38">
+</s></p><p id="38">
 <s id="s38.1">
  <w id="w38.1.1">Industrial</w> 
  <w id="w38.1.2">products</w> 
@@ -1747,9 +1659,8 @@
  <w id="w38.2.2">granted</w> 
  <w id="w38.2.3">will</w> 
  <w id="w38.2.4">be</w> 
- <w id="w38.2.5">re-</w>
- <w id="w38.2.6">examined</w>
- <w id="w38.2.7">.</w>
+ <w id="w38.2.5">re-examined</w>
+ <w id="w38.2.6">.</w>
 </s> 
  
 <s id="s38.3">
@@ -1783,9 +1694,7 @@
  <w id="w38.4.8">be</w> 
  <w id="w38.4.9">introduced</w>
  <w id="w38.4.10">.</w>
-</s></p>
-
-<p id="39">
+</s></p><p id="39">
 <s id="s39.1">
  <w id="w39.1.1">Pollution</w> 
  <w id="w39.1.2">charges</w> 
@@ -1827,9 +1736,7 @@
  <w id="w39.2.20">of</w> 
  <w id="w39.2.21">office</w>
  <w id="w39.2.22">.</w>
-</s></p>
-
-<p id="40">
+</s></p><p id="40">
 <s id="s40.1">
  <w id="w40.1.1">All</w> 
  <w id="w40.1.2">legislation</w> 
@@ -1841,9 +1748,8 @@
  <w id="w40.1.8">be</w> 
  <w id="w40.1.9">reviewed</w> 
  <w id="w40.1.10">and</w> 
- <w id="w40.1.11">co-</w>
- <w id="w40.1.12">ordinated</w>
- <w id="w40.1.13">.</w>
+ <w id="w40.1.11">co-ordinated</w>
+ <w id="w40.1.12">.</w>
 </s> 
  
 <s id="s40.2">
@@ -1873,9 +1779,7 @@
  <w id="w40.2.24">this</w> 
  <w id="w40.2.25">Parliament</w>
  <w id="w40.2.26">.</w>
-</s></p>
-
-<p id="41">
+</s></p><p id="41">
 <s id="s41.1">
  <w id="w41.1.1">The</w> 
  <w id="w41.1.2">organization</w> 
@@ -1908,13 +1812,12 @@
  <w id="w41.2.14">Skåne</w> 
  <w id="w41.2.15">and</w> 
  <w id="w41.2.16">the</w> 
- <w id="w41.2.17">Sundsvall/</w>
- <w id="w41.2.18">Timrå</w> 
- <w id="w41.2.19">area</w>
- <w id="w41.2.20">.</w>
-</s></p>
-
-<p id="42">
+ <w id="w41.2.17">Sundsvall</w>
+ <w id="w41.2.18">/</w>
+ <w id="w41.2.19">Timrå</w> 
+ <w id="w41.2.20">area</w>
+ <w id="w41.2.21">.</w>
+</s></p><p id="42">
 <s id="s42.1">
  <w id="w42.1.1">In</w> 
  <w id="w42.1.2">the</w> 
@@ -1947,9 +1850,7 @@
  <w id="w42.1.29">be</w> 
  <w id="w42.1.30">improved</w>
  <w id="w42.1.31">.</w>
-</s></p>
-
-<p id="43">
+</s></p><p id="43">
 <s id="s43.1">
  <w id="w43.1.1">In</w> 
  <w id="w43.1.2">1990</w> 
@@ -2004,13 +1905,11 @@
  <w id="w43.2.14">effects</w> 
  <w id="w43.2.15">counteracted</w>
  <w id="w43.2.16">.</w>
-</s></p>
-
-<p id="44">
+</s></p><p id="44">
 <s id="s44.1">
  <w id="w44.1.1">The</w> 
- <w id="w44.1.2">Government'</w>
- <w id="w44.1.3">s</w> 
+ <w id="w44.1.2">Government</w>
+ <w id="w44.1.3">'s</w> 
  <w id="w44.1.4">agricultural</w> 
  <w id="w44.1.5">policy</w> 
  <w id="w44.1.6">aims</w> 
@@ -2036,8 +1935,8 @@
  <w id="w44.2.4">a</w> 
  <w id="w44.2.5">move</w> 
  <w id="w44.2.6">from</w> 
- <w id="w44.2.7">today'</w>
- <w id="w44.2.8">s</w> 
+ <w id="w44.2.7">today</w>
+ <w id="w44.2.8">'s</w> 
  <w id="w44.2.9">intensive</w> 
  <w id="w44.2.10">production</w> 
  <w id="w44.2.11">to</w> 
@@ -2084,9 +1983,7 @@
  <w id="w44.4.12">open</w> 
  <w id="w44.4.13">landscape</w>
  <w id="w44.4.14">.</w>
-</s></p>
-
-<p id="45">
+</s></p><p id="45">
 <s id="s45.1">
  <w id="w45.1.1">International</w> 
  <w id="w45.1.2">developments</w> 
@@ -2138,9 +2035,7 @@
  <w id="w45.3.4">be</w> 
  <w id="w45.3.5">tightened</w>
  <w id="w45.3.6">.</w>
-</s></p>
-
-<p id="46">
+</s></p><p id="46">
 <s id="s46.1">
  <w id="w46.1.1">The</w> 
  <w id="w46.1.2">public</w> 
@@ -2200,9 +2095,7 @@
  <w id="w46.3.20">of</w> 
  <w id="w46.3.21">initiative</w>
  <w id="w46.3.22">.</w>
-</s></p>
-
-<p id="47">
+</s></p><p id="47">
 <s id="s47.1">
  <w id="w47.1.1">Parental</w> 
  <w id="w47.1.2">insurance</w> 
@@ -2261,9 +2154,7 @@
  <w id="w47.3.19">three</w> 
  <w id="w47.3.20">months</w>
  <w id="w47.3.21">.</w>
-</s></p>
-
-<p id="48">
+</s></p><p id="48">
 <s id="s48.1">
  <w id="w48.1.1">The</w> 
  <w id="w48.1.2">extension</w> 
@@ -2276,13 +2167,11 @@
  <w id="w48.1.9">in</w> 
  <w id="w48.1.10">accordance</w> 
  <w id="w48.1.11">with</w> 
- <w id="w48.1.12">Parliament'</w>
- <w id="w48.1.13">s</w> 
+ <w id="w48.1.12">Parliament</w>
+ <w id="w48.1.13">'s</w> 
  <w id="w48.1.14">decision</w>
  <w id="w48.1.15">.</w>
-</s></p>
-
-<p id="49">
+</s></p><p id="49">
 <s id="s49.1">
  <w id="w49.1.1">Through</w> 
  <w id="w49.1.2">the</w> 
@@ -2308,9 +2197,7 @@
  <w id="w49.1.22">1982</w> 
  <w id="w49.1.23">devaluation</w>
  <w id="w49.1.24">.</w>
-</s></p>
-
-<p id="50">
+</s></p><p id="50">
 <s id="s50.1">
  <w id="w50.1.1">The</w> 
  <w id="w50.1.2">Government</w> 
@@ -2361,9 +2248,7 @@
  <w id="w50.2.8">be</w> 
  <w id="w50.2.9">improved</w>
  <w id="w50.2.10">.</w>
-</s></p>
-
-<p id="51">
+</s></p><p id="51">
 <s id="s51.1">
  <w id="w51.1.1">The</w> 
  <w id="w51.1.2">situation</w> 
@@ -2384,9 +2269,7 @@
  <w id="w51.1.17">special</w> 
  <w id="w51.1.18">attention</w>
  <w id="w51.1.19">.</w>
-</s></p>
-
-<p id="52">
+</s></p><p id="52">
 <s id="s52.1">
  <w id="w52.1.1">Care</w> 
  <w id="w52.1.2">of</w> 
@@ -2408,9 +2291,7 @@
  <w id="w52.1.18">of</w> 
  <w id="w52.1.19">choice</w>
  <w id="w52.1.20">.</w>
-</s></p>
-
-<p id="53">
+</s></p><p id="53">
 <s id="s53.1">
  <w id="w53.1.1">The</w> 
  <w id="w53.1.2">fight</w> 
@@ -2427,25 +2308,22 @@
  <w id="w53.1.13">against</w> 
  <w id="w53.1.14">drugs</w>
  <w id="w53.1.15">.</w>
-</s></p>
-
-<p id="54">
+</s></p><p id="54">
 <s id="s54.1">
  <w id="w54.1.1">The</w> 
  <w id="w54.1.2">Government</w> 
  <w id="w54.1.3">bill</w> 
  <w id="w54.1.4">on</w> 
  <w id="w54.1.5">the</w> 
- <w id="w54.1.6">nine-</w>
- <w id="w54.1.7">year</w> 
- <w id="w54.1.8">compulsory</w> 
- <w id="w54.1.9">school</w> 
- <w id="w54.1.10">is</w> 
- <w id="w54.1.11">now</w> 
- <w id="w54.1.12">available</w> 
- <w id="w54.1.13">for</w> 
- <w id="w54.1.14">consideration</w>
- <w id="w54.1.15">.</w>
+ <w id="w54.1.6">nine-year</w> 
+ <w id="w54.1.7">compulsory</w> 
+ <w id="w54.1.8">school</w> 
+ <w id="w54.1.9">is</w> 
+ <w id="w54.1.10">now</w> 
+ <w id="w54.1.11">available</w> 
+ <w id="w54.1.12">for</w> 
+ <w id="w54.1.13">consideration</w>
+ <w id="w54.1.14">.</w>
 </s> 
  
 <s id="s54.2">
@@ -2494,30 +2372,25 @@
  <w id="w54.4.17">of</w> 
  <w id="w54.4.18">20</w>
  <w id="w54.4.19">.</w>
-</s></p>
-
-<p id="55">
+</s></p><p id="55">
 <s id="s55.1">
  <w id="w55.1.1">There</w> 
  <w id="w55.1.2">will</w> 
  <w id="w55.1.3">be</w> 
  <w id="w55.1.4">improved</w> 
- <w id="w55.1.5">co-</w>
- <w id="w55.1.6">ordination</w> 
- <w id="w55.1.7">of</w> 
- <w id="w55.1.8">adult</w> 
- <w id="w55.1.9">education</w>
- <w id="w55.1.10">,</w> 
- <w id="w55.1.11">labour</w> 
- <w id="w55.1.12">market</w> 
- <w id="w55.1.13">training</w> 
- <w id="w55.1.14">and</w> 
- <w id="w55.1.15">personnel</w> 
- <w id="w55.1.16">training</w>
- <w id="w55.1.17">.</w>
-</s></p>
-
-<p id="56">
+ <w id="w55.1.5">co-ordination</w> 
+ <w id="w55.1.6">of</w> 
+ <w id="w55.1.7">adult</w> 
+ <w id="w55.1.8">education</w>
+ <w id="w55.1.9">,</w> 
+ <w id="w55.1.10">labour</w> 
+ <w id="w55.1.11">market</w> 
+ <w id="w55.1.12">training</w> 
+ <w id="w55.1.13">and</w> 
+ <w id="w55.1.14">personnel</w> 
+ <w id="w55.1.15">training</w>
+ <w id="w55.1.16">.</w>
+</s></p><p id="56">
 <s id="s56.1">
  <w id="w56.1.1">The</w> 
  <w id="w56.1.2">efforts</w> 
@@ -2558,22 +2431,19 @@
  <w id="w56.2.14">young</w> 
  <w id="w56.2.15">immigrants</w>
  <w id="w56.2.16">.</w>
-</s></p>
-
-<p id="57">
+</s></p><p id="57">
 <s id="s57.1">
  <w id="w57.1.1">International</w> 
- <w id="w57.1.2">co-</w>
- <w id="w57.1.3">operation</w> 
- <w id="w57.1.4">within</w> 
- <w id="w57.1.5">research</w> 
- <w id="w57.1.6">and</w> 
- <w id="w57.1.7">development</w> 
- <w id="w57.1.8">is</w> 
- <w id="w57.1.9">becoming</w> 
- <w id="w57.1.10">increasingly</w> 
- <w id="w57.1.11">important</w>
- <w id="w57.1.12">.</w>
+ <w id="w57.1.2">co-operation</w> 
+ <w id="w57.1.3">within</w> 
+ <w id="w57.1.4">research</w> 
+ <w id="w57.1.5">and</w> 
+ <w id="w57.1.6">development</w> 
+ <w id="w57.1.7">is</w> 
+ <w id="w57.1.8">becoming</w> 
+ <w id="w57.1.9">increasingly</w> 
+ <w id="w57.1.10">important</w>
+ <w id="w57.1.11">.</w>
 </s> 
  
 <s id="s57.2">
@@ -2598,12 +2468,9 @@
  <w id="w57.2.19">in</w> 
  <w id="w57.2.20">international</w> 
  <w id="w57.2.21">research</w> 
- <w id="w57.2.22">co-</w>
- <w id="w57.2.23">operation</w>
- <w id="w57.2.24">.</w>
-</s></p>
-
-<p id="58">
+ <w id="w57.2.22">co-operation</w>
+ <w id="w57.2.23">.</w>
+</s></p><p id="58">
 <s id="s58.1">
  <w id="w58.1.1">During</w> 
  <w id="w58.1.2">the</w> 
@@ -2685,9 +2552,7 @@
  <w id="w58.4.8">be</w> 
  <w id="w58.4.9">strengthened</w>
  <w id="w58.4.10">.</w>
-</s></p>
-
-<p id="59">
+</s></p><p id="59">
 <s id="s59.1">
  <w id="w59.1.1">The</w> 
  <w id="w59.1.2">popular</w> 
@@ -2713,9 +2578,7 @@
  <w id="w59.1.22">and</w> 
  <w id="w59.1.23">facilitated</w>
  <w id="w59.1.24">.</w>
-</s></p>
-
-<p id="60">
+</s></p><p id="60">
 <s id="s60.1">
  <w id="w60.1.1">A</w> 
  <w id="w60.1.2">sufficient</w> 
@@ -2781,9 +2644,7 @@
  <w id="w60.4.8">be</w> 
  <w id="w60.4.9">taken</w>
  <w id="w60.4.10">.</w>
-</s></p>
-
-<p id="61">
+</s></p><p id="61">
 <s id="s61.1">
  <w id="w61.1.1">The</w> 
  <w id="w61.1.2">policies</w> 
@@ -2831,9 +2692,7 @@
  <w id="w61.2.17">next</w> 
  <w id="w61.2.18">century</w>
  <w id="w61.2.19">.</w>
-</s></p>
-
-<p id="62">
+</s></p><p id="62">
 <s id="s62.1">
  <w id="w62.1.1">On</w> 
  <w id="w62.1.2">the</w> 
@@ -2869,9 +2728,7 @@
  <w id="w62.1.32">and</w> 
  <w id="w62.1.33">welfare</w>
  <w id="w62.1.34">.</w>
-</s></p>
-
-<p id="63">
+</s></p><p id="63">
 <s id="s63.1">
  <w id="w63.1.1">We</w> 
  <w id="w63.1.2">will</w> 
@@ -2926,22 +2783,19 @@
  <w id="w63.1.51">to</w> 
  <w id="w63.1.52">strengthen</w> 
  <w id="w63.1.53">our</w> 
- <w id="w63.1.54">co-</w>
- <w id="w63.1.55">operation</w> 
- <w id="w63.1.56">-</w> 
- <w id="w63.1.57">economic</w>
- <w id="w63.1.58">,</w> 
- <w id="w63.1.59">social</w> 
- <w id="w63.1.60">and</w> 
- <w id="w63.1.61">cultural</w> 
- <w id="w63.1.62">-</w> 
- <w id="w63.1.63">with</w> 
- <w id="w63.1.64">other</w> 
- <w id="w63.1.65">countries</w>
- <w id="w63.1.66">.</w>
-</s></p>
-
-<p id="64">
+ <w id="w63.1.54">co-operation</w> 
+ <w id="w63.1.55">-</w> 
+ <w id="w63.1.56">economic</w>
+ <w id="w63.1.57">,</w> 
+ <w id="w63.1.58">social</w> 
+ <w id="w63.1.59">and</w> 
+ <w id="w63.1.60">cultural</w> 
+ <w id="w63.1.61">-</w> 
+ <w id="w63.1.62">with</w> 
+ <w id="w63.1.63">other</w> 
+ <w id="w63.1.64">countries</w>
+ <w id="w63.1.65">.</w>
+</s></p><p id="64">
 <s id="s64.1">
  <w id="w64.1.1">The</w> 
  <w id="w64.1.2">preconditions</w> 
@@ -2957,9 +2811,7 @@
  <w id="w64.1.12">are</w> 
  <w id="w64.1.13">favourable</w>
  <w id="w64.1.14">.</w>
-</s></p>
-
-<p id="65">
+</s></p><p id="65">
 <s id="s65.1">
  <w id="w65.1.1">International</w> 
  <w id="w65.1.2">developments</w> 
@@ -2980,12 +2832,10 @@
  <w id="w65.1.17">and</w> 
  <w id="w65.1.18">peoples</w>
  <w id="w65.1.19">.</w>
-</s></p>
-
-<p id="66">
+</s></p><p id="66">
 <s id="s66.1">
- <w id="w66.1.1">Sweden'</w>
- <w id="w66.1.2">s</w> 
+ <w id="w66.1.1">Sweden</w>
+ <w id="w66.1.2">'s</w> 
  <w id="w66.1.3">economic</w> 
  <w id="w66.1.4">situation</w> 
  <w id="w66.1.5">has</w> 
@@ -3019,9 +2869,7 @@
  <w id="w66.3.6">popular</w> 
  <w id="w66.3.7">support</w>
  <w id="w66.3.8">.</w>
-</s></p>
-
-<p id="67">
+</s></p><p id="67">
 <s id="s67.1">
  <w id="w67.1.1">There</w> 
  <w id="w67.1.2">is</w> 
@@ -3037,9 +2885,7 @@
  <w id="w67.1.12">problems</w> 
  <w id="w67.1.13">forcefully</w>
  <w id="w67.1.14">.</w>
-</s></p>
-
-<p id="68">
+</s></p><p id="68">
 <s id="s68.1">
  <w id="w68.1.1">We</w> 
  <w id="w68.1.2">have</w> 
@@ -3054,9 +2900,7 @@
  <w id="w68.1.11">the</w> 
  <w id="w68.1.12">future</w>
  <w id="w68.1.13">.</w>
-</s></p>
-
-<p id="69">
+</s></p><p id="69">
 <s id="s69.1">
  <w id="w69.1.1">But</w> 
  <w id="w69.1.2">there</w> 
@@ -3136,19 +2980,16 @@
  <w id="w69.3.27">action</w> 
  <w id="w69.3.28">and</w> 
  <w id="w69.3.29">to</w> 
- <w id="w69.3.30">co-</w>
- <w id="w69.3.31">operate</w> 
- <w id="w69.3.32">will</w> 
- <w id="w69.3.33">be</w> 
- <w id="w69.3.34">required</w> 
- <w id="w69.3.35">in</w> 
- <w id="w69.3.36">the</w> 
- <w id="w69.3.37">future</w> 
- <w id="w69.3.38">too</w>
- <w id="w69.3.39">.</w>
-</s></p>
-
-<p id="70">
+ <w id="w69.3.30">co-operate</w> 
+ <w id="w69.3.31">will</w> 
+ <w id="w69.3.32">be</w> 
+ <w id="w69.3.33">required</w> 
+ <w id="w69.3.34">in</w> 
+ <w id="w69.3.35">the</w> 
+ <w id="w69.3.36">future</w> 
+ <w id="w69.3.37">too</w>
+ <w id="w69.3.38">.</w>
+</s></p><p id="70">
 <s id="s70.1">
  <w id="w70.1.1">For</w> 
  <w id="w70.1.2">the</w> 
@@ -3191,9 +3032,7 @@
  <w id="w70.2.21">parliamentary</w> 
  <w id="w70.2.22">work</w>
  <w id="w70.2.23">.</w>
-</s></p>
-
-<p id="71">
+</s></p><p id="71">
 <s id="s71.1">
  <w id="w71.1.1">We</w> 
  <w id="w71.1.2">all</w> 
@@ -3246,15 +3085,13 @@
  <w id="w71.1.49">our</w> 
  <w id="w71.1.50">roots</w>
  <w id="w71.1.51">.</w>
-</s></p>
-
-<p id="72">
+</s></p><p id="72">
 <s id="s72.1">
  <w id="w72.1.1">It</w> 
  <w id="w72.1.2">is</w> 
  <w id="w72.1.3">the</w> 
- <w id="w72.1.4">Government'</w>
- <w id="w72.1.5">s</w> 
+ <w id="w72.1.4">Government</w>
+ <w id="w72.1.5">'s</w> 
  <w id="w72.1.6">resposibility</w> 
  <w id="w72.1.7">and</w> 
  <w id="w72.1.8">aim</w> 

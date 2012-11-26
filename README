@@ -1,0 +1,26 @@
+
+Uplug - NLP tools for processing (parallel) corpora
+---------------------------------------------------
+
+Uplug is a collection of tools and scripts for processing text-corpora
+
+
+Uplug is provided in several packages:
+
+uplug-main	  main components and scripts
+uplug-webalign	  webinterface for interactive alignment (ICA, ISA)
+uplug-xx	  language-specific tools and models (<xx> = language ID)
+uplug-treealign	  config files for integrating the TreeAligner
+
+
+Start by downloading uplug-main and installing the main
+components. Select the language packs that you'd like to include and
+install them. Look at the documentation and readme's inside of the
+packages.
+
+
+More information and the newest sources are at
+
+The new project home page:	https://bitbucket.org/tiedemann/uplug
+The old pages at SourceForge:	http://sourceforge.net/projects/uplug/
+		       		http://uplug.sourceforge.net/

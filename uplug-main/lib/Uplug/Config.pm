@@ -234,6 +234,9 @@ sub WriteConfig{
 sub ExpandVar{
     my $configtext=shift;
 
+    # make sure that UPLUGHOME is defined
+    $ENV{UPLUGHOME} = $Bin unless (defined $ENV{UPLUGHOME});
+
     $configtext=~s/\$UplugHome/$ENV{UPLUGHOME}/gs;
     $configtext=~s/\$UplugLang/$SHARED_LANG/gs;
     if (defined $ENV{UPLUGCONFIG}){

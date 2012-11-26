@@ -39,3 +39,10 @@ Other requirements:
      TnT tagger: http://www.coli.uni-sb.de/~thorsten/tnt/
      Brill-tagger, MBT, BLT
 
+
+Mac OSX
+--------
+
+If you use macports (http://www.macports.org):
+
+  sudo port install p5-xml-parser p5-xml-simple p5-file-sharedir
