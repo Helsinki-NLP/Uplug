@@ -1,5 +1,4 @@
 
-- integrate Moses tokenizer & sentence splitter (+ non-breaking abbr)
 - opennlp package with pre-trained models (tokenization, sentence splitting, ...)
 - word alignment output in Moses format
 - separate package for uplug/opus-tools

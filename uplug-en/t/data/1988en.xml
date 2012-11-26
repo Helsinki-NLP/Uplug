@@ -91,36 +91,38 @@
 <p id="3">
 <s id="s3.1">
  <chunk type="NP" id="c3.1-1">
-  <w head="2" hun="NNP" pos="NNP" id="w3.1.1" deprel="nsubj">Sweden'</w>
-  <w head="0" hun="VBZ" pos="VBZ" id="w3.1.2" deprel="null">s</w>
+  <w head="3" hun="NNP" pos="NNP" id="w3.1.1" deprel="poss">Sweden</w>
+ </chunk>
+ <chunk type="NP" id="c3.1-2">
+  <w head="1" hun="POS" pos="POS" id="w3.1.2" deprel="possessive">'s</w>
   <w head="6" hun="NN" pos="NN" id="w3.1.3" deprel="nsubj">policy</w>
  </chunk>
- <chunk type="PP" id="c3.1-2">
+ <chunk type="PP" id="c3.1-3">
   <w head="3" hun="IN" pos="IN" id="w3.1.4" deprel="prep">of</w>
  </chunk>
- <chunk type="NP" id="c3.1-3">
+ <chunk type="NP" id="c3.1-4">
   <w head="4" hun="NN" pos="NN" id="w3.1.5" deprel="pobj">neutrality</w>
  </chunk>
- <chunk type="VP" id="c3.1-4">
-  <w head="2" hun="VBZ" pos="VBZ" id="w3.1.6" deprel="ccomp">is</w>
+ <chunk type="VP" id="c3.1-5">
+  <w head="0" hun="VBZ" pos="VBZ" id="w3.1.6" deprel="null">is</w>
  </chunk>
- <chunk type="PP" id="c3.1-5">
+ <chunk type="PP" id="c3.1-6">
   <w head="6" hun="IN" pos="IN" id="w3.1.7" deprel="prep">of</w>
  </chunk>
- <chunk type="NP" id="c3.1-6">
+ <chunk type="NP" id="c3.1-7">
   <w head="9" hun="JJ" pos="JJ" id="w3.1.8" deprel="amod">decisive</w>
   <w head="7" hun="NN" pos="NN" id="w3.1.9" deprel="pobj">importance</w>
  </chunk>
- <chunk type="PP" id="c3.1-7">
+ <chunk type="PP" id="c3.1-8">
   <w head="9" hun="IN" pos="IN" id="w3.1.10" deprel="prep">for</w>
  </chunk>
- <chunk type="NP" id="c3.1-8">
+ <chunk type="NP" id="c3.1-9">
   <w head="12" hun="PRP$" pos="PRP$" id="w3.1.11" deprel="poss">our</w>
   <w head="10" hun="NN" pos="NN" id="w3.1.12" deprel="pobj">peace</w>
   <w head="12" hun="CC" pos="CC" id="w3.1.13" deprel="cc">and</w>
   <w head="12" hun="NN" pos="NN" id="w3.1.14" deprel="conj">independence</w>
  </chunk>
- <w head="2" hun="." pos="." id="w3.1.15" deprel="punct">.</w>
+ <w head="6" hun="." pos="." id="w3.1.15" deprel="punct">.</w>
 </s> 
  
 
@@ -324,45 +326,47 @@
 
 <s id="s4.5">
  <chunk type="NP" id="c4.5-1">
-  <w head="4" hun="PRP" pos="PRP" id="w4.5.1" deprel="nsubj">It</w>
+  <w head="6" hun="PRP" pos="PRP" id="w4.5.1" deprel="nsubj">It</w>
  </chunk>
  <chunk type="VP" id="c4.5-2">
-  <w head="4" hun="VBZ" pos="VBZ" id="w4.5.2" deprel="cop">is</w>
+  <w head="6" hun="VBZ" pos="VBZ" id="w4.5.2" deprel="cop">is</w>
  </chunk>
  <chunk type="NP" id="c4.5-3">
   <w head="4" hun="DT" pos="DT" id="w4.5.3" deprel="det">the</w>
-  <w head="6" hun="NNP" pos="NNP" id="w4.5.4" deprel="nsubj">Government'</w>
-  <w head="6" hun="VBZ" pos="VBZ" id="w4.5.5" deprel="dep">s</w>
+  <w head="6" hun="NN" pos="NNP" id="w4.5.4" deprel="poss">Government</w>
+ </chunk>
+ <chunk type="NP" id="c4.5-4">
+  <w head="4" hun="POS" pos="POS" id="w4.5.5" deprel="possessive">'s</w>
   <w head="0" hun="NN" pos="NN" id="w4.5.6" deprel="null">intention</w>
  </chunk>
- <chunk type="VP" id="c4.5-4">
+ <chunk type="VP" id="c4.5-5">
   <w head="8" hun="TO" pos="TO" id="w4.5.7" deprel="aux">to</w>
   <w head="6" hun="VB" pos="VB" id="w4.5.8" deprel="infmod">seek</w>
  </chunk>
- <chunk type="NP" id="c4.5-5">
+ <chunk type="NP" id="c4.5-6">
   <w head="10" hun="JJ" pos="JJ" id="w4.5.9" deprel="amod">broad</w>
   <w head="8" hun="NNS" pos="NNS" id="w4.5.10" deprel="dobj">solutions</w>
  </chunk>
- <chunk type="PP" id="c4.5-6">
+ <chunk type="PP" id="c4.5-7">
   <w head="10" hun="IN" pos="IN" id="w4.5.11" deprel="prep">in</w>
  </chunk>
- <chunk type="NP" id="c4.5-7">
+ <chunk type="NP" id="c4.5-8">
   <w head="11" hun="NNS" pos="NNS" id="w4.5.12" deprel="pobj">issues</w>
  </chunk>
- <chunk type="NP" id="c4.5-8">
+ <chunk type="NP" id="c4.5-9">
   <w head="14" hun="WDT" pos="WDT" id="w4.5.13" deprel="nsubj">that</w>
  </chunk>
- <chunk type="VP" id="c4.5-9">
+ <chunk type="VP" id="c4.5-10">
   <w head="12" hun="VBP" pos="VBP" id="w4.5.14" deprel="rcmod">are</w>
   <w head="14" hun="IN" pos="JJ" id="w4.5.15" deprel="prep">of</w>
  </chunk>
- <chunk type="NP" id="c4.5-10">
+ <chunk type="NP" id="c4.5-11">
   <w head="15" hun="NN" pos="NN" id="w4.5.16" deprel="pobj">importance</w>
  </chunk>
- <chunk type="PP" id="c4.5-11">
+ <chunk type="PP" id="c4.5-12">
   <w head="16" hun="IN" pos="IN" id="w4.5.17" deprel="prep">for</w>
  </chunk>
- <chunk type="NP" id="c4.5-12">
+ <chunk type="NP" id="c4.5-13">
   <w head="20" hun="PRP$" pos="PRP$" id="w4.5.18" deprel="poss">our</w>
   <w head="20" hun="JJ" pos="JJ" id="w4.5.19" deprel="amod">national</w>
   <w head="17" hun="NN" pos="NN" id="w4.5.20" deprel="pobj">security</w>
@@ -408,20 +412,12 @@
   <w head="16" hun="IN" pos="IN" id="w5.1.17" deprel="prep">of</w>
  </chunk>
  <chunk type="NP" id="c5.1-11">
-  <w head="17" hun="NN" pos="NN" id="w5.1.18" deprel="pobj">land-</w>
+  <w head="21" hun="JJ" pos="JJ" id="w5.1.18" deprel="amod">land-based</w>
+  <w head="21" hun="JJ" pos="JJ" id="w5.1.19" deprel="amod">intermediate-range</w>
+  <w head="21" hun="JJ" pos="JJ" id="w5.1.20" deprel="amod">nuclear</w>
+  <w head="17" hun="NNS" pos="NNS" id="w5.1.21" deprel="pobj">weapons</w>
  </chunk>
- <chunk type="VP" id="c5.1-12">
-  <w head="23" hun="VBN" pos="VBN" id="w5.1.19" deprel="amod">based</w>
- </chunk>
- <chunk type="ADJP" id="c5.1-13">
-  <w head="23" hun="JJ" pos="JJ" id="w5.1.20" deprel="amod">intermediate-</w>
-  <w head="23" hun="NN" pos="JJ" id="w5.1.21" deprel="nn">range</w>
- </chunk>
- <chunk type="NP" id="c5.1-14">
-  <w head="23" hun="JJ" pos="JJ" id="w5.1.22" deprel="amod">nuclear</w>
-  <w head="16" hun="NNS" pos="NNS" id="w5.1.23" deprel="dep">weapons</w>
- </chunk>
- <w head="3" hun="." pos="." id="w5.1.24" deprel="punct">.</w>
+ <w head="3" hun="." pos="." id="w5.1.22" deprel="punct">.</w>
 </s> 
  
 
@@ -547,45 +543,43 @@
   <w head="9" hun="IN" pos="IN" id="w6.1.10" deprel="prep">of</w>
  </chunk>
  <chunk type="NP" id="c6.1-7">
-  <w head="15" hun="DT" pos="DT" id="w6.1.11" deprel="det">a</w>
-  <w head="15" hun="JJ" pos="JJ" id="w6.1.12" deprel="amod">nuclear-</w>
-  <w head="15" hun="JJ" pos="NN" id="w6.1.13" deprel="amod">weapon-</w>
-  <w head="15" hun="JJ" pos="JJ" id="w6.1.14" deprel="amod">free</w>
-  <w head="10" hun="NN" pos="NN" id="w6.1.15" deprel="pobj">zone</w>
+  <w head="13" hun="DT" pos="DT" id="w6.1.11" deprel="det">a</w>
+  <w head="13" hun="JJ" pos="JJ" id="w6.1.12" deprel="amod">nuclear-weapon-free</w>
+  <w head="10" hun="NN" pos="NN" id="w6.1.13" deprel="pobj">zone</w>
  </chunk>
  <chunk type="PP" id="c6.1-8">
-  <w head="15" hun="IN" pos="IN" id="w6.1.16" deprel="prep">in</w>
+  <w head="13" hun="IN" pos="IN" id="w6.1.14" deprel="prep">in</w>
  </chunk>
  <chunk type="NP" id="c6.1-9">
-  <w head="19" hun="DT" pos="DT" id="w6.1.17" deprel="det">the</w>
-  <w head="19" hun="NNP" pos="JJ" id="w6.1.18" deprel="nn">Nordic</w>
-  <w head="16" hun="NN" pos="NN" id="w6.1.19" deprel="pobj">area</w>
+  <w head="17" hun="DT" pos="DT" id="w6.1.15" deprel="det">the</w>
+  <w head="17" hun="NNP" pos="JJ" id="w6.1.16" deprel="nn">Nordic</w>
+  <w head="14" hun="NN" pos="NN" id="w6.1.17" deprel="pobj">area</w>
  </chunk>
- <w head="16" hun="CC" pos="CC" id="w6.1.20" deprel="cc">and</w>
+ <w head="14" hun="CC" pos="CC" id="w6.1.18" deprel="cc">and</w>
  <chunk type="PP" id="c6.1-11">
-  <w head="16" hun="IN" pos="IN" id="w6.1.21" deprel="conj">of</w>
+  <w head="14" hun="IN" pos="IN" id="w6.1.19" deprel="conj">of</w>
  </chunk>
  <chunk type="NP" id="c6.1-12">
-  <w head="23" hun="DT" pos="DT" id="w6.1.22" deprel="det">a</w>
-  <w head="21" hun="NN" pos="NN" id="w6.1.23" deprel="pobj">corridor</w>
+  <w head="21" hun="DT" pos="DT" id="w6.1.20" deprel="det">a</w>
+  <w head="19" hun="NN" pos="NN" id="w6.1.21" deprel="pobj">corridor</w>
  </chunk>
  <chunk type="PP" id="c6.1-13">
-  <w head="23" hun="IN" pos="IN" id="w6.1.24" deprel="prep">in</w>
+  <w head="21" hun="IN" pos="IN" id="w6.1.22" deprel="prep">in</w>
  </chunk>
  <chunk type="NP" id="c6.1-14">
-  <w head="26" hun="NNP" pos="NNP" id="w6.1.25" deprel="nn">Central</w>
-  <w head="24" hun="NNP" pos="NNP" id="w6.1.26" deprel="pobj">Europe</w>
-  <w head="26" hun="JJ" pos="NN" id="w6.1.27" deprel="amod">free</w>
+  <w head="24" hun="NNP" pos="NNP" id="w6.1.23" deprel="nn">Central</w>
+  <w head="22" hun="NNP" pos="NNP" id="w6.1.24" deprel="pobj">Europe</w>
+  <w head="24" hun="JJ" pos="NN" id="w6.1.25" deprel="amod">free</w>
  </chunk>
  <chunk type="PP" id="c6.1-15">
-  <w head="27" hun="IN" pos="IN" id="w6.1.28" deprel="prep">of</w>
+  <w head="25" hun="IN" pos="IN" id="w6.1.26" deprel="prep">of</w>
  </chunk>
  <chunk type="NP" id="c6.1-16">
-  <w head="31" hun="NN" pos="JJ" id="w6.1.29" deprel="nn">battlefield</w>
-  <w head="31" hun="JJ" pos="JJ" id="w6.1.30" deprel="amod">nuclear</w>
-  <w head="28" hun="NNS" pos="NNS" id="w6.1.31" deprel="pobj">weapons</w>
+  <w head="29" hun="NN" pos="JJ" id="w6.1.27" deprel="nn">battlefield</w>
+  <w head="29" hun="JJ" pos="JJ" id="w6.1.28" deprel="amod">nuclear</w>
+  <w head="26" hun="NNS" pos="NNS" id="w6.1.29" deprel="pobj">weapons</w>
  </chunk>
- <w head="4" hun="." pos="." id="w6.1.32" deprel="punct">.</w>
+ <w head="4" hun="." pos="." id="w6.1.30" deprel="punct">.</w>
 </s></p>
 
 <p id="7">
@@ -918,16 +912,17 @@
  </chunk>
  <chunk type="NP" id="c10.2-10">
   <w head="16" hun="NNP" pos="NNP" id="w10.2.17" deprel="pobj">Afghanistan</w>
-  <w head="16" hun="CC" pos="CC" id="w10.2.18" deprel="cc">and</w>
  </chunk>
- <chunk type="PP" id="c10.2-11">
-  <w head="16" hun="IN" pos="IN" id="w10.2.19" deprel="conj">in</w>
+ <w head="16" hun="CC" pos="CC" id="w10.2.18" deprel="cc">and</w>
+ <chunk type="PP" id="c10.2-12">
+  <w head="22" hun="IN" pos="IN" id="w10.2.19" deprel="prep">in</w>
  </chunk>
- <chunk type="NP" id="c10.2-12">
-  <w head="21" hun="NNP" pos="NNP" id="w10.2.20" deprel="nn">Iran/</w>
-  <w head="19" hun="NNP" pos="NNP" id="w10.2.21" deprel="pobj">Iraq</w>
+ <chunk type="NP" id="c10.2-13">
+  <w head="19" hun="NNP" pos="NNP" id="w10.2.20" deprel="pobj">Iran</w>
+  <w head="22" hun="JJ" pos="NNP" id="w10.2.21" deprel="amod">/</w>
+  <w head="16" hun="NNP" pos="NNP" id="w10.2.22" deprel="conj">Iraq</w>
  </chunk>
- <w head="3" hun="." pos="." id="w10.2.22" deprel="punct">.</w>
+ <w head="3" hun="." pos="." id="w10.2.23" deprel="punct">.</w>
 </s></p>
 
 <p id="11">
@@ -967,14 +962,13 @@
   <w head="13" hun="TO" pos="TO" id="w11.1.16" deprel="prep">to</w>
  </chunk>
  <chunk type="NP" id="c11.1-10">
-  <w head="19" hun="DT" pos="DT" id="w11.1.17" deprel="det">the</w>
-  <w head="19" hun="NNP" pos="NNP" id="w11.1.18" deprel="nn">United</w>
-  <w head="22" hun="NNPS" pos="NNP" id="w11.1.19" deprel="poss">Nations</w>
-  <w head="22" hun="JJ" pos="NN" id="w11.1.20" deprel="amod">peace-</w>
-  <w head="22" hun="VBG" pos="NN" id="w11.1.21" deprel="amod">keeping</w>
-  <w head="16" hun="NNS" pos="NNS" id="w11.1.22" deprel="pobj">forces</w>
+  <w head="21" hun="DT" pos="DT" id="w11.1.17" deprel="det">the</w>
+  <w head="21" hun="NNP" pos="NNP" id="w11.1.18" deprel="nn">United</w>
+  <w head="21" hun="NNPS" pos="NNP" id="w11.1.19" deprel="nn">Nations</w>
+  <w head="21" hun="JJ" pos="NN" id="w11.1.20" deprel="amod">peace-keeping</w>
+  <w head="16" hun="NNS" pos="NNS" id="w11.1.21" deprel="pobj">forces</w>
  </chunk>
- <w head="3" hun="." pos="." id="w11.1.23" deprel="punct">.</w>
+ <w head="3" hun="." pos="." id="w11.1.22" deprel="punct">.</w>
 </s> 
  
 
@@ -1039,64 +1033,63 @@
   <w head="6" hun="NNP" pos="NNP" id="w11.3.7" deprel="pobj">Sweden</w>
  </chunk>
  <chunk type="SBAR" id="c11.3-7">
-  <w head="20" hun="IN" pos="IN" id="w11.3.8" deprel="complm">that</w>
+  <w head="19" hun="IN" pos="IN" id="w11.3.8" deprel="complm">that</w>
  </chunk>
  <chunk type="NP" id="c11.3-8">
-  <w head="11" hun="DT" pos="DT" id="w11.3.9" deprel="det">the</w>
-  <w head="11" hun="NNP" pos="NNP" id="w11.3.10" deprel="nn">Secretary-</w>
-  <w head="20" hun="NNP" pos="NNP" id="w11.3.11" deprel="nsubj">General</w>
+  <w head="10" hun="DT" pos="DT" id="w11.3.9" deprel="det">the</w>
+  <w head="19" hun="NNP" pos="NNP" id="w11.3.10" deprel="nsubj">Secretary-General</w>
  </chunk>
- <w head="20" hun="," pos="," id="w11.3.12" deprel="punct">,</w>
+ <w head="19" hun="," pos="," id="w11.3.11" deprel="punct">,</w>
  <chunk type="PP" id="c11.3-10">
-  <w head="20" hun="IN" pos="IN" id="w11.3.13" deprel="prep">in</w>
+  <w head="19" hun="IN" pos="IN" id="w11.3.12" deprel="prep">in</w>
  </chunk>
  <chunk type="NP" id="c11.3-11">
-  <w head="13" hun="NN" pos="NN" id="w11.3.14" deprel="pobj">consultation</w>
+  <w head="12" hun="NN" pos="NN" id="w11.3.13" deprel="pobj">consultation</w>
  </chunk>
  <chunk type="PP" id="c11.3-12">
-  <w head="14" hun="IN" pos="IN" id="w11.3.15" deprel="prep">with</w>
+  <w head="13" hun="IN" pos="IN" id="w11.3.14" deprel="prep">with</w>
  </chunk>
  <chunk type="NP" id="c11.3-13">
-  <w head="17" hun="DT" pos="DT" id="w11.3.16" deprel="det">the</w>
-  <w head="15" hun="NNS" pos="NNS" id="w11.3.17" deprel="pobj">parties</w>
+  <w head="16" hun="DT" pos="DT" id="w11.3.15" deprel="det">the</w>
+  <w head="14" hun="NNS" pos="NNS" id="w11.3.16" deprel="pobj">parties</w>
  </chunk>
- <w head="20" hun="," pos="," id="w11.3.18" deprel="punct">,</w>
+ <w head="19" hun="," pos="," id="w11.3.17" deprel="punct">,</w>
  <chunk type="VP" id="c11.3-15">
-  <w head="20" hun="VBZ" pos="VBZ" id="w11.3.19" deprel="aux">has</w>
-  <w head="7" hun="VBN" pos="VBN" id="w11.3.20" deprel="ccomp">appointed</w>
+  <w head="19" hun="VBZ" pos="VBZ" id="w11.3.18" deprel="aux">has</w>
+  <w head="7" hun="VBN" pos="VBN" id="w11.3.19" deprel="ccomp">appointed</w>
  </chunk>
  <chunk type="NP" id="c11.3-16">
-  <w head="24" hun="PRP$" pos="PRP$" id="w11.3.21" deprel="poss">our</w>
-  <w head="24" hun="NNP" pos="NNP" id="w11.3.22" deprel="nn">United</w>
-  <w head="24" hun="NNPS" pos="NNP" id="w11.3.23" deprel="nn">Nations</w>
-  <w head="20" hun="NNP" pos="NN" id="w11.3.24" deprel="dobj">Ambassador</w>
+  <w head="23" hun="PRP$" pos="PRP$" id="w11.3.20" deprel="poss">our</w>
+  <w head="23" hun="NNP" pos="NNP" id="w11.3.21" deprel="nn">United</w>
+  <w head="23" hun="NNPS" pos="NNP" id="w11.3.22" deprel="nn">Nations</w>
+  <w head="19" hun="NNP" pos="NN" id="w11.3.23" deprel="dobj">Ambassador</w>
  </chunk>
  <chunk type="VP" id="c11.3-17">
-  <w head="29" hun="TO" pos="TO" id="w11.3.25" deprel="aux">to</w>
-  <w head="29" hun="VB" pos="VB" id="w11.3.26" deprel="cop">be</w>
+  <w head="28" hun="TO" pos="TO" id="w11.3.24" deprel="aux">to</w>
+  <w head="28" hun="VB" pos="VB" id="w11.3.25" deprel="cop">be</w>
  </chunk>
  <chunk type="NP" id="c11.3-18">
-  <w head="29" hun="PRP$" pos="PRP$" id="w11.3.27" deprel="poss">his</w>
-  <w head="29" hun="JJ" pos="JJ" id="w11.3.28" deprel="amod">personal</w>
-  <w head="24" hun="NN" pos="NN" id="w11.3.29" deprel="infmod">representative</w>
+  <w head="28" hun="PRP$" pos="PRP$" id="w11.3.26" deprel="poss">his</w>
+  <w head="28" hun="JJ" pos="JJ" id="w11.3.27" deprel="amod">personal</w>
+  <w head="23" hun="NN" pos="NN" id="w11.3.28" deprel="infmod">representative</w>
  </chunk>
  <chunk type="PP" id="c11.3-19">
-  <w head="29" hun="IN" pos="IN" id="w11.3.30" deprel="prep">at</w>
+  <w head="28" hun="IN" pos="IN" id="w11.3.29" deprel="prep">at</w>
  </chunk>
  <chunk type="NP" id="c11.3-20">
-  <w head="33" hun="DT" pos="DT" id="w11.3.31" deprel="det">the</w>
-  <w head="33" hun="NN" pos="NN" id="w11.3.32" deprel="nn">peace</w>
-  <w head="30" hun="NNS" pos="NNS" id="w11.3.33" deprel="pobj">negotiations</w>
+  <w head="32" hun="DT" pos="DT" id="w11.3.30" deprel="det">the</w>
+  <w head="32" hun="NN" pos="NN" id="w11.3.31" deprel="nn">peace</w>
+  <w head="29" hun="NNS" pos="NNS" id="w11.3.32" deprel="pobj">negotiations</w>
  </chunk>
  <chunk type="PP" id="c11.3-21">
-  <w head="33" hun="IN" pos="IN" id="w11.3.34" deprel="prep">between</w>
+  <w head="32" hun="IN" pos="IN" id="w11.3.33" deprel="prep">between</w>
  </chunk>
  <chunk type="NP" id="c11.3-22">
-  <w head="34" hun="NNP" pos="NNP" id="w11.3.35" deprel="pobj">Iran</w>
-  <w head="35" hun="CC" pos="CC" id="w11.3.36" deprel="cc">and</w>
-  <w head="35" hun="NNP" pos="NNP" id="w11.3.37" deprel="conj">Iraq</w>
+  <w head="33" hun="NNP" pos="NNP" id="w11.3.34" deprel="pobj">Iran</w>
+  <w head="34" hun="CC" pos="CC" id="w11.3.35" deprel="cc">and</w>
+  <w head="34" hun="NNP" pos="NNP" id="w11.3.36" deprel="conj">Iraq</w>
  </chunk>
- <w head="5" hun="." pos="." id="w11.3.38" deprel="punct">.</w>
+ <w head="5" hun="." pos="." id="w11.3.37" deprel="punct">.</w>
 </s></p>
 
 <p id="12">
@@ -1326,7 +1319,7 @@
 <p id="15">
 <s id="s15.1">
  <chunk type="PP" id="c15.1-1">
-  <w head="18" hun="IN" pos="IN" id="w15.1.1" deprel="dep">Within</w>
+  <w head="18" hun="IN" pos="IN" id="w15.1.1" deprel="prep">Within</w>
  </chunk>
  <chunk type="NP" id="c15.1-2">
   <w head="3" hun="DT" pos="DT" id="w15.1.2" deprel="det">the</w>
@@ -1364,51 +1357,50 @@
   <w head="0" hun="VB" pos="VB" id="w15.1.18" deprel="null">intensify</w>
  </chunk>
  <chunk type="NP" id="c15.1-13">
-  <w head="21" hun="JJ" pos="JJ" id="w15.1.19" deprel="amod">co-</w>
-  <w head="21" hun="NN" pos="NN" id="w15.1.20" deprel="nn">operation</w>
+  <w head="20" hun="NN" pos="NN" id="w15.1.19" deprel="nn">co-operation</w>
  </chunk>
  <chunk type="VP" id="c15.1-14">
-  <w head="18" hun="NN" pos="VBD" id="w15.1.21" deprel="dobj">wit</w>
+  <w head="18" hun="NN" pos="VBD" id="w15.1.20" deprel="dobj">wit</w>
  </chunk>
  <chunk type="NP" id="c15.1-15">
-  <w head="23" hun="DT" pos="DT" id="w15.1.22" deprel="det">the</w>
-  <w head="21" hun="NNP" pos="NNP" id="w15.1.23" deprel="dep">EC</w>
+  <w head="22" hun="DT" pos="DT" id="w15.1.21" deprel="det">the</w>
+  <w head="20" hun="NNP" pos="NNP" id="w15.1.22" deprel="dep">EC</w>
  </chunk>
  <chunk type="PP" id="c15.1-16">
-  <w head="18" hun="IN" pos="IN" id="w15.1.24" deprel="prep">in</w>
+  <w head="20" hun="IN" pos="IN" id="w15.1.23" deprel="prep">in</w>
  </chunk>
  <chunk type="NP" id="c15.1-17">
-  <w head="26" hun="DT" pos="DT" id="w15.1.25" deprel="det">all</w>
-  <w head="24" hun="NNS" pos="NNS" id="w15.1.26" deprel="pobj">fields</w>
+  <w head="25" hun="DT" pos="DT" id="w15.1.24" deprel="det">all</w>
+  <w head="23" hun="NNS" pos="NNS" id="w15.1.25" deprel="pobj">fields</w>
  </chunk>
  <chunk type="PP" id="c15.1-18">
-  <w head="18" hun="TO" pos="TO" id="w15.1.27" deprel="prep">to</w>
+  <w head="18" hun="TO" pos="TO" id="w15.1.26" deprel="prep">to</w>
  </chunk>
  <chunk type="NP" id="c15.1-19">
-  <w head="29" hun="DT" pos="DT" id="w15.1.28" deprel="det">the</w>
-  <w head="27" hun="NN" pos="NN" id="w15.1.29" deprel="pobj">extent</w>
+  <w head="28" hun="DT" pos="DT" id="w15.1.27" deprel="det">the</w>
+  <w head="26" hun="NN" pos="NN" id="w15.1.28" deprel="pobj">extent</w>
  </chunk>
  <chunk type="NP" id="c15.1-20">
-  <w head="32" hun="PRP" pos="PRP" id="w15.1.30" deprel="nsubj">it</w>
+  <w head="31" hun="PRP" pos="PRP" id="w15.1.29" deprel="nsubj">it</w>
  </chunk>
  <chunk type="VP" id="c15.1-21">
-  <w head="32" hun="VBZ" pos="VBZ" id="w15.1.31" deprel="cop">is</w>
-  <w head="29" hun="JJ" pos="VBN" id="w15.1.32" deprel="rcmod">compatible</w>
+  <w head="31" hun="VBZ" pos="VBZ" id="w15.1.30" deprel="cop">is</w>
+  <w head="28" hun="JJ" pos="VBN" id="w15.1.31" deprel="rcmod">compatible</w>
  </chunk>
  <chunk type="PP" id="c15.1-22">
-  <w head="32" hun="IN" pos="IN" id="w15.1.33" deprel="prep">with</w>
+  <w head="31" hun="IN" pos="IN" id="w15.1.32" deprel="prep">with</w>
  </chunk>
  <chunk type="NP" id="c15.1-23">
-  <w head="35" hun="PRP$" pos="PRP$" id="w15.1.34" deprel="poss">our</w>
-  <w head="33" hun="NN" pos="NN" id="w15.1.35" deprel="pobj">policy</w>
+  <w head="34" hun="PRP$" pos="PRP$" id="w15.1.33" deprel="poss">our</w>
+  <w head="32" hun="NN" pos="NN" id="w15.1.34" deprel="pobj">policy</w>
  </chunk>
  <chunk type="PP" id="c15.1-24">
-  <w head="35" hun="IN" pos="IN" id="w15.1.36" deprel="prep">of</w>
+  <w head="34" hun="IN" pos="IN" id="w15.1.35" deprel="prep">of</w>
  </chunk>
  <chunk type="NP" id="c15.1-25">
-  <w head="36" hun="NN" pos="NN" id="w15.1.37" deprel="pobj">neutrality</w>
+  <w head="35" hun="NN" pos="NN" id="w15.1.36" deprel="pobj">neutrality</w>
  </chunk>
- <w head="18" hun="." pos="." id="w15.1.38" deprel="punct">.</w>
+ <w head="18" hun="." pos="." id="w15.1.37" deprel="punct">.</w>
 </s> 
  
 
@@ -1417,17 +1409,16 @@
 
 <s id="s15.2">
  <chunk type="NP" id="c15.2-1">
-  <w head="3" hun="NNP" pos="JJ" id="w15.2.1" deprel="nn">Nordic</w>
-  <w head="3" hun="JJ" pos="JJ" id="w15.2.2" deprel="amod">co-</w>
-  <w head="7" hun="NN" pos="NN" id="w15.2.3" deprel="nsubjpass">operation</w>
+  <w head="2" hun="NNP" pos="JJ" id="w15.2.1" deprel="nn">Nordic</w>
+  <w head="6" hun="NN" pos="NN" id="w15.2.2" deprel="nsubjpass">co-operation</w>
  </chunk>
  <chunk type="VP" id="c15.2-2">
-  <w head="7" hun="MD" pos="MD" id="w15.2.4" deprel="aux">will</w>
-  <w head="7" hun="RB" pos="RB" id="w15.2.5" deprel="advmod">also</w>
-  <w head="7" hun="VB" pos="VB" id="w15.2.6" deprel="auxpass">be</w>
-  <w head="0" hun="VBN" pos="VBN" id="w15.2.7" deprel="null">developed</w>
+  <w head="6" hun="MD" pos="MD" id="w15.2.3" deprel="aux">will</w>
+  <w head="6" hun="RB" pos="RB" id="w15.2.4" deprel="advmod">also</w>
+  <w head="6" hun="VB" pos="VB" id="w15.2.5" deprel="auxpass">be</w>
+  <w head="0" hun="VBN" pos="VBN" id="w15.2.6" deprel="null">developed</w>
  </chunk>
- <w head="7" hun="." pos="." id="w15.2.8" deprel="punct">.</w>
+ <w head="6" hun="." pos="." id="w15.2.7" deprel="punct">.</w>
 </s> 
  
 
@@ -1776,7 +1767,7 @@
 
 <s id="s21.2">
  <chunk type="PP" id="c21.2-1">
-  <w head="14" hun="IN" pos="IN" id="w21.2.1" deprel="prep">At</w>
+  <w head="13" hun="IN" pos="IN" id="w21.2.1" deprel="prep">At</w>
  </chunk>
  <chunk type="NP" id="c21.2-2">
   <w head="4" hun="DT" pos="DT" id="w21.2.2" deprel="det">the</w>
@@ -1795,24 +1786,23 @@
  </chunk>
  <w head="4" hun="CC" pos="CC" id="w21.2.9" deprel="cc">and</w>
  <chunk type="NP" id="c21.2-7">
-  <w head="12" hun="JJ" pos="JJ" id="w21.2.10" deprel="amod">non-</w>
-  <w head="12" hun="JJ" pos="JJ" id="w21.2.11" deprel="amod">institutional</w>
-  <w head="4" hun="NN" pos="NN" id="w21.2.12" deprel="conj">care</w>
+  <w head="11" hun="JJ" pos="JJ" id="w21.2.10" deprel="amod">non-institutional</w>
+  <w head="4" hun="NN" pos="NN" id="w21.2.11" deprel="conj">care</w>
  </chunk>
  <chunk type="VP" id="c21.2-8">
-  <w head="14" hun="MD" pos="MD" id="w21.2.13" deprel="aux">must</w>
-  <w head="0" hun="VB" pos="VB" id="w21.2.14" deprel="null">facilitate</w>
+  <w head="13" hun="MD" pos="MD" id="w21.2.12" deprel="aux">must</w>
+  <w head="0" hun="VB" pos="VB" id="w21.2.13" deprel="null">facilitate</w>
  </chunk>
  <chunk type="NP" id="c21.2-9">
-  <w head="14" hun="NN" pos="NN" id="w21.2.15" deprel="dobj">rehabilitation</w>
+  <w head="13" hun="NN" pos="NN" id="w21.2.14" deprel="dobj">rehabilitation</w>
  </chunk>
  <chunk type="PP" id="c21.2-10">
-  <w head="17" hun="IN" pos="IN" id="w21.2.16" deprel="mark">after</w>
+  <w head="16" hun="IN" pos="IN" id="w21.2.15" deprel="mark">after</w>
  </chunk>
  <chunk type="NP" id="c21.2-11">
-  <w head="14" hun="VB" pos="NN" id="w21.2.17" deprel="advcl">discharge</w>
+  <w head="13" hun="VB" pos="NN" id="w21.2.16" deprel="advcl">discharge</w>
  </chunk>
- <w head="14" hun="." pos="." id="w21.2.18" deprel="punct">.</w>
+ <w head="13" hun="." pos="." id="w21.2.17" deprel="punct">.</w>
 </s></p>
 
 <p id="22">
@@ -2045,13 +2035,17 @@
   <w head="15" hun="IN" pos="IN" id="w24.2.16" deprel="prep">of</w>
  </chunk>
  <chunk type="NP" id="c24.2-11">
-  <w head="16" hun="NN" pos="JJ" id="w24.2.17" deprel="pobj">people'</w>
-  <w head="6" hun="VBZ" pos="NNS" id="w24.2.18" deprel="dep">s</w>
+  <w head="19" hun="NNS" pos="NNS" id="w24.2.17" deprel="poss">people</w>
  </chunk>
- <chunk type="VP" id="c24.2-12">
-  <w head="18" hun="NN" pos="VBP" id="w24.2.19" deprel="dobj">desire</w>
+ <chunk type="NP" id="c24.2-12">
+  <w head="17" hun="POS" pos="POS" id="w24.2.18" deprel="possessive">'s</w>
+  <w head="16" hun="NN" pos="NN" id="w24.2.19" deprel="pobj">desire</w>
+ </chunk>
+ <chunk type="PP" id="c24.2-13">
   <w head="21" hun="TO" pos="TO" id="w24.2.20" deprel="aux">to</w>
-  <w head="19" hun="VB" pos="VB" id="w24.2.21" deprel="infmod">work</w>
+ </chunk>
+ <chunk type="NP" id="c24.2-14">
+  <w head="19" hun="VB" pos="NN" id="w24.2.21" deprel="infmod">work</w>
  </chunk>
  <w head="6" hun="." pos="." id="w24.2.22" deprel="punct">.</w>
 </s> 
@@ -2116,54 +2110,52 @@
 <s id="s25.1">
  <chunk type="NP" id="c25.1-1">
   <w head="2" hun="DT" pos="DT" id="w25.1.1" deprel="det">A</w>
-  <w head="17" hun="NN" pos="NN" id="w25.1.2" deprel="nsubjpass">reduction</w>
+  <w head="16" hun="NN" pos="NN" id="w25.1.2" deprel="nsubjpass">reduction</w>
  </chunk>
  <chunk type="PP" id="c25.1-2">
   <w head="2" hun="IN" pos="IN" id="w25.1.3" deprel="prep">of</w>
  </chunk>
  <chunk type="NP" id="c25.1-3">
-  <w head="8" hun="DT" pos="DT" id="w25.1.4" deprel="det">the</w>
-  <w head="8" hun="JJ" pos="JJ" id="w25.1.5" deprel="amod">marginal</w>
-  <w head="8" hun="JJ" pos="JJ" id="w25.1.6" deprel="amod">income-</w>
-  <w head="8" hun="NN" pos="NN" id="w25.1.7" deprel="nn">tax</w>
-  <w head="3" hun="NN" pos="NN" id="w25.1.8" deprel="pobj">rate</w>
+  <w head="7" hun="DT" pos="DT" id="w25.1.4" deprel="det">the</w>
+  <w head="7" hun="JJ" pos="JJ" id="w25.1.5" deprel="amod">marginal</w>
+  <w head="7" hun="NN" pos="JJ" id="w25.1.6" deprel="nn">income-tax</w>
+  <w head="3" hun="NN" pos="NN" id="w25.1.7" deprel="pobj">rate</w>
  </chunk>
  <chunk type="PP" id="c25.1-4">
-  <w head="2" hun="IN" pos="IN" id="w25.1.9" deprel="prep">in</w>
+  <w head="2" hun="IN" pos="IN" id="w25.1.8" deprel="prep">in</w>
  </chunk>
  <chunk type="NP" id="c25.1-5">
-  <w head="9" hun="CD" pos="CD" id="w25.1.10" deprel="pobj">1989</w>
+  <w head="8" hun="CD" pos="CD" id="w25.1.9" deprel="pobj">1989</w>
  </chunk>
  <chunk type="PP" id="c25.1-6">
-  <w head="2" hun="IN" pos="IN" id="w25.1.11" deprel="prep">by</w>
+  <w head="2" hun="IN" pos="IN" id="w25.1.10" deprel="prep">by</w>
  </chunk>
  <chunk type="NP" id="c25.1-7">
-  <w head="14" hun="CD" pos="CD" id="w25.1.12" deprel="num">3</w>
-  <w head="14" hun="NN" pos="NN" id="w25.1.13" deprel="nn">percentage</w>
-  <w head="11" hun="NNS" pos="NNS" id="w25.1.14" deprel="pobj">points</w>
+  <w head="13" hun="CD" pos="CD" id="w25.1.11" deprel="num">3</w>
+  <w head="13" hun="NN" pos="NN" id="w25.1.12" deprel="nn">percentage</w>
+  <w head="10" hun="NNS" pos="NNS" id="w25.1.13" deprel="pobj">points</w>
  </chunk>
  <chunk type="VP" id="c25.1-8">
-  <w head="17" hun="MD" pos="MD" id="w25.1.15" deprel="aux">will</w>
-  <w head="17" hun="VB" pos="VB" id="w25.1.16" deprel="auxpass">be</w>
-  <w head="0" hun="VBN" pos="VBN" id="w25.1.17" deprel="null">proposed</w>
+  <w head="16" hun="MD" pos="MD" id="w25.1.14" deprel="aux">will</w>
+  <w head="16" hun="VB" pos="VB" id="w25.1.15" deprel="auxpass">be</w>
+  <w head="0" hun="VBN" pos="VBN" id="w25.1.16" deprel="null">proposed</w>
  </chunk>
  <chunk type="PP" id="c25.1-9">
-  <w head="17" hun="IN" pos="IN" id="w25.1.18" deprel="prep">in</w>
+  <w head="16" hun="IN" pos="IN" id="w25.1.17" deprel="prep">in</w>
  </chunk>
  <chunk type="NP" id="c25.1-10">
-  <w head="21" hun="DT" pos="DT" id="w25.1.19" deprel="det">the</w>
-  <w head="21" hun="JJ" pos="JJ" id="w25.1.20" deprel="amod">first</w>
-  <w head="18" hun="NN" pos="NN" id="w25.1.21" deprel="pobj">place</w>
+  <w head="20" hun="DT" pos="DT" id="w25.1.18" deprel="det">the</w>
+  <w head="20" hun="JJ" pos="JJ" id="w25.1.19" deprel="amod">first</w>
+  <w head="17" hun="NN" pos="NN" id="w25.1.20" deprel="pobj">place</w>
  </chunk>
  <chunk type="PP" id="c25.1-11">
-  <w head="21" hun="IN" pos="IN" id="w25.1.22" deprel="prep">for</w>
+  <w head="16" hun="IN" pos="IN" id="w25.1.21" deprel="prep">for</w>
  </chunk>
  <chunk type="NP" id="c25.1-12">
-  <w head="25" hun="JJ" pos="JJ" id="w25.1.23" deprel="amod">full-</w>
-  <w head="25" hun="NN" pos="NN" id="w25.1.24" deprel="nn">time</w>
-  <w head="22" hun="NNS" pos="NNS" id="w25.1.25" deprel="pobj">employees</w>
+  <w head="23" hun="JJ" pos="JJ" id="w25.1.22" deprel="amod">full-time</w>
+  <w head="21" hun="NNS" pos="NNS" id="w25.1.23" deprel="pobj">employees</w>
  </chunk>
- <w head="17" hun="." pos="." id="w25.1.26" deprel="punct">.</w>
+ <w head="16" hun="." pos="." id="w25.1.24" deprel="punct">.</w>
 </s></p>
 
 <p id="26">
@@ -2240,24 +2232,23 @@
 
 <s id="s26.3">
  <chunk type="NP" id="c26.3-1">
-  <w head="3" hun="NN" pos="NNP" id="w26.3.1" deprel="nn">State</w>
-  <w head="3" hun="NNS" pos="JJ" id="w26.3.2" deprel="nn">income-</w>
-  <w head="6" hun="NN" pos="NN" id="w26.3.3" deprel="nsubjpass">tax</w>
+  <w head="2" hun="NNP" pos="NNP" id="w26.3.1" deprel="nn">State</w>
+  <w head="5" hun="NN" pos="NN" id="w26.3.2" deprel="nsubjpass">income-tax</w>
  </chunk>
  <chunk type="VP" id="c26.3-2">
-  <w head="6" hun="MD" pos="MD" id="w26.3.4" deprel="aux">will</w>
-  <w head="6" hun="VB" pos="VB" id="w26.3.5" deprel="auxpass">be</w>
-  <w head="0" hun="VBN" pos="VBN" id="w26.3.6" deprel="null">reduced</w>
+  <w head="5" hun="MD" pos="MD" id="w26.3.3" deprel="aux">will</w>
+  <w head="5" hun="VB" pos="VB" id="w26.3.4" deprel="auxpass">be</w>
+  <w head="0" hun="VBN" pos="VBN" id="w26.3.5" deprel="null">reduced</w>
  </chunk>
- <w head="6" hun="CC" pos="CC" id="w26.3.7" deprel="cc">and</w>
+ <w head="5" hun="CC" pos="CC" id="w26.3.6" deprel="cc">and</w>
  <chunk type="NP" id="c26.3-4">
-  <w head="9" hun="NN" pos="NN" id="w26.3.8" deprel="nn">capital</w>
-  <w head="10" hun="NNS" pos="NNS" id="w26.3.9" deprel="nsubj">taxes</w>
+  <w head="8" hun="NN" pos="NN" id="w26.3.7" deprel="nn">capital</w>
+  <w head="9" hun="NNS" pos="NNS" id="w26.3.8" deprel="nsubj">taxes</w>
  </chunk>
  <chunk type="VP" id="c26.3-5">
-  <w head="6" hun="VBD" pos="VBD" id="w26.3.10" deprel="conj">increased</w>
+  <w head="5" hun="VBD" pos="VBD" id="w26.3.9" deprel="conj">increased</w>
  </chunk>
- <w head="6" hun="." pos="." id="w26.3.11" deprel="punct">.</w>
+ <w head="5" hun="." pos="." id="w26.3.10" deprel="punct">.</w>
 </s> 
  
 
@@ -2580,22 +2571,23 @@
   <w head="27" hun="IN" pos="IN" id="w29.1.28" deprel="prep">for</w>
  </chunk>
  <chunk type="NP" id="c29.1-16">
-  <w head="32" hun="DT" pos="DT" id="w29.1.29" deprel="det">the</w>
-  <w head="32" hun="JJ" pos="CD" id="w29.1.30" deprel="amod">400,</w>
-  <w head="32" hun="CD" pos="CD" id="w29.1.31" deprel="num">000</w>
-  <w head="28" hun="NNS" pos="NNS" id="w29.1.32" deprel="pobj">workplaces</w>
+  <w head="31" hun="DT" pos="DT" id="w29.1.29" deprel="det">the</w>
+  <w head="31" hun="CD" pos="CD" id="w29.1.30" deprel="num">400,000</w>
  </chunk>
  <chunk type="VP" id="c29.1-17">
-  <w head="34" hun="RBS" pos="RB" id="w29.1.33" deprel="advmod">most</w>
-  <w head="25" hun="VBN" pos="VBN" id="w29.1.34" deprel="dep">exposed</w>
+  <w head="28" hun="NNS" pos="VBZ" id="w29.1.31" deprel="pobj">workplaces</w>
  </chunk>
- <chunk type="PP" id="c29.1-18">
-  <w head="34" hun="TO" pos="TO" id="w29.1.35" deprel="prep">to</w>
+ <chunk type="ADJP" id="c29.1-18">
+  <w head="33" hun="RBS" pos="RB" id="w29.1.32" deprel="advmod">most</w>
+  <w head="25" hun="VBN" pos="VBN" id="w29.1.33" deprel="dep">exposed</w>
  </chunk>
- <chunk type="NP" id="c29.1-19">
-  <w head="35" hun="NNS" pos="NNS" id="w29.1.36" deprel="pobj">hazards</w>
+ <chunk type="PP" id="c29.1-19">
+  <w head="33" hun="TO" pos="TO" id="w29.1.34" deprel="prep">to</w>
  </chunk>
- <w head="4" hun="." pos="." id="w29.1.37" deprel="punct">.</w>
+ <chunk type="NP" id="c29.1-20">
+  <w head="34" hun="NNS" pos="NNS" id="w29.1.35" deprel="pobj">hazards</w>
+ </chunk>
+ <w head="4" hun="." pos="." id="w29.1.36" deprel="punct">.</w>
 </s> 
  
 
@@ -2854,12 +2846,11 @@
   <w head="7" hun="IN" pos="IN" id="w31.3.12" deprel="prep">in</w>
  </chunk>
  <chunk type="NP" id="c31.3-8">
-  <w head="14" hun="JJ" pos="JJ" id="w31.3.13" deprel="amod">various</w>
-  <w head="12" hun="NNS" pos="JJ" id="w31.3.14" deprel="pobj">decision-</w>
-  <w head="14" hun="VBG" pos="NN" id="w31.3.15" deprel="partmod">making</w>
-  <w head="15" hun="NNS" pos="NNS" id="w31.3.16" deprel="dobj">assemblies</w>
+  <w head="15" hun="JJ" pos="JJ" id="w31.3.13" deprel="amod">various</w>
+  <w head="15" hun="JJ" pos="JJ" id="w31.3.14" deprel="amod">decision-making</w>
+  <w head="12" hun="NNS" pos="NNS" id="w31.3.15" deprel="pobj">assemblies</w>
  </chunk>
- <w head="5" hun="." pos="." id="w31.3.17" deprel="punct">.</w>
+ <w head="5" hun="." pos="." id="w31.3.16" deprel="punct">.</w>
 </s></p>
 
 <p id="32">
@@ -3181,35 +3172,37 @@
 
 <s id="s36.2">
  <chunk type="NP" id="c36.2-1">
-  <w head="2" hun="NNP" pos="NNP" id="w36.2.1" deprel="nsubj">Parliament'</w>
-  <w head="0" hun="VBZ" pos="VBZ" id="w36.2.2" deprel="null">s</w>
-  <w head="2" hun="NN" pos="NN" id="w36.2.3" deprel="dobj">decision</w>
+  <w head="3" hun="NNP" pos="NNP" id="w36.2.1" deprel="poss">Parliament</w>
  </chunk>
- <chunk type="PP" id="c36.2-2">
+ <chunk type="NP" id="c36.2-2">
+  <w head="1" hun="POS" pos="POS" id="w36.2.2" deprel="possessive">'s</w>
+  <w head="7" hun="NN" pos="NN" id="w36.2.3" deprel="nsubj">decision</w>
+ </chunk>
+ <chunk type="PP" id="c36.2-3">
   <w head="3" hun="IN" pos="IN" id="w36.2.4" deprel="prep">on</w>
  </chunk>
- <chunk type="NP" id="c36.2-3">
+ <chunk type="NP" id="c36.2-4">
   <w head="6" hun="NN" pos="NN" id="w36.2.5" deprel="nn">traffic</w>
   <w head="4" hun="NN" pos="NN" id="w36.2.6" deprel="pobj">policy</w>
  </chunk>
- <chunk type="VP" id="c36.2-4">
-  <w head="3" hun="VBZ" pos="VBZ" id="w36.2.7" deprel="dep">is</w>
+ <chunk type="VP" id="c36.2-5">
+  <w head="0" hun="VBZ" pos="VBZ" id="w36.2.7" deprel="null">is</w>
  </chunk>
- <chunk type="PP" id="c36.2-5">
+ <chunk type="PP" id="c36.2-6">
   <w head="7" hun="IN" pos="IN" id="w36.2.8" deprel="prep">of</w>
  </chunk>
- <chunk type="NP" id="c36.2-6">
+ <chunk type="NP" id="c36.2-7">
   <w head="10" hun="JJ" pos="JJ" id="w36.2.9" deprel="amod">great</w>
   <w head="8" hun="NN" pos="NN" id="w36.2.10" deprel="pobj">importance</w>
  </chunk>
- <chunk type="PP" id="c36.2-7">
+ <chunk type="PP" id="c36.2-8">
   <w head="10" hun="IN" pos="IN" id="w36.2.11" deprel="prep">in</w>
  </chunk>
- <chunk type="NP" id="c36.2-8">
+ <chunk type="NP" id="c36.2-9">
   <w head="13" hun="DT" pos="DT" id="w36.2.12" deprel="det">this</w>
   <w head="11" hun="NN" pos="NN" id="w36.2.13" deprel="pobj">context</w>
  </chunk>
- <w head="2" hun="." pos="." id="w36.2.14" deprel="punct">.</w>
+ <w head="7" hun="." pos="." id="w36.2.14" deprel="punct">.</w>
 </s></p>
 
 <p id="37">
@@ -3280,9 +3273,11 @@
  </chunk>
  <chunk type="NP" id="c37.2-13">
   <w head="22" hun="DT" pos="DT" id="w37.2.21" deprel="det">the</w>
-  <w head="20" hun="NN" pos="NN" id="w37.2.22" deprel="pobj">earth'</w>
-  <w head="18" hun="VBZ" pos="VBZ" id="w37.2.23" deprel="dep">s</w>
-  <w head="23" hun="NN" pos="NN" id="w37.2.24" deprel="dobj">climate</w>
+  <w head="24" hun="NN" pos="NN" id="w37.2.22" deprel="poss">earth</w>
+ </chunk>
+ <chunk type="NP" id="c37.2-14">
+  <w head="22" hun="POS" pos="POS" id="w37.2.23" deprel="possessive">'s</w>
+  <w head="20" hun="NN" pos="NN" id="w37.2.24" deprel="pobj">climate</w>
  </chunk>
  <w head="5" hun="." pos="." id="w37.2.25" deprel="punct">.</w>
 </s> 
@@ -3358,20 +3353,19 @@
 
 <s id="s38.2">
  <chunk type="SBAR" id="c38.2-1">
-  <w head="5" hun="NNS" pos="NNS" id="w38.2.1" deprel="nsubj">Permits</w>
+  <w head="5" hun="NNS" pos="NNS" id="w38.2.1" deprel="nsubjpass">Permits</w>
  </chunk>
  <chunk type="VP" id="c38.2-2">
   <w head="1" hun="VBN" pos="VBN" id="w38.2.2" deprel="partmod">granted</w>
  </chunk>
  <chunk type="VP" id="c38.2-3">
   <w head="5" hun="MD" pos="MD" id="w38.2.3" deprel="aux">will</w>
-  <w head="5" hun="VB" pos="VB" id="w38.2.4" deprel="cop">be</w>
+  <w head="5" hun="VB" pos="VB" id="w38.2.4" deprel="auxpass">be</w>
  </chunk>
  <chunk type="ADJP" id="c38.2-4">
-  <w head="6" hun="NN" pos="JJ" id="w38.2.5" deprel="nsubj">re-</w>
-  <w head="0" hun="VBD" pos="JJ" id="w38.2.6" deprel="null">examined</w>
+  <w head="0" hun="VBN" pos="JJ" id="w38.2.5" deprel="null">re-examined</w>
  </chunk>
- <w head="6" hun="." pos="." id="w38.2.7" deprel="punct">.</w>
+ <w head="5" hun="." pos="." id="w38.2.6" deprel="punct">.</w>
 </s> 
  
 
@@ -3549,11 +3543,10 @@
   <w head="0" hun="VBN" pos="VBN" id="w40.1.9" deprel="null">reviewed</w>
  </chunk>
  <w head="9" hun="CC" pos="CC" id="w40.1.10" deprel="cc">and</w>
- <chunk type="NP" id="c40.1-7">
-  <w head="12" hun="JJ" pos="JJ" id="w40.1.11" deprel="amod">co-</w>
-  <w head="9" hun="JJ" pos="JJ" id="w40.1.12" deprel="conj">ordinated</w>
+ <chunk type="ADJP" id="c40.1-7">
+  <w head="9" hun="VBN" pos="JJ" id="w40.1.11" deprel="conj">co-ordinated</w>
  </chunk>
- <w head="9" hun="." pos="." id="w40.1.13" deprel="punct">.</w>
+ <w head="9" hun="." pos="." id="w40.1.12" deprel="punct">.</w>
 </s> 
  
 
@@ -3672,12 +3665,13 @@
  </chunk>
  <w head="14" hun="CC" pos="CC" id="w41.2.15" deprel="cc">and</w>
  <chunk type="NP" id="c41.2-9">
-  <w head="19" hun="DT" pos="DT" id="w41.2.16" deprel="det">the</w>
-  <w head="19" hun="NNP" pos="NNP" id="w41.2.17" deprel="nn">Sundsvall/</w>
-  <w head="19" hun="NNP" pos="NNP" id="w41.2.18" deprel="nn">Timrå</w>
-  <w head="14" hun="NN" pos="NN" id="w41.2.19" deprel="conj">area</w>
+  <w head="20" hun="DT" pos="DT" id="w41.2.16" deprel="det">the</w>
+  <w head="18" hun="NNP" pos="NNP" id="w41.2.17" deprel="dep">Sundsvall</w>
+  <w head="20" hun="JJ" pos="NNP" id="w41.2.18" deprel="amod">/</w>
+  <w head="20" hun="NNP" pos="NNP" id="w41.2.19" deprel="nn">Timrå</w>
+  <w head="14" hun="NN" pos="NN" id="w41.2.20" deprel="conj">area</w>
  </chunk>
- <w head="5" hun="." pos="." id="w41.2.20" deprel="punct">.</w>
+ <w head="5" hun="." pos="." id="w41.2.21" deprel="punct">.</w>
 </s></p>
 
 <p id="42">
@@ -3858,47 +3852,45 @@
 <s id="s44.1">
  <chunk type="NP" id="c44.1-1">
   <w head="2" hun="DT" pos="DT" id="w44.1.1" deprel="det">The</w>
-  <w head="3" hun="NNP" pos="NNP" id="w44.1.2" deprel="nsubj">Government'</w>
+  <w head="5" hun="NNP" pos="NNP" id="w44.1.2" deprel="poss">Government</w>
  </chunk>
- <chunk type="VP" id="c44.1-2">
-  <w head="0" hun="VBZ" pos="VBZ" id="w44.1.3" deprel="null">s</w>
- </chunk>
- <chunk type="NP" id="c44.1-3">
+ <chunk type="NP" id="c44.1-2">
+  <w head="2" hun="POS" pos="POS" id="w44.1.3" deprel="possessive">'s</w>
   <w head="5" hun="JJ" pos="JJ" id="w44.1.4" deprel="amod">agricultural</w>
   <w head="6" hun="NN" pos="NN" id="w44.1.5" deprel="nsubj">policy</w>
-  <w head="3" hun="VBZ" pos="NNS" id="w44.1.6" deprel="ccomp">aims</w>
+  <w head="0" hun="VBZ" pos="NNS" id="w44.1.6" deprel="null">aims</w>
  </chunk>
- <chunk type="VP" id="c44.1-4">
+ <chunk type="VP" id="c44.1-3">
   <w head="8" hun="TO" pos="TO" id="w44.1.7" deprel="aux">to</w>
   <w head="6" hun="VB" pos="VB" id="w44.1.8" deprel="xcomp">promote</w>
  </chunk>
- <chunk type="NP" id="c44.1-5">
+ <chunk type="NP" id="c44.1-4">
   <w head="8" hun="NN" pos="NN" id="w44.1.9" deprel="dobj">farming</w>
  </chunk>
- <chunk type="SBAR" id="c44.1-6">
+ <chunk type="SBAR" id="c44.1-5">
   <w head="11" hun="WDT" pos="IN" id="w44.1.10" deprel="nsubj">that</w>
  </chunk>
- <chunk type="NP" id="c44.1-7">
+ <chunk type="NP" id="c44.1-6">
   <w head="9" hun="VBZ" pos="NNS" id="w44.1.11" deprel="rcmod">thrives</w>
  </chunk>
- <chunk type="PP" id="c44.1-8">
+ <chunk type="PP" id="c44.1-7">
   <w head="11" hun="IN" pos="IN" id="w44.1.12" deprel="prep">without</w>
  </chunk>
- <chunk type="VP" id="c44.1-9">
+ <chunk type="VP" id="c44.1-8">
   <w head="12" hun="VBG" pos="VBG" id="w44.1.13" deprel="pcomp">having</w>
  </chunk>
- <chunk type="NP" id="c44.1-10">
+ <chunk type="NP" id="c44.1-9">
   <w head="15" hun="JJ" pos="JJ" id="w44.1.14" deprel="amod">damaging</w>
   <w head="13" hun="NNS" pos="NNS" id="w44.1.15" deprel="dobj">effects</w>
  </chunk>
- <chunk type="PP" id="c44.1-11">
+ <chunk type="PP" id="c44.1-10">
   <w head="15" hun="IN" pos="IN" id="w44.1.16" deprel="prep">on</w>
  </chunk>
- <chunk type="NP" id="c44.1-12">
+ <chunk type="NP" id="c44.1-11">
   <w head="18" hun="DT" pos="DT" id="w44.1.17" deprel="det">the</w>
   <w head="16" hun="NN" pos="NN" id="w44.1.18" deprel="pobj">environment</w>
  </chunk>
- <w head="3" hun="." pos="." id="w44.1.19" deprel="punct">.</w>
+ <w head="6" hun="." pos="." id="w44.1.19" deprel="punct">.</w>
 </s> 
  
 
@@ -3921,41 +3913,43 @@
   <w head="5" hun="IN" pos="IN" id="w44.2.6" deprel="prep">from</w>
  </chunk>
  <chunk type="NP" id="c44.2-5">
-  <w head="6" hun="NN" pos="JJ" id="w44.2.7" deprel="pobj">today'</w>
-  <w head="5" hun="VBZ" pos="NNS" id="w44.2.8" deprel="amod">s</w>
-  <w head="10" hun="JJ" pos="JJ" id="w44.2.9" deprel="amod">intensive</w>
-  <w head="8" hun="NN" pos="NN" id="w44.2.10" deprel="dobj">production</w>
+  <w head="10" hun="NN" pos="NN" id="w44.2.7" deprel="poss">today</w>
  </chunk>
- <chunk type="VP" id="c44.2-6">
-  <w head="8" hun="TO" pos="TO" id="w44.2.11" deprel="prep">to</w>
+ <chunk type="NP" id="c44.2-6">
+  <w head="7" hun="POS" pos="POS" id="w44.2.8" deprel="possessive">'s</w>
+  <w head="10" hun="JJ" pos="JJ" id="w44.2.9" deprel="amod">intensive</w>
+  <w head="6" hun="NN" pos="NN" id="w44.2.10" deprel="pobj">production</w>
+ </chunk>
+ <chunk type="VP" id="c44.2-7">
+  <w head="6" hun="TO" pos="TO" id="w44.2.11" deprel="dep">to</w>
   <w head="11" hun="NN" pos="VB" id="w44.2.12" deprel="pobj">farming</w>
  </chunk>
- <chunk type="NP" id="c44.2-7">
+ <chunk type="NP" id="c44.2-8">
   <w head="15" hun="WDT" pos="DT" id="w44.2.13" deprel="nsubj">that</w>
   <w head="15" hun="RB" pos="NN" id="w44.2.14" deprel="advmod">better</w>
  </chunk>
- <chunk type="VP" id="c44.2-8">
+ <chunk type="VP" id="c44.2-9">
   <w head="12" hun="VBZ" pos="VBZ" id="w44.2.15" deprel="rcmod">meets</w>
  </chunk>
- <chunk type="NP" id="c44.2-9">
+ <chunk type="NP" id="c44.2-10">
   <w head="17" hun="DT" pos="DT" id="w44.2.16" deprel="det">the</w>
   <w head="15" hun="NNS" pos="NNS" id="w44.2.17" deprel="dobj">requirements</w>
  </chunk>
- <chunk type="PP" id="c44.2-10">
+ <chunk type="PP" id="c44.2-11">
   <w head="15" hun="IN" pos="IN" id="w44.2.18" deprel="prep">in</w>
  </chunk>
- <chunk type="NP" id="c44.2-11">
+ <chunk type="NP" id="c44.2-12">
   <w head="18" hun="NN" pos="NN" id="w44.2.19" deprel="pobj">respect</w>
  </chunk>
- <chunk type="PP" id="c44.2-12">
+ <chunk type="PP" id="c44.2-13">
   <w head="19" hun="IN" pos="IN" id="w44.2.20" deprel="prep">of</w>
  </chunk>
- <chunk type="NP" id="c44.2-13">
+ <chunk type="NP" id="c44.2-14">
   <w head="22" hun="DT" pos="DT" id="w44.2.21" deprel="det">the</w>
   <w head="20" hun="NN" pos="NN" id="w44.2.22" deprel="pobj">environment</w>
  </chunk>
  <w head="22" hun="CC" pos="CC" id="w44.2.23" deprel="cc">and</w>
- <chunk type="NP" id="c44.2-15">
+ <chunk type="NP" id="c44.2-16">
   <w head="25" hun="JJ" pos="JJ" id="w44.2.24" deprel="amod">regional</w>
   <w head="22" hun="NN" pos="NN" id="w44.2.25" deprel="conj">distribution</w>
  </chunk>
@@ -4399,9 +4393,11 @@
   <w head="10" hun="IN" pos="IN" id="w48.1.11" deprel="prep">with</w>
  </chunk>
  <chunk type="NP" id="c48.1-8">
-  <w head="11" hun="NNP" pos="NNP" id="w48.1.12" deprel="pobj">Parliament'</w>
-  <w head="8" hun="VBZ" pos="NNP" id="w48.1.13" deprel="dep">s</w>
-  <w head="13" hun="NN" pos="NN" id="w48.1.14" deprel="dobj">decision</w>
+  <w head="14" hun="NNP" pos="NNP" id="w48.1.12" deprel="poss">Parliament</w>
+ </chunk>
+ <chunk type="NP" id="c48.1-9">
+  <w head="12" hun="POS" pos="POS" id="w48.1.13" deprel="possessive">'s</w>
+  <w head="11" hun="NN" pos="NN" id="w48.1.14" deprel="pobj">decision</w>
  </chunk>
  <w head="8" hun="." pos="." id="w48.1.15" deprel="punct">.</w>
 </s></p>
@@ -4688,32 +4684,31 @@
  <chunk type="NP" id="c54.1-1">
   <w head="3" hun="DT" pos="DT" id="w54.1.1" deprel="det">The</w>
   <w head="3" hun="NNP" pos="NNP" id="w54.1.2" deprel="nn">Government</w>
-  <w head="12" hun="NN" pos="NN" id="w54.1.3" deprel="nsubj">bill</w>
+  <w head="11" hun="NN" pos="NN" id="w54.1.3" deprel="nsubj">bill</w>
  </chunk>
  <chunk type="PP" id="c54.1-2">
   <w head="3" hun="IN" pos="IN" id="w54.1.4" deprel="prep">on</w>
  </chunk>
  <chunk type="NP" id="c54.1-3">
-  <w head="7" hun="DT" pos="DT" id="w54.1.5" deprel="det">the</w>
-  <w head="7" hun="JJ" pos="JJ" id="w54.1.6" deprel="amod">nine-</w>
-  <w head="4" hun="NN" pos="NN" id="w54.1.7" deprel="pobj">year</w>
-  <w head="9" hun="JJ" pos="JJ" id="w54.1.8" deprel="amod">compulsory</w>
-  <w head="7" hun="NN" pos="NN" id="w54.1.9" deprel="dep">school</w>
+  <w head="8" hun="DT" pos="DT" id="w54.1.5" deprel="det">the</w>
+  <w head="8" hun="JJ" pos="JJ" id="w54.1.6" deprel="amod">nine-year</w>
+  <w head="8" hun="JJ" pos="NN" id="w54.1.7" deprel="amod">compulsory</w>
+  <w head="4" hun="NN" pos="NN" id="w54.1.8" deprel="pobj">school</w>
  </chunk>
  <chunk type="VP" id="c54.1-4">
-  <w head="12" hun="VBZ" pos="VBZ" id="w54.1.10" deprel="cop">is</w>
+  <w head="11" hun="VBZ" pos="VBZ" id="w54.1.9" deprel="cop">is</w>
  </chunk>
  <chunk type="ADJP" id="c54.1-5">
-  <w head="12" hun="RB" pos="RB" id="w54.1.11" deprel="advmod">now</w>
-  <w head="0" hun="JJ" pos="JJ" id="w54.1.12" deprel="null">available</w>
+  <w head="11" hun="RB" pos="RB" id="w54.1.10" deprel="advmod">now</w>
+  <w head="0" hun="JJ" pos="JJ" id="w54.1.11" deprel="null">available</w>
  </chunk>
  <chunk type="PP" id="c54.1-6">
-  <w head="12" hun="IN" pos="IN" id="w54.1.13" deprel="prep">for</w>
+  <w head="11" hun="IN" pos="IN" id="w54.1.12" deprel="prep">for</w>
  </chunk>
  <chunk type="NP" id="c54.1-7">
-  <w head="13" hun="NN" pos="NN" id="w54.1.14" deprel="pobj">consideration</w>
+  <w head="12" hun="NN" pos="NN" id="w54.1.13" deprel="pobj">consideration</w>
  </chunk>
- <w head="12" hun="." pos="." id="w54.1.15" deprel="punct">.</w>
+ <w head="11" hun="." pos="." id="w54.1.14" deprel="punct">.</w>
 </s> 
  
 
@@ -4817,34 +4812,33 @@
 <p id="55">
 <s id="s55.1">
  <chunk type="NP" id="c55.1-1">
-  <w head="6" hun="EX" pos="EX" id="w55.1.1" deprel="expl">There</w>
+  <w head="5" hun="EX" pos="EX" id="w55.1.1" deprel="expl">There</w>
  </chunk>
  <chunk type="VP" id="c55.1-2">
-  <w head="6" hun="MD" pos="MD" id="w55.1.2" deprel="aux">will</w>
-  <w head="6" hun="VB" pos="VB" id="w55.1.3" deprel="cop">be</w>
-  <w head="6" hun="JJ" pos="VBN" id="w55.1.4" deprel="amod">improved</w>
+  <w head="5" hun="MD" pos="MD" id="w55.1.2" deprel="aux">will</w>
+  <w head="5" hun="VB" pos="VB" id="w55.1.3" deprel="cop">be</w>
  </chunk>
  <chunk type="NP" id="c55.1-3">
-  <w head="6" hun="JJ" pos="JJ" id="w55.1.5" deprel="amod">co-</w>
-  <w head="0" hun="NN" pos="NN" id="w55.1.6" deprel="null">ordination</w>
+  <w head="5" hun="JJ" pos="VBN" id="w55.1.4" deprel="amod">improved</w>
+  <w head="0" hun="NN" pos="NN" id="w55.1.5" deprel="null">co-ordination</w>
  </chunk>
  <chunk type="PP" id="c55.1-4">
-  <w head="6" hun="IN" pos="IN" id="w55.1.7" deprel="prep">of</w>
+  <w head="5" hun="IN" pos="IN" id="w55.1.6" deprel="prep">of</w>
  </chunk>
  <chunk type="NP" id="c55.1-5">
-  <w head="9" hun="JJ" pos="NN" id="w55.1.8" deprel="amod">adult</w>
-  <w head="7" hun="NN" pos="NN" id="w55.1.9" deprel="pobj">education</w>
+  <w head="8" hun="JJ" pos="NN" id="w55.1.7" deprel="amod">adult</w>
+  <w head="6" hun="NN" pos="NN" id="w55.1.8" deprel="pobj">education</w>
  </chunk>
- <w head="6" hun="," pos="," id="w55.1.10" deprel="punct">,</w>
+ <w head="5" hun="," pos="," id="w55.1.9" deprel="punct">,</w>
  <chunk type="NP" id="c55.1-7">
-  <w head="13" hun="JJ" pos="JJ" id="w55.1.11" deprel="amod">labour</w>
-  <w head="13" hun="NN" pos="NN" id="w55.1.12" deprel="nn">market</w>
-  <w head="6" hun="NN" pos="NN" id="w55.1.13" deprel="conj">training</w>
-  <w head="6" hun="CC" pos="CC" id="w55.1.14" deprel="cc">and</w>
-  <w head="16" hun="NN" pos="JJ" id="w55.1.15" deprel="nn">personnel</w>
-  <w head="6" hun="NN" pos="NN" id="w55.1.16" deprel="conj">training</w>
+  <w head="12" hun="JJ" pos="JJ" id="w55.1.10" deprel="amod">labour</w>
+  <w head="12" hun="NN" pos="NN" id="w55.1.11" deprel="nn">market</w>
+  <w head="5" hun="NN" pos="NN" id="w55.1.12" deprel="conj">training</w>
+  <w head="5" hun="CC" pos="CC" id="w55.1.13" deprel="cc">and</w>
+  <w head="15" hun="NN" pos="JJ" id="w55.1.14" deprel="nn">personnel</w>
+  <w head="5" hun="NN" pos="NN" id="w55.1.15" deprel="conj">training</w>
  </chunk>
- <w head="6" hun="." pos="." id="w55.1.17" deprel="punct">.</w>
+ <w head="5" hun="." pos="." id="w55.1.16" deprel="punct">.</w>
 </s></p>
 
 <p id="56">
@@ -4925,27 +4919,26 @@
 <p id="57">
 <s id="s57.1">
  <chunk type="NP" id="c57.1-1">
-  <w head="3" hun="NNP" pos="JJ" id="w57.1.1" deprel="nn">International</w>
-  <w head="3" hun="JJ" pos="JJ" id="w57.1.2" deprel="amod">co-</w>
-  <w head="9" hun="NN" pos="NN" id="w57.1.3" deprel="nsubj">operation</w>
+  <w head="2" hun="JJ" pos="NNP" id="w57.1.1" deprel="amod">International</w>
+  <w head="8" hun="NN" pos="NN" id="w57.1.2" deprel="nsubj">co-operation</w>
  </chunk>
  <chunk type="PP" id="c57.1-2">
-  <w head="3" hun="IN" pos="IN" id="w57.1.4" deprel="prep">within</w>
+  <w head="2" hun="IN" pos="IN" id="w57.1.3" deprel="prep">within</w>
  </chunk>
  <chunk type="NP" id="c57.1-3">
-  <w head="4" hun="NN" pos="NN" id="w57.1.5" deprel="pobj">research</w>
-  <w head="5" hun="CC" pos="CC" id="w57.1.6" deprel="cc">and</w>
-  <w head="5" hun="NN" pos="NN" id="w57.1.7" deprel="conj">development</w>
+  <w head="3" hun="NN" pos="NN" id="w57.1.4" deprel="pobj">research</w>
+  <w head="4" hun="CC" pos="CC" id="w57.1.5" deprel="cc">and</w>
+  <w head="4" hun="NN" pos="NN" id="w57.1.6" deprel="conj">development</w>
  </chunk>
  <chunk type="VP" id="c57.1-4">
-  <w head="9" hun="VBZ" pos="VBZ" id="w57.1.8" deprel="aux">is</w>
-  <w head="0" hun="VBG" pos="VBG" id="w57.1.9" deprel="null">becoming</w>
+  <w head="8" hun="VBZ" pos="VBZ" id="w57.1.7" deprel="aux">is</w>
+  <w head="0" hun="VBG" pos="VBG" id="w57.1.8" deprel="null">becoming</w>
  </chunk>
  <chunk type="ADJP" id="c57.1-5">
-  <w head="11" hun="RB" pos="RB" id="w57.1.10" deprel="advmod">increasingly</w>
-  <w head="9" hun="JJ" pos="JJ" id="w57.1.11" deprel="acomp">important</w>
+  <w head="10" hun="RB" pos="RB" id="w57.1.9" deprel="advmod">increasingly</w>
+  <w head="8" hun="JJ" pos="JJ" id="w57.1.10" deprel="acomp">important</w>
  </chunk>
- <w head="9" hun="." pos="." id="w57.1.12" deprel="punct">.</w>
+ <w head="8" hun="." pos="." id="w57.1.11" deprel="punct">.</w>
 </s> 
  
 
@@ -4991,12 +4984,11 @@
   <w head="18" hun="IN" pos="IN" id="w57.2.19" deprel="prep">in</w>
  </chunk>
  <chunk type="NP" id="c57.2-10">
-  <w head="23" hun="JJ" pos="JJ" id="w57.2.20" deprel="amod">international</w>
-  <w head="23" hun="NN" pos="NN" id="w57.2.21" deprel="nn">research</w>
-  <w head="23" hun="JJ" pos="NN" id="w57.2.22" deprel="amod">co-</w>
-  <w head="19" hun="NN" pos="NN" id="w57.2.23" deprel="pobj">operation</w>
+  <w head="22" hun="JJ" pos="JJ" id="w57.2.20" deprel="amod">international</w>
+  <w head="22" hun="NN" pos="NN" id="w57.2.21" deprel="nn">research</w>
+  <w head="19" hun="NN" pos="NN" id="w57.2.22" deprel="pobj">co-operation</w>
  </chunk>
- <w head="4" hun="." pos="." id="w57.2.24" deprel="punct">.</w>
+ <w head="4" hun="." pos="." id="w57.2.23" deprel="punct">.</w>
 </s></p>
 
 <p id="58">
@@ -5604,7 +5596,7 @@
  <w head="27" hun="," pos="," id="w63.1.47" deprel="punct">,</w>
  <w head="27" hun="CC" pos="CC" id="w63.1.48" deprel="cc">and</w>
  <chunk type="SBAR" id="c63.1-32">
-  <w head="52" hun="IN" pos="IN" id="w63.1.49" deprel="mark">in</w>
+  <w head="52" hun="IN" pos="IN" id="w63.1.49" deprel="dep">in</w>
  </chunk>
  <w head="52" hun="NN" pos="NN" id="w63.1.50" deprel="dep">order</w>
  <chunk type="VP" id="c63.1-34">
@@ -5612,27 +5604,24 @@
   <w head="27" hun="VB" pos="VB" id="w63.1.52" deprel="conj">strengthen</w>
  </chunk>
  <chunk type="NP" id="c63.1-35">
-  <w head="55" hun="PRP$" pos="PRP$" id="w63.1.53" deprel="poss">our</w>
-  <w head="55" hun="JJ" pos="JJ" id="w63.1.54" deprel="amod">co-</w>
-  <w head="52" hun="NN" pos="NN" id="w63.1.55" deprel="dobj">operation</w>
+  <w head="54" hun="PRP$" pos="PRP$" id="w63.1.53" deprel="poss">our</w>
+  <w head="27" hun="NN" pos="NN" id="w63.1.54" deprel="pobj">co-operation</w>
+  <w head="27" hun=":" pos=":" id="w63.1.55" deprel="punct">-</w>
+  <w head="27" hun="JJ" pos="JJ" id="w63.1.56" deprel="dep">economic</w>
+  <w head="56" hun="," pos="," id="w63.1.57" deprel="punct">,</w>
+  <w head="56" hun="JJ" pos="JJ" id="w63.1.58" deprel="conj">social</w>
+  <w head="56" hun="CC" pos="CC" id="w63.1.59" deprel="cc">and</w>
+  <w head="56" hun="JJ" pos="JJ" id="w63.1.60" deprel="conj">cultural</w>
+  <w head="56" hun=":" pos="NN" id="w63.1.61" deprel="punct">-</w>
  </chunk>
- <w head="55" hun=":" pos=":" id="w63.1.56" deprel="punct">-</w>
+ <chunk type="PP" id="c63.1-36">
+  <w head="27" hun="IN" pos="IN" id="w63.1.62" deprel="dep">with</w>
+ </chunk>
  <chunk type="NP" id="c63.1-37">
-  <w head="55" hun="JJ" pos="JJ" id="w63.1.57" deprel="dep">economic</w>
-  <w head="57" hun="," pos="," id="w63.1.58" deprel="punct">,</w>
-  <w head="57" hun="JJ" pos="JJ" id="w63.1.59" deprel="conj">social</w>
-  <w head="57" hun="CC" pos="CC" id="w63.1.60" deprel="cc">and</w>
-  <w head="57" hun="JJ" pos="JJ" id="w63.1.61" deprel="conj">cultural</w>
-  <w head="57" hun=":" pos="NN" id="w63.1.62" deprel="punct">-</w>
+  <w head="64" hun="JJ" pos="JJ" id="w63.1.63" deprel="amod">other</w>
+  <w head="62" hun="NNS" pos="NNS" id="w63.1.64" deprel="pobj">countries</w>
  </chunk>
- <chunk type="PP" id="c63.1-38">
-  <w head="52" hun="IN" pos="IN" id="w63.1.63" deprel="prep">with</w>
- </chunk>
- <chunk type="NP" id="c63.1-39">
-  <w head="65" hun="JJ" pos="JJ" id="w63.1.64" deprel="amod">other</w>
-  <w head="63" hun="NNS" pos="NNS" id="w63.1.65" deprel="pobj">countries</w>
- </chunk>
- <w head="5" hun="." pos="." id="w63.1.66" deprel="punct">.</w>
+ <w head="5" hun="." pos="." id="w63.1.65" deprel="punct">.</w>
 </s></p>
 
 <p id="64">
@@ -5715,26 +5704,28 @@
 <p id="66">
 <s id="s66.1">
  <chunk type="NP" id="c66.1-1">
-  <w head="2" hun="NNP" pos="NNP" id="w66.1.1" deprel="nsubj">Sweden'</w>
-  <w head="0" hun="VBZ" pos="VBZ" id="w66.1.2" deprel="null">s</w>
+  <w head="4" hun="NNP" pos="NNP" id="w66.1.1" deprel="poss">Sweden</w>
+ </chunk>
+ <chunk type="NP" id="c66.1-2">
+  <w head="1" hun="POS" pos="POS" id="w66.1.2" deprel="possessive">'s</w>
   <w head="4" hun="JJ" pos="JJ" id="w66.1.3" deprel="amod">economic</w>
-  <w head="2" hun="NN" pos="NN" id="w66.1.4" deprel="dobj">situation</w>
+  <w head="6" hun="NN" pos="NN" id="w66.1.4" deprel="nsubj">situation</w>
  </chunk>
- <chunk type="VP" id="c66.1-2">
+ <chunk type="VP" id="c66.1-3">
   <w head="6" hun="VBZ" pos="VBZ" id="w66.1.5" deprel="aux">has</w>
-  <w head="2" hun="VBN" pos="VBN" id="w66.1.6" deprel="advcl">improved</w>
+  <w head="0" hun="VBN" pos="VBN" id="w66.1.6" deprel="null">improved</w>
  </chunk>
- <chunk type="ADVP" id="c66.1-3">
+ <chunk type="ADVP" id="c66.1-4">
   <w head="6" hun="RB" pos="RB" id="w66.1.7" deprel="advmod">substantially</w>
  </chunk>
- <chunk type="PP" id="c66.1-4">
+ <chunk type="PP" id="c66.1-5">
   <w head="6" hun="IN" pos="IN" id="w66.1.8" deprel="prep">in</w>
  </chunk>
- <chunk type="NP" id="c66.1-5">
+ <chunk type="NP" id="c66.1-6">
   <w head="10" hun="JJ" pos="JJ" id="w66.1.9" deprel="amod">recent</w>
   <w head="8" hun="NNS" pos="NNS" id="w66.1.10" deprel="pobj">years</w>
  </chunk>
- <w head="2" hun="." pos="." id="w66.1.11" deprel="punct">.</w>
+ <w head="6" hun="." pos="." id="w66.1.11" deprel="punct">.</w>
 </s> 
  
 
@@ -5999,8 +5990,8 @@
   <w head="11" hun="JJ" pos="VBP" id="w69.3.17" deprel="amod">mean</w>
  </chunk>
  <chunk type="NP" id="c69.3-14">
-  <w head="34" hun="IN" pos="DT" id="w69.3.18" deprel="complm">that</w>
-  <w head="34" hun="NN" pos="NN" id="w69.3.19" deprel="nsubjpass">responsibility</w>
+  <w head="33" hun="IN" pos="DT" id="w69.3.18" deprel="complm">that</w>
+  <w head="33" hun="NN" pos="NN" id="w69.3.19" deprel="nsubjpass">responsibility</w>
  </chunk>
  <w head="19" hun="," pos="," id="w69.3.20" deprel="punct">,</w>
  <w head="19" hun="CC" pos="CC" id="w69.3.21" deprel="cc">and</w>
@@ -6018,28 +6009,27 @@
  </chunk>
  <w head="25" hun="CC" pos="CC" id="w69.3.28" deprel="cc">and</w>
  <chunk type="PP" id="c69.3-21">
-  <w head="31" hun="TO" pos="TO" id="w69.3.29" deprel="aux">to</w>
+  <w head="30" hun="TO" pos="TO" id="w69.3.29" deprel="aux">to</w>
  </chunk>
  <chunk type="NP" id="c69.3-22">
-  <w head="29" hun="JJ" pos="JJ" id="w69.3.30" deprel="pobj">co-</w>
-  <w head="25" hun="VB" pos="NN" id="w69.3.31" deprel="conj">operate</w>
+  <w head="25" hun="VB" pos="NN" id="w69.3.30" deprel="conj">co-operate</w>
  </chunk>
  <chunk type="VP" id="c69.3-23">
-  <w head="34" hun="MD" pos="MD" id="w69.3.32" deprel="aux">will</w>
-  <w head="34" hun="VB" pos="VB" id="w69.3.33" deprel="auxpass">be</w>
-  <w head="17" hun="VBN" pos="VBN" id="w69.3.34" deprel="ccomp">required</w>
+  <w head="33" hun="MD" pos="MD" id="w69.3.31" deprel="aux">will</w>
+  <w head="33" hun="VB" pos="VB" id="w69.3.32" deprel="auxpass">be</w>
+  <w head="17" hun="VBN" pos="VBN" id="w69.3.33" deprel="ccomp">required</w>
  </chunk>
  <chunk type="PP" id="c69.3-24">
-  <w head="34" hun="IN" pos="IN" id="w69.3.35" deprel="prep">in</w>
+  <w head="33" hun="IN" pos="IN" id="w69.3.34" deprel="prep">in</w>
  </chunk>
  <chunk type="NP" id="c69.3-25">
-  <w head="37" hun="DT" pos="DT" id="w69.3.36" deprel="det">the</w>
-  <w head="35" hun="NN" pos="NN" id="w69.3.37" deprel="pobj">future</w>
+  <w head="36" hun="DT" pos="DT" id="w69.3.35" deprel="det">the</w>
+  <w head="34" hun="NN" pos="NN" id="w69.3.36" deprel="pobj">future</w>
  </chunk>
  <chunk type="ADVP" id="c69.3-26">
-  <w head="34" hun="RB" pos="RB" id="w69.3.38" deprel="advmod">too</w>
+  <w head="33" hun="RB" pos="RB" id="w69.3.37" deprel="advmod">too</w>
  </chunk>
- <w head="2" hun="." pos="." id="w69.3.39" deprel="punct">.</w>
+ <w head="2" hun="." pos="." id="w69.3.38" deprel="punct">.</w>
 </s></p>
 
 <p id="70">
@@ -6237,65 +6227,67 @@
 <p id="72">
 <s id="s72.1">
  <chunk type="NP" id="c72.1-1">
-  <w head="4" hun="PRP" pos="PRP" id="w72.1.1" deprel="nsubj">It</w>
+  <w head="6" hun="PRP" pos="PRP" id="w72.1.1" deprel="nsubj">It</w>
  </chunk>
  <chunk type="VP" id="c72.1-2">
-  <w head="4" hun="VBZ" pos="VBZ" id="w72.1.2" deprel="cop">is</w>
+  <w head="6" hun="VBZ" pos="VBZ" id="w72.1.2" deprel="cop">is</w>
  </chunk>
  <chunk type="NP" id="c72.1-3">
   <w head="4" hun="DT" pos="DT" id="w72.1.3" deprel="det">the</w>
-  <w head="0" hun="NNP" pos="NNP" id="w72.1.4" deprel="null">Government'</w>
-  <w head="6" hun="VBZ" pos="NNP" id="w72.1.5" deprel="dep">s</w>
-  <w head="4" hun="NN" pos="NNP" id="w72.1.6" deprel="dep">resposibility</w>
+  <w head="6" hun="NN" pos="NNP" id="w72.1.4" deprel="poss">Government</w>
+ </chunk>
+ <chunk type="NP" id="c72.1-4">
+  <w head="4" hun="POS" pos="POS" id="w72.1.5" deprel="possessive">'s</w>
+  <w head="0" hun="NN" pos="NN" id="w72.1.6" deprel="null">resposibility</w>
   <w head="6" hun="CC" pos="CC" id="w72.1.7" deprel="cc">and</w>
   <w head="6" hun="NN" pos="NN" id="w72.1.8" deprel="conj">aim</w>
  </chunk>
- <chunk type="VP" id="c72.1-4">
+ <chunk type="VP" id="c72.1-5">
   <w head="10" hun="TO" pos="TO" id="w72.1.9" deprel="aux">to</w>
-  <w head="6" hun="VB" pos="VB" id="w72.1.10" deprel="infmod">put</w>
+  <w head="6" hun="VB" pos="VB" id="w72.1.10" deprel="xcomp">put</w>
   <w head="12" hun="TO" pos="TO" id="w72.1.11" deprel="aux">to</w>
   <w head="10" hun="VB" pos="VB" id="w72.1.12" deprel="xcomp">use</w>
  </chunk>
- <chunk type="NP" id="c72.1-5">
+ <chunk type="NP" id="c72.1-6">
   <w head="15" hun="DT" pos="DT" id="w72.1.13" deprel="det">all</w>
   <w head="15" hun="JJ" pos="JJ" id="w72.1.14" deprel="amod">good</w>
   <w head="12" hun="NNS" pos="NNS" id="w72.1.15" deprel="dobj">initiatives</w>
  </chunk>
- <w head="10" hun="," pos="VBP" id="w72.1.16" deprel="punct">,</w>
- <chunk type="VP" id="c72.1-7">
+ <w head="12" hun="," pos="VBP" id="w72.1.16" deprel="punct">,</w>
+ <chunk type="VP" id="c72.1-8">
   <w head="18" hun="TO" pos="TO" id="w72.1.17" deprel="aux">to</w>
-  <w head="10" hun="VB" pos="VB" id="w72.1.18" deprel="conj">work</w>
+  <w head="12" hun="VB" pos="VB" id="w72.1.18" deprel="conj">work</w>
  </chunk>
- <chunk type="PP" id="c72.1-8">
+ <chunk type="PP" id="c72.1-9">
   <w head="18" hun="IN" pos="IN" id="w72.1.19" deprel="prep">for</w>
  </chunk>
- <chunk type="NP" id="c72.1-9">
+ <chunk type="NP" id="c72.1-10">
   <w head="21" hun="JJ" pos="JJ" id="w72.1.20" deprel="amod">broad</w>
   <w head="19" hun="NNS" pos="NNS" id="w72.1.21" deprel="pobj">solutions</w>
  </chunk>
- <w head="10" hun="CC" pos="CC" id="w72.1.22" deprel="cc">and</w>
- <chunk type="VP" id="c72.1-11">
+ <w head="12" hun="CC" pos="CC" id="w72.1.22" deprel="cc">and</w>
+ <chunk type="VP" id="c72.1-12">
   <w head="24" hun="TO" pos="TO" id="w72.1.23" deprel="aux">to</w>
-  <w head="10" hun="VB" pos="VB" id="w72.1.24" deprel="conj">pursue</w>
+  <w head="12" hun="VB" pos="VB" id="w72.1.24" deprel="conj">pursue</w>
  </chunk>
- <chunk type="NP" id="c72.1-12">
+ <chunk type="NP" id="c72.1-13">
   <w head="26" hun="DT" pos="DT" id="w72.1.25" deprel="det">a</w>
   <w head="24" hun="NN" pos="NN" id="w72.1.26" deprel="dobj">policy</w>
  </chunk>
- <chunk type="PP" id="c72.1-13">
+ <chunk type="PP" id="c72.1-14">
   <w head="24" hun="IN" pos="IN" id="w72.1.27" deprel="prep">in</w>
  </chunk>
- <chunk type="NP" id="c72.1-14">
+ <chunk type="NP" id="c72.1-15">
   <w head="29" hun="DT" pos="DT" id="w72.1.28" deprel="det">the</w>
   <w head="27" hun="NNS" pos="NNS" id="w72.1.29" deprel="pobj">interests</w>
  </chunk>
- <chunk type="PP" id="c72.1-15">
+ <chunk type="PP" id="c72.1-16">
   <w head="29" hun="IN" pos="IN" id="w72.1.30" deprel="prep">of</w>
  </chunk>
- <chunk type="NP" id="c72.1-16">
+ <chunk type="NP" id="c72.1-17">
   <w head="33" hun="DT" pos="DT" id="w72.1.31" deprel="det">the</w>
   <w head="33" hun="JJ" pos="JJ" id="w72.1.32" deprel="amod">whole</w>
   <w head="30" hun="NN" pos="NN" id="w72.1.33" deprel="pobj">nation</w>
  </chunk>
- <w head="4" hun="." pos="." id="w72.1.34" deprel="punct">.</w>
+ <w head="6" hun="." pos="." id="w72.1.34" deprel="punct">.</w>
 </s></p></text>

@@ -15,7 +15,7 @@ my $expected = $DATA.'/1988en.xml';
 
 my $null = "2> /dev/null >/dev/null";
 
-system("$UPLUG pre/fr-all -ci iso-8859-1 -in $input -out annotated.xml $null");
+system("$UPLUG pre/en-all -ci iso-8859-1 -in $input -out annotated.xml $null");
 is( compare( "annotated.xml", $expected ),0, "annotate text" );
 unlink("annotated.xml");
 

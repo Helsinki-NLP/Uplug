@@ -1,0 +1,3281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<text>
+<p id="1">
+<s id="s1.1">
+ <w head="2" hun="NN" id="w1.1.1" deprel="SB">REGIERUNGSERKLÄRUNG</w>
+ <w head="0" hun="VVPP" id="w1.1.2" deprel="ROOT">abgegeben</w>
+ <w head="2" hun="APPRART" id="w1.1.3" deprel="MO">vom</w>
+ <w head="3" hun="NN" id="w1.1.4" deprel="NK">Ministerpräsidenten</w>
+ <w head="2" hun="APPRART" id="w1.1.5" deprel="MO">am</w>
+ <w head="7" hun="CARD" id="w1.1.6" deprel="NK">4</w>
+ <w head="5" hun="NN" id="w1.1.7" deprel="NK">Oktober</w>
+ <w head="7" hun="CARD" id="w1.1.8" deprel="PNC">1988</w>
+ <w head="7" hun="$." id="w1.1.9" deprel="PUNC">.</w>
+</s></p>
+
+<p id="2">
+<s id="s2.1">
+ <w head="2" hun="PPOSAT" id="w2.1.1" deprel="NK">Eure</w>
+ <w head="0" hun="NN" id="w2.1.2" deprel="ROOT">Majestäten</w>
+ <w head="2" hun="$," id="w2.1.3" deprel="PUNC">,</w>
+ <w head="6" hun="PPOSAT" id="w2.1.4" deprel="NK">Eure</w>
+ <w head="6" hun="ADJA" id="w2.1.5" deprel="NK">Königlichen</w>
+ <w head="2" hun="NN" id="w2.1.6" deprel="APP">Hoheiten</w>
+ <w head="6" hun="$," id="w2.1.7" deprel="PUNC">,</w>
+ <w head="9" hun="NN" id="w2.1.8" deprel="PNC">Herr</w>
+ <w head="6" hun="NN" id="w2.1.9" deprel="CJ">Präsident</w>
+ <w head="6" hun="$," id="w2.1.10" deprel="PUNC">,</w>
+ <w head="14" hun="NN" id="w2.1.11" deprel="PNC">Mitglieder</w>
+ <w head="14" hun="ART" id="w2.1.12" deprel="NK">des</w>
+ <w head="14" hun="ADJA" id="w2.1.13" deprel="NK">schwedischen</w>
+ <w head="6" hun="NN" id="w2.1.14" deprel="CJ">Reichstags</w>
+ <w head="2" hun="$." id="w2.1.15" deprel="PUNC">!</w>
+</s></p>
+
+<p id="3">
+<s id="s3.1">
+ <w head="3" hun="ART" id="w3.1.1" deprel="NK">Die</w>
+ <w head="3" hun="ADJA" id="w3.1.2" deprel="NK">schwedische</w>
+ <w head="4" hun="NN" id="w3.1.3" deprel="SB">Neutralitätspolitik</w>
+ <w head="0" hun="VAFIN" id="w3.1.4" deprel="ROOT">ist</w>
+ <w head="4" hun="APPR" id="w3.1.5" deprel="MO">von</w>
+ <w head="5" hun="ADJA" id="w3.1.6" deprel="NK">entscheidender</w>
+ <w head="5" hun="NN" id="w3.1.7" deprel="NK">Bedeutung</w>
+ <w head="5" hun="APPR" id="w3.1.8" deprel="MNR">für</w>
+ <w head="15" hun="ART" id="w3.1.9" deprel="NK">den</w>
+ <w head="13" hun="NN" id="w3.1.10" deprel="CJ">Frieden</w>
+ <w head="13" hun="KON" id="w3.1.11" deprel="CD">und</w>
+ <w head="13" hun="ART" id="w3.1.12" deprel="NK">die</w>
+ <w head="15" hun="NN" id="w3.1.13" deprel="NK">Unabhängigkeit</w>
+ <w head="15" hun="PPOSAT" id="w3.1.14" deprel="NK">unseres</w>
+ <w head="8" hun="NN" id="w3.1.15" deprel="NK">Landes</w>
+ <w head="4" hun="$." id="w3.1.16" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s3.2">
+ <w head="2" hun="PPER" id="w3.2.1" deprel="SB">Sie</w>
+ <w head="0" hun="VVFIN" id="w3.2.2" deprel="ROOT">trägt</w>
+ <w head="2" hun="ADV" id="w3.2.3" deprel="MO">auch</w>
+ <w head="2" hun="APPR" id="w3.2.4" deprel="MO">zu</w>
+ <w head="4" hun="NN" id="w3.2.5" deprel="NK">Stabilität</w>
+ <w head="5" hun="KON" id="w3.2.6" deprel="CD">und</w>
+ <w head="5" hun="NN" id="w3.2.7" deprel="CJ">Entspannung</w>
+ <w head="4" hun="APPR" id="w3.2.8" deprel="MNR">in</w>
+ <w head="8" hun="PPOSAT" id="w3.2.9" deprel="NK">unserem</w>
+ <w head="12" hun="NN" id="w3.2.10" deprel="PNC">Teil</w>
+ <w head="12" hun="ART" id="w3.2.11" deprel="PNC">der</w>
+ <w head="8" hun="NN" id="w3.2.12" deprel="NK">Welt</w>
+ <w head="2" hun="PTKVZ" id="w3.2.13" deprel="SVP">bei</w>
+ <w head="2" hun="$." id="w3.2.14" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s3.3">
+ <w head="2" hun="PDAT" id="w3.3.1" deprel="NK">Diese</w>
+ <w head="3" hun="NN" id="w3.3.2" deprel="SB">Politik</w>
+ <w head="0" hun="VVFIN" id="w3.3.3" deprel="ROOT">findet</w>
+ <w head="5" hun="ADJA" id="w3.3.4" deprel="PNC">breite</w>
+ <w head="3" hun="NN" id="w3.3.5" deprel="OA">Zustimmung</w>
+ <w head="3" hun="APPR" id="w3.3.6" deprel="MO">in</w>
+ <w head="6" hun="ART" id="w3.3.7" deprel="NK">der</w>
+ <w head="6" hun="ADJA" id="w3.3.8" deprel="NK">öffentlichen</w>
+ <w head="6" hun="NN" id="w3.3.9" deprel="NK">Meinung</w>
+ <w head="11" hun="PPOSAT" id="w3.3.10" deprel="NK">unseres</w>
+ <w head="6" hun="NN" id="w3.3.11" deprel="AG">Volkes</w>
+ <w head="3" hun="$." id="w3.3.12" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s3.4">
+ <w head="2" hun="PPER" id="w3.4.1" deprel="SB">Sie</w>
+ <w head="0" hun="VAFIN" id="w3.4.2" deprel="ROOT">wird</w>
+ <w head="7" hun="APPR" id="w3.4.3" deprel="MO">mit</w>
+ <w head="3" hun="NN" id="w3.4.4" deprel="NK">Kraft</w>
+ <w head="4" hun="KON" id="w3.4.5" deprel="CD">und</w>
+ <w head="4" hun="NN" id="w3.4.6" deprel="UC">Konsequenz</w>
+ <w head="8" hun="VVPP" id="w3.4.7" deprel="OC">weiterbetrieben</w>
+ <w head="2" hun="VAINF" id="w3.4.8" deprel="OC">werden</w>
+ <w head="2" hun="$." id="w3.4.9" deprel="PUNC">.</w>
+</s></p>
+
+<p id="4">
+<s id="s4.1">
+ <w head="2" hun="ART" id="w4.1.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w4.1.2" deprel="SB">Neutralitätspolitik</w>
+ <w head="0" hun="VVFIN" id="w4.1.3" deprel="ROOT">stützt</w>
+ <w head="3" hun="PRF" id="w4.1.4" deprel="OA">sich</w>
+ <w head="3" hun="APPR" id="w4.1.5" deprel="MO">auf</w>
+ <w head="5" hun="ART" id="w4.1.6" deprel="NK">eine</w>
+ <w head="5" hun="ADJA" id="w4.1.7" deprel="NK">starke</w>
+ <w head="5" hun="NN" id="w4.1.8" deprel="NK">Landesverteidigung</w>
+ <w head="5" hun="APPRART" id="w4.1.9" deprel="MNR">zum</w>
+ <w head="9" hun="NN" id="w4.1.10" deprel="NK">Schutz</w>
+ <w head="12" hun="PPOSAT" id="w4.1.11" deprel="PNC">unserer</w>
+ <w head="9" hun="NN" id="w4.1.12" deprel="NK">Unabhängigkeit</w>
+ <w head="3" hun="$." id="w4.1.13" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s4.2">
+ <w head="4" hun="NN" id="w4.2.1" deprel="SB">Verletzungen</w>
+ <w head="3" hun="ADJA" id="w4.2.2" deprel="PNC">schwedischen</w>
+ <w head="1" hun="NN" id="w4.2.3" deprel="PNC">Territoriums</w>
+ <w head="0" hun="VAFIN" id="w4.2.4" deprel="ROOT">werden</w>
+ <w head="6" hun="ADV" id="w4.2.5" deprel="MO">niemals</w>
+ <w head="7" hun="VVPP" id="w4.2.6" deprel="OC">akzeptiert</w>
+ <w head="4" hun="VAINF" id="w4.2.7" deprel="OC">werden</w>
+ <w head="4" hun="$." id="w4.2.8" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s4.3">
+ <w head="3" hun="ART" id="w4.3.1" deprel="NK">Das</w>
+ <w head="3" hun="ADJA" id="w4.3.2" deprel="NK">schwedische</w>
+ <w head="4" hun="NN" id="w4.3.3" deprel="SB">Heer</w>
+ <w head="0" hun="VAFIN" id="w4.3.4" deprel="ROOT">wird</w>
+ <w head="9" hun="VVPP" id="w4.3.5" deprel="OC">reformiert</w>
+ <w head="5" hun="KON" id="w4.3.6" deprel="CD">und</w>
+ <w head="8" hun="ADJD" id="w4.3.7" deprel="MO">wirksamer</w>
+ <w head="5" hun="VVPP" id="w4.3.8" deprel="CJ">organisiert</w>
+ <w head="4" hun="VAINF" id="w4.3.9" deprel="OC">werden</w>
+ <w head="4" hun="$." id="w4.3.10" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s4.4">
+ <w head="2" hun="ART" id="w4.4.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w4.4.2" deprel="SB">Regierung</w>
+ <w head="0" hun="VAFIN" id="w4.4.3" deprel="ROOT">hat</w>
+ <w head="6" hun="ART" id="w4.4.4" deprel="NK">die</w>
+ <w head="6" hun="ADJA" id="w4.4.5" deprel="PNC">bestimmte</w>
+ <w head="3" hun="NN" id="w4.4.6" deprel="OA">Absicht</w>
+ <w head="6" hun="$," id="w4.4.7" deprel="PUNC">,</w>
+ <w head="16" hun="APPR" id="w4.4.8" deprel="MO">von</w>
+ <w head="8" hun="ADJA" id="w4.4.9" deprel="PNC">weiten</w>
+ <w head="8" hun="NN" id="w4.4.10" deprel="PNC">Kreisen</w>
+ <w head="12" hun="ADJA" id="w4.4.11" deprel="PNC">getragene</w>
+ <w head="8" hun="NN" id="w4.4.12" deprel="NK">Lösungen</w>
+ <w head="12" hun="APPR" id="w4.4.13" deprel="MNR">für</w>
+ <w head="13" hun="NN" id="w4.4.14" deprel="NK">Fragen</w>
+ <w head="16" hun="PTKZU" id="w4.4.15" deprel="PM">zu</w>
+ <w head="6" hun="VVINF" id="w4.4.16" deprel="OC">finden</w>
+ <w head="16" hun="$," id="w4.4.17" deprel="PUNC">,</w>
+ <w head="26" hun="PRELS" id="w4.4.18" deprel="SB">die</w>
+ <w head="26" hun="APPR" id="w4.4.19" deprel="MO">von</w>
+ <w head="19" hun="NN" id="w4.4.20" deprel="NK">Bedeutung</w>
+ <w head="26" hun="APPR" id="w4.4.21" deprel="MO">für</w>
+ <w head="21" hun="ART" id="w4.4.22" deprel="NK">die</w>
+ <w head="21" hun="NN" id="w4.4.23" deprel="NK">Sicherheit</w>
+ <w head="25" hun="ART" id="w4.4.24" deprel="PNC">des</w>
+ <w head="26" hun="NN" id="w4.4.25" deprel="SB">Landes</w>
+ <w head="16" hun="VAFIN" id="w4.4.26" deprel="OC">sind</w>
+ <w head="3" hun="$." id="w4.4.27" deprel="PUNC">.</w>
+</s></p>
+
+<p id="5">
+<s id="s5.1">
+ <w head="2" hun="ART" id="w5.1.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w5.1.2" deprel="SB">Regierung</w>
+ <w head="0" hun="VAFIN" id="w5.1.3" deprel="ROOT">hat</w>
+ <w head="5" hun="ART" id="w5.1.4" deprel="PNC">das</w>
+ <w head="6" hun="NN" id="w5.1.5" deprel="NK">Abkommen</w>
+ <w head="20" hun="APPR" id="w5.1.6" deprel="MO">zwischen</w>
+ <w head="9" hun="ART" id="w5.1.7" deprel="PNC">den</w>
+ <w head="9" hun="ADJA" id="w5.1.8" deprel="PNC">Vereinigten</w>
+ <w head="20" hun="NN" id="w5.1.9" deprel="OA">Staaten</w>
+ <w head="20" hun="KON" id="w5.1.10" deprel="CD">und</w>
+ <w head="12" hun="ART" id="w5.1.11" deprel="NK">der</w>
+ <w head="20" hun="NE" id="w5.1.12" deprel="SB">Sowjetunion</w>
+ <w head="20" hun="APPR" id="w5.1.13" deprel="MO">über</w>
+ <w head="13" hun="ART" id="w5.1.14" deprel="NK">die</w>
+ <w head="13" hun="NN" id="w5.1.15" deprel="NK">Abschaffung</w>
+ <w head="17" hun="ART" id="w5.1.16" deprel="PNC">der</w>
+ <w head="18" hun="ADJA" id="w5.1.17" deprel="PNC">landgestützten</w>
+ <w head="19" hun="ADJA" id="w5.1.18" deprel="NK">nuklearen</w>
+ <w head="20" hun="NN" id="w5.1.19" deprel="OA">Mittelstreckenwaffen</w>
+ <w head="3" hun="VVPP" id="w5.1.20" deprel="OC">begrüsst</w>
+ <w head="3" hun="$." id="w5.1.21" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s5.2">
+ <w head="2" hun="ADV" id="w5.2.1" deprel="MO">Jetzt</w>
+ <w head="9" hun="VMFIN" id="w5.2.2" deprel="MO">müssen</w>
+ <w head="6" hun="ART" id="w5.2.3" deprel="MO">die</w>
+ <w head="6" hun="NN" id="w5.2.4" deprel="OA">Anstrengungen</w>
+ <w head="6" hun="PROAV" id="w5.2.5" deprel="MO">darauf</w>
+ <w head="7" hun="VVPP" id="w5.2.6" deprel="OC">gerichtet</w>
+ <w head="9" hun="VAINF" id="w5.2.7" deprel="MO">werden</w>
+ <w head="9" hun="$," id="w5.2.8" deprel="PUNC">,</w>
+ <w head="14" hun="VVFIN" id="w5.2.9" deprel="OC">u.a</w>
+ <w head="12" hun="ART" id="w5.2.10" deprel="NK">die</w>
+ <w head="12" hun="ADJA" id="w5.2.11" deprel="NK">strategischen</w>
+ <w head="9" hun="NN" id="w5.2.12" deprel="SB">Rüstungen</w>
+ <w head="14" hun="PTKZU" id="w5.2.13" deprel="PM">zu</w>
+ <w head="0" hun="VVINF" id="w5.2.14" deprel="ROOT">vermindern</w>
+ <w head="14" hun="KON" id="w5.2.15" deprel="CD">und</w>
+ <w head="17" hun="ART" id="w5.2.16" deprel="PNC">einen</w>
+ <w head="18" hun="NN" id="w5.2.17" deprel="NK">Vertrag</w>
+ <w head="24" hun="APPR" id="w5.2.18" deprel="MO">über</w>
+ <w head="18" hun="ART" id="w5.2.19" deprel="NK">einen</w>
+ <w head="18" hun="ADJA" id="w5.2.20" deprel="NK">vollständigen</w>
+ <w head="18" hun="NN" id="w5.2.21" deprel="NK">Kernwaffenversuchsstopp</w>
+ <w head="24" hun="ADV" id="w5.2.22" deprel="MO">zustande</w>
+ <w head="24" hun="PTKZU" id="w5.2.23" deprel="PM">zu</w>
+ <w head="14" hun="VVINF" id="w5.2.24" deprel="CJ">bringen</w>
+ <w head="14" hun="$." id="w5.2.25" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s5.3">
+ <w head="4" hun="APPR" id="w5.3.1" deprel="MO">Für</w>
+ <w head="1" hun="PDAT" id="w5.3.2" deprel="NK">dieses</w>
+ <w head="1" hun="NN" id="w5.3.3" deprel="NK">Ziel</w>
+ <w head="0" hun="VVFIN" id="w5.3.4" deprel="ROOT">setzt</w>
+ <w head="4" hun="NE" id="w5.3.5" deprel="SB">Schweden</w>
+ <w head="4" hun="PRF" id="w5.3.6" deprel="OA">sich</w>
+ <w head="4" hun="ADV" id="w5.3.7" deprel="MO">u.a</w>
+ <w head="4" hun="APPRART" id="w5.3.8" deprel="MO">im</w>
+ <w head="8" hun="NN" id="w5.3.9" deprel="NK">Rahmen</w>
+ <w head="11" hun="ART" id="w5.3.10" deprel="NK">der</w>
+ <w head="8" hun="NN" id="w5.3.11" deprel="AG">Sechs-Staaten-Initiative</w>
+ <w head="4" hun="PTKVZ" id="w5.3.12" deprel="SVP">ein</w>
+ <w head="4" hun="$." id="w5.3.13" deprel="PUNC">.</w>
+</s></p>
+
+<p id="6">
+<s id="s6.1">
+ <w head="2" hun="ART" id="w6.1.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w6.1.2" deprel="SB">Regierung</w>
+ <w head="0" hun="VAFIN" id="w6.1.3" deprel="ROOT">wird</w>
+ <w head="6" hun="ADV" id="w6.1.4" deprel="MO">auch</w>
+ <w head="6" hun="ADV" id="w6.1.5" deprel="MO">weiterhin</w>
+ <w head="22" hun="ADJD" id="w6.1.6" deprel="MO">aktiv</w>
+ <w head="22" hun="APPR" id="w6.1.7" deprel="MO">auf</w>
+ <w head="7" hun="ART" id="w6.1.8" deprel="NK">eine</w>
+ <w head="7" hun="ADJA" id="w6.1.9" deprel="NK">kernwaffenfreie</w>
+ <w head="7" hun="NN" id="w6.1.10" deprel="NK">Zone</w>
+ <w head="22" hun="APPRART" id="w6.1.11" deprel="MO">im</w>
+ <w head="19" hun="NN" id="w6.1.12" deprel="CJ">Norden</w>
+ <w head="19" hun="KON" id="w6.1.13" deprel="CD">und</w>
+ <w head="19" hun="ART" id="w6.1.14" deprel="NK">einen</w>
+ <w head="18" hun="APPR" id="w6.1.15" deprel="MO">von</w>
+ <w head="15" hun="ADJA" id="w6.1.16" deprel="PNC">nuklearen</w>
+ <w head="15" hun="NN" id="w6.1.17" deprel="NK">Gefechtsfeldwaffen</w>
+ <w head="19" hun="ADJA" id="w6.1.18" deprel="NK">freien</w>
+ <w head="11" hun="NN" id="w6.1.19" deprel="NK">Korridor</w>
+ <w head="11" hun="APPR" id="w6.1.20" deprel="MNR">in</w>
+ <w head="20" hun="NE" id="w6.1.21" deprel="NK">Mitteleuropa</w>
+ <w head="3" hun="VVINF" id="w6.1.22" deprel="OC">hinarbeiten</w>
+ <w head="3" hun="$." id="w6.1.23" deprel="PUNC">.</w>
+</s></p>
+
+<p id="7">
+<s id="s7.1">
+ <w head="15" hun="APPR" id="w7.1.1" deprel="MO">Durch</w>
+ <w head="1" hun="NN" id="w7.1.2" deprel="NK">Unterstützung</w>
+ <w head="7" hun="ART" id="w7.1.3" deprel="NK">der</w>
+ <w head="7" hun="ADJA" id="w7.1.4" deprel="NK">wirtschaftlichen</w>
+ <w head="4" hun="KON" id="w7.1.5" deprel="CD">und</w>
+ <w head="4" hun="ADJA" id="w7.1.6" deprel="CJ">sozialen</w>
+ <w head="2" hun="NN" id="w7.1.7" deprel="AG">Entwicklung</w>
+ <w head="7" hun="APPR" id="w7.1.8" deprel="MNR">in</w>
+ <w head="8" hun="ART" id="w7.1.9" deprel="NK">den</w>
+ <w head="8" hun="NN" id="w7.1.10" deprel="NK">Entwicklungsländern</w>
+ <w head="0" hun="VMFIN" id="w7.1.11" deprel="ROOT">will</w>
+ <w head="13" hun="ART" id="w7.1.12" deprel="NK">die</w>
+ <w head="11" hun="NN" id="w7.1.13" deprel="SB">Regierung</w>
+ <w head="15" hun="PROAV" id="w7.1.14" deprel="MO">dazu</w>
+ <w head="11" hun="VVINF" id="w7.1.15" deprel="OC">beitragen</w>
+ <w head="15" hun="$," id="w7.1.16" deprel="PUNC">,</w>
+ <w head="19" hun="ART" id="w7.1.17" deprel="PNC">die</w>
+ <w head="19" hun="ADJA" id="w7.1.18" deprel="PNC">rückläufige</w>
+ <w head="20" hun="NN" id="w7.1.19" deprel="NK">Entwicklung</w>
+ <w head="24" hun="APPR" id="w7.1.20" deprel="MO">in</w>
+ <w head="20" hun="ART" id="w7.1.21" deprel="NK">den</w>
+ <w head="20" hun="ADJA" id="w7.1.22" deprel="NK">armen</w>
+ <w head="20" hun="NN" id="w7.1.23" deprel="NK">Ländern</w>
+ <w head="15" hun="VVIZU" id="w7.1.24" deprel="OC">umzukehren</w>
+ <w head="24" hun="KON" id="w7.1.25" deprel="CD">und</w>
+ <w head="27" hun="ART" id="w7.1.26" deprel="NK">die</w>
+ <w head="29" hun="NN" id="w7.1.27" deprel="OA">Schuldenkrise</w>
+ <w head="29" hun="PTKZU" id="w7.1.28" deprel="PM">zu</w>
+ <w head="24" hun="VVINF" id="w7.1.29" deprel="CJ">lindern</w>
+ <w head="11" hun="$." id="w7.1.30" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s7.2">
+ <w head="3" hun="ART" id="w7.2.1" deprel="MO">Die</w>
+ <w head="3" hun="NN" id="w7.2.2" deprel="SB">Entwicklungshilfe</w>
+ <w head="15" hun="VMFIN" id="w7.2.3" deprel="MO">soll</w>
+ <w head="5" hun="ADV" id="w7.2.4" deprel="PNC">ferner</w>
+ <w head="3" hun="ADJA" id="w7.2.5" deprel="SB">weitsichtiges</w>
+ <w head="3" hun="NN" id="w7.2.6" deprel="NK">Haushalten</w>
+ <w head="15" hun="APPR" id="w7.2.7" deprel="MO">mit</w>
+ <w head="12" hun="NN" id="w7.2.8" deprel="CJ">Naturressourcen</w>
+ <w head="12" hun="KON" id="w7.2.9" deprel="CD">und</w>
+ <w head="12" hun="ART" id="w7.2.10" deprel="NK">eine</w>
+ <w head="12" hun="ADJA" id="w7.2.11" deprel="NK">pflegliche</w>
+ <w head="15" hun="NN" id="w7.2.12" deprel="OA">Behandlung</w>
+ <w head="14" hun="ART" id="w7.2.13" deprel="PNC">der</w>
+ <w head="12" hun="NN" id="w7.2.14" deprel="PNC">Umwelt</w>
+ <w head="0" hun="VVINF" id="w7.2.15" deprel="ROOT">fördern</w>
+ <w head="15" hun="$." id="w7.2.16" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s7.3">
+ <w head="2" hun="ART" id="w7.3.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w7.3.2" deprel="SB">Regierung</w>
+ <w head="19" hun="VAFIN" id="w7.3.3" deprel="OC">wird</w>
+ <w head="6" hun="PRF" id="w7.3.4" deprel="MO">sich</w>
+ <w head="6" hun="PROAV" id="w7.3.5" deprel="MO">dafür</w>
+ <w head="19" hun="VVINF" id="w7.3.6" deprel="OC">einsetzen</w>
+ <w head="6" hun="$," id="w7.3.7" deprel="PUNC">,</w>
+ <w head="18" hun="KOUS" id="w7.3.8" deprel="CP">dass</w>
+ <w head="18" hun="APPR" id="w7.3.9" deprel="MO">für</w>
+ <w head="9" hun="CARD" id="w7.3.10" deprel="NK">1992</w>
+ <w head="14" hun="ART" id="w7.3.11" deprel="NK">eine</w>
+ <w head="13" hun="ADJA" id="w7.3.12" deprel="PNC">globale</w>
+ <w head="14" hun="NN" id="w7.3.13" deprel="NK">UNO-Konferenz</w>
+ <w head="18" hun="APPR" id="w7.3.14" deprel="MO">über</w>
+ <w head="14" hun="NN" id="w7.3.15" deprel="NK">Umwelt</w>
+ <w head="15" hun="KON" id="w7.3.16" deprel="CD">und</w>
+ <w head="15" hun="NN" id="w7.3.17" deprel="UC">Entwicklung</w>
+ <w head="6" hun="VVPP" id="w7.3.18" deprel="MO">einberufen</w>
+ <w head="0" hun="VAFIN" id="w7.3.19" deprel="ROOT">wird</w>
+ <w head="19" hun="$." id="w7.3.20" deprel="PUNC">.</w>
+</s></p>
+
+<p id="8">
+<s id="s8.1">
+ <w head="3" hun="APPR" id="w8.1.1" deprel="MO">In</w>
+ <w head="1" hun="NE" id="w8.1.2" deprel="NK">Zentralamerika</w>
+ <w head="16" hun="VAFIN" id="w8.1.3" deprel="OC">haben</w>
+ <w head="9" hun="ART" id="w8.1.4" deprel="MO">die</w>
+ <w head="6" hun="CARD" id="w8.1.5" deprel="NK">fünf</w>
+ <w head="9" hun="NN" id="w8.1.6" deprel="OA">Präsidenten</w>
+ <w head="8" hun="ART" id="w8.1.7" deprel="PNC">einen</w>
+ <w head="6" hun="NN" id="w8.1.8" deprel="PNC">Friedensplan</w>
+ <w head="3" hun="VVPP" id="w8.1.9" deprel="MO">unterzeichnet</w>
+ <w head="9" hun="$," id="w8.1.10" deprel="PUNC">,</w>
+ <w head="15" hun="ART" id="w8.1.11" deprel="MO">den</w>
+ <w head="13" hun="NN" id="w8.1.12" deprel="PNC">Schweden</w>
+ <w head="14" hun="ADJA" id="w8.1.13" deprel="NK">ganzen</w>
+ <w head="15" hun="NN" id="w8.1.14" deprel="OA">Herzens</w>
+ <w head="9" hun="VVPP" id="w8.1.15" deprel="CJ">unterstützt</w>
+ <w head="0" hun="VAFIN" id="w8.1.16" deprel="ROOT">hat</w>
+ <w head="16" hun="$." id="w8.1.17" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s8.2">
+ <w head="2" hun="NN" id="w8.2.1" deprel="SB">Friedensverhandlungen</w>
+ <w head="0" hun="VAFIN" id="w8.2.2" deprel="ROOT">sind</w>
+ <w head="2" hun="APPR" id="w8.2.3" deprel="MO">zwischen</w>
+ <w head="3" hun="NE" id="w8.2.4" deprel="NK">Iran</w>
+ <w head="4" hun="KON" id="w8.2.5" deprel="CD">und</w>
+ <w head="4" hun="NE" id="w8.2.6" deprel="CJ">Irak</w>
+ <w head="4" hun="APPRART" id="w8.2.7" deprel="MNR">im</w>
+ <w head="7" hun="NN" id="w8.2.8" deprel="PNC">Gange</w>
+ <w head="2" hun="$." id="w8.2.9" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s8.3">
+ <w head="3" hun="ART" id="w8.3.1" deprel="NK">Die</w>
+ <w head="3" hun="ADJA" id="w8.3.2" deprel="NK">sowjetischen</w>
+ <w head="4" hun="NN" id="w8.3.3" deprel="SB">Truppen</w>
+ <w head="0" hun="VAFIN" id="w8.3.4" deprel="ROOT">sind</w>
+ <w head="4" hun="PROAV" id="w8.3.5" deprel="MO">dabei</w>
+ <w head="5" hun="$," id="w8.3.6" deprel="PUNC">,</w>
+ <w head="9" hun="NE" id="w8.3.7" deprel="OA">Afghanistan</w>
+ <w head="9" hun="PTKZU" id="w8.3.8" deprel="PM">zu</w>
+ <w head="5" hun="VVINF" id="w8.3.9" deprel="RE">räumen</w>
+ <w head="4" hun="$." id="w8.3.10" deprel="PUNC">.</w>
+</s></p>
+
+<p id="9">
+<s id="s9.1">
+ <w head="13" hun="APPR" id="w9.1.1" deprel="MO">Bei</w>
+ <w head="1" hun="ART" id="w9.1.2" deprel="NK">den</w>
+ <w head="4" hun="PIAT" id="w9.1.3" deprel="PNC">meisten</w>
+ <w head="1" hun="ADJA" id="w9.1.4" deprel="NK">regionalen</w>
+ <w head="1" hun="NN" id="w9.1.5" deprel="NK">Konflikten</w>
+ <w head="0" hun="VAFIN" id="w9.1.6" deprel="ROOT">haben</w>
+ <w head="11" hun="ART" id="w9.1.7" deprel="NK">die</w>
+ <w head="9" hun="ADJA" id="w9.1.8" deprel="PNC">Vereinten</w>
+ <w head="10" hun="NN" id="w9.1.9" deprel="PNC">Nationen</w>
+ <w head="11" hun="ADJA" id="w9.1.10" deprel="NK">wichtige</w>
+ <w head="6" hun="NN" id="w9.1.11" deprel="SB">Einsätze</w>
+ <w head="13" hun="VVINF" id="w9.1.12" deprel="OC">leisten</w>
+ <w head="6" hun="VMINF" id="w9.1.13" deprel="OC">können</w>
+ <w head="6" hun="$." id="w9.1.14" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s9.2">
+ <w head="2" hun="NE" id="w9.2.1" deprel="SB">Schweden</w>
+ <w head="0" hun="VVFIN" id="w9.2.2" deprel="ROOT">wirkt</w>
+ <w head="2" hun="ADV" id="w9.2.3" deprel="MO">u.a</w>
+ <w head="2" hun="APPR" id="w9.2.4" deprel="MO">in</w>
+ <w head="4" hun="ART" id="w9.2.5" deprel="NK">den</w>
+ <w head="4" hun="NN" id="w9.2.6" deprel="NK">Beobachtergruppen</w>
+ <w head="9" hun="ART" id="w9.2.7" deprel="PNC">der</w>
+ <w head="9" hun="ADJA" id="w9.2.8" deprel="PNC">Vereinten</w>
+ <w head="4" hun="NN" id="w9.2.9" deprel="NK">Nationen</w>
+ <w head="13" hun="APPR" id="w9.2.10" deprel="NK">in</w>
+ <w head="13" hun="NE" id="w9.2.11" deprel="NK">Afghanistan</w>
+ <w head="13" hun="KON" id="w9.2.12" deprel="CD">und</w>
+ <w head="4" hun="APPR" id="w9.2.13" deprel="MNR">in</w>
+ <w head="13" hun="NE" id="w9.2.14" deprel="NK">Iran</w>
+ <w head="14" hun="$(" id="w9.2.15" deprel="PUNC">/</w>
+ <w head="14" hun="NE" id="w9.2.16" deprel="CJ">Irak</w>
+ <w head="2" hun="PTKVZ" id="w9.2.17" deprel="SVP">mit</w>
+ <w head="2" hun="$." id="w9.2.18" deprel="PUNC">.</w>
+</s></p>
+
+<p id="10">
+<s id="s10.1">
+ <w head="3" hun="ADJA" id="w10.1.1" deprel="PUNC">Voller</w>
+ <w head="3" hun="NN" id="w10.1.2" deprel="SB">Freude</w>
+ <w head="0" hun="VAFIN" id="w10.1.3" deprel="ROOT">haben</w>
+ <w head="7" hun="PPER" id="w10.1.4" deprel="MO">wir</w>
+ <w head="6" hun="ART" id="w10.1.5" deprel="PNC">den</w>
+ <w head="7" hun="NN" id="w10.1.6" deprel="OA">Bescheid</w>
+ <w head="3" hun="VVPP" id="w10.1.7" deprel="OC">entgegengenommen</w>
+ <w head="7" hun="$," id="w10.1.8" deprel="PUNC">,</w>
+ <w head="20" hun="KOUS" id="w10.1.9" deprel="CP">dass</w>
+ <w head="12" hun="ART" id="w10.1.10" deprel="NK">der</w>
+ <w head="12" hun="ADJA" id="w10.1.11" deprel="NK">diesjährige</w>
+ <w head="20" hun="NN" id="w10.1.12" deprel="SB">Friedensnobelpreis</w>
+ <w head="18" hun="ART" id="w10.1.13" deprel="MO">den</w>
+ <w head="17" hun="NN" id="w10.1.14" deprel="PNC">Friedenstruppen</w>
+ <w head="17" hun="ART" id="w10.1.15" deprel="NK">der</w>
+ <w head="17" hun="ADJA" id="w10.1.16" deprel="NK">Vereinten</w>
+ <w head="18" hun="NN" id="w10.1.17" deprel="SB">Nationen</w>
+ <w head="19" hun="VVPP" id="w10.1.18" deprel="OC">verliehen</w>
+ <w head="20" hun="VAPP" id="w10.1.19" deprel="OC">worden</w>
+ <w head="7" hun="VAFIN" id="w10.1.20" deprel="MO">ist</w>
+ <w head="3" hun="$." id="w10.1.21" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s10.2">
+ <w head="2" hun="NE" id="w10.2.1" deprel="SB">Schweden</w>
+ <w head="0" hun="VAFIN" id="w10.2.2" deprel="ROOT">hat</w>
+ <w head="12" hun="PRF" id="w10.2.3" deprel="OA">sich</w>
+ <w head="12" hun="APPR" id="w10.2.4" deprel="OP">an</w>
+ <w head="6" hun="ADV" id="w10.2.5" deprel="MO">so</w>
+ <w head="4" hun="ADJD" id="w10.2.6" deprel="NK">gut</w>
+ <w head="9" hun="KOKOM" id="w10.2.7" deprel="PNC">wie</w>
+ <w head="9" hun="PIAT" id="w10.2.8" deprel="PNC">allen</w>
+ <w head="6" hun="NN" id="w10.2.9" deprel="NK">UNO-Einsätzen</w>
+ <w head="11" hun="PDAT" id="w10.2.10" deprel="PNC">dieser</w>
+ <w head="9" hun="NN" id="w10.2.11" deprel="PNC">Art</w>
+ <w head="2" hun="VVPP" id="w10.2.12" deprel="OC">beteiligt</w>
+ <w head="2" hun="$." id="w10.2.13" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s10.3">
+ <w head="2" hun="PPER" id="w10.3.1" deprel="SB">Es</w>
+ <w head="0" hun="VAFIN" id="w10.3.2" deprel="ROOT">ist</w>
+ <w head="5" hun="ADV" id="w10.3.3" deprel="MO">auch</w>
+ <w head="5" hun="ART" id="w10.3.4" deprel="NK">eine</w>
+ <w head="43" hun="NN" id="w10.3.5" deprel="OC">Ehre</w>
+ <w head="5" hun="APPR" id="w10.3.6" deprel="MNR">für</w>
+ <w head="6" hun="NE" id="w10.3.7" deprel="NK">Schweden</w>
+ <w head="5" hun="$," id="w10.3.8" deprel="PUNC">,</w>
+ <w head="42" hun="KOUS" id="w10.3.9" deprel="CP">dass</w>
+ <w head="11" hun="ART" id="w10.3.10" deprel="NK">der</w>
+ <w head="42" hun="NN" id="w10.3.11" deprel="SB">Generalsekretär</w>
+ <w head="14" hun="ART" id="w10.3.12" deprel="NK">der</w>
+ <w head="14" hun="ADJA" id="w10.3.13" deprel="NK">Vereinten</w>
+ <w head="11" hun="NN" id="w10.3.14" deprel="AG">Nationen</w>
+ <w head="42" hun="$," id="w10.3.15" deprel="PUNC">,</w>
+ <w head="42" hun="APPR" id="w10.3.16" deprel="MO">nach</w>
+ <w head="16" hun="NN" id="w10.3.17" deprel="NK">Beratschlagung</w>
+ <w head="16" hun="APPR" id="w10.3.18" deprel="MNR">mit</w>
+ <w head="18" hun="ART" id="w10.3.19" deprel="NK">den</w>
+ <w head="18" hun="NN" id="w10.3.20" deprel="NK">Konfliktsgegnern</w>
+ <w head="42" hun="$," id="w10.3.21" deprel="PUNC">,</w>
+ <w head="27" hun="ART" id="w10.3.22" deprel="NK">den</w>
+ <w head="26" hun="NN" id="w10.3.23" deprel="PNC">Leiter</w>
+ <w head="26" hun="PPOSAT" id="w10.3.24" deprel="PNC">unserer</w>
+ <w head="26" hun="ADJA" id="w10.3.25" deprel="PNC">Ständigen</w>
+ <w head="27" hun="NN" id="w10.3.26" deprel="NK">Vertretung</w>
+ <w head="42" hun="APPR" id="w10.3.27" deprel="MO">bei</w>
+ <w head="27" hun="ART" id="w10.3.28" deprel="NK">den</w>
+ <w head="27" hun="ADJA" id="w10.3.29" deprel="NK">Vereinten</w>
+ <w head="27" hun="NN" id="w10.3.30" deprel="NK">Nationen</w>
+ <w head="42" hun="APPR" id="w10.3.31" deprel="MO">zu</w>
+ <w head="31" hun="PPOSAT" id="w10.3.32" deprel="NK">seinem</w>
+ <w head="31" hun="ADJA" id="w10.3.33" deprel="NK">persönlichen</w>
+ <w head="31" hun="NN" id="w10.3.34" deprel="NK">Vertreter</w>
+ <w head="42" hun="APPR" id="w10.3.35" deprel="MO">bei</w>
+ <w head="35" hun="ART" id="w10.3.36" deprel="NK">den</w>
+ <w head="35" hun="NN" id="w10.3.37" deprel="NK">Friedensverhandlungen</w>
+ <w head="35" hun="APPR" id="w10.3.38" deprel="MNR">zwischen</w>
+ <w head="38" hun="NE" id="w10.3.39" deprel="NK">Iran</w>
+ <w head="39" hun="KON" id="w10.3.40" deprel="CD">und</w>
+ <w head="39" hun="NE" id="w10.3.41" deprel="CJ">Irak</w>
+ <w head="5" hun="VVPP" id="w10.3.42" deprel="MO">ernannt</w>
+ <w head="2" hun="VAFIN" id="w10.3.43" deprel="OC">hat</w>
+ <w head="2" hun="$." id="w10.3.44" deprel="PUNC">.</w>
+</s></p>
+
+<p id="11">
+<s id="s11.1">
+ <w head="3" hun="ART" id="w11.1.1" deprel="NK">Das</w>
+ <w head="3" hun="ADJA" id="w11.1.2" deprel="PNC">erniedrigende</w>
+ <w head="7" hun="NN" id="w11.1.3" deprel="SB">Apartheidsystem</w>
+ <w head="7" hun="APPR" id="w11.1.4" deprel="MO">in</w>
+ <w head="4" hun="NE" id="w11.1.5" deprel="NK">Südafrika</w>
+ <w head="7" hun="ADJD" id="w11.1.6" deprel="MO">muss</w>
+ <w head="8" hun="VVPP" id="w11.1.7" deprel="OC">abgeschafft</w>
+ <w head="0" hun="VAINF" id="w11.1.8" deprel="ROOT">werden</w>
+ <w head="8" hun="$." id="w11.1.9" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s11.2">
+ <w head="2" hun="ART" id="w11.2.1" deprel="PNC">Ein</w>
+ <w head="13" hun="NN" id="w11.2.2" deprel="SB">Beschluss</w>
+ <w head="4" hun="ART" id="w11.2.3" deprel="PNC">des</w>
+ <w head="2" hun="NN" id="w11.2.4" deprel="NK">Sicherheitsrates</w>
+ <w head="7" hun="ART" id="w11.2.5" deprel="NK">der</w>
+ <w head="7" hun="ADJA" id="w11.2.6" deprel="NK">Vereinten</w>
+ <w head="4" hun="NN" id="w11.2.7" deprel="AG">Nationen</w>
+ <w head="7" hun="APPR" id="w11.2.8" deprel="MNR">über</w>
+ <w head="8" hun="ADJA" id="w11.2.9" deprel="PNC">bindende</w>
+ <w head="8" hun="NN" id="w11.2.10" deprel="PNC">Sanktionen</w>
+ <w head="8" hun="APPR" id="w11.2.11" deprel="MNR">gegen</w>
+ <w head="11" hun="NE" id="w11.2.12" deprel="NK">Südafrika</w>
+ <w head="0" hun="VAFIN" id="w11.2.13" deprel="ROOT">wäre</w>
+ <w head="16" hun="ART" id="w11.2.14" deprel="NK">die</w>
+ <w head="16" hun="ADJA" id="w11.2.15" deprel="PNC">wirksamste</w>
+ <w head="13" hun="NN" id="w11.2.16" deprel="MO">Massnahme</w>
+ <w head="16" hun="APPR" id="w11.2.17" deprel="MNR">zu</w>
+ <w head="17" hun="PDAT" id="w11.2.18" deprel="NK">diesem</w>
+ <w head="17" hun="NN" id="w11.2.19" deprel="NK">Zweck</w>
+ <w head="13" hun="$." id="w11.2.20" deprel="PUNC">.</w>
+</s></p>
+
+<p id="12">
+<s id="s12.1">
+ <w head="6" hun="ART" id="w12.1.1" deprel="SB">Der</w>
+ <w head="6" hun="NN" id="w12.1.2" deprel="SB">Konflikt</w>
+ <w head="6" hun="APPRART" id="w12.1.3" deprel="MO">im</w>
+ <w head="3" hun="ADJA" id="w12.1.4" deprel="PNC">Nahen</w>
+ <w head="3" hun="NN" id="w12.1.5" deprel="PNC">Osten</w>
+ <w head="0" hun="VVFIN" id="w12.1.6" deprel="ROOT">gehört</w>
+ <w head="6" hun="APPR" id="w12.1.7" deprel="MO">zu</w>
+ <w head="7" hun="ART" id="w12.1.8" deprel="NK">den</w>
+ <w head="7" hun="APPRART" id="w12.1.9" deprel="MNR">am</w>
+ <w head="9" hun="ADJA" id="w12.1.10" deprel="PNC">schwierigsten</w>
+ <w head="9" hun="APPR" id="w12.1.11" deprel="MNR">zu</w>
+ <w head="11" hun="ADJA" id="w12.1.12" deprel="PNC">lösenden</w>
+ <w head="11" hun="NN" id="w12.1.13" deprel="PNC">Konflikten</w>
+ <w head="15" hun="PPOSAT" id="w12.1.14" deprel="NK">unserer</w>
+ <w head="11" hun="NN" id="w12.1.15" deprel="AG">Zeit</w>
+ <w head="6" hun="$." id="w12.1.16" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s12.2">
+ <w head="2" hun="ART" id="w12.2.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w12.2.2" deprel="SB">Regierung</w>
+ <w head="0" hun="VVFIN" id="w12.2.3" deprel="ROOT">unterstützt</w>
+ <w head="3" hun="ADJD" id="w12.2.4" deprel="MO">aktiv</w>
+ <w head="6" hun="ART" id="w12.2.5" deprel="NK">die</w>
+ <w head="3" hun="NN" id="w12.2.6" deprel="OA">Bestrebungen</w>
+ <w head="6" hun="$," id="w12.2.7" deprel="PUNC">,</w>
+ <w head="10" hun="ART" id="w12.2.8" deprel="NK">eine</w>
+ <w head="10" hun="ADJA" id="w12.2.9" deprel="PNC">internationale</w>
+ <w head="17" hun="NN" id="w12.2.10" deprel="OA">Friedenskonferenz</w>
+ <w head="17" hun="APPR" id="w12.2.11" deprel="MO">unter</w>
+ <w head="11" hun="ART" id="w12.2.12" deprel="NK">dem</w>
+ <w head="11" hun="NN" id="w12.2.13" deprel="NK">Patronat</w>
+ <w head="16" hun="ART" id="w12.2.14" deprel="NK">der</w>
+ <w head="16" hun="ADJA" id="w12.2.15" deprel="NK">Vereinten</w>
+ <w head="17" hun="NN" id="w12.2.16" deprel="OA">Nationen</w>
+ <w head="6" hun="VVIZU" id="w12.2.17" deprel="OC">einzuberufen</w>
+ <w head="3" hun="$." id="w12.2.18" deprel="PUNC">.</w>
+</s></p>
+
+<p id="13">
+<s id="s13.1">
+ <w head="2" hun="PPOSAT" id="w13.1.1" deprel="PNC">Unser</w>
+ <w head="3" hun="NN" id="w13.1.2" deprel="SB">Land</w>
+ <w head="0" hun="VAFIN" id="w13.1.3" deprel="ROOT">ist</w>
+ <w head="10" hun="APPRART" id="w13.1.4" deprel="MO">vom</w>
+ <w head="4" hun="ADJA" id="w13.1.5" deprel="PNC">freien</w>
+ <w head="4" hun="NN" id="w13.1.6" deprel="PNC">Handelsaustausch</w>
+ <w head="10" hun="APPR" id="w13.1.7" deprel="MO">unter</w>
+ <w head="7" hun="ART" id="w13.1.8" deprel="NK">den</w>
+ <w head="7" hun="NN" id="w13.1.9" deprel="NK">Ländern</w>
+ <w head="3" hun="ADJD" id="w13.1.10" deprel="MO">abhängig</w>
+ <w head="3" hun="$." id="w13.1.11" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s13.2">
+ <w head="2" hun="PPER" id="w13.2.1" deprel="SB">Wir</w>
+ <w head="0" hun="VAFIN" id="w13.2.2" deprel="ROOT">sind</w>
+ <w head="4" hun="ADV" id="w13.2.3" deprel="MO">sehr</w>
+ <w head="12" hun="ADJD" id="w13.2.4" deprel="MO">aktiv</w>
+ <w head="12" hun="APPR" id="w13.2.5" deprel="MO">an</w>
+ <w head="5" hun="ART" id="w13.2.6" deprel="NK">den</w>
+ <w head="5" hun="NN" id="w13.2.7" deprel="NK">Verhandlungen</w>
+ <w head="12" hun="APPRART" id="w13.2.8" deprel="MO">zur</w>
+ <w head="8" hun="NN" id="w13.2.9" deprel="NK">Stärkung</w>
+ <w head="12" hun="ART" id="w13.2.10" deprel="MO">des</w>
+ <w head="12" hun="NN" id="w13.2.11" deprel="SB">Freihandels</w>
+ <w head="2" hun="VVPP" id="w13.2.12" deprel="OC">beteiligt</w>
+ <w head="12" hun="$," id="w13.2.13" deprel="PUNC">,</w>
+ <w head="16" hun="ART" id="w13.2.14" deprel="MO">die</w>
+ <w head="16" hun="NN" id="w13.2.15" deprel="OA">z.Z</w>
+ <w head="12" hun="VVINF" id="w13.2.16" deprel="OC">stattfinden</w>
+ <w head="2" hun="$." id="w13.2.17" deprel="PUNC">.</w>
+</s></p>
+
+<p id="14">
+<s id="s14.1">
+ <w head="26" hun="ART" id="w14.1.1" deprel="MO">Die</w>
+ <w head="3" hun="NN" id="w14.1.2" deprel="SB">Regierung</w>
+ <w head="0" hun="VAFIN" id="w14.1.3" deprel="ROOT">wird</w>
+ <w head="3" hun="$(" id="w14.1.4" deprel="PUNC">-</w>
+ <w head="26" hun="APPRART" id="w14.1.5" deprel="MO">im</w>
+ <w head="5" hun="NN" id="w14.1.6" deprel="NK">Rahmen</w>
+ <w head="10" hun="ART" id="w14.1.7" deprel="NK">der</w>
+ <w head="10" hun="NE" id="w14.1.8" deprel="NK">EFTA</w>
+ <w head="10" hun="KON" id="w14.1.9" deprel="CD">und</w>
+ <w head="19" hun="APPR" id="w14.1.10" deprel="MO">in</w>
+ <w head="10" hun="NN" id="w14.1.11" deprel="NK">Zusammenarbeit</w>
+ <w head="10" hun="APPR" id="w14.1.12" deprel="MNR">mit</w>
+ <w head="12" hun="ART" id="w14.1.13" deprel="NK">den</w>
+ <w head="12" hun="ADJA" id="w14.1.14" deprel="NK">übrigen</w>
+ <w head="12" hun="NN" id="w14.1.15" deprel="NK">EFTA-Ländern</w>
+ <w head="19" hun="$(" id="w14.1.16" deprel="PUNC">-</w>
+ <w head="18" hun="ART" id="w14.1.17" deprel="PNC">die</w>
+ <w head="19" hun="NN" id="w14.1.18" deprel="NK">Zusammenarbeit</w>
+ <w head="26" hun="APPR" id="w14.1.19" deprel="MO">mit</w>
+ <w head="19" hun="ART" id="w14.1.20" deprel="NK">der</w>
+ <w head="19" hun="NE" id="w14.1.21" deprel="NK">EG</w>
+ <w head="26" hun="APPR" id="w14.1.22" deprel="MO">in</w>
+ <w head="22" hun="PIAT" id="w14.1.23" deprel="NK">allen</w>
+ <w head="22" hun="ADJA" id="w14.1.24" deprel="NK">gesellschaftlichen</w>
+ <w head="22" hun="NN" id="w14.1.25" deprel="NK">Bereichen</w>
+ <w head="3" hun="VVINF" id="w14.1.26" deprel="OC">vertiefen</w>
+ <w head="26" hun="$," id="w14.1.27" deprel="PUNC">,</w>
+ <w head="34" hun="KOUS" id="w14.1.28" deprel="CP">soweit</w>
+ <w head="34" hun="PDS" id="w14.1.29" deprel="SB">dies</w>
+ <w head="34" hun="APPR" id="w14.1.30" deprel="MO">mit</w>
+ <w head="30" hun="ART" id="w14.1.31" deprel="NK">der</w>
+ <w head="30" hun="NN" id="w14.1.32" deprel="NK">Neutralitätspolitik</w>
+ <w head="34" hun="ADJD" id="w14.1.33" deprel="PD">vereinbar</w>
+ <w head="26" hun="VAFIN" id="w14.1.34" deprel="MO">ist</w>
+ <w head="3" hun="$." id="w14.1.35" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s14.2">
+ <w head="3" hun="ADV" id="w14.2.1" deprel="MO">Auch</w>
+ <w head="3" hun="ART" id="w14.2.2" deprel="PNC">die</w>
+ <w head="5" hun="ADJA" id="w14.2.3" deprel="SB">nordische</w>
+ <w head="3" hun="NN" id="w14.2.4" deprel="NK">Zusammenarbeit</w>
+ <w head="0" hun="VAFIN" id="w14.2.5" deprel="ROOT">wird</w>
+ <w head="7" hun="VVPP" id="w14.2.6" deprel="OC">entwickelt</w>
+ <w head="5" hun="VAINF" id="w14.2.7" deprel="OC">werden</w>
+ <w head="5" hun="$." id="w14.2.8" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s14.3">
+ <w head="2" hun="PROAV" id="w14.3.1" deprel="MO">Dabei</w>
+ <w head="0" hun="VMFIN" id="w14.3.2" deprel="ROOT">sollen</w>
+ <w head="2" hun="ART" id="w14.3.3" deprel="NK">die</w>
+ <w head="3" hun="NN" id="w14.3.4" deprel="NK">Forderungen</w>
+ <w head="4" hun="APPR" id="w14.3.5" deprel="MNR">nach</w>
+ <w head="5" hun="NN" id="w14.3.6" deprel="NK">Vollbeschäftigung</w>
+ <w head="6" hun="$," id="w14.3.7" deprel="PUNC">,</w>
+ <w head="6" hun="NN" id="w14.3.8" deprel="CJ">Wohlstand</w>
+ <w head="5" hun="$," id="w14.3.9" deprel="PUNC">,</w>
+ <w head="12" hun="ART" id="w14.3.10" deprel="NK">einer</w>
+ <w head="12" hun="ADJA" id="w14.3.11" deprel="NK">guten</w>
+ <w head="18" hun="NN" id="w14.3.12" deprel="OA">Umwelt</w>
+ <w head="12" hun="KON" id="w14.3.13" deprel="CD">und</w>
+ <w head="15" hun="ADJA" id="w14.3.14" deprel="PNC">gewerkschaftlicher</w>
+ <w head="12" hun="NN" id="w14.3.15" deprel="CJ">Mitbestimmung</w>
+ <w head="18" hun="APPRART" id="w14.3.16" deprel="MO">im</w>
+ <w head="16" hun="NN" id="w14.3.17" deprel="NK">Mittelpunkt</w>
+ <w head="5" hun="VVINF" id="w14.3.18" deprel="OC">stehen</w>
+ <w head="2" hun="$." id="w14.3.19" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s14.4">
+ <w head="2" hun="ART" id="w14.4.1" deprel="NK">Die</w>
+ <w head="16" hun="NN" id="w14.4.2" deprel="SB">Möglichkeiten</w>
+ <w head="2" hun="APPRART" id="w14.4.3" deprel="MNR">zum</w>
+ <w head="3" hun="NN" id="w14.4.4" deprel="PNC">Austausch</w>
+ <w head="3" hun="APPR" id="w14.4.5" deprel="MNR">von</w>
+ <w head="5" hun="NN" id="w14.4.6" deprel="NK">Studenten</w>
+ <w head="6" hun="KON" id="w14.4.7" deprel="CD">und</w>
+ <w head="6" hun="NN" id="w14.4.8" deprel="CJ">Arbeitskräften</w>
+ <w head="2" hun="KON" id="w14.4.9" deprel="CD">und</w>
+ <w head="16" hun="APPRART" id="w14.4.10" deprel="MO">zum</w>
+ <w head="10" hun="NN" id="w14.4.11" deprel="PNC">Kulturaustausch</w>
+ <w head="16" hun="APPR" id="w14.4.12" deprel="MO">über</w>
+ <w head="12" hun="ART" id="w14.4.13" deprel="NK">die</w>
+ <w head="12" hun="NN" id="w14.4.14" deprel="NK">Grenzen</w>
+ <w head="12" hun="APZR" id="w14.4.15" deprel="AC">hinweg</w>
+ <w head="0" hun="VMFIN" id="w14.4.16" deprel="ROOT">sollen</w>
+ <w head="18" hun="VVPP" id="w14.4.17" deprel="OC">erweitert</w>
+ <w head="16" hun="VAINF" id="w14.4.18" deprel="OC">werden</w>
+ <w head="16" hun="$." id="w14.4.19" deprel="PUNC">.</w>
+</s></p>
+
+<p id="15">
+<s id="s15.1">
+ <w head="2" hun="ART" id="w15.1.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w15.1.2" deprel="SB">Regierung</w>
+ <w head="0" hun="VVFIN" id="w15.1.3" deprel="ROOT">beabsichtigt</w>
+ <w head="3" hun="$," id="w15.1.4" deprel="PUNC">,</w>
+ <w head="6" hun="ART" id="w15.1.5" deprel="NK">den</w>
+ <w head="11" hun="NN" id="w15.1.6" deprel="OA">Rechtsstaat</w>
+ <w head="11" hun="APPR" id="w15.1.7" deprel="MO">in</w>
+ <w head="7" hun="ADJA" id="w15.1.8" deprel="NK">mehrfacher</w>
+ <w head="7" hun="NN" id="w15.1.9" deprel="NK">Hinsicht</w>
+ <w head="11" hun="PTKZU" id="w15.1.10" deprel="PM">zu</w>
+ <w head="3" hun="VVINF" id="w15.1.11" deprel="OC">festigen</w>
+ <w head="11" hun="KON" id="w15.1.12" deprel="CD">und</w>
+ <w head="14" hun="PTKZU" id="w15.1.13" deprel="PM">zu</w>
+ <w head="11" hun="VVINF" id="w15.1.14" deprel="CJ">stärken</w>
+ <w head="3" hun="$." id="w15.1.15" deprel="PUNC">.</w>
+</s></p>
+
+<p id="16">
+<s id="s16.1">
+ <w head="2" hun="ART" id="w16.1.1" deprel="NK">Die</w>
+ <w head="14" hun="NN" id="w16.1.2" deprel="SB">Voraussetzungen</w>
+ <w head="4" hun="ART" id="w16.1.3" deprel="PNC">der</w>
+ <w head="2" hun="NN" id="w16.1.4" deprel="NK">Gerichte</w>
+ <w head="4" hun="KON" id="w16.1.5" deprel="CD">und</w>
+ <w head="4" hun="NN" id="w16.1.6" deprel="CJ">Staatsanwaltschaften</w>
+ <w head="2" hun="$," id="w16.1.7" deprel="PUNC">,</w>
+ <w head="10" hun="PPOSAT" id="w16.1.8" deprel="NK">ihre</w>
+ <w head="10" hun="ADJA" id="w16.1.9" deprel="NK">wichtigen</w>
+ <w head="12" hun="NN" id="w16.1.10" deprel="OA">Aufgaben</w>
+ <w head="12" hun="PTKZU" id="w16.1.11" deprel="PM">zu</w>
+ <w head="2" hun="VVINF" id="w16.1.12" deprel="OC">erfüllen</w>
+ <w head="14" hun="$," id="w16.1.13" deprel="PUNC">,</w>
+ <w head="0" hun="VAFIN" id="w16.1.14" deprel="ROOT">werden</w>
+ <w head="14" hun="VVPP" id="w16.1.15" deprel="MO">verbessert</w>
+ <w head="14" hun="$." id="w16.1.16" deprel="PUNC">.</w>
+</s></p>
+
+<p id="17">
+<s id="s17.1">
+ <w head="2" hun="ART" id="w17.1.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w17.1.2" deprel="SB">Regierung</w>
+ <w head="0" hun="VAFIN" id="w17.1.3" deprel="ROOT">wird</w>
+ <w head="5" hun="ART" id="w17.1.4" deprel="NK">einen</w>
+ <w head="8" hun="NN" id="w17.1.5" deprel="OA">Vorschlag</w>
+ <w head="8" hun="APPR" id="w17.1.6" deprel="MO">zu</w>
+ <w head="6" hun="NN" id="w17.1.7" deprel="NK">Massnahmen</w>
+ <w head="3" hun="VVINF" id="w17.1.8" deprel="OC">vorlegen</w>
+ <w head="8" hun="$," id="w17.1.9" deprel="PUNC">,</w>
+ <w head="16" hun="KOUI" id="w17.1.10" deprel="CP">um</w>
+ <w head="16" hun="ART" id="w17.1.11" deprel="MO">die</w>
+ <w head="14" hun="NN" id="w17.1.12" deprel="PNC">Tätigkeit</w>
+ <w head="14" hun="ART" id="w17.1.13" deprel="PNC">der</w>
+ <w head="16" hun="NN" id="w17.1.14" deprel="OA">Polizei</w>
+ <w head="16" hun="PTKZU" id="w17.1.15" deprel="PM">zu</w>
+ <w head="8" hun="VVINF" id="w17.1.16" deprel="MO">entwickeln</w>
+ <w head="16" hun="KON" id="w17.1.17" deprel="CD">und</w>
+ <w head="20" hun="ADJD" id="w17.1.18" deprel="MO">wirksamer</w>
+ <w head="20" hun="PTKZU" id="w17.1.19" deprel="PM">zu</w>
+ <w head="16" hun="VVINF" id="w17.1.20" deprel="CJ">gestalten</w>
+ <w head="3" hun="$." id="w17.1.21" deprel="PUNC">.</w>
+</s></p>
+
+<p id="18">
+<s id="s18.1">
+ <w head="2" hun="ART" id="w18.1.1" deprel="NK">Dem</w>
+ <w head="3" hun="NN" id="w18.1.2" deprel="SB">Reichstag</w>
+ <w head="0" hun="VAFIN" id="w18.1.3" deprel="ROOT">wird</w>
+ <w head="8" hun="ART" id="w18.1.4" deprel="NK">eine</w>
+ <w head="7" hun="NN" id="w18.1.5" deprel="PNC">Senkung</w>
+ <w head="7" hun="ART" id="w18.1.6" deprel="PNC">der</w>
+ <w head="8" hun="NN" id="w18.1.7" deprel="NK">Promillegrenze</w>
+ <w head="12" hun="APPR" id="w18.1.8" deprel="MO">für</w>
+ <w head="8" hun="NN" id="w18.1.9" deprel="NK">Trunkenheit</w>
+ <w head="12" hun="APPRART" id="w18.1.10" deprel="MO">im</w>
+ <w head="10" hun="NN" id="w18.1.11" deprel="NK">Verkehr</w>
+ <w head="13" hun="VVPP" id="w18.1.12" deprel="OC">vorgeschlagen</w>
+ <w head="3" hun="VAINF" id="w18.1.13" deprel="OC">werden</w>
+ <w head="3" hun="$." id="w18.1.14" deprel="PUNC">.</w>
+</s></p>
+
+<p id="19">
+<s id="s19.1">
+ <w head="3" hun="ART" id="w19.1.1" deprel="NK">Die</w>
+ <w head="3" hun="ADJA" id="w19.1.2" deprel="NK">lokale</w>
+ <w head="4" hun="NN" id="w19.1.3" deprel="SB">Kriminalitätsverhütung</w>
+ <w head="0" hun="VMFIN" id="w19.1.4" deprel="ROOT">soll</w>
+ <w head="6" hun="VVFIN" id="w19.1.5" deprel="OC">ermuntert</w>
+ <w head="4" hun="VAINF" id="w19.1.6" deprel="OC">werden</w>
+ <w head="4" hun="$." id="w19.1.7" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s19.2">
+ <w head="2" hun="ART" id="w19.2.1" deprel="NK">Dem</w>
+ <w head="7" hun="NN" id="w19.2.2" deprel="SB">Kampf</w>
+ <w head="9" hun="APPR" id="w19.2.3" deprel="MO">gegen</w>
+ <w head="7" hun="NN" id="w19.2.4" deprel="SB">Gewaltanwendung</w>
+ <w head="9" hun="KON" id="w19.2.5" deprel="MO">und</w>
+ <w head="7" hun="NN" id="w19.2.6" deprel="SB">Wirtschaftskriminalität</w>
+ <w head="0" hun="VAFIN" id="w19.2.7" deprel="ROOT">wird</w>
+ <w head="9" hun="NN" id="w19.2.8" deprel="SB">Priorität</w>
+ <w head="7" hun="VVPP" id="w19.2.9" deprel="OC">eingeräumt</w>
+ <w head="7" hun="$." id="w19.2.10" deprel="PUNC">.</w>
+</s></p>
+
+<p id="20">
+<s id="s20.1">
+ <w head="2" hun="ART" id="w20.1.1" deprel="NK">Der</w>
+ <w head="5" hun="NN" id="w20.1.2" deprel="SB">Strafvollzug</w>
+ <w head="5" hun="ADJD" id="w20.1.3" deprel="MO">muss</w>
+ <w head="5" hun="ADV" id="w20.1.4" deprel="MO">so</w>
+ <w head="6" hun="VVPP" id="w20.1.5" deprel="OC">betrieben</w>
+ <w head="12" hun="VAINF" id="w20.1.6" deprel="MO">werden</w>
+ <w head="12" hun="$," id="w20.1.7" deprel="PUNC">,</w>
+ <w head="12" hun="KOUS" id="w20.1.8" deprel="CP">dass</w>
+ <w head="12" hun="NN" id="w20.1.9" deprel="MO">Flucht</w>
+ <w head="9" hun="KON" id="w20.1.10" deprel="CD">und</w>
+ <w head="9" hun="NN" id="w20.1.11" deprel="UC">Ausbrüche</w>
+ <w head="13" hun="VVPP" id="w20.1.12" deprel="OC">verhindert</w>
+ <w head="0" hun="VAINF" id="w20.1.13" deprel="ROOT">werden</w>
+ <w head="13" hun="$." id="w20.1.14" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s20.2">
+ <w head="2" hun="ADJD" id="w20.2.1" deprel="MO">Gleichzeitig</w>
+ <w head="0" hun="VMFIN" id="w20.2.2" deprel="ROOT">müssen</w>
+ <w head="4" hun="ART" id="w20.2.3" deprel="PNC">die</w>
+ <w head="7" hun="NN" id="w20.2.4" deprel="CJ">Strafverbüssung</w>
+ <w head="7" hun="KON" id="w20.2.5" deprel="CD">und</w>
+ <w head="7" hun="ART" id="w20.2.6" deprel="NK">der</w>
+ <w head="2" hun="NN" id="w20.2.7" deprel="SB">Freigang</w>
+ <w head="9" hun="ART" id="w20.2.8" deprel="NK">die</w>
+ <w head="13" hun="NN" id="w20.2.9" deprel="OA">Wiedereingliederung</w>
+ <w head="13" hun="APPR" id="w20.2.10" deprel="MO">nach</w>
+ <w head="10" hun="ART" id="w20.2.11" deprel="NK">der</w>
+ <w head="10" hun="NN" id="w20.2.12" deprel="NK">Entlassung</w>
+ <w head="2" hun="VVINF" id="w20.2.13" deprel="OC">erleichtern</w>
+ <w head="2" hun="$." id="w20.2.14" deprel="PUNC">.</w>
+</s></p>
+
+<p id="21">
+<s id="s21.1">
+ <w head="2" hun="ART" id="w21.1.1" deprel="NK">Das</w>
+ <w head="5" hun="NN" id="w21.1.2" deprel="SB">Ziel</w>
+ <w head="5" hun="ART" id="w21.1.3" deprel="MO">der</w>
+ <w head="5" hun="NN" id="w21.1.4" deprel="SB">Wirtschaftspolitik</w>
+ <w head="0" hun="VAFIN" id="w21.1.5" deprel="ROOT">ist</w>
+ <w head="9" hun="NN" id="w21.1.6" deprel="CJ">Vollbeschäftigung</w>
+ <w head="9" hun="KON" id="w21.1.7" deprel="CD">und</w>
+ <w head="9" hun="ADJA" id="w21.1.8" deprel="NK">steigender</w>
+ <w head="5" hun="NN" id="w21.1.9" deprel="MO">Wohlstand</w>
+ <w head="9" hun="APPR" id="w21.1.10" deprel="MNR">für</w>
+ <w head="10" hun="ART" id="w21.1.11" deprel="NK">das</w>
+ <w head="10" hun="ADJA" id="w21.1.12" deprel="NK">ganze</w>
+ <w head="10" hun="NN" id="w21.1.13" deprel="NK">Volk</w>
+ <w head="5" hun="$." id="w21.1.14" deprel="PUNC">.</w>
+</s></p>
+
+<p id="22">
+<s id="s22.1">
+ <w head="4" hun="ART" id="w22.1.1" deprel="NK">Die</w>
+ <w head="3" hun="PTKA" id="w22.1.2" deprel="PNC">allzu</w>
+ <w head="4" hun="ADJA" id="w22.1.3" deprel="NK">hohe</w>
+ <w head="6" hun="NN" id="w22.1.4" deprel="SB">Inflationsrate</w>
+ <w head="6" hun="ADJD" id="w22.1.5" deprel="MO">muss</w>
+ <w head="7" hun="VVPP" id="w22.1.6" deprel="OC">gesenkt</w>
+ <w head="0" hun="VAINF" id="w22.1.7" deprel="ROOT">werden</w>
+ <w head="7" hun="$." id="w22.1.8" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s22.2">
+ <w head="2" hun="PROAV" id="w22.2.1" deprel="MO">Deshalb</w>
+ <w head="14" hun="VVFIN" id="w22.2.2" deprel="MO">muss</w>
+ <w head="4" hun="ART" id="w22.2.3" deprel="NK">die</w>
+ <w head="2" hun="NN" id="w22.2.4" deprel="SB">Haushaltspolitik</w>
+ <w head="7" hun="ADV" id="w22.2.5" deprel="MO">auch</w>
+ <w head="7" hun="ADV" id="w22.2.6" deprel="MO">weiterhin</w>
+ <w head="8" hun="ADJD" id="w22.2.7" deprel="PD">restriktiv</w>
+ <w head="14" hun="VAINF" id="w22.2.8" deprel="CJ">sein</w>
+ <w head="8" hun="$," id="w22.2.9" deprel="PUNC">,</w>
+ <w head="8" hun="KON" id="w22.2.10" deprel="CD">und</w>
+ <w head="12" hun="ART" id="w22.2.11" deprel="PNC">die</w>
+ <w head="13" hun="ADJA" id="w22.2.12" deprel="NK">starken</w>
+ <w head="14" hun="NN" id="w22.2.13" deprel="SB">Staatsfinanzen</w>
+ <w head="15" hun="VMFIN" id="w22.2.14" deprel="MO">müssen</w>
+ <w head="16" hun="VVPP" id="w22.2.15" deprel="OC">erhalten</w>
+ <w head="0" hun="VAINF" id="w22.2.16" deprel="ROOT">werden</w>
+ <w head="16" hun="$." id="w22.2.17" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s22.3">
+ <w head="3" hun="ADJA" id="w22.3.1" deprel="PUNC">Kostenträchtige</w>
+ <w head="3" hun="NN" id="w22.3.2" deprel="SB">Reformen</w>
+ <w head="0" hun="VAFIN" id="w22.3.3" deprel="ROOT">werden</w>
+ <w head="8" hun="ADV" id="w22.3.4" deprel="MO">nur</w>
+ <w head="8" hun="APPR" id="w22.3.5" deprel="MO">in</w>
+ <w head="5" hun="ART" id="w22.3.6" deprel="NK">dem</w>
+ <w head="5" hun="NN" id="w22.3.7" deprel="NK">Tempo</w>
+ <w head="3" hun="VVPP" id="w22.3.8" deprel="OC">durchgeführt</w>
+ <w head="8" hun="$," id="w22.3.9" deprel="PUNC">,</w>
+ <w head="26" hun="APPR" id="w22.3.10" deprel="MO">in</w>
+ <w head="10" hun="PRELS" id="w22.3.11" deprel="NK">dem</w>
+ <w head="26" hun="APPR" id="w22.3.12" deprel="MO">durch</w>
+ <w head="12" hun="NN" id="w22.3.13" deprel="NK">Wirtschaftswachstum</w>
+ <w head="13" hun="$," id="w22.3.14" deprel="PUNC">,</w>
+ <w head="25" hun="NN" id="w22.3.15" deprel="DA">Überprüfung</w>
+ <w head="25" hun="APPR" id="w22.3.16" deprel="MO">von</w>
+ <w head="16" hun="NN" id="w22.3.17" deprel="NK">Ausgaben</w>
+ <w head="17" hun="KON" id="w22.3.18" deprel="CD">und</w>
+ <w head="17" hun="NN" id="w22.3.19" deprel="CJ">Rationalisierungen</w>
+ <w head="25" hun="APPRART" id="w22.3.20" deprel="MO">im</w>
+ <w head="20" hun="ADJA" id="w22.3.21" deprel="PNC">öffentlichen</w>
+ <w head="25" hun="NN" id="w22.3.22" deprel="DA">Sektor</w>
+ <w head="25" hun="NN" id="w22.3.23" deprel="OA">Spielraum</w>
+ <w head="25" hun="PROAV" id="w22.3.24" deprel="MO">dafür</w>
+ <w head="13" hun="VVPP" id="w22.3.25" deprel="CJ">geschaffen</w>
+ <w head="8" hun="VAFIN" id="w22.3.26" deprel="OC">wird</w>
+ <w head="3" hun="$." id="w22.3.27" deprel="PUNC">.</w>
+</s></p>
+
+<p id="23">
+<s id="s23.1">
+ <w head="7" hun="NN" id="w23.1.1" deprel="OA">Mangel</w>
+ <w head="7" hun="APPR" id="w23.1.2" deprel="MO">an</w>
+ <w head="6" hun="NN" id="w23.1.3" deprel="CJ">Arbeitskraft</w>
+ <w head="6" hun="KON" id="w23.1.4" deprel="CD">und</w>
+ <w head="6" hun="ADJA" id="w23.1.5" deprel="NK">geringes</w>
+ <w head="7" hun="NN" id="w23.1.6" deprel="OA">Sparen</w>
+ <w head="0" hun="VVINF" id="w23.1.7" deprel="ROOT">begrenzen</w>
+ <w head="9" hun="ART" id="w23.1.8" deprel="NK">das</w>
+ <w head="7" hun="NN" id="w23.1.9" deprel="SB">Wachstum</w>
+ <w head="9" hun="KON" id="w23.1.10" deprel="CD">und</w>
+ <w head="14" hun="VVFIN" id="w23.1.11" deprel="PNC">treiben</w>
+ <w head="14" hun="NN" id="w23.1.12" deprel="CJ">Preise</w>
+ <w head="14" hun="KON" id="w23.1.13" deprel="CD">und</w>
+ <w head="9" hun="NN" id="w23.1.14" deprel="CJ">Kosten</w>
+ <w head="7" hun="APPR" id="w23.1.15" deprel="MO">in</w>
+ <w head="15" hun="ART" id="w23.1.16" deprel="NK">die</w>
+ <w head="15" hun="NN" id="w23.1.17" deprel="NK">Höhe</w>
+ <w head="7" hun="$." id="w23.1.18" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s23.2">
+ <w head="12" hun="PROAV" id="w23.2.1" deprel="MO">Deswegen</w>
+ <w head="0" hun="VAFIN" id="w23.2.2" deprel="ROOT">werden</w>
+ <w head="4" hun="ADJA" id="w23.2.3" deprel="PNC">besondere</w>
+ <w head="2" hun="NN" id="w23.2.4" deprel="SB">Massnahmen</w>
+ <w head="6" hun="VVPP" id="w23.2.5" deprel="OC">ergriffen</w>
+ <w head="12" hun="VAINF" id="w23.2.6" deprel="MO">werden</w>
+ <w head="12" hun="$," id="w23.2.7" deprel="PUNC">,</w>
+ <w head="12" hun="KOUI" id="w23.2.8" deprel="CP">um</w>
+ <w head="12" hun="ART" id="w23.2.9" deprel="MO">das</w>
+ <w head="12" hun="NN" id="w23.2.10" deprel="OA">Sparen</w>
+ <w head="12" hun="PTKZU" id="w23.2.11" deprel="PM">zu</w>
+ <w head="2" hun="VVINF" id="w23.2.12" deprel="OC">erhöhen</w>
+ <w head="12" hun="KON" id="w23.2.13" deprel="CD">und</w>
+ <w head="17" hun="ART" id="w23.2.14" deprel="PNC">den</w>
+ <w head="17" hun="NN" id="w23.2.15" deprel="PNC">Willen</w>
+ <w head="17" hun="ART" id="w23.2.16" deprel="PNC">der</w>
+ <w head="21" hun="NN" id="w23.2.17" deprel="OA">Menschen</w>
+ <w head="21" hun="APPRART" id="w23.2.18" deprel="MO">zur</w>
+ <w head="18" hun="NN" id="w23.2.19" deprel="PNC">Arbeit</w>
+ <w head="21" hun="ADJD" id="w23.2.20" deprel="MO">besser</w>
+ <w head="12" hun="VVIZU" id="w23.2.21" deprel="CJ">auszunutzen</w>
+ <w head="2" hun="$." id="w23.2.22" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s23.3">
+ <w head="2" hun="PPER" id="w23.3.1" deprel="SB">Es</w>
+ <w head="0" hun="VAFIN" id="w23.3.2" deprel="ROOT">werden</w>
+ <w head="4" hun="NN" id="w23.3.3" deprel="DA">Vorschläge</w>
+ <w head="5" hun="VVPP" id="w23.3.4" deprel="OC">vorgelegt</w>
+ <w head="2" hun="VAINF" id="w23.3.5" deprel="OC">werden</w>
+ <w head="5" hun="$," id="w23.3.6" deprel="PUNC">,</w>
+ <w head="21" hun="KOUI" id="w23.3.7" deprel="CP">um</w>
+ <w head="21" hun="APPR" id="w23.3.8" deprel="MO">auf</w>
+ <w head="19" hun="NN" id="w23.3.9" deprel="CJ">Gebieten</w>
+ <w head="9" hun="$," id="w23.3.10" deprel="PUNC">,</w>
+ <w head="16" hun="PWAV" id="w23.3.11" deprel="MO">wo</w>
+ <w head="16" hun="ART" id="w23.3.12" deprel="MO">die</w>
+ <w head="15" hun="NN" id="w23.3.13" deprel="PNC">Preisentwicklung</w>
+ <w head="15" hun="ART" id="w23.3.14" deprel="PNC">die</w>
+ <w head="16" hun="NN" id="w23.3.15" deprel="SB">Inflation</w>
+ <w head="9" hun="VVFIN" id="w23.3.16" deprel="RC">antreibt</w>
+ <w head="19" hun="$," id="w23.3.17" deprel="PUNC">,</w>
+ <w head="19" hun="ART" id="w23.3.18" deprel="NK">den</w>
+ <w head="21" hun="NN" id="w23.3.19" deprel="OA">Wettbewerb</w>
+ <w head="21" hun="PTKZU" id="w23.3.20" deprel="PM">zu</w>
+ <w head="4" hun="VVINF" id="w23.3.21" deprel="MO">steigern</w>
+ <w head="21" hun="KON" id="w23.3.22" deprel="CD">und</w>
+ <w head="24" hun="ART" id="w23.3.23" deprel="NK">die</w>
+ <w head="25" hun="NN" id="w23.3.24" deprel="OA">Kostenentwicklung</w>
+ <w head="21" hun="VVIZU" id="w23.3.25" deprel="CJ">zurückzuhalten</w>
+ <w head="2" hun="$." id="w23.3.26" deprel="PUNC">.</w>
+</s></p>
+
+<p id="24">
+<s id="s24.1">
+ <w head="16" hun="CARD" id="w24.1.1" deprel="MO">1989</w>
+ <w head="0" hun="VAFIN" id="w24.1.2" deprel="ROOT">wird</w>
+ <w head="4" hun="ART" id="w24.1.3" deprel="PNC">eine</w>
+ <w head="2" hun="NN" id="w24.1.4" deprel="SB">Senkung</w>
+ <w head="6" hun="ART" id="w24.1.5" deprel="PNC">der</w>
+ <w head="4" hun="NN" id="w24.1.6" deprel="PNC">Spitzensteuer</w>
+ <w head="15" hun="APPR" id="w24.1.7" deprel="MO">um</w>
+ <w head="7" hun="CARD" id="w24.1.8" deprel="NK">3</w>
+ <w head="7" hun="NN" id="w24.1.9" deprel="NK">%</w>
+ <w head="15" hun="APPR" id="w24.1.10" deprel="MO">für</w>
+ <w head="15" hun="APPR" id="w24.1.11" deprel="MO">in</w>
+ <w head="11" hun="ADJA" id="w24.1.12" deprel="PNC">erster</w>
+ <w head="14" hun="NN" id="w24.1.13" deprel="PNC">Linie</w>
+ <w head="11" hun="NN" id="w24.1.14" deprel="NK">Ganztagsbeschäftigte</w>
+ <w head="16" hun="VVPP" id="w24.1.15" deprel="OC">vorgeschlagen</w>
+ <w head="2" hun="VAINF" id="w24.1.16" deprel="OC">werden</w>
+ <w head="2" hun="$." id="w24.1.17" deprel="PUNC">.</w>
+</s></p>
+
+<p id="25">
+<s id="s25.1">
+ <w head="6" hun="APPRART" id="w25.1.1" deprel="MO">Im</w>
+ <w head="1" hun="ADJA" id="w25.1.2" deprel="NK">späteren</w>
+ <w head="1" hun="NN" id="w25.1.3" deprel="NK">Teil</w>
+ <w head="6" hun="ART" id="w25.1.4" deprel="MO">der</w>
+ <w head="6" hun="NN" id="w25.1.5" deprel="SB">Legislaturperiode</w>
+ <w head="14" hun="VAFIN" id="w25.1.6" deprel="OC">werden</w>
+ <w head="6" hun="NN" id="w25.1.7" deprel="SB">Vorschläge</w>
+ <w head="14" hun="APPR" id="w25.1.8" deprel="MO">zu</w>
+ <w head="8" hun="ART" id="w25.1.9" deprel="NK">einer</w>
+ <w head="8" hun="ADJA" id="w25.1.10" deprel="NK">umfassenden</w>
+ <w head="14" hun="NN" id="w25.1.11" deprel="DA">Reform</w>
+ <w head="13" hun="ART" id="w25.1.12" deprel="PNC">des</w>
+ <w head="14" hun="NN" id="w25.1.13" deprel="DA">Steuersystems</w>
+ <w head="15" hun="VVPP" id="w25.1.14" deprel="OC">vorgelegt</w>
+ <w head="0" hun="VAINF" id="w25.1.15" deprel="ROOT">werden</w>
+ <w head="15" hun="$." id="w25.1.16" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s25.2">
+ <w head="2" hun="ART" id="w25.2.1" deprel="NK">Das</w>
+ <w head="3" hun="NN" id="w25.2.2" deprel="SB">Ziel</w>
+ <w head="0" hun="VAFIN" id="w25.2.3" deprel="ROOT">ist</w>
+ <w head="3" hun="$," id="w25.2.4" deprel="PUNC">,</w>
+ <w head="8" hun="NN" id="w25.2.5" deprel="OA">Arbeit</w>
+ <w head="5" hun="KON" id="w25.2.6" deprel="CD">und</w>
+ <w head="5" hun="NN" id="w25.2.7" deprel="CJ">Sparen</w>
+ <w head="3" hun="VVINF" id="w25.2.8" deprel="OC">anzuregen</w>
+ <w head="3" hun="$." id="w25.2.9" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s25.3">
+ <w head="3" hun="ART" id="w25.3.1" deprel="NK">Die</w>
+ <w head="3" hun="ADJA" id="w25.3.2" deprel="NK">staatliche</w>
+ <w head="4" hun="NN" id="w25.3.3" deprel="SB">Einkommensteuer</w>
+ <w head="0" hun="VMFIN" id="w25.3.4" deprel="ROOT">soll</w>
+ <w head="9" hun="VVPP" id="w25.3.5" deprel="CJ">gesenkt</w>
+ <w head="9" hun="KON" id="w25.3.6" deprel="CD">und</w>
+ <w head="8" hun="ART" id="w25.3.7" deprel="NK">die</w>
+ <w head="9" hun="NN" id="w25.3.8" deprel="DA">Kapitalbesteuerung</w>
+ <w head="10" hun="VVPP" id="w25.3.9" deprel="OC">verschärft</w>
+ <w head="4" hun="VAINF" id="w25.3.10" deprel="OC">werden</w>
+ <w head="4" hun="$." id="w25.3.11" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s25.4">
+ <w head="2" hun="ART" id="w25.4.1" deprel="NK">Das</w>
+ <w head="3" hun="NN" id="w25.4.2" deprel="SB">Steuersystem</w>
+ <w head="4" hun="VMFIN" id="w25.4.3" deprel="MO">soll</w>
+ <w head="10" hun="VVPP" id="w25.4.4" deprel="OC">vereinfacht</w>
+ <w head="4" hun="KON" id="w25.4.5" deprel="CD">und</w>
+ <w head="8" hun="ART" id="w25.4.6" deprel="MO">der</w>
+ <w head="8" hun="NN" id="w25.4.7" deprel="SB">Steuerumgehung</w>
+ <w head="9" hun="VMFIN" id="w25.4.8" deprel="MO">soll</w>
+ <w head="4" hun="VVPP" id="w25.4.9" deprel="CJ">entgegengewirkt</w>
+ <w head="0" hun="VAINF" id="w25.4.10" deprel="ROOT">werden</w>
+ <w head="10" hun="$." id="w25.4.11" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s25.5">
+ <w head="2" hun="ART" id="w25.5.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w25.5.2" deprel="SB">Unternehmensbesteuerung</w>
+ <w head="0" hun="VAFIN" id="w25.5.3" deprel="ROOT">wird</w>
+ <w head="12" hun="APPR" id="w25.5.4" deprel="MO">in</w>
+ <w head="4" hun="NN" id="w25.5.5" deprel="NK">Richtung</w>
+ <w head="12" hun="APPR" id="w25.5.6" deprel="MO">auf</w>
+ <w head="8" hun="ADJA" id="w25.5.7" deprel="PNC">niedrigere</w>
+ <w head="11" hun="NN" id="w25.5.8" deprel="CJ">Steuersätze</w>
+ <w head="11" hun="KON" id="w25.5.9" deprel="CD">und</w>
+ <w head="11" hun="ADJA" id="w25.5.10" deprel="NK">breitere</w>
+ <w head="6" hun="NN" id="w25.5.11" deprel="NK">Besteuerungsgrundlagen</w>
+ <w head="13" hun="VVPP" id="w25.5.12" deprel="OC">reformiert</w>
+ <w head="3" hun="VAINF" id="w25.5.13" deprel="OC">werden</w>
+ <w head="3" hun="$." id="w25.5.14" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s25.6">
+ <w head="3" hun="ADV" id="w25.6.1" deprel="MO">Auch</w>
+ <w head="3" hun="ART" id="w25.6.2" deprel="PNC">die</w>
+ <w head="5" hun="ADJA" id="w25.6.3" deprel="MO">indirekte</w>
+ <w head="3" hun="NN" id="w25.6.4" deprel="NK">Besteuerung</w>
+ <w head="6" hun="VMFIN" id="w25.6.5" deprel="MO">soll</w>
+ <w head="7" hun="VVPP" id="w25.6.6" deprel="OC">reformiert</w>
+ <w head="0" hun="VAINF" id="w25.6.7" deprel="ROOT">werden</w>
+ <w head="7" hun="$." id="w25.6.8" deprel="PUNC">.</w>
+</s></p>
+
+<p id="26">
+<s id="s26.1">
+ <w head="6" hun="KOUI" id="w26.1.1" deprel="CP">Um</w>
+ <w head="6" hun="ART" id="w26.1.2" deprel="MO">den</w>
+ <w head="6" hun="NN" id="w26.1.3" deprel="OA">Beschäftigungsgrad</w>
+ <w head="6" hun="ADV" id="w26.1.4" deprel="MO">weiter</w>
+ <w head="6" hun="PTKZU" id="w26.1.5" deprel="PM">zu</w>
+ <w head="0" hun="VVINF" id="w26.1.6" deprel="ROOT">erhöhen</w>
+ <w head="6" hun="KON" id="w26.1.7" deprel="CD">und</w>
+ <w head="9" hun="ART" id="w26.1.8" deprel="NK">dem</w>
+ <w head="10" hun="NN" id="w26.1.9" deprel="OA">Arbeitskräftemangel</w>
+ <w head="12" hun="VVIZU" id="w26.1.10" deprel="SB">abzuhelfen</w>
+ <w head="12" hun="$," id="w26.1.11" deprel="PUNC">,</w>
+ <w head="6" hun="VAFIN" id="w26.1.12" deprel="CJ">wird</w>
+ <w head="14" hun="ART" id="w26.1.13" deprel="NK">die</w>
+ <w head="18" hun="NN" id="w26.1.14" deprel="DA">Regierung</w>
+ <w head="17" hun="ART" id="w26.1.15" deprel="NK">die</w>
+ <w head="17" hun="ADJA" id="w26.1.16" deprel="NK">aktive</w>
+ <w head="18" hun="NN" id="w26.1.17" deprel="OA">Arbeitsmarktpolitik</w>
+ <w head="12" hun="VVINF" id="w26.1.18" deprel="MO">entwickeln</w>
+ <w head="6" hun="$." id="w26.1.19" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s26.2">
+ <w head="2" hun="ADJA" id="w26.2.1" deprel="PNC">Lebensbegleitende</w>
+ <w head="8" hun="NN" id="w26.2.2" deprel="SB">Ausbildung</w>
+ <w head="2" hun="APPRART" id="w26.2.3" deprel="MNR">im</w>
+ <w head="6" hun="NN" id="w26.2.4" deprel="PNC">Erwerbsleben</w>
+ <w head="6" hun="KON" id="w26.2.5" deprel="PNC">und</w>
+ <w head="3" hun="ADJA" id="w26.2.6" deprel="PNC">kompetenzerhöhende</w>
+ <w head="3" hun="NN" id="w26.2.7" deprel="PNC">Weiterbildung</w>
+ <w head="0" hun="VVFIN" id="w26.2.8" deprel="ROOT">spielen</w>
+ <w head="8" hun="PROAV" id="w26.2.9" deprel="MO">dabei</w>
+ <w head="12" hun="ART" id="w26.2.10" deprel="NK">eine</w>
+ <w head="12" hun="ADJA" id="w26.2.11" deprel="NK">wichtige</w>
+ <w head="8" hun="NN" id="w26.2.12" deprel="OA">Rolle</w>
+ <w head="8" hun="$." id="w26.2.13" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s26.3">
+ <w head="2" hun="ART" id="w26.3.1" deprel="NK">Die</w>
+ <w head="13" hun="NN" id="w26.3.2" deprel="OC">Möglichkeiten</w>
+ <w head="4" hun="ART" id="w26.3.3" deprel="PNC">der</w>
+ <w head="2" hun="NN" id="w26.3.4" deprel="PNC">Behinderten</w>
+ <w head="2" hun="$," id="w26.3.5" deprel="PUNC">,</w>
+ <w head="8" hun="APPRART" id="w26.3.6" deprel="MO">am</w>
+ <w head="6" hun="NN" id="w26.3.7" deprel="PNC">Erwerbsleben</w>
+ <w head="10" hun="VVIZU" id="w26.3.8" deprel="MO">teilzunehmen</w>
+ <w head="10" hun="$," id="w26.3.9" deprel="PUNC">,</w>
+ <w head="12" hun="VMFIN" id="w26.3.10" deprel="MO">müssen</w>
+ <w head="12" hun="ADV" id="w26.3.11" deprel="MO">weiter</w>
+ <w head="2" hun="VVPP" id="w26.3.12" deprel="PAR">verbessert</w>
+ <w head="0" hun="VAINF" id="w26.3.13" deprel="ROOT">werden</w>
+ <w head="13" hun="$." id="w26.3.14" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s26.4">
+ <w head="2" hun="ART" id="w26.4.1" deprel="NK">Der</w>
+ <w head="8" hun="NN" id="w26.4.2" deprel="SB">Eintritt</w>
+ <w head="4" hun="ART" id="w26.4.3" deprel="PNC">der</w>
+ <w head="2" hun="NN" id="w26.4.4" deprel="NK">Einwanderer</w>
+ <w head="2" hun="APPR" id="w26.4.5" deprel="MNR">in</w>
+ <w head="5" hun="ART" id="w26.4.6" deprel="NK">das</w>
+ <w head="5" hun="NN" id="w26.4.7" deprel="NK">Erwerbsleben</w>
+ <w head="0" hun="VMFIN" id="w26.4.8" deprel="ROOT">soll</w>
+ <w head="10" hun="VVPP" id="w26.4.9" deprel="OC">erleichtert</w>
+ <w head="8" hun="VAINF" id="w26.4.10" deprel="OC">werden</w>
+ <w head="8" hun="$." id="w26.4.11" deprel="PUNC">.</w>
+</s></p>
+
+<p id="27">
+<s id="s27.1">
+ <w head="6" hun="NN" id="w27.1.1" deprel="SB">Sicherheit</w>
+ <w head="1" hun="KON" id="w27.1.2" deprel="CD">und</w>
+ <w head="1" hun="NN" id="w27.1.3" deprel="CJ">Gerechtigkeit</w>
+ <w head="3" hun="APPRART" id="w27.1.4" deprel="MNR">im</w>
+ <w head="4" hun="NN" id="w27.1.5" deprel="PNC">Erwerbsleben</w>
+ <w head="0" hun="VMFIN" id="w27.1.6" deprel="ROOT">sollen</w>
+ <w head="8" hun="VVPP" id="w27.1.7" deprel="OC">gefördert</w>
+ <w head="6" hun="VAINF" id="w27.1.8" deprel="OC">werden</w>
+ <w head="6" hun="$." id="w27.1.9" deprel="PUNC">.</w>
+</s></p>
+
+<p id="28">
+<s id="s28.1">
+ <w head="2" hun="ART" id="w28.1.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w28.1.2" deprel="SB">Regierung</w>
+ <w head="0" hun="VAFIN" id="w28.1.3" deprel="ROOT">wird</w>
+ <w head="7" hun="ART" id="w28.1.4" deprel="NK">die</w>
+ <w head="7" hun="TRUNC" id="w28.1.5" deprel="CJ">Arbeitgeber-</w>
+ <w head="7" hun="KON" id="w28.1.6" deprel="CD">und</w>
+ <w head="12" hun="NN" id="w28.1.7" deprel="OA">Arbeitnehmerorganisationen</w>
+ <w head="7" hun="KON" id="w28.1.8" deprel="CD">und</w>
+ <w head="12" hun="ART" id="w28.1.9" deprel="MO">die</w>
+ <w head="11" hun="ADJA" id="w28.1.10" deprel="PNC">zuständigen</w>
+ <w head="12" hun="NN" id="w28.1.11" deprel="OA">Behörden</w>
+ <w head="35" hun="VVINF" id="w28.1.12" deprel="OC">einladen</w>
+ <w head="12" hun="$," id="w28.1.13" deprel="PUNC">,</w>
+ <w head="19" hun="PRF" id="w28.1.14" deprel="OA">sich</w>
+ <w head="19" hun="APPR" id="w28.1.15" deprel="MO">an</w>
+ <w head="15" hun="ART" id="w28.1.16" deprel="NK">einer</w>
+ <w head="15" hun="NN" id="w28.1.17" deprel="NK">Arbeitsumweltkommission</w>
+ <w head="19" hun="PTKZU" id="w28.1.18" deprel="PM">zu</w>
+ <w head="12" hun="VVINF" id="w28.1.19" deprel="CJ">beteiligen</w>
+ <w head="12" hun="$," id="w28.1.20" deprel="PUNC">,</w>
+ <w head="28" hun="KOUI" id="w28.1.21" deprel="CP">um</w>
+ <w head="23" hun="ADJA" id="w28.1.22" deprel="PNC">besondere</w>
+ <w head="28" hun="NN" id="w28.1.23" deprel="OA">Massnahmen</w>
+ <w head="28" hun="APPR" id="w28.1.24" deprel="MO">für</w>
+ <w head="24" hun="PDAT" id="w28.1.25" deprel="NK">jene</w>
+ <w head="24" hun="CARD" id="w28.1.26" deprel="NK">400000</w>
+ <w head="28" hun="NN" id="w28.1.27" deprel="OA">Arbeitsplätze</w>
+ <w head="12" hun="VVIZU" id="w28.1.28" deprel="MO">durchzuführen</w>
+ <w head="28" hun="$," id="w28.1.29" deprel="PUNC">,</w>
+ <w head="34" hun="ART" id="w28.1.30" deprel="MO">die</w>
+ <w head="34" hun="NN" id="w28.1.31" deprel="OA">Umweltgefahren</w>
+ <w head="33" hun="PTKA" id="w28.1.32" deprel="MO">am</w>
+ <w head="34" hun="PIS" id="w28.1.33" deprel="MO">meisten</w>
+ <w head="28" hun="VVPP" id="w28.1.34" deprel="CJ">ausgesetzt</w>
+ <w head="3" hun="VAFIN" id="w28.1.35" deprel="OC">sind</w>
+ <w head="3" hun="$." id="w28.1.36" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s28.2">
+ <w head="2" hun="ART" id="w28.2.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w28.2.2" deprel="SB">Kommission</w>
+ <w head="0" hun="VMFIN" id="w28.2.3" deprel="ROOT">soll</w>
+ <w head="7" hun="NN" id="w28.2.4" deprel="OA">Vorschläge</w>
+ <w head="7" hun="APPR" id="w28.2.5" deprel="MO">zu</w>
+ <w head="5" hun="NN" id="w28.2.6" deprel="NK">Massnahmen</w>
+ <w head="23" hun="VVINF" id="w28.2.7" deprel="OC">vorlegen</w>
+ <w head="7" hun="$," id="w28.2.8" deprel="PUNC">,</w>
+ <w head="12" hun="PRELS" id="w28.2.9" deprel="MO">die</w>
+ <w head="12" hun="ART" id="w28.2.10" deprel="MO">eine</w>
+ <w head="12" hun="ADJD" id="w28.2.11" deprel="MO">gesundheitlich</w>
+ <w head="17" hun="VVPP" id="w28.2.12" deprel="MO">gesehen</w>
+ <w head="14" hun="ADJA" id="w28.2.13" deprel="NK">bessere</w>
+ <w head="17" hun="NN" id="w28.2.14" deprel="OA">Umwelt</w>
+ <w head="17" hun="APPRART" id="w28.2.15" deprel="MO">am</w>
+ <w head="15" hun="NN" id="w28.2.16" deprel="PNC">Arbeitsplatz</w>
+ <w head="7" hun="VVINF" id="w28.2.17" deprel="OC">schaffen</w>
+ <w head="17" hun="KON" id="w28.2.18" deprel="CD">und</w>
+ <w head="21" hun="ART" id="w28.2.19" deprel="NK">die</w>
+ <w head="21" hun="PIAT" id="w28.2.20" deprel="NK">vielen</w>
+ <w head="22" hun="NN" id="w28.2.21" deprel="OA">Berufsschäden</w>
+ <w head="17" hun="VVINF" id="w28.2.22" deprel="CJ">vermindern</w>
+ <w head="3" hun="VMINF" id="w28.2.23" deprel="OC">können</w>
+ <w head="3" hun="$." id="w28.2.24" deprel="PUNC">.</w>
+</s></p>
+
+<p id="29">
+<s id="s29.1">
+ <w head="4" hun="KOUS" id="w29.1.1" deprel="CP">Während</w>
+ <w head="4" hun="ART" id="w29.1.2" deprel="MO">der</w>
+ <w head="4" hun="NN" id="w29.1.3" deprel="SB">Legislaturperiode</w>
+ <w head="0" hun="VAFIN" id="w29.1.4" deprel="ROOT">wird</w>
+ <w head="10" hun="APPR" id="w29.1.5" deprel="MO">durch</w>
+ <w head="5" hun="NN" id="w29.1.6" deprel="NK">Gesetz</w>
+ <w head="9" hun="ART" id="w29.1.7" deprel="NK">eine</w>
+ <w head="9" hun="ADJA" id="w29.1.8" deprel="NK">sechste</w>
+ <w head="10" hun="NN" id="w29.1.9" deprel="OA">Urlaubswoche</w>
+ <w head="4" hun="VVPP" id="w29.1.10" deprel="MO">eingeführt</w>
+ <w head="4" hun="$." id="w29.1.11" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s29.2">
+ <w head="2" hun="PDAT" id="w29.2.1" deprel="NK">Diese</w>
+ <w head="3" hun="NN" id="w29.2.2" deprel="SB">Reform</w>
+ <w head="0" hun="VAFIN" id="w29.2.3" deprel="ROOT">wird</w>
+ <w head="5" hun="ADJD" id="w29.2.4" deprel="MO">schrittweise</w>
+ <w head="3" hun="VVPP" id="w29.2.5" deprel="MO">durchgeführt</w>
+ <w head="3" hun="$." id="w29.2.6" deprel="PUNC">.</w>
+</s></p>
+
+<p id="30">
+<s id="s30.1">
+ <w head="2" hun="PPER" id="w30.1.1" deprel="SB">Es</w>
+ <w head="0" hun="VAFIN" id="w30.1.2" deprel="ROOT">ist</w>
+ <w head="6" hun="ADJD" id="w30.1.3" deprel="NK">wichtig</w>
+ <w head="6" hun="$," id="w30.1.4" deprel="NK">,</w>
+ <w head="6" hun="ART" id="w30.1.5" deprel="NK">die</w>
+ <w head="7" hun="NN" id="w30.1.6" deprel="OA">Bemühungen</w>
+ <w head="2" hun="VVIZU" id="w30.1.7" deprel="OC">fortzusetzen</w>
+ <w head="7" hun="$," id="w30.1.8" deprel="PUNC">,</w>
+ <w head="15" hun="KOUI" id="w30.1.9" deprel="CP">um</w>
+ <w head="14" hun="ART" id="w30.1.10" deprel="NK">den</w>
+ <w head="13" hun="APPR" id="w30.1.11" deprel="MO">nach</w>
+ <w head="11" hun="NN" id="w30.1.12" deprel="NK">Geschlechtern</w>
+ <w head="14" hun="ADJA" id="w30.1.13" deprel="NK">aufgeteilten</w>
+ <w head="15" hun="NN" id="w30.1.14" deprel="OA">Arbeitsmarkt</w>
+ <w head="7" hun="VVINF" id="w30.1.15" deprel="MO">aufzulockern</w>
+ <w head="2" hun="$." id="w30.1.16" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s30.2">
+ <w head="4" hun="NN" id="w30.2.1" deprel="SB">Frauen</w>
+ <w head="1" hun="KON" id="w30.2.2" deprel="CD">und</w>
+ <w head="1" hun="NN" id="w30.2.3" deprel="UC">Männern</w>
+ <w head="0" hun="VVFIN" id="w30.2.4" deprel="ROOT">muss</w>
+ <w head="4" hun="PPER" id="w30.2.5" deprel="OA">es</w>
+ <w head="7" hun="ADJD" id="w30.2.6" deprel="MO">leichter</w>
+ <w head="8" hun="VVPP" id="w30.2.7" deprel="OC">gemacht</w>
+ <w head="4" hun="VAINF" id="w30.2.8" deprel="OC">werden</w>
+ <w head="8" hun="$," id="w30.2.9" deprel="PUNC">,</w>
+ <w head="16" hun="NN" id="w30.2.10" deprel="OA">Erwerbstätigkeit</w>
+ <w head="16" hun="APPR" id="w30.2.11" deprel="MO">mit</w>
+ <w head="11" hun="PPOSAT" id="w30.2.12" deprel="NK">ihrer</w>
+ <w head="11" hun="NN" id="w30.2.13" deprel="NK">Verantwortung</w>
+ <w head="16" hun="APPR" id="w30.2.14" deprel="MO">als</w>
+ <w head="14" hun="NN" id="w30.2.15" deprel="NK">Eltern</w>
+ <w head="18" hun="VVINF" id="w30.2.16" deprel="OC">vereinen</w>
+ <w head="18" hun="PTKZU" id="w30.2.17" deprel="PM">zu</w>
+ <w head="8" hun="VMINF" id="w30.2.18" deprel="OC">können</w>
+ <w head="4" hun="$." id="w30.2.19" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s30.3">
+ <w head="2" hun="ADV" id="w30.3.1" deprel="MO">Auch</w>
+ <w head="4" hun="APPR" id="w30.3.2" deprel="MO">in</w>
+ <w head="2" hun="NN" id="w30.3.3" deprel="NK">Zukunft</w>
+ <w head="6" hun="VAFIN" id="w30.3.4" deprel="MO">werden</w>
+ <w head="4" hun="NN" id="w30.3.5" deprel="NK">Massnahmen</w>
+ <w head="7" hun="VVPP" id="w30.3.6" deprel="OC">ergriffen</w>
+ <w head="18" hun="VAINF" id="w30.3.7" deprel="MO">werden</w>
+ <w head="18" hun="$," id="w30.3.8" deprel="PUNC">,</w>
+ <w head="18" hun="KOUI" id="w30.3.9" deprel="CP">um</w>
+ <w head="14" hun="ART" id="w30.3.10" deprel="NK">die</w>
+ <w head="13" hun="NN" id="w30.3.11" deprel="PNC">Vertretung</w>
+ <w head="13" hun="ART" id="w30.3.12" deprel="PNC">der</w>
+ <w head="14" hun="NN" id="w30.3.13" deprel="NK">Frauen</w>
+ <w head="18" hun="APPR" id="w30.3.14" deprel="MO">in</w>
+ <w head="14" hun="ADJA" id="w30.3.15" deprel="NK">verschiedenen</w>
+ <w head="14" hun="NN" id="w30.3.16" deprel="NK">Entscheidungsgremien</w>
+ <w head="18" hun="PTKZU" id="w30.3.17" deprel="PM">zu</w>
+ <w head="0" hun="VVINF" id="w30.3.18" deprel="ROOT">erhöhen</w>
+ <w head="18" hun="$." id="w30.3.19" deprel="PUNC">.</w>
+</s></p>
+
+<p id="31">
+<s id="s31.1">
+ <w head="2" hun="ART" id="w31.1.1" deprel="NK">Die</w>
+ <w head="0" hun="NN" id="w31.1.2" deprel="ROOT">Ausweitung</w>
+ <w head="4" hun="ART" id="w31.1.3" deprel="NK">der</w>
+ <w head="2" hun="NN" id="w31.1.4" deprel="AG">Strukturpolitik</w>
+ <w head="2" hun="$," id="w31.1.5" deprel="PUNC">,</w>
+ <w head="25" hun="PRELS" id="w31.1.6" deprel="SB">die</w>
+ <w head="24" hun="APPR" id="w31.1.7" deprel="MO">in</w>
+ <w head="7" hun="ART" id="w31.1.8" deprel="NK">den</w>
+ <w head="7" hun="ADJA" id="w31.1.9" deprel="NK">letzten</w>
+ <w head="7" hun="NN" id="w31.1.10" deprel="NK">Jahren</w>
+ <w head="24" hun="APPR" id="w31.1.11" deprel="MO">durch</w>
+ <w head="11" hun="NN" id="w31.1.12" deprel="NK">Ausrichtung</w>
+ <w head="24" hun="APPR" id="w31.1.13" deprel="MO">auf</w>
+ <w head="13" hun="ART" id="w31.1.14" deprel="NK">die</w>
+ <w head="13" hun="NN" id="w31.1.15" deprel="NK">Erhöhung</w>
+ <w head="24" hun="ART" id="w31.1.16" deprel="MO">des</w>
+ <w head="24" hun="NN" id="w31.1.17" deprel="OA">Kompetenzniveaus</w>
+ <w head="24" hun="$," id="w31.1.18" deprel="PUNC">,</w>
+ <w head="24" hun="ART" id="w31.1.19" deprel="MO">die</w>
+ <w head="23" hun="NN" id="w31.1.20" deprel="CJ">Ausbildung</w>
+ <w head="23" hun="KON" id="w31.1.21" deprel="CD">und</w>
+ <w head="23" hun="ADJA" id="w31.1.22" deprel="NK">verbesserte</w>
+ <w head="24" hun="NN" id="w31.1.23" deprel="OA">Infrastruktur</w>
+ <w head="25" hun="VVPP" id="w31.1.24" deprel="OC">geprägt</w>
+ <w head="27" hun="VAFIN" id="w31.1.25" deprel="SB">war</w>
+ <w head="27" hun="$," id="w31.1.26" deprel="PUNC">,</w>
+ <w head="28" hun="VAFIN" id="w31.1.27" deprel="MO">wird</w>
+ <w head="29" hun="VVPP" id="w31.1.28" deprel="OC">fortgesetzt</w>
+ <w head="2" hun="VAINF" id="w31.1.29" deprel="OC">werden</w>
+ <w head="2" hun="$." id="w31.1.30" deprel="PUNC">.</w>
+</s></p>
+
+<p id="32">
+<s id="s32.1">
+ <w head="2" hun="ART" id="w32.1.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w32.1.2" deprel="SB">Kleinunternehmen</w>
+ <w head="0" hun="VVFIN" id="w32.1.3" deprel="ROOT">tragen</w>
+ <w head="6" hun="ART" id="w32.1.4" deprel="NK">einen</w>
+ <w head="6" hun="ADJA" id="w32.1.5" deprel="NK">grossen</w>
+ <w head="3" hun="NN" id="w32.1.6" deprel="OA">Teil</w>
+ <w head="8" hun="ART" id="w32.1.7" deprel="PNC">der</w>
+ <w head="6" hun="NN" id="w32.1.8" deprel="NK">Dynamik</w>
+ <w head="6" hun="KON" id="w32.1.9" deprel="CD">und</w>
+ <w head="6" hun="NN" id="w32.1.10" deprel="CJ">Erneuerung</w>
+ <w head="3" hun="APPR" id="w32.1.11" deprel="MO">in</w>
+ <w head="11" hun="ART" id="w32.1.12" deprel="NK">der</w>
+ <w head="11" hun="ADJA" id="w32.1.13" deprel="NK">schwedischen</w>
+ <w head="11" hun="NN" id="w32.1.14" deprel="NK">Wirtschaft</w>
+ <w head="3" hun="$." id="w32.1.15" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s32.2">
+ <w head="5" hun="ART" id="w32.2.1" deprel="NK">Die</w>
+ <w head="5" hun="NN" id="w32.2.2" deprel="NK">Bestrebungen</w>
+ <w head="5" hun="$," id="w32.2.3" deprel="PUNC">,</w>
+ <w head="5" hun="ADJA" id="w32.2.4" deprel="NK">gute</w>
+ <w head="9" hun="NN" id="w32.2.5" deprel="OA">Entwicklungsmöglichkeiten</w>
+ <w head="9" hun="APPR" id="w32.2.6" deprel="MO">für</w>
+ <w head="6" hun="NN" id="w32.2.7" deprel="NK">Kleinunternehmen</w>
+ <w head="9" hun="PTKZU" id="w32.2.8" deprel="PM">zu</w>
+ <w head="11" hun="VVINF" id="w32.2.9" deprel="SB">schaffen</w>
+ <w head="11" hun="$," id="w32.2.10" deprel="PUNC">,</w>
+ <w head="0" hun="VAFIN" id="w32.2.11" deprel="ROOT">werden</w>
+ <w head="13" hun="PROAV" id="w32.2.12" deprel="MO">deshalb</w>
+ <w head="11" hun="VVPP" id="w32.2.13" deprel="OC">fortgesetzt</w>
+ <w head="11" hun="$." id="w32.2.14" deprel="PUNC">.</w>
+</s></p>
+
+<p id="33">
+<s id="s33.1">
+ <w head="5" hun="ART" id="w33.1.1" deprel="NK">Die</w>
+ <w head="5" hun="ADJA" id="w33.1.2" deprel="NK">grosszügige</w>
+ <w head="2" hun="KON" id="w33.1.3" deprel="CD">und</w>
+ <w head="2" hun="ADJA" id="w33.1.4" deprel="CJ">solidarische</w>
+ <w head="6" hun="NN" id="w33.1.5" deprel="SB">Flüchtlingspolitik</w>
+ <w head="0" hun="VVFIN" id="w33.1.6" deprel="ROOT">liegt</w>
+ <w head="6" hun="PTKVZ" id="w33.1.7" deprel="SVP">fest</w>
+ <w head="6" hun="$." id="w33.1.8" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s33.2">
+ <w head="2" hun="ART" id="w33.2.1" deprel="NK">Die</w>
+ <w head="12" hun="NN" id="w33.2.2" deprel="SB">Arbeit</w>
+ <w head="5" hun="ART" id="w33.2.3" deprel="NK">der</w>
+ <w head="5" hun="ADJA" id="w33.2.4" deprel="NK">Vereinten</w>
+ <w head="2" hun="NN" id="w33.2.5" deprel="AG">Nationen</w>
+ <w head="2" hun="APPR" id="w33.2.6" deprel="MNR">für</w>
+ <w head="6" hun="ART" id="w33.2.7" deprel="NK">die</w>
+ <w head="6" hun="NN" id="w33.2.8" deprel="NK">Flüchtlinge</w>
+ <w head="6" hun="APPR" id="w33.2.9" deprel="MNR">in</w>
+ <w head="9" hun="ART" id="w33.2.10" deprel="NK">der</w>
+ <w head="9" hun="NN" id="w33.2.11" deprel="NK">Welt</w>
+ <w head="0" hun="VMFIN" id="w33.2.12" deprel="ROOT">soll</w>
+ <w head="14" hun="ADV" id="w33.2.13" deprel="MO">weiterhin</w>
+ <w head="15" hun="ADJD" id="w33.2.14" deprel="MO">stark</w>
+ <w head="16" hun="VVPP" id="w33.2.15" deprel="OC">unterstützt</w>
+ <w head="12" hun="VAINF" id="w33.2.16" deprel="OC">werden</w>
+ <w head="12" hun="$." id="w33.2.17" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s33.3">
+ <w head="4" hun="NN" id="w33.3.1" deprel="SB">Rassismus</w>
+ <w head="1" hun="KON" id="w33.3.2" deprel="CD">und</w>
+ <w head="1" hun="NN" id="w33.3.3" deprel="UC">Fremdenfeindlichkeit</w>
+ <w head="0" hun="VAFIN" id="w33.3.4" deprel="ROOT">werden</w>
+ <w head="6" hun="VVPP" id="w33.3.5" deprel="OC">bekämpft</w>
+ <w head="4" hun="VAINF" id="w33.3.6" deprel="OC">werden</w>
+ <w head="4" hun="$." id="w33.3.7" deprel="PUNC">.</w>
+</s></p>
+
+<p id="34">
+<s id="s34.1">
+ <w head="3" hun="ART" id="w34.1.1" deprel="MO">Dem</w>
+ <w head="3" hun="NN" id="w34.1.2" deprel="SB">Reichstag</w>
+ <w head="10" hun="VAFIN" id="w34.1.3" deprel="OC">wird</w>
+ <w head="5" hun="ART" id="w34.1.4" deprel="PNC">ein</w>
+ <w head="3" hun="NN" id="w34.1.5" deprel="SB">Entwurf</w>
+ <w head="10" hun="APPR" id="w34.1.6" deprel="MO">zu</w>
+ <w head="6" hun="ART" id="w34.1.7" deprel="NK">einem</w>
+ <w head="6" hun="ADJA" id="w34.1.8" deprel="NK">neuen</w>
+ <w head="6" hun="NN" id="w34.1.9" deprel="NK">Ausländergesetz</w>
+ <w head="11" hun="VVPP" id="w34.1.10" deprel="OC">vorgelegt</w>
+ <w head="0" hun="VAINF" id="w34.1.11" deprel="ROOT">werden</w>
+ <w head="11" hun="$." id="w34.1.12" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s34.2">
+ <w head="2" hun="ART" id="w34.2.1" deprel="NK">Die</w>
+ <w head="5" hun="NN" id="w34.2.2" deprel="SB">Wartezeiten</w>
+ <w head="2" hun="APPR" id="w34.2.3" deprel="MNR">in</w>
+ <w head="3" hun="NN" id="w34.2.4" deprel="NK">Ausländersachen</w>
+ <w head="0" hun="VMFIN" id="w34.2.5" deprel="ROOT">sollen</w>
+ <w head="7" hun="ADJD" id="w34.2.6" deprel="MO">wesentlich</w>
+ <w head="8" hun="VVPP" id="w34.2.7" deprel="OC">verkürzt</w>
+ <w head="5" hun="VAINF" id="w34.2.8" deprel="OC">werden</w>
+ <w head="5" hun="$." id="w34.2.9" deprel="PUNC">.</w>
+</s></p>
+
+<p id="35">
+<s id="s35.1">
+ <w head="0" hun="NN" id="w35.1.1" deprel="ROOT">Rücksichtnahme</w>
+ <w head="1" hun="APPR" id="w35.1.2" deprel="MNR">auf</w>
+ <w head="4" hun="ART" id="w35.1.3" deprel="NK">die</w>
+ <w head="2" hun="NN" id="w35.1.4" deprel="NK">Umwelt</w>
+ <w head="4" hun="KON" id="w35.1.5" deprel="CD">und</w>
+ <w head="8" hun="ART" id="w35.1.6" deprel="NK">die</w>
+ <w head="8" hun="NN" id="w35.1.7" deprel="PNC">Natur</w>
+ <w head="15" hun="VVFIN" id="w35.1.8" deprel="SB">muss</w>
+ <w head="10" hun="ART" id="w35.1.9" deprel="PNC">die</w>
+ <w head="8" hun="NN" id="w35.1.10" deprel="PNC">Entwicklung</w>
+ <w head="15" hun="APPR" id="w35.1.11" deprel="MO">auf</w>
+ <w head="11" hun="PIAT" id="w35.1.12" deprel="NK">allen</w>
+ <w head="11" hun="ADJA" id="w35.1.13" deprel="NK">gesellschaftlichen</w>
+ <w head="11" hun="NN" id="w35.1.14" deprel="NK">Gebieten</w>
+ <w head="4" hun="VVFIN" id="w35.1.15" deprel="CJ">prägen</w>
+ <w head="1" hun="$." id="w35.1.16" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s35.2">
+ <w head="2" hun="PROAV" id="w35.2.1" deprel="MO">Dabei</w>
+ <w head="0" hun="VAFIN" id="w35.2.2" deprel="ROOT">hat</w>
+ <w head="8" hun="ART" id="w35.2.3" deprel="NK">der</w>
+ <w head="8" hun="NN" id="w35.2.4" deprel="PNC">Reichstagsbeschluss</w>
+ <w head="8" hun="APPRART" id="w35.2.5" deprel="PNC">zur</w>
+ <w head="5" hun="NN" id="w35.2.6" deprel="PNC">Verkehrspolitik</w>
+ <w head="8" hun="ADJA" id="w35.2.7" deprel="PNC">grosse</w>
+ <w head="2" hun="NN" id="w35.2.8" deprel="SB">Bedeutung</w>
+ <w head="2" hun="$." id="w35.2.9" deprel="PUNC">.</w>
+</s></p>
+
+<p id="36">
+<s id="s36.1">
+ <w head="3" hun="ART" id="w36.1.1" deprel="NK">Eine</w>
+ <w head="3" hun="ADJA" id="w36.1.2" deprel="NK">radikale</w>
+ <w head="4" hun="NN" id="w36.1.3" deprel="SB">Umweltpolitik</w>
+ <w head="0" hun="VVFIN" id="w36.1.4" deprel="ROOT">setzt</w>
+ <w head="6" hun="ART" id="w36.1.5" deprel="PNC">eine</w>
+ <w head="7" hun="ADJA" id="w36.1.6" deprel="NK">starke</w>
+ <w head="4" hun="NN" id="w36.1.7" deprel="OA">Wirtschaft</w>
+ <w head="4" hun="PTKVZ" id="w36.1.8" deprel="SVP">voraus</w>
+ <w head="4" hun="$." id="w36.1.9" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s36.2">
+ <w head="2" hun="ART" id="w36.2.1" deprel="PNC">Die</w>
+ <w head="4" hun="NN" id="w36.2.2" deprel="PNC">Bestrebungen</w>
+ <w head="4" hun="$," id="w36.2.3" deprel="PNC">,</w>
+ <w head="5" hun="NN" id="w36.2.4" deprel="NK">Übereinkommen</w>
+ <w head="20" hun="APPR" id="w36.2.5" deprel="CJ">über</w>
+ <w head="5" hun="ADJA" id="w36.2.6" deprel="NK">grenzüberschreitende</w>
+ <w head="9" hun="TRUNC" id="w36.2.7" deprel="CJ">Luft-</w>
+ <w head="9" hun="KON" id="w36.2.8" deprel="CD">und</w>
+ <w head="5" hun="NN" id="w36.2.9" deprel="NK">Wasserverunreinigungen</w>
+ <w head="5" hun="KON" id="w36.2.10" deprel="CD">und</w>
+ <w head="18" hun="ART" id="w36.2.11" deprel="MO">den</w>
+ <w head="14" hun="NN" id="w36.2.12" deprel="PNC">Schutz</w>
+ <w head="14" hun="ART" id="w36.2.13" deprel="PNC">des</w>
+ <w head="16" hun="NN" id="w36.2.14" deprel="PNC">Klimas</w>
+ <w head="16" hun="ART" id="w36.2.15" deprel="PNC">der</w>
+ <w head="18" hun="NN" id="w36.2.16" deprel="OA">Erde</w>
+ <w head="18" hun="PTKZU" id="w36.2.17" deprel="PM">zu</w>
+ <w head="20" hun="VVINF" id="w36.2.18" deprel="SB">erzielen</w>
+ <w head="20" hun="$," id="w36.2.19" deprel="PUNC">,</w>
+ <w head="0" hun="VAFIN" id="w36.2.20" deprel="ROOT">werden</w>
+ <w head="22" hun="ADV" id="w36.2.21" deprel="MO">weiter</w>
+ <w head="23" hun="VVPP" id="w36.2.22" deprel="OC">betrieben</w>
+ <w head="20" hun="VAINF" id="w36.2.23" deprel="OC">werden</w>
+ <w head="20" hun="$." id="w36.2.24" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s36.3">
+ <w head="2" hun="ART" id="w36.3.1" deprel="NK">Der</w>
+ <w head="8" hun="NN" id="w36.3.2" deprel="SB">Abwicklungsplan</w>
+ <w head="12" hun="APPR" id="w36.3.3" deprel="MO">für</w>
+ <w head="3" hun="ART" id="w36.3.4" deprel="NK">die</w>
+ <w head="3" hun="NN" id="w36.3.5" deprel="NK">Nutzung</w>
+ <w head="3" hun="APPR" id="w36.3.6" deprel="MNR">von</w>
+ <w head="6" hun="NN" id="w36.3.7" deprel="NK">Freonen</w>
+ <w head="0" hun="VAFIN" id="w36.3.8" deprel="ROOT">wird</w>
+ <w head="11" hun="APPR" id="w36.3.9" deprel="MO">zu</w>
+ <w head="9" hun="NN" id="w36.3.10" deprel="NK">Ende</w>
+ <w head="12" hun="VVPP" id="w36.3.11" deprel="OC">geführt</w>
+ <w head="8" hun="VAINF" id="w36.3.12" deprel="OC">werden</w>
+ <w head="8" hun="$." id="w36.3.13" deprel="PUNC">.</w>
+</s></p>
+
+<p id="37">
+<s id="s37.1">
+ <w head="7" hun="ART" id="w37.1.1" deprel="SB">Die</w>
+ <w head="7" hun="NN" id="w37.1.2" deprel="SB">Produkte</w>
+ <w head="2" hun="KON" id="w37.1.3" deprel="CD">und</w>
+ <w head="2" hun="NN" id="w37.1.4" deprel="UC">Prozesse</w>
+ <w head="6" hun="ART" id="w37.1.5" deprel="PNC">der</w>
+ <w head="2" hun="NN" id="w37.1.6" deprel="UC">Industrie</w>
+ <w head="0" hun="VMFIN" id="w37.1.7" deprel="ROOT">sollen</w>
+ <w head="7" hun="APPR" id="w37.1.8" deprel="MO">durch</w>
+ <w head="10" hun="ADJA" id="w37.1.9" deprel="NK">scharfe</w>
+ <w head="8" hun="NN" id="w37.1.10" deprel="NK">Anforderungen</w>
+ <w head="10" hun="KON" id="w37.1.11" deprel="CD">und</w>
+ <w head="13" hun="ADJA" id="w37.1.12" deprel="PNC">schnelle</w>
+ <w head="14" hun="NN" id="w37.1.13" deprel="NK">Anpassung</w>
+ <w head="18" hun="APPR" id="w37.1.14" deprel="MO">an</w>
+ <w head="14" hun="ADJA" id="w37.1.15" deprel="NK">neue</w>
+ <w head="14" hun="NN" id="w37.1.16" deprel="NK">Techniken</w>
+ <w head="14" hun="ADJA" id="w37.1.17" deprel="MO">reiner</w>
+ <w head="10" hun="VAINF" id="w37.1.18" deprel="CJ">werden</w>
+ <w head="7" hun="$." id="w37.1.19" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s37.2">
+ <w head="3" hun="VVFIN" id="w37.2.1" deprel="SB">Erteilte</w>
+ <w head="1" hun="NN" id="w37.2.2" deprel="PNC">Genehmigungen</w>
+ <w head="0" hun="VAFIN" id="w37.2.3" deprel="ROOT">werden</w>
+ <w head="3" hun="VVPP" id="w37.2.4" deprel="MO">überprüft</w>
+ <w head="3" hun="$." id="w37.2.5" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s37.3">
+ <w head="2" hun="ART" id="w37.3.1" deprel="NK">Die</w>
+ <w head="11" hun="NN" id="w37.3.2" deprel="SB">Anforderungen</w>
+ <w head="11" hun="APPR" id="w37.3.3" deprel="MO">an</w>
+ <w head="3" hun="ADJA" id="w37.3.4" deprel="NK">umweltgefährdende</w>
+ <w head="3" hun="NN" id="w37.3.5" deprel="NK">Produkte</w>
+ <w head="3" hun="$," id="w37.3.6" deprel="PUNC">,</w>
+ <w head="3" hun="NN" id="w37.3.7" deprel="UC">Chemikalien</w>
+ <w head="10" hun="KON" id="w37.3.8" deprel="CD">und</w>
+ <w head="10" hun="ART" id="w37.3.9" deprel="PNC">die</w>
+ <w head="11" hun="NN" id="w37.3.10" deprel="SB">Abfallwirtschaft</w>
+ <w head="0" hun="VAFIN" id="w37.3.11" deprel="ROOT">werden</w>
+ <w head="11" hun="VVPP" id="w37.3.12" deprel="MO">verschärft</w>
+ <w head="11" hun="$." id="w37.3.13" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s37.4">
+ <w head="8" hun="APPR" id="w37.4.1" deprel="MO">Für</w>
+ <w head="1" hun="ADJA" id="w37.4.2" deprel="NK">neue</w>
+ <w head="1" hun="ADJA" id="w37.4.3" deprel="NK">chemische</w>
+ <w head="1" hun="NN" id="w37.4.4" deprel="NK">Stoffe</w>
+ <w head="0" hun="VAFIN" id="w37.4.5" deprel="ROOT">wird</w>
+ <w head="7" hun="ART" id="w37.4.6" deprel="NK">eine</w>
+ <w head="5" hun="NN" id="w37.4.7" deprel="SB">Vorprüfung</w>
+ <w head="5" hun="VVPP" id="w37.4.8" deprel="OC">eingeführt</w>
+ <w head="5" hun="$." id="w37.4.9" deprel="PUNC">.</w>
+</s></p>
+
+<p id="38">
+<s id="s38.1">
+ <w head="2" hun="ADV" id="w38.1.1" deprel="MO">Schon</w>
+ <w head="3" hun="CARD" id="w38.1.2" deprel="MO">1989</w>
+ <w head="0" hun="VAFIN" id="w38.1.3" deprel="ROOT">werden</w>
+ <w head="3" hun="NN" id="w38.1.4" deprel="NK">Umweltabgaben</w>
+ <w head="10" hun="APPR" id="w38.1.5" deprel="MO">für</w>
+ <w head="5" hun="ADJA" id="w38.1.6" deprel="NK">organische</w>
+ <w head="5" hun="NN" id="w38.1.7" deprel="NK">Chlorverbindungen</w>
+ <w head="7" hun="KON" id="w38.1.8" deprel="CD">und</w>
+ <w head="7" hun="NN" id="w38.1.9" deprel="CJ">Schwefel</w>
+ <w head="3" hun="VVPP" id="w38.1.10" deprel="MO">eingeführt</w>
+ <w head="3" hun="$." id="w38.1.11" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s38.2">
+ <w head="2" hun="ART" id="w38.2.1" deprel="NK">Ein</w>
+ <w head="0" hun="NN" id="w38.2.2" deprel="ROOT">Vorschlag</w>
+ <w head="2" hun="APPR" id="w38.2.3" deprel="MNR">zu</w>
+ <w head="3" hun="ART" id="w38.2.4" deprel="NK">einer</w>
+ <w head="3" hun="NN" id="w38.2.5" deprel="NK">Umweltabgabe</w>
+ <w head="3" hun="APPR" id="w38.2.6" deprel="MNR">für</w>
+ <w head="6" hun="ADJA" id="w38.2.7" deprel="NK">andere</w>
+ <w head="6" hun="NN" id="w38.2.8" deprel="NK">Stoffe</w>
+ <w head="6" hun="$," id="w38.2.9" deprel="PUNC">,</w>
+ <w head="6" hun="ADJA" id="w38.2.10" deprel="NK">u.a</w>
+ <w head="6" hun="NN" id="w38.2.11" deprel="NK">Kohlendioxid</w>
+ <w head="2" hun="$," id="w38.2.12" deprel="PUNC">,</w>
+ <w head="17" hun="VAFIN" id="w38.2.13" deprel="MO">wird</w>
+ <w head="17" hun="APPR" id="w38.2.14" deprel="MO">während</w>
+ <w head="14" hun="ART" id="w38.2.15" deprel="NK">der</w>
+ <w head="14" hun="NN" id="w38.2.16" deprel="NK">Legislaturperiode</w>
+ <w head="2" hun="VVPP" id="w38.2.17" deprel="PAR">vorgelegt</w>
+ <w head="2" hun="$." id="w38.2.18" deprel="PUNC">.</w>
+</s></p>
+
+<p id="39">
+<s id="s39.1">
+ <w head="3" hun="ART" id="w39.1.1" deprel="NK">Die</w>
+ <w head="3" hun="ADJA" id="w39.1.2" deprel="NK">gesamte</w>
+ <w head="4" hun="NN" id="w39.1.3" deprel="SB">Umweltgesetzgebung</w>
+ <w head="0" hun="VMFIN" id="w39.1.4" deprel="ROOT">soll</w>
+ <w head="8" hun="VVPP" id="w39.1.5" deprel="OC">überprüft</w>
+ <w head="5" hun="KON" id="w39.1.6" deprel="CD">und</w>
+ <w head="5" hun="VVFIN" id="w39.1.7" deprel="CJ">koordiniert</w>
+ <w head="4" hun="VAINF" id="w39.1.8" deprel="OC">werden</w>
+ <w head="4" hun="$." id="w39.1.9" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s39.2">
+ <w head="2" hun="ART" id="w39.2.1" deprel="NK">Ein</w>
+ <w head="12" hun="NN" id="w39.2.2" deprel="SB">Entwurf</w>
+ <w head="16" hun="APPR" id="w39.2.3" deprel="MO">für</w>
+ <w head="3" hun="ART" id="w39.2.4" deprel="NK">ein</w>
+ <w head="3" hun="ADJA" id="w39.2.5" deprel="NK">neues</w>
+ <w head="3" hun="NN" id="w39.2.6" deprel="NK">Naturschutzgesetz</w>
+ <w head="8" hun="KON" id="w39.2.7" deprel="NK">sowie</w>
+ <w head="12" hun="ADJA" id="w39.2.8" deprel="SB">weitere</w>
+ <w head="11" hun="NN" id="w39.2.9" deprel="PNC">Verschärfugen</w>
+ <w head="11" hun="ART" id="w39.2.10" deprel="PNC">des</w>
+ <w head="8" hun="NN" id="w39.2.11" deprel="NK">Umweltschutzgesetzes</w>
+ <w head="0" hun="VAFIN" id="w39.2.12" deprel="ROOT">werden</w>
+ <w head="16" hun="APPR" id="w39.2.13" deprel="MO">während</w>
+ <w head="13" hun="ART" id="w39.2.14" deprel="NK">der</w>
+ <w head="13" hun="NN" id="w39.2.15" deprel="NK">Legislaturperiode</w>
+ <w head="12" hun="VVPP" id="w39.2.16" deprel="OC">vorgelegt</w>
+ <w head="12" hun="$." id="w39.2.17" deprel="PUNC">.</w>
+</s></p>
+
+<p id="40">
+<s id="s40.1">
+ <w head="3" hun="ART" id="w40.1.1" deprel="NK">Dem</w>
+ <w head="3" hun="ADJA" id="w40.1.2" deprel="PNC">öffentlichen</w>
+ <w head="4" hun="NN" id="w40.1.3" deprel="SB">Umweltschutz</w>
+ <w head="0" hun="VAFIN" id="w40.1.4" deprel="ROOT">werden</w>
+ <w head="6" hun="ADJD" id="w40.1.5" deprel="PNC">stark</w>
+ <w head="7" hun="ADJA" id="w40.1.6" deprel="NK">verbesserte</w>
+ <w head="10" hun="NN" id="w40.1.7" deprel="SB">Ressourcen</w>
+ <w head="10" hun="APPRART" id="w40.1.8" deprel="MO">zur</w>
+ <w head="8" hun="NN" id="w40.1.9" deprel="NK">Verfügung</w>
+ <w head="4" hun="VVPP" id="w40.1.10" deprel="OC">gestellt</w>
+ <w head="4" hun="$." id="w40.1.11" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s40.2">
+ <w head="2" hun="ADJA" id="w40.2.1" deprel="PNC">Besondere</w>
+ <w head="3" hun="NN" id="w40.2.2" deprel="SB">Massnahmen</w>
+ <w head="0" hun="VAFIN" id="w40.2.3" deprel="ROOT">werden</w>
+ <w head="21" hun="APPR" id="w40.2.4" deprel="MO">in</w>
+ <w head="6" hun="ADJD" id="w40.2.5" deprel="PNC">speziell</w>
+ <w head="4" hun="ADJA" id="w40.2.6" deprel="NK">gefährdeten</w>
+ <w head="12" hun="NN" id="w40.2.7" deprel="PNC">Regionen</w>
+ <w head="12" hun="$," id="w40.2.8" deprel="PNC">,</w>
+ <w head="12" hun="NN" id="w40.2.9" deprel="PNC">z.B</w>
+ <w head="12" hun="ART" id="w40.2.10" deprel="PNC">dem</w>
+ <w head="12" hun="ADJA" id="w40.2.11" deprel="PNC">westlichen</w>
+ <w head="4" hun="NN" id="w40.2.12" deprel="NK">Schonen</w>
+ <w head="15" hun="KON" id="w40.2.13" deprel="CD">und</w>
+ <w head="15" hun="ART" id="w40.2.14" deprel="PNC">dem</w>
+ <w head="21" hun="NN" id="w40.2.15" deprel="DA">Gebiet</w>
+ <w head="15" hun="APPR" id="w40.2.16" deprel="MNR">von</w>
+ <w head="19" hun="NE" id="w40.2.17" deprel="PNC">Sundsvall</w>
+ <w head="19" hun="$(" id="w40.2.18" deprel="PUNC">/</w>
+ <w head="16" hun="NE" id="w40.2.19" deprel="NK">Timrå</w>
+ <w head="21" hun="$," id="w40.2.20" deprel="PUNC">,</w>
+ <w head="22" hun="VVPP" id="w40.2.21" deprel="OC">ergriffen</w>
+ <w head="3" hun="VAINF" id="w40.2.22" deprel="OC">werden</w>
+ <w head="3" hun="$." id="w40.2.23" deprel="PUNC">.</w>
+</s></p>
+
+<p id="41">
+<s id="s41.1">
+ <w head="2" hun="ART" id="w41.1.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w41.1.2" deprel="SB">Regierung</w>
+ <w head="0" hun="VAFIN" id="w41.1.3" deprel="ROOT">wird</w>
+ <w head="13" hun="APPR" id="w41.1.4" deprel="MO">in</w>
+ <w head="6" hun="NN" id="w41.1.5" deprel="PNC">Kürze</w>
+ <w head="4" hun="NN" id="w41.1.6" deprel="NK">Vertreter</w>
+ <w head="13" hun="ART" id="w41.1.7" deprel="MO">der</w>
+ <w head="9" hun="CARD" id="w41.1.8" deprel="NK">drei</w>
+ <w head="13" hun="NN" id="w41.1.9" deprel="OA">Ballungszentren</w>
+ <w head="13" hun="APPR" id="w41.1.10" deprel="MO">zu</w>
+ <w head="10" hun="NN" id="w41.1.11" deprel="NK">Besprechungen</w>
+ <w head="13" hun="PROAV" id="w41.1.12" deprel="MO">darüber</w>
+ <w head="3" hun="VVINF" id="w41.1.13" deprel="OC">einladen</w>
+ <w head="13" hun="$," id="w41.1.14" deprel="PUNC">,</w>
+ <w head="21" hun="PWAV" id="w41.1.15" deprel="MO">wie</w>
+ <w head="17" hun="ART" id="w41.1.16" deprel="NK">die</w>
+ <w head="22" hun="NN" id="w41.1.17" deprel="SB">Umwelt</w>
+ <w head="21" hun="APPR" id="w41.1.18" deprel="MO">in</w>
+ <w head="18" hun="PDAT" id="w41.1.19" deprel="NK">diesen</w>
+ <w head="18" hun="NN" id="w41.1.20" deprel="NK">Gebieten</w>
+ <w head="22" hun="VVPP" id="w41.1.21" deprel="OC">verbessert</w>
+ <w head="23" hun="VAINF" id="w41.1.22" deprel="OC">werden</w>
+ <w head="13" hun="VMFIN" id="w41.1.23" deprel="MO">kann</w>
+ <w head="3" hun="$." id="w41.1.24" deprel="PUNC">.</w>
+</s></p>
+
+<p id="42">
+<s id="s42.1">
+ <w head="9" hun="CARD" id="w42.1.1" deprel="MO">1990</w>
+ <w head="0" hun="VAFIN" id="w42.1.2" deprel="ROOT">wird</w>
+ <w head="4" hun="ART" id="w42.1.3" deprel="PNC">dem</w>
+ <w head="2" hun="NN" id="w42.1.4" deprel="SB">Reichstag</w>
+ <w head="8" hun="ART" id="w42.1.5" deprel="MO">ein</w>
+ <w head="8" hun="NN" id="w42.1.6" deprel="DA">Vorschlag</w>
+ <w head="8" hun="PROAV" id="w42.1.7" deprel="MO">darüber</w>
+ <w head="9" hun="VVPP" id="w42.1.8" deprel="OC">vorgelegt</w>
+ <w head="2" hun="VAINF" id="w42.1.9" deprel="OC">werden</w>
+ <w head="9" hun="$," id="w42.1.10" deprel="PUNC">,</w>
+ <w head="23" hun="PRELS" id="w42.1.11" deprel="MO">welche</w>
+ <w head="13" hun="PIAT" id="w42.1.12" deprel="NK">beiden</w>
+ <w head="23" hun="NN" id="w42.1.13" deprel="SB">Reaktoren</w>
+ <w head="23" hun="APPR" id="w42.1.14" deprel="MO">in</w>
+ <w head="14" hun="ART" id="w42.1.15" deprel="NK">den</w>
+ <w head="14" hun="NN" id="w42.1.16" deprel="NK">Kernkraftwerken</w>
+ <w head="14" hun="NN" id="w42.1.17" deprel="NK">Barsebäck</w>
+ <w head="17" hun="KON" id="w42.1.18" deprel="CD">und</w>
+ <w head="17" hun="NN" id="w42.1.19" deprel="UC">Ringhals</w>
+ <w head="17" hun="CARD" id="w42.1.20" deprel="NK">1995</w>
+ <w head="20" hun="KON" id="w42.1.21" deprel="CD">und</w>
+ <w head="20" hun="CARD" id="w42.1.22" deprel="CJ">1996</w>
+ <w head="24" hun="VVPP" id="w42.1.23" deprel="OC">stillgelegt</w>
+ <w head="25" hun="VAINF" id="w42.1.24" deprel="OC">werden</w>
+ <w head="9" hun="VMFIN" id="w42.1.25" deprel="MO">sollen</w>
+ <w head="2" hun="$." id="w42.1.26" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s42.2">
+ <w head="5" hun="ART" id="w42.2.1" deprel="MO">Das</w>
+ <w head="3" hun="NN" id="w42.2.2" deprel="SB">Energiesystem</w>
+ <w head="0" hun="VAFIN" id="w42.2.3" deprel="ROOT">wird</w>
+ <w head="5" hun="ADV" id="w42.2.4" deprel="MO">derart</w>
+ <w head="3" hun="VVPP" id="w42.2.5" deprel="OC">verändert</w>
+ <w head="5" hun="$," id="w42.2.6" deprel="PUNC">,</w>
+ <w head="10" hun="KOUS" id="w42.2.7" deprel="CP">dass</w>
+ <w head="10" hun="ART" id="w42.2.8" deprel="SB">die</w>
+ <w head="10" hun="NN" id="w42.2.9" deprel="PNC">Versauerung</w>
+ <w head="17" hun="VVFIN" id="w42.2.10" deprel="OC">abnimmt</w>
+ <w head="10" hun="KON" id="w42.2.11" deprel="CD">und</w>
+ <w head="16" hun="ART" id="w42.2.12" deprel="MO">einer</w>
+ <w head="15" hun="NN" id="w42.2.13" deprel="PNC">Beeinflussung</w>
+ <w head="15" hun="ART" id="w42.2.14" deprel="PNC">des</w>
+ <w head="16" hun="NN" id="w42.2.15" deprel="SB">Klimas</w>
+ <w head="10" hun="VVPP" id="w42.2.16" deprel="CJ">entgegengewirkt</w>
+ <w head="5" hun="VAFIN" id="w42.2.17" deprel="OC">wird</w>
+ <w head="3" hun="$." id="w42.2.18" deprel="PUNC">.</w>
+</s></p>
+
+<p id="43">
+<s id="s43.1">
+ <w head="2" hun="ART" id="w43.1.1" deprel="NK">Die</w>
+ <w head="5" hun="NN" id="w43.1.2" deprel="SB">Agrarpolitik</w>
+ <w head="4" hun="ART" id="w43.1.3" deprel="PNC">der</w>
+ <w head="2" hun="NN" id="w43.1.4" deprel="NK">Regierung</w>
+ <w head="0" hun="VVFIN" id="w43.1.5" deprel="ROOT">zielt</w>
+ <w head="5" hun="APPR" id="w43.1.6" deprel="MO">auf</w>
+ <w head="6" hun="ART" id="w43.1.7" deprel="NK">eine</w>
+ <w head="6" hun="ADJA" id="w43.1.8" deprel="NK">lebensfähige</w>
+ <w head="6" hun="NN" id="w43.1.9" deprel="NK">Landwirtschaft</w>
+ <w head="5" hun="PTKVZ" id="w43.1.10" deprel="SVP">ab</w>
+ <w head="5" hun="$," id="w43.1.11" deprel="PUNC">,</w>
+ <w head="21" hun="PRELS" id="w43.1.12" deprel="OA">die</w>
+ <w head="14" hun="PIAT" id="w43.1.13" deprel="PNC">keinen</w>
+ <w head="15" hun="ADJA" id="w43.1.14" deprel="NK">schädlichen</w>
+ <w head="21" hun="NN" id="w43.1.15" deprel="SB">Einfluss</w>
+ <w head="21" hun="APPR" id="w43.1.16" deprel="MO">auf</w>
+ <w head="16" hun="ART" id="w43.1.17" deprel="NK">die</w>
+ <w head="16" hun="NN" id="w43.1.18" deprel="NK">Umwelt</w>
+ <w head="16" hun="APPR" id="w43.1.19" deprel="MNR">mit</w>
+ <w head="19" hun="PRF" id="w43.1.20" deprel="NK">sich</w>
+ <w head="5" hun="VVFIN" id="w43.1.21" deprel="OC">bringt</w>
+ <w head="5" hun="$." id="w43.1.22" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s43.2">
+ <w head="2" hun="PPER" id="w43.2.1" deprel="SB">Es</w>
+ <w head="0" hun="VVFIN" id="w43.2.2" deprel="ROOT">muss</w>
+ <w head="4" hun="ART" id="w43.2.3" deprel="PNC">eine</w>
+ <w head="5" hun="NN" id="w43.2.4" deprel="NK">Verschiebung</w>
+ <w head="15" hun="APPR" id="w43.2.5" deprel="MO">von</w>
+ <w head="5" hun="ART" id="w43.2.6" deprel="NK">der</w>
+ <w head="5" hun="ADJA" id="w43.2.7" deprel="NK">heutigen</w>
+ <w head="5" hun="ADJA" id="w43.2.8" deprel="NK">intensiven</w>
+ <w head="5" hun="NN" id="w43.2.9" deprel="NK">Produktion</w>
+ <w head="5" hun="APPR" id="w43.2.10" deprel="MNR">in</w>
+ <w head="10" hun="NN" id="w43.2.11" deprel="NK">Richtung</w>
+ <w head="15" hun="APPR" id="w43.2.12" deprel="MO">auf</w>
+ <w head="12" hun="ART" id="w43.2.13" deprel="NK">eine</w>
+ <w head="12" hun="NN" id="w43.2.14" deprel="NK">Landwirtschaft</w>
+ <w head="16" hun="VVPP" id="w43.2.15" deprel="OC">erreicht</w>
+ <w head="2" hun="VAINF" id="w43.2.16" deprel="OC">werden</w>
+ <w head="16" hun="$," id="w43.2.17" deprel="PUNC">,</w>
+ <w head="23" hun="PRELS" id="w43.2.18" deprel="SB">die</w>
+ <w head="21" hun="ADJD" id="w43.2.19" deprel="PNC">besser</w>
+ <w head="21" hun="ART" id="w43.2.20" deprel="PNC">den</w>
+ <w head="22" hun="ADJA" id="w43.2.21" deprel="NK">gestellten</w>
+ <w head="23" hun="NN" id="w43.2.22" deprel="OA">Anforderungen</w>
+ <w head="16" hun="VVFIN" id="w43.2.23" deprel="RC">entspricht</w>
+ <w head="23" hun="$," id="w43.2.24" deprel="PUNC">,</w>
+ <w head="35" hun="PWS" id="w43.2.25" deprel="SB">was</w>
+ <w head="35" hun="ART" id="w43.2.26" deprel="MO">die</w>
+ <w head="30" hun="NN" id="w43.2.27" deprel="CJ">Umwelt</w>
+ <w head="30" hun="KON" id="w43.2.28" deprel="CD">und</w>
+ <w head="30" hun="ART" id="w43.2.29" deprel="NK">die</w>
+ <w head="35" hun="NN" id="w43.2.30" deprel="SB">Verteilung</w>
+ <w head="35" hun="APPR" id="w43.2.31" deprel="MO">auf</w>
+ <w head="31" hun="ART" id="w43.2.32" deprel="NK">die</w>
+ <w head="31" hun="ADJA" id="w43.2.33" deprel="NK">verschiedenen</w>
+ <w head="31" hun="NN" id="w43.2.34" deprel="NK">Regionen</w>
+ <w head="23" hun="VVFIN" id="w43.2.35" deprel="CJ">betrifft</w>
+ <w head="2" hun="$." id="w43.2.36" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s43.3">
+ <w head="2" hun="ADJA" id="w43.3.1" deprel="PNC">Alternative</w>
+ <w head="3" hun="NN" id="w43.3.2" deprel="SB">Anbauformen</w>
+ <w head="0" hun="VMFIN" id="w43.3.3" deprel="ROOT">sollen</w>
+ <w head="5" hun="VVPP" id="w43.3.4" deprel="OC">angeregt</w>
+ <w head="3" hun="VAINF" id="w43.3.5" deprel="OC">werden</w>
+ <w head="3" hun="$." id="w43.3.6" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s43.4">
+ <w head="3" hun="ART" id="w43.4.1" deprel="NK">Die</w>
+ <w head="3" hun="ADJA" id="w43.4.2" deprel="PNC">offene</w>
+ <w head="4" hun="NN" id="w43.4.3" deprel="SB">Agrarlandschaft</w>
+ <w head="0" hun="VMFIN" id="w43.4.4" deprel="ROOT">soll</w>
+ <w head="6" hun="VVPP" id="w43.4.5" deprel="MO">erhalten</w>
+ <w head="4" hun="VVINF" id="w43.4.6" deprel="OC">bleiben</w>
+ <w head="4" hun="$." id="w43.4.7" deprel="PUNC">.</w>
+</s></p>
+
+<p id="44">
+<s id="s44.1">
+ <w head="4" hun="ADV" id="w44.1.1" deprel="MO">Auch</w>
+ <w head="4" hun="ART" id="w44.1.2" deprel="NK">die</w>
+ <w head="4" hun="ADJA" id="w44.1.3" deprel="PNC">internationale</w>
+ <w head="5" hun="NN" id="w44.1.4" deprel="SB">Entwicklung</w>
+ <w head="0" hun="VAFIN" id="w44.1.5" deprel="ROOT">wird</w>
+ <w head="16" hun="NN" id="w44.1.6" deprel="OA">Forderungen</w>
+ <w head="16" hun="APPR" id="w44.1.7" deprel="MO">nach</w>
+ <w head="7" hun="ART" id="w44.1.8" deprel="NK">einer</w>
+ <w head="7" hun="NN" id="w44.1.9" deprel="NK">Umstellung</w>
+ <w head="11" hun="ART" id="w44.1.10" deprel="PNC">der</w>
+ <w head="7" hun="NN" id="w44.1.11" deprel="NK">Landwirtschaftsförderung</w>
+ <w head="16" hun="APPR" id="w44.1.12" deprel="MO">auf</w>
+ <w head="12" hun="NN" id="w44.1.13" deprel="NK">Formen</w>
+ <w head="16" hun="APPR" id="w44.1.14" deprel="MO">mit</w>
+ <w head="14" hun="PRF" id="w44.1.15" deprel="NK">sich</w>
+ <w head="5" hun="VVINF" id="w44.1.16" deprel="OC">bringen</w>
+ <w head="16" hun="$," id="w44.1.17" deprel="PUNC">,</w>
+ <w head="23" hun="PRELS" id="w44.1.18" deprel="MO">die</w>
+ <w head="20" hun="ART" id="w44.1.19" deprel="PNC">eine</w>
+ <w head="23" hun="NN" id="w44.1.20" deprel="DA">Verminderung</w>
+ <w head="22" hun="ART" id="w44.1.21" deprel="NK">des</w>
+ <w head="23" hun="NN" id="w44.1.22" deprel="OA">Protektionismus</w>
+ <w head="16" hun="VVINF" id="w44.1.23" deprel="OC">bedeuten</w>
+ <w head="5" hun="$." id="w44.1.24" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s44.2">
+ <w head="2" hun="ART" id="w44.2.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w44.2.2" deprel="SB">Regierung</w>
+ <w head="0" hun="VVFIN" id="w44.2.3" deprel="ROOT">beabsichtigt</w>
+ <w head="3" hun="$," id="w44.2.4" deprel="PUNC">,</w>
+ <w head="9" hun="ART" id="w44.2.5" deprel="MO">die</w>
+ <w head="9" hun="NN" id="w44.2.6" deprel="OA">Nahrungsmittelpolitik</w>
+ <w head="9" hun="ADJD" id="w44.2.7" deprel="MO">dahingehend</w>
+ <w head="9" hun="PTKZU" id="w44.2.8" deprel="PM">zu</w>
+ <w head="3" hun="VVINF" id="w44.2.9" deprel="OC">entwickeln</w>
+ <w head="9" hun="$," id="w44.2.10" deprel="PUNC">,</w>
+ <w head="15" hun="KOUS" id="w44.2.11" deprel="CP">dass</w>
+ <w head="13" hun="ART" id="w44.2.12" deprel="PNC">die</w>
+ <w head="15" hun="NN" id="w44.2.13" deprel="SB">Preisentwicklung</w>
+ <w head="15" hun="VVPP" id="w44.2.14" deprel="OC">gedämpft</w>
+ <w head="25" hun="VAFIN" id="w44.2.15" deprel="OC">wird</w>
+ <w head="15" hun="$," id="w44.2.16" deprel="PUNC">,</w>
+ <w head="15" hun="KON" id="w44.2.17" deprel="CD">und</w>
+ <w head="20" hun="ART" id="w44.2.18" deprel="NK">den</w>
+ <w head="20" hun="NN" id="w44.2.19" deprel="PNC">Verbrauchern</w>
+ <w head="24" hun="NN" id="w44.2.20" deprel="DA">Nahrungsmittel</w>
+ <w head="24" hun="APPR" id="w44.2.21" deprel="MO">zu</w>
+ <w head="21" hun="ADJA" id="w44.2.22" deprel="PNC">angemessenen</w>
+ <w head="21" hun="NN" id="w44.2.23" deprel="NK">Preisen</w>
+ <w head="15" hun="VVPP" id="w44.2.24" deprel="CJ">angeboten</w>
+ <w head="9" hun="VAINF" id="w44.2.25" deprel="OC">werden</w>
+ <w head="3" hun="$." id="w44.2.26" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s44.3">
+ <w head="2" hun="ART" id="w44.3.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w44.3.2" deprel="SB">Nahrungsmittelkontrolle</w>
+ <w head="0" hun="VAFIN" id="w44.3.3" deprel="ROOT">wird</w>
+ <w head="3" hun="VVPP" id="w44.3.4" deprel="MO">verschärft</w>
+ <w head="3" hun="$." id="w44.3.5" deprel="PUNC">.</w>
+</s></p>
+
+<p id="45">
+<s id="s45.1">
+ <w head="2" hun="ART" id="w45.1.1" deprel="PNC">Der</w>
+ <w head="4" hun="ADJA" id="w45.1.2" deprel="SB">öffentliche</w>
+ <w head="4" hun="NN" id="w45.1.3" deprel="SB">Sektor</w>
+ <w head="0" hun="VMFIN" id="w45.1.4" deprel="ROOT">soll</w>
+ <w head="6" hun="VVPP" id="w45.1.5" deprel="OC">erneuert</w>
+ <w head="4" hun="VAINF" id="w45.1.6" deprel="OC">werden</w>
+ <w head="6" hun="$," id="w45.1.7" deprel="PUNC">,</w>
+ <w head="20" hun="KOUI" id="w45.1.8" deprel="CP">um</w>
+ <w head="11" hun="ART" id="w45.1.9" deprel="NK">den</w>
+ <w head="11" hun="ADJA" id="w45.1.10" deprel="NK">einzelnen</w>
+ <w head="20" hun="NN" id="w45.1.11" deprel="SB">Menschen</w>
+ <w head="13" hun="ADV" id="w45.1.12" deprel="MO">je</w>
+ <w head="20" hun="APPR" id="w45.1.13" deprel="MO">nach</w>
+ <w head="16" hun="NN" id="w45.1.14" deprel="CJ">Bedarf</w>
+ <w head="16" hun="KON" id="w45.1.15" deprel="CD">und</w>
+ <w head="13" hun="NN" id="w45.1.16" deprel="NK">Wünschen</w>
+ <w head="18" hun="ADJD" id="w45.1.17" deprel="MO">besser</w>
+ <w head="20" hun="APPR" id="w45.1.18" deprel="MO">zu</w>
+ <w head="18" hun="NN" id="w45.1.19" deprel="NK">Diensten</w>
+ <w head="22" hun="VAINF" id="w45.1.20" deprel="OC">sein</w>
+ <w head="22" hun="PTKZU" id="w45.1.21" deprel="PM">zu</w>
+ <w head="6" hun="VMINF" id="w45.1.22" deprel="MO">können</w>
+ <w head="4" hun="$." id="w45.1.23" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s45.2">
+ <w head="2" hun="ART" id="w45.2.1" deprel="NK">Das</w>
+ <w head="6" hun="NN" id="w45.2.2" deprel="SB">Dienstleistungsangebot</w>
+ <w head="2" hun="KON" id="w45.2.3" deprel="CD">und</w>
+ <w head="5" hun="ART" id="w45.2.4" deprel="PNC">die</w>
+ <w head="2" hun="NN" id="w45.2.5" deprel="CJ">Wahlfreiheit</w>
+ <w head="0" hun="VMFIN" id="w45.2.6" deprel="ROOT">sollen</w>
+ <w head="8" hun="VVPP" id="w45.2.7" deprel="OC">erhöht</w>
+ <w head="6" hun="VAINF" id="w45.2.8" deprel="OC">werden</w>
+ <w head="6" hun="$." id="w45.2.9" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s45.3">
+ <w head="3" hun="ART" id="w45.3.1" deprel="MO">Die</w>
+ <w head="3" hun="NN" id="w45.3.2" deprel="SB">Effizienz</w>
+ <w head="4" hun="VMFIN" id="w45.3.3" deprel="MO">soll</w>
+ <w head="5" hun="VVPP" id="w45.3.4" deprel="OC">gefördert</w>
+ <w head="0" hun="VAINF" id="w45.3.5" deprel="ROOT">werden</w>
+ <w head="5" hun="$," id="w45.3.6" deprel="PUNC">,</w>
+ <w head="15" hun="ADV" id="w45.3.7" deprel="MO">u.a</w>
+ <w head="15" hun="KOUS" id="w45.3.8" deprel="CP">indem</w>
+ <w head="15" hun="ART" id="w45.3.9" deprel="SB">die</w>
+ <w head="15" hun="NN" id="w45.3.10" deprel="SB">Initiativkraft</w>
+ <w head="12" hun="ART" id="w45.3.11" deprel="PNC">der</w>
+ <w head="15" hun="NN" id="w45.3.12" deprel="OA">Bediensteten</w>
+ <w head="14" hun="ADJA" id="w45.3.13" deprel="NK">grösseren</w>
+ <w head="12" hun="NN" id="w45.3.14" deprel="AG">Spielraum</w>
+ <w head="5" hun="VVFIN" id="w45.3.15" deprel="MO">erhält</w>
+ <w head="5" hun="$." id="w45.3.16" deprel="PUNC">.</w>
+</s></p>
+
+<p id="46">
+<s id="s46.1">
+ <w head="2" hun="ART" id="w46.1.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w46.1.2" deprel="SB">Elternversicherung</w>
+ <w head="0" hun="VAFIN" id="w46.1.3" deprel="ROOT">wird</w>
+ <w head="9" hun="APPR" id="w46.1.4" deprel="MO">von</w>
+ <w head="4" hun="CARD" id="w46.1.5" deprel="NK">neun</w>
+ <w head="9" hun="APPR" id="w46.1.6" deprel="MO">auf</w>
+ <w head="6" hun="CARD" id="w46.1.7" deprel="NK">achtzehn</w>
+ <w head="6" hun="NN" id="w46.1.8" deprel="NK">Monate</w>
+ <w head="3" hun="VVPP" id="w46.1.9" deprel="OC">ausgebaut</w>
+ <w head="3" hun="$." id="w46.1.10" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s46.2">
+ <w head="2" hun="ART" id="w46.2.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w46.2.2" deprel="SB">Bezahlung</w>
+ <w head="0" hun="VVFIN" id="w46.2.3" deprel="ROOT">erfolgt</w>
+ <w head="3" hun="APPR" id="w46.2.4" deprel="MO">nach</w>
+ <w head="4" hun="ART" id="w46.2.5" deprel="NK">dem</w>
+ <w head="4" hun="NN" id="w46.2.6" deprel="NK">Einkommensausfallprinzip</w>
+ <w head="3" hun="$." id="w46.2.7" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s46.3">
+ <w head="2" hun="ART" id="w46.3.1" deprel="NK">Der</w>
+ <w head="3" hun="NN" id="w46.3.2" deprel="SB">Ausbau</w>
+ <w head="0" hun="VMFIN" id="w46.3.3" deprel="ROOT">soll</w>
+ <w head="5" hun="CARD" id="w46.3.4" deprel="MO">1991</w>
+ <w head="6" hun="VVPP" id="w46.3.5" deprel="OC">beendet</w>
+ <w head="3" hun="VAINF" id="w46.3.6" deprel="OC">sein</w>
+ <w head="3" hun="$." id="w46.3.7" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s46.4">
+ <w head="3" hun="ART" id="w46.4.1" deprel="NK">Die</w>
+ <w head="3" hun="ADJA" id="w46.4.2" deprel="NK">erste</w>
+ <w head="14" hun="NN" id="w46.4.3" deprel="SB">Etappe</w>
+ <w head="3" hun="$," id="w46.4.4" deprel="PUNC">,</w>
+ <w head="12" hun="PRELS" id="w46.4.5" deprel="SB">die</w>
+ <w head="12" hun="APPRART" id="w46.4.6" deprel="MO">am</w>
+ <w head="8" hun="CARD" id="w46.4.7" deprel="NK">1</w>
+ <w head="12" hun="NN" id="w46.4.8" deprel="OA">Juli</w>
+ <w head="8" hun="CARD" id="w46.4.9" deprel="PNC">1989</w>
+ <w head="12" hun="APPR" id="w46.4.10" deprel="MO">in</w>
+ <w head="10" hun="NN" id="w46.4.11" deprel="NK">Kraft</w>
+ <w head="3" hun="VVFIN" id="w46.4.12" deprel="RC">tritt</w>
+ <w head="14" hun="$," id="w46.4.13" deprel="PUNC">,</w>
+ <w head="0" hun="VVFIN" id="w46.4.14" deprel="ROOT">bedeutet</w>
+ <w head="16" hun="ART" id="w46.4.15" deprel="NK">eine</w>
+ <w head="14" hun="NN" id="w46.4.16" deprel="OA">Bezahlung</w>
+ <w head="16" hun="APPR" id="w46.4.17" deprel="MNR">für</w>
+ <w head="17" hun="ADJA" id="w46.4.18" deprel="NK">weitere</w>
+ <w head="17" hun="CARD" id="w46.4.19" deprel="NK">drei</w>
+ <w head="17" hun="NN" id="w46.4.20" deprel="NK">Monate</w>
+ <w head="14" hun="$." id="w46.4.21" deprel="PUNC">.</w>
+</s></p>
+
+<p id="47">
+<s id="s47.1">
+ <w head="2" hun="ART" id="w47.1.1" deprel="NK">Der</w>
+ <w head="5" hun="NN" id="w47.1.2" deprel="SB">Ausbau</w>
+ <w head="4" hun="ART" id="w47.1.3" deprel="NK">der</w>
+ <w head="2" hun="NN" id="w47.1.4" deprel="AG">Kinderbetreuung</w>
+ <w head="0" hun="VAFIN" id="w47.1.5" deprel="ROOT">wird</w>
+ <w head="17" hun="APPR" id="w47.1.6" deprel="MO">in</w>
+ <w head="6" hun="NN" id="w47.1.7" deprel="NK">Übereinstimmung</w>
+ <w head="17" hun="APPR" id="w47.1.8" deprel="MO">mit</w>
+ <w head="17" hun="PDS" id="w47.1.9" deprel="MO">dem</w>
+ <w head="9" hun="$," id="w47.1.10" deprel="PUNC">,</w>
+ <w head="14" hun="PRELS" id="w47.1.11" deprel="MO">was</w>
+ <w head="13" hun="ART" id="w47.1.12" deprel="PNC">der</w>
+ <w head="14" hun="NN" id="w47.1.13" deprel="OA">Reichstag</w>
+ <w head="15" hun="VVPP" id="w47.1.14" deprel="OC">beschlossen</w>
+ <w head="9" hun="VAFIN" id="w47.1.15" deprel="SB">hat</w>
+ <w head="17" hun="$," id="w47.1.16" deprel="PUNC">,</w>
+ <w head="5" hun="VVPP" id="w47.1.17" deprel="OC">fortgesetzt</w>
+ <w head="5" hun="$." id="w47.1.18" deprel="PUNC">.</w>
+</s></p>
+
+<p id="48">
+<s id="s48.1">
+ <w head="11" hun="APPR" id="w48.1.1" deprel="MO">Durch</w>
+ <w head="1" hun="ART" id="w48.1.2" deprel="NK">die</w>
+ <w head="6" hun="ADV" id="w48.1.3" deprel="PNC">extra</w>
+ <w head="6" hun="NN" id="w48.1.4" deprel="PNC">Erhöhung</w>
+ <w head="6" hun="ART" id="w48.1.5" deprel="PNC">des</w>
+ <w head="1" hun="NN" id="w48.1.6" deprel="NK">Bemessungsbetrages</w>
+ <w head="1" hun="APPR" id="w48.1.7" deprel="MNR">ab</w>
+ <w head="7" hun="CARD" id="w48.1.8" deprel="NK">1</w>
+ <w head="7" hun="NN" id="w48.1.9" deprel="NK">Januar</w>
+ <w head="7" hun="CARD" id="w48.1.10" deprel="NK">1989</w>
+ <w head="0" hun="VVFIN" id="w48.1.11" deprel="ROOT">erhalten</w>
+ <w head="17" hun="ART" id="w48.1.12" deprel="NK">die</w>
+ <w head="16" hun="NN" id="w48.1.13" deprel="UC">Rentner</w>
+ <w head="13" hun="KON" id="w48.1.14" deprel="CD">und</w>
+ <w head="13" hun="NN" id="w48.1.15" deprel="UC">Pensionäre</w>
+ <w head="17" hun="ADJA" id="w48.1.16" deprel="NK">volle</w>
+ <w head="11" hun="NN" id="w48.1.17" deprel="SB">Kompensation</w>
+ <w head="11" hun="APPR" id="w48.1.18" deprel="MO">für</w>
+ <w head="18" hun="ART" id="w48.1.19" deprel="NK">die</w>
+ <w head="18" hun="NN" id="w48.1.20" deprel="NK">Abwertung</w>
+ <w head="18" hun="APPR" id="w48.1.21" deprel="MNR">von</w>
+ <w head="21" hun="CARD" id="w48.1.22" deprel="NK">1982</w>
+ <w head="11" hun="$." id="w48.1.23" deprel="PUNC">.</w>
+</s></p>
+
+<p id="49">
+<s id="s49.1">
+ <w head="2" hun="ART" id="w49.1.1" deprel="PNC">Die</w>
+ <w head="3" hun="NN" id="w49.1.2" deprel="SB">Regierung</w>
+ <w head="0" hun="VVFIN" id="w49.1.3" deprel="ROOT">beabsichtigt</w>
+ <w head="3" hun="$(" id="w49.1.4" deprel="PUNC">-</w>
+ <w head="3" hun="FM" id="w49.1.5" deprel="UC">u.a</w>
+ <w head="3" hun="APPR" id="w49.1.6" deprel="MO">durch</w>
+ <w head="6" hun="ART" id="w49.1.7" deprel="NK">die</w>
+ <w head="6" hun="NN" id="w49.1.8" deprel="NK">Arbeit</w>
+ <w head="12" hun="ART" id="w49.1.9" deprel="NK">der</w>
+ <w head="12" hun="TRUNC" id="w49.1.10" deprel="CJ">Gesundheits-</w>
+ <w head="12" hun="KON" id="w49.1.11" deprel="CD">und</w>
+ <w head="6" hun="NN" id="w49.1.12" deprel="AG">Krankenpflegekommission</w>
+ <w head="12" hun="$(" id="w49.1.13" deprel="PUNC">-</w>
+ <w head="22" hun="KOUS" id="w49.1.14" deprel="CP">während</w>
+ <w head="17" hun="ART" id="w49.1.15" deprel="NK">der</w>
+ <w head="17" hun="ADJA" id="w49.1.16" deprel="NK">kommenden</w>
+ <w head="22" hun="NN" id="w49.1.17" deprel="SB">Legislaturperiode</w>
+ <w head="19" hun="ADJA" id="w49.1.18" deprel="PNC">grosse</w>
+ <w head="17" hun="NN" id="w49.1.19" deprel="PNC">Aufmerksamkeit</w>
+ <w head="22" hun="PROAV" id="w49.1.20" deprel="MO">darauf</w>
+ <w head="22" hun="PTKZU" id="w49.1.21" deprel="PM">zu</w>
+ <w head="12" hun="VVINF" id="w49.1.22" deprel="MO">verwenden</w>
+ <w head="22" hun="$," id="w49.1.23" deprel="PUNC">,</w>
+ <w head="29" hun="KOUS" id="w49.1.24" deprel="MO">dass</w>
+ <w head="26" hun="PIAT" id="w49.1.25" deprel="PNC">alle</w>
+ <w head="29" hun="NN" id="w49.1.26" deprel="NK">Einwohner</w>
+ <w head="28" hun="ART" id="w49.1.27" deprel="PNC">ein</w>
+ <w head="29" hun="NN" id="w49.1.28" deprel="NK">Anrecht</w>
+ <w head="36" hun="APPR" id="w49.1.29" deprel="MO">auf</w>
+ <w head="32" hun="NN" id="w49.1.30" deprel="CJ">Gesundheitsdienst</w>
+ <w head="32" hun="KON" id="w49.1.31" deprel="CD">und</w>
+ <w head="29" hun="NN" id="w49.1.32" deprel="NK">Krankenpflege</w>
+ <w head="32" hun="APPR" id="w49.1.33" deprel="MNR">von</w>
+ <w head="33" hun="ADJA" id="w49.1.34" deprel="PNC">hoher</w>
+ <w head="33" hun="NN" id="w49.1.35" deprel="NK">Qualität</w>
+ <w head="22" hun="VVPP" id="w49.1.36" deprel="MO">erhalten</w>
+ <w head="12" hun="$." id="w49.1.37" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s49.2">
+ <w head="2" hun="ART" id="w49.2.1" deprel="NK">Die</w>
+ <w head="10" hun="NN" id="w49.2.2" deprel="SB">Personalrekrutierung</w>
+ <w head="10" hun="APPR" id="w49.2.3" deprel="MO">für</w>
+ <w head="3" hun="ART" id="w49.2.4" deprel="NK">den</w>
+ <w head="3" hun="NN" id="w49.2.5" deprel="NK">Gesundheitsdienst</w>
+ <w head="7" hun="KON" id="w49.2.6" deprel="PNC">und</w>
+ <w head="8" hun="ADJA" id="w49.2.7" deprel="NK">andere</w>
+ <w head="10" hun="NN" id="w49.2.8" deprel="OA">Pflegeberufe</w>
+ <w head="10" hun="ADJD" id="w49.2.9" deprel="MO">muss</w>
+ <w head="11" hun="VVPP" id="w49.2.10" deprel="OC">verbessert</w>
+ <w head="0" hun="VAINF" id="w49.2.11" deprel="ROOT">werden</w>
+ <w head="11" hun="$." id="w49.2.12" deprel="PUNC">.</w>
+</s></p>
+
+<p id="50">
+<s id="s50.1">
+ <w head="4" hun="ART" id="w50.1.1" deprel="NK">Der</w>
+ <w head="4" hun="NN" id="w50.1.2" deprel="PNC">Lage</w>
+ <w head="4" hun="ART" id="w50.1.3" deprel="PNC">der</w>
+ <w head="0" hun="ADJA" id="w50.1.4" deprel="ROOT">Schwerbehinderten</w>
+ <w head="4" hun="KON" id="w50.1.5" deprel="CD">sowie</w>
+ <w head="8" hun="ART" id="w50.1.6" deprel="NK">der</w>
+ <w head="8" hun="VVFIN" id="w50.1.7" deprel="PNC">behinderten</w>
+ <w head="4" hun="NN" id="w50.1.8" deprel="CJ">Kinder</w>
+ <w head="8" hun="KON" id="w50.1.9" deprel="CD">und</w>
+ <w head="11" hun="PPOSAT" id="w50.1.10" deprel="PNC">ihrer</w>
+ <w head="12" hun="NN" id="w50.1.11" deprel="SB">Familien</w>
+ <w head="16" hun="VAFIN" id="w50.1.12" deprel="MO">wird</w>
+ <w head="14" hun="ADJA" id="w50.1.13" deprel="PNC">besondere</w>
+ <w head="15" hun="NN" id="w50.1.14" deprel="DA">Aufmerksamkeit</w>
+ <w head="16" hun="VVPP" id="w50.1.15" deprel="OC">geschenkt</w>
+ <w head="8" hun="VAINF" id="w50.1.16" deprel="CJ">werden</w>
+ <w head="4" hun="$." id="w50.1.17" deprel="PUNC">.</w>
+</s></p>
+
+<p id="51">
+<s id="s51.1">
+ <w head="2" hun="ART" id="w51.1.1" deprel="NK">Die</w>
+ <w head="5" hun="NN" id="w51.1.2" deprel="SB">Betreuung</w>
+ <w head="4" hun="ART" id="w51.1.3" deprel="PNC">der</w>
+ <w head="2" hun="NN" id="w51.1.4" deprel="NK">Senioren</w>
+ <w head="0" hun="VAFIN" id="w51.1.5" deprel="ROOT">wird</w>
+ <w head="9" hun="APPR" id="w51.1.6" deprel="MO">mit</w>
+ <w head="6" hun="ART" id="w51.1.7" deprel="NK">dem</w>
+ <w head="6" hun="NN" id="w51.1.8" deprel="NK">Ziel</w>
+ <w head="5" hun="VVPP" id="w51.1.9" deprel="OC">ausgebaut</w>
+ <w head="9" hun="$," id="w51.1.10" deprel="PUNC">,</w>
+ <w head="20" hun="NN" id="w51.1.11" deprel="OA">Geborgenheit</w>
+ <w head="11" hun="$," id="w51.1.12" deprel="PUNC">,</w>
+ <w head="11" hun="NN" id="w51.1.13" deprel="UC">Selbstbestimmung</w>
+ <w head="11" hun="KON" id="w51.1.14" deprel="CD">und</w>
+ <w head="11" hun="NN" id="w51.1.15" deprel="UC">Wahlfreiheit</w>
+ <w head="20" hun="APPR" id="w51.1.16" deprel="MO">für</w>
+ <w head="16" hun="ADJA" id="w51.1.17" deprel="PNC">ältere</w>
+ <w head="16" hun="NN" id="w51.1.18" deprel="NK">Menschen</w>
+ <w head="20" hun="PTKZU" id="w51.1.19" deprel="PM">zu</w>
+ <w head="9" hun="VVINF" id="w51.1.20" deprel="OC">schaffen</w>
+ <w head="5" hun="$." id="w51.1.21" deprel="PUNC">.</w>
+</s></p>
+
+<p id="52">
+<s id="s52.1">
+ <w head="2" hun="ART" id="w52.1.1" deprel="PNC">Der</w>
+ <w head="3" hun="NN" id="w52.1.2" deprel="NK">Kampf</w>
+ <w head="10" hun="APPR" id="w52.1.3" deprel="MO">gegen</w>
+ <w head="6" hun="NE" id="w52.1.4" deprel="CJ">HIV</w>
+ <w head="6" hun="KON" id="w52.1.5" deprel="CD">und</w>
+ <w head="10" hun="NN" id="w52.1.6" deprel="SB">AIDS</w>
+ <w head="10" hun="KON" id="w52.1.7" deprel="MO">sowie</w>
+ <w head="10" hun="APPR" id="w52.1.8" deprel="MO">gegen</w>
+ <w head="8" hun="NN" id="w52.1.9" deprel="NK">Rauschgift</w>
+ <w head="11" hun="VMFIN" id="w52.1.10" deprel="MO">soll</w>
+ <w head="12" hun="VVPP" id="w52.1.11" deprel="OC">fortgesetzt</w>
+ <w head="0" hun="VAINF" id="w52.1.12" deprel="ROOT">werden</w>
+ <w head="12" hun="$." id="w52.1.13" deprel="PUNC">.</w>
+</s></p>
+
+<p id="53">
+<s id="s53.1">
+ <w head="2" hun="ART" id="w53.1.1" deprel="NK">Der</w>
+ <w head="8" hun="NN" id="w53.1.2" deprel="SB">Regierungsentwurf</w>
+ <w head="8" hun="APPR" id="w53.1.3" deprel="NK">für</w>
+ <w head="3" hun="ART" id="w53.1.4" deprel="NK">die</w>
+ <w head="3" hun="NN" id="w53.1.5" deprel="NK">Reform</w>
+ <w head="7" hun="ART" id="w53.1.6" deprel="NK">der</w>
+ <w head="8" hun="NN" id="w53.1.7" deprel="PNC">Grundschule</w>
+ <w head="0" hun="VVFIN" id="w53.1.8" deprel="ROOT">liegt</w>
+ <w head="8" hun="ADV" id="w53.1.9" deprel="MO">jetzt</w>
+ <w head="8" hun="APPRART" id="w53.1.10" deprel="MO">zur</w>
+ <w head="10" hun="NN" id="w53.1.11" deprel="NK">Stellungnahme</w>
+ <w head="8" hun="PTKVZ" id="w53.1.12" deprel="SVP">vor</w>
+ <w head="8" hun="$." id="w53.1.13" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s53.2">
+ <w head="2" hun="ART" id="w53.2.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w53.2.2" deprel="SB">Gymnasialschule</w>
+ <w head="0" hun="VAFIN" id="w53.2.3" deprel="ROOT">wird</w>
+ <w head="3" hun="VVPP" id="w53.2.4" deprel="MO">reformiert</w>
+ <w head="3" hun="$." id="w53.2.5" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s53.3">
+ <w head="2" hun="PDS" id="w53.3.1" deprel="SB">Dies</w>
+ <w head="0" hun="VVFIN" id="w53.3.2" deprel="ROOT">bedeutet</w>
+ <w head="6" hun="NN" id="w53.3.3" deprel="PNC">Veränderungen</w>
+ <w head="6" hun="KON" id="w53.3.4" deprel="NK">sowohl</w>
+ <w head="6" hun="ART" id="w53.3.5" deprel="NK">der</w>
+ <w head="2" hun="ADJA" id="w53.3.6" deprel="NK">berufsbezogenen</w>
+ <w head="10" hun="KOKOM" id="w53.3.7" deprel="CM">wie</w>
+ <w head="10" hun="ART" id="w53.3.8" deprel="NK">der</w>
+ <w head="10" hun="ADJA" id="w53.3.9" deprel="NK">theoretischen</w>
+ <w head="2" hun="NN" id="w53.3.10" deprel="MO">Züge</w>
+ <w head="2" hun="$." id="w53.3.11" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s53.4">
+ <w head="2" hun="PIS" id="w53.4.1" deprel="PNC">Allen</w>
+ <w head="3" hun="NN" id="w53.4.2" deprel="NK">Jugendlichen</w>
+ <w head="6" hun="APPR" id="w53.4.3" deprel="MO">unter</w>
+ <w head="3" hun="CARD" id="w53.4.4" deprel="NK">zwanzig</w>
+ <w head="3" hun="NN" id="w53.4.5" deprel="NK">Jahren</w>
+ <w head="11" hun="VMFIN" id="w53.4.6" deprel="MO">soll</w>
+ <w head="6" hun="NN" id="w53.4.7" deprel="NK">Platz</w>
+ <w head="11" hun="APPR" id="w53.4.8" deprel="MO">in</w>
+ <w head="8" hun="ART" id="w53.4.9" deprel="NK">der</w>
+ <w head="8" hun="NN" id="w53.4.10" deprel="NK">Gymnasialschule</w>
+ <w head="12" hun="VVPP" id="w53.4.11" deprel="OC">bereitet</w>
+ <w head="0" hun="VAINF" id="w53.4.12" deprel="ROOT">werden</w>
+ <w head="12" hun="$." id="w53.4.13" deprel="PUNC">.</w>
+</s></p>
+
+<p id="54">
+<s id="s54.1">
+ <w head="2" hun="ART" id="w54.1.1" deprel="NK">Die</w>
+ <w head="0" hun="NN" id="w54.1.2" deprel="ROOT">Erwachsenenbildung</w>
+ <w head="2" hun="$," id="w54.1.3" deprel="PUNC">,</w>
+ <w head="5" hun="ART" id="w54.1.4" deprel="PNC">die</w>
+ <w head="6" hun="NN" id="w54.1.5" deprel="NK">Ausbildung</w>
+ <w head="12" hun="APPR" id="w54.1.6" deprel="MO">auf</w>
+ <w head="8" hun="ART" id="w54.1.7" deprel="NK">dem</w>
+ <w head="12" hun="NN" id="w54.1.8" deprel="SB">Arbeitsmarkt</w>
+ <w head="8" hun="KON" id="w54.1.9" deprel="CD">und</w>
+ <w head="12" hun="ART" id="w54.1.10" deprel="MO">die</w>
+ <w head="12" hun="NN" id="w54.1.11" deprel="SB">Personalausbildung</w>
+ <w head="15" hun="VMFIN" id="w54.1.12" deprel="OC">sollen</w>
+ <w head="14" hun="ADJD" id="w54.1.13" deprel="MO">besser</w>
+ <w head="15" hun="VVFIN" id="w54.1.14" deprel="OC">koordiniert</w>
+ <w head="2" hun="VAINF" id="w54.1.15" deprel="OC">werden</w>
+ <w head="2" hun="$." id="w54.1.16" deprel="PUNC">.</w>
+</s></p>
+
+<p id="55">
+<s id="s55.1">
+ <w head="2" hun="ART" id="w55.1.1" deprel="NK">Die</w>
+ <w head="19" hun="NN" id="w55.1.2" deprel="SB">Bemühungen</w>
+ <w head="2" hun="$," id="w55.1.3" deprel="PUNC">,</w>
+ <w head="5" hun="PIAT" id="w55.1.4" deprel="PNC">mehr</w>
+ <w head="2" hun="NN" id="w55.1.5" deprel="CJ">Gleichstellung</w>
+ <w head="2" hun="KON" id="w55.1.6" deprel="CD">und</w>
+ <w head="10" hun="ART" id="w55.1.7" deprel="NK">eine</w>
+ <w head="9" hun="ADJA" id="w55.1.8" deprel="PNC">gleichmässigere</w>
+ <w head="10" hun="ADJA" id="w55.1.9" deprel="NK">soziale</w>
+ <w head="17" hun="NN" id="w55.1.10" deprel="OA">Zusammensetzung</w>
+ <w head="12" hun="ART" id="w55.1.11" deprel="PNC">der</w>
+ <w head="10" hun="NN" id="w55.1.12" deprel="PNC">Studierenden</w>
+ <w head="17" hun="APPR" id="w55.1.13" deprel="MO">auf</w>
+ <w head="13" hun="PIAT" id="w55.1.14" deprel="NK">allen</w>
+ <w head="13" hun="NN" id="w55.1.15" deprel="NK">Ausbildungswegen</w>
+ <w head="17" hun="PTKZU" id="w55.1.16" deprel="PM">zu</w>
+ <w head="19" hun="VVINF" id="w55.1.17" deprel="SB">erreichen</w>
+ <w head="19" hun="$," id="w55.1.18" deprel="PUNC">,</w>
+ <w head="0" hun="VAFIN" id="w55.1.19" deprel="ROOT">werden</w>
+ <w head="21" hun="VVPP" id="w55.1.20" deprel="OC">intensiviert</w>
+ <w head="19" hun="VAINF" id="w55.1.21" deprel="OC">werden</w>
+ <w head="19" hun="$." id="w55.1.22" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s55.2">
+ <w head="9" hun="ADV" id="w55.2.1" deprel="MO">Hier</w>
+ <w head="0" hun="VAFIN" id="w55.2.2" deprel="ROOT">wird</w>
+ <w head="8" hun="ADV" id="w55.2.3" deprel="MO">besonders</w>
+ <w head="7" hun="ART" id="w55.2.4" deprel="NK">die</w>
+ <w head="7" hun="NN" id="w55.2.5" deprel="PNC">Situation</w>
+ <w head="7" hun="ART" id="w55.2.6" deprel="PNC">der</w>
+ <w head="8" hun="NN" id="w55.2.7" deprel="DA">Einwandererkinder</w>
+ <w head="2" hun="VVPP" id="w55.2.8" deprel="MO">beachtet</w>
+ <w head="2" hun="VAINF" id="w55.2.9" deprel="OC">werden</w>
+ <w head="2" hun="$." id="w55.2.10" deprel="PUNC">.</w>
+</s></p>
+
+<p id="56">
+<s id="s56.1">
+ <w head="3" hun="ART" id="w56.1.1" deprel="NK">Die</w>
+ <w head="3" hun="ADJA" id="w56.1.2" deprel="NK">internationale</w>
+ <w head="11" hun="NN" id="w56.1.3" deprel="SB">Zusammenarbeit</w>
+ <w head="3" hun="APPR" id="w56.1.4" deprel="MNR">auf</w>
+ <w head="4" hun="ART" id="w56.1.5" deprel="NK">dem</w>
+ <w head="4" hun="NN" id="w56.1.6" deprel="NK">Gebiet</w>
+ <w head="8" hun="ART" id="w56.1.7" deprel="PNC">der</w>
+ <w head="4" hun="NN" id="w56.1.8" deprel="NK">Forschung</w>
+ <w head="8" hun="KON" id="w56.1.9" deprel="CD">und</w>
+ <w head="8" hun="NN" id="w56.1.10" deprel="CJ">Entwicklung</w>
+ <w head="0" hun="VAFIN" id="w56.1.11" deprel="ROOT">wird</w>
+ <w head="13" hun="ADV" id="w56.1.12" deprel="MO">immer</w>
+ <w head="11" hun="ADJD" id="w56.1.13" deprel="MO">wichtiger</w>
+ <w head="11" hun="$." id="w56.1.14" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s56.2">
+ <w head="2" hun="ART" id="w56.2.1" deprel="NK">Die</w>
+ <w head="3" hun="NN" id="w56.2.2" deprel="SB">Regierung</w>
+ <w head="0" hun="VAFIN" id="w56.2.3" deprel="ROOT">wird</w>
+ <w head="7" hun="ADV" id="w56.2.4" deprel="MO">auch</w>
+ <w head="7" hun="ADV" id="w56.2.5" deprel="MO">weiterhin</w>
+ <w head="7" hun="PROAV" id="w56.2.6" deprel="MO">darauf</w>
+ <w head="3" hun="VVINF" id="w56.2.7" deprel="OC">hinarbeiten</w>
+ <w head="7" hun="$," id="w56.2.8" deprel="PUNC">,</w>
+ <w head="10" hun="ADJA" id="w56.2.9" deprel="PNC">gute</w>
+ <w head="11" hun="NN" id="w56.2.10" deprel="NK">Voraussetzungen</w>
+ <w head="25" hun="APPR" id="w56.2.11" deprel="MO">für</w>
+ <w head="11" hun="ART" id="w56.2.12" deprel="NK">die</w>
+ <w head="11" hun="ADJA" id="w56.2.13" deprel="NK">schwedische</w>
+ <w head="17" hun="NN" id="w56.2.14" deprel="CJ">Wirtschaft</w>
+ <w head="17" hun="KON" id="w56.2.15" deprel="CD">und</w>
+ <w head="17" hun="ADJA" id="w56.2.16" deprel="NK">schwedische</w>
+ <w head="25" hun="NN" id="w56.2.17" deprel="OA">Forscher</w>
+ <w head="25" hun="APPRART" id="w56.2.18" deprel="MO">zur</w>
+ <w head="18" hun="NN" id="w56.2.19" deprel="PNC">Teilnahme</w>
+ <w head="25" hun="APPR" id="w56.2.20" deprel="MO">an</w>
+ <w head="20" hun="ART" id="w56.2.21" deprel="NK">der</w>
+ <w head="20" hun="ADJA" id="w56.2.22" deprel="NK">internationalen</w>
+ <w head="20" hun="NN" id="w56.2.23" deprel="NK">Forschungskooperation</w>
+ <w head="25" hun="PTKZU" id="w56.2.24" deprel="PM">zu</w>
+ <w head="7" hun="VVINF" id="w56.2.25" deprel="OC">schaffen</w>
+ <w head="3" hun="$." id="w56.2.26" deprel="PUNC">.</w>
+</s></p>
+
+<p id="57">
+<s id="s57.1">
+ <w head="5" hun="KOUS" id="w57.1.1" deprel="CP">Während</w>
+ <w head="4" hun="ART" id="w57.1.2" deprel="NK">der</w>
+ <w head="4" hun="ADJA" id="w57.1.3" deprel="NK">kommenden</w>
+ <w head="5" hun="NN" id="w57.1.4" deprel="SB">Legislaturperiode</w>
+ <w head="17" hun="VMFIN" id="w57.1.5" deprel="MO">sollen</w>
+ <w head="8" hun="CARD" id="w57.1.6" deprel="NK">300</w>
+ <w head="8" hun="NN" id="w57.1.7" deprel="PNC">Millionen</w>
+ <w head="17" hun="NN" id="w57.1.8" deprel="SB">Kronen</w>
+ <w head="17" hun="APPR" id="w57.1.9" deprel="MO">für</w>
+ <w head="9" hun="ART" id="w57.1.10" deprel="NK">die</w>
+ <w head="13" hun="NN" id="w57.1.11" deprel="CJ">Erneuerung</w>
+ <w head="13" hun="KON" id="w57.1.12" deprel="CD">und</w>
+ <w head="9" hun="NN" id="w57.1.13" deprel="NK">Entwicklung</w>
+ <w head="16" hun="ART" id="w57.1.14" deprel="PNC">des</w>
+ <w head="16" hun="ADJA" id="w57.1.15" deprel="PNC">kulturellen</w>
+ <w head="13" hun="NN" id="w57.1.16" deprel="PNC">Lebens</w>
+ <w head="18" hun="VVPP" id="w57.1.17" deprel="OC">aufgewandt</w>
+ <w head="0" hun="VAINF" id="w57.1.18" deprel="ROOT">werden</w>
+ <w head="18" hun="$." id="w57.1.19" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s57.2">
+ <w head="0" hun="NN" id="w57.2.1" deprel="ROOT">Kinder</w>
+ <w head="1" hun="KON" id="w57.2.2" deprel="CD">und</w>
+ <w head="4" hun="NN" id="w57.2.3" deprel="PNC">Jugendliche</w>
+ <w head="1" hun="VVFIN" id="w57.2.4" deprel="CJ">erhalten</w>
+ <w head="6" hun="ADJA" id="w57.2.5" deprel="PNC">grössere</w>
+ <w head="4" hun="NN" id="w57.2.6" deprel="NK">Möglichkeiten</w>
+ <w head="4" hun="$," id="w57.2.7" deprel="PUNC">,</w>
+ <w head="10" hun="PRF" id="w57.2.8" deprel="MO">sich</w>
+ <w head="10" hun="PTKZU" id="w57.2.9" deprel="PM">zu</w>
+ <w head="4" hun="VVINF" id="w57.2.10" deprel="OC">treffen</w>
+ <w head="10" hun="KON" id="w57.2.11" deprel="CD">und</w>
+ <w head="24" hun="ADV" id="w57.2.12" deprel="MO">selbst</w>
+ <w head="24" hun="NN" id="w57.2.13" deprel="MO">Musik</w>
+ <w head="13" hun="$," id="w57.2.14" deprel="PUNC">,</w>
+ <w head="13" hun="NN" id="w57.2.15" deprel="UC">Tanz</w>
+ <w head="13" hun="$," id="w57.2.16" deprel="PUNC">,</w>
+ <w head="13" hun="NN" id="w57.2.17" deprel="UC">Gesang</w>
+ <w head="23" hun="$," id="w57.2.18" deprel="NK">,</w>
+ <w head="23" hun="NN" id="w57.2.19" deprel="CJ">Theater</w>
+ <w head="23" hun="KON" id="w57.2.20" deprel="CD">und</w>
+ <w head="23" hun="ADJA" id="w57.2.21" deprel="NK">andere</w>
+ <w head="23" hun="ADJA" id="w57.2.22" deprel="NK">künstlerische</w>
+ <w head="24" hun="NN" id="w57.2.23" deprel="OA">Tätigkeiten</w>
+ <w head="10" hun="VVIZU" id="w57.2.24" deprel="CJ">auszuüben</w>
+ <w head="24" hun="KON" id="w57.2.25" deprel="CD">und</w>
+ <w head="30" hun="PRF" id="w57.2.26" deprel="OA">sich</w>
+ <w head="30" hun="ART" id="w57.2.27" deprel="MO">der</w>
+ <w head="30" hun="NN" id="w57.2.28" deprel="OA">Literatur</w>
+ <w head="30" hun="PTKZU" id="w57.2.29" deprel="PM">zu</w>
+ <w head="24" hun="VVINF" id="w57.2.30" deprel="CJ">widmen</w>
+ <w head="1" hun="$." id="w57.2.31" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s57.3">
+ <w head="2" hun="ART" id="w57.3.1" deprel="NK">Die</w>
+ <w head="5" hun="NN" id="w57.3.2" deprel="SB">Arbeitsbedingungen</w>
+ <w head="4" hun="ART" id="w57.3.3" deprel="PNC">der</w>
+ <w head="2" hun="NN" id="w57.3.4" deprel="NK">Kunstschaffenden</w>
+ <w head="0" hun="VMFIN" id="w57.3.5" deprel="ROOT">sollen</w>
+ <w head="7" hun="VVPP" id="w57.3.6" deprel="OC">verbessert</w>
+ <w head="5" hun="VAINF" id="w57.3.7" deprel="OC">werden</w>
+ <w head="5" hun="$." id="w57.3.8" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s57.4">
+ <w head="3" hun="ART" id="w57.4.1" deprel="NK">Das</w>
+ <w head="3" hun="ADJA" id="w57.4.2" deprel="NK">kulturelle</w>
+ <w head="7" hun="NN" id="w57.4.3" deprel="SB">Leben</w>
+ <w head="3" hun="APPRART" id="w57.4.4" deprel="MNR">im</w>
+ <w head="4" hun="ADJA" id="w57.4.5" deprel="PNC">ganzen</w>
+ <w head="4" hun="NN" id="w57.4.6" deprel="PNC">Land</w>
+ <w head="0" hun="VMFIN" id="w57.4.7" deprel="ROOT">soll</w>
+ <w head="9" hun="VVPP" id="w57.4.8" deprel="OC">verstärkt</w>
+ <w head="7" hun="VAINF" id="w57.4.9" deprel="OC">werden</w>
+ <w head="7" hun="$." id="w57.4.10" deprel="PUNC">.</w>
+</s></p>
+
+<p id="58">
+<s id="s58.1">
+ <w head="2" hun="ART" id="w58.1.1" deprel="NK">Die</w>
+ <w head="0" hun="NN" id="w58.1.2" deprel="ROOT">Volksbewegungen</w>
+ <w head="2" hun="$," id="w58.1.3" deprel="PUNC">,</w>
+ <w head="5" hun="PTKNEG" id="w58.1.4" deprel="MO">nicht</w>
+ <w head="7" hun="ADV" id="w58.1.5" deprel="MO">zuletzt</w>
+ <w head="7" hun="ART" id="w58.1.6" deprel="NK">die</w>
+ <w head="2" hun="NN" id="w58.1.7" deprel="CJ">Jugendorganisationen</w>
+ <w head="2" hun="KON" id="w58.1.8" deprel="CD">und</w>
+ <w head="12" hun="ART" id="w58.1.9" deprel="NK">die</w>
+ <w head="12" hun="NN" id="w58.1.10" deprel="SB">Sportbewegung</w>
+ <w head="12" hun="$," id="w58.1.11" deprel="PUNC">,</w>
+ <w head="20" hun="VVFIN" id="w58.1.12" deprel="OC">leisten</w>
+ <w head="14" hun="ADJA" id="w58.1.13" deprel="NK">wichtige</w>
+ <w head="12" hun="NN" id="w58.1.14" deprel="NK">Arbeit</w>
+ <w head="14" hun="$," id="w58.1.15" deprel="PUNC">,</w>
+ <w head="17" hun="PRELS" id="w58.1.16" deprel="SB">die</w>
+ <w head="14" hun="VVPP" id="w58.1.17" deprel="PAR">gefördert</w>
+ <w head="17" hun="KON" id="w58.1.18" deprel="CD">und</w>
+ <w head="17" hun="VVPP" id="w58.1.19" deprel="CJ">erleichtert</w>
+ <w head="21" hun="VAINF" id="w58.1.20" deprel="OC">werden</w>
+ <w head="2" hun="VMFIN" id="w58.1.21" deprel="CJ">soll</w>
+ <w head="2" hun="$." id="w58.1.22" deprel="PUNC">.</w>
+</s></p>
+
+<p id="59">
+<s id="s59.1">
+ <w head="2" hun="ART" id="w59.1.1" deprel="NK">Der</w>
+ <w head="3" hun="NN" id="w59.1.2" deprel="SB">Wohnungsbau</w>
+ <w head="0" hun="VMFIN" id="w59.1.3" deprel="ROOT">soll</w>
+ <w head="6" hun="ART" id="w59.1.4" deprel="NK">einen</w>
+ <w head="6" hun="ADV" id="w59.1.5" deprel="PNC">so</w>
+ <w head="8" hun="ADJA" id="w59.1.6" deprel="OC">grossen</w>
+ <w head="8" hun="NN" id="w59.1.7" deprel="MO">Umfang</w>
+ <w head="3" hun="VAINF" id="w59.1.8" deprel="OC">haben</w>
+ <w head="8" hun="$," id="w59.1.9" deprel="PUNC">,</w>
+ <w head="13" hun="KOUS" id="w59.1.10" deprel="CP">dass</w>
+ <w head="12" hun="ART" id="w59.1.11" deprel="PNC">der</w>
+ <w head="13" hun="NN" id="w59.1.12" deprel="SB">Wohnraumbedarf</w>
+ <w head="14" hun="VVPP" id="w59.1.13" deprel="OC">sichergestellt</w>
+ <w head="15" hun="VAINF" id="w59.1.14" deprel="OC">werden</w>
+ <w head="8" hun="VMFIN" id="w59.1.15" deprel="MO">kann</w>
+ <w head="3" hun="$." id="w59.1.16" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s59.2">
+ <w head="2" hun="ART" id="w59.2.1" deprel="NK">Die</w>
+ <w head="12" hun="NN" id="w59.2.2" deprel="SB">Bemühungen</w>
+ <w head="2" hun="$," id="w59.2.3" deprel="PUNC">,</w>
+ <w head="5" hun="PIAT" id="w59.2.4" deprel="PNC">mehr</w>
+ <w head="10" hun="NN" id="w59.2.5" deprel="OA">Wohnungen</w>
+ <w head="10" hun="APPR" id="w59.2.6" deprel="MO">für</w>
+ <w head="6" hun="ADJA" id="w59.2.7" deprel="NK">junge</w>
+ <w head="6" hun="NN" id="w59.2.8" deprel="NK">Leute</w>
+ <w head="10" hun="PTKZU" id="w59.2.9" deprel="PM">zu</w>
+ <w head="2" hun="VVINF" id="w59.2.10" deprel="OC">beschaffen</w>
+ <w head="12" hun="$," id="w59.2.11" deprel="PUNC">,</w>
+ <w head="0" hun="VAFIN" id="w59.2.12" deprel="ROOT">werden</w>
+ <w head="12" hun="VVPP" id="w59.2.13" deprel="MO">intensiviert</w>
+ <w head="12" hun="$." id="w59.2.14" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s59.3">
+ <w head="5" hun="NN" id="w59.3.1" deprel="SB">Ressourcen</w>
+ <w head="14" hun="APPR" id="w59.3.2" deprel="MO">für</w>
+ <w head="2" hun="ART" id="w59.3.3" deprel="NK">den</w>
+ <w head="2" hun="NN" id="w59.3.4" deprel="NK">Wohnungsbau</w>
+ <w head="0" hun="VAFIN" id="w59.3.5" deprel="ROOT">werden</w>
+ <w head="14" hun="APPR" id="w59.3.6" deprel="MO">durch</w>
+ <w head="6" hun="ART" id="w59.3.7" deprel="NK">die</w>
+ <w head="6" hun="NN" id="w59.3.8" deprel="NK">Begrenzung</w>
+ <w head="10" hun="ADJA" id="w59.3.9" deprel="PNC">anderer</w>
+ <w head="6" hun="NN" id="w59.3.10" deprel="NK">Bauvorhaben</w>
+ <w head="14" hun="APPR" id="w59.3.11" deprel="MO">in</w>
+ <w head="11" hun="ADJA" id="w59.3.12" deprel="PNC">überhitzten</w>
+ <w head="11" hun="NN" id="w59.3.13" deprel="NK">Regionen</w>
+ <w head="5" hun="VVPP" id="w59.3.14" deprel="OC">freigestellt</w>
+ <w head="5" hun="$." id="w59.3.15" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s59.4">
+ <w head="8" hun="APPRART" id="w59.4.1" deprel="MO">Zur</w>
+ <w head="5" hun="NN" id="w59.4.2" deprel="SB">Begrenzung</w>
+ <w head="8" hun="ART" id="w59.4.3" deprel="MO">der</w>
+ <w head="5" hun="NN" id="w59.4.4" deprel="SB">Kostenentwicklung</w>
+ <w head="0" hun="VAFIN" id="w59.4.5" deprel="ROOT">werden</w>
+ <w head="7" hun="ADJA" id="w59.4.6" deprel="NK">weitere</w>
+ <w head="5" hun="NN" id="w59.4.7" deprel="SB">Massnahmen</w>
+ <w head="5" hun="VVPP" id="w59.4.8" deprel="OC">ergriffen</w>
+ <w head="5" hun="$." id="w59.4.9" deprel="PUNC">.</w>
+</s></p>
+
+<p id="60">
+<s id="s60.1">
+ <w head="2" hun="ART" id="w60.1.1" deprel="NK">Die</w>
+ <w head="7" hun="NN" id="w60.1.2" deprel="SB">Politik</w>
+ <w head="4" hun="ART" id="w60.1.3" deprel="PNC">der</w>
+ <w head="2" hun="ADJA" id="w60.1.4" deprel="NK">kommenden</w>
+ <w head="2" hun="CARD" id="w60.1.5" deprel="NK">drei</w>
+ <w head="2" hun="NN" id="w60.1.6" deprel="NK">Jahre</w>
+ <w head="0" hun="VAFIN" id="w60.1.7" deprel="ROOT">wird</w>
+ <w head="9" hun="ART" id="w60.1.8" deprel="NK">der</w>
+ <w head="19" hun="NN" id="w60.1.9" deprel="OA">Entwicklung</w>
+ <w head="19" hun="APPR" id="w60.1.10" deprel="MO">in</w>
+ <w head="10" hun="PPOSAT" id="w60.1.11" deprel="NK">unserem</w>
+ <w head="10" hun="NN" id="w60.1.12" deprel="NK">Land</w>
+ <w head="19" hun="APPR" id="w60.1.13" deprel="MO">während</w>
+ <w head="13" hun="ART" id="w60.1.14" deprel="NK">des</w>
+ <w head="13" hun="ADJA" id="w60.1.15" deprel="NK">nächsten</w>
+ <w head="13" hun="NN" id="w60.1.16" deprel="NK">Jahrzehnts</w>
+ <w head="18" hun="PPOSAT" id="w60.1.17" deprel="NK">ihr</w>
+ <w head="19" hun="NN" id="w60.1.18" deprel="OA">Gepräge</w>
+ <w head="7" hun="VVINF" id="w60.1.19" deprel="OC">geben</w>
+ <w head="7" hun="$." id="w60.1.20" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s60.2">
+ <w head="9" hun="APPR" id="w60.2.1" deprel="MO">In</w>
+ <w head="1" hun="ART" id="w60.2.2" deprel="NK">den</w>
+ <w head="1" hun="ADJA" id="w60.2.3" deprel="NK">nächsten</w>
+ <w head="1" hun="NN" id="w60.2.4" deprel="NK">Jahren</w>
+ <w head="0" hun="VAFIN" id="w60.2.5" deprel="ROOT">werden</w>
+ <w head="5" hun="PPER" id="w60.2.6" deprel="SB">wir</w>
+ <w head="9" hun="APPR" id="w60.2.7" deprel="MO">vor</w>
+ <w head="7" hun="NN" id="w60.2.8" deprel="NK">Herausforderungen</w>
+ <w head="5" hun="VVPP" id="w60.2.9" deprel="OC">gestellt</w>
+ <w head="9" hun="$," id="w60.2.10" deprel="PUNC">,</w>
+ <w head="17" hun="ART" id="w60.2.11" deprel="MO">die</w>
+ <w head="17" hun="NN" id="w60.2.12" deprel="SB">Auswirkungen</w>
+ <w head="17" hun="APPR" id="w60.2.13" deprel="MO">auf</w>
+ <w head="13" hun="ART" id="w60.2.14" deprel="NK">das</w>
+ <w head="13" hun="ADJA" id="w60.2.15" deprel="NK">nächste</w>
+ <w head="13" hun="NN" id="w60.2.16" deprel="NK">Jahrhundert</w>
+ <w head="9" hun="VAFIN" id="w60.2.17" deprel="OC">haben</w>
+ <w head="5" hun="$." id="w60.2.18" deprel="PUNC">.</w>
+</s></p>
+
+<p id="61">
+<s id="s61.1">
+ <w head="2" hun="ART" id="w61.1.1" deprel="PNC">Der</w>
+ <w head="3" hun="NN" id="w61.1.2" deprel="NK">Übergang</w>
+ <w head="10" hun="APPR" id="w61.1.3" deprel="MO">von</w>
+ <w head="3" hun="ART" id="w61.1.4" deprel="NK">den</w>
+ <w head="3" hun="ADJA" id="w61.1.5" deprel="NK">achtziger</w>
+ <w head="10" hun="APPR" id="w61.1.6" deprel="MO">zu</w>
+ <w head="6" hun="ART" id="w61.1.7" deprel="NK">den</w>
+ <w head="6" hun="ADJA" id="w61.1.8" deprel="NK">neunziger</w>
+ <w head="6" hun="NN" id="w61.1.9" deprel="NK">Jahren</w>
+ <w head="12" hun="VMFIN" id="w61.1.10" deprel="MO">sollte</w>
+ <w head="10" hun="PROAV" id="w61.1.11" deprel="MO">deswegen</w>
+ <w head="13" hun="VVPP" id="w61.1.12" deprel="OC">genutzt</w>
+ <w head="20" hun="VAINF" id="w61.1.13" deprel="MO">werden</w>
+ <w head="20" hun="$," id="w61.1.14" deprel="PUNC">,</w>
+ <w head="20" hun="KOUI" id="w61.1.15" deprel="CP">um</w>
+ <w head="20" hun="ADJD" id="w61.1.16" deprel="MO">langfristig</w>
+ <w head="18" hun="PDAT" id="w61.1.17" deprel="PNC">jene</w>
+ <w head="20" hun="NN" id="w61.1.18" deprel="OA">Faktoren</w>
+ <w head="20" hun="PTKZU" id="w61.1.19" deprel="PM">zu</w>
+ <w head="0" hun="VVINF" id="w61.1.20" deprel="ROOT">festigen</w>
+ <w head="20" hun="KON" id="w61.1.21" deprel="CD">und</w>
+ <w head="23" hun="PTKZU" id="w61.1.22" deprel="PM">zu</w>
+ <w head="20" hun="VVINF" id="w61.1.23" deprel="CJ">stärken</w>
+ <w head="23" hun="$," id="w61.1.24" deprel="PUNC">,</w>
+ <w head="32" hun="PRELS" id="w61.1.25" deprel="MO">die</w>
+ <w head="27" hun="ART" id="w61.1.26" deprel="NK">die</w>
+ <w head="32" hun="NN" id="w61.1.27" deprel="OA">Grundlage</w>
+ <w head="32" hun="APPR" id="w61.1.28" deprel="MO">für</w>
+ <w head="28" hun="ART" id="w61.1.29" deprel="NK">die</w>
+ <w head="28" hun="ADJA" id="w61.1.30" deprel="NK">zukünftige</w>
+ <w head="28" hun="NN" id="w61.1.31" deprel="NK">Entwicklung</w>
+ <w head="33" hun="VVINF" id="w61.1.32" deprel="OC">bilden</w>
+ <w head="23" hun="VMINF" id="w61.1.33" deprel="OC">müssen</w>
+ <w head="33" hun="$." id="w61.1.34" deprel="PUNC">:</w>
+ <w head="36" hun="ART" id="w61.1.35" deprel="NK">die</w>
+ <w head="33" hun="NN" id="w61.1.36" deprel="APP">Volkswirtschaft</w>
+ <w head="36" hun="$," id="w61.1.37" deprel="PUNC">,</w>
+ <w head="39" hun="ART" id="w61.1.38" deprel="PNC">die</w>
+ <w head="36" hun="NN" id="w61.1.39" deprel="CJ">Beschäftigung</w>
+ <w head="36" hun="KON" id="w61.1.40" deprel="CD">und</w>
+ <w head="42" hun="ART" id="w61.1.41" deprel="PNC">den</w>
+ <w head="36" hun="NN" id="w61.1.42" deprel="CJ">Wohlstand</w>
+ <w head="20" hun="$." id="w61.1.43" deprel="PUNC">.</w>
+</s></p>
+
+<p id="62">
+<s id="s62.1">
+ <w head="2" hun="PROAV" id="w62.1.1" deprel="MO">Damit</w>
+ <w head="0" hun="VVFIN" id="w62.1.2" deprel="ROOT">schaffen</w>
+ <w head="2" hun="PPER" id="w62.1.3" deprel="SB">wir</w>
+ <w head="2" hun="ADV" id="w62.1.4" deprel="MO">auch</w>
+ <w head="2" hun="NN" id="w62.1.5" deprel="SB">Spielraum</w>
+ <w head="2" hun="APPR" id="w62.1.6" deprel="MO">für</w>
+ <w head="11" hun="ART" id="w62.1.7" deprel="NK">die</w>
+ <w head="11" hun="NN" id="w62.1.8" deprel="CJ">Erneuerung</w>
+ <w head="11" hun="KON" id="w62.1.9" deprel="CD">und</w>
+ <w head="11" hun="ART" id="w62.1.10" deprel="NK">die</w>
+ <w head="6" hun="NN" id="w62.1.11" deprel="NK">Bemühungen</w>
+ <w head="11" hun="$," id="w62.1.12" deprel="PUNC">,</w>
+ <w head="18" hun="PRELS" id="w62.1.13" deprel="NK">die</w>
+ <w head="17" hun="APPR" id="w62.1.14" deprel="MO">auf</w>
+ <w head="14" hun="ART" id="w62.1.15" deprel="NK">einer</w>
+ <w head="14" hun="NN" id="w62.1.16" deprel="NK">Reihe</w>
+ <w head="18" hun="ADJA" id="w62.1.17" deprel="NK">wichtiger</w>
+ <w head="20" hun="NN" id="w62.1.18" deprel="SB">Gebiete</w>
+ <w head="20" hun="ADV" id="w62.1.19" deprel="MO">vonnöten</w>
+ <w head="11" hun="VAFIN" id="w62.1.20" deprel="OC">sind</w>
+ <w head="11" hun="$." id="w62.1.21" deprel="PUNC">:</w>
+ <w head="11" hun="APPR" id="w62.1.22" deprel="MNR">in</w>
+ <w head="22" hun="ART" id="w62.1.23" deprel="NK">der</w>
+ <w head="26" hun="TRUNC" id="w62.1.24" deprel="CJ">Umwelt-</w>
+ <w head="26" hun="KON" id="w62.1.25" deprel="CD">und</w>
+ <w head="22" hun="NN" id="w62.1.26" deprel="NK">Energiepolitik</w>
+ <w head="22" hun="$," id="w62.1.27" deprel="PUNC">,</w>
+ <w head="22" hun="APPRART" id="w62.1.28" deprel="MNR">im</w>
+ <w head="28" hun="ADJA" id="w62.1.29" deprel="PNC">öffentlichen</w>
+ <w head="28" hun="NN" id="w62.1.30" deprel="NK">Sektor</w>
+ <w head="22" hun="$," id="w62.1.31" deprel="PUNC">,</w>
+ <w head="22" hun="APPRART" id="w62.1.32" deprel="CJ">im</w>
+ <w head="32" hun="NN" id="w62.1.33" deprel="PNC">Erwerbsleben</w>
+ <w head="11" hun="$," id="w62.1.34" deprel="ROOT">,</w>
+ <w head="34" hun="APPR" id="w62.1.35" deprel="MO">auf</w>
+ <w head="35" hun="ART" id="w62.1.36" deprel="NK">dem</w>
+ <w head="35" hun="NN" id="w62.1.37" deprel="NK">Gebiet</w>
+ <w head="39" hun="ART" id="w62.1.38" deprel="PNC">der</w>
+ <w head="49" hun="NN" id="w62.1.39" deprel="CJ">Besteuerung</w>
+ <w head="49" hun="KON" id="w62.1.40" deprel="CD">und</w>
+ <w head="49" hun="APPRART" id="w62.1.41" deprel="AG">zur</w>
+ <w head="41" hun="NN" id="w62.1.42" deprel="NK">Stärkung</w>
+ <w head="49" hun="PPOSAT" id="w62.1.43" deprel="NK">unserer</w>
+ <w head="49" hun="ADJA" id="w62.1.44" deprel="NK">wirtschaftlichen</w>
+ <w head="44" hun="$," id="w62.1.45" deprel="PUNC">,</w>
+ <w head="44" hun="ADJA" id="w62.1.46" deprel="CJ">sozialen</w>
+ <w head="44" hun="KON" id="w62.1.47" deprel="CD">und</w>
+ <w head="44" hun="ADJA" id="w62.1.48" deprel="CJ">kulturellen</w>
+ <w head="35" hun="NN" id="w62.1.49" deprel="AG">Zusammenarbeit</w>
+ <w head="49" hun="APPR" id="w62.1.50" deprel="MNR">mit</w>
+ <w head="50" hun="ADJA" id="w62.1.51" deprel="NK">anderen</w>
+ <w head="50" hun="NN" id="w62.1.52" deprel="NK">Ländern</w>
+ <w head="34" hun="$." id="w62.1.53" deprel="PUNC">.</w>
+</s></p>
+
+<p id="63">
+<s id="s63.1">
+ <w head="2" hun="ART" id="w63.1.1" deprel="NK">Die</w>
+ <w head="9" hun="NN" id="w63.1.2" deprel="SB">Voraussetzungen</w>
+ <w head="2" hun="APPR" id="w63.1.3" deprel="MNR">für</w>
+ <w head="3" hun="ART" id="w63.1.4" deprel="NK">eine</w>
+ <w head="3" hun="ADJA" id="w63.1.5" deprel="NK">derartige</w>
+ <w head="3" hun="NN" id="w63.1.6" deprel="NK">Ausrichtung</w>
+ <w head="8" hun="ART" id="w63.1.7" deprel="PNC">der</w>
+ <w head="3" hun="NN" id="w63.1.8" deprel="NK">Politik</w>
+ <w head="0" hun="VAFIN" id="w63.1.9" deprel="ROOT">sind</w>
+ <w head="9" hun="ADJD" id="w63.1.10" deprel="MO">günstig</w>
+ <w head="9" hun="$." id="w63.1.11" deprel="PUNC">.</w>
+</s></p>
+
+<p id="64">
+<s id="s64.1">
+ <w head="4" hun="ART" id="w64.1.1" deprel="NK">Die</w>
+ <w head="4" hun="ADJA" id="w64.1.2" deprel="PNC">internationale</w>
+ <w head="4" hun="NN" id="w64.1.3" deprel="PNC">Entwicklung</w>
+ <w head="22" hun="NN" id="w64.1.4" deprel="DA">lässt</w>
+ <w head="22" hun="PPER" id="w64.1.5" deprel="OA">uns</w>
+ <w head="22" hun="APPR" id="w64.1.6" deprel="MO">auf</w>
+ <w head="6" hun="ADJA" id="w64.1.7" deprel="PNC">weitere</w>
+ <w head="6" hun="NN" id="w64.1.8" deprel="NK">Schritte</w>
+ <w head="22" hun="APPR" id="w64.1.9" deprel="MO">in</w>
+ <w head="9" hun="NN" id="w64.1.10" deprel="NK">Richtung</w>
+ <w head="22" hun="APPR" id="w64.1.11" deprel="MO">auf</w>
+ <w head="17" hun="NN" id="w64.1.12" deprel="CJ">Frieden</w>
+ <w head="17" hun="$," id="w64.1.13" deprel="PUNC">,</w>
+ <w head="17" hun="NN" id="w64.1.14" deprel="CJ">Freiheit</w>
+ <w head="17" hun="KON" id="w64.1.15" deprel="CD">und</w>
+ <w head="17" hun="ADJA" id="w64.1.16" deprel="NK">vermehrtes</w>
+ <w head="22" hun="NN" id="w64.1.17" deprel="OA">Verständnis</w>
+ <w head="17" hun="APPR" id="w64.1.18" deprel="MNR">zwischen</w>
+ <w head="18" hun="NN" id="w64.1.19" deprel="NK">Nationen</w>
+ <w head="19" hun="KON" id="w64.1.20" deprel="CD">und</w>
+ <w head="19" hun="NN" id="w64.1.21" deprel="CJ">Völkern</w>
+ <w head="0" hun="VVINF" id="w64.1.22" deprel="ROOT">hoffen</w>
+ <w head="22" hun="$." id="w64.1.23" deprel="PUNC">.</w>
+</s></p>
+
+<p id="65">
+<s id="s65.1">
+ <w head="2" hun="ART" id="w65.1.1" deprel="PNC">Die</w>
+ <w head="5" hun="NN" id="w65.1.2" deprel="SB">Wirtschaftslage</w>
+ <w head="12" hun="APPR" id="w65.1.3" deprel="MO">in</w>
+ <w head="3" hun="NE" id="w65.1.4" deprel="NK">Schweden</w>
+ <w head="0" hun="VAFIN" id="w65.1.5" deprel="ROOT">hat</w>
+ <w head="12" hun="PRF" id="w65.1.6" deprel="OA">sich</w>
+ <w head="12" hun="APPR" id="w65.1.7" deprel="MO">in</w>
+ <w head="7" hun="ART" id="w65.1.8" deprel="NK">den</w>
+ <w head="7" hun="ADJA" id="w65.1.9" deprel="NK">letzten</w>
+ <w head="7" hun="NN" id="w65.1.10" deprel="NK">Jahren</w>
+ <w head="12" hun="ADJD" id="w65.1.11" deprel="MO">stark</w>
+ <w head="5" hun="VVPP" id="w65.1.12" deprel="OC">verbessert</w>
+ <w head="5" hun="$." id="w65.1.13" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s65.2">
+ <w head="2" hun="ART" id="w65.2.1" deprel="NK">Die</w>
+ <w head="6" hun="NN" id="w65.2.2" deprel="SB">Beschäftigung</w>
+ <w head="2" hun="APPR" id="w65.2.3" deprel="MNR">in</w>
+ <w head="3" hun="PPOSAT" id="w65.2.4" deprel="NK">unserem</w>
+ <w head="3" hun="NN" id="w65.2.5" deprel="NK">Land</w>
+ <w head="0" hun="VVFIN" id="w65.2.6" deprel="ROOT">liegt</w>
+ <w head="6" hun="APPR" id="w65.2.7" deprel="MO">auf</w>
+ <w head="7" hun="ART" id="w65.2.8" deprel="NK">einem</w>
+ <w head="7" hun="ADJA" id="w65.2.9" deprel="NK">hohen</w>
+ <w head="7" hun="NN" id="w65.2.10" deprel="NK">Niveau</w>
+ <w head="6" hun="$." id="w65.2.11" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s65.3">
+ <w head="2" hun="ART" id="w65.3.1" deprel="NK">Der</w>
+ <w head="3" hun="NN" id="w65.3.2" deprel="SB">Sozialstaat</w>
+ <w head="0" hun="VAFIN" id="w65.3.3" deprel="ROOT">ist</w>
+ <w head="10" hun="APPR" id="w65.3.4" deprel="MO">in</w>
+ <w head="4" hun="ART" id="w65.3.5" deprel="NK">einem</w>
+ <w head="4" hun="ADJA" id="w65.3.6" deprel="NK">grossen</w>
+ <w head="4" hun="NN" id="w65.3.7" deprel="NK">Teil</w>
+ <w head="9" hun="PPOSAT" id="w65.3.8" deprel="NK">unseres</w>
+ <w head="10" hun="NN" id="w65.3.9" deprel="OA">Volkes</w>
+ <w head="3" hun="VVPP" id="w65.3.10" deprel="OC">verankert</w>
+ <w head="3" hun="$." id="w65.3.11" deprel="PUNC">.</w>
+</s></p>
+
+<p id="66">
+<s id="s66.1">
+ <w head="2" hun="PPER" id="w66.1.1" deprel="SB">Es</w>
+ <w head="0" hun="VVFIN" id="w66.1.2" deprel="ROOT">gibt</w>
+ <w head="4" hun="ART" id="w66.1.3" deprel="NK">einen</w>
+ <w head="10" hun="ADJA" id="w66.1.4" deprel="PNC">umfassenden</w>
+ <w head="6" hun="ADJA" id="w66.1.5" deprel="PNC">politischen</w>
+ <w head="10" hun="NN" id="w66.1.6" deprel="PNC">Willen</w>
+ <w head="10" hun="KON" id="w66.1.7" deprel="PNC">und</w>
+ <w head="10" hun="ART" id="w66.1.8" deprel="PNC">eine</w>
+ <w head="10" hun="ADJA" id="w66.1.9" deprel="PNC">starke</w>
+ <w head="18" hun="ADJA" id="w66.1.10" deprel="MO">öffentliche</w>
+ <w head="18" hun="NN" id="w66.1.11" deprel="OA">Meinung</w>
+ <w head="11" hun="PROAV" id="w66.1.12" deprel="MNR">dafür</w>
+ <w head="11" hun="$," id="w66.1.13" deprel="PUNC">,</w>
+ <w head="15" hun="ART" id="w66.1.14" deprel="PNC">die</w>
+ <w head="11" hun="NN" id="w66.1.15" deprel="CJ">Umweltprobleme</w>
+ <w head="18" hun="APPR" id="w66.1.16" deprel="MO">mit</w>
+ <w head="16" hun="NN" id="w66.1.17" deprel="NK">Kraft</w>
+ <w head="2" hun="VVIZU" id="w66.1.18" deprel="OC">anzupacken</w>
+ <w head="2" hun="$." id="w66.1.19" deprel="PUNC">.</w>
+</s></p>
+
+<p id="67">
+<s id="s67.1">
+ <w head="2" hun="PPER" id="w67.1.1" deprel="SB">Es</w>
+ <w head="0" hun="VVFIN" id="w67.1.2" deprel="ROOT">gibt</w>
+ <w head="4" hun="ADJA" id="w67.1.3" deprel="NK">gute</w>
+ <w head="2" hun="NN" id="w67.1.4" deprel="OA">Gründe</w>
+ <w head="2" hun="$," id="w67.1.5" deprel="PUNC">,</w>
+ <w head="12" hun="KOUI" id="w67.1.6" deprel="CP">um</w>
+ <w head="12" hun="APPR" id="w67.1.7" deprel="MO">angesichts</w>
+ <w head="7" hun="ART" id="w67.1.8" deprel="NK">der</w>
+ <w head="7" hun="NN" id="w67.1.9" deprel="NK">Zukunft</w>
+ <w head="12" hun="ADJD" id="w67.1.10" deprel="PD">optimistisch</w>
+ <w head="12" hun="PTKZU" id="w67.1.11" deprel="PM">zu</w>
+ <w head="2" hun="VAINF" id="w67.1.12" deprel="MO">sein</w>
+ <w head="2" hun="$." id="w67.1.13" deprel="PUNC">.</w>
+</s></p>
+
+<p id="68">
+<s id="s68.1">
+ <w head="3" hun="KON" id="w68.1.1" deprel="JU">Aber</w>
+ <w head="3" hun="PPER" id="w68.1.2" deprel="SB">es</w>
+ <w head="0" hun="VVFIN" id="w68.1.3" deprel="ROOT">gibt</w>
+ <w head="5" hun="ADV" id="w68.1.4" deprel="MO">auch</w>
+ <w head="3" hun="ADJD" id="w68.1.5" deprel="MO">Anlass</w>
+ <w head="3" hun="$," id="w68.1.6" deprel="PUNC">,</w>
+ <w head="9" hun="PROAV" id="w68.1.7" deprel="MO">daran</w>
+ <w head="9" hun="PTKZU" id="w68.1.8" deprel="PM">zu</w>
+ <w head="3" hun="VVINF" id="w68.1.9" deprel="OC">erinnern</w>
+ <w head="9" hun="$," id="w68.1.10" deprel="PUNC">,</w>
+ <w head="19" hun="PWAV" id="w68.1.11" deprel="MO">wie</w>
+ <w head="19" hun="ADJD" id="w68.1.12" deprel="MO">schnell</w>
+ <w head="15" hun="ART" id="w68.1.13" deprel="NK">eine</w>
+ <w head="15" hun="ADJA" id="w68.1.14" deprel="NK">günstige</w>
+ <w head="19" hun="NN" id="w68.1.15" deprel="OA">Entwicklung</w>
+ <w head="19" hun="APPR" id="w68.1.16" deprel="MO">in</w>
+ <w head="16" hun="PPOSAT" id="w68.1.17" deprel="NK">ihr</w>
+ <w head="16" hun="NN" id="w68.1.18" deprel="NK">Gegenteil</w>
+ <w head="20" hun="VVPP" id="w68.1.19" deprel="OC">verkehrt</w>
+ <w head="21" hun="VAINF" id="w68.1.20" deprel="OC">werden</w>
+ <w head="9" hun="VMFIN" id="w68.1.21" deprel="MO">kann</w>
+ <w head="3" hun="$." id="w68.1.22" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s68.2">
+ <w head="2" hun="PDS" id="w68.2.1" deprel="SB">Dies</w>
+ <w head="0" hun="VVFIN" id="w68.2.2" deprel="ROOT">geschah</w>
+ <w head="2" hun="APPR" id="w68.2.3" deprel="MO">in</w>
+ <w head="3" hun="ART" id="w68.2.4" deprel="NK">den</w>
+ <w head="3" hun="ADJA" id="w68.2.5" deprel="NK">siebziger</w>
+ <w head="3" hun="NN" id="w68.2.6" deprel="NK">Jahren</w>
+ <w head="2" hun="$," id="w68.2.7" deprel="PUNC">,</w>
+ <w head="12" hun="KOUS" id="w68.2.8" deprel="CP">als</w>
+ <w head="11" hun="ART" id="w68.2.9" deprel="PNC">die</w>
+ <w head="11" hun="ADJA" id="w68.2.10" deprel="PNC">schwedische</w>
+ <w head="12" hun="NN" id="w68.2.11" deprel="NK">Volkswirtschaft</w>
+ <w head="20" hun="APPR" id="w68.2.12" deprel="MO">von</w>
+ <w head="12" hun="PPOSAT" id="w68.2.13" deprel="NK">ihrer</w>
+ <w head="12" hun="ADJA" id="w68.2.14" deprel="NK">schwersten</w>
+ <w head="12" hun="NN" id="w68.2.15" deprel="NK">Krise</w>
+ <w head="20" hun="APPR" id="w68.2.16" deprel="MO">seit</w>
+ <w head="16" hun="ART" id="w68.2.17" deprel="NK">den</w>
+ <w head="16" hun="ADJA" id="w68.2.18" deprel="NK">dreissiger</w>
+ <w head="16" hun="NN" id="w68.2.19" deprel="NK">Jahren</w>
+ <w head="2" hun="VVPP" id="w68.2.20" deprel="MO">betroffen</w>
+ <w head="2" hun="VAFIN" id="w68.2.21" deprel="OC">wurde</w>
+ <w head="2" hun="$." id="w68.2.22" deprel="PUNC">.</w>
+</s></p>
+
+<p id="69">
+<s id="s69.1">
+ <w head="2" hun="ART" id="w69.1.1" deprel="NK">Die</w>
+ <w head="33" hun="NN" id="w69.1.2" deprel="SB">Aufgaben</w>
+ <w head="2" hun="$," id="w69.1.3" deprel="PUNC">,</w>
+ <w head="7" hun="PRELS" id="w69.1.4" deprel="SB">die</w>
+ <w head="7" hun="APPR" id="w69.1.5" deprel="MO">vor</w>
+ <w head="5" hun="PPER" id="w69.1.6" deprel="NK">uns</w>
+ <w head="2" hun="VVFIN" id="w69.1.7" deprel="RC">liegen</w>
+ <w head="11" hun="$," id="w69.1.8" deprel="PUNC">,</w>
+ <w head="11" hun="KON" id="w69.1.9" deprel="CD">und</w>
+ <w head="11" hun="ART" id="w69.1.10" deprel="NK">die</w>
+ <w head="12" hun="NN" id="w69.1.11" deprel="MO">Gefahr</w>
+ <w head="15" hun="ADJD" id="w69.1.12" deprel="NK">schneller</w>
+ <w head="15" hun="$," id="w69.1.13" deprel="PUNC">,</w>
+ <w head="15" hun="ADJA" id="w69.1.14" deprel="NK">dramatischer</w>
+ <w head="2" hun="NN" id="w69.1.15" deprel="NK">Veränderungen</w>
+ <w head="2" hun="$," id="w69.1.16" deprel="PUNC">,</w>
+ <w head="2" hun="VVINF" id="w69.1.17" deprel="OC">bedeuten</w>
+ <w head="33" hun="$," id="w69.1.18" deprel="PUNC">,</w>
+ <w head="33" hun="KOUS" id="w69.1.19" deprel="CP">dass</w>
+ <w head="33" hun="NN" id="w69.1.20" deprel="SB">Verantwortungsbewusstsein</w>
+ <w head="33" hun="$," id="w69.1.21" deprel="PUNC">,</w>
+ <w head="33" hun="NN" id="w69.1.22" deprel="DA">Kraft</w>
+ <w head="33" hun="APPR" id="w69.1.23" deprel="MO">zu</w>
+ <w head="23" hun="ADJA" id="w69.1.24" deprel="PNC">politischem</w>
+ <w head="23" hun="NN" id="w69.1.25" deprel="NK">Handeln</w>
+ <w head="25" hun="KON" id="w69.1.26" deprel="CD">und</w>
+ <w head="25" hun="NN" id="w69.1.27" deprel="CJ">Fähigkeit</w>
+ <w head="23" hun="APPRART" id="w69.1.28" deprel="MNR">zur</w>
+ <w head="28" hun="NN" id="w69.1.29" deprel="PNC">Zusammenarbeit</w>
+ <w head="31" hun="ADV" id="w69.1.30" deprel="MO">auch</w>
+ <w head="33" hun="APPR" id="w69.1.31" deprel="MO">in</w>
+ <w head="31" hun="NN" id="w69.1.32" deprel="NK">Zukunft</w>
+ <w head="34" hun="VVPP" id="w69.1.33" deprel="OC">gefordert</w>
+ <w head="0" hun="VAINF" id="w69.1.34" deprel="ROOT">werden</w>
+ <w head="34" hun="$." id="w69.1.35" deprel="PUNC">.</w>
+</s></p>
+
+<p id="70">
+<s id="s70.1">
+ <w head="7" hun="APPRART" id="w70.1.1" deprel="MO">Zum</w>
+ <w head="1" hun="ADJA" id="w70.1.2" deprel="PNC">ersten</w>
+ <w head="1" hun="NN" id="w70.1.3" deprel="NK">Mal</w>
+ <w head="3" hun="NN" id="w70.1.4" deprel="PNC">zeit</w>
+ <w head="4" hun="CARD" id="w70.1.5" deprel="PNC">70</w>
+ <w head="4" hun="NN" id="w70.1.6" deprel="PNC">Jahren</w>
+ <w head="0" hun="VVFIN" id="w70.1.7" deprel="ROOT">nimmt</w>
+ <w head="11" hun="ADV" id="w70.1.8" deprel="MO">jetzt</w>
+ <w head="11" hun="ART" id="w70.1.9" deprel="NK">eine</w>
+ <w head="11" hun="ADJA" id="w70.1.10" deprel="NK">neue</w>
+ <w head="7" hun="NN" id="w70.1.11" deprel="SB">Partei</w>
+ <w head="13" hun="PPOSAT" id="w70.1.12" deprel="PNC">ihre</w>
+ <w head="11" hun="NN" id="w70.1.13" deprel="PNC">Sitze</w>
+ <w head="11" hun="APPRART" id="w70.1.14" deprel="MNR">im</w>
+ <w head="14" hun="NN" id="w70.1.15" deprel="NK">Reichstag</w>
+ <w head="14" hun="PTKVZ" id="w70.1.16" deprel="MO">ein</w>
+ <w head="7" hun="$." id="w70.1.17" deprel="PUNC">.</w>
+</s> 
+ 
+
+
+<s id="s70.2">
+ <w head="2" hun="PPER" id="w70.2.1" deprel="SB">Ich</w>
+ <w head="15" hun="VMFIN" id="w70.2.2" deprel="MO">möchte</w>
+ <w head="4" hun="ART" id="w70.2.3" deprel="NK">die</w>
+ <w head="15" hun="NN" id="w70.2.4" deprel="SB">Abgeordneten</w>
+ <w head="6" hun="ART" id="w70.2.5" deprel="PNC">der</w>
+ <w head="4" hun="NN" id="w70.2.6" deprel="PNC">Umweltpartei</w>
+ <w head="4" hun="$(" id="w70.2.7" deprel="PUNC">-</w>
+ <w head="9" hun="ART" id="w70.2.8" deprel="PNC">die</w>
+ <w head="4" hun="NN" id="w70.2.9" deprel="CJ">Grünen</w>
+ <w head="15" hun="APPRART" id="w70.2.10" deprel="MO">zur</w>
+ <w head="10" hun="NN" id="w70.2.11" deprel="PNC">Arbeit</w>
+ <w head="15" hun="APPRART" id="w70.2.12" deprel="MO">im</w>
+ <w head="12" hun="NN" id="w70.2.13" deprel="PNC">Reichstag</w>
+ <w head="15" hun="ADJD" id="w70.2.14" deprel="MO">willkommen</w>
+ <w head="0" hun="VVPP" id="w70.2.15" deprel="ROOT">heissen</w>
+ <w head="15" hun="$(" id="w70.2.16" deprel="PUNC">-</w>
+ <w head="18" hun="ART" id="w70.2.17" deprel="NK">einer</w>
+ <w head="15" hun="NN" id="w70.2.18" deprel="SB">Arbeit</w>
+ <w head="18" hun="$," id="w70.2.19" deprel="PUNC">,</w>
+ <w head="23" hun="APPR" id="w70.2.20" deprel="MO">von</w>
+ <w head="20" hun="PRELS" id="w70.2.21" deprel="NK">der</w>
+ <w head="23" hun="PPER" id="w70.2.22" deprel="SB">ich</w>
+ <w head="18" hun="VVFIN" id="w70.2.23" deprel="RC">hoffe</w>
+ <w head="23" hun="$," id="w70.2.24" deprel="PUNC">,</w>
+ <w head="28" hun="KOUS" id="w70.2.25" deprel="CP">dass</w>
+ <w head="28" hun="PPER" id="w70.2.26" deprel="MO">sie</w>
+ <w head="28" hun="ADJD" id="w70.2.27" deprel="PD">anregend</w>
+ <w head="29" hun="VAINF" id="w70.2.28" deprel="OC">sein</w>
+ <w head="23" hun="VAFIN" id="w70.2.29" deprel="MO">wird</w>
+ <w head="15" hun="$." id="w70.2.30" deprel="PUNC">.</w>
+</s></p>
+
+<p id="71">
+<s id="s71.1">
+ <w head="2" hun="PPER" id="w71.1.1" deprel="SB">Wir</w>
+ <w head="0" hun="VAFIN" id="w71.1.2" deprel="ROOT">haben</w>
+ <w head="5" hun="PIAT" id="w71.1.3" deprel="NK">alle</w>
+ <w head="5" hun="ART" id="w71.1.4" deprel="PNC">eine</w>
+ <w head="2" hun="ADJA" id="w71.1.5" deprel="NK">gemeinsame</w>
+ <w head="5" hun="NN" id="w71.1.6" deprel="NK">Verantwortung</w>
+ <w head="6" hun="PROAV" id="w71.1.7" deprel="MNR">dafür</w>
+ <w head="7" hun="$," id="w71.1.8" deprel="PUNC">,</w>
+ <w head="15" hun="KOUS" id="w71.1.9" deprel="NK">dass</w>
+ <w head="15" hun="ART" id="w71.1.10" deprel="NK">die</w>
+ <w head="13" hun="CARD" id="w71.1.11" deprel="PNC">drei</w>
+ <w head="13" hun="ADJA" id="w71.1.12" deprel="PNC">kommenden</w>
+ <w head="14" hun="NN" id="w71.1.13" deprel="PNC">Jahre</w>
+ <w head="15" hun="ADJA" id="w71.1.14" deprel="NK">gute</w>
+ <w head="7" hun="NN" id="w71.1.15" deprel="APP">Jahre</w>
+ <w head="15" hun="APPR" id="w71.1.16" deprel="MNR">für</w>
+ <w head="16" hun="PPOSAT" id="w71.1.17" deprel="NK">unser</w>
+ <w head="16" hun="NN" id="w71.1.18" deprel="NK">Land</w>
+ <w head="16" hun="KON" id="w71.1.19" deprel="CD">und</w>
+ <w head="22" hun="PIAT" id="w71.1.20" deprel="PNC">alle</w>
+ <w head="22" hun="PPOSAT" id="w71.1.21" deprel="PNC">seine</w>
+ <w head="47" hun="NN" id="w71.1.22" deprel="SB">Einwohner</w>
+ <w head="47" hun="$," id="w71.1.23" deprel="PUNC">,</w>
+ <w head="47" hun="APPR" id="w71.1.24" deprel="MO">für</w>
+ <w head="24" hun="ART" id="w71.1.25" deprel="NK">die</w>
+ <w head="24" hun="NN" id="w71.1.26" deprel="NK">Umwelt</w>
+ <w head="47" hun="$," id="w71.1.27" deprel="PUNC">,</w>
+ <w head="47" hun="APPR" id="w71.1.28" deprel="MO">für</w>
+ <w head="28" hun="PPOSAT" id="w71.1.29" deprel="NK">unsere</w>
+ <w head="28" hun="NN" id="w71.1.30" deprel="NK">Beziehungen</w>
+ <w head="47" hun="APPR" id="w71.1.31" deprel="MO">zu</w>
+ <w head="31" hun="PPOSAT" id="w71.1.32" deprel="NK">unserer</w>
+ <w head="31" hun="NN" id="w71.1.33" deprel="NK">Umgebung</w>
+ <w head="31" hun="KON" id="w71.1.34" deprel="CD">und</w>
+ <w head="47" hun="APPR" id="w71.1.35" deprel="MO">für</w>
+ <w head="47" hun="ART" id="w71.1.36" deprel="MO">die</w>
+ <w head="40" hun="NN" id="w71.1.37" deprel="CJ">Kontakte</w>
+ <w head="40" hun="KON" id="w71.1.38" deprel="CD">und</w>
+ <w head="40" hun="ART" id="w71.1.39" deprel="NK">das</w>
+ <w head="47" hun="NN" id="w71.1.40" deprel="SB">Zusammensein</w>
+ <w head="47" hun="APPR" id="w71.1.41" deprel="MO">unter</w>
+ <w head="41" hun="PPER" id="w71.1.42" deprel="NK">uns</w>
+ <w head="41" hun="NN" id="w71.1.43" deprel="NK">Menschen</w>
+ <w head="41" hun="APPR" id="w71.1.44" deprel="MNR">in</w>
+ <w head="44" hun="PPOSAT" id="w71.1.45" deprel="NK">unserem</w>
+ <w head="44" hun="NN" id="w71.1.46" deprel="NK">Alltag</w>
+ <w head="16" hun="VAFIN" id="w71.1.47" deprel="CJ">werden</w>
+ <w head="47" hun="$," id="w71.1.48" deprel="PUNC">,</w>
+ <w head="50" hun="ADV" id="w71.1.49" deprel="MO">ganz</w>
+ <w head="47" hun="ADV" id="w71.1.50" deprel="CJ">gleich</w>
+ <w head="50" hun="$," id="w71.1.51" deprel="PUNC">,</w>
+ <w head="54" hun="PWAV" id="w71.1.52" deprel="MO">wo</w>
+ <w head="54" hun="PPER" id="w71.1.53" deprel="MO">wir</w>
+ <w head="50" hun="VVINF" id="w71.1.54" deprel="MO">herkommen</w>
+ <w head="15" hun="$." id="w71.1.55" deprel="PUNC">.</w>
+</s></p>
+
+<p id="72">
+<s id="s72.1">
+ <w head="2" hun="PPER" id="w72.1.1" deprel="SB">Es</w>
+ <w head="0" hun="VAFIN" id="w72.1.2" deprel="ROOT">ist</w>
+ <w head="4" hun="ART" id="w72.1.3" deprel="NK">die</w>
+ <w head="20" hun="NN" id="w72.1.4" deprel="OA">Verantwortung</w>
+ <w head="4" hun="KON" id="w72.1.5" deprel="CD">und</w>
+ <w head="7" hun="ART" id="w72.1.6" deprel="PNC">das</w>
+ <w head="4" hun="NN" id="w72.1.7" deprel="CJ">Bestreben</w>
+ <w head="9" hun="ART" id="w72.1.8" deprel="PNC">der</w>
+ <w head="7" hun="NN" id="w72.1.9" deprel="PNC">Regierung</w>
+ <w head="4" hun="$," id="w72.1.10" deprel="PUNC">,</w>
+ <w head="13" hun="PIAT" id="w72.1.11" deprel="NK">alle</w>
+ <w head="13" hun="ADJA" id="w72.1.12" deprel="NK">guten</w>
+ <w head="15" hun="NN" id="w72.1.13" deprel="OA">Initiative</w>
+ <w head="15" hun="PTKZU" id="w72.1.14" deprel="PM">zu</w>
+ <w head="4" hun="VVINF" id="w72.1.15" deprel="OC">nutzen</w>
+ <w head="20" hun="$," id="w72.1.16" deprel="PUNC">,</w>
+ <w head="20" hun="APPR" id="w72.1.17" deprel="MO">auf</w>
+ <w head="17" hun="ADJA" id="w72.1.18" deprel="NK">breite</w>
+ <w head="17" hun="NN" id="w72.1.19" deprel="NK">Lösungen</w>
+ <w head="2" hun="VVIZU" id="w72.1.20" deprel="OC">hinzuwirken</w>
+ <w head="20" hun="KON" id="w72.1.21" deprel="CD">und</w>
+ <w head="28" hun="ART" id="w72.1.22" deprel="NK">eine</w>
+ <w head="27" hun="NN" id="w72.1.23" deprel="PNC">Politik</w>
+ <w head="27" hun="APPRART" id="w72.1.24" deprel="MO">im</w>
+ <w head="24" hun="NN" id="w72.1.25" deprel="NK">Interesse</w>
+ <w head="27" hun="ART" id="w72.1.26" deprel="PNC">des</w>
+ <w head="28" hun="ADJA" id="w72.1.27" deprel="NK">ganzen</w>
+ <w head="30" hun="NN" id="w72.1.28" deprel="OA">Volkes</w>
+ <w head="30" hun="PTKZU" id="w72.1.29" deprel="PM">zu</w>
+ <w head="20" hun="VVINF" id="w72.1.30" deprel="CJ">betreiben</w>
+ <w head="2" hun="$." id="w72.1.31" deprel="PUNC">.</w>
+</s></p></text>
