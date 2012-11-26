@@ -1,0 +1,2808 @@
+<?xml version="1.0" encoding="utf-8"?>
+<text>
+<head id="1">
+<s id="s1.1">
+ <w head="0" hun="NN_UTR_SIN_IND_NOM" id="w1.1.1" deprel="ROOT">REGERINGSFÖRKLARING</w>
+ <w head="1" hun="MAD" id="w1.1.2" deprel="IP">.</w>
+</s></head>
+
+<p id="2">
+<s id="s2.1">
+ <w head="0" hun="PM_NOM" id="w2.1.1" deprel="ROOT">Eders</w>
+ <w head="1" hun="PM_NOM" id="w2.1.2" deprel="HD">Majestäter</w>
+ <w head="1" hun="MID" id="w2.1.3" deprel="IK">,</w>
+ <w head="2" hun="PM_GEN" id="w2.1.4" deprel="HD">Eders</w>
+ <w head="4" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w2.1.5" deprel="AA">Kungliga</w>
+ <w head="5" hun="PM_NOM" id="w2.1.6" deprel="HD">Högheter</w>
+ <w head="5" hun="MID" id="w2.1.7" deprel="IK">,</w>
+ <w head="5" hun="NN_UTR_SIN_IND_NOM" id="w2.1.8" deprel="AN">herr</w>
+ <w head="8" hun="NN_UTR_SIN_IND_NOM" id="w2.1.9" deprel="HD">talman</w>
+ <w head="5" hun="MID" id="w2.1.10" deprel="IK">,</w>
+ <w head="5" hun="NN_UTR_PLU_IND_NOM" id="w2.1.11" deprel="MS">ledamöter</w>
+ <w head="11" hun="PP" id="w2.1.12" deprel="AG">av</w>
+ <w head="12" hun="PM_GEN" id="w2.1.13" deprel="PA">Sveriges</w>
+ <w head="13" hun="NN_UTR_SIN_IND_NOM" id="w2.1.14" deprel="HD">riksdag</w>
+ <w head="1" hun="MAD" id="w2.1.15" deprel="IU">!</w>
+</s></p>
+
+<p id="3">
+<s id="s3.1">
+ <w head="0" hun="PM_GEN" id="w3.1.1" deprel="ROOT">Sveriges</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w3.1.2" deprel="HD">neutralitetspolitik</w>
+ <w head="2" hun="NN_UTR_PLU_IND_NOM" id="w3.1.3" deprel="HD">är</w>
+ <w head="3" hun="PP" id="w3.1.4" deprel="AG">av</w>
+ <w head="4" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w3.1.5" deprel="PA">avgörande</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w3.1.6" deprel="HD">betydelse</w>
+ <w head="1" hun="PM_NOM" id="w3.1.7" deprel="HD">för</w>
+ <w head="5" hun="PM_NOM" id="w3.1.8" deprel="HD">vårt</w>
+ <w head="8" hun="NN_NEU_SIN_IND_GEN" id="w3.1.9" deprel="HD">lands</w>
+ <w head="11" hun="NN_UTR_SIN_IND_NOM" id="w3.1.10" deprel="CJ">fred</w>
+ <w head="9" hun="KN" id="w3.1.11" deprel="PA">och</w>
+ <w head="11" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w3.1.12" deprel="CJ">oberoende</w>
+ <w head="1" hun="MAD" id="w3.1.13" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s3.2">
+ <w head="0" hun="PN_UTR_SIN_DEF_SUB@OBJ" id="w3.2.1" deprel="ROOT">Den</w>
+ <w head="1" hun="VB_PRS_AKT" id="w3.2.2" deprel="AA">bidrar</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w3.2.3" deprel="PA">också</w>
+ <w head="3" hun="PP" id="w3.2.4" deprel="OA">till</w>
+ <w head="6" hun="NN_UTR_SIN_IND_NOM" id="w3.2.5" deprel="CJ">stabilitet</w>
+ <w head="4" hun="KN" id="w3.2.6" deprel="PA">och</w>
+ <w head="6" hun="NN_UTR_SIN_IND_NOM" id="w3.2.7" deprel="CJ">avspänning</w>
+ <w head="7" hun="PP" id="w3.2.8" deprel="RA">i</w>
+ <w head="8" hun="PM_NOM" id="w3.2.9" deprel="PA">vår</w>
+ <w head="9" hun="NN_UTR_SIN_IND_NOM" id="w3.2.10" deprel="HD">del</w>
+ <w head="10" hun="PP" id="w3.2.11" deprel="AG">av</w>
+ <w head="11" hun="NN_UTR_SIN_DEF_NOM" id="w3.2.12" deprel="HD">världen</w>
+ <w head="1" hun="MAD" id="w3.2.13" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s3.3">
+ <w head="0" hun="PP" id="w3.3.1" deprel="ROOT">Kring</w>
+ <w head="1" hun="DT_UTR_SIN_DEF" id="w3.3.2" deprel="PA">denna</w>
+ <w head="2" hun="NN_UTR_SIN_IND_NOM" id="w3.3.3" deprel="HD">politik</w>
+ <w head="2" hun="VB_PRS_SFO" id="w3.3.4" deprel="HD">finns</w>
+ <w head="2" hun="DT_UTR_SIN_IND" id="w3.3.5" deprel="HD">en</w>
+ <w head="2" hun="JJ_POS_UTR_SIN_IND_NOM" id="w3.3.6" deprel="HD">bred</w>
+ <w head="2" hun="JJ_POS_UTR_SIN_IND_NOM" id="w3.3.7" deprel="HD">folklig</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w3.3.8" deprel="HD">uppslutning</w>
+ <w head="1" hun="MAD" id="w3.3.9" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s3.4">
+ <w head="0" hun="PN_UTR_SIN_DEF_SUB@OBJ" id="w3.4.1" deprel="ROOT">Den</w>
+ <w head="1" hun="VB_PRS_AKT" id="w3.4.2" deprel="AA">kommer</w>
+ <w head="2" hun="SN" id="w3.4.3" deprel="PA">att</w>
+ <w head="3" hun="PM_NOM" id="w3.4.4" deprel="PA">fullföljas</w>
+ <w head="4" hun="PP" id="w3.4.5" deprel="OA">med</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w3.4.6" deprel="CJ">kraft</w>
+ <w head="5" hun="KN" id="w3.4.7" deprel="PA">och</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w3.4.8" deprel="CJ">konsekvens</w>
+ <w head="1" hun="MAD" id="w3.4.9" deprel="IP">.</w>
+</s></p>
+
+<p id="4">
+<s id="s4.1">
+ <w head="7" hun="PM_NOM" id="w4.1.1" deprel="HD">Neutralitetspolitiken</w>
+ <w head="7" hun="PM_NOM" id="w4.1.2" deprel="HD">stöds</w>
+ <w head="7" hun="PP" id="w4.1.3" deprel="HD">av</w>
+ <w head="7" hun="DT_NEU_SIN_IND" id="w4.1.4" deprel="PA">ett</w>
+ <w head="4" hun="JJ_POS_NEU_SIN_IND_NOM" id="w4.1.5" deprel="HD">starkt</w>
+ <w head="4" hun="NN_NEU_SIN_IND_NOM" id="w4.1.6" deprel="HD">försvar</w>
+ <w head="0" hun="PP" id="w4.1.7" deprel="ROOT">till</w>
+ <w head="7" hun="PM_NOM" id="w4.1.8" deprel="PA">värn</w>
+ <w head="8" hun="PM_NOM" id="w4.1.9" deprel="HD">för</w>
+ <w head="9" hun="PM_NOM" id="w4.1.10" deprel="+F">vårt</w>
+ <w head="10" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w4.1.11" deprel="HD">oberoende</w>
+ <w head="7" hun="MAD" id="w4.1.12" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s4.2">
+ <w head="0" hun="NN_UTR_PLU_IND_NOM" id="w4.2.1" deprel="ROOT">Kränkningar</w>
+ <w head="1" hun="PP" id="w4.2.2" deprel="AG">av</w>
+ <w head="2" hun="JJ_POS_NEU_SIN_IND_NOM" id="w4.2.3" deprel="PA">svenskt</w>
+ <w head="3" hun="NN_NEU_SIN_IND_NOM" id="w4.2.4" deprel="HD">territorium</w>
+ <w head="2" hun="VB_PRS_AKT" id="w4.2.5" deprel="PA">kommer</w>
+ <w head="5" hun="AB" id="w4.2.6" deprel="VS">aldrig</w>
+ <w head="6" hun="IE" id="w4.2.7" deprel="HD">att</w>
+ <w head="7" hun="VB_INF_SFO" id="w4.2.8" deprel="HD">accepteras</w>
+ <w head="1" hun="MAD" id="w4.2.9" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s4.3">
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w4.3.1" deprel="HD">Armén</w>
+ <w head="0" hun="VB_PRS_AKT" id="w4.3.2" deprel="ROOT">kommer</w>
+ <w head="2" hun="IE" id="w4.3.3" deprel="VG">att</w>
+ <w head="5" hun="VB_INF_SFO" id="w4.3.4" deprel="CJ">reformeras</w>
+ <w head="3" hun="KN" id="w4.3.5" deprel="IF">och</w>
+ <w head="5" hun="VB_INF_SFO" id="w4.3.6" deprel="CJ">effektiviseras</w>
+ <w head="2" hun="MAD" id="w4.3.7" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s4.4">
+ <w head="0" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w4.4.1" deprel="ROOT">Det</w>
+ <w head="1" hun="VB_PRS_AKT" id="w4.4.2" deprel="AA">är</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_GEN" id="w4.4.3" deprel="PA">regeringens</w>
+ <w head="3" hun="NN_UTR_SIN_IND_NOM" id="w4.4.4" deprel="AA">föresats</w>
+ <w head="4" hun="SN" id="w4.4.5" deprel="PA">att</w>
+ <w head="5" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w4.4.6" deprel="PA">söka</w>
+ <w head="6" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w4.4.7" deprel="HD">breda</w>
+ <w head="7" hun="NN_UTR_PLU_IND_NOM" id="w4.4.8" deprel="AA">lösningar</w>
+ <w head="8" hun="PP" id="w4.4.9" deprel="PA">i</w>
+ <w head="9" hun="NN_UTR_PLU_IND_NOM" id="w4.4.10" deprel="HD">frågor</w>
+ <w head="9" hun="KN" id="w4.4.11" deprel="HD">som</w>
+ <w head="9" hun="NN_UTR_PLU_IND_NOM" id="w4.4.12" deprel="HD">är</w>
+ <w head="9" hun="PP" id="w4.4.13" deprel="HD">av</w>
+ <w head="9" hun="NN_UTR_SIN_IND_NOM" id="w4.4.14" deprel="HD">betydelse</w>
+ <w head="9" hun="PM_NOM" id="w4.4.15" deprel="HD">för</w>
+ <w head="9" hun="PM_NOM" id="w4.4.16" deprel="HD">vår</w>
+ <w head="9" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w4.4.17" deprel="HD">nationella</w>
+ <w head="9" hun="NN_UTR_SIN_IND_NOM" id="w4.4.18" deprel="HD">säkerhet</w>
+ <w head="1" hun="MAD" id="w4.4.19" deprel="IP">.</w>
+</s></p>
+
+<p id="5">
+<s id="s5.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w5.1.1" deprel="ROOT">Regeringen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w5.1.2" deprel="AA">har</w>
+ <w head="2" hun="AB" id="w5.1.3" deprel="RA">välkomnat</w>
+ <w head="3" hun="NN_UTR_SIN_DEF_NOM" id="w5.1.4" deprel="HD">överenskommelsen</w>
+ <w head="3" hun="PP" id="w5.1.5" deprel="RA">mellan</w>
+ <w head="5" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w5.1.6" deprel="PA">Förenta</w>
+ <w head="8" hun="NN_UTR_PLU_DEF_NOM" id="w5.1.7" deprel="CJ">staterna</w>
+ <w head="6" hun="KN" id="w5.1.8" deprel="IF">och</w>
+ <w head="8" hun="PM_NOM" id="w5.1.9" deprel="CJ">Sovjetunionen</w>
+ <w head="9" hun="PP" id="w5.1.10" deprel="OA">om</w>
+ <w head="10" hun="IE" id="w5.1.11" deprel="PA">att</w>
+ <w head="11" hun="VB_INF_AKT" id="w5.1.12" deprel="PA">avskaffa</w>
+ <w head="12" hun="DT_UTR@NEU_PLU_DEF" id="w5.1.13" deprel="AA">de</w>
+ <w head="13" hun="PC_PRF_UTR@NEU_PLU_IND@DEF_NOM" id="w5.1.14" deprel="PA">landbaserade</w>
+ <w head="14" hun="NN_UTR_SIN_DEF_NOM" id="w5.1.15" deprel="HD">medeldistanskärnvapnen</w>
+ <w head="1" hun="MAD" id="w5.1.16" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s5.2">
+ <w head="0" hun="AB" id="w5.2.1" deprel="ROOT">Nu</w>
+ <w head="1" hun="VB_PRS_AKT" id="w5.2.2" deprel="HD">måste</w>
+ <w head="1" hun="NN_UTR_PLU_DEF_NOM" id="w5.2.3" deprel="HD">ansträngningarna</w>
+ <w head="1" hun="VB_INF_SFO" id="w5.2.4" deprel="HD">inriktas</w>
+ <w head="1" hun="NN_UTR_SIN_DEF_NOM" id="w5.2.5" deprel="HD">på</w>
+ <w head="1" hun="IE" id="w5.2.6" deprel="HD">att</w>
+ <w head="6" hun="PP" id="w5.2.7" deprel="PA">bland</w>
+ <w head="7" hun="PN_NEU_SIN_IND_SUB@OBJ" id="w5.2.8" deprel="PA">annat</w>
+ <w head="8" hun="VB_INF_AKT" id="w5.2.9" deprel="HD">minska</w>
+ <w head="9" hun="DT_UTR@NEU_PLU_DEF" id="w5.2.10" deprel="AA">de</w>
+ <w head="10" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w5.2.11" deprel="PA">strategiska</w>
+ <w head="13" hun="NN_UTR_PLU_DEF_NOM" id="w5.2.12" deprel="CJ">rustningarna</w>
+ <w head="11" hun="KN" id="w5.2.13" deprel="IF">och</w>
+ <w head="13" hun="PM_NOM" id="w5.2.14" deprel="CJ">få</w>
+ <w head="14" hun="PP" id="w5.2.15" deprel="OA">till</w>
+ <w head="15" hun="PM_NOM" id="w5.2.16" deprel="PA">stånd</w>
+ <w head="16" hun="DT_NEU_SIN_IND" id="w5.2.17" deprel="HD">ett</w>
+ <w head="16" hun="JJ_POS_NEU_SIN_IND_NOM" id="w5.2.18" deprel="HD">fullständigt</w>
+ <w head="16" hun="NN_NEU_SIN_IND_NOM" id="w5.2.19" deprel="HD">provstoppsavtal</w>
+ <w head="1" hun="MAD" id="w5.2.20" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s5.3">
+ <w head="0" hun="VB_PRS_AKT" id="w5.3.1" deprel="ROOT">För</w>
+ <w head="1" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w5.3.2" deprel="HD">detta</w>
+ <w head="2" hun="VB_PRS_AKT" id="w5.3.3" deprel="AA">verkar</w>
+ <w head="3" hun="PM_NOM" id="w5.3.4" deprel="PA">Sverige</w>
+ <w head="4" hun="PP" id="w5.3.5" deprel="RA">bland</w>
+ <w head="5" hun="PN_NEU_SIN_IND_SUB@OBJ" id="w5.3.6" deprel="PA">annat</w>
+ <w head="6" hun="PP" id="w5.3.7" deprel="RA">inom</w>
+ <w head="7" hun="NN_UTR_SIN_DEF_NOM" id="w5.3.8" deprel="PA">ramen</w>
+ <w head="8" hun="VB_PRS_AKT" id="w5.3.9" deprel="HD">för</w>
+ <w head="9" hun="NN_NEU_SIN_DEF_NOM" id="w5.3.10" deprel="HD">sexnationsinitiativet</w>
+ <w head="1" hun="MAD" id="w5.3.11" deprel="IP">.</w>
+</s></p>
+
+<p id="6">
+<s id="s6.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w6.1.1" deprel="ROOT">Regeringen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w6.1.2" deprel="AA">kommer</w>
+ <w head="2" hun="IE" id="w6.1.3" deprel="HD">att</w>
+ <w head="3" hun="VB_INF_AKT" id="w6.1.4" deprel="AA">fortsätta</w>
+ <w head="4" hun="IE" id="w6.1.5" deprel="UA">att</w>
+ <w head="5" hun="VB_INF_AKT" id="w6.1.6" deprel="PA">arbeta</w>
+ <w head="6" hun="AB_POS" id="w6.1.7" deprel="AA">aktivt</w>
+ <w head="7" hun="VB_PRS_AKT" id="w6.1.8" deprel="PA">för</w>
+ <w head="8" hun="DT_UTR_SIN_IND" id="w6.1.9" deprel="AA">en</w>
+ <w head="9" hun="JJ_POS_UTR_SIN_IND_NOM" id="w6.1.10" deprel="PA">kärnvapenfri</w>
+ <w head="10" hun="NN_UTR_SIN_IND_NOM" id="w6.1.11" deprel="AA">zon</w>
+ <w head="11" hun="PP" id="w6.1.12" deprel="PA">i</w>
+ <w head="12" hun="PM_NOM" id="w6.1.13" deprel="HD">Norden</w>
+ <w head="12" hun="KN" id="w6.1.14" deprel="HD">och</w>
+ <w head="12" hun="PM_NOM" id="w6.1.15" deprel="HD">för</w>
+ <w head="12" hun="DT_UTR_SIN_IND" id="w6.1.16" deprel="HD">en</w>
+ <w head="12" hun="NN_UTR_SIN_IND_NOM" id="w6.1.17" deprel="HD">korridor</w>
+ <w head="12" hun="JJ_POS_UTR_SIN_IND_NOM" id="w6.1.18" deprel="HD">fri</w>
+ <w head="12" hun="PM_NOM" id="w6.1.19" deprel="HD">från</w>
+ <w head="12" hun="PM_NOM" id="w6.1.20" deprel="HD">slagfältskärnvapen</w>
+ <w head="12" hun="PP" id="w6.1.21" deprel="HD">i</w>
+ <w head="12" hun="PM_NOM" id="w6.1.22" deprel="HD">Centraleuropa</w>
+ <w head="1" hun="MAD" id="w6.1.23" deprel="IP">.</w>
+</s></p>
+
+<p id="7">
+<s id="s7.1">
+ <w head="0" hun="PP" id="w7.1.1" deprel="ROOT">Genom</w>
+ <w head="1" hun="SN" id="w7.1.2" deprel="PA">att</w>
+ <w head="2" hun="PM_NOM" id="w7.1.3" deprel="PA">stödja</w>
+ <w head="3" hun="PM_GEN" id="w7.1.4" deprel="HD">u-ländernas</w>
+ <w head="6" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w7.1.5" deprel="CJ">ekonomiska</w>
+ <w head="4" hun="KN" id="w7.1.6" deprel="IF">och</w>
+ <w head="6" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w7.1.7" deprel="CJ">sociala</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w7.1.8" deprel="AA">utveckling</w>
+ <w head="8" hun="VB_PRS_AKT" id="w7.1.9" deprel="PA">vill</w>
+ <w head="9" hun="NN_UTR_SIN_DEF_NOM" id="w7.1.10" deprel="AA">regeringen</w>
+ <w head="10" hun="VB_INF_AKT" id="w7.1.11" deprel="PA">bidra</w>
+ <w head="11" hun="PP" id="w7.1.12" deprel="OA">till</w>
+ <w head="12" hun="SN" id="w7.1.13" deprel="PA">att</w>
+ <w head="13" hun="PM_NOM" id="w7.1.14" deprel="ET">vända</w>
+ <w head="14" hun="PM_NOM" id="w7.1.15" deprel="AA">tillbakagången</w>
+ <w head="15" hun="PP" id="w7.1.16" deprel="PA">i</w>
+ <w head="16" hun="DT_UTR@NEU_PLU_DEF" id="w7.1.17" deprel="HD">de</w>
+ <w head="16" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w7.1.18" deprel="HD">fattiga</w>
+ <w head="16" hun="NN_UTR_PLU_DEF_NOM" id="w7.1.19" deprel="HD">länderna</w>
+ <w head="16" hun="KN" id="w7.1.20" deprel="HD">och</w>
+ <w head="16" hun="VB_INF_AKT" id="w7.1.21" deprel="HD">lindra</w>
+ <w head="16" hun="NN_UTR_SIN_DEF_NOM" id="w7.1.22" deprel="HD">skuldkrisen</w>
+ <w head="1" hun="MAD" id="w7.1.23" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s7.2">
+ <w head="0" hun="NN_NEU_SIN_DEF_NOM" id="w7.2.1" deprel="ROOT">Biståndet</w>
+ <w head="1" hun="VB_PRS_AKT" id="w7.2.2" deprel="AA">skall</w>
+ <w head="2" hun="AB_KOM" id="w7.2.3" deprel="PA">vidare</w>
+ <w head="3" hun="NN_UTR_SIN_IND_NOM" id="w7.2.4" deprel="AA">främja</w>
+ <w head="4" hun="DT_UTR_SIN_IND" id="w7.2.5" deprel="PA">en</w>
+ <w head="5" hun="JJ_POS_UTR_SIN_IND_NOM" id="w7.2.6" deprel="AA">framsynt</w>
+ <w head="6" hun="NN_UTR_SIN_IND_NOM" id="w7.2.7" deprel="PA">hushållning</w>
+ <w head="7" hun="PP" id="w7.2.8" deprel="+F">med</w>
+ <w head="10" hun="NN_UTR_PLU_IND_NOM" id="w7.2.9" deprel="CJ">naturresurser</w>
+ <w head="8" hun="KN" id="w7.2.10" deprel="PA">och</w>
+ <w head="10" hun="NN_UTR_SIN_IND_NOM" id="w7.2.11" deprel="CJ">omsorg</w>
+ <w head="8" hun="PP" id="w7.2.12" deprel="HD">om</w>
+ <w head="12" hun="NN_UTR_SIN_DEF_NOM" id="w7.2.13" deprel="HD">miljön</w>
+ <w head="1" hun="MAD" id="w7.2.14" deprel="IP">.</w>
+</s></p>
+
+<p id="8">
+<s id="s8.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w8.1.1" deprel="ROOT">Regeringen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w8.1.2" deprel="AA">kommer</w>
+ <w head="2" hun="IE" id="w8.1.3" deprel="HD">att</w>
+ <w head="3" hun="VB_INF_AKT" id="w8.1.4" deprel="AA">verka</w>
+ <w head="4" hun="NN_UTR_SIN_DEF_NOM" id="w8.1.5" deprel="PA">för</w>
+ <w head="5" hun="SN" id="w8.1.6" deprel="HD">att</w>
+ <w head="6" hun="DT_UTR_SIN_IND" id="w8.1.7" deprel="PA">en</w>
+ <w head="7" hun="JJ_POS_UTR_SIN_IND_NOM" id="w8.1.8" deprel="AA">global</w>
+ <w head="8" hun="NN_UTR_SIN_IND_NOM" id="w8.1.9" deprel="PA">FN-konferens</w>
+ <w head="9" hun="PP" id="w8.1.10" deprel="OA">om</w>
+ <w head="12" hun="PM_NOM" id="w8.1.11" deprel="CJ">miljö</w>
+ <w head="10" hun="KN" id="w8.1.12" deprel="PA">och</w>
+ <w head="12" hun="NN_UTR_SIN_IND_NOM" id="w8.1.13" deprel="CJ">utveckling</w>
+ <w head="12" hun="VB_PRS_SFO" id="w8.1.14" deprel="ET">inkallas</w>
+ <w head="14" hun="RG_NOM" id="w8.1.15" deprel="HD">1992</w>
+ <w head="1" hun="MAD" id="w8.1.16" deprel="IP">.</w>
+</s></p>
+
+<p id="9">
+<s id="s9.1">
+ <w head="10" hun="PP" id="w9.1.1" deprel="RA">I</w>
+ <w head="1" hun="PM_NOM" id="w9.1.2" deprel="PA">Centralamerika</w>
+ <w head="2" hun="VB_PRS_AKT" id="w9.1.3" deprel="HD">har</w>
+ <w head="3" hun="DT_UTR@NEU_PLU_DEF" id="w9.1.4" deprel="HD">de</w>
+ <w head="4" hun="RG_NOM" id="w9.1.5" deprel="HD">fem</w>
+ <w head="5" hun="NN_UTR_PLU_DEF_NOM" id="w9.1.6" deprel="HD">presidenterna</w>
+ <w head="6" hun="VB_SUP_AKT" id="w9.1.7" deprel="HD">undertecknat</w>
+ <w head="7" hun="DT_UTR_SIN_IND" id="w9.1.8" deprel="HD">en</w>
+ <w head="8" hun="NN_UTR_SIN_IND_NOM" id="w9.1.9" deprel="HD">fredsplan</w>
+ <w head="0" hun="MID" id="w9.1.10" deprel="ROOT">,</w>
+ <w head="9" hun="HP_-_-_-" id="w9.1.11" deprel="HD">som</w>
+ <w head="11" hun="PM_NOM" id="w9.1.12" deprel="AA">Sverige</w>
+ <w head="12" hun="VB_SUP_AKT" id="w9.1.13" deprel="PA">gett</w>
+ <w head="13" hun="PS_NEU_SIN_DEF" id="w9.1.14" deprel="HD">sitt</w>
+ <w head="14" hun="PM_NOM" id="w9.1.15" deprel="PA">helhjärtade</w>
+ <w head="15" hun="PM_NOM" id="w9.1.16" deprel="HD">stöd</w>
+ <w head="10" hun="MAD" id="w9.1.17" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s9.2">
+ <w head="0" hun="PM_NOM" id="w9.2.1" deprel="ROOT">Förhandlingar</w>
+ <w head="1" hun="PM_NOM" id="w9.2.2" deprel="PA">pågår</w>
+ <w head="2" hun="PP" id="w9.2.3" deprel="OA">om</w>
+ <w head="3" hun="NN_UTR_SIN_IND_NOM" id="w9.2.4" deprel="PA">fred</w>
+ <w head="4" hun="PP" id="w9.2.5" deprel="ET">mellan</w>
+ <w head="7" hun="PM_NOM" id="w9.2.6" deprel="CJ">Iran</w>
+ <w head="5" hun="KN" id="w9.2.7" deprel="PA">och</w>
+ <w head="7" hun="PM_NOM" id="w9.2.8" deprel="CJ">Irak</w>
+ <w head="1" hun="MAD" id="w9.2.9" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s9.3">
+ <w head="0" hun="DT_UTR@NEU_PLU_DEF" id="w9.3.1" deprel="ROOT">De</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w9.3.2" deprel="AA">sovjetiska</w>
+ <w head="2" hun="NN_UTR_PLU_DEF_NOM" id="w9.3.3" deprel="PA">trupperna</w>
+ <w head="3" hun="PM_NOM" id="w9.3.4" deprel="AA">är</w>
+ <w head="4" hun="PP" id="w9.3.5" deprel="PA">i</w>
+ <w head="5" hun="PM_NOM" id="w9.3.6" deprel="HD">färd</w>
+ <w head="5" hun="PP" id="w9.3.7" deprel="HD">med</w>
+ <w head="5" hun="SN" id="w9.3.8" deprel="PA">att</w>
+ <w head="8" hun="PM_NOM" id="w9.3.9" deprel="PA">lämna</w>
+ <w head="9" hun="PM_NOM" id="w9.3.10" deprel="HD">Afghanistan</w>
+ <w head="1" hun="MAD" id="w9.3.11" deprel="IP">.</w>
+</s></p>
+
+<p id="10">
+<s id="s10.1">
+ <w head="0" hun="PP" id="w10.1.1" deprel="ROOT">I</w>
+ <w head="1" hun="NN_NEU_SIN_DEF_NOM" id="w10.1.2" deprel="PA">flertalet</w>
+ <w head="2" hun="PP" id="w10.1.3" deprel="AG">av</w>
+ <w head="3" hun="DT_UTR@NEU_PLU_DEF" id="w10.1.4" deprel="PA">de</w>
+ <w head="4" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w10.1.5" deprel="HD">regionala</w>
+ <w head="5" hun="NN_UTR_PLU_DEF_NOM" id="w10.1.6" deprel="AA">konflikterna</w>
+ <w head="6" hun="VB_PRS_AKT" id="w10.1.7" deprel="PA">har</w>
+ <w head="7" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w10.1.8" deprel="AA">Förenta</w>
+ <w head="8" hun="NN_UTR_PLU_DEF_NOM" id="w10.1.9" deprel="AA">nationerna</w>
+ <w head="9" hun="VB_SUP_AKT" id="w10.1.10" deprel="PA">kunnat</w>
+ <w head="10" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w10.1.11" deprel="HD">göra</w>
+ <w head="11" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w10.1.12" deprel="PA">viktiga</w>
+ <w head="12" hun="NN_UTR_PLU_IND_NOM" id="w10.1.13" deprel="HD">insatser</w>
+ <w head="1" hun="MAD" id="w10.1.14" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s10.2">
+ <w head="0" hun="PM_NOM" id="w10.2.1" deprel="ROOT">Sverige</w>
+ <w head="1" hun="VB_PRS_AKT" id="w10.2.2" deprel="RA">medverkar</w>
+ <w head="2" hun="PP" id="w10.2.3" deprel="RA">bland</w>
+ <w head="3" hun="PN_NEU_SIN_IND_SUB@OBJ" id="w10.2.4" deprel="PA">annat</w>
+ <w head="4" hun="PP" id="w10.2.5" deprel="PA">i</w>
+ <w head="5" hun="PM_NOM" id="w10.2.6" deprel="HD">FN</w>
+ <w head="5" hun="MID" id="w10.2.7" deprel="IQ">:</w>
+ <w head="5" hun="PM_NOM" id="w10.2.8" deprel="HD">s</w>
+ <w head="8" hun="PM_NOM" id="w10.2.9" deprel="PA">observatörsgrupper</w>
+ <w head="9" hun="PP" id="w10.2.10" deprel="RA">i</w>
+ <w head="12" hun="PM_NOM" id="w10.2.11" deprel="CJ">Afghanistan</w>
+ <w head="10" hun="KN" id="w10.2.12" deprel="PA">och</w>
+ <w head="12" hun="PP" id="w10.2.13" deprel="CJ">i</w>
+ <w head="13" hun="PM_NOM" id="w10.2.14" deprel="PA">Iran</w>
+ <w head="14" hun="MID" id="w10.2.15" deprel="ET">/</w>
+ <w head="15" hun="PM_NOM" id="w10.2.16" deprel="HD">Irak</w>
+ <w head="1" hun="MAD" id="w10.2.17" deprel="IP">.</w>
+</s></p>
+
+<p id="11">
+<s id="s11.1">
+ <w head="0" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w11.1.1" deprel="ROOT">Det</w>
+ <w head="1" hun="VB_PRS_AKT" id="w11.1.2" deprel="PA">är</w>
+ <w head="2" hun="PP" id="w11.1.3" deprel="XX">med</w>
+ <w head="3" hun="NN_UTR_SIN_IND_NOM" id="w11.1.4" deprel="PA">glädje</w>
+ <w head="4" hun="PN_UTR_PLU_DEF_SUB" id="w11.1.5" deprel="AA">vi</w>
+ <w head="5" hun="VB_SUP_AKT" id="w11.1.6" deprel="PA">mottagit</w>
+ <w head="6" hun="NN_NEU_SIN_DEF_NOM" id="w11.1.7" deprel="AA">beskedet</w>
+ <w head="7" hun="SN" id="w11.1.8" deprel="PA">att</w>
+ <w head="8" hun="PM_GEN" id="w11.1.9" deprel="PA">Nobels</w>
+ <w head="9" hun="NN_NEU_SIN_IND_NOM" id="w11.1.10" deprel="AA">fredspris</w>
+ <w head="10" hun="PP" id="w11.1.11" deprel="PA">i</w>
+ <w head="11" hun="PM_NOM" id="w11.1.12" deprel="HD">år</w>
+ <w head="11" hun="PM_NOM" id="w11.1.13" deprel="HD">går</w>
+ <w head="11" hun="PP" id="w11.1.14" deprel="HD">till</w>
+ <w head="11" hun="PM_NOM" id="w11.1.15" deprel="HD">FN</w>
+ <w head="11" hun="MID" id="w11.1.16" deprel="IQ">:</w>
+ <w head="11" hun="NN_AN" id="w11.1.17" deprel="HD">s</w>
+ <w head="17" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w11.1.18" deprel="HD">fredsbevarande</w>
+ <w head="18" hun="NN_UTR_PLU_IND_NOM" id="w11.1.19" deprel="HD">styrkor</w>
+ <w head="1" hun="MAD" id="w11.1.20" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s11.2">
+ <w head="0" hun="PM_NOM" id="w11.2.1" deprel="ROOT">Sverige</w>
+ <w head="1" hun="VB_PRS_AKT" id="w11.2.2" deprel="HD">har</w>
+ <w head="2" hun="VB_SUP_AKT" id="w11.2.3" deprel="AA">deltagit</w>
+ <w head="3" hun="PP" id="w11.2.4" deprel="PA">i</w>
+ <w head="4" hun="PM_NOM" id="w11.2.5" deprel="HD">så</w>
+ <w head="4" hun="AB_POS" id="w11.2.6" deprel="HD">gott</w>
+ <w head="4" hun="KN" id="w11.2.7" deprel="HD">som</w>
+ <w head="4" hun="JJ_POS_UTR@NEU_PLU_IND_NOM" id="w11.2.8" deprel="HD">samtliga</w>
+ <w head="4" hun="NN_UTR_PLU_IND_NOM" id="w11.2.9" deprel="HD">FN-insatser</w>
+ <w head="4" hun="PP" id="w11.2.10" deprel="HD">av</w>
+ <w head="4" hun="DT_NEU_SIN_DEF" id="w11.2.11" deprel="HD">detta</w>
+ <w head="4" hun="NN_NEU_SIN_IND_NOM" id="w11.2.12" deprel="HD">slag</w>
+ <w head="1" hun="MAD" id="w11.2.13" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s11.3">
+ <w head="0" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w11.3.1" deprel="ROOT">Det</w>
+ <w head="1" hun="VB_PRS_AKT" id="w11.3.2" deprel="ROOT">är</w>
+ <w head="2" hun="PM_NOM" id="w11.3.3" deprel="ROOT">också</w>
+ <w head="3" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w11.3.4" deprel="ROOT">hedrande</w>
+ <w head="4" hun="PM_NOM" id="w11.3.5" deprel="ROOT">för</w>
+ <w head="5" hun="PM_NOM" id="w11.3.6" deprel="ROOT">Sverige</w>
+ <w head="28" hun="SN" id="w11.3.7" deprel="OO">att</w>
+ <w head="28" hun="NN_UTR_SIN_DEF_NOM" id="w11.3.8" deprel="MS">generalsekreteraren</w>
+ <w head="8" hun="MID" id="w11.3.9" deprel="IK">,</w>
+ <w head="28" hun="PP" id="w11.3.10" deprel="+F">i</w>
+ <w head="10" hun="PM_NOM" id="w11.3.11" deprel="HD">samråd</w>
+ <w head="10" hun="PP" id="w11.3.12" deprel="HD">med</w>
+ <w head="10" hun="NN_UTR_PLU_DEF_NOM" id="w11.3.13" deprel="HD">parterna</w>
+ <w head="10" hun="MID" id="w11.3.14" deprel="IK">,</w>
+ <w head="22" hun="VB_SUP_AKT" id="w11.3.15" deprel="HD">utsett</w>
+ <w head="22" hun="PM_NOM" id="w11.3.16" deprel="HD">vår</w>
+ <w head="22" hun="PM_NOM" id="w11.3.17" deprel="HD">FN-ambassadör</w>
+ <w head="22" hun="PP" id="w11.3.18" deprel="HD">till</w>
+ <w head="22" hun="PS_UTR_SIN_DEF" id="w11.3.19" deprel="HD">sin</w>
+ <w head="19" hun="JJ_POS_MAS_SIN_DEF_NOM" id="w11.3.20" deprel="HD">personlige</w>
+ <w head="19" hun="NN_UTR_SIN_IND_NOM" id="w11.3.21" deprel="HD">representant</w>
+ <w head="10" hun="PP" id="w11.3.22" deprel="AN">vid</w>
+ <w head="22" hun="NN_UTR_PLU_DEF_NOM" id="w11.3.23" deprel="PA">fredsförhandlingarna</w>
+ <w head="23" hun="PP" id="w11.3.24" deprel="ET">mellan</w>
+ <w head="26" hun="PM_NOM" id="w11.3.25" deprel="CJ">Iran</w>
+ <w head="24" hun="KN" id="w11.3.26" deprel="PA">och</w>
+ <w head="26" hun="PM_NOM" id="w11.3.27" deprel="CJ">Irak</w>
+ <w head="6" hun="MAD" id="w11.3.28" deprel="MS">.</w>
+</s></p>
+
+<p id="12">
+<s id="s12.1">
+ <w head="0" hun="DT_NEU_SIN_DEF" id="w12.1.1" deprel="ROOT">Det</w>
+ <w head="1" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w12.1.2" deprel="HD">förnedrande</w>
+ <w head="2" hun="NN_NEU_SIN_DEF_NOM" id="w12.1.3" deprel="AA">apartheidsystemet</w>
+ <w head="3" hun="PP" id="w12.1.4" deprel="PA">i</w>
+ <w head="4" hun="PM_NOM" id="w12.1.5" deprel="HD">Sydafrika</w>
+ <w head="4" hun="VB_PRS_AKT" id="w12.1.6" deprel="HD">måste</w>
+ <w head="4" hun="VB_INF_SFO" id="w12.1.7" deprel="HD">avskaffas</w>
+ <w head="1" hun="MAD" id="w12.1.8" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s12.2">
+ <w head="0" hun="DT_NEU_SIN_IND" id="w12.2.1" deprel="ROOT">Ett</w>
+ <w head="1" hun="NN_NEU_SIN_IND_NOM" id="w12.2.2" deprel="PA">beslut</w>
+ <w head="8" hun="PP" id="w12.2.3" deprel="CJ">av</w>
+ <w head="3" hun="PM_NOM" id="w12.2.4" deprel="PA">FN</w>
+ <w head="4" hun="MID" id="w12.2.5" deprel="IQ">:</w>
+ <w head="4" hun="PM_NOM" id="w12.2.6" deprel="AN">s</w>
+ <w head="6" hun="PM_NOM" id="w12.2.7" deprel="HD">säkerhetsråd</w>
+ <w head="2" hun="MID" id="w12.2.8" deprel="ET">,</w>
+ <w head="8" hun="PP" id="w12.2.9" deprel="CJ">om</w>
+ <w head="9" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w12.2.10" deprel="PA">bindande</w>
+ <w head="10" hun="NN_UTR_PLU_IND_NOM" id="w12.2.11" deprel="PA">sanktioner</w>
+ <w head="11" hun="PP" id="w12.2.12" deprel="OA">mot</w>
+ <w head="12" hun="PM_NOM" id="w12.2.13" deprel="HD">Sydafrika</w>
+ <w head="12" hun="MID" id="w12.2.14" deprel="PA">,</w>
+ <w head="14" hun="VB_PRT_AKT" id="w12.2.15" deprel="AA">skulle</w>
+ <w head="15" hun="VB_INF_AKT" id="w12.2.16" deprel="PA">vara</w>
+ <w head="16" hun="DT_UTR_SIN_DEF" id="w12.2.17" deprel="AA">den</w>
+ <w head="17" hun="AB_SUV" id="w12.2.18" deprel="PA">mest</w>
+ <w head="18" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w12.2.19" deprel="AA">effektiva</w>
+ <w head="19" hun="NN_UTR_SIN_DEF_NOM" id="w12.2.20" deprel="PA">åtgärden</w>
+ <w head="20" hun="PP" id="w12.2.21" deprel="RA">i</w>
+ <w head="21" hun="DT_NEU_SIN_DEF" id="w12.2.22" deprel="PA">detta</w>
+ <w head="22" hun="NN_NEU_SIN_IND_NOM" id="w12.2.23" deprel="HD">syfte</w>
+ <w head="1" hun="MAD" id="w12.2.24" deprel="IP">.</w>
+</s></p>
+
+<p id="13">
+<s id="s13.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w13.1.1" deprel="ROOT">Konflikten</w>
+ <w head="1" hun="PP" id="w13.1.2" deprel="RA">i</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w13.1.3" deprel="HD">Mellanöstern</w>
+ <w head="2" hun="VB_PRS_AKT" id="w13.1.4" deprel="HD">tillhör</w>
+ <w head="2" hun="DT_UTR@NEU_PLU_DEF" id="w13.1.5" deprel="HD">de</w>
+ <w head="2" hun="AB_SUV" id="w13.1.6" deprel="HD">mest</w>
+ <w head="2" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w13.1.7" deprel="HD">svårlösta</w>
+ <w head="2" hun="PP" id="w13.1.8" deprel="HD">i</w>
+ <w head="2" hun="PM_NOM" id="w13.1.9" deprel="PA">vår</w>
+ <w head="9" hun="NN_UTR_SIN_IND_NOM" id="w13.1.10" deprel="HD">tid</w>
+ <w head="1" hun="MAD" id="w13.1.11" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s13.2">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w13.2.1" deprel="ROOT">Regeringen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w13.2.2" deprel="AA">stöder</w>
+ <w head="2" hun="AB_POS" id="w13.2.3" deprel="PA">aktivt</w>
+ <w head="3" hun="NN_NEU_PLU_DEF_NOM" id="w13.2.4" deprel="AA">strävandena</w>
+ <w head="4" hun="IE" id="w13.2.5" deprel="HD">att</w>
+ <w head="5" hun="VB_INF_AKT" id="w13.2.6" deprel="PA">sammankalla</w>
+ <w head="6" hun="DT_UTR_SIN_IND" id="w13.2.7" deprel="AA">en</w>
+ <w head="7" hun="JJ_POS_UTR_SIN_IND_NOM" id="w13.2.8" deprel="PA">internationell</w>
+ <w head="8" hun="NN_UTR_SIN_IND_NOM" id="w13.2.9" deprel="AA">fredskonferens</w>
+ <w head="9" hun="PP" id="w13.2.10" deprel="PA">i</w>
+ <w head="10" hun="PM_NOM" id="w13.2.11" deprel="HD">FN</w>
+ <w head="10" hun="MID" id="w13.2.12" deprel="IQ">:</w>
+ <w head="10" hun="NN_AN" id="w13.2.13" deprel="HD">s</w>
+ <w head="13" hun="NN_UTR_SIN_IND_NOM" id="w13.2.14" deprel="HD">regi</w>
+ <w head="1" hun="MAD" id="w13.2.15" deprel="IP">.</w>
+</s></p>
+
+<p id="14">
+<s id="s14.1">
+ <w head="0" hun="JJ_POS_NEU_SIN_IND_NOM" id="w14.1.1" deprel="ROOT">Vårt</w>
+ <w head="1" hun="NN_NEU_SIN_IND_NOM" id="w14.1.2" deprel="HD">land</w>
+ <w head="2" hun="VB_PRS_AKT" id="w14.1.3" deprel="AA">är</w>
+ <w head="3" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w14.1.4" deprel="PA">beroende</w>
+ <w head="4" hun="PP" id="w14.1.5" deprel="AG">av</w>
+ <w head="10" hun="DT_NEU_SIN_IND" id="w14.1.6" deprel="PA">ett</w>
+ <w head="6" hun="JJ_POS_NEU_SIN_IND_NOM" id="w14.1.7" deprel="HD">fritt</w>
+ <w head="6" hun="NN_NEU_SIN_IND_NOM" id="w14.1.8" deprel="HD">handelsutbyte</w>
+ <w head="6" hun="NN_UTR_PLU_DEF_NOM" id="w14.1.9" deprel="HD">nationerna</w>
+ <w head="5" hun="PP" id="w14.1.10" deprel="PA">emellan</w>
+ <w head="1" hun="MAD" id="w14.1.11" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s14.2">
+ <w head="0" hun="PN_UTR_PLU_DEF_SUB" id="w14.2.1" deprel="ROOT">Vi</w>
+ <w head="1" hun="VB_PRS_AKT" id="w14.2.2" deprel="ROOT">är</w>
+ <w head="2" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w14.2.3" deprel="HD">pådrivande</w>
+ <w head="8" hun="PP" id="w14.2.4" deprel="CA">i</w>
+ <w head="4" hun="DT_UTR@NEU_PLU_DEF" id="w14.2.5" deprel="HD">de</w>
+ <w head="4" hun="NN_UTR_PLU_IND_NOM" id="w14.2.6" deprel="HD">förhandlingar</w>
+ <w head="4" hun="HP_-_-_-" id="w14.2.7" deprel="HD">som</w>
+ <w head="3" hun="AB" id="w14.2.8" deprel="TA">nu</w>
+ <w head="8" hun="VB_PRS_AKT" id="w14.2.9" deprel="HD">pågår</w>
+ <w head="2" hun="NN_UTR_PLU_IND_NOM" id="w14.2.10" deprel="HD">för</w>
+ <w head="2" hun="IE" id="w14.2.11" deprel="ROOT">att</w>
+ <w head="11" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w14.2.12" deprel="ROOT">stärka</w>
+ <w head="12" hun="NN_UTR_SIN_DEF_NOM" id="w14.2.13" deprel="HD">frihandeln</w>
+ <w head="12" hun="MAD" id="w14.2.14" deprel="IP">.</w>
+</s></p>
+
+<p id="15">
+<s id="s15.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w15.1.1" deprel="ROOT">Regeringen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w15.1.2" deprel="HD">kommer</w>
+ <w head="1" hun="MID" id="w15.1.3" deprel="IK">,</w>
+ <w head="1" hun="PP" id="w15.1.4" deprel="RA">inom</w>
+ <w head="4" hun="NN_UTR_SIN_DEF_NOM" id="w15.1.5" deprel="PA">ramen</w>
+ <w head="7" hun="PM_NOM" id="w15.1.6" deprel="CJ">för</w>
+ <w head="5" hun="KN" id="w15.1.7" deprel="IF">och</w>
+ <w head="7" hun="PP" id="w15.1.8" deprel="CJ">i</w>
+ <w head="8" hun="NN_UTR_SIN_IND_NOM" id="w15.1.9" deprel="PA">samverkan</w>
+ <w head="9" hun="PP" id="w15.1.10" deprel="ET">med</w>
+ <w head="10" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w15.1.11" deprel="PA">övriga</w>
+ <w head="11" hun="NN_UTR_PLU_IND_NOM" id="w15.1.12" deprel="HD">EFTA-länder</w>
+ <w head="14" hun="MID" id="w15.1.13" deprel="IK">,</w>
+ <w head="10" hun="SN" id="w15.1.14" deprel="PA">att</w>
+ <w head="14" hun="PM_NOM" id="w15.1.15" deprel="AA">fördjupa</w>
+ <w head="15" hun="NN_NEU_SIN_DEF_NOM" id="w15.1.16" deprel="PA">samarbetet</w>
+ <w head="16" hun="PP" id="w15.1.17" deprel="OA">med</w>
+ <w head="17" hun="PM_NOM" id="w15.1.18" deprel="PA">EG</w>
+ <w head="18" hun="PM_NOM" id="w15.1.19" deprel="HD">på</w>
+ <w head="17" hun="DT_UTR@NEU_PLU_IND@DEF" id="w15.1.20" deprel="PA">alla</w>
+ <w head="20" hun="PM_NOM" id="w15.1.21" deprel="HD">samhällsområden</w>
+ <w head="14" hun="MID" id="w15.1.22" deprel="IK">,</w>
+ <w head="14" hun="PM_NOM" id="w15.1.23" deprel="ET">så</w>
+ <w head="23" hun="PM_NOM" id="w15.1.24" deprel="AA">långt</w>
+ <w head="24" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w15.1.25" deprel="PA">detta</w>
+ <w head="25" hun="VB_PRS_AKT" id="w15.1.26" deprel="AA">är</w>
+ <w head="26" hun="JJ_POS_NEU_SIN_IND_NOM" id="w15.1.27" deprel="PA">förenligt</w>
+ <w head="27" hun="PP" id="w15.1.28" deprel="VS">med</w>
+ <w head="28" hun="NN_UTR_SIN_DEF_NOM" id="w15.1.29" deprel="HD">neutralitetspolitiken</w>
+ <w head="1" hun="MAD" id="w15.1.30" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s15.2">
+ <w head="0" hun="PM_NOM" id="w15.2.1" deprel="ROOT">Också</w>
+ <w head="1" hun="DT_NEU_SIN_DEF" id="w15.2.2" deprel="HD">det</w>
+ <w head="2" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w15.2.3" deprel="AA">nordiska</w>
+ <w head="3" hun="NN_NEU_SIN_DEF_NOM" id="w15.2.4" deprel="PA">samarbetet</w>
+ <w head="4" hun="VB_PRS_SFO" id="w15.2.5" deprel="HD">utvecklas</w>
+ <w head="1" hun="MAD" id="w15.2.6" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s15.3">
+ <w head="0" hun="AB" id="w15.3.1" deprel="ROOT">Härvid</w>
+ <w head="1" hun="VB_PRS_AKT" id="w15.3.2" deprel="HD">skall</w>
+ <w head="1" hun="NN_NEU_PLU_DEF_NOM" id="w15.3.3" deprel="HD">kraven</w>
+ <w head="1" hun="PM_NOM" id="w15.3.4" deprel="HD">på</w>
+ <w head="1" hun="JJ_POS_UTR_SIN_IND_NOM" id="w15.3.5" deprel="HD">full</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w15.3.6" deprel="HD">sysselsättning</w>
+ <w head="1" hun="MID" id="w15.3.7" deprel="IK">,</w>
+ <w head="1" hun="PM_NOM" id="w15.3.8" deprel="HD">välfärd</w>
+ <w head="1" hun="MID" id="w15.3.9" deprel="IK">,</w>
+ <w head="1" hun="JJ_POS_UTR_SIN_IND_NOM" id="w15.3.10" deprel="HD">god</w>
+ <w head="12" hun="NN_UTR_SIN_IND_NOM" id="w15.3.11" deprel="CJ">miljö</w>
+ <w head="10" hun="KN" id="w15.3.12" deprel="IF">och</w>
+ <w head="12" hun="JJ_POS_NEU_SIN_IND_NOM" id="w15.3.13" deprel="ET">fackligt</w>
+ <w head="13" hun="NN_NEU_SIN_IND_NOM" id="w15.3.14" deprel="PA">medbestämmande</w>
+ <w head="14" hun="VB_PRS_SFO" id="w15.3.15" deprel="PA">sättas</w>
+ <w head="15" hun="PP" id="w15.3.16" deprel="PA">i</w>
+ <w head="16" hun="NN_NEU_SIN_IND_NOM" id="w15.3.17" deprel="HD">centrum</w>
+ <w head="1" hun="MAD" id="w15.3.18" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s15.4">
+ <w head="0" hun="NN_UTR_PLU_DEF_NOM" id="w15.4.1" deprel="ROOT">Möjligheterna</w>
+ <w head="1" hun="PP" id="w15.4.2" deprel="OA">till</w>
+ <w head="6" hun="NN_UTR_PLU_IND_NOM" id="w15.4.3" deprel="CJ">studier</w>
+ <w head="6" hun="MID" id="w15.4.4" deprel="IK">,</w>
+ <w head="6" hun="NN_NEU_SIN_IND_NOM" id="w15.4.5" deprel="CJ">arbete</w>
+ <w head="2" hun="KN" id="w15.4.6" deprel="PA">och</w>
+ <w head="6" hun="JJ_POS_NEU_SIN_IND_NOM" id="w15.4.7" deprel="CJ">kulturellt</w>
+ <w head="2" hun="NN_NEU_SIN_IND_NOM" id="w15.4.8" deprel="PA">utbyte</w>
+ <w head="8" hun="VB_PRS_AKT" id="w15.4.9" deprel="HD">över</w>
+ <w head="9" hun="NN_UTR_PLU_DEF_NOM" id="w15.4.10" deprel="HD">nationsgränserna</w>
+ <w head="10" hun="VB_PRS_AKT" id="w15.4.11" deprel="PA">skall</w>
+ <w head="11" hun="VB_INF_SFO" id="w15.4.12" deprel="HD">utvidgas</w>
+ <w head="1" hun="MAD" id="w15.4.13" deprel="IP">.</w>
+</s></p>
+
+<p id="16">
+<s id="s16.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w16.1.1" deprel="ROOT">Regeringen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w16.1.2" deprel="AA">avser</w>
+ <w head="2" hun="SN" id="w16.1.3" deprel="PA">att</w>
+ <w head="3" hun="NN_UTR_SIN_DEF_NOM" id="w16.1.4" deprel="AA">på</w>
+ <w head="4" hun="JJ_POS_UTR@NEU_PLU_IND_NOM" id="w16.1.5" deprel="PA">flera</w>
+ <w head="5" hun="PM_NOM" id="w16.1.6" deprel="AA">sätt</w>
+ <w head="8" hun="PM_NOM" id="w16.1.7" deprel="CJ">befästa</w>
+ <w head="6" hun="KN" id="w16.1.8" deprel="PA">och</w>
+ <w head="8" hun="PM_NOM" id="w16.1.9" deprel="CJ">stärka</w>
+ <w head="9" hun="PM_NOM" id="w16.1.10" deprel="HD">rättssamhället</w>
+ <w head="1" hun="MAD" id="w16.1.11" deprel="IP">.</w>
+</s></p>
+
+<p id="17">
+<s id="s17.1">
+ <w head="2" hun="NN_UTR_PLU_DEF_GEN" id="w17.1.1" deprel="CJ">Domstolarnas</w>
+ <w head="0" hun="KN" id="w17.1.2" deprel="ROOT">och</w>
+ <w head="2" hun="NN_NEU_SIN_DEF_GEN" id="w17.1.3" deprel="CJ">åklagarväsendets</w>
+ <w head="3" hun="NN_UTR_PLU_IND_NOM" id="w17.1.4" deprel="PA">möjligheter</w>
+ <w head="4" hun="SN" id="w17.1.5" deprel="PA">att</w>
+ <w head="5" hun="NN_UTR_PLU_DEF_NOM" id="w17.1.6" deprel="PA">utföra</w>
+ <w head="6" hun="PS_UTR@NEU_PLU_DEF" id="w17.1.7" deprel="+F">sina</w>
+ <w head="7" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w17.1.8" deprel="HD">viktiga</w>
+ <w head="8" hun="NN_UTR_PLU_IND_NOM" id="w17.1.9" deprel="PA">uppgifter</w>
+ <w head="9" hun="VB_PRS_SFO" id="w17.1.10" deprel="HD">förbättras</w>
+ <w head="2" hun="MAD" id="w17.1.11" deprel="IP">.</w>
+</s></p>
+
+<p id="18">
+<s id="s18.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w18.1.1" deprel="ROOT">Regeringen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w18.1.2" deprel="AA">kommer</w>
+ <w head="2" hun="IE" id="w18.1.3" deprel="HD">att</w>
+ <w head="3" hun="VB_INF_AKT" id="w18.1.4" deprel="AA">lägga</w>
+ <w head="4" hun="NN_UTR_SIN_IND_NOM" id="w18.1.5" deprel="PA">förslag</w>
+ <w head="5" hun="PP" id="w18.1.6" deprel="OA">om</w>
+ <w head="6" hun="PM_NOM" id="w18.1.7" deprel="PA">åtgärder</w>
+ <w head="7" hun="PM_NOM" id="w18.1.8" deprel="AA">för</w>
+ <w head="8" hun="IE" id="w18.1.9" deprel="PA">att</w>
+ <w head="11" hun="VB_INF_AKT" id="w18.1.10" deprel="CJ">utveckla</w>
+ <w head="9" hun="KN" id="w18.1.11" deprel="IF">och</w>
+ <w head="11" hun="VB_INF_AKT" id="w18.1.12" deprel="ET">effektivisera</w>
+ <w head="12" hun="NN_UTR_SIN_DEF_GEN" id="w18.1.13" deprel="PA">polisens</w>
+ <w head="13" hun="NN_UTR_SIN_IND_NOM" id="w18.1.14" deprel="HD">verksamhet</w>
+ <w head="1" hun="MAD" id="w18.1.15" deprel="IP">.</w>
+</s></p>
+
+<p id="19">
+<s id="s19.1">
+ <w head="0" hun="NN_UTR_SIN_IND_NOM" id="w19.1.1" deprel="ROOT">Förslag</w>
+ <w head="1" hun="PP" id="w19.1.2" deprel="OA">om</w>
+ <w head="2" hun="PM_NOM" id="w19.1.3" deprel="PA">sänkt</w>
+ <w head="1" hun="PM_NOM" id="w19.1.4" deprel="HD">gräns</w>
+ <w head="1" hun="PM_NOM" id="w19.1.5" deprel="HD">för</w>
+ <w head="3" hun="NN_UTR_SIN_IND_NOM" id="w19.1.6" deprel="HD">rattonykterhet</w>
+ <w head="6" hun="VB_PRS_AKT" id="w19.1.7" deprel="HD">kommer</w>
+ <w head="7" hun="SN" id="w19.1.8" deprel="PA">att</w>
+ <w head="8" hun="VB_PRS_SFO" id="w19.1.9" deprel="PA">föreläggas</w>
+ <w head="9" hun="NN_UTR_SIN_DEF_NOM" id="w19.1.10" deprel="HD">riksdagen</w>
+ <w head="1" hun="MAD" id="w19.1.11" deprel="IP">.</w>
+</s></p>
+
+<p id="20">
+<s id="s20.1">
+ <w head="0" hun="AB_POS" id="w20.1.1" deprel="ROOT">Lokalt</w>
+ <w head="1" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w20.1.2" deprel="HD">brottsförebyggande</w>
+ <w head="2" hun="NN_NEU_SIN_IND_NOM" id="w20.1.3" deprel="HD">arbete</w>
+ <w head="3" hun="VB_PRS_AKT" id="w20.1.4" deprel="PA">skall</w>
+ <w head="4" hun="VB_INF_SFO" id="w20.1.5" deprel="HD">uppmuntras</w>
+ <w head="1" hun="MAD" id="w20.1.6" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s20.2">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w20.2.1" deprel="ROOT">Kampen</w>
+ <w head="1" hun="PP" id="w20.2.2" deprel="OA">mot</w>
+ <w head="4" hun="NN_NEU_SIN_DEF_NOM" id="w20.2.3" deprel="CJ">våldet</w>
+ <w head="2" hun="KN" id="w20.2.4" deprel="PA">och</w>
+ <w head="4" hun="DT_UTR_SIN_DEF" id="w20.2.5" deprel="CJ">den</w>
+ <w head="2" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w20.2.6" deprel="PA">ekonomiska</w>
+ <w head="6" hun="NN_UTR_SIN_DEF_NOM" id="w20.2.7" deprel="HD">brottsligheten</w>
+ <w head="7" hun="VB_INF_SFO" id="w20.2.8" deprel="HD">prioriteras</w>
+ <w head="1" hun="MAD" id="w20.2.9" deprel="IP">.</w>
+</s></p>
+
+<p id="21">
+<s id="s21.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w21.1.1" deprel="ROOT">Kriminalvården</w>
+ <w head="1" hun="VB_PRS_AKT" id="w21.1.2" deprel="AA">måste</w>
+ <w head="2" hun="VB_INF_SFO" id="w21.1.3" deprel="PA">bedrivas</w>
+ <w head="3" hun="PM_NOM" id="w21.1.4" deprel="HD">så</w>
+ <w head="4" hun="SN" id="w21.1.5" deprel="PA">att</w>
+ <w head="5" hun="NN_UTR_PLU_IND_NOM" id="w21.1.6" deprel="PA">rymningar</w>
+ <w head="6" hun="VB_PRS_SFO" id="w21.1.7" deprel="HD">förhindras</w>
+ <w head="1" hun="MAD" id="w21.1.8" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s21.2">
+ <w head="9" hun="AB" id="w21.2.1" deprel="PA">Samtidigt</w>
+ <w head="1" hun="PM_NOM" id="w21.2.2" deprel="HD">måste</w>
+ <w head="1" hun="PM_NOM" id="w21.2.3" deprel="HD">fängelsetiden</w>
+ <w head="1" hun="KN" id="w21.2.4" deprel="HD">och</w>
+ <w head="1" hun="PM_NOM" id="w21.2.5" deprel="HD">frivården</w>
+ <w head="1" hun="PM_NOM" id="w21.2.6" deprel="HD">underlätta</w>
+ <w head="1" hun="DT_UTR_SIN_IND" id="w21.2.7" deprel="HD">en</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w21.2.8" deprel="HD">återanpassning</w>
+ <w head="0" hun="PP" id="w21.2.9" deprel="ROOT">efter</w>
+ <w head="9" hun="NN_UTR_SIN_DEF_NOM" id="w21.2.10" deprel="HD">frigivningen</w>
+ <w head="9" hun="MAD" id="w21.2.11" deprel="IP">.</w>
+</s></p>
+
+<p id="22">
+<s id="s22.1">
+ <w head="0" hun="NN_NEU_SIN_DEF_NOM" id="w22.1.1" deprel="ROOT">Målet</w>
+ <w head="1" hun="VB_PRS_AKT" id="w22.1.2" deprel="HD">för</w>
+ <w head="2" hun="DT_UTR_SIN_DEF" id="w22.1.3" deprel="AA">den</w>
+ <w head="3" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w22.1.4" deprel="PA">ekonomiska</w>
+ <w head="4" hun="NN_UTR_SIN_DEF_NOM" id="w22.1.5" deprel="AA">politiken</w>
+ <w head="5" hun="VB_PRS_AKT" id="w22.1.6" deprel="PA">är</w>
+ <w head="6" hun="JJ_POS_UTR_SIN_IND_NOM" id="w22.1.7" deprel="AA">full</w>
+ <w head="9" hun="NN_UTR_SIN_IND_NOM" id="w22.1.8" deprel="CJ">sysselsättning</w>
+ <w head="7" hun="KN" id="w22.1.9" deprel="PA">och</w>
+ <w head="9" hun="PM_NOM" id="w22.1.10" deprel="ET">ökat</w>
+ <w head="10" hun="PM_NOM" id="w22.1.11" deprel="PA">välstånd</w>
+ <w head="11" hun="PM_NOM" id="w22.1.12" deprel="PA">för</w>
+ <w head="12" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w22.1.13" deprel="+F">hela</w>
+ <w head="13" hun="NN_NEU_SIN_DEF_NOM" id="w22.1.14" deprel="HD">folket</w>
+ <w head="1" hun="MAD" id="w22.1.15" deprel="IP">.</w>
+</s></p>
+
+<p id="23">
+<s id="s23.1">
+ <w head="0" hun="DT_UTR_SIN_DEF" id="w23.1.1" deprel="ROOT">Den</w>
+ <w head="1" hun="PM_NOM" id="w23.1.2" deprel="HD">alltför</w>
+ <w head="2" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w23.1.3" deprel="AA">höga</w>
+ <w head="3" hun="NN_UTR_SIN_DEF_NOM" id="w23.1.4" deprel="PA">inflationstakten</w>
+ <w head="4" hun="VB_PRT_AKT" id="w23.1.5" deprel="HD">måste</w>
+ <w head="5" hun="VB_INF_SFO" id="w23.1.6" deprel="PA">bringas</w>
+ <w head="6" hun="PL" id="w23.1.7" deprel="HD">ned</w>
+ <w head="1" hun="MAD" id="w23.1.8" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s23.2">
+ <w head="0" hun="PM_NOM" id="w23.2.1" deprel="ROOT">Därför</w>
+ <w head="1" hun="VB_PRT_AKT" id="w23.2.2" deprel="HD">måste</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w23.2.3" deprel="AA">budgetpolitiken</w>
+ <w head="3" hun="VB_INF_AKT" id="w23.2.4" deprel="PA">vara</w>
+ <w head="4" hun="VB_SUP_AKT" id="w23.2.5" deprel="AA">fortsatt</w>
+ <w head="7" hun="JJ_POS_UTR_SIN_IND_NOM" id="w23.2.6" deprel="CJ">stram</w>
+ <w head="5" hun="KN" id="w23.2.7" deprel="PA">och</w>
+ <w head="7" hun="DT_UTR@NEU_PLU_DEF" id="w23.2.8" deprel="ET">de</w>
+ <w head="8" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w23.2.9" deprel="PA">starka</w>
+ <w head="9" hun="NN_UTR_PLU_DEF_NOM" id="w23.2.10" deprel="PA">statsfinanserna</w>
+ <w head="10" hun="VB_INF_SFO" id="w23.2.11" deprel="HD">bevaras</w>
+ <w head="1" hun="MAD" id="w23.2.12" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s23.3">
+ <w head="8" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w23.3.1" deprel="HD">Kostnadskrävande</w>
+ <w head="1" hun="NN_UTR_PLU_IND_NOM" id="w23.3.2" deprel="HD">reformer</w>
+ <w head="1" hun="PM_NOM" id="w23.3.3" deprel="HD">genomförs</w>
+ <w head="5" hun="AB" id="w23.3.4" deprel="CA">endast</w>
+ <w head="1" hun="PP" id="w23.3.5" deprel="+F">i</w>
+ <w head="5" hun="DT_UTR_SIN_DEF" id="w23.3.6" deprel="HD">den</w>
+ <w head="5" hun="NN_UTR_SIN_IND_NOM" id="w23.3.7" deprel="HD">takt</w>
+ <w head="0" hun="KN" id="w23.3.8" deprel="ROOT">som</w>
+ <w head="8" hun="NN_NEU_SIN_IND_NOM" id="w23.3.9" deprel="HD">utrymme</w>
+ <w head="8" hun="VB_PRS_SFO" id="w23.3.10" deprel="HD">skapas</w>
+ <w head="8" hun="PP" id="w23.3.11" deprel="UA">genom</w>
+ <w head="11" hun="JJ_POS_UTR_SIN_IND_NOM" id="w23.3.12" deprel="PA">ekonomisk</w>
+ <w head="12" hun="NN_UTR_SIN_IND_NOM" id="w23.3.13" deprel="HD">tillväxt</w>
+ <w head="5" hun="MID" id="w23.3.14" deprel="IR">,</w>
+ <w head="14" hun="NN_UTR_PLU_IND_NOM" id="w23.3.15" deprel="PA">omprövningar</w>
+ <w head="15" hun="PP" id="w23.3.16" deprel="AG">av</w>
+ <w head="18" hun="NN_NEU_PLU_IND_NOM" id="w23.3.17" deprel="CJ">utgiftsprogram</w>
+ <w head="16" hun="KN" id="w23.3.18" deprel="PA">och</w>
+ <w head="18" hun="NN_UTR_PLU_IND_NOM" id="w23.3.19" deprel="ET">rationaliseringar</w>
+ <w head="19" hun="PP" id="w23.3.20" deprel="PA">i</w>
+ <w head="20" hun="DT_UTR_SIN_DEF" id="w23.3.21" deprel="HD">den</w>
+ <w head="20" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w23.3.22" deprel="HD">offentliga</w>
+ <w head="20" hun="NN_UTR_SIN_DEF_NOM" id="w23.3.23" deprel="HD">sektorn</w>
+ <w head="8" hun="MAD" id="w23.3.24" deprel="IP">.</w>
+</s></p>
+
+<p id="24">
+<s id="s24.1">
+ <w head="0" hun="NN_UTR_SIN_IND_NOM" id="w24.1.1" deprel="ROOT">Brist</w>
+ <w head="1" hun="PM_GEN" id="w24.1.2" deprel="HD">på</w>
+ <w head="4" hun="NN_UTR_SIN_IND_NOM" id="w24.1.3" deprel="CJ">arbetskraft</w>
+ <w head="2" hun="KN" id="w24.1.4" deprel="IF">och</w>
+ <w head="4" hun="DT_NEU_SIN_DEF" id="w24.1.5" deprel="ET">det</w>
+ <w head="5" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w24.1.6" deprel="PA">låga</w>
+ <w head="6" hun="NN_NEU_SIN_DEF_NOM" id="w24.1.7" deprel="AA">sparandet</w>
+ <w head="7" hun="VB_PRS_AKT" id="w24.1.8" deprel="PA">begränsar</w>
+ <w head="10" hun="NN_UTR_SIN_DEF_NOM" id="w24.1.9" deprel="CJ">tillväxten</w>
+ <w head="8" hun="KN" id="w24.1.10" deprel="IF">och</w>
+ <w head="10" hun="VB_PRS_AKT" id="w24.1.11" deprel="CJ">driver</w>
+ <w head="11" hun="PL" id="w24.1.12" deprel="PL">upp</w>
+ <w head="14" hun="NN_NEU_PLU_IND_NOM" id="w24.1.13" deprel="CJ">priser</w>
+ <w head="10" hun="KN" id="w24.1.14" deprel="CJ">och</w>
+ <w head="14" hun="NN_UTR_PLU_IND_NOM" id="w24.1.15" deprel="CJ">kostnader</w>
+ <w head="1" hun="MAD" id="w24.1.16" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s24.2">
+ <w head="0" hun="PM_NOM" id="w24.2.1" deprel="ROOT">Särskilda</w>
+ <w head="1" hun="PM_NOM" id="w24.2.2" deprel="AA">åtgärder</w>
+ <w head="2" hun="VB_PRS_AKT" id="w24.2.3" deprel="PA">kommer</w>
+ <w head="3" hun="PM_NOM" id="w24.2.4" deprel="AA">därför</w>
+ <w head="4" hun="SN" id="w24.2.5" deprel="PA">att</w>
+ <w head="5" hun="PM_NOM" id="w24.2.6" deprel="ET">sättas</w>
+ <w head="8" hun="AB" id="w24.2.7" deprel="CA">in</w>
+ <w head="12" hun="VB_PRS_AKT" id="w24.2.8" deprel="MS">för</w>
+ <w head="8" hun="SN" id="w24.2.9" deprel="HD">att</w>
+ <w head="8" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w24.2.10" deprel="HD">öka</w>
+ <w head="8" hun="NN_NEU_SIN_DEF_NOM" id="w24.2.11" deprel="HD">sparandet</w>
+ <w head="6" hun="KN" id="w24.2.12" deprel="UA">och</w>
+ <w head="12" hun="PM_NOM" id="w24.2.13" deprel="ET">bättre</w>
+ <w head="13" hun="VB_INF_AKT" id="w24.2.14" deprel="PA">ta</w>
+ <w head="14" hun="PP" id="w24.2.15" deprel="OA">till</w>
+ <w head="15" hun="VB_INF_AKT" id="w24.2.16" deprel="PA">vara</w>
+ <w head="16" hun="PM_GEN" id="w24.2.17" deprel="HD">människors</w>
+ <w head="16" hun="NN_UTR_SIN_IND_NOM" id="w24.2.18" deprel="HD">vilja</w>
+ <w head="16" hun="PP" id="w24.2.19" deprel="AN">till</w>
+ <w head="19" hun="NN_NEU_SIN_IND_NOM" id="w24.2.20" deprel="HD">arbete</w>
+ <w head="1" hun="MAD" id="w24.2.21" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s24.3">
+ <w head="0" hun="PM_NOM" id="w24.3.1" deprel="ROOT">Förslag</w>
+ <w head="1" hun="VB_PRS_AKT" id="w24.3.2" deprel="AA">kommer</w>
+ <w head="2" hun="SN" id="w24.3.3" deprel="PA">att</w>
+ <w head="3" hun="PM_NOM" id="w24.3.4" deprel="ET">läggas</w>
+ <w head="6" hun="AB" id="w24.3.5" deprel="CA">fram</w>
+ <w head="10" hun="VB_PRS_AKT" id="w24.3.6" deprel="MS">för</w>
+ <w head="6" hun="SN" id="w24.3.7" deprel="HD">att</w>
+ <w head="6" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w24.3.8" deprel="HD">öka</w>
+ <w head="6" hun="NN_UTR_SIN_DEF_NOM" id="w24.3.9" deprel="HD">konkurrensen</w>
+ <w head="4" hun="KN" id="w24.3.10" deprel="UA">och</w>
+ <w head="10" hun="VB_IMP_AKT" id="w24.3.11" deprel="+F">hålla</w>
+ <w head="11" hun="PL" id="w24.3.12" deprel="PL">tillbaka</w>
+ <w head="11" hun="NN_UTR_PLU_DEF_NOM" id="w24.3.13" deprel="RA">kostnaderna</w>
+ <w head="13" hun="PM_NOM" id="w24.3.14" deprel="AA">på</w>
+ <w head="14" hun="PM_NOM" id="w24.3.15" deprel="PA">områden</w>
+ <w head="15" hun="VB_PRS_AKT" id="w24.3.16" deprel="AA">där</w>
+ <w head="16" hun="NN_UTR_SIN_DEF_NOM" id="w24.3.17" deprel="PA">prisutvecklingen</w>
+ <w head="17" hun="VB_PRS_AKT" id="w24.3.18" deprel="HD">driver</w>
+ <w head="18" hun="PM_NOM" id="w24.3.19" deprel="PA">på</w>
+ <w head="19" hun="NN_UTR_SIN_DEF_NOM" id="w24.3.20" deprel="HD">inflationen</w>
+ <w head="1" hun="MAD" id="w24.3.21" deprel="IP">.</w>
+</s></p>
+
+<p id="25">
+<s id="s25.1">
+ <w head="0" hun="DT_UTR_SIN_IND" id="w25.1.1" deprel="ROOT">En</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w25.1.2" deprel="PA">sänkning</w>
+ <w head="2" hun="PP" id="w25.1.3" deprel="AG">av</w>
+ <w head="3" hun="NN_UTR_SIN_DEF_NOM" id="w25.1.4" deprel="PA">marginalskatten</w>
+ <w head="4" hun="RG_NOM" id="w25.1.5" deprel="PA">1989</w>
+ <w head="5" hun="PP" id="w25.1.6" deprel="OA">med</w>
+ <w head="6" hun="RG_NOM" id="w25.1.7" deprel="PA">tre</w>
+ <w head="7" hun="NN_UTR_PLU_IND_NOM" id="w25.1.8" deprel="AA">procentenheter</w>
+ <w head="8" hun="NN_UTR_PLU_IND_NOM" id="w25.1.9" deprel="PA">för</w>
+ <w head="9" hun="PP" id="w25.1.10" deprel="RA">i</w>
+ <w head="10" hun="JJ_SUV_UTR@NEU_SIN@PLU_DEF_NOM" id="w25.1.11" deprel="HD">första</w>
+ <w head="10" hun="NN_UTR_SIN_IND_NOM" id="w25.1.12" deprel="HD">hand</w>
+ <w head="10" hun="NN_UTR_PLU_IND_NOM" id="w25.1.13" deprel="HD">heltidsarbetande</w>
+ <w head="10" hun="VB_PRS_AKT" id="w25.1.14" deprel="HD">kommer</w>
+ <w head="10" hun="SN" id="w25.1.15" deprel="PA">att</w>
+ <w head="15" hun="PM_NOM" id="w25.1.16" deprel="HD">föreslås</w>
+ <w head="1" hun="MAD" id="w25.1.17" deprel="IP">.</w>
+</s></p>
+
+<p id="26">
+<s id="s26.1">
+ <w head="0" hun="AB_KOM" id="w26.1.1" deprel="ROOT">Senare</w>
+ <w head="1" hun="PP" id="w26.1.2" deprel="TA">under</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w26.1.3" deprel="PA">valperioden</w>
+ <w head="3" hun="VB_PRS_AKT" id="w26.1.4" deprel="HD">kommer</w>
+ <w head="3" hun="PM_NOM" id="w26.1.5" deprel="HD">förslag</w>
+ <w head="15" hun="SN" id="w26.1.6" deprel="OO">att</w>
+ <w head="15" hun="PM_NOM" id="w26.1.7" deprel="MS">läggas</w>
+ <w head="15" hun="AB" id="w26.1.8" deprel="+F">fram</w>
+ <w head="8" hun="PP" id="w26.1.9" deprel="+F">om</w>
+ <w head="9" hun="DT_UTR_SIN_IND" id="w26.1.10" deprel="PA">en</w>
+ <w head="10" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w26.1.11" deprel="ET">omfattande</w>
+ <w head="11" hun="NN_UTR_SIN_IND_NOM" id="w26.1.12" deprel="PA">reformering</w>
+ <w head="12" hun="PP" id="w26.1.13" deprel="AG">av</w>
+ <w head="13" hun="NN_NEU_SIN_DEF_NOM" id="w26.1.14" deprel="HD">skattesystemet</w>
+ <w head="3" hun="MAD" id="w26.1.15" deprel="MS">.</w>
+</s> 
+ 
+
+
+<s id="s26.2">
+ <w head="0" hun="NN_NEU_SIN_DEF_NOM" id="w26.2.1" deprel="ROOT">Syftet</w>
+ <w head="1" hun="VB_PRS_AKT" id="w26.2.2" deprel="ROOT">är</w>
+ <w head="2" hun="IE" id="w26.2.3" deprel="SP">att</w>
+ <w head="3" hun="VB_INF_AKT" id="w26.2.4" deprel="ROOT">stimulera</w>
+ <w head="6" hun="NN_NEU_SIN_IND_NOM" id="w26.2.5" deprel="CJ">arbete</w>
+ <w head="4" hun="KN" id="w26.2.6" deprel="IF">och</w>
+ <w head="6" hun="NN_NEU_SIN_IND_NOM" id="w26.2.7" deprel="CJ">sparande</w>
+ <w head="4" hun="MAD" id="w26.2.8" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s26.3">
+ <w head="0" hun="DT_UTR_SIN_DEF" id="w26.3.1" deprel="ROOT">Den</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w26.3.2" deprel="AA">statliga</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w26.3.3" deprel="PA">inkomstskatten</w>
+ <w head="3" hun="VB_PRS_AKT" id="w26.3.4" deprel="AA">skall</w>
+ <w head="6" hun="PM_NOM" id="w26.3.5" deprel="CJ">sänkas</w>
+ <w head="4" hun="KN" id="w26.3.6" deprel="PA">och</w>
+ <w head="6" hun="NN_UTR_SIN_DEF_NOM" id="w26.3.7" deprel="CJ">kapitalbeskattningen</w>
+ <w head="7" hun="PM_NOM" id="w26.3.8" deprel="HD">skärpas</w>
+ <w head="1" hun="MAD" id="w26.3.9" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s26.4">
+ <w head="0" hun="NN_NEU_SIN_DEF_NOM" id="w26.4.1" deprel="ROOT">Skattesystemet</w>
+ <w head="1" hun="VB_PRS_AKT" id="w26.4.2" deprel="HD">skall</w>
+ <w head="2" hun="PM_GEN" id="w26.4.3" deprel="AA">göras</w>
+ <w head="5" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w26.4.4" deprel="CJ">enklare</w>
+ <w head="3" hun="KN" id="w26.4.5" deprel="PA">och</w>
+ <w head="5" hun="NN_UTR_SIN_IND_NOM" id="w26.4.6" deprel="CJ">skatteplanering</w>
+ <w head="6" hun="VB_INF_SFO" id="w26.4.7" deprel="HD">motverkas</w>
+ <w head="1" hun="MAD" id="w26.4.8" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s26.5">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w26.5.1" deprel="ROOT">Företagsbeskattningen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w26.5.2" deprel="AA">kommer</w>
+ <w head="2" hun="IE" id="w26.5.3" deprel="HD">att</w>
+ <w head="3" hun="VB_INF_SFO" id="w26.5.4" deprel="AA">reformeras</w>
+ <w head="4" hun="PP" id="w26.5.5" deprel="PA">i</w>
+ <w head="5" hun="NN_UTR_SIN_IND_NOM" id="w26.5.6" deprel="HD">riktning</w>
+ <w head="5" hun="PP" id="w26.5.7" deprel="HD">mot</w>
+ <w head="5" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w26.5.8" deprel="HD">lägre</w>
+ <w head="5" hun="NN_UTR_PLU_IND_NOM" id="w26.5.9" deprel="HD">skattesatser</w>
+ <w head="5" hun="KN" id="w26.5.10" deprel="HD">och</w>
+ <w head="5" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w26.5.11" deprel="HD">bredare</w>
+ <w head="5" hun="NN_UTR_PLU_IND_NOM" id="w26.5.12" deprel="HD">skattebaser</w>
+ <w head="1" hun="MAD" id="w26.5.13" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s26.6">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w26.6.1" deprel="ROOT">Även</w>
+ <w head="1" hun="DT_UTR_SIN_DEF" id="w26.6.2" deprel="AA">den</w>
+ <w head="2" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w26.6.3" deprel="PA">indirekta</w>
+ <w head="3" hun="NN_UTR_SIN_DEF_NOM" id="w26.6.4" deprel="HD">beskattningen</w>
+ <w head="4" hun="VB_PRS_AKT" id="w26.6.5" deprel="PA">skall</w>
+ <w head="5" hun="VB_INF_SFO" id="w26.6.6" deprel="HD">reformeras</w>
+ <w head="1" hun="MAD" id="w26.6.7" deprel="IP">.</w>
+</s></p>
+
+<p id="27">
+<s id="s27.1">
+ <w head="0" hun="PM_NOM" id="w27.1.1" deprel="ROOT">För</w>
+ <w head="1" hun="IE" id="w27.1.2" deprel="ROOT">att</w>
+ <w head="2" hun="AB_KOM" id="w27.1.3" deprel="ROOT">ytterligare</w>
+ <w head="3" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w27.1.4" deprel="ROOT">öka</w>
+ <w head="6" hun="NN_UTR_SIN_DEF_NOM" id="w27.1.5" deprel="CJ">sysselsättningen</w>
+ <w head="4" hun="KN" id="w27.1.6" deprel="ROOT">och</w>
+ <w head="6" hun="VB_IMP_AKT" id="w27.1.7" deprel="CJ">möta</w>
+ <w head="7" hun="NN_UTR_SIN_DEF_NOM" id="w27.1.8" deprel="ROOT">bristen</w>
+ <w head="8" hun="PM_GEN" id="w27.1.9" deprel="ROOT">på</w>
+ <w head="9" hun="NN_UTR_SIN_IND_NOM" id="w27.1.10" deprel="ROOT">arbetskraft</w>
+ <w head="10" hun="VB_PRS_AKT" id="w27.1.11" deprel="ROOT">kommer</w>
+ <w head="11" hun="NN_UTR_SIN_DEF_NOM" id="w27.1.12" deprel="ROOT">regeringen</w>
+ <w head="12" hun="IE" id="w27.1.13" deprel="ROOT">att</w>
+ <w head="13" hun="VB_INF_AKT" id="w27.1.14" deprel="ROOT">utveckla</w>
+ <w head="14" hun="DT_UTR_SIN_DEF" id="w27.1.15" deprel="AA">den</w>
+ <w head="15" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w27.1.16" deprel="PA">aktiva</w>
+ <w head="16" hun="NN_UTR_SIN_DEF_NOM" id="w27.1.17" deprel="HD">arbetsmarknadspolitiken</w>
+ <w head="14" hun="MAD" id="w27.1.18" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s27.2">
+ <w head="0" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w27.2.1" deprel="ROOT">Återkommande</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w27.2.2" deprel="PA">utbildning</w>
+ <w head="2" hun="PP" id="w27.2.3" deprel="TA">i</w>
+ <w head="5" hun="NN_NEU_SIN_DEF_NOM" id="w27.2.4" deprel="CJ">arbetslivet</w>
+ <w head="3" hun="KN" id="w27.2.5" deprel="PA">och</w>
+ <w head="5" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w27.2.6" deprel="CJ">kompetensgivande</w>
+ <w head="3" hun="NN_UTR_SIN_IND_NOM" id="w27.2.7" deprel="HD">vidareutbildning</w>
+ <w head="3" hun="VB_PRS_AKT" id="w27.2.8" deprel="HD">spelar</w>
+ <w head="3" hun="AB" id="w27.2.9" deprel="PA">härvid</w>
+ <w head="9" hun="DT_UTR_SIN_IND" id="w27.2.10" deprel="HD">en</w>
+ <w head="9" hun="JJ_POS_UTR_SIN_IND_NOM" id="w27.2.11" deprel="HD">viktig</w>
+ <w head="9" hun="NN_UTR_SIN_IND_NOM" id="w27.2.12" deprel="HD">roll</w>
+ <w head="1" hun="MAD" id="w27.2.13" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s27.3">
+ <w head="0" hun="PC_PRF_UTR@NEU_PLU_IND@DEF_GEN" id="w27.3.1" deprel="ROOT">Handikappades</w>
+ <w head="1" hun="NN_UTR_PLU_IND_NOM" id="w27.3.2" deprel="AA">möjligheter</w>
+ <w head="2" hun="IE" id="w27.3.3" deprel="HD">att</w>
+ <w head="3" hun="VB_INF_AKT" id="w27.3.4" deprel="AA">delta</w>
+ <w head="4" hun="PP" id="w27.3.5" deprel="PA">i</w>
+ <w head="5" hun="NN_NEU_SIN_DEF_NOM" id="w27.3.6" deprel="HD">arbetslivet</w>
+ <w head="5" hun="VB_PRT_AKT" id="w27.3.7" deprel="HD">måste</w>
+ <w head="5" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w27.3.8" deprel="HD">ytterligare</w>
+ <w head="5" hun="PM_NOM" id="w27.3.9" deprel="HD">förbättras</w>
+ <w head="1" hun="MAD" id="w27.3.10" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s27.4">
+ <w head="0" hun="NN_UTR_PLU_DEF_GEN" id="w27.4.1" deprel="ROOT">Invandrarnas</w>
+ <w head="1" hun="PM_NOM" id="w27.4.2" deprel="AA">inträde</w>
+ <w head="2" hun="PM_NOM" id="w27.4.3" deprel="HD">på</w>
+ <w head="3" hun="NN_UTR_SIN_DEF_NOM" id="w27.4.4" deprel="PA">arbetsmarknaden</w>
+ <w head="4" hun="PM_NOM" id="w27.4.5" deprel="PA">bör</w>
+ <w head="5" hun="PM_NOM" id="w27.4.6" deprel="HD">underlättas</w>
+ <w head="1" hun="MAD" id="w27.4.7" deprel="IP">.</w>
+</s></p>
+
+<p id="28">
+<s id="s28.1">
+ <w head="0" hun="NN_NEU_SIN_DEF_NOM" id="w28.1.1" deprel="ROOT">Arbetslivet</w>
+ <w head="1" hun="VB_PRS_AKT" id="w28.1.2" deprel="AA">skall</w>
+ <w head="2" hun="PM_GEN" id="w28.1.3" deprel="HD">göras</w>
+ <w head="5" hun="NN_UTR_PLU_IND_NOM" id="w28.1.4" deprel="CJ">tryggare</w>
+ <w head="3" hun="KN" id="w28.1.5" deprel="PA">och</w>
+ <w head="5" hun="NN_UTR_PLU_IND_NOM" id="w28.1.6" deprel="CJ">rättvisare</w>
+ <w head="1" hun="MAD" id="w28.1.7" deprel="IP">.</w>
+</s></p>
+
+<p id="29">
+<s id="s29.1">
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w29.1.1" deprel="HD">Regeringen</w>
+ <w head="0" hun="VB_PRS_AKT" id="w29.1.2" deprel="ROOT">kommer</w>
+ <w head="2" hun="IE" id="w29.1.3" deprel="VG">att</w>
+ <w head="3" hun="VB_INF_AKT" id="w29.1.4" deprel="PA">inbjuda</w>
+ <w head="4" hun="NN_UTR_PLU_DEF_NOM" id="w29.1.5" deprel="AA">organisationerna</w>
+ <w head="5" hun="PM_NOM" id="w29.1.6" deprel="PA">på</w>
+ <w head="8" hun="NN_UTR_SIN_DEF_NOM" id="w29.1.7" deprel="CJ">arbetsmarknaden</w>
+ <w head="6" hun="KN" id="w29.1.8" deprel="IF">och</w>
+ <w head="8" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w29.1.9" deprel="ET">berörda</w>
+ <w head="9" hun="NN_UTR_PLU_IND_NOM" id="w29.1.10" deprel="PA">myndigheter</w>
+ <w head="10" hun="IE" id="w29.1.11" deprel="HD">att</w>
+ <w head="11" hun="VB_INF_AKT" id="w29.1.12" deprel="AA">delta</w>
+ <w head="12" hun="PP" id="w29.1.13" deprel="PA">i</w>
+ <w head="13" hun="DT_UTR_SIN_IND" id="w29.1.14" deprel="HD">en</w>
+ <w head="13" hun="NN_UTR_SIN_IND_NOM" id="w29.1.15" deprel="HD">arbetsmiljökommission</w>
+ <w head="13" hun="VB_PRS_AKT" id="w29.1.16" deprel="HD">för</w>
+ <w head="13" hun="SN" id="w29.1.17" deprel="PA">att</w>
+ <w head="17" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w29.1.18" deprel="PA">göra</w>
+ <w head="18" hun="PC_PRF_UTR@NEU_PLU_IND@DEF_NOM" id="w29.1.19" deprel="HD">särskilda</w>
+ <w head="19" hun="NN_UTR_PLU_IND_NOM" id="w29.1.20" deprel="AA">insatser</w>
+ <w head="20" hun="VB_PRS_AKT" id="w29.1.21" deprel="PA">för</w>
+ <w head="21" hun="DT_UTR@NEU_PLU_DEF" id="w29.1.22" deprel="AA">de</w>
+ <w head="22" hun="RG_NOM" id="w29.1.23" deprel="PA">400.000</w>
+ <w head="23" hun="AB_SUV" id="w29.1.24" deprel="HD">mest</w>
+ <w head="24" hun="PC_PRF_UTR@NEU_PLU_IND@DEF_NOM" id="w29.1.25" deprel="PA">utsatta</w>
+ <w head="25" hun="NN_NEU_PLU_DEF_NOM" id="w29.1.26" deprel="HD">arbetena</w>
+ <w head="2" hun="MAD" id="w29.1.27" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s29.2">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w29.2.1" deprel="ROOT">Kommissionen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w29.2.2" deprel="HD">skall</w>
+ <w head="2" hun="VB_INF_AKT" id="w29.2.3" deprel="HD">lägga</w>
+ <w head="3" hun="PL" id="w29.2.4" deprel="PL">fram</w>
+ <w head="1" hun="NN_NEU_PLU_IND_NOM" id="w29.2.5" deprel="HD">förslag</w>
+ <w head="13" hun="PP" id="w29.2.6" deprel="CJ">till</w>
+ <w head="6" hun="NN_UTR_PLU_IND_NOM" id="w29.2.7" deprel="PA">åtgärder</w>
+ <w head="7" hun="HP_-_-_-" id="w29.2.8" deprel="HD">som</w>
+ <w head="7" hun="VB_PRS_AKT" id="w29.2.9" deprel="HD">ger</w>
+ <w head="7" hun="PM_NOM" id="w29.2.10" deprel="HD">hälsosammare</w>
+ <w head="7" hun="PM_NOM" id="w29.2.11" deprel="HD">arbetsmiljöer</w>
+ <w head="13" hun="MID" id="w29.2.12" deprel="IK">,</w>
+ <w head="3" hun="KN" id="w29.2.13" deprel="IS">och</w>
+ <w head="13" hun="HP_-_-_-" id="w29.2.14" deprel="CJ">som</w>
+ <w head="13" hun="VB_PRS_AKT" id="w29.2.15" deprel="ET">minskar</w>
+ <w head="15" hun="DT_UTR@NEU_PLU_DEF" id="w29.2.16" deprel="PA">de</w>
+ <w head="16" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w29.2.17" deprel="PA">många</w>
+ <w head="17" hun="NN_UTR_PLU_DEF_NOM" id="w29.2.18" deprel="HD">arbetsskadorna</w>
+ <w head="1" hun="MAD" id="w29.2.19" deprel="IP">.</w>
+</s></p>
+
+<p id="30">
+<s id="s30.1">
+ <w head="0" hun="PP" id="w30.1.1" deprel="ROOT">Under</w>
+ <w head="1" hun="NN_UTR_SIN_DEF_NOM" id="w30.1.2" deprel="PA">valperioden</w>
+ <w head="2" hun="VB_PRS_SFO" id="w30.1.3" deprel="HD">lagstiftas</w>
+ <w head="2" hun="PP" id="w30.1.4" deprel="ET">om</w>
+ <w head="4" hun="DT_UTR_SIN_IND" id="w30.1.5" deprel="PA">en</w>
+ <w head="5" hun="PM_NOM" id="w30.1.6" deprel="PA">sjätte</w>
+ <w head="6" hun="NN_UTR_SIN_IND_NOM" id="w30.1.7" deprel="HD">semestervecka</w>
+ <w head="1" hun="MAD" id="w30.1.8" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s30.2">
+ <w head="0" hun="DT_UTR_SIN_DEF" id="w30.2.1" deprel="ROOT">Denna</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w30.2.2" deprel="HD">reform</w>
+ <w head="2" hun="PM_NOM" id="w30.2.3" deprel="TA">genomförs</w>
+ <w head="3" hun="AB" id="w30.2.4" deprel="HD">stegvis</w>
+ <w head="1" hun="MAD" id="w30.2.5" deprel="IP">.</w>
+</s></p>
+
+<p id="31">
+<s id="s31.1">
+ <w head="0" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w31.1.1" deprel="ROOT">Det</w>
+ <w head="1" hun="VB_PRS_AKT" id="w31.1.2" deprel="AA">är</w>
+ <w head="2" hun="NN_NEU_SIN_DEF_NOM" id="w31.1.3" deprel="PA">angeläget</w>
+ <w head="3" hun="IE" id="w31.1.4" deprel="HD">att</w>
+ <w head="4" hun="VB_INF_AKT" id="w31.1.5" deprel="AA">fortsätta</w>
+ <w head="5" hun="NN_NEU_SIN_DEF_NOM" id="w31.1.6" deprel="PA">arbetet</w>
+ <w head="6" hun="PP" id="w31.1.7" deprel="AA">med</w>
+ <w head="7" hun="IE" id="w31.1.8" deprel="PA">att</w>
+ <w head="8" hun="VB_INF_AKT" id="w31.1.9" deprel="PA">bryta</w>
+ <w head="9" hun="DT_UTR_SIN_DEF" id="w31.1.10" deprel="AA">den</w>
+ <w head="10" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w31.1.11" deprel="PA">könsuppdelade</w>
+ <w head="11" hun="NN_UTR_SIN_DEF_NOM" id="w31.1.12" deprel="HD">arbetsmarknaden</w>
+ <w head="1" hun="MAD" id="w31.1.13" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s31.2">
+ <w head="2" hun="NN_UTR_PLU_IND_NOM" id="w31.2.1" deprel="CJ">Kvinnor</w>
+ <w head="0" hun="KN" id="w31.2.2" deprel="ROOT">och</w>
+ <w head="2" hun="PM_NOM" id="w31.2.3" deprel="CJ">män</w>
+ <w head="3" hun="PM_NOM" id="w31.2.4" deprel="PA">måste</w>
+ <w head="4" hun="PM_NOM" id="w31.2.5" deprel="AA">lättare</w>
+ <w head="5" hun="VB_INF_AKT" id="w31.2.6" deprel="PA">kunna</w>
+ <w head="6" hun="PM_NOM" id="w31.2.7" deprel="HD">förena</w>
+ <w head="7" hun="PM_NOM" id="w31.2.8" deprel="PA">förvärvsarbete</w>
+ <w head="8" hun="PP" id="w31.2.9" deprel="VS">med</w>
+ <w head="9" hun="PM_NOM" id="w31.2.10" deprel="HD">föräldraansvar</w>
+ <w head="2" hun="MAD" id="w31.2.11" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s31.3">
+ <w head="3" hun="PC_PRF_UTR@NEU_PLU_IND@DEF_NOM" id="w31.3.1" deprel="HD">Fortsatta</w>
+ <w head="3" hun="NN_UTR_PLU_IND_NOM" id="w31.3.2" deprel="HD">åtgärder</w>
+ <w head="0" hun="VB_PRS_AKT" id="w31.3.3" deprel="ROOT">kommer</w>
+ <w head="3" hun="IE" id="w31.3.4" deprel="VG">att</w>
+ <w head="4" hun="VB_INF_SFO" id="w31.3.5" deprel="PA">vidtas</w>
+ <w head="5" hun="NN_UTR_PLU_IND_NOM" id="w31.3.6" deprel="AA">för</w>
+ <w head="6" hun="IE" id="w31.3.7" deprel="HD">att</w>
+ <w head="7" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w31.3.8" deprel="PA">öka</w>
+ <w head="8" hun="NN_UTR_SIN_DEF_NOM" id="w31.3.9" deprel="AA">kvinnorepresentationen</w>
+ <w head="9" hun="PP" id="w31.3.10" deprel="PA">i</w>
+ <w head="10" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w31.3.11" deprel="HD">olika</w>
+ <w head="10" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w31.3.12" deprel="HD">beslutande</w>
+ <w head="10" hun="NN_NEU_PLU_IND_NOM" id="w31.3.13" deprel="HD">organ</w>
+ <w head="3" hun="MAD" id="w31.3.14" deprel="IP">.</w>
+</s></p>
+
+<p id="32">
+<s id="s32.1">
+ <w head="0" hun="DT_UTR_SIN_DEF" id="w32.1.1" deprel="ROOT">Den</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w32.1.2" deprel="ROOT">breddning</w>
+ <w head="2" hun="PP" id="w32.1.3" deprel="AG">av</w>
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w32.1.4" deprel="ROOT">regionalpolitiken</w>
+ <w head="0" hun="KN" id="w32.1.5" deprel="ROOT">som</w>
+ <w head="0" hun="JJ_POS_NEU_SIN_IND_NOM" id="w32.1.6" deprel="ROOT">ägt</w>
+ <w head="0" hun="NN_NEU_SIN_IND_NOM" id="w32.1.7" deprel="ROOT">rum</w>
+ <w head="11" hun="PP" id="w32.1.8" deprel="CJ">under</w>
+ <w head="8" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w32.1.9" deprel="PA">senare</w>
+ <w head="9" hun="NN_UTR_PLU_IND_NOM" id="w32.1.10" deprel="HD">år</w>
+ <w head="3" hun="MID" id="w32.1.11" deprel="PA">,</w>
+ <w head="11" hun="PP" id="w32.1.12" deprel="CJ">med</w>
+ <w head="0" hun="NN_UTR_SIN_IND_NOM" id="w32.1.13" deprel="ROOT">inriktning</w>
+ <w head="18" hun="PP" id="w32.1.14" deprel="CJ">mot</w>
+ <w head="14" hun="NN_UTR_SIN_IND_NOM" id="w32.1.15" deprel="HD">kompetenshöjning</w>
+ <w head="18" hun="MID" id="w32.1.16" deprel="IK">,</w>
+ <w head="18" hun="NN_UTR_SIN_IND_NOM" id="w32.1.17" deprel="CJ">utbildning</w>
+ <w head="0" hun="KN" id="w32.1.18" deprel="ROOT">och</w>
+ <w head="18" hun="PC_PRF_UTR_SIN_IND_NOM" id="w32.1.19" deprel="CJ">förbättrad</w>
+ <w head="0" hun="NN_UTR_SIN_IND_NOM" id="w32.1.20" deprel="ROOT">infrastruktur</w>
+ <w head="12" hun="MID" id="w32.1.21" deprel="PA">,</w>
+ <w head="21" hun="VB_PRS_AKT" id="w32.1.22" deprel="ROOT">kommer</w>
+ <w head="22" hun="IE" id="w32.1.23" deprel="ROOT">att</w>
+ <w head="23" hun="VB_INF_AKT" id="w32.1.24" deprel="ROOT">fortsätta</w>
+ <w head="24" hun="MAD" id="w32.1.25" deprel="IP">.</w>
+</s></p>
+
+<p id="33">
+<s id="s33.1">
+ <w head="0" hun="PN_UTR@NEU_PLU_DEF_SUB" id="w33.1.1" deprel="ROOT">De</w>
+ <w head="1" hun="PM_NOM" id="w33.1.2" deprel="HD">små</w>
+ <w head="2" hun="PM_NOM" id="w33.1.3" deprel="AA">företagen</w>
+ <w head="3" hun="VB_PRS_AKT" id="w33.1.4" deprel="PA">svarar</w>
+ <w head="4" hun="PM_NOM" id="w33.1.5" deprel="AA">för</w>
+ <w head="5" hun="AB_POS" id="w33.1.6" deprel="PA">mycket</w>
+ <w head="6" hun="PP" id="w33.1.7" deprel="AG">av</w>
+ <w head="9" hun="NN_UTR_SIN_DEF_NOM" id="w33.1.8" deprel="CJ">dynamiken</w>
+ <w head="7" hun="KN" id="w33.1.9" deprel="PA">och</w>
+ <w head="9" hun="NN_UTR_SIN_DEF_NOM" id="w33.1.10" deprel="ET">förnyelsen</w>
+ <w head="10" hun="PP" id="w33.1.11" deprel="PA">i</w>
+ <w head="11" hun="DT_NEU_SIN_DEF" id="w33.1.12" deprel="HD">det</w>
+ <w head="11" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w33.1.13" deprel="HD">svenska</w>
+ <w head="11" hun="NN_NEU_SIN_DEF_NOM" id="w33.1.14" deprel="HD">näringslivet</w>
+ <w head="1" hun="MAD" id="w33.1.15" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s33.2">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w33.2.1" deprel="ROOT">Strävan</w>
+ <w head="1" hun="IE" id="w33.2.2" deprel="ROOT">att</w>
+ <w head="2" hun="VB_INF_AKT" id="w33.2.3" deprel="ROOT">skapa</w>
+ <w head="3" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w33.2.4" deprel="ROOT">goda</w>
+ <w head="4" hun="NN_UTR_PLU_IND_NOM" id="w33.2.5" deprel="ROOT">utvecklingsmöjligheter</w>
+ <w head="5" hun="PM_NOM" id="w33.2.6" deprel="ROOT">för</w>
+ <w head="6" hun="PM_NOM" id="w33.2.7" deprel="ROOT">småföretagen</w>
+ <w head="7" hun="VB_PRS_AKT" id="w33.2.8" deprel="ROOT">kommer</w>
+ <w head="8" hun="PM_NOM" id="w33.2.9" deprel="AA">därför</w>
+ <w head="9" hun="IE" id="w33.2.10" deprel="ROOT">att</w>
+ <w head="10" hun="VB_INF_AKT" id="w33.2.11" deprel="ROOT">fortsätta</w>
+ <w head="11" hun="MAD" id="w33.2.12" deprel="IP">.</w>
+</s></p>
+
+<p id="34">
+<s id="s34.1">
+ <w head="0" hun="DT_UTR_SIN_DEF" id="w34.1.1" deprel="ROOT">Den</w>
+ <w head="3" hun="NN_UTR_SIN_IND_NOM" id="w34.1.2" deprel="CJ">generösa</w>
+ <w head="1" hun="KN" id="w34.1.3" deprel="IF">och</w>
+ <w head="3" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w34.1.4" deprel="ET">solidariska</w>
+ <w head="4" hun="NN_UTR_SIN_DEF_NOM" id="w34.1.5" deprel="PA">flyktingpolitiken</w>
+ <w head="5" hun="VB_PRS_AKT" id="w34.1.6" deprel="PA">ligger</w>
+ <w head="6" hun="JJ_POS_UTR_SIN_IND_NOM" id="w34.1.7" deprel="HD">fast</w>
+ <w head="1" hun="MAD" id="w34.1.8" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s34.2">
+ <w head="0" hun="PM_NOM" id="w34.2.1" deprel="ROOT">FN</w>
+ <w head="1" hun="MID" id="w34.2.2" deprel="IQ">:</w>
+ <w head="1" hun="NN_AN" id="w34.2.3" deprel="SP">s</w>
+ <w head="3" hun="NN_NEU_SIN_IND_NOM" id="w34.2.4" deprel="AA">arbete</w>
+ <w head="4" hun="PM_NOM" id="w34.2.5" deprel="PA">för</w>
+ <w head="5" hun="PM_GEN" id="w34.2.6" deprel="AA">världens</w>
+ <w head="6" hun="NN_UTR_PLU_IND_NOM" id="w34.2.7" deprel="PA">flyktingar</w>
+ <w head="7" hun="VB_PRS_AKT" id="w34.2.8" deprel="AA">skall</w>
+ <w head="8" hun="PM_NOM" id="w34.2.9" deprel="PA">få</w>
+ <w head="9" hun="VB_SUP_AKT" id="w34.2.10" deprel="HD">fortsatt</w>
+ <w head="10" hun="AB_POS" id="w34.2.11" deprel="PA">starkt</w>
+ <w head="11" hun="PM_NOM" id="w34.2.12" deprel="HD">stöd</w>
+ <w head="1" hun="MAD" id="w34.2.13" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s34.3">
+ <w head="2" hun="NN_UTR_SIN_IND_NOM" id="w34.3.1" deprel="CJ">Rasism</w>
+ <w head="0" hun="KN" id="w34.3.2" deprel="ROOT">och</w>
+ <w head="2" hun="NN_UTR_SIN_IND_NOM" id="w34.3.3" deprel="CJ">främlingsfientlighet</w>
+ <w head="3" hun="VB_PRS_AKT" id="w34.3.4" deprel="PA">skall</w>
+ <w head="4" hun="VB_INF_SFO" id="w34.3.5" deprel="HD">motverkas</w>
+ <w head="2" hun="MAD" id="w34.3.6" deprel="IP">.</w>
+</s></p>
+
+<p id="35">
+<s id="s35.1">
+ <w head="0" hun="PM_NOM" id="w35.1.1" deprel="ROOT">Förslag</w>
+ <w head="1" hun="VB_PRS_AKT" id="w35.1.2" deprel="AA">kommer</w>
+ <w head="2" hun="SN" id="w35.1.3" deprel="PA">att</w>
+ <w head="3" hun="VB_PRS_SFO" id="w35.1.4" deprel="AA">föreläggas</w>
+ <w head="4" hun="NN_UTR_SIN_DEF_NOM" id="w35.1.5" deprel="PA">riksdagen</w>
+ <w head="5" hun="PP" id="w35.1.6" deprel="OA">om</w>
+ <w head="6" hun="DT_UTR_SIN_IND" id="w35.1.7" deprel="PA">en</w>
+ <w head="7" hun="JJ_POS_UTR_SIN_IND_NOM" id="w35.1.8" deprel="PA">ny</w>
+ <w head="8" hun="NN_UTR_SIN_IND_NOM" id="w35.1.9" deprel="HD">utlänningslag</w>
+ <w head="1" hun="MAD" id="w35.1.10" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s35.2">
+ <w head="0" hun="NN_UTR_PLU_DEF_NOM" id="w35.2.1" deprel="ROOT">Väntetiderna</w>
+ <w head="1" hun="PP" id="w35.2.2" deprel="PA">i</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w35.2.3" deprel="HD">utlänningsärenden</w>
+ <w head="2" hun="VB_PRS_AKT" id="w35.2.4" deprel="HD">skall</w>
+ <w head="2" hun="PM_NOM" id="w35.2.5" deprel="HD">förkortas</w>
+ <w head="2" hun="PM_NOM" id="w35.2.6" deprel="HD">väsentligt</w>
+ <w head="1" hun="MAD" id="w35.2.7" deprel="IP">.</w>
+</s></p>
+
+<p id="36">
+<s id="s36.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w36.1.1" deprel="ROOT">Hänsynen</w>
+ <w head="1" hun="PP" id="w36.1.2" deprel="OA">till</w>
+ <w head="4" hun="PM_NOM" id="w36.1.3" deprel="CJ">miljö</w>
+ <w head="2" hun="KN" id="w36.1.4" deprel="PA">och</w>
+ <w head="4" hun="NN_UTR_SIN_IND_NOM" id="w36.1.5" deprel="CJ">natur</w>
+ <w head="2" hun="PM_NOM" id="w36.1.6" deprel="PA">måste</w>
+ <w head="6" hun="PM_NOM" id="w36.1.7" deprel="AA">prägla</w>
+ <w head="7" hun="NN_UTR_SIN_DEF_NOM" id="w36.1.8" deprel="PA">utvecklingen</w>
+ <w head="8" hun="PM_NOM" id="w36.1.9" deprel="HD">på</w>
+ <w head="9" hun="DT_UTR@NEU_PLU_IND@DEF" id="w36.1.10" deprel="PA">alla</w>
+ <w head="10" hun="NN_UTR_SIN_DEF_NOM" id="w36.1.11" deprel="HD">samhällsområden</w>
+ <w head="1" hun="MAD" id="w36.1.12" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s36.2">
+ <w head="0" hun="NN_UTR_SIN_DEF_GEN" id="w36.2.1" deprel="ROOT">Riksdagens</w>
+ <w head="1" hun="NN_NEU_SIN_IND_NOM" id="w36.2.2" deprel="HD">beslut</w>
+ <w head="2" hun="SN" id="w36.2.3" deprel="UA">om</w>
+ <w head="3" hun="NN_UTR_SIN_DEF_NOM" id="w36.2.4" deprel="HD">trafikpolitiken</w>
+ <w head="1" hun="VB_PRS_AKT" id="w36.2.5" deprel="HD">har</w>
+ <w head="7" hun="AB" id="w36.2.6" deprel="AA">därvid</w>
+ <w head="4" hun="JJ_POS_UTR_SIN_IND_NOM" id="w36.2.7" deprel="HD">stor</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w36.2.8" deprel="HD">betydelse</w>
+ <w head="1" hun="MAD" id="w36.2.9" deprel="IP">.</w>
+</s></p>
+
+<p id="37">
+<s id="s37.1">
+ <w head="0" hun="DT_UTR_SIN_IND" id="w37.1.1" deprel="ROOT">En</w>
+ <w head="1" hun="JJ_POS_UTR_SIN_IND_NOM" id="w37.1.2" deprel="HD">radikal</w>
+ <w head="2" hun="NN_UTR_SIN_IND_NOM" id="w37.1.3" deprel="AA">miljöpolitik</w>
+ <w head="3" hun="VB_PRS_AKT" id="w37.1.4" deprel="PA">förutsätter</w>
+ <w head="4" hun="DT_UTR_SIN_IND" id="w37.1.5" deprel="HD">en</w>
+ <w head="5" hun="JJ_POS_UTR_SIN_IND_NOM" id="w37.1.6" deprel="PA">stark</w>
+ <w head="6" hun="NN_UTR_SIN_IND_NOM" id="w37.1.7" deprel="HD">ekonomi</w>
+ <w head="1" hun="MAD" id="w37.1.8" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s37.2">
+ <w head="0" hun="NN_NEU_SIN_DEF_NOM" id="w37.2.1" deprel="ROOT">Arbetet</w>
+ <w head="1" hun="VB_PRS_SFO" id="w37.2.2" deprel="HD">drivs</w>
+ <w head="2" hun="AB_KOM" id="w37.2.3" deprel="AA">vidare</w>
+ <w head="3" hun="VB_PRS_AKT" id="w37.2.4" deprel="PA">för</w>
+ <w head="4" hun="SN" id="w37.2.5" deprel="HD">att</w>
+ <w head="5" hun="PM_NOM" id="w37.2.6" deprel="PA">nå</w>
+ <w head="6" hun="PM_NOM" id="w37.2.7" deprel="HD">överenskommelser</w>
+ <w head="7" hun="PM_NOM" id="w37.2.8" deprel="AA">över</w>
+ <w head="8" hun="PM_NOM" id="w37.2.9" deprel="PA">gränserna</w>
+ <w head="9" hun="PP" id="w37.2.10" deprel="OA">om</w>
+ <w head="10" hun="PC_PRF_UTR@NEU_PLU_IND@DEF_NOM" id="w37.2.11" deprel="PA">minskade</w>
+ <w head="13" hun="NN_UTR_-_-_SMS" id="w37.2.12" deprel="CJ">luft-</w>
+ <w head="11" hun="KN" id="w37.2.13" deprel="IF">och</w>
+ <w head="15" hun="NN_UTR_PLU_IND_NOM" id="w37.2.14" deprel="CJ">vattenföroreningar</w>
+ <w head="13" hun="KN" id="w37.2.15" deprel="CJ">och</w>
+ <w head="15" hun="PP" id="w37.2.16" deprel="CJ">om</w>
+ <w head="16" hun="NN_NEU_SIN_IND_NOM" id="w37.2.17" deprel="PA">skydd</w>
+ <w head="17" hun="VB_PRS_AKT" id="w37.2.18" deprel="HD">för</w>
+ <w head="18" hun="NN_UTR_SIN_DEF_GEN" id="w37.2.19" deprel="+F">jordens</w>
+ <w head="19" hun="NN_NEU_SIN_IND_NOM" id="w37.2.20" deprel="HD">klimat</w>
+ <w head="1" hun="MAD" id="w37.2.21" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s37.3">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w37.3.1" deprel="ROOT">Avvecklingsplanen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w37.3.2" deprel="HD">för</w>
+ <w head="2" hun="NN_UTR_SIN_IND_NOM" id="w37.3.3" deprel="+F">freon</w>
+ <w head="3" hun="PM_NOM" id="w37.3.4" deprel="HD">fullföljs</w>
+ <w head="1" hun="MAD" id="w37.3.5" deprel="IP">.</w>
+</s></p>
+
+<p id="38">
+<s id="s38.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_GEN" id="w38.1.1" deprel="ROOT">Industrins</w>
+ <w head="3" hun="NN_UTR_PLU_IND_NOM" id="w38.1.2" deprel="CJ">produkter</w>
+ <w head="1" hun="KN" id="w38.1.3" deprel="IF">och</w>
+ <w head="3" hun="NN_UTR_PLU_IND_NOM" id="w38.1.4" deprel="ET">processer</w>
+ <w head="4" hun="VB_PRS_AKT" id="w38.1.5" deprel="PA">skall</w>
+ <w head="5" hun="VB_INF_AKT" id="w38.1.6" deprel="AA">bli</w>
+ <w head="6" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w38.1.7" deprel="PA">renare</w>
+ <w head="7" hun="PP" id="w38.1.8" deprel="AA">genom</w>
+ <w head="8" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w38.1.9" deprel="PA">hårda</w>
+ <w head="11" hun="NN_NEU_PLU_IND_NOM" id="w38.1.10" deprel="CJ">krav</w>
+ <w head="9" hun="KN" id="w38.1.11" deprel="IF">och</w>
+ <w head="11" hun="JJ_POS_UTR_SIN_IND_NOM" id="w38.1.12" deprel="ET">snabb</w>
+ <w head="12" hun="NN_UTR_SIN_IND_NOM" id="w38.1.13" deprel="PA">anpassning</w>
+ <w head="13" hun="PP" id="w38.1.14" deprel="OA">till</w>
+ <w head="14" hun="JJ_POS_UTR_SIN_IND_NOM" id="w38.1.15" deprel="PA">ny</w>
+ <w head="15" hun="NN_UTR_SIN_IND_NOM" id="w38.1.16" deprel="HD">teknik</w>
+ <w head="1" hun="MAD" id="w38.1.17" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s38.2">
+ <w head="0" hun="PC_PRF_UTR@NEU_SIN_DEF_NOM" id="w38.2.1" deprel="ROOT">Givna</w>
+ <w head="1" hun="PM_NOM" id="w38.2.2" deprel="HD">tillstånd</w>
+ <w head="2" hun="PM_NOM" id="w38.2.3" deprel="HD">omprövas</w>
+ <w head="1" hun="MAD" id="w38.2.4" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s38.3">
+ <w head="0" hun="NN_NEU_PLU_DEF_NOM" id="w38.3.1" deprel="ROOT">Kraven</w>
+ <w head="7" hun="PM_NOM" id="w38.3.2" deprel="CJ">på</w>
+ <w head="2" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w38.3.3" deprel="PA">miljöfarliga</w>
+ <w head="3" hun="NN_UTR_PLU_IND_NOM" id="w38.3.4" deprel="HD">produkter</w>
+ <w head="7" hun="MID" id="w38.3.5" deprel="IK">,</w>
+ <w head="7" hun="NN_UTR_PLU_IND_NOM" id="w38.3.6" deprel="CJ">kemikalier</w>
+ <w head="1" hun="KN" id="w38.3.7" deprel="PA">och</w>
+ <w head="7" hun="PM_NOM" id="w38.3.8" deprel="ET">på</w>
+ <w head="8" hun="NN_UTR_SIN_DEF_NOM" id="w38.3.9" deprel="PA">avfallshanteringen</w>
+ <w head="9" hun="PM_NOM" id="w38.3.10" deprel="HD">skärps</w>
+ <w head="1" hun="MAD" id="w38.3.11" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s38.4">
+ <w head="0" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w38.4.1" deprel="ROOT">Nya</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w38.4.2" deprel="AA">kemiska</w>
+ <w head="2" hun="NN_NEU_PLU_DEF_NOM" id="w38.4.3" deprel="PA">ämnen</w>
+ <w head="3" hun="VB_PRS_SFO" id="w38.4.4" deprel="HD">förhandsgranskas</w>
+ <w head="1" hun="MAD" id="w38.4.5" deprel="IP">.</w>
+</s></p>
+
+<p id="39">
+<s id="s39.1">
+ <w head="0" hun="PM_NOM" id="w39.1.1" deprel="ROOT">Miljöavgifter</w>
+ <w head="1" hun="PM_NOM" id="w39.1.2" deprel="AA">införs</w>
+ <w head="2" hun="AB" id="w39.1.3" deprel="+F">redan</w>
+ <w head="3" hun="PM_NOM" id="w39.1.4" deprel="HD">år</w>
+ <w head="3" hun="RG_NOM" id="w39.1.5" deprel="HD">1989</w>
+ <w head="3" hun="PM_NOM" id="w39.1.6" deprel="HD">på</w>
+ <w head="3" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w39.1.7" deprel="HD">klororganiska</w>
+ <w head="3" hun="NN_UTR_PLU_IND_NOM" id="w39.1.8" deprel="HD">föreningar</w>
+ <w head="3" hun="KN" id="w39.1.9" deprel="HD">och</w>
+ <w head="3" hun="NN_NEU_SIN_IND_NOM" id="w39.1.10" deprel="HD">svavel</w>
+ <w head="1" hun="MAD" id="w39.1.11" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s39.2">
+ <w head="0" hun="NN_UTR_SIN_IND_NOM" id="w39.2.1" deprel="ROOT">Förslag</w>
+ <w head="1" hun="PP" id="w39.2.2" deprel="OA">om</w>
+ <w head="1" hun="PM_NOM" id="w39.2.3" deprel="HD">miljöavgift</w>
+ <w head="1" hun="PM_GEN" id="w39.2.4" deprel="HD">på</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w39.2.5" deprel="HD">andra</w>
+ <w head="5" hun="NN_UTR_SIN_DEF_NOM" id="w39.2.6" deprel="HD">ämnen</w>
+ <w head="5" hun="MID" id="w39.2.7" deprel="IK">,</w>
+ <w head="1" hun="PP" id="w39.2.8" deprel="RA">bland</w>
+ <w head="8" hun="PN_NEU_SIN_IND_SUB@OBJ" id="w39.2.9" deprel="PA">annat</w>
+ <w head="9" hun="PM_GEN" id="w39.2.10" deprel="MA">på</w>
+ <w head="10" hun="NN_UTR_SIN_IND_NOM" id="w39.2.11" deprel="HD">koldioxid</w>
+ <w head="2" hun="MID" id="w39.2.12" deprel="PA">,</w>
+ <w head="12" hun="VB_PRS_SFO" id="w39.2.13" deprel="TA">presenteras</w>
+ <w head="13" hun="PP" id="w39.2.14" deprel="TA">under</w>
+ <w head="14" hun="NN_UTR_SIN_DEF_NOM" id="w39.2.15" deprel="HD">mandatperioden</w>
+ <w head="1" hun="MAD" id="w39.2.16" deprel="IP">.</w>
+</s></p>
+
+<p id="40">
+<s id="s40.1">
+ <w head="0" hun="DT_UTR_SIN_IND@DEF" id="w40.1.1" deprel="ROOT">All</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w40.1.2" deprel="AA">miljölagstiftning</w>
+ <w head="2" hun="VB_PRS_AKT" id="w40.1.3" deprel="PA">skall</w>
+ <w head="3" hun="VB_INF_SFO" id="w40.1.4" deprel="HD">ses</w>
+ <w head="6" hun="NN_UTR_PLU_IND_NOM" id="w40.1.5" deprel="CJ">över</w>
+ <w head="4" hun="KN" id="w40.1.6" deprel="PA">och</w>
+ <w head="6" hun="VB_INF_SFO" id="w40.1.7" deprel="CJ">samordnas</w>
+ <w head="1" hun="MAD" id="w40.1.8" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s40.2">
+ <w head="0" hun="NN_NEU_SIN_IND_NOM" id="w40.2.1" deprel="ROOT">Förslag</w>
+ <w head="1" hun="PP" id="w40.2.2" deprel="OA">till</w>
+ <w head="2" hun="JJ_POS_UTR_SIN_IND_NOM" id="w40.2.3" deprel="PA">ny</w>
+ <w head="3" hun="NN_UTR_SIN_IND_NOM" id="w40.2.4" deprel="PA">naturvårdslag</w>
+ <w head="4" hun="PP" id="w40.2.5" deprel="KA">liksom</w>
+ <w head="5" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w40.2.6" deprel="PA">ytterligare</w>
+ <w head="6" hun="NN_UTR_PLU_IND_NOM" id="w40.2.7" deprel="PA">skärpningar</w>
+ <w head="7" hun="PP" id="w40.2.8" deprel="AG">av</w>
+ <w head="8" hun="NN_UTR_SIN_DEF_NOM" id="w40.2.9" deprel="PA">miljöskyddslagen</w>
+ <w head="9" hun="VB_PRS_SFO" id="w40.2.10" deprel="TA">presenteras</w>
+ <w head="10" hun="PP" id="w40.2.11" deprel="TA">under</w>
+ <w head="11" hun="NN_UTR_SIN_DEF_NOM" id="w40.2.12" deprel="HD">mandatperioden</w>
+ <w head="1" hun="MAD" id="w40.2.13" deprel="IP">.</w>
+</s></p>
+
+<p id="41">
+<s id="s41.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w41.1.1" deprel="ROOT">Miljöskyddsorganisationen</w>
+ <w head="1" hun="VB_PRS_SFO" id="w41.1.2" deprel="AA">ges</w>
+ <w head="2" hun="PC_PRF_UTR@NEU_PLU_IND@DEF_NOM" id="w41.1.3" deprel="PA">ökade</w>
+ <w head="3" hun="NN_UTR_PLU_IND_NOM" id="w41.1.4" deprel="HD">resurser</w>
+ <w head="1" hun="MAD" id="w41.1.5" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s41.2">
+ <w head="0" hun="PM_NOM" id="w41.2.1" deprel="ROOT">Särskilda</w>
+ <w head="1" hun="PM_NOM" id="w41.2.2" deprel="AA">åtgärder</w>
+ <w head="2" hun="PM_NOM" id="w41.2.3" deprel="PA">sätts</w>
+ <w head="3" hun="PL" id="w41.2.4" deprel="PL">in</w>
+ <w head="3" hun="PP" id="w41.2.5" deprel="+F">i</w>
+ <w head="5" hun="AB_POS" id="w41.2.6" deprel="HD">speciellt</w>
+ <w head="5" hun="PC_PRF_UTR@NEU_PLU_IND@DEF_NOM" id="w41.2.7" deprel="HD">utsatta</w>
+ <w head="5" hun="NN_UTR_PLU_IND_NOM" id="w41.2.8" deprel="HD">regioner</w>
+ <w head="5" hun="MID" id="w41.2.9" deprel="IK">,</w>
+ <w head="5" hun="PP" id="w41.2.10" deprel="AN">till</w>
+ <w head="10" hun="NN_NEU_SIN_IND_NOM" id="w41.2.11" deprel="PA">exempel</w>
+ <w head="11" hun="PM_NOM" id="w41.2.12" deprel="ET">västra</w>
+ <w head="14" hun="PM_NOM" id="w41.2.13" deprel="CJ">Skåne</w>
+ <w head="12" hun="KN" id="w41.2.14" deprel="PA">och</w>
+ <w head="14" hun="PM_NOM" id="w41.2.15" deprel="CJ">Sundsvall</w>
+ <w head="14" hun="MID" id="w41.2.16" deprel="++">/</w>
+ <w head="14" hun="PM_NOM" id="w41.2.17" deprel="CJ">Timrå-området</w>
+ <w head="1" hun="MAD" id="w41.2.18" deprel="IP">.</w>
+</s></p>
+
+<p id="42">
+<s id="s42.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w42.1.1" deprel="ROOT">Regeringen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w42.1.2" deprel="RA">inbjuder</w>
+ <w head="2" hun="PP" id="w42.1.3" deprel="RA">inom</w>
+ <w head="3" hun="JJ_POS_UTR_SIN_IND_NOM" id="w42.1.4" deprel="PA">kort</w>
+ <w head="4" hun="NN_UTR_SIN_IND_NOM" id="w42.1.5" deprel="AA">företrädare</w>
+ <w head="5" hun="VB_PRS_AKT" id="w42.1.6" deprel="PA">för</w>
+ <w head="6" hun="DT_UTR@NEU_PLU_DEF" id="w42.1.7" deprel="HD">de</w>
+ <w head="7" hun="RG_NOM" id="w42.1.8" deprel="AA">tre</w>
+ <w head="8" hun="NN_UTR_PLU_DEF_NOM" id="w42.1.9" deprel="PA">storstadsregionerna</w>
+ <w head="9" hun="PP" id="w42.1.10" deprel="OA">till</w>
+ <w head="10" hun="NN_UTR_PLU_IND_NOM" id="w42.1.11" deprel="PA">överläggningar</w>
+ <w head="11" hun="PP" id="w42.1.12" deprel="+F">om</w>
+ <w head="12" hun="HA" id="w42.1.13" deprel="AA">hur</w>
+ <w head="13" hun="NN_UTR_SIN_DEF_NOM" id="w42.1.14" deprel="AA">miljön</w>
+ <w head="14" hun="PP" id="w42.1.15" deprel="PA">i</w>
+ <w head="15" hun="DT_UTR@NEU_PLU_DEF" id="w42.1.16" deprel="HD">dessa</w>
+ <w head="15" hun="NN_UTR_SIN_DEF_NOM" id="w42.1.17" deprel="HD">områden</w>
+ <w head="15" hun="VB_PRS_AKT" id="w42.1.18" deprel="HD">skall</w>
+ <w head="15" hun="PM_NOM" id="w42.1.19" deprel="HD">förbättras</w>
+ <w head="1" hun="MAD" id="w42.1.20" deprel="IP">.</w>
+</s></p>
+
+<p id="43">
+<s id="s43.1">
+ <w head="0" hun="PM_NOM" id="w43.1.1" deprel="ROOT">Förslag</w>
+ <w head="1" hun="VB_PRS_AKT" id="w43.1.2" deprel="AA">kommer</w>
+ <w head="2" hun="PM_NOM" id="w43.1.3" deprel="PA">år</w>
+ <w head="3" hun="RG_NOM" id="w43.1.4" deprel="AA">1990</w>
+ <w head="4" hun="SN" id="w43.1.5" deprel="PA">att</w>
+ <w head="5" hun="VB_PRS_SFO" id="w43.1.6" deprel="AA">föreläggas</w>
+ <w head="6" hun="NN_UTR_SIN_DEF_NOM" id="w43.1.7" deprel="PA">riksdagen</w>
+ <w head="7" hun="PP" id="w43.1.8" deprel="OA">om</w>
+ <w head="8" hun="HP_UTR@NEU_PLU_IND" id="w43.1.9" deprel="PA">vilka</w>
+ <w head="9" hun="PM_NOM" id="w43.1.10" deprel="HD">två</w>
+ <w head="10" hun="NN_UTR_PLU_IND_NOM" id="w43.1.11" deprel="AA">reaktorer</w>
+ <w head="11" hun="PP" id="w43.1.12" deprel="PA">i</w>
+ <w head="12" hun="PM_NOM" id="w43.1.13" deprel="HD">kärnkraftverken</w>
+ <w head="12" hun="PM_NOM" id="w43.1.14" deprel="HD">Barsebäck</w>
+ <w head="12" hun="KN" id="w43.1.15" deprel="HD">och</w>
+ <w head="12" hun="PM_NOM" id="w43.1.16" deprel="HD">Ringhals</w>
+ <w head="12" hun="HP_-_-_-" id="w43.1.17" deprel="HD">som</w>
+ <w head="12" hun="VB_PRS_AKT" id="w43.1.18" deprel="HD">skall</w>
+ <w head="12" hun="VB_INF_SFO" id="w43.1.19" deprel="HD">tas</w>
+ <w head="12" hun="PP" id="w43.1.20" deprel="HD">ur</w>
+ <w head="12" hun="NN_UTR_SIN_IND_NOM" id="w43.1.21" deprel="HD">drift</w>
+ <w head="12" hun="RG_NOM" id="w43.1.22" deprel="HD">1995</w>
+ <w head="12" hun="KN" id="w43.1.23" deprel="HD">och</w>
+ <w head="12" hun="RG_NOM" id="w43.1.24" deprel="HD">1996</w>
+ <w head="1" hun="MAD" id="w43.1.25" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s43.2">
+ <w head="0" hun="NN_NEU_SIN_DEF_NOM" id="w43.2.1" deprel="ROOT">Energisystemet</w>
+ <w head="1" hun="VB_PRS_SFO" id="w43.2.2" deprel="HD">förändras</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w43.2.3" deprel="AA">så</w>
+ <w head="3" hun="SN" id="w43.2.4" deprel="PA">att</w>
+ <w head="4" hun="NN_UTR_SIN_DEF_NOM" id="w43.2.5" deprel="AA">försurningen</w>
+ <w head="7" hun="VB_PRS_AKT" id="w43.2.6" deprel="CJ">minskar</w>
+ <w head="5" hun="KN" id="w43.2.7" deprel="PA">och</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w43.2.8" deprel="CJ">klimatpåverkan</w>
+ <w head="8" hun="VB_INF_SFO" id="w43.2.9" deprel="HD">motverkas</w>
+ <w head="1" hun="MAD" id="w43.2.10" deprel="IP">.</w>
+</s></p>
+
+<p id="44">
+<s id="s44.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_GEN" id="w44.1.1" deprel="ROOT">Regeringens</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w44.1.2" deprel="AA">jordbrukspolitik</w>
+ <w head="2" hun="VB_PRS_AKT" id="w44.1.3" deprel="PA">syftar</w>
+ <w head="3" hun="PP" id="w44.1.4" deprel="OA">till</w>
+ <w head="4" hun="DT_NEU_SIN_IND" id="w44.1.5" deprel="PA">ett</w>
+ <w head="5" hun="JJ_POS_NEU_SIN_IND_NOM" id="w44.1.6" deprel="HD">livskraftigt</w>
+ <w head="5" hun="NN_NEU_SIN_IND_NOM" id="w44.1.7" deprel="HD">jordbruk</w>
+ <w head="5" hun="PP" id="w44.1.8" deprel="AA">utan</w>
+ <w head="8" hun="JJ_POS_UTR_SIN_IND_NOM" id="w44.1.9" deprel="PA">skadlig</w>
+ <w head="9" hun="NN_UTR_SIN_IND_NOM" id="w44.1.10" deprel="HD">påverkan</w>
+ <w head="9" hun="PM_NOM" id="w44.1.11" deprel="HD">på</w>
+ <w head="11" hun="PM_NOM" id="w44.1.12" deprel="HD">miljön</w>
+ <w head="1" hun="MAD" id="w44.1.13" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s44.2">
+ <w head="0" hun="DT_UTR_SIN_IND" id="w44.2.1" deprel="ROOT">En</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w44.2.2" deprel="HD">förskjutning</w>
+ <w head="2" hun="VB_PRS_AKT" id="w44.2.3" deprel="AA">måste</w>
+ <w head="3" hun="VB_INF_AKT" id="w44.2.4" deprel="PA">ske</w>
+ <w head="4" hun="NN_UTR_SIN_DEF_NOM" id="w44.2.5" deprel="AA">från</w>
+ <w head="5" hun="NN_UTR_SIN_DEF_GEN" id="w44.2.6" deprel="PA">dagens</w>
+ <w head="6" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w44.2.7" deprel="AA">intensiva</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w44.2.8" deprel="PA">produktion</w>
+ <w head="8" hun="PP" id="w44.2.9" deprel="OA">till</w>
+ <w head="9" hun="DT_NEU_SIN_IND" id="w44.2.10" deprel="PA">ett</w>
+ <w head="10" hun="NN_NEU_SIN_IND_NOM" id="w44.2.11" deprel="HD">jordbruk</w>
+ <w head="9" hun="HP_-_-_-" id="w44.2.12" deprel="HD">som</w>
+ <w head="9" hun="PM_NOM" id="w44.2.13" deprel="HD">bättre</w>
+ <w head="9" hun="VB_PRS_AKT" id="w44.2.14" deprel="PA">motsvarar</w>
+ <w head="14" hun="DT_UTR@NEU_PLU_DEF" id="w44.2.15" deprel="AA">de</w>
+ <w head="15" hun="NN_NEU_PLU_IND_NOM" id="w44.2.16" deprel="PA">krav</w>
+ <w head="16" hun="HP_-_-_-" id="w44.2.17" deprel="HD">som</w>
+ <w head="16" hun="PM_NOM" id="w44.2.18" deprel="HD">ställs</w>
+ <w head="16" hun="MID" id="w44.2.19" deprel="IK">,</w>
+ <w head="16" hun="VB_PRS_AKT" id="w44.2.20" deprel="AA">när</w>
+ <w head="20" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w44.2.21" deprel="PA">det</w>
+ <w head="21" hun="PM_NOM" id="w44.2.22" deprel="AA">gäller</w>
+ <w head="24" hun="PM_NOM" id="w44.2.23" deprel="CJ">miljön</w>
+ <w head="22" hun="KN" id="w44.2.24" deprel="PA">och</w>
+ <w head="24" hun="DT_UTR_SIN_DEF" id="w44.2.25" deprel="ET">den</w>
+ <w head="25" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w44.2.26" deprel="PA">regionala</w>
+ <w head="26" hun="NN_UTR_SIN_DEF_NOM" id="w44.2.27" deprel="HD">fördelningen</w>
+ <w head="1" hun="MAD" id="w44.2.28" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s44.3">
+ <w head="0" hun="NN_UTR_SIN_IND_NOM" id="w44.3.1" deprel="ROOT">Alternativodling</w>
+ <w head="1" hun="VB_PRS_AKT" id="w44.3.2" deprel="HD">skall</w>
+ <w head="2" hun="VB_INF_SFO" id="w44.3.3" deprel="HD">stimuleras</w>
+ <w head="1" hun="MAD" id="w44.3.4" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s44.4">
+ <w head="0" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w44.4.1" deprel="ROOT">Det</w>
+ <w head="1" hun="VB_IMP_AKT" id="w44.4.2" deprel="AA">öppna</w>
+ <w head="2" hun="NN_NEU_SIN_DEF_NOM" id="w44.4.3" deprel="PA">landskapet</w>
+ <w head="3" hun="PM_NOM" id="w44.4.4" deprel="HD">värnas</w>
+ <w head="1" hun="MAD" id="w44.4.5" deprel="IP">.</w>
+</s></p>
+
+<p id="45">
+<s id="s45.1">
+ <w head="0" hun="DT_UTR_SIN_DEF" id="w45.1.1" deprel="ROOT">Den</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w45.1.2" deprel="HD">internationella</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w45.1.3" deprel="AA">utvecklingen</w>
+ <w head="3" hun="VB_PRS_AKT" id="w45.1.4" deprel="PA">kommer</w>
+ <w head="4" hun="NN_UTR_SIN_DEF_NOM" id="w45.1.5" deprel="AA">också</w>
+ <w head="5" hun="SN" id="w45.1.6" deprel="PA">att</w>
+ <w head="6" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w45.1.7" deprel="PA">ställa</w>
+ <w head="7" hun="NN_NEU_PLU_IND_NOM" id="w45.1.8" deprel="AA">krav</w>
+ <w head="8" hun="PM_NOM" id="w45.1.9" deprel="PA">på</w>
+ <w head="9" hun="DT_UTR_SIN_IND" id="w45.1.10" deprel="AA">en</w>
+ <w head="10" hun="NN_UTR_SIN_IND_NOM" id="w45.1.11" deprel="PA">omställning</w>
+ <w head="11" hun="PP" id="w45.1.12" deprel="AG">av</w>
+ <w head="12" hun="NN_NEU_SIN_DEF_NOM" id="w45.1.13" deprel="PA">jordbruksstödet</w>
+ <w head="13" hun="PP" id="w45.1.14" deprel="OA">till</w>
+ <w head="14" hun="NN_UTR_PLU_IND_NOM" id="w45.1.15" deprel="PA">former</w>
+ <w head="15" hun="HP_-_-_-" id="w45.1.16" deprel="HD">som</w>
+ <w head="15" hun="VB_PRS_AKT" id="w45.1.17" deprel="HD">innebär</w>
+ <w head="15" hun="PC_PRF_UTR_SIN_IND_NOM" id="w45.1.18" deprel="HD">minskad</w>
+ <w head="15" hun="NN_UTR_SIN_IND_NOM" id="w45.1.19" deprel="HD">protektionism</w>
+ <w head="1" hun="MAD" id="w45.1.20" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s45.2">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w45.2.1" deprel="ROOT">Regeringen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w45.2.2" deprel="AA">avser</w>
+ <w head="2" hun="IE" id="w45.2.3" deprel="HD">att</w>
+ <w head="3" hun="VB_INF_AKT" id="w45.2.4" deprel="AA">utveckla</w>
+ <w head="4" hun="NN_UTR_SIN_DEF_NOM" id="w45.2.5" deprel="PA">livsmedelspolitiken</w>
+ <w head="5" hun="PM_NOM" id="w45.2.6" deprel="AA">så</w>
+ <w head="6" hun="SN" id="w45.2.7" deprel="PA">att</w>
+ <w head="7" hun="NN_UTR_SIN_DEF_NOM" id="w45.2.8" deprel="PA">prisutvecklingen</w>
+ <w head="10" hun="VB_PRS_SFO" id="w45.2.9" deprel="CJ">dämpas</w>
+ <w head="8" hun="KN" id="w45.2.10" deprel="IF">och</w>
+ <w head="10" hun="NN_UTR_PLU_DEF_NOM" id="w45.2.11" deprel="CJ">konsumenterna</w>
+ <w head="11" hun="VB_PRS_SFO" id="w45.2.12" deprel="AA">erbjuds</w>
+ <w head="12" hun="NN_NEU_SIN_IND_NOM" id="w45.2.13" deprel="PA">livsmedel</w>
+ <w head="13" hun="PP" id="w45.2.14" deprel="OA">till</w>
+ <w head="14" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w45.2.15" deprel="PA">rimliga</w>
+ <w head="15" hun="NN_NEU_PLU_IND_NOM" id="w45.2.16" deprel="HD">priser</w>
+ <w head="1" hun="MAD" id="w45.2.17" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s45.3">
+ <w head="0" hun="PM_NOM" id="w45.3.1" deprel="ROOT">Livsmedelskontrollen</w>
+ <w head="1" hun="PM_NOM" id="w45.3.2" deprel="HD">skärps</w>
+ <w head="1" hun="MAD" id="w45.3.3" deprel="IP">.</w>
+</s></p>
+
+<p id="46">
+<s id="s46.1">
+ <w head="0" hun="DT_UTR_SIN_DEF" id="w46.1.1" deprel="ROOT">Den</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w46.1.2" deprel="HD">offentliga</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w46.1.3" deprel="AA">sektorn</w>
+ <w head="3" hun="VB_PRS_AKT" id="w46.1.4" deprel="PA">skall</w>
+ <w head="4" hun="PM_NOM" id="w46.1.5" deprel="AA">förnyas</w>
+ <w head="5" hun="PM_NOM" id="w46.1.6" deprel="PA">för</w>
+ <w head="6" hun="SN" id="w46.1.7" deprel="HD">att</w>
+ <w head="7" hun="PM_NOM" id="w46.1.8" deprel="PA">bättre</w>
+ <w head="8" hun="PM_NOM" id="w46.1.9" deprel="HD">tjäna</w>
+ <w head="9" hun="PM_NOM" id="w46.1.10" deprel="AA">människorna</w>
+ <w head="10" hun="PP" id="w46.1.11" deprel="PA">efter</w>
+ <w head="11" hun="PS_UTR@NEU_SIN@PLU_DEF" id="w46.1.12" deprel="PA">deras</w>
+ <w head="14" hun="NN_NEU_PLU_IND_NOM" id="w46.1.13" deprel="CJ">behov</w>
+ <w head="12" hun="KN" id="w46.1.14" deprel="PA">och</w>
+ <w head="14" hun="NN_UTR_PLU_IND_NOM" id="w46.1.15" deprel="CJ">önskningar</w>
+ <w head="1" hun="MAD" id="w46.1.16" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s46.2">
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w46.2.1" deprel="CJ">Servicen</w>
+ <w head="0" hun="KN" id="w46.2.2" deprel="ROOT">och</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w46.2.3" deprel="CJ">valfriheten</w>
+ <w head="3" hun="VB_PRS_AKT" id="w46.2.4" deprel="PA">skall</w>
+ <w head="4" hun="PM_NOM" id="w46.2.5" deprel="HD">öka</w>
+ <w head="2" hun="MAD" id="w46.2.6" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s46.3">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w46.3.1" deprel="ROOT">Effektiviteten</w>
+ <w head="1" hun="VB_PRS_AKT" id="w46.3.2" deprel="RA">skall</w>
+ <w head="2" hun="PM_NOM" id="w46.3.3" deprel="HD">främjas</w>
+ <w head="2" hun="MID" id="w46.3.4" deprel="IK">,</w>
+ <w head="2" hun="PP" id="w46.3.5" deprel="RA">bland</w>
+ <w head="5" hun="PN_NEU_SIN_IND_SUB@OBJ" id="w46.3.6" deprel="PA">annat</w>
+ <w head="6" hun="PP" id="w46.3.7" deprel="AA">genom</w>
+ <w head="7" hun="SN" id="w46.3.8" deprel="PA">att</w>
+ <w head="8" hun="PN_UTR@NEU_PLU_DEF_SUB" id="w46.3.9" deprel="PA">de</w>
+ <w head="9" hun="PM_GEN" id="w46.3.10" deprel="HD">anställdas</w>
+ <w head="10" hun="NN_UTR_SIN_IND_NOM" id="w46.3.11" deprel="AA">initiativkraft</w>
+ <w head="11" hun="VB_PRS_AKT" id="w46.3.12" deprel="PA">får</w>
+ <w head="12" hun="DT_NEU_SIN_IND" id="w46.3.13" deprel="HD">ett</w>
+ <w head="13" hun="PC_PRF_NEU_SIN_IND_NOM" id="w46.3.14" deprel="PA">vidgat</w>
+ <w head="14" hun="NN_NEU_SIN_IND_NOM" id="w46.3.15" deprel="HD">utrymme</w>
+ <w head="1" hun="MAD" id="w46.3.16" deprel="IP">.</w>
+</s></p>
+
+<p id="47">
+<s id="s47.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w47.1.1" deprel="ROOT">Föräldraförsäkringen</w>
+ <w head="1" hun="VB_PRS_SFO" id="w47.1.2" deprel="AA">byggs</w>
+ <w head="2" hun="PL" id="w47.1.3" deprel="PL">ut</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w47.1.4" deprel="HD">från</w>
+ <w head="4" hun="RG_NOM" id="w47.1.5" deprel="PA">nio</w>
+ <w head="9" hun="PP" id="w47.1.6" deprel="CJ">till</w>
+ <w head="6" hun="RG_NOM" id="w47.1.7" deprel="PA">18</w>
+ <w head="7" hun="NN_UTR_PLU_IND_NOM" id="w47.1.8" deprel="HD">månader</w>
+ <w head="5" hun="MID" id="w47.1.9" deprel="RA">,</w>
+ <w head="9" hun="PP" id="w47.1.10" deprel="CJ">med</w>
+ <w head="10" hun="NN_UTR_SIN_IND_NOM" id="w47.1.11" deprel="PA">ersättning</w>
+ <w head="11" hun="PP" id="w47.1.12" deprel="MA">enligt</w>
+ <w head="12" hun="NN_UTR_SIN_DEF_NOM" id="w47.1.13" deprel="HD">inkomstbortfallsprincipen</w>
+ <w head="1" hun="MAD" id="w47.1.14" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s47.2">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w47.2.1" deprel="ROOT">Utbyggnaden</w>
+ <w head="1" hun="VB_PRS_AKT" id="w47.2.2" deprel="AA">skall</w>
+ <w head="2" hun="VB_INF_AKT" id="w47.2.3" deprel="PA">vara</w>
+ <w head="3" hun="PM_NOM" id="w47.2.4" deprel="TA">slutförd</w>
+ <w head="4" hun="RG_NOM" id="w47.2.5" deprel="HD">1991</w>
+ <w head="1" hun="MAD" id="w47.2.6" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s47.3">
+ <w head="0" hun="DT_UTR_SIN_DEF" id="w47.3.1" deprel="ROOT">Den</w>
+ <w head="1" hun="JJ_SUV_UTR@NEU_SIN@PLU_DEF_NOM" id="w47.3.2" deprel="AA">första</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w47.3.3" deprel="HD">etappen</w>
+ <w head="2" hun="MID" id="w47.3.4" deprel="IK">,</w>
+ <w head="2" hun="HP_-_-_-" id="w47.3.5" deprel="HD">som</w>
+ <w head="5" hun="VB_PRS_AKT" id="w47.3.6" deprel="AA">träder</w>
+ <w head="6" hun="PP" id="w47.3.7" deprel="PA">i</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w47.3.8" deprel="HD">kraft</w>
+ <w head="7" hun="DT_UTR_SIN_DEF" id="w47.3.9" deprel="HD">den</w>
+ <w head="7" hun="RO_NOM" id="w47.3.10" deprel="HD">1</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w47.3.11" deprel="HD">juli</w>
+ <w head="7" hun="RG_NOM" id="w47.3.12" deprel="HD">1989</w>
+ <w head="7" hun="MID" id="w47.3.13" deprel="IK">,</w>
+ <w head="7" hun="PM_NOM" id="w47.3.14" deprel="AA">innebär</w>
+ <w head="14" hun="AB_KOM" id="w47.3.15" deprel="HD">ytterligare</w>
+ <w head="15" hun="RG_NOM" id="w47.3.16" deprel="HD">tre</w>
+ <w head="16" hun="PM_GEN" id="w47.3.17" deprel="PA">månaders</w>
+ <w head="17" hun="NN_UTR_SIN_IND_NOM" id="w47.3.18" deprel="HD">ersättning</w>
+ <w head="1" hun="MAD" id="w47.3.19" deprel="IP">.</w>
+</s></p>
+
+<p id="48">
+<s id="s48.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w48.1.1" deprel="ROOT">Utbyggnaden</w>
+ <w head="1" hun="PP" id="w48.1.2" deprel="AG">av</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w48.1.3" deprel="PA">barnomsorgen</w>
+ <w head="3" hun="VB_PRS_AKT" id="w48.1.4" deprel="AA">fortsätter</w>
+ <w head="4" hun="PP" id="w48.1.5" deprel="PA">i</w>
+ <w head="5" hun="NN_UTR_SIN_IND_NOM" id="w48.1.6" deprel="HD">enlighet</w>
+ <w head="5" hun="PP" id="w48.1.7" deprel="HD">med</w>
+ <w head="5" hun="NN_UTR_SIN_DEF_GEN" id="w48.1.8" deprel="HD">riksdagens</w>
+ <w head="5" hun="NN_NEU_SIN_IND_NOM" id="w48.1.9" deprel="HD">beslut</w>
+ <w head="1" hun="MAD" id="w48.1.10" deprel="IP">.</w>
+</s></p>
+
+<p id="49">
+<s id="s49.1">
+ <w head="0" hun="PP" id="w49.1.1" deprel="ROOT">Genom</w>
+ <w head="1" hun="DT_UTR_SIN_DEF" id="w49.1.2" deprel="PA">den</w>
+ <w head="2" hun="JJ_POS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w49.1.3" deprel="HD">extra</w>
+ <w head="3" hun="NN_UTR_SIN_DEF_NOM" id="w49.1.4" deprel="HD">höjningen</w>
+ <w head="4" hun="PP" id="w49.1.5" deprel="AG">av</w>
+ <w head="5" hun="NN_NEU_SIN_DEF_NOM" id="w49.1.6" deprel="PA">basbeloppet</w>
+ <w head="1" hun="PM_NOM" id="w49.1.7" deprel="PA">från</w>
+ <w head="7" hun="KN" id="w49.1.8" deprel="HD">och</w>
+ <w head="7" hun="PP" id="w49.1.9" deprel="HD">med</w>
+ <w head="7" hun="DT_UTR_SIN_DEF" id="w49.1.10" deprel="HD">den</w>
+ <w head="7" hun="RO_NOM" id="w49.1.11" deprel="HD">1</w>
+ <w head="6" hun="NN_UTR_SIN_IND_NOM" id="w49.1.12" deprel="HD">januari</w>
+ <w head="12" hun="RG_NOM" id="w49.1.13" deprel="AA">1989</w>
+ <w head="13" hun="PM_NOM" id="w49.1.14" deprel="PA">får</w>
+ <w head="14" hun="PM_NOM" id="w49.1.15" deprel="AA">pensionärerna</w>
+ <w head="15" hun="JJ_POS_UTR_SIN_IND_NOM" id="w49.1.16" deprel="PA">full</w>
+ <w head="16" hun="NN_UTR_SIN_IND_NOM" id="w49.1.17" deprel="HD">kompensation</w>
+ <w head="17" hun="PM_NOM" id="w49.1.18" deprel="PA">för</w>
+ <w head="18" hun="NN_UTR_SIN_DEF_NOM" id="w49.1.19" deprel="+F">devalveringen</w>
+ <w head="19" hun="RG_NOM" id="w49.1.20" deprel="HD">1982</w>
+ <w head="1" hun="MAD" id="w49.1.21" deprel="IP">.</w>
+</s></p>
+
+<p id="50">
+<s id="s50.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w50.1.1" deprel="ROOT">Regeringen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w50.1.2" deprel="HD">avser</w>
+ <w head="1" hun="MID" id="w50.1.3" deprel="IK">,</w>
+ <w head="1" hun="PP" id="w50.1.4" deprel="RA">bland</w>
+ <w head="4" hun="PN_NEU_SIN_IND_SUB@OBJ" id="w50.1.5" deprel="PA">annat</w>
+ <w head="5" hun="PP" id="w50.1.6" deprel="AA">genom</w>
+ <w head="8" hun="NN_UTR_-_-_SMS" id="w50.1.7" deprel="CJ">Hälso-</w>
+ <w head="6" hun="KN" id="w50.1.8" deprel="PA">och</w>
+ <w head="8" hun="NN_UTR_SIN_DEF_GEN" id="w50.1.9" deprel="CJ">sjukvårdsberedningens</w>
+ <w head="6" hun="NN_NEU_SIN_IND_NOM" id="w50.1.10" deprel="HD">arbete</w>
+ <w head="6" hun="MID" id="w50.1.11" deprel="IK">,</w>
+ <w head="6" hun="SN" id="w50.1.12" deprel="PA">att</w>
+ <w head="12" hun="NN_UTR_PLU_DEF_NOM" id="w50.1.13" deprel="ET">ägna</w>
+ <w head="13" hun="JJ_POS_UTR_SIN_IND_NOM" id="w50.1.14" deprel="AA">stor</w>
+ <w head="14" hun="NN_UTR_SIN_IND_NOM" id="w50.1.15" deprel="PA">uppmärksamhet</w>
+ <w head="15" hun="PM_NOM" id="w50.1.16" deprel="AA">åt</w>
+ <w head="16" hun="SN" id="w50.1.17" deprel="PA">att</w>
+ <w head="17" hun="DT_UTR@NEU_PLU_IND@DEF" id="w50.1.18" deprel="PA">alla</w>
+ <w head="18" hun="NN_UTR_PLU_IND_NOM" id="w50.1.19" deprel="AA">får</w>
+ <w head="19" hun="PM_NOM" id="w50.1.20" deprel="PA">rätt</w>
+ <w head="20" hun="PP" id="w50.1.21" deprel="OA">till</w>
+ <w head="21" hun="DT_UTR_SIN_IND" id="w50.1.22" deprel="PA">en</w>
+ <w head="24" hun="NN_UTR_-_-_SMS" id="w50.1.23" deprel="CJ">hälso-</w>
+ <w head="22" hun="KN" id="w50.1.24" deprel="IF">och</w>
+ <w head="24" hun="NN_UTR_SIN_IND_NOM" id="w50.1.25" deprel="CJ">sjukvård</w>
+ <w head="25" hun="PP" id="w50.1.26" deprel="AG">av</w>
+ <w head="26" hun="PM_NOM" id="w50.1.27" deprel="PA">hög</w>
+ <w head="27" hun="NN_UTR_SIN_IND_NOM" id="w50.1.28" deprel="HD">kvalitet</w>
+ <w head="1" hun="MAD" id="w50.1.29" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s50.2">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w50.2.1" deprel="ROOT">Personalrekryteringen</w>
+ <w head="1" hun="PP" id="w50.2.2" deprel="RA">inom</w>
+ <w head="4" hun="NN_UTR_SIN_DEF_NOM" id="w50.2.3" deprel="CJ">vården</w>
+ <w head="2" hun="KN" id="w50.2.4" deprel="PA">och</w>
+ <w head="4" hun="NN_UTR_SIN_DEF_NOM" id="w50.2.5" deprel="CJ">omsorgen</w>
+ <w head="2" hun="PM_NOM" id="w50.2.6" deprel="PA">måste</w>
+ <w head="6" hun="PM_NOM" id="w50.2.7" deprel="HD">förbättras</w>
+ <w head="1" hun="MAD" id="w50.2.8" deprel="IP">.</w>
+</s></p>
+
+<p id="51">
+<s id="s51.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w51.1.1" deprel="ROOT">Situationen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w51.1.2" deprel="AA">för</w>
+ <w head="2" hun="AB_POS" id="w51.1.3" deprel="HD">svårt</w>
+ <w head="5" hun="PC_PRF_UTR@NEU_PLU_IND@DEF_NOM" id="w51.1.4" deprel="CJ">handikappade</w>
+ <w head="3" hun="KN" id="w51.1.5" deprel="IF">samt</w>
+ <w head="5" hun="PM_NOM" id="w51.1.6" deprel="CJ">för</w>
+ <w head="6" hun="PC_PRF_UTR@NEU_PLU_IND@DEF_NOM" id="w51.1.7" deprel="AA">handikappade</w>
+ <w head="9" hun="NN_NEU_PLU_IND_NOM" id="w51.1.8" deprel="CJ">barn</w>
+ <w head="7" hun="KN" id="w51.1.9" deprel="PA">och</w>
+ <w head="9" hun="PS_UTR@NEU_SIN@PLU_DEF" id="w51.1.10" deprel="ET">deras</w>
+ <w head="10" hun="NN_UTR_PLU_IND_NOM" id="w51.1.11" deprel="PA">familjer</w>
+ <w head="11" hun="VB_PRS_AKT" id="w51.1.12" deprel="HD">kommer</w>
+ <w head="12" hun="SN" id="w51.1.13" deprel="PA">att</w>
+ <w head="13" hun="PM_NOM" id="w51.1.14" deprel="PA">uppmärksammas</w>
+ <w head="14" hun="PM_NOM" id="w51.1.15" deprel="HD">särskilt</w>
+ <w head="1" hun="MAD" id="w51.1.16" deprel="IP">.</w>
+</s></p>
+
+<p id="52">
+<s id="s52.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w52.1.1" deprel="ROOT">Äldreomsorgen</w>
+ <w head="1" hun="VB_PRS_SFO" id="w52.1.2" deprel="PA">byggs</w>
+ <w head="2" hun="PL" id="w52.1.3" deprel="PL">ut</w>
+ <w head="2" hun="PP" id="w52.1.4" deprel="AA">i</w>
+ <w head="4" hun="NN_NEU_SIN_IND_NOM" id="w52.1.5" deprel="HD">syfte</w>
+ <w head="4" hun="IE" id="w52.1.6" deprel="PA">att</w>
+ <w head="11" hun="VB_INF_AKT" id="w52.1.7" deprel="CJ">skapa</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w52.1.8" deprel="HD">trygghet</w>
+ <w head="11" hun="MID" id="w52.1.9" deprel="IK">,</w>
+ <w head="11" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w52.1.10" deprel="CJ">självbestämmande</w>
+ <w head="6" hun="KN" id="w52.1.11" deprel="IF">och</w>
+ <w head="11" hun="NN_UTR_SIN_IND_NOM" id="w52.1.12" deprel="ET">valfrihet</w>
+ <w head="12" hun="PM_NOM" id="w52.1.13" deprel="PA">för</w>
+ <w head="13" hun="PM_NOM" id="w52.1.14" deprel="HD">äldre</w>
+ <w head="1" hun="MAD" id="w52.1.15" deprel="IP">.</w>
+</s></p>
+
+<p id="53">
+<s id="s53.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w53.1.1" deprel="ROOT">Kampen</w>
+ <w head="8" hun="PP" id="w53.1.2" deprel="CJ">mot</w>
+ <w head="4" hun="NN_AN" id="w53.1.3" deprel="CJ">HIV</w>
+ <w head="2" hun="KN" id="w53.1.4" deprel="PA">och</w>
+ <w head="4" hun="PM_NOM" id="w53.1.5" deprel="CJ">AIDS</w>
+ <w head="2" hun="VB_PRS_AKT" id="w53.1.6" deprel="PA">skall</w>
+ <w head="6" hun="PM_NOM" id="w53.1.7" deprel="HD">fortsätta</w>
+ <w head="1" hun="MID" id="w53.1.8" deprel="ET">,</w>
+ <w head="8" hun="PP" id="w53.1.9" deprel="CJ">liksom</w>
+ <w head="9" hun="NN_UTR_SIN_DEF_NOM" id="w53.1.10" deprel="PA">kampen</w>
+ <w head="10" hun="PP" id="w53.1.11" deprel="UA">mot</w>
+ <w head="11" hun="NN_UTR_PLU_IND_NOM" id="w53.1.12" deprel="HD">droger</w>
+ <w head="1" hun="MAD" id="w53.1.13" deprel="IP">.</w>
+</s></p>
+
+<p id="54">
+<s id="s54.1">
+ <w head="0" hun="NN_UTR_SIN_DEF_GEN" id="w54.1.1" deprel="ROOT">Regeringens</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w54.1.2" deprel="PA">proposition</w>
+ <w head="2" hun="PP" id="w54.1.3" deprel="OA">om</w>
+ <w head="3" hun="NN_UTR_SIN_DEF_NOM" id="w54.1.4" deprel="PA">grundskolan</w>
+ <w head="4" hun="VB_PRS_AKT" id="w54.1.5" deprel="TA">föreligger</w>
+ <w head="5" hun="AB" id="w54.1.6" deprel="TA">nu</w>
+ <w head="4" hun="VB_PRS_AKT" id="w54.1.7" deprel="HD">för</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w54.1.8" deprel="HD">behandling</w>
+ <w head="1" hun="MAD" id="w54.1.9" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s54.2">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w54.2.1" deprel="ROOT">Gymnasieskolan</w>
+ <w head="1" hun="VB_PRS_SFO" id="w54.2.2" deprel="HD">reformeras</w>
+ <w head="1" hun="MAD" id="w54.2.3" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s54.3">
+ <w head="0" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w54.3.1" deprel="ROOT">Det</w>
+ <w head="1" hun="VB_PRS_AKT" id="w54.3.2" deprel="ROOT">innebär</w>
+ <w head="2" hun="NN_UTR_PLU_IND_NOM" id="w54.3.3" deprel="ROOT">förändringar</w>
+ <w head="3" hun="PP" id="w54.3.4" deprel="AG">av</w>
+ <w head="4" hun="PM_NOM" id="w54.3.5" deprel="PA">såväl</w>
+ <w head="5" hun="DT_UTR@NEU_PLU_DEF" id="w54.3.6" deprel="ROOT">de</w>
+ <w head="12" hun="PC_PRF_UTR@NEU_PLU_IND@DEF_NOM" id="w54.3.7" deprel="MS">yrkesinriktade</w>
+ <w head="12" hun="KN" id="w54.3.8" deprel="+F">som</w>
+ <w head="8" hun="DT_UTR@NEU_PLU_DEF" id="w54.3.9" deprel="+F">de</w>
+ <w head="9" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w54.3.10" deprel="PA">teoretiska</w>
+ <w head="10" hun="NN_UTR_PLU_DEF_NOM" id="w54.3.11" deprel="HD">linjerna</w>
+ <w head="6" hun="MAD" id="w54.3.12" deprel="MS">.</w>
+</s> 
+ 
+
+
+<s id="s54.4">
+ <w head="0" hun="DT_UTR@NEU_PLU_IND@DEF" id="w54.4.1" deprel="ROOT">Alla</w>
+ <w head="1" hun="NN_UTR_PLU_IND_NOM" id="w54.4.2" deprel="PA">ungdomar</w>
+ <w head="2" hun="PP" id="w54.4.3" deprel="TA">under</w>
+ <w head="3" hun="RG_NOM" id="w54.4.4" deprel="PA">20</w>
+ <w head="4" hun="NN_UTR_PLU_IND_NOM" id="w54.4.5" deprel="AA">år</w>
+ <w head="5" hun="VB_PRS_AKT" id="w54.4.6" deprel="PA">skall</w>
+ <w head="6" hun="VB_INF_SFO" id="w54.4.7" deprel="HD">beredas</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w54.4.8" deprel="PA">plats</w>
+ <w head="8" hun="PP" id="w54.4.9" deprel="PA">i</w>
+ <w head="9" hun="NN_UTR_SIN_DEF_NOM" id="w54.4.10" deprel="HD">gymnasieskolan</w>
+ <w head="1" hun="MAD" id="w54.4.11" deprel="IP">.</w>
+</s></p>
+
+<p id="55">
+<s id="s55.1">
+ <w head="4" hun="NN_UTR_SIN_IND_NOM" id="w55.1.1" deprel="CJ">Vuxenutbildning</w>
+ <w head="4" hun="MID" id="w55.1.2" deprel="IK">,</w>
+ <w head="4" hun="NN_UTR_SIN_IND_NOM" id="w55.1.3" deprel="CJ">arbetsmarknadsutbildning</w>
+ <w head="0" hun="KN" id="w55.1.4" deprel="ROOT">och</w>
+ <w head="4" hun="NN_UTR_SIN_IND_NOM" id="w55.1.5" deprel="CJ">personalutbildning</w>
+ <w head="5" hun="VB_PRS_AKT" id="w55.1.6" deprel="PA">skall</w>
+ <w head="6" hun="VB_INF_SFO" id="w55.1.7" deprel="PA">samordnas</w>
+ <w head="7" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w55.1.8" deprel="HD">bättre</w>
+ <w head="4" hun="MAD" id="w55.1.9" deprel="IP">.</w>
+</s></p>
+
+<p id="56">
+<s id="s56.1">
+ <w head="0" hun="NN_UTR_PLU_DEF_NOM" id="w56.1.1" deprel="ROOT">Ansträngningarna</w>
+ <w head="1" hun="SN" id="w56.1.2" deprel="PA">att</w>
+ <w head="2" hun="PM_NOM" id="w56.1.3" deprel="PA">uppnå</w>
+ <w head="3" hun="PM_NOM" id="w56.1.4" deprel="HD">ökad</w>
+ <w head="6" hun="PM_NOM" id="w56.1.5" deprel="CJ">jämställdhet</w>
+ <w head="4" hun="KN" id="w56.1.6" deprel="IF">och</w>
+ <w head="6" hun="DT_UTR_SIN_IND" id="w56.1.7" deprel="CJ">en</w>
+ <w head="7" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w56.1.8" deprel="AA">jämnare</w>
+ <w head="8" hun="JJ_POS_UTR_SIN_IND_NOM" id="w56.1.9" deprel="PA">social</w>
+ <w head="9" hun="NN_UTR_SIN_IND_NOM" id="w56.1.10" deprel="AA">sammansättning</w>
+ <w head="10" hun="PM_NOM" id="w56.1.11" deprel="PA">på</w>
+ <w head="11" hun="DT_UTR@NEU_PLU_IND@DEF" id="w56.1.12" deprel="AA">alla</w>
+ <w head="12" hun="NN_UTR_PLU_IND_NOM" id="w56.1.13" deprel="PA">utbildningsvägar</w>
+ <w head="13" hun="VB_PRS_AKT" id="w56.1.14" deprel="HD">kommer</w>
+ <w head="14" hun="SN" id="w56.1.15" deprel="PA">att</w>
+ <w head="15" hun="VB_PRS_SFO" id="w56.1.16" deprel="HD">intensifieras</w>
+ <w head="1" hun="MAD" id="w56.1.17" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s56.2">
+ <w head="0" hun="PM_NOM" id="w56.2.1" deprel="ROOT">Särskilt</w>
+ <w head="1" hun="NN_UTR_PLU_DEF_GEN" id="w56.2.2" deprel="HD">invandrarungdomarnas</w>
+ <w head="2" hun="NN_UTR_SIN_IND_NOM" id="w56.2.3" deprel="HD">situation</w>
+ <w head="2" hun="VB_PRS_AKT" id="w56.2.4" deprel="HD">kommer</w>
+ <w head="2" hun="SN" id="w56.2.5" deprel="KA">att</w>
+ <w head="5" hun="PM_NOM" id="w56.2.6" deprel="HD">uppmärksammas</w>
+ <w head="1" hun="MAD" id="w56.2.7" deprel="IP">.</w>
+</s></p>
+
+<p id="57">
+<s id="s57.1">
+ <w head="0" hun="DT_NEU_SIN_DEF" id="w57.1.1" deprel="ROOT">Det</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w57.1.2" deprel="ROOT">internationella</w>
+ <w head="2" hun="NN_NEU_SIN_DEF_NOM" id="w57.1.3" deprel="ROOT">samarbetet</w>
+ <w head="3" hun="PP" id="w57.1.4" deprel="ROOT">inom</w>
+ <w head="6" hun="NN_UTR_SIN_IND_NOM" id="w57.1.5" deprel="CJ">forskning</w>
+ <w head="4" hun="KN" id="w57.1.6" deprel="PA">och</w>
+ <w head="6" hun="NN_UTR_SIN_IND_NOM" id="w57.1.7" deprel="CJ">utveckling</w>
+ <w head="4" hun="VB_PRS_AKT" id="w57.1.8" deprel="AA">blir</w>
+ <w head="8" hun="AB" id="w57.1.9" deprel="UA">allt</w>
+ <w head="9" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w57.1.10" deprel="HD">viktigare</w>
+ <w head="9" hun="MAD" id="w57.1.11" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s57.2">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w57.2.1" deprel="ROOT">Regeringen</w>
+ <w head="1" hun="VB_PRS_AKT" id="w57.2.2" deprel="AA">kommer</w>
+ <w head="2" hun="IE" id="w57.2.3" deprel="HD">att</w>
+ <w head="3" hun="VB_INF_AKT" id="w57.2.4" deprel="AA">fortsätta</w>
+ <w head="4" hun="NN_NEU_SIN_DEF_NOM" id="w57.2.5" deprel="PA">arbetet</w>
+ <w head="5" hun="PP" id="w57.2.6" deprel="AA">med</w>
+ <w head="6" hun="IE" id="w57.2.7" deprel="PA">att</w>
+ <w head="7" hun="VB_INF_AKT" id="w57.2.8" deprel="AA">skapa</w>
+ <w head="8" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w57.2.9" deprel="PA">goda</w>
+ <w head="9" hun="NN_UTR_PLU_IND_NOM" id="w57.2.10" deprel="AA">förutsättningar</w>
+ <w head="10" hun="VB_PRS_AKT" id="w57.2.11" deprel="PA">för</w>
+ <w head="11" hun="JJ_POS_NEU_SIN_IND_NOM" id="w57.2.12" deprel="AA">svenskt</w>
+ <w head="14" hun="NN_NEU_SIN_IND_NOM" id="w57.2.13" deprel="CJ">näringsliv</w>
+ <w head="12" hun="KN" id="w57.2.14" deprel="PA">och</w>
+ <w head="14" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w57.2.15" deprel="ET">svenska</w>
+ <w head="15" hun="NN_UTR_PLU_IND_NOM" id="w57.2.16" deprel="PA">forskare</w>
+ <w head="16" hun="IE" id="w57.2.17" deprel="HD">att</w>
+ <w head="17" hun="VB_INF_AKT" id="w57.2.18" deprel="PA">delta</w>
+ <w head="18" hun="PP" id="w57.2.19" deprel="TA">i</w>
+ <w head="19" hun="DT_NEU_SIN_DEF" id="w57.2.20" deprel="HD">det</w>
+ <w head="19" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w57.2.21" deprel="HD">internationella</w>
+ <w head="19" hun="NN_NEU_SIN_DEF_NOM" id="w57.2.22" deprel="HD">forskningssamarbetet</w>
+ <w head="1" hun="MAD" id="w57.2.23" deprel="IP">.</w>
+</s></p>
+
+<p id="58">
+<s id="s58.1">
+ <w head="0" hun="PP" id="w58.1.1" deprel="ROOT">Under</w>
+ <w head="1" hun="DT_UTR_SIN_DEF" id="w58.1.2" deprel="PA">den</w>
+ <w head="2" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w58.1.3" deprel="HD">kommande</w>
+ <w head="3" hun="NN_UTR_SIN_DEF_NOM" id="w58.1.4" deprel="AA">valperioden</w>
+ <w head="4" hun="VB_PRS_AKT" id="w58.1.5" deprel="PA">skall</w>
+ <w head="5" hun="RG_NOM" id="w58.1.6" deprel="AA">300</w>
+ <w head="6" hun="NN_UTR_PLU_IND_NOM" id="w58.1.7" deprel="PA">miljoner</w>
+ <w head="7" hun="NN_UTR_PLU_IND_NOM" id="w58.1.8" deprel="AA">kronor</w>
+ <w head="8" hun="VB_PRS_SFO" id="w58.1.9" deprel="PA">satsas</w>
+ <w head="9" hun="PM_GEN" id="w58.1.10" deprel="AA">på</w>
+ <w head="12" hun="NN_UTR_SIN_IND_NOM" id="w58.1.11" deprel="CJ">förnyelse</w>
+ <w head="10" hun="KN" id="w58.1.12" deprel="PA">och</w>
+ <w head="12" hun="NN_UTR_SIN_IND_NOM" id="w58.1.13" deprel="CJ">utveckling</w>
+ <w head="13" hun="PP" id="w58.1.14" deprel="AG">av</w>
+ <w head="14" hun="NN_NEU_SIN_DEF_NOM" id="w58.1.15" deprel="HD">kulturlivet</w>
+ <w head="1" hun="MAD" id="w58.1.16" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s58.2">
+ <w head="2" hun="NN_NEU_PLU_IND_NOM" id="w58.2.1" deprel="CJ">Barn</w>
+ <w head="0" hun="KN" id="w58.2.2" deprel="ROOT">och</w>
+ <w head="2" hun="NN_UTR_PLU_IND_NOM" id="w58.2.3" deprel="CJ">ungdomar</w>
+ <w head="3" hun="VB_PRS_AKT" id="w58.2.4" deprel="PA">skall</w>
+ <w head="4" hun="VB_INF_SFO" id="w58.2.5" deprel="AA">ges</w>
+ <w head="5" hun="PC_PRF_UTR@NEU_PLU_IND@DEF_NOM" id="w58.2.6" deprel="PA">ökade</w>
+ <w head="6" hun="NN_UTR_PLU_IND_NOM" id="w58.2.7" deprel="AA">möjligheter</w>
+ <w head="7" hun="SN" id="w58.2.8" deprel="PA">att</w>
+ <w head="10" hun="PM_NOM" id="w58.2.9" deprel="CJ">mötas</w>
+ <w head="8" hun="KN" id="w58.2.10" deprel="UA">och</w>
+ <w head="10" hun="PM_NOM" id="w58.2.11" deprel="ET">själva</w>
+ <w head="22" hun="PM_NOM" id="w58.2.12" deprel="CJ">utöva</w>
+ <w head="12" hun="NN_UTR_SIN_IND_NOM" id="w58.2.13" deprel="HD">musik</w>
+ <w head="22" hun="MID" id="w58.2.14" deprel="IK">,</w>
+ <w head="22" hun="NN_UTR_SIN_IND_NOM" id="w58.2.15" deprel="CJ">dans</w>
+ <w head="22" hun="MID" id="w58.2.16" deprel="IK">,</w>
+ <w head="22" hun="NN_UTR_SIN_IND_NOM" id="w58.2.17" deprel="CJ">sång</w>
+ <w head="22" hun="MID" id="w58.2.18" deprel="IK">,</w>
+ <w head="22" hun="NN_UTR_SIN_IND_NOM" id="w58.2.19" deprel="CJ">litteratur</w>
+ <w head="22" hun="MID" id="w58.2.20" deprel="IK">,</w>
+ <w head="22" hun="NN_UTR_SIN_IND_NOM" id="w58.2.21" deprel="CJ">teater</w>
+ <w head="11" hun="KN" id="w58.2.22" deprel="PA">och</w>
+ <w head="22" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w58.2.23" deprel="ET">andra</w>
+ <w head="23" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w58.2.24" deprel="PA">konstnärliga</w>
+ <w head="24" hun="NN_UTR_PLU_IND_NOM" id="w58.2.25" deprel="HD">verksamheter</w>
+ <w head="2" hun="MAD" id="w58.2.26" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s58.3">
+ <w head="0" hun="DT_UTR@NEU_PLU_DEF" id="w58.3.1" deprel="ROOT">De</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w58.3.2" deprel="AA">konstnärliga</w>
+ <w head="2" hun="NN_UTR_PLU_DEF_GEN" id="w58.3.3" deprel="PA">yrkesutövarnas</w>
+ <w head="3" hun="NN_NEU_PLU_IND_NOM" id="w58.3.4" deprel="HD">villkor</w>
+ <w head="4" hun="VB_PRS_AKT" id="w58.3.5" deprel="PA">skall</w>
+ <w head="5" hun="PM_NOM" id="w58.3.6" deprel="HD">förbättras</w>
+ <w head="1" hun="MAD" id="w58.3.7" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s58.4">
+ <w head="0" hun="NN_NEU_SIN_DEF_NOM" id="w58.4.1" deprel="ROOT">Kulturlivet</w>
+ <w head="1" hun="PP" id="w58.4.2" deprel="PA">i</w>
+ <w head="2" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w58.4.3" deprel="HD">hela</w>
+ <w head="2" hun="NN_NEU_SIN_DEF_NOM" id="w58.4.4" deprel="HD">landet</w>
+ <w head="2" hun="VB_PRS_AKT" id="w58.4.5" deprel="HD">skall</w>
+ <w head="2" hun="PM_NOM" id="w58.4.6" deprel="HD">stärkas</w>
+ <w head="1" hun="MAD" id="w58.4.7" deprel="IP">.</w>
+</s></p>
+
+<p id="59">
+<s id="s59.1">
+ <w head="0" hun="NN_UTR_PLU_DEF_NOM" id="w59.1.1" deprel="ROOT">Folkrörelserna</w>
+ <w head="8" hun="MID" id="w59.1.2" deprel="IK">,</w>
+ <w head="1" hun="AB" id="w59.1.3" deprel="+F">inte</w>
+ <w head="3" hun="AB_SUV" id="w59.1.4" deprel="HD">minst</w>
+ <w head="3" hun="NN_UTR_PLU_DEF_NOM" id="w59.1.5" deprel="HD">ungdomsorganisationerna</w>
+ <w head="3" hun="KN" id="w59.1.6" deprel="HD">och</w>
+ <w head="3" hun="NN_UTR_SIN_DEF_NOM" id="w59.1.7" deprel="HD">idrottsrörelsen</w>
+ <w head="1" hun="MID" id="w59.1.8" deprel="UA">,</w>
+ <w head="8" hun="VB_PRS_AKT" id="w59.1.9" deprel="AA">utför</w>
+ <w head="9" hun="DT_NEU_SIN_IND" id="w59.1.10" deprel="PA">ett</w>
+ <w head="10" hun="JJ_POS_NEU_SIN_IND_NOM" id="w59.1.11" deprel="AA">värdefullt</w>
+ <w head="11" hun="NN_NEU_SIN_IND_NOM" id="w59.1.12" deprel="PA">arbete</w>
+ <w head="12" hun="HP_-_-_-" id="w59.1.13" deprel="HD">som</w>
+ <w head="12" hun="VB_PRS_AKT" id="w59.1.14" deprel="HD">skall</w>
+ <w head="12" hun="PM_GEN" id="w59.1.15" deprel="HD">stödjas</w>
+ <w head="12" hun="KN" id="w59.1.16" deprel="HD">och</w>
+ <w head="12" hun="PM_GEN" id="w59.1.17" deprel="HD">underlättas</w>
+ <w head="1" hun="MAD" id="w59.1.18" deprel="IP">.</w>
+</s></p>
+
+<p id="60">
+<s id="s60.1">
+ <w head="0" hun="NN_NEU_SIN_DEF_NOM" id="w60.1.1" deprel="ROOT">Bostadsbyggandet</w>
+ <w head="1" hun="VB_PRS_AKT" id="w60.1.2" deprel="AA">skall</w>
+ <w head="2" hun="VB_INF_AKT" id="w60.1.3" deprel="HD">ha</w>
+ <w head="3" hun="DT_UTR_SIN_IND" id="w60.1.4" deprel="AA">en</w>
+ <w head="4" hun="PM_NOM" id="w60.1.5" deprel="PA">sådan</w>
+ <w head="5" hun="NN_UTR_SIN_IND_NOM" id="w60.1.6" deprel="HD">omfattning</w>
+ <w head="5" hun="MID" id="w60.1.7" deprel="IK">,</w>
+ <w head="5" hun="SN" id="w60.1.8" deprel="KA">att</w>
+ <w head="8" hun="NN_NEU_SIN_DEF_NOM" id="w60.1.9" deprel="PA">behovet</w>
+ <w head="9" hun="PP" id="w60.1.10" deprel="AG">av</w>
+ <w head="10" hun="NN_UTR_PLU_IND_NOM" id="w60.1.11" deprel="PA">bostäder</w>
+ <w head="11" hun="VB_PRS_AKT" id="w60.1.12" deprel="HD">kan</w>
+ <w head="12" hun="VB_INF_SFO" id="w60.1.13" deprel="HD">tillgodoses</w>
+ <w head="1" hun="MAD" id="w60.1.14" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s60.2">
+ <w head="0" hun="NN_UTR_PLU_DEF_NOM" id="w60.2.1" deprel="ROOT">Ansträngningarna</w>
+ <w head="1" hun="SN" id="w60.2.2" deprel="PA">att</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w60.2.3" deprel="RA">få</w>
+ <w head="3" hun="AB" id="w60.2.4" deprel="RA">fram</w>
+ <w head="4" hun="JJ_POS_UTR@NEU_PLU_IND_NOM" id="w60.2.5" deprel="HD">fler</w>
+ <w head="4" hun="NN_UTR_PLU_IND_NOM" id="w60.2.6" deprel="HD">bostäder</w>
+ <w head="4" hun="PP" id="w60.2.7" deprel="RA">till</w>
+ <w head="7" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w60.2.8" deprel="PA">unga</w>
+ <w head="8" hun="VB_PRS_SFO" id="w60.2.9" deprel="HD">intensifieras</w>
+ <w head="1" hun="MAD" id="w60.2.10" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s60.3">
+ <w head="0" hun="NN_UTR_PLU_IND_NOM" id="w60.3.1" deprel="ROOT">Resurser</w>
+ <w head="1" hun="PM_NOM" id="w60.3.2" deprel="HD">frigörs</w>
+ <w head="2" hun="PM_NOM" id="w60.3.3" deprel="AA">för</w>
+ <w head="3" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w60.3.4" deprel="PA">bostadsbyggande</w>
+ <w head="4" hun="PP" id="w60.3.5" deprel="AA">genom</w>
+ <w head="5" hun="NN_UTR_PLU_IND_NOM" id="w60.3.6" deprel="PA">begränsningar</w>
+ <w head="6" hun="PP" id="w60.3.7" deprel="AG">av</w>
+ <w head="7" hun="JJ_POS_NEU_SIN_IND_NOM" id="w60.3.8" deprel="PA">annat</w>
+ <w head="8" hun="NN_NEU_SIN_IND_NOM" id="w60.3.9" deprel="HD">byggande</w>
+ <w head="9" hun="PP" id="w60.3.10" deprel="RA">i</w>
+ <w head="10" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w60.3.11" deprel="PA">överhettade</w>
+ <w head="11" hun="NN_UTR_PLU_IND_NOM" id="w60.3.12" deprel="HD">regioner</w>
+ <w head="1" hun="MAD" id="w60.3.13" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s60.4">
+ <w head="0" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w60.4.1" deprel="ROOT">Ytterligare</w>
+ <w head="1" hun="NN_UTR_PLU_IND_NOM" id="w60.4.2" deprel="AA">åtgärder</w>
+ <w head="2" hun="VB_PRS_AKT" id="w60.4.3" deprel="PA">för</w>
+ <w head="3" hun="SN" id="w60.4.4" deprel="HD">att</w>
+ <w head="4" hun="PM_NOM" id="w60.4.5" deprel="PA">begränsa</w>
+ <w head="5" hun="NN_UTR_SIN_DEF_NOM" id="w60.4.6" deprel="+F">kostnadsutvecklingen</w>
+ <w head="6" hun="VB_PRS_SFO" id="w60.4.7" deprel="HD">vidtas</w>
+ <w head="1" hun="MAD" id="w60.4.8" deprel="IP">.</w>
+</s></p>
+
+<p id="61">
+<s id="s61.1">
+ <w head="0" hun="DT_UTR@NEU_PLU_DEF" id="w61.1.1" deprel="ROOT">De</w>
+ <w head="1" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w61.1.2" deprel="AA">kommande</w>
+ <w head="2" hun="RG_NOM" id="w61.1.3" deprel="PA">tre</w>
+ <w head="3" hun="NN_UTR_SIN_DEF_GEN" id="w61.1.4" deprel="AA">årens</w>
+ <w head="4" hun="NN_UTR_SIN_IND_NOM" id="w61.1.5" deprel="HD">politik</w>
+ <w head="4" hun="VB_PRS_AKT" id="w61.1.6" deprel="HD">kommer</w>
+ <w head="4" hun="IE" id="w61.1.7" deprel="HD">att</w>
+ <w head="7" hun="VB_INF_AKT" id="w61.1.8" deprel="PA">sätta</w>
+ <w head="8" hun="PS_UTR_SIN_DEF" id="w61.1.9" deprel="HD">sin</w>
+ <w head="9" hun="NN_UTR_SIN_IND_NOM" id="w61.1.10" deprel="AA">prägel</w>
+ <w head="10" hun="PM_NOM" id="w61.1.11" deprel="PA">på</w>
+ <w head="11" hun="NN_UTR_SIN_DEF_NOM" id="w61.1.12" deprel="AA">utvecklingen</w>
+ <w head="12" hun="PP" id="w61.1.13" deprel="PA">i</w>
+ <w head="13" hun="JJ_POS_NEU_SIN_IND_NOM" id="w61.1.14" deprel="HD">vårt</w>
+ <w head="13" hun="NN_NEU_SIN_IND_NOM" id="w61.1.15" deprel="HD">land</w>
+ <w head="13" hun="PP" id="w61.1.16" deprel="HD">under</w>
+ <w head="13" hun="JJ_SUV_UTR@NEU_SIN@PLU_DEF_NOM" id="w61.1.17" deprel="HD">nästa</w>
+ <w head="13" hun="NN_NEU_SIN_IND_NOM" id="w61.1.18" deprel="HD">decennium</w>
+ <w head="1" hun="MAD" id="w61.1.19" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s61.2">
+ <w head="0" hun="DT_UTR@NEU_PLU_DEF" id="w61.2.1" deprel="ROOT">De</w>
+ <w head="1" hun="JJ_SUV_UTR@NEU_SIN@PLU_DEF_NOM" id="w61.2.2" deprel="AA">närmaste</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w61.2.3" deprel="PA">åren</w>
+ <w head="3" hun="PM_NOM" id="w61.2.4" deprel="AA">ställs</w>
+ <w head="4" hun="PN_UTR_PLU_DEF_SUB" id="w61.2.5" deprel="PA">vi</w>
+ <w head="5" hun="VB_PRS_AKT" id="w61.2.6" deprel="AA">inför</w>
+ <w head="6" hun="NN_UTR_PLU_IND_NOM" id="w61.2.7" deprel="PA">utmaningar</w>
+ <w head="7" hun="PP" id="w61.2.8" deprel="OA">med</w>
+ <w head="8" hun="NN_UTR_PLU_IND_NOM" id="w61.2.9" deprel="PA">verkningar</w>
+ <w head="9" hun="AB" id="w61.2.10" deprel="RA">in</w>
+ <w head="10" hun="PP" id="w61.2.11" deprel="RA">i</w>
+ <w head="11" hun="PM_NOM" id="w61.2.12" deprel="PA">nästa</w>
+ <w head="12" hun="PM_NOM" id="w61.2.13" deprel="HD">århundrade</w>
+ <w head="1" hun="MAD" id="w61.2.14" deprel="IP">.</w>
+</s></p>
+
+<p id="62">
+<s id="s62.1">
+ <w head="0" hun="NN_NEU_SIN_DEF_NOM" id="w62.1.1" deprel="ROOT">Skiftet</w>
+ <w head="1" hun="PP" id="w62.1.2" deprel="RA">mellan</w>
+ <w head="4" hun="RG_SMS" id="w62.1.3" deprel="CJ">80-</w>
+ <w head="2" hun="KN" id="w62.1.4" deprel="PA">och</w>
+ <w head="4" hun="NN_NEU_PLU_DEF_NOM" id="w62.1.5" deprel="CJ">90-talen</w>
+ <w head="2" hun="PM_NOM" id="w62.1.6" deprel="HD">bör</w>
+ <w head="6" hun="PM_NOM" id="w62.1.7" deprel="HD">därför</w>
+ <w head="7" hun="PM_NOM" id="w62.1.8" deprel="HD">användas</w>
+ <w head="8" hun="PM_NOM" id="w62.1.9" deprel="HD">för</w>
+ <w head="9" hun="SN" id="w62.1.10" deprel="HD">att</w>
+ <w head="10" hun="PM_NOM" id="w62.1.11" deprel="HD">långsiktigt</w>
+ <w head="13" hun="PM_NOM" id="w62.1.12" deprel="CJ">befästa</w>
+ <w head="11" hun="KN" id="w62.1.13" deprel="IF">och</w>
+ <w head="13" hun="PM_NOM" id="w62.1.14" deprel="CJ">stärka</w>
+ <w head="2" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w62.1.15" deprel="PA">det</w>
+ <w head="15" hun="HP_-_-_-" id="w62.1.16" deprel="HD">som</w>
+ <w head="15" hun="VB_PRS_AKT" id="w62.1.17" deprel="HD">måste</w>
+ <w head="15" hun="VB_INF_AKT" id="w62.1.18" deprel="HD">vara</w>
+ <w head="15" hun="NN_UTR_SIN_DEF_NOM" id="w62.1.19" deprel="HD">grunden</w>
+ <w head="15" hun="PM_NOM" id="w62.1.20" deprel="HD">även</w>
+ <w head="15" hun="PM_NOM" id="w62.1.21" deprel="HD">för</w>
+ <w head="15" hun="DT_UTR_SIN_DEF" id="w62.1.22" deprel="HD">den</w>
+ <w head="15" hun="JJ_POS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w62.1.23" deprel="HD">framtida</w>
+ <w head="15" hun="NN_UTR_SIN_DEF_NOM" id="w62.1.24" deprel="HD">utvecklingen</w>
+ <w head="15" hun="MID" id="w62.1.25" deprel="IQ">:</w>
+ <w head="29" hun="NN_UTR_SIN_DEF_NOM" id="w62.1.26" deprel="CJ">ekonomin</w>
+ <w head="29" hun="MID" id="w62.1.27" deprel="IK">,</w>
+ <w head="29" hun="NN_UTR_SIN_DEF_NOM" id="w62.1.28" deprel="CJ">sysselsättningen</w>
+ <w head="14" hun="KN" id="w62.1.29" deprel="AG">och</w>
+ <w head="29" hun="NN_UTR_SIN_DEF_NOM" id="w62.1.30" deprel="CJ">välfärden</w>
+ <w head="1" hun="MAD" id="w62.1.31" deprel="IP">.</w>
+</s></p>
+
+<p id="63">
+<s id="s63.1">
+ <w head="52" hun="AB" id="w63.1.1" deprel="MS">Därmed</w>
+ <w head="1" hun="VB_PRS_AKT" id="w63.1.2" deprel="HD">skapar</w>
+ <w head="1" hun="PN_UTR_PLU_DEF_SUB" id="w63.1.3" deprel="HD">vi</w>
+ <w head="1" hun="PM_GEN" id="w63.1.4" deprel="HD">också</w>
+ <w head="1" hun="NN_NEU_SIN_IND_NOM" id="w63.1.5" deprel="HD">handlingsutrymme</w>
+ <w head="1" hun="VB_PRS_AKT" id="w63.1.6" deprel="HD">för</w>
+ <w head="1" hun="DT_UTR_SIN_DEF" id="w63.1.7" deprel="HD">den</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w63.1.8" deprel="HD">förnyelse</w>
+ <w head="1" hun="KN" id="w63.1.9" deprel="HD">och</w>
+ <w head="1" hun="DT_UTR@NEU_PLU_DEF" id="w63.1.10" deprel="HD">de</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w63.1.11" deprel="HD">nya</w>
+ <w head="1" hun="NN_UTR_PLU_IND_NOM" id="w63.1.12" deprel="HD">insatser</w>
+ <w head="1" hun="HP_-_-_-" id="w63.1.13" deprel="HD">som</w>
+ <w head="1" hun="PM_NOM" id="w63.1.14" deprel="HD">krävs</w>
+ <w head="1" hun="PM_NOM" id="w63.1.15" deprel="HD">på</w>
+ <w head="1" hun="DT_UTR_SIN_IND" id="w63.1.16" deprel="HD">en</w>
+ <w head="1" hun="NN_UTR_SIN_IND_NOM" id="w63.1.17" deprel="HD">rad</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w63.1.18" deprel="HD">viktiga</w>
+ <w head="1" hun="NN_UTR_SIN_DEF_NOM" id="w63.1.19" deprel="HD">områden</w>
+ <w head="1" hun="MID" id="w63.1.20" deprel="IQ">:</w>
+ <w head="52" hun="PP" id="w63.1.21" deprel="+F">inom</w>
+ <w head="23" hun="NN_UTR_-_-_SMS" id="w63.1.22" deprel="CJ">miljö-</w>
+ <w head="21" hun="KN" id="w63.1.23" deprel="PA">och</w>
+ <w head="23" hun="NN_UTR_SIN_DEF_NOM" id="w63.1.24" deprel="CJ">energipolitiken</w>
+ <w head="21" hun="MID" id="w63.1.25" deprel="IK">,</w>
+ <w head="21" hun="PP" id="w63.1.26" deprel="RA">i</w>
+ <w head="26" hun="DT_UTR_SIN_DEF" id="w63.1.27" deprel="PA">den</w>
+ <w head="27" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w63.1.28" deprel="AA">gemensamma</w>
+ <w head="28" hun="NN_UTR_SIN_DEF_NOM" id="w63.1.29" deprel="PA">sektorn</w>
+ <w head="29" hun="MID" id="w63.1.30" deprel="IK">,</w>
+ <w head="29" hun="PP" id="w63.1.31" deprel="AN">i</w>
+ <w head="31" hun="NN_NEU_SIN_DEF_NOM" id="w63.1.32" deprel="HD">arbetslivet</w>
+ <w head="31" hun="MID" id="w63.1.33" deprel="IK">,</w>
+ <w head="31" hun="PM_NOM" id="w63.1.34" deprel="HD">på</w>
+ <w head="36" hun="PM_NOM" id="w63.1.35" deprel="CJ">skatteområdet</w>
+ <w head="34" hun="KN" id="w63.1.36" deprel="IF">och</w>
+ <w head="36" hun="PM_NOM" id="w63.1.37" deprel="CJ">för</w>
+ <w head="36" hun="SN" id="w63.1.38" deprel="CJ">att</w>
+ <w head="38" hun="PM_NOM" id="w63.1.39" deprel="PA">stärka</w>
+ <w head="39" hun="JJ_POS_NEU_SIN_IND_NOM" id="w63.1.40" deprel="HD">vårt</w>
+ <w head="46" hun="NN_NEU_SIN_IND_NOM" id="w63.1.41" deprel="CJ">samarbete</w>
+ <w head="46" hun="MID" id="w63.1.42" deprel="IT">-</w>
+ <w head="46" hun="JJ_POS_NEU_SIN_IND_NOM" id="w63.1.43" deprel="CJ">ekonomiskt</w>
+ <w head="46" hun="MID" id="w63.1.44" deprel="IK">,</w>
+ <w head="46" hun="JJ_POS_NEU_SIN_IND_NOM" id="w63.1.45" deprel="CJ">socialt</w>
+ <w head="40" hun="KN" id="w63.1.46" deprel="IF">och</w>
+ <w head="46" hun="JJ_POS_NEU_SIN_IND_NOM" id="w63.1.47" deprel="CJ">kulturellt</w>
+ <w head="47" hun="MID" id="w63.1.48" deprel="IT">-</w>
+ <w head="47" hun="PP" id="w63.1.49" deprel="AA">med</w>
+ <w head="49" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w63.1.50" deprel="PA">andra</w>
+ <w head="50" hun="NN_UTR_PLU_IND_NOM" id="w63.1.51" deprel="HD">länder</w>
+ <w head="0" hun="MAD" id="w63.1.52" deprel="ROOT">.</w>
+</s></p>
+
+<p id="64">
+<s id="s64.1">
+ <w head="0" hun="PM_NOM" id="w64.1.1" deprel="ROOT">Förutsättningar</w>
+ <w head="1" hun="PM_NOM" id="w64.1.2" deprel="AA">för</w>
+ <w head="2" hun="DT_UTR_SIN_IND" id="w64.1.3" deprel="HD">en</w>
+ <w head="3" hun="PM_NOM" id="w64.1.4" deprel="AA">sådan</w>
+ <w head="4" hun="NN_UTR_SIN_IND_NOM" id="w64.1.5" deprel="PA">inriktning</w>
+ <w head="5" hun="PP" id="w64.1.6" deprel="AG">av</w>
+ <w head="6" hun="NN_UTR_SIN_DEF_NOM" id="w64.1.7" deprel="PA">politiken</w>
+ <w head="7" hun="VB_PRS_AKT" id="w64.1.8" deprel="HD">är</w>
+ <w head="8" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w64.1.9" deprel="HD">gynnsamma</w>
+ <w head="1" hun="MAD" id="w64.1.10" deprel="IP">.</w>
+</s></p>
+
+<p id="65">
+<s id="s65.1">
+ <w head="0" hun="DT_UTR_SIN_DEF" id="w65.1.1" deprel="ROOT">Den</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w65.1.2" deprel="HD">internationella</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_NOM" id="w65.1.3" deprel="HD">utvecklingen</w>
+ <w head="3" hun="VB_PRS_AKT" id="w65.1.4" deprel="HD">ger</w>
+ <w head="4" hun="NN_NEU_SIN_IND_NOM" id="w65.1.5" deprel="HD">hopp</w>
+ <w head="5" hun="PP" id="w65.1.6" deprel="OA">om</w>
+ <w head="13" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w65.1.7" deprel="IC">ytterligare</w>
+ <w head="1" hun="NN_NEU_PLU_IND_NOM" id="w65.1.8" deprel="HD">steg</w>
+ <w head="13" hun="PP" id="w65.1.9" deprel="CJ">mot</w>
+ <w head="9" hun="NN_UTR_SIN_IND_NOM" id="w65.1.10" deprel="HD">fred</w>
+ <w head="13" hun="MID" id="w65.1.11" deprel="IK">,</w>
+ <w head="13" hun="NN_UTR_SIN_IND_NOM" id="w65.1.12" deprel="CJ">frihet</w>
+ <w head="6" hun="KN" id="w65.1.13" deprel="PA">och</w>
+ <w head="13" hun="PC_PRF_UTR_SIN_IND_NOM" id="w65.1.14" deprel="ET">ökad</w>
+ <w head="14" hun="NN_UTR_SIN_IND_NOM" id="w65.1.15" deprel="PA">förståelse</w>
+ <w head="15" hun="PP" id="w65.1.16" deprel="RA">mellan</w>
+ <w head="18" hun="NN_UTR_PLU_IND_NOM" id="w65.1.17" deprel="CJ">nationer</w>
+ <w head="16" hun="KN" id="w65.1.18" deprel="PA">och</w>
+ <w head="18" hun="NN_NEU_PLU_IND_NOM" id="w65.1.19" deprel="CJ">folk</w>
+ <w head="1" hun="MAD" id="w65.1.20" deprel="IP">.</w>
+</s></p>
+
+<p id="66">
+<s id="s66.1">
+ <w head="0" hun="PM_GEN" id="w66.1.1" deprel="ROOT">Sveriges</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w66.1.2" deprel="HD">ekonomiska</w>
+ <w head="2" hun="PM_NOM" id="w66.1.3" deprel="AA">läge</w>
+ <w head="3" hun="VB_PRS_AKT" id="w66.1.4" deprel="PA">har</w>
+ <w head="4" hun="AB_POS" id="w66.1.5" deprel="HD">kraftigt</w>
+ <w head="4" hun="NN_UTR_SIN_IND_NOM" id="w66.1.6" deprel="HD">förbättrats</w>
+ <w head="4" hun="PP" id="w66.1.7" deprel="TA">under</w>
+ <w head="7" hun="JJ_KOM_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w66.1.8" deprel="PA">senare</w>
+ <w head="8" hun="NN_UTR_PLU_IND_NOM" id="w66.1.9" deprel="HD">år</w>
+ <w head="1" hun="MAD" id="w66.1.10" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s66.2">
+ <w head="0" hun="NN_UTR_SIN_DEF_NOM" id="w66.2.1" deprel="ROOT">Sysselsättningen</w>
+ <w head="1" hun="PP" id="w66.2.2" deprel="PA">i</w>
+ <w head="2" hun="JJ_POS_NEU_SIN_IND_NOM" id="w66.2.3" deprel="HD">vårt</w>
+ <w head="2" hun="NN_NEU_SIN_IND_NOM" id="w66.2.4" deprel="HD">land</w>
+ <w head="2" hun="PM_NOM" id="w66.2.5" deprel="HD">är</w>
+ <w head="2" hun="PM_NOM" id="w66.2.6" deprel="HD">hög</w>
+ <w head="1" hun="MAD" id="w66.2.7" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s66.3">
+ <w head="0" hun="NN_NEU_SIN_DEF_NOM" id="w66.3.1" deprel="ROOT">Välfärdssamhället</w>
+ <w head="1" hun="VB_PRS_AKT" id="w66.3.2" deprel="AA">vilar</w>
+ <w head="2" hun="PM_NOM" id="w66.3.3" deprel="HD">på</w>
+ <w head="3" hun="DT_UTR_SIN_IND" id="w66.3.4" deprel="PA">en</w>
+ <w head="4" hun="JJ_POS_UTR_SIN_IND_NOM" id="w66.3.5" deprel="PA">bred</w>
+ <w head="5" hun="NN_UTR_SIN_IND_NOM" id="w66.3.6" deprel="HD">folkopinion</w>
+ <w head="1" hun="MAD" id="w66.3.7" deprel="IP">.</w>
+</s></p>
+
+<p id="67">
+<s id="s67.1">
+ <w head="0" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w67.1.1" deprel="ROOT">Det</w>
+ <w head="1" hun="VB_PRS_SFO" id="w67.1.2" deprel="HD">finns</w>
+ <w head="2" hun="DT_UTR_SIN_IND" id="w67.1.3" deprel="AA">en</w>
+ <w head="3" hun="JJ_POS_UTR_SIN_IND_NOM" id="w67.1.4" deprel="PA">stark</w>
+ <w head="4" hun="JJ_POS_UTR_SIN_IND_NOM" id="w67.1.5" deprel="AA">politisk</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w67.1.6" deprel="CJ">vilja</w>
+ <w head="5" hun="KN" id="w67.1.7" deprel="PA">och</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w67.1.8" deprel="ET">uppslutning</w>
+ <w head="8" hun="VB_PRS_AKT" id="w67.1.9" deprel="PA">för</w>
+ <w head="9" hun="IE" id="w67.1.10" deprel="HD">att</w>
+ <w head="10" hun="PP" id="w67.1.11" deprel="OA">med</w>
+ <w head="11" hun="NN_UTR_SIN_IND_NOM" id="w67.1.12" deprel="PA">kraft</w>
+ <w head="12" hun="VB_INF_AKT" id="w67.1.13" deprel="HD">angripa</w>
+ <w head="13" hun="NN_NEU_PLU_DEF_NOM" id="w67.1.14" deprel="HD">miljöproblemen</w>
+ <w head="1" hun="MAD" id="w67.1.15" deprel="IP">.</w>
+</s></p>
+
+<p id="68">
+<s id="s68.1">
+ <w head="0" hun="PN_UTR_PLU_DEF_SUB" id="w68.1.1" deprel="ROOT">Vi</w>
+ <w head="1" hun="VB_PRS_AKT" id="w68.1.2" deprel="HD">kan</w>
+ <w head="2" hun="PM_NOM" id="w68.1.3" deprel="AA">på</w>
+ <w head="3" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w68.1.4" deprel="PA">goda</w>
+ <w head="4" hun="NN_UTR_PLU_IND_NOM" id="w68.1.5" deprel="AA">grunder</w>
+ <w head="5" hun="PM_NOM" id="w68.1.6" deprel="PA">känna</w>
+ <w head="6" hun="NN_UTR_SIN_IND_NOM" id="w68.1.7" deprel="HD">optimism</w>
+ <w head="7" hun="VB_PRS_AKT" id="w68.1.8" deprel="PA">inför</w>
+ <w head="8" hun="NN_UTR_SIN_DEF_NOM" id="w68.1.9" deprel="HD">framtiden</w>
+ <w head="1" hun="MAD" id="w68.1.10" deprel="IP">.</w>
+</s></p>
+
+<p id="69">
+<s id="s69.1">
+ <w head="0" hun="KN" id="w69.1.1" deprel="ROOT">Men</w>
+ <w head="1" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w69.1.2" deprel="AA">det</w>
+ <w head="2" hun="VB_PRS_SFO" id="w69.1.3" deprel="PA">finns</w>
+ <w head="3" hun="PM_GEN" id="w69.1.4" deprel="AA">också</w>
+ <w head="4" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w69.1.5" deprel="PA">goda</w>
+ <w head="5" hun="NN_UTR_SIN_IND_NOM" id="w69.1.6" deprel="AA">skäl</w>
+ <w head="6" hun="IE" id="w69.1.7" deprel="HD">att</w>
+ <w head="7" hun="VB_INF_AKT" id="w69.1.8" deprel="PA">påminna</w>
+ <w head="8" hun="PP" id="w69.1.9" deprel="+F">om</w>
+ <w head="9" hun="HA" id="w69.1.10" deprel="AA">hur</w>
+ <w head="10" hun="AB_POS" id="w69.1.11" deprel="AA">snabbt</w>
+ <w head="11" hun="DT_UTR_SIN_IND" id="w69.1.12" deprel="PA">en</w>
+ <w head="12" hun="JJ_POS_UTR_SIN_IND_NOM" id="w69.1.13" deprel="AA">gynnsam</w>
+ <w head="13" hun="NN_UTR_SIN_IND_NOM" id="w69.1.14" deprel="PA">utveckling</w>
+ <w head="14" hun="VB_PRS_AKT" id="w69.1.15" deprel="AA">kan</w>
+ <w head="15" hun="PM_NOM" id="w69.1.16" deprel="PA">vändas</w>
+ <w head="16" hun="PP" id="w69.1.17" deprel="PA">i</w>
+ <w head="17" hun="PS_UTR_SIN_DEF" id="w69.1.18" deprel="HD">sin</w>
+ <w head="18" hun="NN_UTR_SIN_IND_NOM" id="w69.1.19" deprel="HD">motsats</w>
+ <w head="1" hun="MAD" id="w69.1.20" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s69.2">
+ <w head="0" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w69.2.1" deprel="ROOT">Det</w>
+ <w head="1" hun="VB_PRT_AKT" id="w69.2.2" deprel="HD">skedde</w>
+ <w head="2" hun="PP" id="w69.2.3" deprel="TA">under</w>
+ <w head="3" hun="NN_NEU_SIN_DEF_NOM" id="w69.2.4" deprel="HD">70-talet</w>
+ <w head="3" hun="MID" id="w69.2.5" deprel="IK">,</w>
+ <w head="2" hun="VB_PRS_AKT" id="w69.2.6" deprel="AA">när</w>
+ <w head="6" hun="JJ_POS_UTR_SIN_IND_NOM" id="w69.2.7" deprel="PA">svensk</w>
+ <w head="7" hun="NN_UTR_SIN_IND_NOM" id="w69.2.8" deprel="AA">ekonomi</w>
+ <w head="8" hun="VB_PRT_SFO" id="w69.2.9" deprel="PA">drabbades</w>
+ <w head="9" hun="PP" id="w69.2.10" deprel="AG">av</w>
+ <w head="10" hun="DT_UTR_SIN_DEF" id="w69.2.11" deprel="PA">den</w>
+ <w head="11" hun="JJ_SUV_UTR@NEU_SIN@PLU_DEF_NOM" id="w69.2.12" deprel="HD">svåraste</w>
+ <w head="10" hun="NN_UTR_SIN_DEF_NOM" id="w69.2.13" deprel="PA">krisen</w>
+ <w head="13" hun="PP" id="w69.2.14" deprel="TA">sedan</w>
+ <w head="14" hun="NN_NEU_SIN_DEF_NOM" id="w69.2.15" deprel="HD">30-talet</w>
+ <w head="1" hun="MAD" id="w69.2.16" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s69.3">
+ <w head="0" hun="DT_UTR@NEU_PLU_DEF" id="w69.3.1" deprel="ROOT">De</w>
+ <w head="1" hun="NN_UTR_PLU_IND_NOM" id="w69.3.2" deprel="AA">uppgifter</w>
+ <w head="2" hun="PN_UTR_PLU_DEF_SUB" id="w69.3.3" deprel="PA">vi</w>
+ <w head="3" hun="VB_PRS_AKT" id="w69.3.4" deprel="AA">har</w>
+ <w head="8" hun="PM_NOM" id="w69.3.5" deprel="CJ">framför</w>
+ <w head="5" hun="PN_UTR_PLU_DEF_OBJ" id="w69.3.6" deprel="HD">oss</w>
+ <w head="8" hun="MID" id="w69.3.7" deprel="IK">,</w>
+ <w head="4" hun="KN" id="w69.3.8" deprel="PA">och</w>
+ <w head="8" hun="NN_UTR_PLU_DEF_NOM" id="w69.3.9" deprel="ET">riskerna</w>
+ <w head="9" hun="VB_PRS_AKT" id="w69.3.10" deprel="PA">för</w>
+ <w head="10" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w69.3.11" deprel="AA">snabba</w>
+ <w head="11" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w69.3.12" deprel="PA">dramatiska</w>
+ <w head="12" hun="NN_UTR_PLU_IND_NOM" id="w69.3.13" deprel="HD">förändringar</w>
+ <w head="12" hun="MID" id="w69.3.14" deprel="IK">,</w>
+ <w head="12" hun="VB_PRS_AKT" id="w69.3.15" deprel="SP">innebär</w>
+ <w head="15" hun="SN" id="w69.3.16" deprel="OO">att</w>
+ <w head="16" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w69.3.17" deprel="PA">det</w>
+ <w head="17" hun="VB_PRS_AKT" id="w69.3.18" deprel="AA">kommer</w>
+ <w head="18" hun="SN" id="w69.3.19" deprel="PA">att</w>
+ <w head="19" hun="NN_UTR_PLU_DEF_GEN" id="w69.3.20" deprel="PA">krävas</w>
+ <w head="20" hun="NN_NEU_SIN_IND_NOM" id="w69.3.21" deprel="HD">ansvar</w>
+ <w head="20" hun="MID" id="w69.3.22" deprel="IK">,</w>
+ <w head="20" hun="JJ_POS_UTR_SIN_IND_NOM" id="w69.3.23" deprel="SP">politisk</w>
+ <w head="25" hun="NN_UTR_SIN_IND_NOM" id="w69.3.24" deprel="CJ">handlingskraft</w>
+ <w head="23" hun="KN" id="w69.3.25" deprel="IF">och</w>
+ <w head="25" hun="NN_UTR_SIN_IND_NOM" id="w69.3.26" deprel="CJ">förmåga</w>
+ <w head="26" hun="PP" id="w69.3.27" deprel="OA">till</w>
+ <w head="27" hun="NN_NEU_SIN_IND_NOM" id="w69.3.28" deprel="PA">samarbete</w>
+ <w head="28" hun="PM_NOM" id="w69.3.29" deprel="HD">också</w>
+ <w head="29" hun="PP" id="w69.3.30" deprel="PA">i</w>
+ <w head="30" hun="NN_UTR_SIN_DEF_NOM" id="w69.3.31" deprel="HD">framtiden</w>
+ <w head="1" hun="MAD" id="w69.3.32" deprel="IP">.</w>
+</s></p>
+
+<p id="70">
+<s id="s70.1">
+ <w head="0" hun="PM_NOM" id="w70.1.1" deprel="ROOT">För</w>
+ <w head="1" hun="PM_NOM" id="w70.1.2" deprel="HD">första</w>
+ <w head="2" hun="PM_NOM" id="w70.1.3" deprel="AA">gången</w>
+ <w head="3" hun="PM_NOM" id="w70.1.4" deprel="PA">på</w>
+ <w head="4" hun="RG_NOM" id="w70.1.5" deprel="HD">70</w>
+ <w head="4" hun="NN_UTR_PLU_IND_NOM" id="w70.1.6" deprel="HD">år</w>
+ <w head="4" hun="VB_PRS_AKT" id="w70.1.7" deprel="HD">tar</w>
+ <w head="4" hun="AB" id="w70.1.8" deprel="TA">nu</w>
+ <w head="8" hun="DT_NEU_SIN_IND" id="w70.1.9" deprel="HD">ett</w>
+ <w head="8" hun="JJ_POS_NEU_SIN_IND_NOM" id="w70.1.10" deprel="HD">nytt</w>
+ <w head="8" hun="NN_NEU_SIN_IND_NOM" id="w70.1.11" deprel="HD">parti</w>
+ <w head="4" hun="PM_NOM" id="w70.1.12" deprel="AA">säte</w>
+ <w head="12" hun="PP" id="w70.1.13" deprel="PA">i</w>
+ <w head="13" hun="NN_UTR_SIN_DEF_NOM" id="w70.1.14" deprel="HD">riksdagen</w>
+ <w head="1" hun="MAD" id="w70.1.15" deprel="IP">.</w>
+</s> 
+ 
+
+
+<s id="s70.2">
+ <w head="0" hun="PN_UTR_SIN_DEF_SUB" id="w70.2.1" deprel="ROOT">Jag</w>
+ <w head="1" hun="VB_PRS_AKT" id="w70.2.2" deprel="HD">vill</w>
+ <w head="2" hun="PM_NOM" id="w70.2.3" deprel="AA">hälsa</w>
+ <w head="3" hun="PM_NOM" id="w70.2.4" deprel="PA">Miljöpartiet</w>
+ <w head="4" hun="PM_NOM" id="w70.2.5" deprel="AA">de</w>
+ <w head="5" hun="PM_NOM" id="w70.2.6" deprel="PA">grönas</w>
+ <w head="6" hun="PM_NOM" id="w70.2.7" deprel="AA">ledamöter</w>
+ <w head="7" hun="PM_NOM" id="w70.2.8" deprel="PA">välkomna</w>
+ <w head="8" hun="PP" id="w70.2.9" deprel="OA">till</w>
+ <w head="9" hun="HP_NEU_SIN_IND" id="w70.2.10" deprel="PA">vad</w>
+ <w head="10" hun="PN_UTR_SIN_DEF_SUB" id="w70.2.11" deprel="HD">jag</w>
+ <w head="11" hun="VB_PRS_SFO" id="w70.2.12" deprel="AA">hoppas</w>
+ <w head="12" hun="VB_PRS_AKT" id="w70.2.13" deprel="PA">blir</w>
+ <w head="13" hun="DT_NEU_SIN_IND" id="w70.2.14" deprel="AA">ett</w>
+ <w head="14" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w70.2.15" deprel="PA">inspirerande</w>
+ <w head="15" hun="NN_NEU_SIN_IND_NOM" id="w70.2.16" deprel="HD">riksdagsarbete</w>
+ <w head="1" hun="MAD" id="w70.2.17" deprel="IP">.</w>
+</s></p>
+
+<p id="71">
+<s id="s71.1">
+ <w head="0" hun="PN_UTR_PLU_DEF_SUB" id="w71.1.1" deprel="ROOT">Vi</w>
+ <w head="1" hun="VB_PRS_AKT" id="w71.1.2" deprel="HD">har</w>
+ <w head="2" hun="PN_UTR@NEU_PLU_IND_SUB@OBJ" id="w71.1.3" deprel="HD">alla</w>
+ <w head="3" hun="DT_NEU_SIN_IND" id="w71.1.4" deprel="HD">ett</w>
+ <w head="4" hun="JJ_POS_NEU_SIN_IND_NOM" id="w71.1.5" deprel="HD">gemensamt</w>
+ <w head="5" hun="NN_NEU_SIN_IND_NOM" id="w71.1.6" deprel="HD">ansvar</w>
+ <w head="6" hun="VB_PRS_AKT" id="w71.1.7" deprel="HD">för</w>
+ <w head="7" hun="SN" id="w71.1.8" deprel="HD">att</w>
+ <w head="8" hun="DT_UTR@NEU_PLU_DEF" id="w71.1.9" deprel="HD">de</w>
+ <w head="9" hun="RG_NOM" id="w71.1.10" deprel="HD">tre</w>
+ <w head="10" hun="PC_PRS_UTR@NEU_SIN@PLU_IND@DEF_NOM" id="w71.1.11" deprel="HD">kommande</w>
+ <w head="11" hun="NN_UTR_SIN_DEF_NOM" id="w71.1.12" deprel="HD">åren</w>
+ <w head="12" hun="VB_PRS_AKT" id="w71.1.13" deprel="HD">blir</w>
+ <w head="13" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w71.1.14" deprel="HD">goda</w>
+ <w head="14" hun="NN_UTR_PLU_IND_NOM" id="w71.1.15" deprel="HD">för</w>
+ <w head="15" hun="JJ_POS_NEU_SIN_IND_NOM" id="w71.1.16" deprel="HD">vårt</w>
+ <w head="18" hun="NN_NEU_SIN_IND_NOM" id="w71.1.17" deprel="CJ">land</w>
+ <w head="16" hun="KN" id="w71.1.18" deprel="IF">och</w>
+ <w head="18" hun="DT_UTR@NEU_PLU_IND@DEF" id="w71.1.19" deprel="CJ">alla</w>
+ <w head="19" hun="PS_UTR@NEU_SIN@PLU_DEF" id="w71.1.20" deprel="HD">dess</w>
+ <w head="20" hun="NN_UTR_PLU_IND_NOM" id="w71.1.21" deprel="HD">invånare</w>
+ <w head="20" hun="MID" id="w71.1.22" deprel="IK">,</w>
+ <w head="20" hun="PM_NOM" id="w71.1.23" deprel="AN">för</w>
+ <w head="23" hun="PM_NOM" id="w71.1.24" deprel="HD">miljön</w>
+ <w head="20" hun="MID" id="w71.1.25" deprel="IK">,</w>
+ <w head="1" hun="PM_NOM" id="w71.1.26" deprel="HD">för</w>
+ <w head="1" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w71.1.27" deprel="HD">våra</w>
+ <w head="1" hun="NN_UTR_PLU_IND_NOM" id="w71.1.28" deprel="HD">relationer</w>
+ <w head="34" hun="PP" id="w71.1.29" deprel="AA">med</w>
+ <w head="31" hun="NN_UTR_SIN_DEF_NOM" id="w71.1.30" deprel="CJ">omvärlden</w>
+ <w head="29" hun="KN" id="w71.1.31" deprel="PA">och</w>
+ <w head="31" hun="VB_PRS_AKT" id="w71.1.32" deprel="CJ">för</w>
+ <w head="34" hun="NN_UTR_PLU_DEF_NOM" id="w71.1.33" deprel="CJ">kontakterna</w>
+ <w head="20" hun="KN" id="w71.1.34" deprel="AN">och</w>
+ <w head="34" hun="NN_UTR_SIN_DEF_NOM" id="w71.1.35" deprel="ET">samvaron</w>
+ <w head="35" hun="PN_UTR_PLU_DEF_OBJ" id="w71.1.36" deprel="PA">oss</w>
+ <w head="36" hun="NN_UTR_PLU_IND_NOM" id="w71.1.37" deprel="HD">människor</w>
+ <w head="37" hun="AB" id="w71.1.38" deprel="+F">emellan</w>
+ <w head="38" hun="PP" id="w71.1.39" deprel="RA">i</w>
+ <w head="39" hun="NN_UTR_SIN_DEF_NOM" id="w71.1.40" deprel="HD">vardagen</w>
+ <w head="39" hun="MID" id="w71.1.41" deprel="IK">,</w>
+ <w head="38" hun="PP" id="w71.1.42" deprel="AA">oavsett</w>
+ <w head="42" hun="VB_PRT_AKT" id="w71.1.43" deprel="PA">var</w>
+ <w head="43" hun="PN_UTR_PLU_DEF_SUB" id="w71.1.44" deprel="HD">vi</w>
+ <w head="43" hun="VB_PRS_AKT" id="w71.1.45" deprel="HD">har</w>
+ <w head="43" hun="JJ_POS_NEU_SIN_IND_NOM" id="w71.1.46" deprel="HD">vårt</w>
+ <w head="43" hun="NN_NEU_SIN_IND_NOM" id="w71.1.47" deprel="HD">ursprung</w>
+ <w head="1" hun="MAD" id="w71.1.48" deprel="IP">.</w>
+</s></p>
+
+<p id="72">
+<s id="s72.1">
+ <w head="0" hun="PN_NEU_SIN_DEF_SUB@OBJ" id="w72.1.1" deprel="ROOT">Det</w>
+ <w head="1" hun="VB_PRS_AKT" id="w72.1.2" deprel="AA">är</w>
+ <w head="2" hun="NN_UTR_SIN_DEF_GEN" id="w72.1.3" deprel="PA">regeringens</w>
+ <w head="5" hun="NN_NEU_SIN_IND_NOM" id="w72.1.4" deprel="CJ">ansvar</w>
+ <w head="3" hun="KN" id="w72.1.5" deprel="IF">och</w>
+ <w head="5" hun="NN_UTR_SIN_DEF_NOM" id="w72.1.6" deprel="CJ">strävan</w>
+ <w head="6" hun="IE" id="w72.1.7" deprel="HD">att</w>
+ <w head="7" hun="VB_INF_AKT" id="w72.1.8" deprel="HD">ta</w>
+ <w head="8" hun="AB" id="w72.1.9" deprel="VS">till</w>
+ <w head="9" hun="VB_INF_AKT" id="w72.1.10" deprel="HD">vara</w>
+ <w head="9" hun="DT_UTR@NEU_PLU_IND@DEF" id="w72.1.11" deprel="HD">alla</w>
+ <w head="9" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w72.1.12" deprel="HD">goda</w>
+ <w head="9" hun="NN_NEU_PLU_IND_NOM" id="w72.1.13" deprel="HD">initiativ</w>
+ <w head="7" hun="MID" id="w72.1.14" deprel="IK">,</w>
+ <w head="9" hun="IE" id="w72.1.15" deprel="HD">att</w>
+ <w head="15" hun="VB_INF_AKT" id="w72.1.16" deprel="AA">verka</w>
+ <w head="16" hun="PM_NOM" id="w72.1.17" deprel="PA">för</w>
+ <w head="17" hun="JJ_POS_UTR@NEU_PLU_IND@DEF_NOM" id="w72.1.18" deprel="HD">breda</w>
+ <w head="20" hun="NN_UTR_PLU_IND_NOM" id="w72.1.19" deprel="CJ">lösningar</w>
+ <w head="18" hun="KN" id="w72.1.20" deprel="IF">och</w>
+ <w head="20" hun="SN" id="w72.1.21" deprel="CJ">att</w>
+ <w head="21" hun="PM_NOM" id="w72.1.22" deprel="PA">föra</w>
+ <w head="22" hun="DT_UTR_SIN_IND" id="w72.1.23" deprel="HD">en</w>
+ <w head="23" hun="NN_UTR_SIN_IND_NOM" id="w72.1.24" deprel="AA">politik</w>
+ <w head="24" hun="PP" id="w72.1.25" deprel="PA">i</w>
+ <w head="25" hun="JJ_POS_UTR@NEU_SIN_DEF_NOM" id="w72.1.26" deprel="HD">hela</w>
+ <w head="25" hun="NN_NEU_SIN_DEF_GEN" id="w72.1.27" deprel="HD">folkets</w>
+ <w head="25" hun="NN_NEU_SIN_IND_NOM" id="w72.1.28" deprel="HD">intresse</w>
+ <w head="1" hun="MAD" id="w72.1.29" deprel="IP">.</w>
+</s></p></text>

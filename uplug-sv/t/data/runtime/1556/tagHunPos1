@@ -1,0 +1,83 @@
+{
+  'widgets' => {
+    'parameter' => {
+      'output' => {
+        'attribute' => 'optionmenu (pos,hunpos)'
+      }
+    },
+    'input' => {
+      'text' => {
+        'stream name' => 'stream(format=xml,status=(tok|tag|chunk),language=sv)'
+      }
+    }
+  },
+  'parameter' => {
+    'input' => {
+      'token delimiter' => '
+',
+      'sentence delimiter' => '
+
+'
+    },
+    'output replacements' => {
+      '\\t\\n' => '
+',
+      '(\\G|\\A|\\n)\\%\\%[^\\n]*(\\Z|\\n)' => ''
+    },
+    'output' => {
+      'tag delimiter' => '\\s+',
+      'attribute' => 'hun',
+      'token delimiter' => '
+',
+      'sentence delimiter' => '
+
+',
+      'encoding' => 'utf-8'
+    },
+    'tagger' => {
+      'input' => 'stdin',
+      'model' => '/opt/local/lib/perl5/site_perl/5.12.4/auto/share/dist/Uplug/lang/hunpos/se_Suc2x.model',
+      'program' => 'hunpos-tag'
+    }
+  },
+  'required' => {
+    'text' => {
+      'words' => undef
+    }
+  },
+  'input' => {
+    'text' => {
+      'format' => 'xml',
+      'status' => 'tok',
+      'file' => 'data/runtime/1556/.temp0',
+      'root' => 's',
+      'write_mode' => 'overwrite'
+    }
+  },
+  'arguments' => {
+    'shortcuts' => {
+      'inchar' => 'input:text:encoding',
+      'out' => 'output:text:file',
+      'inroot' => 'input:text:root',
+      'lang' => 'parameter:tagger:language',
+      'attr' => 'parameter:output:attribute',
+      'outchar' => 'output:text:encoding',
+      'in' => 'input:text:file',
+      'char' => 'output:text:encoding'
+    }
+  },
+  'output' => {
+    'text' => {
+      'format' => 'xml',
+      'status' => 'tagHunPos',
+      'root' => 's',
+      'write_mode' => 'overwrite'
+    }
+  },
+  'module' => {
+    'location' => '/opt/local/libexec/perl5.12/sitebin/bin',
+    'name' => 'HunPos tagger (swedish)',
+    'stdout' => 'text',
+    'program' => 'uplug-tag'
+  }
+}

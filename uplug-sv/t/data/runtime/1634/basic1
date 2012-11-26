@@ -1,0 +1,51 @@
+{
+  'widgets' => {
+    'input' => {
+      'text' => {
+        'stream name' => 'stream(format=text)'
+      }
+    }
+  },
+  'input' => {
+    'text' => {
+      'format' => 'text',
+      'file' => 'data/1988sv.txt',
+      'encoding' => 'iso-8859-1'
+    }
+  },
+  'arguments' => {
+    'shortcuts' => {
+      'out' => 'output:text:file',
+      'ci' => 'input:text:encoding',
+      'in' => 'input:text:file',
+      'co' => 'output:text:encoding'
+    }
+  },
+  'output' => {
+    'text' => {
+      'format' => 'xml',
+      'status' => 'tok',
+      'root' => 's',
+      'write_mode' => 'overwrite'
+    }
+  },
+  'description' => 'The basic pre-processing module includes a tool
+  for basic XML markup, a simple sentence splitter and a general
+  tokenizer which probably does not work sufficiently for most
+  languages :-)',
+  'module' => {
+    'stdin' => 'text',
+    'submodule names' => [
+      'basic XML markup',
+      'sentence splitter',
+      'tokenizer'
+    ],
+    'name' => 'basic pre-processing',
+    'stdout' => 'text',
+    'submodules' => [
+      '/opt/local/lib/perl5/site_perl/5.12.4/auto/share/dist/Uplug/systems/pre/markup',
+      '/opt/local/lib/perl5/site_perl/5.12.4/auto/share/dist/Uplug/systems/pre/sent -l sv',
+      '/opt/local/lib/perl5/site_perl/5.12.4/auto/share/dist/Uplug/systems/pre/tok -l sv'
+    ]
+  }
+}
