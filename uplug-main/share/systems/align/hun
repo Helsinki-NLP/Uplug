@@ -27,6 +27,7 @@
        'out' => 'output:bitext:file',
        'p' => 'parameter:paragraph boundary',
        'dic' => 'parameter:dictionary',
+       'b'   => 'parameter:bisent mode'
     }
   },
   'module' => {

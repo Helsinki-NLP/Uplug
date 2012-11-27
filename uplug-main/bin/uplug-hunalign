@@ -70,8 +70,9 @@ if (not -e $TrgStream->{file}){
 
 #---------------------------------------------------------------------------
 
-my $ParBreak=$IniData{parameter}{'paragraph boundary'};
-my $DicFile=$IniData{parameter}{'dictionary'};
+my $ParBreak      = $IniData{parameter}{'paragraph boundary'};
+my $DicFile       = $IniData{parameter}{'dictionary'};
+my $BisentMode    = $IniData{parameter}{'bisent mode'};
 
 my $AlignPrg = &find_executable('hunalign');
 my $AlignDir = &shared_home().'/ext/hunalign';
@@ -82,6 +83,7 @@ if (not -e $DicFile){                            # if there is no dictionary:
     $DicFile=$AlignDir.'/data/null.dic';          # - use an empty file
     $AlignPrg.=' -realign';                      # - ... and the realign flag
 }
+$AlignPrg.=' -bisent' if ($BisentMode);
 
 #---------------------------------------------------------------------------
 # open data streams!
@@ -191,16 +193,36 @@ foreach (@alignments){
     my @LinkSrc=();
     my @LinkTrg=();
 
-    if ($sid > $prevSrc){
-	foreach ( $prevSrc .. $sid - 1 ) {
-	    next if ( $SrcSent[$_] eq 'p' );
-	    push( @LinkSrc, $SrcSent[$_] );
-	}
+    if ($id == 149){
+	print '';
     }
-    if ($tid > $prevTrg){
-	foreach ( $prevTrg .. $tid - 1 ) {
-	    next if ( $TrgSent[$_] eq 'p' );
-	    push( @LinkTrg, $TrgSent[$_] );
+
+    # bisent mode: only allow 1:1 alignments!
+    if ($BisentMode){
+	next unless ($score);                # skip score == 0
+	next if ( $SrcSent[$sid] eq 'p' );   # skip par boundaries
+	next if ( $TrgSent[$tid] eq 'p' );
+        # TODO: why can this happen ....?
+        next if ($sid > $#SrcSent);
+        next if ($tid > $#TrgSent);
+	push( @LinkSrc, $SrcSent[$sid] );    # add link
+	push( @LinkTrg, $TrgSent[$tid] );
+	$prevScore=$score;
+    }
+
+    # otherwise: include previous sentences
+    else{
+	if ($sid > $prevSrc){
+	    foreach ( $prevSrc .. $sid - 1 ) {
+		next if ( $SrcSent[$_] eq 'p' );
+		push( @LinkSrc, $SrcSent[$_] );
+	    }
+	}
+	if ($tid > $prevTrg){
+	    foreach ( $prevTrg .. $tid - 1 ) {
+		next if ( $TrgSent[$_] eq 'p' );
+		push( @LinkTrg, $TrgSent[$_] );
+	    }
 	}
     }
 
@@ -268,6 +290,7 @@ sub GetDefaultIni{
        'src' => 'input:source text:file',
        'trg' => 'input:target text:file',
        'out' => 'output:bitext:file',
+       'b'   => 'parameter:bisent mode'
     }
   },
 };

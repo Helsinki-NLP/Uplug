@@ -86,6 +86,12 @@ a little @ egy kicsit
 ext/hunalign/data/hu-en.dic)
 
 
+You can also run hunalign in 'bisent' mode (only create 1:1 alignments)
+Use flag '-b':
+
+    uplug align/hun -b -src source.xml -trg target.xml -out bisent.xml
+
+
 
 
 2) GMA (geometric mapping and alignment)
