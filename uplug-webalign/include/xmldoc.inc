@@ -373,7 +373,7 @@ function LinkEndElement($parser, $name)
 
 function select_corpus_form($type='isa'){
     $corpora = get_corpora();
-    echo "<form action=\"$PHP_SELF\" method=\"post\">";
+    echo "<form action=\"".$_SERVER['PHP_SELF']."\" method=\"post\">";
     if (count($corpora)>20){
 	select_corpus_pulldown($type);
     }
