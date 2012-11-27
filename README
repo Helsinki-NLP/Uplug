@@ -10,7 +10,8 @@ Uplug is provided in several packages:
 uplug-main	  main components and scripts
 uplug-webalign	  webinterface for interactive alignment (ICA, ISA)
 uplug-xx	  language-specific tools and models (<xx> = language ID)
-uplug-treealign	  config files for integrating the TreeAligner
+uplug-treetagger  config files for integrating the TreeTagger
+uplug-cwb	  scripts for indexing and querying parallel corpora with CWB
 
 
 Start by downloading uplug-main and installing the main
