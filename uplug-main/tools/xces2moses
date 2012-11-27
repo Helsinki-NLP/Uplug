@@ -23,6 +23,8 @@
 use strict;
 use FindBin qw($Bin);
 
+use Encode;
+use HTML::Entities;
 
 my $srclang='src';
 my $trglang='trg';
@@ -197,11 +199,15 @@ sub xml2txt{
 
     $_[0]=~s/\|/_BAR_/gs;
 
-    $_[0]=~s/\&gt;/>/gs;
-    $_[0]=~s/\&lt;/</gs;
-    $_[0]=~s/\&amp;/&/gs;
-    $_[0]=~s/\&quot;/"/gs;
-    $_[0]=~s/\&apos;/'/gs;
+    # a more general way of decoding XML entities
+    $_[0] = decode_utf8(decode_entities($_[0]));
+
+    # $_[0]=~s/\&gt;/>/gs;
+    # $_[0]=~s/\&lt;/</gs;
+    # $_[0]=~s/\&amp;/&/gs;
+    # $_[0]=~s/\&quot;/"/gs;
+    # $_[0]=~s/\&apos;/'/gs;
+
     $_[0]=~s/^\s+//;
 }
 

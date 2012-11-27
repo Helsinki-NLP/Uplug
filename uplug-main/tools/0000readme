@@ -8,10 +8,8 @@ readalign		read sentence alignments from XCES files
 opus2moses.pl		converts OPUS/Uplug corpora into Moses format (including factors!)
 tab2tmx			simplistic conversion of TAB-separated parallel corpora to TMX
 xces2moses		simplistic converter from XCES format to Moses format
-xces2tab		convert parallel corpora in XCES format to TAB format
-xces2text		convert parallel corpora in XCES format to text format (KOMA?)
-xces2moses		simplistic converter from XCES format to TMX
-
+xces2text		convert parallel corpora in XCES format to text format
+xces2tmx		convert parallel corpora in XCES format to TMX
 
 * Related to the Uplug clue aligner (word alignment)
 
@@ -29,18 +27,15 @@ readdump		read a DB dump file and create a DBM file
 searchkey		search a specific key in a DBM file
 swap-lang		swap languages in clue-DBMs
 
-
 * Process Uplug word alignment files
 
 xces2dic		extract all word alignments from Uplug format and sort
 xces2link		extract all word alignments from Uplug format
 xces2poslink		extract features from aligned words (default=pos)
 
-
 * Other scripts
 
 phrase2dice		compute dice scores out of Moses phrase tables
-
 
 * Project-related scripts (not maintained anymore)
 
