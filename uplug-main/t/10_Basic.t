@@ -11,7 +11,7 @@ use Uplug;
 
 
 my $UPLUG = $Bin.'/../uplug';
-my $DATA  = 'data';
+my $DATA  = $Bin.'/data';
 
 
 my $null = "2> /dev/null >/dev/null";
@@ -47,6 +47,7 @@ unlink('1988de.xml');
 unlink('1988en.xml');
 unlink('1988fr.xml');
 unlink('1988sv.xml');
+system("rm -fr data/runtime");
 
 done_testing;
 

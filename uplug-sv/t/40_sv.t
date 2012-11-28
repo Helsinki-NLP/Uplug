@@ -3,12 +3,12 @@
 
 use Test::More;
 use File::Compare;
+use FindBin qw( $Bin );
 
 use Uplug;
 
-
 my $UPLUG = 'uplug';
-my $DATA  = 'data';
+my $DATA  = $Bin.'/data';
 
 my $input    = $DATA.'/1988sv.txt';
 my $expected = $DATA.'/1988sv.xml';
