@@ -1,5 +1,6 @@
 #
-# this is renamed into Uplug::XML::Writer for compatibility reasons
+# XML::Writer version v 0.4
+# (renamed into Uplug::XML::Writer for compatibility reasons)
 #
 
 ########################################################################

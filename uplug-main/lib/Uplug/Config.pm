@@ -39,7 +39,10 @@ use Data::Dumper;
 
 $VERSION = 0.02;
 
-our @EXPORT   = qw/ReadConfig WriteConfig CheckParameter GetNamedIO
+our @EXPORT   = qw/FindConfig ReadConfig WriteConfig 
+                   PrintConfigInfo
+                   ListAvailableModules
+                   CheckParameter GetNamedIO
 	           CheckParam GetParam SetParam
                    find_executable 
                       shared_home 
@@ -158,17 +161,8 @@ sub MergeConfig{
 }
 
 
-#------------------------------------------------------------------------
-# read configuration files
-#    - essentially this restores a Perl hash from a hash dump
-#    - some variables are expanded before restoring (see ExpandVar)
-#    - "named" IO streams are replaced with their expanded specifications
-#    - command line arguments are expanded and set in the config hash 
-
-
-sub ReadConfig{
+sub FindConfig{
     my $file=shift;
-    my @param=@_;
 
     if (! -f $file){
 	if (-f ."$SHARED_SYS/$file"){
@@ -183,10 +177,25 @@ sub ReadConfig{
 	elsif (-f "$ENV{UPLUGHOME}/systems/$file"){
 	    $file = "$ENV{UPLUGHOME}/systems/$file";
 	}
-	else{
-	    warn "# Uplug::Config: config file '$file' not found!\n";
-	}
     }
+    return $file;
+}
+
+#------------------------------------------------------------------------
+# read configuration files
+#    - essentially this restores a Perl hash from a hash dump
+#    - some variables are expanded before restoring (see ExpandVar)
+#    - "named" IO streams are replaced with their expanded specifications
+#    - command line arguments are expanded and set in the config hash 
+
+
+sub ReadConfig{
+    my $file=shift;
+    my @param=@_;
+
+    $file = FindConfig($file);
+    warn "# Uplug::Config: config file '$file' not found!\n"
+	unless (-f $file);
 
     open F,"<$file" || die "# Uplug::Config: cannot open file '$file'!\n";
     my @lines=<F>;
@@ -208,16 +217,21 @@ sub WriteConfig{
     my $file=shift;
     my $config=shift;
 
-    open F,">$file" || die "# Config: cannot open '$file'!\n";
+    if ($file){
+	open F,">$file" || die "# Config: cannot open '$file'!\n";
+    }
 
     $Data::Dumper::Indent=1;
     $Data::Dumper::Terse=1;
     $Data::Dumper::Purity=1;
-    print F Dumper($config);
-    close F;
+    if ($file){
+	print F Dumper($config);
+	close F;
+    }
+    else{
+	print Dumper($config);    # stdout if no file is given
+    }
 }
-
-
 
 
 #------------------------------------------------------------------------
@@ -442,6 +456,69 @@ sub ReadNamed{
     }
     return 1;
 }
+
+
+sub ListAvailableModules{
+    my $dir = shift || $SHARED_SYS;
+    unless (-d $dir){
+	$dir = $SHARED_SYS.'/'.$dir;
+    }
+    system("find $dir -type f | sed 's#^$dir/##' | sort");
+}
+
+
+sub PrintConfigInfo{
+    my $config = &ReadConfig(@_);
+    return 0 unless (ref($config) eq 'HASH');
+    if (ref($$config{module}) eq 'HASH'){
+	print "Module Name: ",$$config{module}{name},"\n\n";
+    }
+    print $$config{description},"\n\n";
+    if (ref($$config{arguments}) eq 'HASH'){
+	if (ref($$config{arguments}{shortcuts}) eq 'HASH'){
+	    print "Command-line arguments:\n\n";
+	    foreach (sort keys %{$$config{arguments}{shortcuts}}){
+		printf "  -%-10s %s\n",$_,$$config{arguments}{shortcuts}{$_};
+	    }
+	}
+    }
+    if (ref($$config{module}) eq 'HASH'){
+	if (ref($$config{module}{submodules}) eq 'ARRAY'){
+	    print "\nSub-modules:\n\n";
+	    foreach (@{$$config{module}{submodules}}){
+		printf "  %s\n",$_;
+	    }
+	}
+    }
+
+    if (ref($$config{input}) eq 'HASH'){
+	print "\nINPUT:\n";
+	foreach (sort keys %{$$config{input}}){
+	    printf "  %-20s format: %s\n",$_,$$config{input}{$_}{format};
+	}
+    }
+    if (ref($$config{output}) eq 'HASH'){
+	print "\nOUTPUT:\n";
+	foreach (sort keys %{$$config{output}}){
+	    printf "  %-20s format: %s\n",$_,$$config{output}{$_}{format};
+	}
+    }
+
+
+    if (ref($$config{module}) eq 'HASH'){
+	print "\n";
+	if (exists $$config{module}{stdin}){
+	    print "Can read from STDIN (input:$$config{module}{stdin})\n";
+	}
+	if (exists $$config{module}{stdout}){
+	    print "May write to STDOUT (output:$$config{module}{stdout})\n";
+	}
+    }
+    print "\nMore details? Print the config file with\n";
+    print "  uplug -p $_[0]\n";
+}
+
+
 
 
 ## return a true value

@@ -18,19 +18,31 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #---------------------------------------------------------------------------
-#
-# usage: uplug config-file [PARAMETERS]
-#
-#    config-file ........ a valid Uplug config file (a module)
-#    PARAMETERS ......... paremeters for the selected module
-#
-# if the config-file is not in the current directory the script will
-#     - look first in ENV{UPLUGHOME}/systems
-#     - then look in  ENV{UPLUGHOME}
-#
-# example: (run module UPLUGHOME/systems/pre/basic)
-#
-#     uplug pre/basic -in 1988en.txt -ci 'iso-8859-1' -out 1988en.xml
+
+=head1 NAME
+
+uplug - the main startup script for the Uplug toolbox
+
+=head1 SYNOPSIS
+
+  uplug [-hHlp] config-file [OPTIONS]
+
+C<config-file> is a valid Uplug configuration file (describing a module that may consist of several sub-modules). Configuration files can be given with the absolute and relative paths. If they are not found as specified, then Uplug will look at C<UplugSharedDir/systems/>
+
+=head1 OPTIONS
+
+ -h ............. show a help text (also for specific config-files)
+ -H ............. show the man page
+ -l ............. list all modules (Uplug config files)
+ -p ............. print the configuration file
+
+Other command-line options depend on the specifications in the configuration file. Each module may define its own arguments and options. For example, the basic pre-processing module accepts command-line arguments for input and output and for the input encoding:
+
+ uplug pre/basic -in 1988en.txt -ci 'iso-8859-1' -out 1988en.xml
+
+This will take the generic C<basic> pre-processing module from found in C<UplugShareDir/systems/pre> and it will process the text in C<1988en.txt> (which is assumed to be in ISO-8859-1) and will produce 1988en.xml.
+
+=cut
 
 use strict;
 
@@ -41,6 +53,17 @@ use lib "$Bin/lib";
 use Uplug;
 use Uplug::Config;
 
+use Getopt::Std;
+
+my %opts;
+my $known_opts = 'hHlp';
+getopts ($known_opts, \%opts);
+
+&help_message        if ($opts{H});
+&usage(@ARGV)        if ($opts{h});
+&list_modules(@ARGV) if ($opts{l});
+&print_config(@ARGV) if ($opts{p});
+
 # set some essential locations in the environment
 $ENV{UPLUGHOME}  = $Bin;
 $ENV{UPLUGSHARE} = &shared_home();
@@ -50,4 +73,239 @@ $uplug->load();                # load it
 $uplug->run();                 # and run it
 
 
-# TODO: add documentation ....
+
+
+sub usage
+{
+    use Pod::Usage;
+    if (@_){
+	pod2usage(
+	    -exitval => 'NOEXIT',
+	    -message => 'uplug - the startup script for the Uplug toolbox',
+	    -verbose => 0,
+	    );
+	&PrintConfigInfo(@_);
+	exit 1;
+    }
+
+    pod2usage(
+        -exitval => 'NOEXIT',
+        -message => 'uplug - the startup script for the Uplug toolbox',
+        -verbose => 1,
+    );
+    exit 1;
+}
+
+sub help_message
+{
+    use Pod::Usage;
+    pod2usage(
+        -exitval => 'NOEXIT',
+        -message => 'uplug - the startup script for the Uplug toolbox',
+        -verbose => 2,
+    );
+    print STDERR $_[0] if @_;
+    exit 1;
+}
+
+
+sub print_config{
+    my $file = shift;
+    my $config = &ReadConfig($file);
+    &WriteConfig(undef,$config);
+    print STDERR $_[0] if @_;
+    exit 1;
+}
+
+sub list_modules{
+    &ListAvailableModules(@_);
+    print STDERR $_[0] if @_;
+    exit 1;
+}
+
+
+
+__END__
+
+=head1 DESCRIPTION
+
+The basic use of this startup script is to load a Uplug module, to parse its configuration and to run it using the command-line arguments give. Uplug modules may consist of complex processing pipelines and loops and Uplug tries to build system calls accordingly.
+
+You can list all available modules (i.e. Uplug configuration files) by running
+
+ uplug -l
+
+You can also list only the modules within a specific sub-directory. For example, to list all configuration files for pre-processing English you can run
+
+ uplug -l pre/en
+
+The main modules are structured like this:
+
+ pre/ ............... pre-processing (generic and language-specific ones)
+ pre/xx ............. language-specific pre-processing modules (<xx> = langID)
+ align .............. modules for alignment of parallel texts
+ align/word ......... modules for word alignment
+
+The most common modules are the following
+
+ pre/basic .......... basic pre-processing (includes 'markup', 'sent', 'tok')
+ pre/markup ......... basic markup (text to XML, paragraph boundaries)
+ pre/sent ........... a generic sentence boundary detector
+ pre/tok ............ a generic tokenizer
+ pre/xx-all ......... bundle pre-processing for language <xx>
+ pre/xx-tag ......... tag untokenized text in language <xx>
+
+ align/sent ......... length-based sentence alignment
+ align/hun .......... wrapper around hunalign
+ align/gma .......... geometric mapping and alignment
+
+ align/word/basic .... basic word alignment (based on clues)
+ align/word/default .. default settings for word alignment
+ align/word/advanced . advanced settings for word alignment
+
+
+To get more information about a specific module, run (for example for the module 'pre/basic')
+
+ uplug -h pre/basic
+
+To print the configuration file on screen, use
+
+ uplug -p pre/basic
+
+
+=head2 Uplug configuration files
+
+A Uplug modules is specified by its configuration file. A config file is basically a perlish data structure representing a reference to a hash. A typical module configuration looks like this:
+
+ {
+
+  ##--------------------------------------------------------
+  ## module describes the actual program to be executed
+  ## - stdin/stdin specifies which data stream will be used
+  ##   to read from / write to STDIN/STDOUT
+  ##--------------------------------------------------------
+
+  'module' => {
+    'name' => 'module name',
+    'program' => 'executable',
+    'location' => '/path/to/bin/dir',
+    'stdin' => 'input stream name',
+    'stdout' => 'output stream name',
+  },
+
+  ##--------------------------------------------------------
+  ## description can be any string describing the module
+  ##--------------------------------------------------------
+
+  'description' => 'description of the module',
+
+  ##--------------------------------------------------------
+  ## 'input' can be any number of named data streams
+  ## to read from
+  ##--------------------------------------------------------
+
+  'input' => {
+     'input stream name' => {
+        'format' => 'input format',
+     },
+   },
+
+  ##--------------------------------------------------------
+  ## 'output' can be any number of named data streams
+  ## to write to, 'write_mode' = 'overwrite' forces Uplug
+  ## to overwrite existing files (default = do not do that)
+  ##--------------------------------------------------------
+
+  'output' => {
+     'output stream name' => {
+        'format' => 'output format',
+        'write_mode' => 'overwrite'
+     }
+  },
+
+  ##--------------------------------------------------------
+  ## 'parameter' may contain any kind of parameter
+  ## (even in deep, nested structures)
+  ##--------------------------------------------------------
+
+  'parameter' => {
+     'name' => {
+        'key' => value,
+        ...
+     }
+  },
+
+  ##--------------------------------------------------------
+  ## 'arguments' can be used to describe command-line arg's
+  ## using the key-value pairs in 'shortcuts':
+  ## - the key is the flag to be used (with additional '-')
+  ## - the value describes the path to the key to be set
+  ##   with the command line argument (separated by ':')
+  ##   example: 'f' => 'input:text:format' is used to enable
+  ##            the command line flag '-f format' which sets
+  ##            the format key in config->input->text
+  ##--------------------------------------------------------
+
+  'arguments' => {
+    'shortcuts' => {
+       'command-line-flag1' => 'parameter:name:key',
+       'command-line-flag2' => 'input:input stream name:format',
+       ...
+    }
+  }
+ }
+
+
+Config files may include the following variables to refer to standard locations within the Uplug toolbox. They will be expanded when reading the configuration before executing the commands.
+
+ $UplugHome ..... environment ($UPLUGHOME) or /path/to/uplug
+ $UplugSystem ... environment ($UPLUGCONFIG) or /shared/systems
+ $UplugBin ...... /path/to/uplug/bin
+ $UplugIni ...... /shared/ini
+ $UplugLang ..... /shared/lang
+ $UplugData ..... data
+
+C</shared/> is the path to the global shared directory (if Uplug is installed properly) or the path to the local directory C<share> in your local copy of Uplug (if you don't use the makefile to install Uplug globally)
+
+Uplug modules may also point to a sequence of sub-modules. Add the following structures to the config-hash within the 'module' structure:
+
+
+ {
+  'module' => {
+    'name' => 'module name',
+
+    ##--------------------------------------------------------
+    ## submodules are lists of Uplug config files
+    ## (make sure that they exist and that Uplug can find them)
+    ## - submodule names can be used to describe them
+    ## - do not specify programs at the same time!
+    ##--------------------------------------------------------
+
+    'submodules' => [
+        'config1',
+        'config2',
+        ...
+    ],
+    'submodule names' => [
+        'name of sub-module 1 (config1)',
+        'name of sub-module 2 (config2)',
+        ...
+    ],
+
+    ##--------------------------------------------------------
+    ## You can define loops over sub-sequences of sub-modules
+    ## You can only define one loop per config file!
+    ## The example below defines a loop over 
+    ## sub-module 1 and 2 which will be run 3 times
+    ## (start counting with 1)
+    ##--------------------------------------------------------
+
+    'loop' => '1:2',
+    'iterations' => '4'
+  }
+ }
+
+Look at the pre-defined configuration files to see more examples of possible configuration structures.
+
+
+=cut

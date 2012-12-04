@@ -1,3 +1,4 @@
+#-*-perl-*-
 #####################################################################
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
@@ -161,3 +162,6 @@ sub encodeArray{
 	}
     }
 }
+
+1;
+

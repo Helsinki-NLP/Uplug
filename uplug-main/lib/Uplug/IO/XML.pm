@@ -1,3 +1,5 @@
+#-*-perl-*-
+#####################################################################
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
 # This program is free software; you can redistribute it and/or modify
@@ -18,8 +20,6 @@
 # XML
 #
 #####################################################################
-# $Author$
-# $Id$
 #
 # Note: XML without encoding-specification will be treated as latin1!
 #       (look at readFromHandle)
