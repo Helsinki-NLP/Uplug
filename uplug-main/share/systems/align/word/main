@@ -2,17 +2,17 @@
   'module' => {
     'name' => 'word alignment',
     'submodules' => [
-        '$UplugSystem/align/word/basic',
-        '$UplugSystem/align/word/advanced',
-        '$UplugSystem/align/word/giza',
-#        '$UplugSystem/align/word/xx-xx',
-#        '$UplugSystem/align/word/giza',
-#        '$UplugSystem/align/word/en-fr',
-#        '$UplugSystem/align/word/en-sv',
-#        '$UplugSystem/align/word/fr-en',
-#        '$UplugSystem/align/word/de-sv',
-#        '$UplugSystem/align/word/sv-en',
-#        '$UplugSystem/align/word/sv-de',
+        'align/word/basic',
+        'align/word/advanced',
+        'align/word/giza',
+#        'align/word/xx-xx',
+#        'align/word/giza',
+#        'align/word/en-fr',
+#        'align/word/en-sv',
+#        'align/word/fr-en',
+#        'align/word/de-sv',
+#        'align/word/sv-en',
+#        'align/word/sv-de',
     ],
     'submodule names' => [
 	'basic',
@@ -29,9 +29,9 @@
     ],
   },
   'description' => 'Choose one of the following word aligner settings:
-<ul><li>basic: clue alignment using basic clues and GIZA++</li>
-    <li>advanced: clue alignment using basic clues, several GIZA++ alignments, and dynamic clues</li>
-    <li>GIZA++: word alignment using GIZA++</li>
-</ul>
+<ul><li>basic: clue alignment using basic clues and GIZA++<li>
+    <li>advanced: clue alignment using basic clues, several GIZA++ alignments, and dynamic clues<li>
+    <li>GIZA++: word alignment using GIZA++<li>
+<ul>
 '
 }

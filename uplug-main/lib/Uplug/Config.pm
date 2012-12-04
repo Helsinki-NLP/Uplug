@@ -165,17 +165,20 @@ sub FindConfig{
     my $file=shift;
 
     if (! -f $file){
-	if (-f ."$SHARED_SYS/$file"){
+	if (-f "$SHARED_SYS/$file"){
 	    $file = "$SHARED_SYS/$file";
+	}
+	elsif (-f "$SHARED_INI/$file"){
+	    $file = "$SHARED_INI/$file";
 	}
 	elsif (-f "$ENV{UPLUGHOME}/$file"){
 	    $file = "$ENV{UPLUGHOME}/$file";
 	}
-	elsif (-f "$ENV{UPLUGHOME}/ini/$file"){
-	    $file = "$ENV{UPLUGHOME}/ini/$file";
-	}
 	elsif (-f "$ENV{UPLUGHOME}/systems/$file"){
 	    $file = "$ENV{UPLUGHOME}/systems/$file";
+	}
+	elsif (-f "$ENV{UPLUGHOME}/ini/$file"){
+	    $file = "$ENV{UPLUGHOME}/ini/$file";
 	}
     }
     return $file;

@@ -2,11 +2,11 @@
   'module' => {
     'name' => 'German pre-processing',
     'submodules' => [
-#        '$UplugSystem/pre/de/toktag',
-        '$UplugSystem/pre/tok -l de',
-        '$UplugSystem/pre/de/tagHunPos',
-#        '$UplugSystem/pre/de/tagTnT',
-        '$UplugSystem/pre/de/malt',
+#        'pre/de/toktag',
+        'pre/tok -l de',
+        'pre/de/tagHunPos',
+#        'pre/de/tagTnT',
+        'pre/de/malt',
     ],
     'submodule names' => [
         'German tokenizer+tagger',
@@ -18,10 +18,10 @@
   },
   'description' => 'This is the pre-processing module for German
   corpora. It includes a basic XML markup tool, a general sentence
-  splitter, the <a href="http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a>
+  splitter, the <a href="http:/www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a>
   for German which also does tokenization
   and lemmatization, and the 
-  <a href="http://www.coli.uni-sb.de/~thorsten/tnt/">TnT tagger</a>
+  <a href="http:/www.coli.uni-sb.de/~thorsten/tnt/">TnT tagger</a>
    for German.',
   'input' => {
     'text' => {

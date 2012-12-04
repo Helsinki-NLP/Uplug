@@ -7,7 +7,7 @@
   },
   'description' => 'This module runs GIZA++ with basic settings and
   converts its alignment to the Uplug format. For more information on
-  GIZA++ check this <a href="http://www-i6.informatik.rwth-aachen.de/web/Software/GIZA++.html">link</a>.',
+  GIZA++ check this <a href="http:/www-i6.informatik.rwth-aachen.de/web/Software/GIZA++.html">link</a>.',
   'input' => {
     'bitext' => {
       'format' => 'xces align',
@@ -33,10 +33,10 @@
     #     for example:
     #
      'features (source)' => {       # source language features:
-       '#text' => '^(...).*$/$1',
+       '#text' => '^(...).*$$1',
      },
      'features (target)' => {       # target language features:
-       '#text' => '^(...).*$/$1',
+       '#text' => '^(...).*$$1',
      },
       'lower case (source)' => 0,            # =1 --> lower case
       'lower case (target)' => 0,            # =1 --> lower case

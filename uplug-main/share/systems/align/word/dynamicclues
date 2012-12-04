@@ -32,7 +32,7 @@
   <li>chunk label trigrams (dc3)
   <li>chunk label trigrams and POS tags of the current link (dc3p)
   <li>chunk label trigrams and relative word positions (dc3x)
-  </ul><p>
+  <ul><p>
   Note: If you add dynamic clues to be learned from the data make sure
   to enable the same clues in the alignment module (link). Otherwise
   they will not be used for the word alignment.',
@@ -46,7 +46,7 @@
   },
 
   #######################################################################
-  # output = clues in DBM files (defined in $UPLUG/ini/DataStreams.ini)
+  # output = clues in DBM files (defined in $UPLUGini/DataStreams.ini)
   #######################################################################
 
   'output' => {
@@ -68,7 +68,7 @@
   # parameters
   #######################################################################
   #
-  # clues ..... enable/disable clue types to be learned (1=enabled)
+  # clues ..... enabledisable clue types to be learned (1=enabled)
   # 
   #-------------------------------------------------------------------
 
@@ -127,10 +127,10 @@
       'relative position' => 1,
       'pair frequency' => 2,
       'features (source)' => {
-	'#text' => '^(...).*$/$1'
+	'#text' => '^(...).*$$1'
       },
       'features (target)' => {
-	'#text' => '^(...).*$/$1'
+	'#text' => '^(...).*$$1'
       }
     },
     'clue dpx' => {
@@ -156,14 +156,14 @@
      },
     'clue dp3 (prefix)' => {
        'features (target)' => {
-	   'left(w):pos'  => '^(..).*$/$1',
-           'pos'          => '^(..).*$/$1',
-	   'right(w):pos' => '^(..).*$/$1',
+	   'left(w):pos'  => '^(..).*$$1',
+           'pos'          => '^(..).*$$1',
+	   'right(w):pos' => '^(..).*$$1',
        },
        'features (source)' => {
-	   'left(w):pos'  => '^(..).*$/$1',
-           'pos'          => '^(..).*$/$1',
-	   'right(w):pos' => '^(..).*$/$1',
+	   'left(w):pos'  => '^(..).*$$1',
+           'pos'          => '^(..).*$$1',
+	   'right(w):pos' => '^(..).*$$1',
        },
     },
     'clue dp3x' => {

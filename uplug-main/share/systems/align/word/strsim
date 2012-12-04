@@ -63,6 +63,8 @@
   },
   'arguments' => {
     'shortcuts' => {
+       'in' => 'input:bitext:file',
+       'informat' => 'input:bitext:format',
        'out' => 'output:string similarities:file',
        'outformat' => 'output:string similarities:format',
        'srclang' => 'parameter:token:language (source)',

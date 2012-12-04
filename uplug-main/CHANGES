@@ -1,4 +1,10 @@
 
+- added help information to uplug via command line flags
+- added documentation to uplug startup script
+- list available modules
+- fixed problem with uplug-giza
+
+
 * v0.3 - Mon Nov 26 11:57:26 CET 2012
 
 - re-arranging modules, scripts, config-files

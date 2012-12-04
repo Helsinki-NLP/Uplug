@@ -27,7 +27,7 @@
     },
     'output' => {
       'token delimiter' => '\\s+',
-      'tag delimiter' => '\\/',
+      'tag delimiter' => '\\',
       'sentence delimiter' => '
 ',
       'attribute' => 'mosy',

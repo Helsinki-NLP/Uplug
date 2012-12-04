@@ -7,7 +7,7 @@
   },
   'description' => 'This module runs GIZA++ with basic settings and
   converts its alignment to the Uplug format. For more information on
-  GIZA++ check this <a href="http://www-i6.informatik.rwth-aachen.de/web/Software/GIZA++.html">link</a>.',
+  GIZA++ check this <a href="http:/www-i6.informatik.rwth-aachen.de/web/Software/GIZA++.html">link</a>.',
   'input' => {
     'bitext' => {
       'format' => 'xces align',

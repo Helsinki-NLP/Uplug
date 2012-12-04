@@ -2,10 +2,10 @@
   'module' => {
     'name' => 'Spanish pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/es/basic',
-        '$UplugSystem/pre/es/tagSvmTool',
-#        '$UplugSystem/pre/es/tagMBT',
-        '$UplugSystem/pre/es/malt',
+        'pre/es/basic',
+        'pre/es/tagSvmTool',
+#        'pre/es/tagMBT',
+        'pre/es/malt',
     ],
     'submodule names' => [
         'basic pre-processing',

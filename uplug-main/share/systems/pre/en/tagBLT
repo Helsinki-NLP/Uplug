@@ -22,7 +22,7 @@
       'token delimiter' => '\n',
         'attributes' => 'blt:text',
         'pattern' => 'pos=\"(.*?)\"\>(.*?)\<',
-      'tag delimiter' => '\/',
+      'tag delimiter' => '\',
       'sentence delimiter' => "\n<s>\n",
       'attribute' => 'pos',
 	'encoding' => 'iso-8859-1',

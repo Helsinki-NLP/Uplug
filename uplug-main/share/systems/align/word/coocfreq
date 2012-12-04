@@ -48,8 +48,8 @@
     #     for example:
     #
     # 'features (source)' => {       # source language features:
-    #   'left:pos' => '^(..).*$/$1', # 1st 2 char's of POS of the left neighbor
-    #   '#text' => '(.{4})$/$1',     # last 4 char's of the word itself
+    #   'left:pos' => '^(..).*$$1', # 1st 2 char's of POS of the left neighbor
+    #   '#text' => '(.{4})$$1',     # last 4 char's of the word itself
     #   'c.*:right:type' => undef,   # type attribute of a right neighbor
     # },                             #    of a parent-tag that starts with 'c'
     # 'features (target)' => {       # target language features:
@@ -74,7 +74,7 @@
     #      'exclude stop words (source)' => 0,     # don't count stop words
     #      'exclude stop words (target)' => 0,
     #      'language (source)' => 'english',       # use language-specific
-    #      'language (target)' => 'swedish',       # information (ini/lang.ini)
+    #      'language (target)' => 'swedish',       # information (inilang.ini)
     #------------------------------------------------------------------
 
       'chunks (source)' => 'c.*',            # use marked chunks
@@ -111,6 +111,8 @@
   #------------------------------------------------------------------
   'arguments' => {
     'shortcuts' => {
+       'in' => 'input:bitext:file',
+       'informat' => 'input:bitext:format',
        'src' => 'output:source freq:file',
        'trg' => 'output:target freq:file',
        'cooc' => 'output:cooc freq:file',

@@ -37,10 +37,10 @@
     'stdout' => 'bitext',
   },
   'description' => 'This module calls an external sentence aligner
-  which is basically the length-based Gale/Church approach. More
+  which is basically the length-based GaleChurch approach. More
   information can be found in the 
-  <a href="http://citeseer.nj.nec.com/gale91program.html">original
-  publication</a> of this approach.',
+  <a href="http:/citeseer.nj.nec.com/gale91program.html">original
+  publication<a> of this approach.',
   'widgets' => {
        'input' => {
 	  'source text' => {

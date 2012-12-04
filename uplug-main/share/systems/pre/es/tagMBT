@@ -26,8 +26,8 @@
      'output' => {
         'attribute' => 'pos',
         'token delimiter' => ' ',
-        'sentence delimiter' => '<s>//RAB ',
-        'tag delimiter' => '\/\/?',
+        'sentence delimiter' => '<s>/RAB ',
+        'tag delimiter' => '\\/?',
 	'encoding' => 'iso-8859-1',
      },
      'input' => {

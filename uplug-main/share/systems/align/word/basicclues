@@ -2,12 +2,12 @@
   'module' => {
     'name' => 'basic alignment clues',
     'submodules' => [
-        '$UplugSystem/align/word/strsim',
-        '$UplugSystem/align/word/coocfreq',
-        '$UplugSystem/align/word/dice',
-#        '$UplugSystem/align/word/coocstat1 -s tscore', # t-score
-#        '$UplugSystem/align/word/coocstat2 -s pmi',    # pointwise  mutual I
-#        '$UplugSystem/align/word/coocstat3 -s ll',     # log-likelihood
+        'align/word/strsim',
+        'align/word/coocfreq',
+        'align/word/dice',
+#        'align/word/coocstat1 -s tscore', # t-score
+#        'align/word/coocstat2 -s pmi',    # pointwise  mutual I
+#        'align/word/coocstat3 -s ll',     # log-likelihood
     ],
     'submodule names' => [
         'string similarity (LCSR)',

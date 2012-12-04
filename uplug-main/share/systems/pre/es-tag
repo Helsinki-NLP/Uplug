@@ -2,11 +2,11 @@
   'module' => {
     'name' => 'Spanish pre-processing',
     'submodules' => [
-#        '$UplugSystem/pre/es/toktag',
-        '$UplugSystem/pre/tok -l es',
-        '$UplugSystem/pre/es/tagSvmTool',
-#        '$UplugSystem/pre/es/tagMBT',
-        '$UplugSystem/pre/es/malt',
+#        'pre/es/toktag',
+        'pre/tok -l es',
+        'pre/es/tagSvmTool',
+#        'pre/es/tagMBT',
+        'pre/es/malt',
     ],
     'submodule names' => [
 	'tokenizer',

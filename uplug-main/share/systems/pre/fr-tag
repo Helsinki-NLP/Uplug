@@ -2,10 +2,10 @@
   'module' => {
     'name' => 'French pre-processing',
     'submodules' => [
-#        '$UplugSystem/pre/fr/toktag',
-        '$UplugSystem/pre/tok -l fr',
-        '$UplugSystem/pre/fr/tagMElt',
-        '$UplugSystem/pre/fr/malt',
+#        'pre/fr/toktag',
+        'pre/tok -l fr',
+        'pre/fr/tagMElt',
+        'pre/fr/malt',
     ],
     'submodule names' => [
         'French tokenizer+tagger',
@@ -16,7 +16,7 @@
   },
   'description' => 'This is the pre-processing module for French
   corpora. It includes a basic XML markup tool, a general sentence
-  splitter, and the <a href="http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a> for French which also does tokenization
+  splitter, and the <a href="http:/www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a> for French which also does tokenization
   and lemmatization',
   'input' => {
     'text' => {

@@ -2,9 +2,9 @@
   'module' => {
     'name' => 'find and mark significant N-grams',
     'submodules' => [
-        '$UplugSystem/pre/ngramfreq',
-        '$UplugSystem/pre/ngramstat',
-        '$UplugSystem/pre/markphr',
+        'pre/ngramfreq',
+        'pre/ngramstat',
+        'pre/markphr',
     ],
     'submodule names' => [
         'N-gram frequencies',

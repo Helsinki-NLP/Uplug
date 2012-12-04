@@ -318,7 +318,9 @@ sub input{
 	    }
 	    $self->{DATA}->{$_}=$input->{$_};
 	}
-	&WriteConfig($self->{MODULE},$self->{CONFIG});
+	if (exists $self->{MODULE}){
+	    &WriteConfig($self->{MODULE},$self->{CONFIG});
+	}
     }
     return &GetParam($self->{CONFIG},'input');
 }
@@ -339,7 +341,9 @@ sub output{
 	    }
 	    $self->{DATA}->{$_}=$output->{$_};
 	}
-	&WriteConfig($self->{MODULE},$self->{CONFIG});
+	if (exists $self->{MODULE}){
+	    &WriteConfig($self->{MODULE},$self->{CONFIG});
+	}
     }
     return &GetParam($self->{CONFIG},'output');
 }

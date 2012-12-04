@@ -27,8 +27,8 @@
      'output' => {
         'attribute' => 'pos',
         'token delimiter' => ' ',
-        'sentence delimiter' => '<s>//NN ',
-        'tag delimiter' => '\/\/?',
+        'sentence delimiter' => '<s>/NN ',
+        'tag delimiter' => '\\/?',
 	'encoding' => 'iso-8859-1',
      },
      'input' => {

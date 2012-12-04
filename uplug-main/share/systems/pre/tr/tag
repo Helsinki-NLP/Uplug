@@ -27,7 +27,7 @@
      'output' => {
         'attribute' => 'morph',
         'token delimiter' => "\n",
-        'sentence delimiter' => "\n\<\/S\>\n\<S\>\n",
+        'sentence delimiter' => "\n\<\S\>\n\<S\>\n",
         'tag delimiter' => '\s+',
 	'encoding' => 'iso-8859-9',
      },

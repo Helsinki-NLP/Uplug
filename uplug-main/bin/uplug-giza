@@ -40,14 +40,9 @@ use Uplug::Config;
 my $UplugHome="$Bin/../";
 $ENV{UPLUGHOME}=$UplugHome;
 my $PWD=getcwd;
-my $GIZADIR="$Bin/../ext/GIZA++";
-if (not -d $GIZADIR){$GIZADIR="$ENV{HOME}/cvs/GIZA++-v2";}
-if (not -d $GIZADIR){$GIZADIR="$ENV{HOME}/cvs/GIZA++";}
-if (not -d $GIZADIR){$GIZADIR="/local/ling/GIZA++-v2";}
-if (not -d $GIZADIR){$GIZADIR="/local/ling/GIZA++";}
-if (not -d $GIZADIR){$GIZADIR="/home/staff/joerg/cvs/GIZA++-v2";}
-if (not -d $GIZADIR){$GIZADIR="/home/staff/joerg/cvs/GIZA++";}
-if (not -d $GIZADIR){warn "cannot find GIZA++\n!";exit;}
+
+my $GIZA = &find_executable('GIZA++');
+if (not -e $GIZA){warn "cannot find GIZA++\n!";exit;}
 
 my %IniData=&GetDefaultIni;
 my $IniFile='giza.ini';
@@ -137,6 +132,17 @@ END{
     }
 }
 
+sub ReadGizaVoc{
+    my $file = shift;
+    my $voc = shift;
+    open F,"<$file" || die "Cannot open vocabulary file $file!";
+    binmode(F,":utf8");
+    while (<F>){
+	my ($id,$w,$f)=split(/\s+/);
+	$$voc{$id} = $w;
+    }
+    close F;
+}
 
 #----------------------------------------------------------------------------
 # Giza2Clue (new version): no external calls
@@ -165,14 +171,18 @@ sub Giza2Clue{
 	else{$dic{file}="$cluedir/giza.dbm";}
     }
 
-    my %inStream=('file' => "$dir/GIZA++.actual.ti.final",
+    my (%SrcVoc,%TrgVoc);
+    &ReadGizaVoc("$dir/src.vcb",\%SrcVoc);
+    &ReadGizaVoc("$dir/trg.vcb",\%TrgVoc);
+
+    my %inStream=('file' => "$dir/GIZA++.t3.final",
 		  'format' => 'tab',
 		  'field delimiter' => ' ');
     if ($inverse){
-	$inStream{'columns'}=['source','target','value',],
+	$inStream{'columns'}=['target','source','value',],
     }
     else{
-	$inStream{'columns'}=['target','source','value',],
+	$inStream{'columns'}=['source','target','value',],
     }
 
 
@@ -182,8 +192,8 @@ sub Giza2Clue{
     my $in=Uplug::IO::Any->new(\%inStream);
     $in->open('read',\%inStream);
     while ($in->read($data)){
-	my $src=$data->attribute('source');
-	my $trg=$data->attribute('target');
+	my $src=$SrcVoc{$data->attribute('source')};
+	my $trg=$TrgVoc{$data->attribute('target')};
 	if ((not $src) or (not $trg)){next;}
 	my $value=$data->attribute('value');
 	if (not $value){$value=1;}
@@ -214,37 +224,6 @@ sub Giza2Clue{
 
     $out->close;
     $in->close;
-}
-
-
-#----------------------------------------------------------------------------
-# (old old old)
-# Giza2Clue: convert GIZA's lexical translation parameters to a Uplug clue DB
-# (creates giza.dbm or giza2.dbm (inverse direction))
-# 
-# this procedure simply calls external scripts in the tools directory!
-#      and moves dbm-files to the clue directory using the UNIX 'mv' command
-# --> does not work on all platforms!
-
-sub Giza2ClueOld{
-    my $dir=shift;
-    my $param=shift;
-    my $inverse=shift;
-
-    my $dbm='giza.dbm';
-    if ($inverse){$dbm='giza2.dbm';}
-    my $convert="$Bin/../tools/declclue -p -o $dbm -d ' '";
-    if ($inverse){$convert.=" -c 'source,target,value'";}
-    else{$convert.=" -c 'target,source,value'";}
-    my $giza="$dir/GIZA++.actual.ti.final";
-    my $cluedir='data/runtime';
-
-    if (-f $giza){
-	system "$convert <$giza";
-	system "mkdir -p $cluedir";
-	system "mv $dbm  $cluedir/";
-	system "mv $dbm\.head  $cluedir/";
-    }
 }
 
 

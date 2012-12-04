@@ -37,7 +37,7 @@
     'token pair' => {
       'minimal frequency' => 2,
 #      'minimal length diff' => 0.5,
-#      'matching word class' => 'open/closed'
+#      'matching word class' => 'openclosed'
     },
     'source token' => {
       'minimal frequency' => 2,

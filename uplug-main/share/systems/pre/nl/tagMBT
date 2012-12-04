@@ -26,8 +26,8 @@
      'output' => {
         'attribute' => 'pos',
         'token delimiter' => ' ',
-        'sentence delimiter' => '<s>//N(soort,ev,neut) ',
-        'tag delimiter' => '\/\/?',
+        'sentence delimiter' => '<s>/N(soort,ev,neut) ',
+        'tag delimiter' => '\\/?',
 	'encoding' => 'iso-8859-1',
      },
      'input' => {

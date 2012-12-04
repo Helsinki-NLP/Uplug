@@ -2,9 +2,9 @@
   'module' => {
     'name' => 'basic pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/markup',
-        '$UplugSystem/pre/el/sent',
-        '$UplugSystem/pre/tok -l el',
+        'pre/markup',
+        'pre/el/sent',
+        'pre/tok -l el',
     ],
     'submodule names' => [
         'basic XML markup',

@@ -31,8 +31,8 @@
     #
     # 'features' => {
     #   'pos' => undef,              # POS-attribute of the current token
-    #   'left:pos' => '^(..).*$/$1', # 1st 2 char's of POS of the left neighbor
-    #   '#text' => '(.{4})$/$1',     # last 4 char's of the word itself
+    #   'left:pos' => '^(..).*$$1', # 1st 2 char's of POS of the left neighbor
+    #   '#text' => '(.{4})$$1',     # last 4 char's of the word itself
     #   'c.*:right:type' => undef,   # type attribute of a right neighbor
     # },                             #    of a parent-tag that starts with 'c'
     #

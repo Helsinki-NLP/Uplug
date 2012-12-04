@@ -23,7 +23,7 @@
   directional alignments (=union)
   <li>a competitive linking approach (=competitive)
   <li>and two directional alignment strategies
-  (directional_src and directional_trg).</ul>',
+  (directional_src and directional_trg).<ul>',
   'input' => {
     'bitext' => {
       'stream name' => 'runtime xml',

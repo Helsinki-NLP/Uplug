@@ -2,8 +2,8 @@
   'module' => {
     'name' => 'Spanish pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/nl/basic',
-#        '$UplugSystem/pre/nl/tagMBT',
+        'pre/nl/basic',
+#        'pre/nl/tagMBT',
     ],
     'submodule names' => [
         'basic XML markup',

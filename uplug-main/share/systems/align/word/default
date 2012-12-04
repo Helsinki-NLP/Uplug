@@ -2,33 +2,33 @@
   'module' => {
     'name' => 'The clue aligner',
     'submodules' => [
-        '$UplugSystem/align/word/basicclues',
-        '$UplugSystem/align/word/GIZA/giza-word-refined -c 1 -out giza-refined.links',
-        '$UplugSystem/align/word/dynamicclues',
-        '$UplugSystem/align/word/GIZA/gizaclue-word-prefix',
-#        '$UplugSystem/align/word/GIZA/gizaclue-word',
-#        '$UplugSystem/align/word/GIZA/gizaclue-pos-word',
-#        '$UplugSystem/align/word/GIZA/gizaclue-word-suffix',
-        '$UplugSystem/align/word/link -adj',
-        '$UplugSystem/align/word/dynamicclues',
-        '$UplugSystem/align/word/link -adj',
+        'align/word/basicclues',
+        'align/word/GIZA/giza-word-refined -c 1 -out giza-refined.links',
+        'align/word/dynamicclues',
+        'align/word/GIZA/gizaclue-word-prefix',
+#        'align/word/GIZA/gizaclue-word',
+#        'align/word/GIZA/gizaclue-pos-word',
+#        'align/word/GIZA/gizaclue-word-suffix',
+        'align/word/link -adj',
+        'align/word/dynamicclues',
+        'align/word/link -adj',
 	],
   },
   'description' => 'The clue aligner runs several sub-modules:
     <ul><li>basicclues: computes basic alignment clues using association
-            measures</li>
+            measures<li>
 	<li>giza-word-refined: runs GIZA++ in both alignment directions and
-            converts the lexical probabilities to the clue aligner format</li>
+            converts the lexical probabilities to the clue aligner format<li>
         <li>dynamicclues: learns clues from the "refined" combination of both
-            Viterbi alignments</li>
+            Viterbi alignments<li>
 	<li>gizaclue-word-prefix: take only the 3 initial characters of each
             token and run GIZA++ in both directions and convert probabilities
             to clues<li>
 	<li>link: clue alignment using basic clues, giza clues, and learned
-            clues</li>
-	<li>dynamicclues: learns clues from previously aligned data</li>
+            clues<li>
+	<li>dynamicclues: learns clues from previously aligned data<li>
 	<li>link: clue alignment using all clues (basic, giza, learned)
-    </ul><p>Note: Word alignment may take quite a while. Processing time
+    <ul><p>Note: Word alignment may take quite a while. Processing time
      depends on the size of the corpus and on the processing load on the
      local computer system. UplugWeb processes do not have the highest
      priority on the local machines! Alignment results will be send to

@@ -2,12 +2,12 @@
   'module' => {
     'name' => 'English pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/en/tagGrok -attr grok',
-        '$UplugSystem/pre/en/chunk -pos grok',
-        '$UplugSystem/pre/en/tagTnT -attr tnt',
-        '$UplugSystem/pre/en/tagBrill -attr brill',
-        '$UplugSystem/pre/en/tagBLT -attr blt',
-        '$UplugSystem/pre/en/tagQtag -attr qtag',
+        'pre/en/tagGrok -attr grok',
+        'pre/en/chunk -pos grok',
+        'pre/en/tagTnT -attr tnt',
+        'pre/en/tagBrill -attr brill',
+        'pre/en/tagBLT -attr blt',
+        'pre/en/tagQtag -attr qtag',
     ],
     'submodule names' => [
         'English tagger (Grok)',
@@ -18,11 +18,11 @@
   },
   'description' => 'This is the pre-processing module for English
   corpora. It includes a basic XML markup tool, a general sentence
-  splitter, the <a href="http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a> for English which also does tokenization
+  splitter, the <a href="http:/www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a> for English which also does tokenization
   and lemmatization, the English tagger from the 
-  <a href="http://grok.sourceforge.net/">Grok system</a>,  and
-  shallow parser from the <a href="http://grok.sourceforge.net/">Grok
-  system</a>.',
+  <a href="http:/grok.sourceforge.net/">Grok system</a>,  and
+  shallow parser from the <a href="http:/grok.sourceforge.net/">Grok
+  system<a>.',
   'input' => {
     'text' => {
       'format' => 'xml',

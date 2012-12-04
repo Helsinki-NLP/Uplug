@@ -2,12 +2,12 @@
   'input' => {
     'source text' => {
       'format' => 'XML',
-      'file' => 'data/source.xml',
+      'file' => 'datasource.xml',
       'root' => 's',
     },
     'target text' => {
       'format' => 'XML',
-      'file' => 'data/target.xml',
+      'file' => 'datatarget.xml',
       'root' => 's',
     }
   },

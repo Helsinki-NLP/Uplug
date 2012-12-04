@@ -2,10 +2,10 @@
   'module' => {
     'name' => 'Spanish pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/nl/alptok',  # does nothing if Alpino is not present
-#        '$UplugSystem/pre/nl/toktag',
-        '$UplugSystem/pre/tok -l nl',
-        '$UplugSystem/pre/nl/tagMBT',
+        'pre/nl/alptok',  # does nothing if Alpino is not present
+#        'pre/nl/toktag',
+        'pre/tok -l nl',
+        'pre/nl/tagMBT',
     ],
     'submodule names' => [
 	'tokenizer',

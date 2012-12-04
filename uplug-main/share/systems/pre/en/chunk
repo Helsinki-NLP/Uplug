@@ -19,7 +19,7 @@
       'token delimiter' => ' ',
       'sentence delimiter' => '
 ',
-      'POS tag delimiter' => '/',
+      'POS tag delimiter' => '',
       'POS attribute' => 'pos'
     },
     'chunker' => {
@@ -28,11 +28,11 @@
     },
     'output' => {
       'token delimiter' => '\\s+',
-      'chunk tag delimiter' => '\\/',
+      'chunk tag delimiter' => '\\',
       'sentence delimiter' => '
 ',
       'chunk tag' => 'chunk',
-      'POS tag delimiter' => '\\/',
+      'POS tag delimiter' => '\\',
 	'encoding' => 'iso-8859-1',
     },
     'input token replacements' => {

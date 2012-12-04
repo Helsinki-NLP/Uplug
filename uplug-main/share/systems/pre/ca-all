@@ -2,9 +2,9 @@
   'module' => {
     'name' => 'Italian pre-processing',
     'submodules' => [
-        '$UplugSystem/pre/ca/basic',
-        '$UplugSystem/pre/ca/tagSvmTool',
-        '$UplugSystem/pre/ca/malt',
+        'pre/ca/basic',
+        'pre/ca/tagSvmTool',
+        'pre/ca/malt',
     ],
     'submodule names' => [
         'standard tokenizer',
@@ -16,7 +16,7 @@
   },
   'description' => 'This is the pre-processing module for Italian
   corpora. It includes a basic XML markup tool, a general sentence
-  splitter, and the <a href="http://www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a>
+  splitter, and the <a href="http:/www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a>
   for Italian which also does tokenization
   and lemmatization',
   'input' => {

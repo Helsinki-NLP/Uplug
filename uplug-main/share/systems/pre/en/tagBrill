@@ -28,7 +28,7 @@
         'attribute' => 'pos',
         'token delimiter' => ' ',
         'sentence delimiter' => "\n",
-        'tag delimiter' => '\/',
+        'tag delimiter' => '\',
 	'encoding' => 'iso-8859-1',
      },
      'input' => {
