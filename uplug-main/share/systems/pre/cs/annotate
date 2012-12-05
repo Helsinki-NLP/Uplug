@@ -1,21 +1,21 @@
 {
   'module' => {
-    'name' => 'Swedish pre-processing',
+    'name' => 'Czech pre-processing',
     'submodules' => [
-        'pre/sv/basic',
-        'pre/sv/annotate',
+        'pre/cs/tagHunPos',
+        'pre/cs/malt',
     ],
     'submodule names' => [
-        'basic XML markup',
-        'linguistic annotation',
+        'POS tagger (hunpos)',
+	'dependency parser (malt)'
     ],
     'stdin' => 'text',
     'stdout' => 'text',
   },
-  'description' => 'This is the default pre-processing pipe-line for Swedish.',
   'input' => {
     'text' => {
-      'format' => 'text',
+      'format' => 'xml',
+      'root' => 's',
     }
   },
   'output' => {
@@ -23,7 +23,7 @@
       'format' => 'xml',
       'root' => 's',
       'write_mode' => 'overwrite',
-      'status' => 'chunk'
+      'status' => 'tag'
     }
   },
   'arguments' => {
@@ -37,7 +37,7 @@
   'widgets' => {
        'input' => {
 	  'text' => {
-	    'stream name' => 'stream(format=text,language=en)'
+	    'stream name' => 'stream(format=text,language=it)'
 	  },
        },
   }

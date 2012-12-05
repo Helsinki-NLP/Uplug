@@ -3,28 +3,16 @@
     'name' => 'English pre-processing',
     'submodules' => [
         'pre/en/basic',
-        'pre/en/tagHunPos',
-        'pre/en/tagGrok',
-        'pre/en/chunk',
-        'pre/en/malt',
+        'pre/en/annotate',
     ],
     'submodule names' => [
         'basic pre-processing',
-        'English tagger (hunpos)',
-        'English tagger (Grok)',
-        'English chunker (Grok)',
-        'English dependency parser (MaltParser)',
+        'linguistic annotation',
     ],
     'stdin' => 'text',
     'stdout' => 'text',
   },
-  'description' => 'This is the pre-processing module for English
-  corpora. It includes a basic XML markup tool, a general sentence
-  splitter, the <a href="http:/www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a> for English which also does tokenization
-  and lemmatization, the English tagger from the 
-  <a href="http:/grok.sourceforge.net/">Grok system</a>,  and
-  shallow parser from the <a href="http:/grok.sourceforge.net/">Grok
-  system<a>.',
+  'description' => 'This is the default pre-processing pipe-line for English.',
   'input' => {
     'text' => {
       'format' => 'text',
@@ -41,7 +29,7 @@
   'arguments' => {
     'shortcuts' => {
        'in' => 'input:text:file',
-	'out' => 'output:text:file',
+       'out' => 'output:text:file',
        'ci' => 'input:text:encoding',
        'co' => 'output:text:encoding',
     }

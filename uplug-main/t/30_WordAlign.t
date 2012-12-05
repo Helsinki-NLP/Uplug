@@ -17,13 +17,14 @@ my $null = "2> /dev/null >/dev/null";
 #-------------------------------------------------
 # basic word alignment
 
-system("$UPLUG align/sent -src $DATA/xml/1988de.basic.xml -trg $DATA/xml/1988en.basic.xml -out sentalign.xml $null");
+system("$UPLUG align/hun -src $DATA/xml/1988sv.basic.xml -trg $DATA/xml/1988en.basic.xml -out sentalign.xml $null");
 system("$UPLUG align/word/basic -in sentalign.xml -out wordalign.xml $null");
 
 is( &xtargets("wordalign.xml"), 
-    &xtargets("$DATA/xml/de-en/1988.wa.basic.xml"), 
+    &xtargets("$DATA/xml/sv-en/1988.wa.basic.xml"), 
 	"word alignment (basic)" );
 
+unlink('giza-refined.links');
 unlink('sentalign.xml');
 unlink('wordalign.xml');
 system("rm -fr data/runtime");

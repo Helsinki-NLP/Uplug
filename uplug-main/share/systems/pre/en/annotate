@@ -1,21 +1,25 @@
 {
   'module' => {
-    'name' => 'Swedish pre-processing',
+    'name' => 'English pre-processing',
     'submodules' => [
-        'pre/sv/basic',
-        'pre/sv/annotate',
+        'pre/en/tagHunPos',
+        'pre/en/tagGrok',
+        'pre/en/chunk',
+        'pre/en/malt',
     ],
     'submodule names' => [
-        'basic XML markup',
-        'linguistic annotation',
+        'English POS tagger (hunpos)',
+        'English POS tagger (Grok)',
+        'English chunker (Grok)',
+        'English dependency parser (malt)',
     ],
     'stdin' => 'text',
     'stdout' => 'text',
   },
-  'description' => 'This is the default pre-processing pipe-line for Swedish.',
   'input' => {
     'text' => {
-      'format' => 'text',
+      'format' => 'xml',
+      'root' => 's',
     }
   },
   'output' => {

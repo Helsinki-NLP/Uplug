@@ -10,10 +10,7 @@
     'stdin' => 'text',
     'stdout' => 'text',
   },
-  'description' => 'The basic pre-processing module includes a tool
-  for basic XML markup, a simple sentence splitter and a general
-  tokenizer which probably does not work sufficiently for most
-  languages :-)',
+  'description' => 'This is the default pre-processing pipe-line for Greek.',
   'input' => {
     'text' => {
       'format' => 'text',

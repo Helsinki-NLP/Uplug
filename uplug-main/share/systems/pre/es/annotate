@@ -1,21 +1,23 @@
 {
   'module' => {
-    'name' => 'Swedish pre-processing',
+    'name' => 'Spanish pre-processing',
     'submodules' => [
-        'pre/sv/basic',
-        'pre/sv/annotate',
+        'pre/es/tagSvmTool',
+#        'pre/es/tagMBT',
+        'pre/es/malt',
     ],
     'submodule names' => [
-        'basic XML markup',
-        'linguistic annotation',
+        'POS tagger (SVMTool)',
+#        'POS tagger (MBT)',
+        'dependency parser (malt)',
     ],
     'stdin' => 'text',
     'stdout' => 'text',
   },
-  'description' => 'This is the default pre-processing pipe-line for Swedish.',
   'input' => {
     'text' => {
-      'format' => 'text',
+      'format' => 'xml',
+      'root' => 's',
     }
   },
   'output' => {
@@ -37,7 +39,7 @@
   'widgets' => {
        'input' => {
 	  'text' => {
-	    'stream name' => 'stream(format=text,language=en)'
+	    'stream name' => 'stream(format=text,language=sv)'
 	  },
        },
   }

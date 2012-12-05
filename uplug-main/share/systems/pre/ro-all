@@ -1,6 +1,6 @@
 {
   'module' => {
-    'name' => 'Italian pre-processing',
+    'name' => 'Romanian pre-processing',
     'submodules' => [
         'pre/ro/basic',
     ],
@@ -10,11 +10,7 @@
     'stdin' => 'text',
     'stdout' => 'text',
   },
-  'description' => 'This is the pre-processing module for Italian
-  corpora. It includes a basic XML markup tool, a general sentence
-  splitter, and the <a href="http:/www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a>
-  for Italian which also does tokenization
-  and lemmatization',
+  'description' => 'This is the default pre-processing pipe-line for Romanian.',
   'input' => {
     'text' => {
       'format' => 'text',

@@ -3,24 +3,16 @@
     'name' => 'German pre-processing',
     'submodules' => [
         'pre/de/basic',
-        'pre/de/tagHunPos',
-        'pre/de/malt',
+        'pre/de/annotate',
     ],
     'submodule names' => [
         'basic XML markup',
-	'POS tagger (hunpos)',
-        'dependency parser (malt)',
+        'linguistic annotation',
     ],
     'stdin' => 'text',
     'stdout' => 'text',
   },
-  'description' => 'This is the pre-processing module for German
-  corpora. It includes a basic XML markup tool, a general sentence
-  splitter, the <a href="http:/www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a>
-  for German which also does tokenization
-  and lemmatization, and the 
-  <a href="http:/www.coli.uni-sb.de/~thorsten/tnt/">TnT tagger</a>
-   for German.',
+  'description' => 'This is the default pre-processing pipe-line for German.',
   'input' => {
     'text' => {
       'format' => 'text',

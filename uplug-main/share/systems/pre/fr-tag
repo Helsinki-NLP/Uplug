@@ -4,20 +4,15 @@
     'submodules' => [
 #        'pre/fr/toktag',
         'pre/tok -l fr',
-        'pre/fr/tagMElt',
-        'pre/fr/malt',
+        'pre/fr/annotate',
     ],
     'submodule names' => [
-        'French tokenizer+tagger',
-        'French MElt tagger',
+        'tokenizer',
+        'linguistic annotation',
     ],
     'stdin' => 'text',
     'stdout' => 'text',
   },
-  'description' => 'This is the pre-processing module for French
-  corpora. It includes a basic XML markup tool, a general sentence
-  splitter, and the <a href="http:/www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a> for French which also does tokenization
-  and lemmatization',
   'input' => {
     'text' => {
       'format' => 'xml',

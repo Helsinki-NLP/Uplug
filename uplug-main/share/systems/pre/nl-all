@@ -1,27 +1,18 @@
 {
   'module' => {
-    'name' => 'Spanish pre-processing',
+    'name' => 'Dutch pre-processing',
     'submodules' => [
         'pre/nl/basic',
-#        'pre/nl/tagMBT',
+#        'pre/nl/annotate',
     ],
     'submodule names' => [
         'basic XML markup',
-        'Dutch tagger (MBT)',
+#        'linguistic annotation',
     ],
     'stdin' => 'text',
     'stdout' => 'text',
   },
-  'description' => 'This is the pre-processing module for Swedish
-  corpora. It includes a basic XML markup tool, a general sentence
-  splitter, and the general tokenizer, 
-  the Memory-Based Part-of-Speech tagger for Dutch from Tilburg University.
-<p>
-(Walter Daelemans, Jakub
-Zavrel, Peter Berck, and Steven Gillis (1996). MBT: A Memory-Based
-Part of Speech Tagger-Generator. in: E. Ejerhed and I. Dagan (eds.)
-Proceedings of the Fourth Workshop on Very Large Corpora, Copenhagen,
-Denmark, 14-27, 1996)',
+  'description' => 'This is the default pre-processing pipe-line for Dutch.',
   'input' => {
     'text' => {
       'format' => 'text',

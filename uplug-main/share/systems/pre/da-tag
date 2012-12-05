@@ -1,23 +1,17 @@
 {
   'module' => {
-    'name' => 'Italian pre-processing',
+    'name' => 'Danish pre-processing',
     'submodules' => [
         'pre/tok -l da',
-        'pre/da/tagHunPos',
-        'pre/da/malt',
+        'pre/da/annotate',
     ],
     'submodule names' => [
-        'standard tokenizer',
-        'Danish POS tagger',
+        'tokenizer',
+        'linguistic annotation',
     ],
     'stdin' => 'text',
     'stdout' => 'text',
   },
-  'description' => 'This is the pre-processing module for Italian
-  corpora. It includes a basic XML markup tool, a general sentence
-  splitter, and the <a href="http:/www.ims.uni-stuttgart.de/projekte/corplex/TreeTagger/DecisionTreeTagger.html">TreeTagger</a>
-  for Italian which also does tokenization
-  and lemmatization',
   'input' => {
     'text' => {
       'format' => 'xml',
