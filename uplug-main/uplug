@@ -153,7 +153,7 @@ The most common modules are the following
  pre/sent ........... a generic sentence boundary detector
  pre/tok ............ a generic tokenizer
  pre/xx-all ......... bundle pre-processing for language <xx>
- pre/xx-tag ......... tag untokenized text in language <xx>
+ pre/xx-tag ......... tag untokenized XML text in language <xx>
 
  align/sent ......... length-based sentence alignment
  align/hun .......... wrapper around hunalign
@@ -162,6 +162,10 @@ The most common modules are the following
  align/word/basic .... basic word alignment (based on clues)
  align/word/default .. default settings for word alignment
  align/word/advanced . advanced settings for word alignment
+
+If you install C<uplug-treetagger>, then you the following module is also quite useful:
+
+ pre/xx/all-treetagger  run pre-processing pipeline including TreeTagger
 
 
 To get more information about a specific module, run (for example for the module 'pre/basic')

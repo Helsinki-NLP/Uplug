@@ -11,7 +11,6 @@
 #        'POS tagger (MBT)',
         'dependency parser (malt)',
     ],
-    'stdin' => 'text',
     'stdout' => 'text',
   },
   'input' => {

@@ -9,7 +9,6 @@
         'POS tagger (hunpos)',
         'dependency parser (malt)',
     ],
-    'stdin' => 'text',
     'stdout' => 'text',
   },
   'description' => 'This is the pre-processing module for Italian

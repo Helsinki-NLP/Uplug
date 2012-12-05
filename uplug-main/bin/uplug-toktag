@@ -29,8 +29,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-#---------------------------------------------------------------------------
-# $Id: toktag.pl,v 1.8 2008/05/22 08:31:00 joerg72 Exp $
 #----------------------------------------------------------------------------
 #
 #            * requires a startup script for an external POS tagger
@@ -51,7 +49,8 @@ use FindBin qw($Bin);
 use lib "$Bin/../lib";
 
 my $UplugHome="$Bin/../";
-$ENV{UPLUGHOME}=$UplugHome;
+$ENV{UPLUGHOME}  = $UplugHome;
+$ENV{UPLUGSHARE} = &shared_home;
 
 use Uplug::Data;
 use Uplug::IO::Any;

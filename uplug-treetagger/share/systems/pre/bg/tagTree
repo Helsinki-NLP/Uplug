@@ -10,7 +10,6 @@
       'format' => 'xml',
       'root' => 's',
       'write_mode' => 'overwrite',
-#	'encoding' => 'iso-8859-1',
 	'status' => 'tagTree',
     }
   },
@@ -21,14 +20,12 @@
   },
   'parameter' => {
 	'segments' => {
-	  'add IDs' => 1,
-	  'add parent id' => 1,
-	  'tag' => 'w',
+		'tag' => 'w',
 	},
      'tagger' => {
-      'language' => 'german',
+      'language' => 'bulgarian',
       'startup base' => 'tree_',
-      'encoding' => 'iso-8859-1',
+	'encoding' => 'utf8',
      },
      'output' => {
 #        'attribute' => 'pos',
@@ -37,15 +34,11 @@
         'token delimiter' => "\n",
         'sentence delimiter' => "\n<s>\n",
         'tag delimiter' => '\s+',
-	'encoding' => 'iso-8859-1',
+	'encoding' => 'utf8',
      },
      'input' => {
         'token delimiter' => " ",
         'sentence delimiter' => "\n<s>\n",
-     },
-     'input replacements' => {
-        ## non breaking space --> normal space
-        ' ' => ' '
      },
      'output replacements' => {
         '<unknown>' => '',
@@ -54,7 +47,7 @@
   'module' => {
     'program' => 'uplug-toktag',
     'location' => '$UplugBin',
-    'name' => 'tree tagger (german)',
+    'name' => 'tree tagger (Bulgarian)',
     'stdout' => 'text'
   },
   'arguments' => {
@@ -72,7 +65,7 @@
   'widgets' => {
        'input' => {
 	  'text' => {
-	    'stream name' => 'stream(format=xml,status=sent,language=de)'
+	    'stream name' => 'stream(format=xml,status=(tok|tag|chunk),language=de)'
 	  },
        },
   }

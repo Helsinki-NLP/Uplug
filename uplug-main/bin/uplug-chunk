@@ -242,7 +242,7 @@ $/=$InputSeperator;
 
 END {
     unlink $TmpUntagged;
-    unlink $TmpTagged;
+#    unlink $TmpTagged;
 }
 
 ############################################################################

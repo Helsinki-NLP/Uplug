@@ -7,7 +7,6 @@
     'submodule names' => [
         'POS tagger (MBT)',
     ],
-    'stdin' => 'text',
     'stdout' => 'text',
   },
   'input' => {

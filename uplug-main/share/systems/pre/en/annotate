@@ -13,7 +13,6 @@
         'English chunker (Grok)',
         'English dependency parser (malt)',
     ],
-    'stdin' => 'text',
     'stdout' => 'text',
   },
   'input' => {

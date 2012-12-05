@@ -7,7 +7,6 @@
     'submodule names' => [
         'POS tagger (hunpos)',
     ],
-    'stdin' => 'text',
     'stdout' => 'text',
   },
   'input' => {

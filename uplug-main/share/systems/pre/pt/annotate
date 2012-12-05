@@ -9,7 +9,6 @@
         'POS tagger (hunpos)',
         'dependency parser (malt)',
     ],
-    'stdin' => 'text',
     'stdout' => 'text',
   },
   'input' => {

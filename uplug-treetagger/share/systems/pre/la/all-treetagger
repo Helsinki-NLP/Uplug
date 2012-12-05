@@ -1,20 +1,23 @@
 {
   'module' => {
-    'name' => 'Catalan pre-processing',
+    'name' => 'Latin pre-processing',
     'submodules' => [
-        'pre/ca/tagSvmTool',
-        'pre/ca/malt',
+        'pre/markup',
+        'pre/sent',
+        'pre/la/toktag',
     ],
     'submodule names' => [
-        'POS tagger (SVMTool)',
-	'dependency parser (malt)'
+        'basic XML markup',
+        'sentence boundary detection',
+	'tokenization and POS tagging (TreeTagger)',
     ],
+    'stdin' => 'text',
     'stdout' => 'text',
   },
+  'description' => 'This is the pre-processing pipe-line for Latin that includes the TreeTagger for tokenization and POS tagging.',
   'input' => {
     'text' => {
-      'format' => 'xml',
-      'root' => 's',
+      'format' => 'text',
     }
   },
   'output' => {
@@ -28,7 +31,7 @@
   'arguments' => {
     'shortcuts' => {
        'in' => 'input:text:file',
-	'out' => 'output:text:file',
+       'out' => 'output:text:file',
        'ci' => 'input:text:encoding',
        'co' => 'output:text:encoding',
     }
@@ -36,7 +39,7 @@
   'widgets' => {
        'input' => {
 	  'text' => {
-	    'stream name' => 'stream(format=text,language=it)'
+	    'stream name' => 'stream(format=text,language=de)'
 	  },
        },
   }

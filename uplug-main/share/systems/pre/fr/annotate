@@ -9,7 +9,6 @@
         'POS tagger (MElt)',
         'dependency parser (malt)',
     ],
-    'stdin' => 'text',
     'stdout' => 'text',
   },
   'input' => {
