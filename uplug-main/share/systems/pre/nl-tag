@@ -1,6 +1,6 @@
 {
   'module' => {
-    'name' => 'Spanish pre-processing',
+    'name' => 'Dutch pre-processing',
     'submodules' => [
         'pre/nl/alptok',  # does nothing if Alpino is not present
         'pre/tok -l nl',

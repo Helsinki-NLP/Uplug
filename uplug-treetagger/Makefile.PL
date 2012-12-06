@@ -3,7 +3,7 @@ use LWP::Simple;
 use File::Basename;
 
 name          'Uplug';
-version       '0.04';
+version       '0.3.1';
 
 
 my $TaggerLicense = "http://www.ims.uni-stuttgart.de/~schmid/Tagger-Licence";

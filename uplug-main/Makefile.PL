@@ -1,8 +1,19 @@
 use inc::Module::Install;
 
+use Cwd;
+use File::Copy;
+
+use lib 'lib';
+use Uplug::Config;
+
+
 name          'Uplug';
 license       'gpl';
 all_from      'lib/Uplug.pm';
+
+&make_align2;
+&make_hunalign;
+&make_giza;
 
 install_script 'uplug';
 
@@ -42,3 +53,72 @@ requires 'XML::Simple'     => 0;
 requires 'File::ShareDir'  => 0;
 
 WriteAll;
+
+
+sub make_align2{
+
+    # pre-compiled binary exists!
+    return 1 if (-e &find_executable('align2'));
+
+    print "compile align2 ... \n";
+    my $pwd = getcwd;
+    my $srcdir = $^O eq 'darwin' ? 'opt/align_osx' : 'opt/align';
+    chdir($srcdir);
+    system('make');
+    chdir($pwd);
+    copy( $srcdir.'/align2', 'share/bin/align2'); 
+    chmod 0755,'share/bin/align2';
+
+    return 1;
+}
+
+
+
+sub make_hunalign{
+
+    # pre-compiled binary exists!
+    return 1 if (-e &find_executable('hunalign'));
+
+    print "compile hunalign ... \n";
+    my $pwd = getcwd;
+
+    chdir('opt');
+    system('tar -xzf hunalign-1.1.tgz');
+    chdir('hunalign-1.1/src/hunalign');
+    system('make');
+    chdir($pwd);
+
+    copy( 'opt/hunalign-1.1/src/hunalign/hunalign', 'share/bin/hunalign');
+    chmod 0755,'share/bin/hunalign';
+
+    return 1;
+}
+
+sub make_giza{
+
+    # pre-compiled binary exists!
+    return 1 if (-e &find_executable('GIZA++'));
+
+    print "compile GIZA++ ... \n";
+    my $pwd = getcwd;
+
+    chdir('opt');
+    system('tar -xzf giza-pp-v1.0.7.tar.gz');
+    chdir('giza-pp');
+    system('make');
+    chdir($pwd);
+
+    copy( 'opt/giza-pp/mkcls-v2/mkcls', 'share/bin/mkcls');
+    copy( 'opt/giza-pp/GIZA++-v2/GIZA++', 'share/bin/GIZA++');
+    copy( 'opt/giza-pp/GIZA++-v2/plain2snt.out', 'share/bin/plain2snt.out');
+    copy( 'opt/giza-pp/GIZA++-v2/snt2cooc.out', 'share/bin/snt2cooc.out');
+    copy( 'opt/giza-pp/GIZA++-v2/snt2plain.out', 'share/bin/snt2plain.out');
+
+    chmod 0755,'share/bin/mkcls';
+    chmod 0755,'share/bin/GIZA++';
+    chmod 0755,'share/bin/plain2snt.out';
+    chmod 0755,'share/bin/snt2cooc.out';
+    chmod 0755,'share/bin/snt2plain.out';
+
+    return 1;
+}

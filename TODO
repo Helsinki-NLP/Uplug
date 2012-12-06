@@ -1,9 +1,10 @@
 
-- documentation! (POD etc)
+- documentation! (POD etc) ---- started in uplug ....
 - opennlp package with pre-trained models (tokenization, sentence splitting, ...)
-- separate package for uplug/opus-tools
 - integrate Gargantua, Moore's aligner, ...?
-- cleanup config files!
+- improved package for subtitle handling
+- indexing with latest version of CWB
+- support for other operating systems (compile align2, hunalign, GIZA++)
 - code optimization
 
 
@@ -12,6 +13,7 @@ Annotation:
 - uplug-tr: all annotation (Note: non-free tools!)
 - uplug-it: annotation pipeline from trento
 - uplug-is: integrate icelandic toolbox
+- uplug-fa: add tools for farsi
 - alternative tagger for some languages
 - treetagger package (separate from all? not standard in pipeline!)
 

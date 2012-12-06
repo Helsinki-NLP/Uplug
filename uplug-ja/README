@@ -3,6 +3,10 @@ Language pack for Uplug
 ===============================
 
 
+!!!! THIS PACKAGE IS NOT WORKING YET !!!!!!
+
+
+
 This package adds language-specific annotation tools to Uplug.
 It includes pre-trained models and Uplug configuration files.
 
@@ -10,26 +14,19 @@ It includes pre-trained models and Uplug configuration files.
 Installation
 ------------
 
-Requirements: Uplug main components (uplug-main)
-
-If you maintain a local copy of Uplug:
-- copy all files into your Uplug home directory, i.e. somthing like
-  cp -R * /path/to/uplug/home/dir/
-
-Otherwise: Run the usual perlish installation steps
-
-  perl Makefile.PL
   make all
   sudo make install
 
 
-Usage
------
+If the compilation of the pre-requisites fails for any reason: Try to install chasen and ipadic via your systems package management system or from source. Here are essectial download sites:
 
-Look at share/systems/ what kind of new tools are available. They can
-be called in the same way as other Uplug tools. You should also be
-able to run all language-specific pre-processing steps from plain text
-to annotated XML using
-  uplug pre/xx-all -in input.txt -out output.xml
-where <xx> is the language ID of this language pack.
+http://sourceforge.jp/projects/chasen-legacy/
+http://chasen.org/~taku/software/darts
+http://sourceforge.jp/projects/ipadic/
+
+After that go to uplug/ and install the files there
+
+  cd uplug
+  make all
+  sudo make install
 

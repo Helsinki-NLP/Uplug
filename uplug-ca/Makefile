@@ -2,7 +2,7 @@
 # install svmtool and uplug
 # use all targets for both sub-directories
 
-VERSION = 0.01
+VERSION = 0.3
 
 CONTENTS = $(shell ls) 
 

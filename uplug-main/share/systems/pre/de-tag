@@ -2,7 +2,6 @@
   'module' => {
     'name' => 'German pre-processing',
     'submodules' => [
-#        'pre/de/toktag',
         'pre/tok -l de',
         'pre/de/annotate',
     ],

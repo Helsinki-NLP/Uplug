@@ -33,7 +33,7 @@ use vars qw($VERSION @ISA @EXPORT);
 use vars qw(%NamedIO);
 
 use FindBin qw/$Bin/;
-use File::ShareDir qw/dist_dir/;
+# use File::ShareDir qw/dist_dir/;
 use Exporter qw/import/;
 use Data::Dumper;
 
@@ -55,7 +55,10 @@ our @EXPORT   = qw/FindConfig ReadConfig WriteConfig
 # try to find the shared files for Uplug
 
 my $SHARED_HOME;
-eval{ $SHARED_HOME = dist_dir('Uplug') };
+eval{ 
+    require File::ShareDir; 
+    $SHARED_HOME = File::ShareDir::dist_dir('Uplug'); 
+};
 $SHARED_HOME = $ENV{UPLUGHOME}.'/share' unless (-d  $SHARED_HOME);
 $SHARED_HOME = $Bin.'/share'            unless (-d  $SHARED_HOME);
 $SHARED_HOME = $Bin.'/../share'         unless (-d  $SHARED_HOME);

@@ -84,7 +84,7 @@ my $TaggerArgs=$IniData{parameter}{tagger}{parameter};
 # tagging model (will be appended as additional argument)
 my $TaggerModel=$IniData{parameter}{tagger}{model};
 
-# set to stdin if you the tagger needs piped data
+# set to stdin if the tagger needs piped data
 my $TaggerInput=$IniData{parameter}{tagger}{input} || 'last argument';
 
 my $attr=$IniData{parameter}{output}{attribute};
@@ -132,17 +132,21 @@ print STDERR "tag.pl: create temporary text file!\n";
 
 $input->open('read',$InputStream);
 my $UplugEncoding=$input->getInternalEncoding();
-my $OutEncoding=$IniData{parameter}{output}{encoding};
-if (not defined $OutEncoding){$OutEncoding=$UplugEncoding;}
+
 my $InEncoding=$IniData{parameter}{input}{encoding};
-if (not defined $InEncoding){$InEncoding=$OutEncoding;}
+my $OutEncoding=$IniData{parameter}{output}{encoding};
+my $ModelEncoding=$IniData{parameter}{tagger}{encoding};
+
+if (not defined $ModelEncoding){$ModelEncoding=$UplugEncoding;}
+if (not defined $InEncoding){$InEncoding=$ModelEncoding;}
+if (not defined $OutEncoding){$OutEncoding=$InEncoding;}
 
 
 ## read data from input stream and convert to input format needed 
 ## by the external tagger
 
 open F,">$TmpUntagged";
-binmode(F,":encoding($OutEncoding)");
+binmode(F,":encoding($InEncoding)");
 
 while ($input->read($data)){
     my @tok=$data->content();

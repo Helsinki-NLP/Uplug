@@ -1,5 +1,5 @@
 
-VERSION = 0.03
+VERSION = 0.3.1
 
 PACKAGES = $(patsubst %,%-$(VERSION).tar.gz,\
 	$(shell find . -maxdepth 1 -type d -name 'uplug*'))

@@ -76,7 +76,18 @@ my $output=Uplug::IO::Any->new($OutputStream);
 # general options (for the external program)
 
 my $lang=$IniData{parameter}{tagger}{language};
-my $prg=$IniData{parameter}{tagger}{'startup base'};
+my $startup=$IniData{parameter}{tagger}{'startup base'};
+
+# ... or a specific program and a language specific model
+my $tagger=$IniData{parameter}{tagger}{program};
+
+# additional tagger arguments
+my $TaggerArgs=$IniData{parameter}{tagger}{parameter};
+# tagging model (will be appended as additional argument)
+my $TaggerModel=$IniData{parameter}{tagger}{model};
+
+# set to stdin if the tagger needs piped data
+my $TaggerInput=$IniData{parameter}{tagger}{input} || 'last argument';
 
 #---------------------------------------------------------------------------
 # tokenizer options:
@@ -109,13 +120,21 @@ my @Attr=split(/:/,$OutAttr);
 
 #---------------------------------------------------------------------------
 
+my $TaggerPrg;
+if (defined $startup){
+    $TaggerPrg = &shared_home.'/ext/tagger/'.$startup;
+    if (not -e $TaggerPrg){
+	$TaggerPrg.=$lang;  # if necessary
+    }	
+}
+elsif (defined $tagger){
+    $TaggerPrg = &find_executable($tagger);
+}
+$TaggerPrg .= ' '.$TaggerArgs;
+$TaggerPrg .= ' '.$TaggerModel;
 
-my $UplugHome = &shared_home;
-my $TaggerDir=$UplugHome.'/ext/tagger/';
 my $TmpUntagged=Uplug::IO::Any::GetTempFileName;
 my $TmpTagged=Uplug::IO::Any::GetTempFileName;
-
-my $TaggerPrg=$TaggerDir.$prg.$lang;
 
 #---------------------------------------------------------------------------
 
@@ -125,14 +144,17 @@ print STDERR "Tagger.pl: create temporary text file!\n";
 
 $input->open('read',$InputStream);
 my $UplugEncoding=$input->getInternalEncoding();
+
+my $InEncoding=$IniData{parameter}{input}{encoding};
 my $OutEncoding=$IniData{parameter}{output}{encoding};
 my $ModelEncoding=$IniData{parameter}{tagger}{encoding};
 
-if (not defined $OutEncoding){$OutEncoding=$UplugEncoding;}
 if (not defined $ModelEncoding){$ModelEncoding=$UplugEncoding;}
+if (not defined $InEncoding){$InEncoding=$ModelEncoding;}
+if (not defined $OutEncoding){$OutEncoding=$InEncoding;}
 
 my $untagged=Uplug::IO::Any->new('text');
-$untagged->open('write',{file=>$TmpUntagged,encoding=>$OutEncoding});
+$untagged->open('write',{file=>$TmpUntagged,encoding=>$InEncoding});
 #open F,">$TmpUntagged";
 
 while ($input->read($data)){
@@ -150,9 +172,9 @@ while ($input->read($data)){
 	## the sub in encode ensures that malformed characters are ignored!
 	## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
 #	if ($OutEncoding ne $UplugEncoding){
-	if ($ModelEncoding ne $UplugEncoding){
-	    my $octets = encode($OutEncoding, $txt,sub{ return ' ' });
-	    $txt = decode($OutEncoding, $octets);
+	if ($InEncoding ne $UplugEncoding){
+	    my $octets = encode($InEncoding, $txt,sub{ return ' ' });
+	    $txt = decode($InEncoding, $octets);
 	}
 	$untagged->write($txt.$InSentDel);
 #	print F $txt;
@@ -180,8 +202,7 @@ print STDERR "Tagger.pl: read tagged file and create output data!\n";
 $input->open('read',$InputStream);
 $output->open('write',$OutputStream);
 open F,"<$TmpTagged";
-#binmode(F,':encoding('.$OutEncoding.')');
-binmode(F,':encoding('.$ModelEncoding.')');
+binmode(F,':encoding('.$OutEncoding.')');
 
 my $TextAttr;
 foreach my $j (0..$#Attr){

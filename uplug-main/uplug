@@ -25,12 +25,14 @@ uplug - the main startup script for the Uplug toolbox
 
 =head1 SYNOPSIS
 
-  uplug [-hHlp] config-file [OPTIONS]
+  uplug [-ehHlp] [-f fallback] config-file [OPTIONS]
 
 C<config-file> is a valid Uplug configuration file (describing a module that may consist of several sub-modules). Configuration files can be given with the absolute and relative paths. If they are not found as specified, then Uplug will look at C<UplugSharedDir/systems/>
 
 =head1 OPTIONS
 
+ -e ............. returns the location of the given config-file
+ -f fallback .... fallback modules (config-files separated by ':')
  -h ............. show a help text (also for specific config-files)
  -H ............. show the man page
  -l ............. list all modules (Uplug config files)
@@ -56,11 +58,13 @@ use Uplug::Config;
 use Getopt::Std;
 
 my %opts;
-my $known_opts = 'hHlp';
+my $known_opts = 'ef:hHlp';
 getopts ($known_opts, \%opts);
 
 &help_message        if ($opts{H});
 &usage(@ARGV)        if ($opts{h});
+
+&find_config(@ARGV)  if ($opts{e});
 &list_modules(@ARGV) if ($opts{l});
 &print_config(@ARGV) if ($opts{p});
 
@@ -68,9 +72,23 @@ getopts ($known_opts, \%opts);
 $ENV{UPLUGHOME}  = $Bin;
 $ENV{UPLUGSHARE} = &shared_home();
 
-my $uplug=Uplug->new(@ARGV);   # create a new uplug module
-$uplug->load();                # load it
-$uplug->run();                 # and run it
+# check whether the module exists
+my $module = shift(@ARGV);
+unless (-e &FindConfig($module)){
+    my @fallback = split(/:/,$opts{f});
+    foreach (@fallback){
+	if (-e &FindConfig($_)){
+	    $module = $_;
+	    last;
+	}
+    }
+}
+die "Cannot find the Uplug module '$module'!\n" unless (-e &FindConfig($module));
+
+# load and run
+my $uplug=Uplug->new($module,@ARGV);   # create a new uplug module
+$uplug->load();                        # load it
+$uplug->run();                         # and run it
 
 
 
@@ -109,6 +127,23 @@ sub help_message
 }
 
 
+sub find_config{
+    my $file = shift;
+
+    unless ($file){
+	print STDERR "Please give a Uplug configuration file!\n\n";
+	&usage;
+    }
+
+    my $config = &FindConfig($file);
+    if (-e $config){
+	print $config,"\n";
+	exit 1;
+    }
+    print STDERR "Cannot find configuration file '$file'!\n";
+    exit 0;
+}
+
 sub print_config{
     my $file = shift;
     my $config = &ReadConfig($file);
@@ -131,6 +166,10 @@ __END__
 
 The basic use of this startup script is to load a Uplug module, to parse its configuration and to run it using the command-line arguments give. Uplug modules may consist of complex processing pipelines and loops and Uplug tries to build system calls accordingly.
 
+You can check whether a specific module exists using the flag C<-e>. This will also return the location of the config-file if it can be found:
+
+ uplug -e config-file
+
 You can list all available modules (i.e. Uplug configuration files) by running
 
  uplug -l
@@ -141,32 +180,31 @@ You can also list only the modules within a specific sub-directory. For example,
 
 The main modules are structured like this:
 
- pre/ ............... pre-processing (generic and language-specific ones)
- pre/xx ............. language-specific pre-processing modules (<xx> = langID)
- align .............. modules for alignment of parallel texts
- align/word ......... modules for word alignment
+ pre/ ........ pre-processing (generic and language-specific ones)
+ pre/xx ...... language-specific pre-processing modules (<xx> = langID)
+ align ....... modules for alignment of parallel texts
+ align/word .. modules for word alignment
 
 The most common modules are the following
 
- pre/basic .......... basic pre-processing (includes 'markup', 'sent', 'tok')
- pre/markup ......... basic markup (text to XML, paragraph boundaries)
- pre/sent ........... a generic sentence boundary detector
- pre/tok ............ a generic tokenizer
- pre/xx-all ......... bundle pre-processing for language <xx>
- pre/xx-tag ......... tag untokenized XML text in language <xx>
+ pre/basic ... basic pre-processing (includes 'markup', 'sent', 'tok')
+ pre/markup .. basic markup (text to XML, paragraph boundaries)
+ pre/sent .... a generic sentence boundary detector
+ pre/tok ..... a generic tokenizer
+ pre/xx-all .. bundle pre-processing for language <xx>
+ pre/xx-tag .. tag untokenized XML text in language <xx>
 
- align/sent ......... length-based sentence alignment
- align/hun .......... wrapper around hunalign
- align/gma .......... geometric mapping and alignment
+ align/sent .. length-based sentence alignment
+ align/hun ... wrapper around hunalign
+ align/gma ... geometric mapping and alignment
 
- align/word/basic .... basic word alignment (based on clues)
- align/word/default .. default settings for word alignment
- align/word/advanced . advanced settings for word alignment
+ align/word/basic ..... basic word alignment (based on clues)
+ align/word/default ... default settings for word alignment
+ align/word/advanced .. advanced settings for word alignment
 
 If you install C<uplug-treetagger>, then you the following module is also quite useful:
 
  pre/xx/all-treetagger  run pre-processing pipeline including TreeTagger
-
 
 To get more information about a specific module, run (for example for the module 'pre/basic')
 
@@ -176,6 +214,11 @@ To print the configuration file on screen, use
 
  uplug -p pre/basic
 
+Sometimes it can be handy to define fallback modules in case you don't know exactly if a certain module exists. For example, you may want to use language-specific pre-processing pipelines but you like to fall back to the generic pre-processing steps when no language-specific configuration is found. Here is an example:
+
+ uplug -f pre/basic pre/ar/basic -in inpout.txt -out output.txt
+
+This command tries to call C<pre/ar/basic> (Arabic pre-processing) but falls back to the generic C<pre/basic> if this module cannot be found. You can also give a sequence of fallback modules with the same flag. Separate each fallback module by ':'.
 
 =head2 Uplug configuration files
 
