@@ -1,7 +1,7 @@
 
 # install chasen and uplug
 
-VERSION = 0.3.1
+VERSION = 0.1
 
 CONTENTS = $(shell ls) 
 
@@ -17,6 +17,7 @@ all test install: $(CHASEN)/Makefile $(IPADIC)/Makefile uplug/Makefile
 	${MAKE} -C uplug $@
 
 clean:
+	${MAKE} uplug/Makefile
 	${MAKE} -C uplug $@
 	rm -fr $(DARTS) $(CHASEN) $(IPADIC)
 

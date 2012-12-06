@@ -11,9 +11,11 @@ name          'Uplug';
 license       'gpl';
 all_from      'lib/Uplug.pm';
 
-&make_align2;
-&make_hunalign;
-&make_giza;
+unless ($ARGV[0] eq 'skip-compile'){
+  &make_align2;
+  &make_hunalign;
+  &make_giza;
+}
 
 install_script 'uplug';
 

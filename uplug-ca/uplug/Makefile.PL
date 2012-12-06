@@ -1,7 +1,7 @@
 use inc::Module::Install;
 
 name          'Uplug';
-version       '0.01';
+version       '0.1';
 
 install_script '../svmtool/bin/SVMTagger.pl';
 install_script '../svmtool/bin/SVMTagger_utf8.pl';

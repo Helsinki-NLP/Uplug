@@ -59,7 +59,7 @@ $TaggerModels{'Windows'} = $TaggerModels{'Linux'};
     );
 $TaggerModels{'MacOSX.PPC'} = $TaggerModels{'Solaris'};
 
-install_treetagger();
+install_treetagger() unless ($ARGV[0] eq 'skip-compile');
 install_share;
 
 requires 'Uplug'     => 0;

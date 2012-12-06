@@ -2,7 +2,7 @@
 # install MElt and uplug
 # use all targets for both sub-directories
 
-VERSION = 0.01
+VERSION = 0.1
 
 CONTENTS = $(shell ls) 
 

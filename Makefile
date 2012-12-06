@@ -1,21 +1,24 @@
 
-VERSION = 0.3.1
+MODULES = uplug-main $(wildcard uplug-??) uplug-treealign
 
-PACKAGES = $(patsubst %,%-$(VERSION).tar.gz,\
-	$(shell find . -maxdepth 1 -type d -name 'uplug*'))
+all test install clean:
+	for m in $(MODULES); do\
+		$(MAKE) $$m/Makefile; \
+		$(MAKE) -C $$m $@; \
+	done
 
-all: dist
+
+PACKAGES = $(patsubst %,%.tar.gz,$(shell find . -maxdepth 1 -type d -name 'uplug*'))
 
 dist: $(PACKAGES)
 
-$(PACKAGES): %-$(VERSION).tar.gz: %
-	$(MAKE) $</Makefile
+$(PACKAGES): %.tar.gz: %
+	$(MAKE) MODE=skip-compile $</Makefile
 	$(MAKE) -C $< manifest dist
-	mv $</*.tar.gz $@
+	mv $</*.tar.gz `ls $</*.tar.gz | sed 's/Uplug/$</'`
+	mv $</*.tar.gz .
 	$(MAKE) -C $< clean
 
 %/Makefile:
-	cd $(dir $@) && perl Makefile.PL
+	cd $(dir $@) && perl Makefile.PL $(MODE)
 
-uplug-treetagger-$(VERSION).tar.gz:
-	tar -czf $@ uplug-treetagger
