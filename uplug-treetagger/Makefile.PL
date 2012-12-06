@@ -11,13 +11,13 @@ my $TaggerLicense = "http://www.ims.uni-stuttgart.de/~schmid/Tagger-Licence";
 # TreeTagger downloads
 
 my %TaggerBinaries = (
-'Linux'        =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-linux-3.2.tar.gz',
-'Linux.x86_86' =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-linux-3.2-64bit.tar.gz',
-'Linux.old'    =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-linux-3.2-old.tar.gz',
-'Darwin.x86_64'=>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-MacOSX-3.2-intel.tar.gz',
-'MacOSX.PPC'   =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-MacOSX-3.2.tar.gz',
-'Solaris'      =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-3.2.tar.gz',
-'Windows'      =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-windows-3.2.zip' 
+'Linux'       =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-linux-3.2.tar.gz',
+'Linux.x86_86'=>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-linux-3.2-64bit.tar.gz',
+'Linux.old'   =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-linux-3.2-old.tar.gz',
+'Darwin'      =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-MacOSX-3.2-intel.tar.gz',
+'MacOSX.PPC'  =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-MacOSX-3.2.tar.gz',
+'Solaris'     =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-3.2.tar.gz',
+'Windows'     =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-windows-3.2.zip' 
     );
 
 my $TaggerScripts   = 'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tagger-scripts.tar.gz';
@@ -74,14 +74,6 @@ sub install_treetagger{
     my $system = `uname -s`;chomp($system);
     my $architecture = `uname -m`;chomp($architecture);
 
-    my $license = get($TaggerLicense);
-    print $license;
-    print "\n-----------------------------------------\n";
-    print "Do you agree with the license above? (y/n)";
-    print "\n-----------------------------------------\n";
-    my $answer = <>;
-    exit 1 unless ($answer eq "y\n");
-
     use Cwd;
     my $pwd = getcwd;
     chdir('share/ext/tree-tagger/');
@@ -104,6 +96,14 @@ sub install_treetagger{
     elsif ( exists $TaggerModels{$system} ){
 	$models = $TaggerModels{$system};
     }
+
+    my $license = get($TaggerLicense);
+    print $license;
+    print "\n-----------------------------------------\n";
+    print "Do you agree with the license above? (y/n)";
+    print "\n-----------------------------------------\n";
+    my $answer = <>;
+    exit 1 unless ($answer eq "y\n");
 
     # download binaries, scriprts and all model files
 
