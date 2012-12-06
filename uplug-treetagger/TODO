@@ -1,12 +1,3 @@
 
-* make it easier to install TreeTagger models
-
-  - fetch models from the web
-  - install TreeTagger binaries and scripts
-  - possibly use Perl Modules that support installation and the use of TreeTagger
-    Lingua::TreeTagger, Lingua::TreeTagger::Installer (see tools/)
-
-* support more languages (POS tagging)
-
 * support chunking
 

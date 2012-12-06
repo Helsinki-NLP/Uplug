@@ -16,3 +16,6 @@ $(PACKAGES): %-$(VERSION).tar.gz: %
 
 %/Makefile:
 	cd $(dir $@) && perl Makefile.PL
+
+uplug-treetagger-$(VERSION).tar.gz:
+	tar -czf $@ uplug-treetagger
