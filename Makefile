@@ -24,6 +24,7 @@ PACKAGES = $(patsubst %,%.tar.gz,$(shell find . -maxdepth 1 -type d -name 'uplug
 dist:
 	${MAKE} -C uplug-main/doc clean
 	${MAKE} -C uplug-main/opt clean
+	-rm -fr uplug-treetagger/share/ext/tree-tagger/*
 	${MAKE} packages
 
 packages: $(PACKAGES)

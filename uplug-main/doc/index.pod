@@ -11,29 +11,20 @@ The new project home page:	L<https://bitbucket.org/tiedemann/uplug>
 
 The old pages at SourceForge:	L<http://sourceforge.net/projects/uplug/>
 
-=over
+=head2 Packages
 
-=item C<uplug-main>: 
+C<uplug-main>: main components and scripts
 
-main components and scripts
+C<uplug-xx>: language-specific tools and models (C<xx> = language ID)
 
-=item C<uplug-xx>: 
+C<uplug-treetagger>: integration of the TreeTagger
 
-language-specific tools and models (C<xx> = language ID)
+C<uplug-webalign>: webinterface for interactive alignment (ICA, ISA)
 
-=item C<uplug-treetagger>: 
+C<uplug-cwb>: tools for indexing parallel corpora for the CWB
 
-integration of the TreeTagger
 
-=item C<uplug-webalign>: 
-
-webinterface for interactive alignment (ICA, ISA)
-
-=item C<uplug-cwb>: 
-
-tools for indexing parallel corpora for the CWB
-
-=back
+=head2 Reference
 
 Please cite the following dissertation if you use Uplug:
 

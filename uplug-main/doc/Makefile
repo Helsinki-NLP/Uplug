@@ -13,7 +13,7 @@ wikidoc = $(patsubst %.pm,wiki/%.wiki,$(modules))
 
 textdocbin = $(patsubst %,%.txt,$(scripts))
 htmldocbin = $(patsubst %,%.html,$(scripts))
-wikidocbin = $(patsubst %,wiki/%.wiki,$(scripts))
+wikidocbin = $(patsubst %,wiki/bin/%.wiki,$(scripts))
 
 # textdoc = $(shell echo "$(modules)" | sed 's|Lingua/||g' | tr '/' '-' | sed 's/.pm/.txt/g')
 
@@ -67,10 +67,10 @@ $(wikidoc): wiki/%.wiki: $(modulehome)/%.pm
 	pod2wiki --style=moinmoin --encoding=utf8 \
 		$(modulehome)/$< > $@
 
-$(wikidocbin): wiki/%.wiki: $(binhome)/%
+$(wikidocbin): wiki/bin/%.wiki: $(binhome)/%
 	mkdir -p `dirname $@`
 	pod2wiki --style=moinmoin --encoding=utf8 \
-		$(binhome)/$< > $@
+		$(modulehome)/$< > $@
 
 wiki/Home.wiki: index.pod
 	mkdir -p `dirname $@`
