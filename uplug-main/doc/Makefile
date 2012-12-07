@@ -20,6 +20,12 @@ wikidocbin = $(patsubst %,wiki/%.wiki,$(scripts))
 
 all: text html
 
+clean:
+	rm -f $(textdoc) $(textdocbin) index.txt
+	rm -f $(htmldoc) $(htmldocbin) index.html
+	rm -f $(wikidoc) $(wikidocbin) wiki/Home.wiki
+	rm -f *.tmp
+	rm -fr wiki Uplug
 
 text: index.txt $(textdoc) $(textdocbin)
 html: index.html $(htmldoc) $(htmldocbin)

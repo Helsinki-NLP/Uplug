@@ -21,15 +21,21 @@ install-main:
 
 PACKAGES = $(patsubst %,%.tar.gz,$(shell find . -maxdepth 1 -type d -name 'uplug*'))
 
-dist: $(PACKAGES)
+dist:
+	${MAKE} -C uplug-main/doc clean
+	${MAKE} -C uplug-main/opt clean
+	${MAKE} packages
+
+packages: $(PACKAGES)
 
 $(PACKAGES): %.tar.gz: %
+	$(MAKE) MODE=skip-compile $</Makefile
+	$(MAKE) -C $< clean
 	$(MAKE) MODE=skip-compile $</Makefile
 	$(MAKE) -C $< manifest dist
 	mv $</*plug*.tar.gz `ls $</*plug*.tar.gz | sed 's/Uplug/$</'`
 	mv $</*plug*.tar.gz .
 	$(MAKE) -C $< clean
-	-ln -s $<-*.tar.gz $@
 
 %/Makefile:
 	cd $(dir $@) && perl Makefile.PL $(MODE)
