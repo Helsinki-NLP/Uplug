@@ -1,3 +1,4 @@
+#-*-perl-*-
 #####################################################################
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
 #
@@ -19,9 +20,62 @@
 #
 #
 #####################################################################
-# $Author$
-# $Id$
 
+
+=head1 NAME
+
+Uplug::IO::Any - libraries for handling various kinds of input/output
+
+=head1 SYNOPSIS
+
+ use Uplug::IO::Any;
+ use Uplug::Data;
+
+  %InSpec = (
+    format      => 'text',
+    file        => $input_filename,
+    access_mode => 'read',
+    encoding    => 'iso-8859-1' );
+
+  %OutSpec = (
+    format      => 'xml',
+    file        => $output_filename,
+    access_mode => 'overwrite',
+    root        => 's' );
+
+
+ $input  = new Uplug::IO::Any( \%InSpec )
+ $output = new Uplug::IO::Any( \%OutSpec )
+
+ $data=Uplug::Data->new();
+
+ while ($input->read($data)){
+    # do somwthing with the data
+    $output->write($data);
+ }
+
+ $input->close;
+ $output->close;
+
+=head1 DESCRIPTION
+
+This is a class factory for creating data streams of various kinds. Supported sub-classes are:
+
+ Uplug::IO::Text ........... plain text
+ Uplug::IO::XML ............ generic XML class
+
+ Uplug::IO::XCESAlign ...... XCES-based sentence alignment
+ Uplug::IO::MosesWordAlign . word alignment in Moses format
+ Uplug::IO::PlugXML ........ parallel corpus format (used in the project PLUG)
+ Uplug::IO::LWA ............ format used by the Linköping Word Aligner (PLUG)
+ Uplug::IO::LiuAlign ....... Linköping's parallel corpus format (PLUG)
+
+ Uplug::IO::DBM ............ databases using AnyDBM
+ Uplug::IO::Tab ............ tab-separated data
+ Uplug::IO::Storable ....... storable objects
+ Uplug::IO::Collection ..... generic class to combine several input streams
+
+=cut
 
 
 package Uplug::IO::Any;
@@ -53,7 +107,41 @@ use Uplug::IO::MosesWordAlign;
 $VERSION='0.1';
 @ISA = qw( Uplug::IO );
 
-1;
+
+=head1 Methods
+
+=head2 Constructor
+
+ $handler = new Uplug::IO::Any( \%spec, $format );
+
+Create a new I/O handler according to the specifications of C<%spec> and the optional format C<$format>. If C<%spec> includes the key C<stream name>: Try to load the specifications of a named stream (see L<Uplug::Config> for more information).
+
+Accepted data formats:
+
+ IO-class                    format parameter
+ -----------------------------------------------
+ Uplug::IO::Text ........... text
+ Uplug::IO::XML ............ xml
+
+ Uplug::IO::XCESAlign ...... align | xces
+ Uplug::IO::MosesWordAlign . moses
+ Uplug::IO::PlugXML ........ plug
+ Uplug::IO::LWA ............ lwa
+ Uplug::IO::LiuAlign ....... liu | koma
+
+ Uplug::IO::DBM ............ dbm
+ Uplug::IO::Tab ............ tab | uwa tab
+ Uplug::IO::Storable ....... storable
+ Uplug::IO::Collection ..... collection
+
+If no format is given: Check file name extension:
+
+ *.dbm ..................... Uplug::IO::DBM
+ *.uwa ..................... Uplug::IO::Tab
+ *.txt ..................... Uplug::IO::Text
+ *.xml ..................... Uplug::IO::XML
+
+=cut
 
 
 sub new{
@@ -125,3 +213,7 @@ sub GetTempFileName{
     return $file;
 }
 
+1;
+
+
+__END__

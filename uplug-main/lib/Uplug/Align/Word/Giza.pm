@@ -1,4 +1,4 @@
-
+#-*-perl-*-
 
 package Uplug::Align::Word::Giza;
 

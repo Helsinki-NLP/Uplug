@@ -22,6 +22,178 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #---------------------------------------------------------------------------
 
+=head1 NAME
+
+Uplug::Config - process Uplug configuration files
+
+=head1 SYNOPSIS
+
+ # name of a Uplug module
+ $module = 'pre/basic';
+
+ # find the local file for a given module
+ $file = FindConfig( $module );
+ # read the configuration of a given module
+ $config = ReadConfig( $module );
+ # write a config hash to a file
+ WriteConfig( 'newfile.txt', $config );
+
+ # print information about a specific module
+ PrintConfigInfo( $module );
+ # list all available modules
+ ListAvailableModules();
+ # list all available modules within a certain sub category
+ ListAvailableModules( 'pre' );
+
+ # find a program (look into various possible dir's)
+ $program = find_executable( $program_name );
+
+ # Uplug-specific directories
+ $dir = shared_home;           # home of all shared files
+ $dir = shared_bin;            # home of distributed binaries
+ $dir = shared_systems;        # home of Uplug module configurations
+
+=head1 DESCRIPTION
+
+This module handles Uplug configuration files. Configuration files are usually stored in the global shared folder 'system' for the Uplug libraries. Local files with relative paths and absolute paths are also accepted. Configuration files need to conform the norms of the Uplug libraries and use a perlish format (complex hashs dumped to file using L<Data::Dumper>).
+
+When reading configuration files, certain variables are expanded (see below in C<ExpandVar>).
+
+=head2 The Structure of Uplug configuration files
+
+A Uplug module is specified by its configuration file. A config file is basically a perlish data structure representing a reference to a hash. A typical module configuration looks like this:
+
+ {
+
+  ##--------------------------------------------------------
+  ## module describes the actual program to be executed
+  ## - stdin/stdin specifies which data stream will be used
+  ##   to read from / write to STDIN/STDOUT
+  ##--------------------------------------------------------
+
+  'module' => {
+    'name' => 'module name',
+    'program' => 'executable',
+    'location' => '/path/to/bin/dir',
+    'stdin' => 'input stream name',
+    'stdout' => 'output stream name',
+  },
+
+  ##--------------------------------------------------------
+  ## description can be any string describing the module
+  ##--------------------------------------------------------
+
+  'description' => 'description of the module',
+
+  ##--------------------------------------------------------
+  ## 'input' can be any number of named data streams
+  ## to read from
+  ##--------------------------------------------------------
+
+  'input' => {
+     'input stream name' => {
+        'format' => 'input format',
+     },
+   },
+
+  ##--------------------------------------------------------
+  ## 'output' can be any number of named data streams
+  ## to write to, 'write_mode' = 'overwrite' forces Uplug
+  ## to overwrite existing files (default = do not do that)
+  ##--------------------------------------------------------
+
+  'output' => {
+     'output stream name' => {
+        'format' => 'output format',
+        'write_mode' => 'overwrite'
+     }
+  },
+
+  ##--------------------------------------------------------
+  ## 'parameter' may contain any kind of parameter
+  ## (even in deep, nested structures)
+  ##--------------------------------------------------------
+
+  'parameter' => {
+     'name' => {
+        'key' => value,
+        ...
+     }
+  },
+
+  ##--------------------------------------------------------
+  ## 'arguments' can be used to describe command-line arg's
+  ## using the key-value pairs in 'shortcuts':
+  ## - the key is the flag to be used (with additional '-')
+  ## - the value describes the path to the key to be set
+  ##   with the command line argument (separated by ':')
+  ##   example: 'f' => 'input:text:format' is used to enable
+  ##            the command line flag '-f format' which sets
+  ##            the format key in config->input->text
+  ##--------------------------------------------------------
+
+  'arguments' => {
+    'shortcuts' => {
+       'command-line-flag1' => 'parameter:name:key',
+       'command-line-flag2' => 'input:input stream name:format',
+       ...
+    }
+  }
+ }
+
+
+Config files may include the following variables to refer to standard locations within the Uplug toolbox. They will be expanded when reading the configuration before executing the commands.
+
+ $UplugHome ..... environment ($UPLUGHOME) or /path/to/uplug
+ $UplugSystem ... environment ($UPLUGCONFIG) or /shared/systems
+ $UplugBin ...... /path/to/uplug/bin
+ $UplugIni ...... /shared/ini
+ $UplugLang ..... /shared/lang
+ $UplugData ..... data
+
+C</shared/> is the path to the global shared directory (if Uplug is installed properly) or the path to the local directory C<share> in your local copy of Uplug (if you don't use the makefile to install Uplug globally)
+
+Uplug modules may also point to a sequence of sub-modules. Add the following structures to the config-hash within the 'module' structure:
+
+
+ {
+  'module' => {
+    'name' => 'module name',
+
+    ##--------------------------------------------------------
+    ## submodules are lists of Uplug config files
+    ## (make sure that they exist and that Uplug can find them)
+    ## - submodule names can be used to describe them
+    ## - do not specify programs at the same time!
+    ##--------------------------------------------------------
+
+    'submodules' => [
+        'config1',
+        'config2',
+        ...
+    ],
+    'submodule names' => [
+        'name of sub-module 1 (config1)',
+        'name of sub-module 2 (config2)',
+        ...
+    ],
+
+    ##--------------------------------------------------------
+    ## You can define loops over sub-sequences of sub-modules
+    ## You can only define one loop per config file!
+    ## The example below defines a loop over 
+    ## sub-module 1 and 2 which will be run 3 times
+    ## (start counting with 1)
+    ##--------------------------------------------------------
+
+    'loop' => '1:2',
+    'iterations' => '4'
+  }
+ }
+
+Look at the pre-defined configuration files to see more examples of possible configuration structures.
+
+=cut
 
 
 package Uplug::Config;
@@ -52,6 +224,20 @@ our @EXPORT   = qw/FindConfig ReadConfig WriteConfig
                       shared_lang
                       shared_systems/;
 
+=head1 Public variables
+
+ $SHARED_HOME  # home of shared files       (get with C<shared_home>)
+ $SHARED_BIN   # home of binary files       (get with C<shared_bin>)
+ $SHARED_SYS   # home of config-files       (get with C<shared_system>)
+ $SHARED_INI   # global configuration       (get with C<shared_ini>)
+ $SHARED_LANG  # language-specific files    (get with C<shared_lang>)
+ $SHARED_LIB   # home of external libraries (get with C<shared_lib>)
+
+ $OS_TYPE      # type of operating system     (uname -s)
+ $MACHINE_TYPE # type of machine architecture (uname -m)
+
+=cut
+
 # try to find the shared files for Uplug
 
 my $SHARED_HOME;
@@ -75,13 +261,21 @@ our $MACHINE_TYPE = $ENV{MACHINE_TYPE} || `uname -m`;
 chomp($OS_TYPE);
 chomp($MACHINE_TYPE);
 
+
+=head1 Pre-defined data streams
+
+There are two configuration files that contain information about pre-defined data streams. They are expected to be in C<$SHARED_INI>. These two files are read by default:
+
+ DataStreams.ini
+ UserDataStreams.ini
+
+=cut
+
 ## "named" IO streams are stored in %NamedIO
 ## read them from the files below (in ENV{UPLUGHOME}/ini)
 
 &ReadNamed('DataStreams.ini');          # default "IO streams"
 &ReadNamed('UserDataStreams.ini');      # user "IO streams"
-
-
 
 
 
@@ -91,6 +285,17 @@ sub shared_ini    { return defined($_[0]) ? $SHARED_INI = $_[0] : $SHARED_INI; }
 sub shared_lang   { return defined($_[0]) ? $SHARED_LANG = $_[0] : $SHARED_LANG; }
 sub shared_lib    { return defined($_[0]) ? $SHARED_LIB = $_[0] : $SHARED_LIB; }
 sub shared_systems{ return defined($_[0]) ? $SHARED_SYS = $_[0] : $SHARED_SYS; }
+
+=head1 Functions
+
+=head2 C<find_executable>
+
+ $program_name = 'GIZA++';
+ $program = find_executable( $program_name );
+
+Tries to find the executable program on your local system. It first looks in your global path. Thereafter, it checks the shared home of binaries bundled in this package. It uses C<$OS_TYPE> and C<$MACHINE_TYPE> to identify the appropriate binary.
+
+=cut
 
 
 sub find_executable{
@@ -119,6 +324,15 @@ sub find_executable{
   return $name;
 }
 
+=head2 C<CheckParameter>
+
+ CheckParameter ( $config, $param, $module );
+
+Reads configuration for a given module, merges this with the (default) configuration hash in $config and sets additional parameters given in C<$param>. The global configuration of C<$module> overwrites the default configuration of C<$config> and parameters in C<param> overwrite this merged configuration.
+
+C<$param> can be a reference to an array (actually containing key-value pairs) or a string of space-separated key-value pairs. These are usually the command-line arguments given when starting a specific module using the Uplug startup scripts. This means that command-line short-cuts as specified in the configuration file will be expanded to set the appropriate key in the deep data structure of the config-hash. (see also C<CheckParam>)
+
+=cut
 
 #------------------------------------------------------------------------
 # CheckParameter($config,$param,$file)
@@ -163,6 +377,13 @@ sub MergeConfig{
     return $conf1;
 }
 
+=head2 C<FindConfig>
+
+ $file = FindConfig( $module );
+
+Look for the physical configuration file for a given module. This function checks C<$SHARED_SYS>, C<$SHARED_INI>, C<$UPLUGHOME>, C<$UPLUGHOME/systems> and C<$UPLUGHOME/ini> in that order.
+
+=cut
 
 sub FindConfig{
     my $file=shift;
@@ -186,6 +407,14 @@ sub FindConfig{
     }
     return $file;
 }
+
+=head2 C<ReadConfig>
+
+ $config = ReadConfig( $module, @params );
+
+Read the configuration of a given module, expand 'named data streams' (the ones defined in C<DataStreams.ini> and C<UserDataStreams.ini>) and Uplug variables (see below) and set parameters specified in C<@param>.
+
+=cut
 
 #------------------------------------------------------------------------
 # read configuration files
@@ -214,6 +443,13 @@ sub ReadConfig{
     return $config;
 }
 
+=head2 C<WriteConfig>
+
+ WriteConfig( $file, $config )
+
+Dump the configuration hash in C<$config> to file C<$file>.
+
+=cut
 
 #------------------------------------------------------------------------
 # write configuration file
@@ -239,17 +475,20 @@ sub WriteConfig{
     }
 }
 
+=head2 C<ExpandVar>
 
-#------------------------------------------------------------------------
-# ExpandVar .... expand some special variables in config files
-#
-#  UplugHome   - Uplug home directory
-#  UplugLang   - default directory for language specific data
-#  UplugSystem - default directory for module configuration files
-#  UplugData   - default directory for data files (= ./data)
-#  UplugIni    - default directory for inital config files (DataStreams.ini)
-#  UplugBin    - default directory for Uplug scripts (called by modules)
+ ExpandVar( $config_string );
 
+Expand Uplug variables in a given configuration string.
+
+ $UplugHome   - Uplug home directory
+ $UplugLang   - default directory for language specific data
+ $UplugSystem - default directory for module configuration files
+ $UplugData   - default directory for data files (= ./data)
+ $UplugIni    - default directory for initalization files
+ $UplugBin    - default directory for Uplug scripts (called by modules)
+
+=cut
 
 sub ExpandVar{
     my $configtext=shift;
@@ -271,6 +510,13 @@ sub ExpandVar{
     return $configtext;
 }
 
+=head2 C<ExpandVar>
+
+ ExpandNamed( $config );
+
+Expand 'named data streams' in a given configuration hash.
+
+=cut
 
 #------------------------------------------------------------------------
 # ExpandNamed .... expand "named" IO streams
@@ -331,29 +577,32 @@ sub GetNamedIO{
     return $spec;
 }
 
+=head2 C<CheckParam>
 
-#------------------------------------------------------------------------
-# CheckParam ... check command line parameters and modify the config hash
-#                according to the given parameters
-# possible command line arguments are specified in the config hash, either
-# in { arguments => { shortcuts => { ... } } } or
-# in { arguments => { optons => { ... } } }    or
-# in { options => { ... } }
-#
-# example: define an option '-in file-name' for setting the file-name (=file)
-#          of the input stream called 'text' with the following code:
-#
-#  { 'arguments' => {
-#       'shortcuts' => {
-#          'in' => 'input:text:file'
-#       }
-#  }
-#
-# if you use the flag '-in' its argument (e.g. 'my-file.txt') will be moved to
-#    { input => { text => { file => my-file.txt } } }
-# in the config hash
-#
+ CheckParam( $config, @param );
 
+Check command line parameters and modify the config hash according to the given parameters C<@param>. Possible command line arguments are specified in the config hash, in either of the following: 
+
+ { arguments => { shortcuts => { ... } } }
+ { arguments => { optons => { ... } } }
+ { options => { ... } }
+
+Example: define an option '-in file-name' for setting the file-name (=file)
+of the input stream called 'text' with the following code:
+
+  { 'arguments' => {
+       'shortcuts' => {
+          'in' => 'input:text:file'
+       }
+  }
+
+If you use the flag '-in' its argument (e.g. 'my-file.txt') will be moved to
+
+  { input => { text => { file => my-file.txt } } }
+
+in the config hash.
+
+=cut
 
 sub CheckParam{
     my $config=shift;
@@ -463,6 +712,14 @@ sub ReadNamed{
     return 1;
 }
 
+=head2 C<ListAvailableModules>
+
+ ListAvailableModules( 'category' )
+
+List all available modules within a specific module category. List all modules if no category is given.
+
+=cut
+
 
 sub ListAvailableModules{
     my $dir = shift || $SHARED_SYS;
@@ -472,6 +729,13 @@ sub ListAvailableModules{
     system("find $dir -type f | sed 's#^$dir/##' | sort");
 }
 
+=head2 C<PrintConfigInfo>
+
+ PrintConfigInfo( $module );
+
+Print information about a given module (taken from its configuration file).
+
+=cut
 
 sub PrintConfigInfo{
     my $config = &ReadConfig(@_);
@@ -530,3 +794,7 @@ sub PrintConfigInfo{
 ## return a true value
 
 1;
+
+
+__END__
+

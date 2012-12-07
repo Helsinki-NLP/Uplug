@@ -17,6 +17,29 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #---------------------------------------------------------------------------
 
+=head1 NAME
+
+Uplug - a toolbox for processing (parallel) text corpora
+
+=head1 SYNOPSIS
+
+  $module = 'pre/basic';
+  %args = ( '-in' => $input_file_name,
+            '-ci' => $input_char_encoding );
+
+  my $uplug=Uplug->new($module, %args);   # create a new uplug module
+  $uplug->load();                         # load it
+  $uplug->run();                          # and run it
+
+=head1 DESCRIPTION
+
+This library provides the main methods for loading Uplug modules and running them. Configuration files describe the module and its parameters (see L<Uplug::Config>). Each module may contain a number of sub-modules. Each of them can usually calls the uplug scripts provided in the package.
+
+For more information, see:
+
+L<uplug|::uplug>, L<Uplug::Config>
+
+=cut
 
 
 package Uplug;
@@ -35,7 +58,7 @@ use vars qw($VERSION $AUTHOR $DEBUG);
 use vars qw(@TempFiles);
 
 
-$VERSION = '0.3.1';
+$VERSION = '0.3.2';
 $AUTHOR  = 'Joerg Tiedemann';
 $DEBUG = 0;
 
@@ -50,6 +73,20 @@ END{
     kill ('HUP',-$$);          # kill child processes before you die
 }
 #-----------------------------------------------------------------------
+
+
+=head1 Class methods
+
+=head2 Constructor
+
+ $uplug = new Uplug ( $module, %args )
+
+Construct a new Uplug object for the given Uplug module ($module refers to a configuration file). Module arguments are specified in C<%args> and depend on the module. For more information about specific Uplug modules, use the Uplug startup script:
+
+ uplug -h module-name
+
+=cut
+
 
 
 sub new{
@@ -71,6 +108,7 @@ sub new{
     return $self;
 }
 
+
 ##---------------------------------------------------------------------
 ## DESTROY: clean up! remove all temporary files and directories!
 
@@ -83,6 +121,14 @@ sub DESTROY{
     }
     rmdir $self->{RUNTIMEDIR};
 }
+
+=head2 C<load>
+
+ $uplug->load()
+
+Load the module given in the constructor and all its sub-modules. This also creates temporary configuration files with adjusted parameters in C<data/runtime>.
+
+=cut
 
 ##---------------------------------------------------------------------
 ## load module configurations
@@ -100,6 +146,55 @@ sub load{
     $self->loadSubMods();
     $self->data($self->output());   # my own data is available
 }
+
+=head2 C<run>
+
+ $uplug->run()
+
+Run all commands specified in all sub-modules. Pipeline commands will be constructed according to the sequence of sub-modules and the specifications in the Uplug configuration files. The will be simply executed as external system calls.
+
+=cut
+
+
+##---------------------------------------------------------------------
+## run the Uplug module (and all its submodules)
+##    * get the system command
+##    * split it up into separate system calls
+##    * run the system calls and print elapsed time/call
+
+sub run{
+    my $self=shift;
+    my $cmd=$self->command();
+    my @seq=split(/;/,$cmd);     # split command sequence
+    my $start=time();
+    for (@seq){
+        my $time=time();
+        print STDERR "$_\n---------------------------------------------\n";
+	if (my $sig=system ($_)){
+            print STDERR "# Uplug.pm: Got signal $? from child process:\n";
+            print STDERR "# $_\n";
+            return 0;
+        }
+        $time=time()-$time;
+        my ($sec,$min,$hour,$mday,$mon,$year)=gmtime($time);
+        printf STDERR
+            "      processing time: %2d:%2d:%2d:%2d:%2d:%2d\n",
+            $year-70,$mon,$mday-1,$hour,$min,$sec;
+    }
+    $start=time()-$start;
+    my ($sec,$min,$hour,$mday,$mon,$year)=gmtime($start);
+    printf STDERR
+	"      total processing time: %2d:%2d:%2d:%2d:%2d:%2d\n",
+	$year-70,$mon,$mday-1,$hour,$min,$sec;
+}
+
+=head1 Class-internal methods
+
+=head2 C<loadSubMods>
+
+Load all sub-modules and adjust input and output according to the configuration files and the current pipe-line. Output streams will be used as input streams with the same name for the next sub-module. This method tries to find possible pipelines for combining commands.
+
+=cut
 
 
 ##---------------------------------------------------------------------
@@ -208,23 +303,13 @@ sub loadSubMods{
     }
 }
 
+=head2 C<command>
 
-##---------------------------------------------------------------------
-## return a temporary file name (and touch it)
+ $cmd = $uplug->command()
 
-sub NewTempFile{
-    my $self=shift;
-    my $count=0;
-    my $temp = $self->{RUNTIMEDIR}.'/.temp';
-    while (-e $temp.$count){
-	$count++;
-    }
-    $temp.=$count;
-    open F,">$temp";close F;
-    push (@{$self->{TEMPFILES}},$temp);
-    return $temp;
-}
+Return a sequence of system commands for the entire pipeline. Commands are separated by ';'. System command may include several pipelines through STDIN/STDOUT.
 
+=cut
 
 
 ##---------------------------------------------------------------------
@@ -268,39 +353,12 @@ sub command{
     return $cmd;
 }
 
+=head2 C<input>
 
+Change the input settings in a particular configuration.
 
-##---------------------------------------------------------------------
-## run the Uplug module (and all its submodules)
-##    * get the system command
-##    * split it up into separate system calls
-##    * run the system calls and print elapsed time/call
+=cut
 
-sub run{
-    my $self=shift;
-    my $cmd=$self->command();
-    my @seq=split(/;/,$cmd);     # split command sequence
-    my $start=time();
-    for (@seq){
-        my $time=time();
-        print STDERR "$_\n---------------------------------------------\n";
-	if (my $sig=system ($_)){
-            print STDERR "# Uplug.pm: Got signal $? from child process:\n";
-            print STDERR "# $_\n";
-            return 0;
-        }
-        $time=time()-$time;
-        my ($sec,$min,$hour,$mday,$mon,$year)=gmtime($time);
-        printf STDERR
-            "      processing time: %2d:%2d:%2d:%2d:%2d:%2d\n",
-            $year-70,$mon,$mday-1,$hour,$min,$sec;
-    }
-    $start=time()-$start;
-    my ($sec,$min,$hour,$mday,$mon,$year)=gmtime($start);
-    printf STDERR
-	"      total processing time: %2d:%2d:%2d:%2d:%2d:%2d\n",
-	$year-70,$mon,$mday-1,$hour,$min,$sec;
-}
 
 
 ##---------------------------------------------------------------------
@@ -325,6 +383,12 @@ sub input{
     return &GetParam($self->{CONFIG},'input');
 }
 
+=head2 C<output>
+
+Change the output settings in a particular configuration.
+
+=cut
+
 ##---------------------------------------------------------------------
 ## change output settings in the module configuraton
 ##    (only for the ones that exist already)
@@ -347,6 +411,12 @@ sub output{
     }
     return &GetParam($self->{CONFIG},'output');
 }
+
+=head2 C<data>
+
+Set/return data files available in the current pipeline.
+
+=cut
 
 
 ##---------------------------------------------------------------------
@@ -371,10 +441,11 @@ sub data{
     return $self->{DATA};
 }
 
-sub FileInUse{
-    my $self=shift;
-    return $self->{FILES}->{$_[0]};
-}
+=head2 C<stdin>
+
+Check whether their is an input stream that can read from STDIN.
+
+=cut
 
 
 ##---------------------------------------------------------------------
@@ -394,6 +465,12 @@ sub stdin{
     return undef;
 }
 
+=head2 C<stdout>
+
+Check whether their is an output stream that can write to STDOUT.
+
+=cut
+
 ##---------------------------------------------------------------------
 # stdout: same as stdin but for STDOUT
 
@@ -408,6 +485,43 @@ sub stdout{
     return undef;
 }
 
+=head2 FileInUse
+
+Checks whether a particular file is already in use in the current pipeline (avoids writing over files that a command still reads from).
+
+=cut
+
+sub FileInUse{
+    my $self=shift;
+    return $self->{FILES}->{$_[0]};
+}
+
+=head2 C<NewTempFile>
+
+Return a new temporary file (in data/runtime).
+
+=cut
+
+##---------------------------------------------------------------------
+## return a temporary file name (and touch it)
+#
+# TODO: use File::Temp instead
+
+sub NewTempFile{
+    my $self=shift;
+    my $count=0;
+    my $temp = $self->{RUNTIMEDIR}.'/.temp';
+    while (-e $temp.$count){
+	$count++;
+    }
+    $temp.=$count;
+    open F,">$temp";close F;
+    push (@{$self->{TEMPFILES}},$temp);
+    return $temp;
+}
+
 
 
 1;
+
+__END__

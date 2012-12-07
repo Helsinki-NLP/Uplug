@@ -41,7 +41,7 @@ Uplug - Quickstart
    Sentence alignment pointers are stored in 1988sven.xml.
    You can read the aligned bitext segments using the following command:
 
-   /cvs/tools/readalign 1988sven.xml | less
+   /cvs/tools/uplug-readalign 1988sven.xml | less
 
    Since version 0.2.0 there are additional sentence aligners integrated in
    Uplug (hunalign, GMA). Look at the HOWTO file for details!
@@ -130,7 +130,7 @@ Uplug - Quickstart
     example bitext used in 3f). Alignments produced above can be
     evaluated using the following command:
 
-    /cvs/bin/evalalign.pl -gold svenprf.gold -in svenprf.links | less
+    /cvs/bin/uplug-evalalign -gold svenprf.gold -in svenprf.links | less
 
     Several measures will be computed by comparing reference links
     with links proposed by the system.

@@ -1,9 +1,10 @@
 #!/usr/bin/env perl -w
+#-*-perl-*-
 #
 # this is a sentence aligner based on Phillip Koehn's implementation used
 # for aligning the EuroParl corpus
 # http://people.csail.mit.edu/koehn/publications/europarl/
-# (and his aligner is based on Gale&Chruch's length-based alignment approach)
+# (and his aligner is based on Gale&Church's length-based alignment approach)
 #
 # USAGE: sentalign [OPTIONS] srcfile trgfile > alignfile
 #

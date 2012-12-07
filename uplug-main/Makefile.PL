@@ -44,9 +44,11 @@ install_script 'bin/uplug-coocfreq-slow';
 install_script 'bin/uplug-gma';
 install_script 'bin/uplug-ngramfreq';
 install_script 'bin/uplug-tag';
+install_script 'bin/uplug-evalalign';
 
-install_script 'bin/evalalign.pl';
-install_script 'bin/uplugalign.pl';
+install_script 'tools/uplug-readalign';
+install_script 'tools/uplug-recode';
+install_script 'tools/uplug-sentence-align';
 
 install_share;
 

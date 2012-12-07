@@ -21,6 +21,19 @@
 #
 ###########################################################################
 
+=head1 NAME
+
+Uplug::IO - libraries for handling various kinds of input/output
+
+=head1 DESCRIPTION
+
+This is a virtual class declaring the main methods that can be called in from derived classes. The class factory L<Uplug::IO::Any> can be used to create input and output streams for data sets in various formats.
+
+=head1 See also
+
+L<Uplug::IO::Any>
+
+=cut
 
 package Uplug::IO;
 
@@ -34,7 +47,6 @@ $VERSION = 0.1;
 $DEFAULTENCODING='utf-8';
 
 my $PerlVersion=$];
-
 
 sub new{
     my $class=shift;
