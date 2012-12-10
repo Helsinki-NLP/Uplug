@@ -3,6 +3,9 @@
 Installing Uplug
 ----------------
 
+Get the sources and Uplug modules from
+https://bitbucket.org/tiedemann/uplug
+
 You can either run Uplug without explicitly installing it 
 or you can run the usual perlish installation steps (for putting Uplug into a global loction)
 

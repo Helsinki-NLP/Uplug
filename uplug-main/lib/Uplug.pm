@@ -35,9 +35,10 @@ Uplug - a toolbox for processing (parallel) text corpora
 
 This library provides the main methods for loading Uplug modules and running them. Configuration files describe the module and its parameters (see L<Uplug::Config>). Each module may contain a number of sub-modules. Each of them can usually calls the uplug scripts provided in the package.
 
-For more information, see:
+=head1 USAGE
 
-L<uplug|::uplug>, L<Uplug::Config>
+For imformation on how to use the Uplug toolkit with the provided modules can be found here:
+L<uplug>
 
 =cut
 
@@ -525,3 +526,12 @@ sub NewTempFile{
 1;
 
 __END__
+
+=head1 SEE ALSO
+
+L<uplug>, L<Uplug::Config>, L<Uplug::IO::Any>
+
+For the latest sources, language packs, additional modules and tools: Please, have a look at the project website at L<https://bitbucket.org/tiedemann/uplug>
+
+
+=cut

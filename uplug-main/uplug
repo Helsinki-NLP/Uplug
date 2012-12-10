@@ -23,6 +23,10 @@
 
 uplug - the main startup script for the Uplug toolbox
 
+=head1 SOURCES AND EXTENSIONS
+
+For the latest sources, language packs, additional modules and tools: Please, have a look at the project website at L<https://bitbucket.org/tiedemann/uplug>
+
 =head1 SYNOPSIS
 
   uplug [-ehHlp] [-f fallback] config-file [OPTIONS]
@@ -443,6 +447,9 @@ alignments). This is the slowest standard setting for word alignment.
 =head1 See also
 
 More information on Uplug module configurations: Look at L<Uplug::Config>
+
+More downloads:
+L<https://bitbucket.org/tiedemann/uplug>
 
 
 =cut
