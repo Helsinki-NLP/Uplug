@@ -17,10 +17,9 @@ package Uplug::Web::Process::Lock;
 use strict;
 
 use Exporter;
-use vars qw(@ISA @EXPORT $VERSION);
+use vars qw(@ISA @EXPORT);
 @ISA      = qw(Exporter);
 @EXPORT   = qw(nflock nunflock);
-$VERSION  = '5';
 
 use vars qw($Debug $Check $MaxLockTime);
 $Debug  ||= 0;  # may be predefined

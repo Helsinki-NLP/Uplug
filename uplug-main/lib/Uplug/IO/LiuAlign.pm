@@ -26,7 +26,7 @@
 package Uplug::IO::LiuAlign;
 
 use strict;
-use vars qw(@ISA $VERSION);
+use vars qw(@ISA);
 use vars qw(%StreamOptions);
 use Uplug::IO::XML;
 use Uplug::IO::Any;
@@ -34,7 +34,6 @@ use Uplug::Data;
 # use IO::File;
 # use POSIX qw(tmpnam);
 
-$VERSION='1.0';
 @ISA = qw( Uplug::IO::XML );
 
 # stream options and their default values!!

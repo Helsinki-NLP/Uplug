@@ -201,15 +201,13 @@ package Uplug::Config;
 require 5.004;
 
 use strict;
-use vars qw($VERSION @ISA @EXPORT);
+use vars qw(@ISA @EXPORT);
 use vars qw(%NamedIO);
 
 use FindBin qw/$Bin/;
 # use File::ShareDir qw/dist_dir/;
 use Exporter qw/import/;
 use Data::Dumper;
-
-$VERSION = 0.02;
 
 our @EXPORT   = qw/FindConfig ReadConfig WriteConfig 
                    PrintConfigInfo

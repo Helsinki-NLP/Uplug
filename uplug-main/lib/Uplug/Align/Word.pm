@@ -28,14 +28,13 @@ package Uplug::Align::Word;
 
 use strict;
 # use Time::HiRes qw(time);
-use vars qw($DEBUG @ISA $VERSION $CLUEWEIGHT );
+use vars qw($DEBUG @ISA $CLUEWEIGHT );
 
 use Uplug::Data;
 use Uplug::Data::Align;
 
 # @ISA = qw( );
 
-$VERSION = '$Id$ ';
 $CLUEWEIGHT = 0.05;
 $DEBUG = 0;
 

@@ -26,7 +26,7 @@
 package Uplug::IO::MosesWordAlign;
 
 use strict;
-use vars qw(@ISA $VERSION);
+use vars qw(@ISA);
 use Uplug::IO::Text;
 
 @ISA = qw( Uplug::IO::Text );

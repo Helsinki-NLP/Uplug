@@ -12,6 +12,10 @@ Uplug::PreProcess::Tokenizer
 
 =head2 C<load_prefixes>
 
+=head1 DESCRIPTION
+
+This module heavily relies on the implementation of the tokenizer and detokenizer used in the Moses toolkit for SMT. All credits go to the original authors (Josh Schroeder and Philipp Koehn).
+
 =cut
 
 use strict;

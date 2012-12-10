@@ -18,6 +18,8 @@ Uplug::PreProcess::SentDetect - Moses/Europarl sentence boundary detector
 
 =head1 DESCRIPTION
 
+This module is basically a copy of L<Lingua::Sentence> by Achim Ruopp adapted to Uplug which is based on tools developed for Moses and the Europarl corpus. All credits go to the original authors.
+
 This module allows splitting of text paragraphs into sentences.
 It is based on scripts developed by Philipp Koehn and Josh Schroeder
 for processing the Europarl corpus (L<http://www.statmt.org/europarl/>).

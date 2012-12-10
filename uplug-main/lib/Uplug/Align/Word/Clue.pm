@@ -30,7 +30,7 @@ use strict;
 # use Time::HiRes qw(time);
 
 
-use vars qw(@ISA $VERSION $DEBUG);
+use vars qw(@ISA $DEBUG);
 use vars qw($INPHRASESONLY $ADJACENTONLY $ADJACENTSCORE $FILLPHRASES);
 use vars qw($ALLOWMULTIOVERLAP $PRINTHTML);
 # use utf8;
@@ -43,7 +43,6 @@ $Data::Dumper::Purity=1;
 
 @ISA = qw( Uplug::Align::Word );
 
-$VERSION = '$Id$ ';
 $DEBUG = 0;
 
 #---------------------------------

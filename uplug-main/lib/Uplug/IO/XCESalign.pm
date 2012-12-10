@@ -28,14 +28,13 @@
 package Uplug::IO::XCESalign;
 
 use strict;
-use vars qw(@ISA $VERSION);
+use vars qw(@ISA);
 use vars qw(%StreamOptions);
 use Uplug::IO::XML;
 use Uplug::IO::Any;
 use Uplug::Data;
 # use Uplug::Data::DOM;
 
-$VERSION=0.1;
 @ISA = qw( Uplug::IO::XML );
 
 # stream options and their default values!!

@@ -25,9 +25,8 @@ package Uplug::CoocStat;
 
 use strict;
 
-use vars qw(@ISA $VERSION);
+use vars qw(@ISA);
 @ISA;
-$VERSION = '0.1';
 
 sub new{
 

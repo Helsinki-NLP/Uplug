@@ -25,13 +25,12 @@
 package Uplug::IO::PlugXML;
 
 use strict;
-use vars qw(@ISA $VERSION);
+use vars qw(@ISA);
 use vars qw(%StreamOptions);
 use Uplug::IO::XML;
 use Uplug::Data::Lang;
 # use Uplug::IO::Any;
 
-$VERSION='1.0';
 @ISA = qw( Uplug::IO::XML );
 
 # stream options and their default values!!

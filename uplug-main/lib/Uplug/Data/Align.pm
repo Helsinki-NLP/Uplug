@@ -1,5 +1,5 @@
 ####################################################################
-# Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
+# Copyright (C) 2004 Jörg Tiedemann
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,13 +29,12 @@
 package Uplug::Data::Align;
 
 use strict;
-use vars qw( @ISA $VERSION );
+use vars qw( @ISA );
 
 use Uplug::Data;
 use Uplug::Data::Lang;
 
 @ISA = qw( Uplug::Data );
-$VERSION = 0.1;
 
 sub init{
     my $self=shift;

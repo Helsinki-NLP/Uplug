@@ -33,7 +33,7 @@ package Uplug::IO::Text;
 
 # use bytes;    #### ????????? Do WE NEED THIS ?????????????
 use strict;
-use vars qw(@ISA $VERSION $COMPRESS $DECOMPRESS);
+use vars qw(@ISA $COMPRESS $DECOMPRESS);
 use FindBin qw($Bin);
 use lib "$Bin/../lib";
 use Data::Dumper;
@@ -44,7 +44,6 @@ use Uplug::IO;
 
 @ISA = qw( Uplug::IO );
 
-$VERSION = '0.1';
 $COMPRESS='gzip -c';
 $DECOMPRESS='gzip -cd';
 

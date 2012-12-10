@@ -28,7 +28,7 @@
 package Uplug::IO::Storable;
 
 use strict;
-use vars qw(@ISA $VERSION $STOREMAX);
+use vars qw(@ISA $STOREMAX);
 
 use Storable;
 # $Storable::drop_utf8=1;
@@ -36,7 +36,6 @@ use Storable;
 use Uplug::Encoding;
 use Uplug::IO;
 
-$VERSION='$Id $ ';
 @ISA = qw( Uplug::IO::Text );
 $STOREMAX = 5000;
 

@@ -26,11 +26,10 @@
 package Uplug::IO::Collection;
 
 use strict;
-use vars qw(@ISA $VERSION);
+use vars qw(@ISA);
 use Uplug::IO;
 use Uplug::IO::Any;
 
-$VERSION='1.0';
 @ISA = qw( Uplug::IO );
 
 

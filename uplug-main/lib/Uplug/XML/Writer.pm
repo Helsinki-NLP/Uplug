@@ -951,7 +951,7 @@ __END__
 
 =head1 NAME
 
-XML::Writer - Perl extension for writing XML documents.
+Uplug::XML::Writer - Perl extension for writing XML documents.
 
 =head1 SYNOPSIS
 
@@ -970,6 +970,8 @@ XML::Writer - Perl extension for writing XML documents.
 
 
 =head1 DESCRIPTION
+
+Uplug::XML::Writer is basically a copy of L<XML::Writer> version 0.4. It is included in Uplug for compatibility reasons. All credits go to the orgiginal authors. Note that the documentation is, therefore, also just a copy of the original documentation.
 
 XML::Writer is a helper module for Perl programs that write an XML
 document.  The module handles all escaping for attribute values and

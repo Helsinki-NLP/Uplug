@@ -25,7 +25,7 @@
 package Uplug::IO::Tab;
 
 use strict;
-use vars qw(@ISA $VERSION $DefaultDelimiter);
+use vars qw(@ISA $DefaultDelimiter);
 use Uplug::IO::Text;
 
 @ISA = qw( Uplug::IO::Text );

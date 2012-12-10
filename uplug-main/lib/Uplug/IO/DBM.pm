@@ -30,13 +30,12 @@ package Uplug::IO::DBM;
 # use utf8;
 # use bytes;
 use strict;
-use vars qw(@ISA $VERSION $DEFAULTMODE $DEFAULTCACHESIZE);
+use vars qw(@ISA $DEFAULTMODE $DEFAULTCACHESIZE);
 use Uplug::IO;
 use Uplug::Data;
 use Uplug::Encoding;
 use Data::Dumper;
 
-$VERSION='0.1';
 @ISA = qw( Uplug::IO );
 
 BEGIN { @AnyDBM_File::ISA=qw(DB_File GDBM_File SDBM_File NDBM_File ODBM_File) }

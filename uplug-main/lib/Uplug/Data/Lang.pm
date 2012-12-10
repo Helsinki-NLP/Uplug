@@ -29,7 +29,7 @@
 package Uplug::Data::Lang;
 
 use strict;
-use vars qw( @ISA $VERSION 
+use vars qw( @ISA 
 	     $DEFAULTLANGUAGE $DEFAULTLANGUAGEFILE
 	     $DEFAULTSPLITPATTERN $DEFAULTDELIMITER );
 
@@ -46,7 +46,6 @@ use Uplug::Config;
 
 @ISA=qw( Uplug::Data );
 
-$VERSION = 0.1;
 $DEFAULTLANGUAGE = 'default';
 $DEFAULTLANGUAGEFILE = 'default.ini';
 $DEFAULTSPLITPATTERN = '\s+';

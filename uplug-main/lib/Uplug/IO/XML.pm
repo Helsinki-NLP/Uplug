@@ -29,7 +29,7 @@ package Uplug::IO::XML;
 
 use strict;
 
-use vars qw(@ISA $VERSION $PARSERENCODING $USESGGREP $SGGREP);
+use vars qw(@ISA $PARSERENCODING $USESGGREP $SGGREP);
 use vars qw(%DEFAULTOPTIONS);
 use XML::Parser;
 use XML::Simple;
@@ -43,7 +43,6 @@ use Uplug::IO::Text;
 use Uplug::Data;
 
 
-$VERSION='$Id $ ';
 @ISA = qw( Uplug::IO::Text );
 $PARSERENCODING='utf-8';
 $USESGGREP=0;

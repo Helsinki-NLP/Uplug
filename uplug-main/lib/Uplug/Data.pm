@@ -27,7 +27,7 @@
 package Uplug::Data;
 
 use strict;
-use vars qw( @ISA @EXPORT $VERSION $DEFAULTDELIMITER $DEFAULTROOTLABEL);
+use vars qw( @ISA @EXPORT $DEFAULTDELIMITER $DEFAULTROOTLABEL);
 use Exporter;
 use Data::Dumper;
 
@@ -37,7 +37,6 @@ use Uplug::Encoding;
 @ISA=qw( Exporter);
 @EXPORT = qw( $DEFAULTDELIMITER $DEFAULTROOTLABEL);
 
-$VERSION = 0.1;
 $DEFAULTDELIMITER=' ';
 $DEFAULTROOTLABEL='text';
 
