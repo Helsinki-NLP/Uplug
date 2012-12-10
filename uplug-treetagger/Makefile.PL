@@ -3,7 +3,7 @@ use LWP::Simple;
 use File::Basename;
 
 name          'Uplug';
-version       '0.2';
+version       '0.3';
 
 
 my $TaggerLicense = "http://www.ims.uni-stuttgart.de/~schmid/Tagger-Licence";
@@ -62,7 +62,7 @@ $TaggerModels{'MacOSX.PPC'} = $TaggerModels{'Solaris'};
 install_treetagger() unless ($ARGV[0] eq 'skip-compile');
 install_share;
 
-requires 'Uplug'     => 0;
+requires 'Uplug'     => '0';
 
 WriteAll;
 

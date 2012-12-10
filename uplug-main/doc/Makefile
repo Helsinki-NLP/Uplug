@@ -65,16 +65,22 @@ $(htmldocbin): %.html: $(binhome)/%
 $(wikidoc): wiki/%.wiki: $(modulehome)/%.pm
 	mkdir -p `dirname $@`
 	pod2wiki --style=moinmoin --encoding=utf8 \
-		$(modulehome)/$< > $@
+		< $(modulehome)/$< |\
+		sed 's/`/**/g' |\
+		perl -pe 's/^ (\S.*)\:\:/ \* $$1/'  > $@
 
 $(wikidocbin): wiki/bin/%.wiki: $(binhome)/%
 	mkdir -p `dirname $@`
 	pod2wiki --style=moinmoin --encoding=utf8 \
-		$(modulehome)/$< > $@
+		< $(modulehome)/$< |\
+		sed 's/`/**/g' |\
+		perl -pe 's/^ (\S.*)\:\:/ \* $$1/'  > $@
 
 wiki/Home.wiki: index.pod
 	mkdir -p `dirname $@`
-	pod2wiki --style=moinmoin --encoding=utf8 $< > $@
+	pod2wiki --style=moinmoin --encoding=utf8 < $< |\
+		sed 's/`/**/g' |\
+		perl -pe 's/^ (\S.*)\:\:/ \* $$1/'  > $@
 	@echo "\n== More Information ==\n" >> $@
 	find . -name '*.wiki'  | sort | grep -v 'Home.wiki' |\
 	sed 's#^\.\/# * [[#;s#\.wiki#.wiki]]#;s#wiki/##' >> $@

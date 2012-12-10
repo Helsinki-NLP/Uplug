@@ -10,7 +10,7 @@ all test install:
 
 clean:
 	for m in $(MODULES); do\
-		$(MAKE) $$m/Makefile; \
+		$(MAKE) MODE=skip-compile $$m/Makefile; \
 		$(MAKE) -C $$m $@; \
 	done
 

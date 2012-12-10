@@ -1,7 +1,7 @@
 use inc::Module::Install;
 
 name          'Uplug';
-version       '0.1';
+version       '0.2';
 license       'gpl';
 
 install_share;
