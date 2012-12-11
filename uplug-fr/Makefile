@@ -2,7 +2,7 @@
 # install MElt and uplug
 # use all targets for both sub-directories
 
-VERSION = 0.1
+VERSION = 0.2
 
 CONTENTS = $(shell ls) 
 
@@ -19,6 +19,9 @@ dist: clean
 	tar -czf $(notdir $(shell pwd))-$(VERSION).tar.gz $(notdir $(shell pwd))-$(VERSION)
 	mv $(notdir $(shell pwd))-$(VERSION)/* .
 	rmdir $(notdir $(shell pwd))-$(VERSION)
+
+dist-uplug: uplug/Makefile
+	${MAKE} -C uplug manifest dist
 
 melt-0.6/Makefile:
 	(cd melt-0.6 && ./configure)

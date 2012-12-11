@@ -4,8 +4,13 @@ name          'Uplug';
 version       '0.2';
 license       'gpl';
 
-install_share;
+abstract    'Hungarian language pack for Uplug';
+author      'Joerg Tiedemann';
+include     'Module::AutoInstall';
 
 requires 'Uplug'     => 0;
+
+auto_install;
+install_share;
 
 WriteAll;

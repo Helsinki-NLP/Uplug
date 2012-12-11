@@ -1,0 +1,14 @@
+
+========================
+Spanish tools for Uplug
+========================
+
+This language pack requires SVMTool for tagging. Please, install SVMTool first.
+The sources and models are available from http://www.lsi.upc.edu/~nlp/SVMTool/
+
+INSTALL
+
+perl Makefile.PL
+make all
+make install (run as sudo)
+

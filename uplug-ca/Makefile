@@ -20,6 +20,8 @@ dist: clean
 	mv $(notdir $(shell pwd))-$(VERSION)/* .
 	rmdir $(notdir $(shell pwd))-$(VERSION)
 
+dist-uplug: uplug/Makefile
+	${MAKE} -C uplug manifest dist
 
 %/Makefile: %/Makefile.PL
 	(cd $(dir $@) && perl Makefile.pl)

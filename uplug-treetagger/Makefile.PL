@@ -2,8 +2,12 @@ use inc::Module::Install;
 use LWP::Simple;
 use File::Basename;
 
-name          'Uplug';
-version       '0.3';
+name        'Uplug';
+version     '0.3';
+
+abstract    'TreeTagger add-on for Uplug';
+author      'Joerg Tiedemann';
+include     'Module::AutoInstall';
 
 
 my $TaggerLicense = "http://www.ims.uni-stuttgart.de/~schmid/Tagger-Licence";
@@ -59,10 +63,12 @@ $TaggerModels{'Windows'} = $TaggerModels{'Linux'};
     );
 $TaggerModels{'MacOSX.PPC'} = $TaggerModels{'Solaris'};
 
-install_treetagger() unless ($ARGV[0] eq 'skip-compile');
-install_share;
 
 requires 'Uplug'     => '0';
+
+install_treetagger() unless ($ARGV[0] eq 'skip-compile');
+auto_install;
+install_share;
 
 WriteAll;
 
