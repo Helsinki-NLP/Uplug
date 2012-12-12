@@ -80,10 +80,10 @@ Uplug is a collection of tools and scripts for processing text-corpora
 
  share/ini/	  some configuration files
  share/lang/	  language specific data
- example/	  small example corpora
+ example/	  small example texts
 
- lib/Uplug.pm      main library for running Uplug modules
- lib/Uplug/	  Uplug libraries
+ lib/Uplug.pm     main library for running Uplug modules
+ lib/Uplug/	  other Uplug modules
 
 
 

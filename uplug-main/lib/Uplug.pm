@@ -37,8 +37,11 @@ This library provides the main methods for loading Uplug modules and running the
 
 =head1 USAGE
 
-For imformation on how to use the Uplug toolkit with the provided modules can be found here:
+More information on how to use the Uplug toolkit with the provided modules can be found here:
 L<uplug>
+
+Add-ons and language-specific modules can be downloaded from the Uplug project website at bitbucket: L<https://bitbucket.org/tiedemann/uplug>
+
 
 =cut
 
@@ -59,7 +62,7 @@ use vars qw($VERSION $AUTHOR $DEBUG);
 use vars qw(@TempFiles);
 
 
-$VERSION = '0.3.3';
+$VERSION = '0.3.4';
 $AUTHOR  = 'Joerg Tiedemann';
 $DEBUG = 0;
 

@@ -14,12 +14,10 @@ use Uplug::Data::Align;
 use Uplug::IO::Any;
 use Uplug::Config;
 
-use vars qw(@ISA @EXPORT $VERSION $DEBUG $GIZAHOME);
+use vars qw(@ISA @EXPORT $DEBUG $GIZAHOME);
 
 # @ISA = qw( Uplug::Align::Word Exporter );
 @ISA = qw( Exporter);
-
-$VERSION = '$Id$ ';
 $DEBUG = 0;
 
 @EXPORT = qw( &Bitext2Text &RunGiza &Combined2Uplug &Giza2Clue &Giza2Uplug );

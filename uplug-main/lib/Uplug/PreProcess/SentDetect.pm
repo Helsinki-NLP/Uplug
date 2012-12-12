@@ -18,7 +18,7 @@ Uplug::PreProcess::SentDetect - Moses/Europarl sentence boundary detector
 
 =head1 DESCRIPTION
 
-This module is basically a copy of L<Lingua::Sentence> by Achim Ruopp adapted to Uplug which is based on tools developed for Moses and the Europarl corpus. All credits go to the original authors.
+This module is basically a copy of L<Lingua::Sentence> by Achim Ruopp adapted to Uplug which is based on tools developed for Moses and the Europarl corpus. All credits go to the original authors. This version includes some additional non-breaking prefix files.
 
 This module allows splitting of text paragraphs into sentences.
 It is based on scripts developed by Philipp Koehn and Josh Schroeder
@@ -40,23 +40,39 @@ Languages currently supported by the module are:
 
 =over
 
-=item Catalan
+=item ca (Catalan)
 
-=item Dutch
+=item da (Danish)
 
-=item English
+=item de (German)
 
-=item French
+=item el (Greek)
 
-=item German
+=item en (English)
 
-=item Greek
+=item es (Spanish)
 
-=item Italian
+=item fr (French)
 
-=item Portuguese
+=item is (Icelandic)
 
-=item Spanish
+=item it (Italian)
+
+=item nl (Dutch)
+
+-item pl (Polish)
+
+=item pt (Portuguese)
+
+=item ro (Romanian)
+
+=item ru (Russian)
+
+=item sk (Slovak)
+
+=item sl (Slovene)
+
+=item sv (Swedish)
 
 =back
 
@@ -289,7 +305,8 @@ L<Lingua::HE::Sentence>
 =head1 AUTHOR
 
 Lingua::Sentence: Achim Ruopp, E<lt>achimru@gmail.comE<gt>
-Adjusted for Uplug: Joerg Tiedemann
+
+Adapted to Uplug: Joerg Tiedemann
 
 =head1 COPYRIGHT AND LICENSE
 

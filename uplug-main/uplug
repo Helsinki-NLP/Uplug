@@ -318,7 +318,7 @@ Use the following command for aligning tagged corpora (at least POS tags):
 This is essentially the same as the default word alignment with additional
 clues for POS and chunk labels.
 
-=head2 Word alignment in Moses output format (using default mode)
+=head2 Word alignment with Moses output format (using default mode)
 
 Use the following command if you like to get the word alignments
 in Moses format (links between word positions like in Moses after

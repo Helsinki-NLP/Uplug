@@ -6,11 +6,25 @@ package Uplug::PreProcess::Tokenizer;
 
 Uplug::PreProcess::Tokenizer
 
+=head1 SYNOPSIS
+
+ my $tokenizer = new Uplug::PreProcess::Tokenizer( lang => 'en' );
+ my @tokens = tokenizer->tokenize( 'Mr. Smith says: "What is a text anyway?"' );
+ my $text = detokenize( '" Big improvement ! " says Mr. Smith .');
+
 =head1 IMPLEMENTS
 
 =head2 C<tokenize>
 
+Tokenize a given text. Returns a list of tokens.
+
+=head2 C<detokenize>
+
+De-tokenize a space-separated text or a list of tokens. Returns plain text.
+
 =head2 C<load_prefixes>
+
+Load language specific abbreviations and other non-breaking prefixes.
 
 =head1 DESCRIPTION
 
@@ -184,7 +198,7 @@ sub detokenize {
     my $token = shift;
 
     my $text = ref($token) eq 'ARRAY' ? join( ' ', @$token ) : $token;
-    my $language = $self->{-lang} || 'en';
+    my $language = $self->{lang} || 'en';
 
     #    chomp($text);
     $text =~ s/\n/ /gs;

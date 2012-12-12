@@ -23,8 +23,8 @@
     'input' => {
       'token delimiter' => ' ',
       'sentence delimiter' => '
-'
-	'encoding' => 'iso-8859-1',
+',
+	'encoding' => 'iso-8859-1'
     },
     'output' => {
       'token delimiter' => '\\s+',
