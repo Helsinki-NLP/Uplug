@@ -15,14 +15,8 @@ while( defined ($file = readdir LIB) ) {
     push (@JARS,"$GROK_LIB/$file") if $file=~/.jar$/;
 }
 closedir(LIB);
-$ENV{CLASSPATH}="$ENV{CLASSPATH}:.:".join(':',@JARS);
+$ENV{CLASSPATH}=join(':',@JARS).':'.$Bin;
 
-my $DIR=$ENV{PWD};                                  # save current dir
-chdir $Bin;                                         # go to Bin
 my $file=$ARGV[0];                                  # file to be tagged
-if (not -e $file){$file="$DIR/$file";}              # change path if necessary
-
 system "$JAVA GrokChunkerEN $file";                 # call the chunker
-
-chdir $DIR;                                         # go bach to original dir
 exit;
