@@ -145,13 +145,13 @@ A Uplug module is specified by its configuration file. A config file is basicall
 Config files may include the following variables to refer to standard locations within the Uplug toolbox. They will be expanded when reading the configuration before executing the commands.
 
  $UplugHome ..... environment ($UPLUGHOME) or /path/to/uplug
- $UplugSystem ... environment ($UPLUGCONFIG) or /shared/systems
+ $UplugSystem ... environment ($UPLUGCONFIG) or /UPLUGSHARE/systems
  $UplugBin ...... /path/to/uplug/bin
- $UplugIni ...... /shared/ini
- $UplugLang ..... /shared/lang
+ $UplugIni ...... /UPLUGSHARE/ini
+ $UplugLang ..... /UPLUGSHARE/lang
  $UplugData ..... data
 
-C</shared/> is the path to the global shared directory (if Uplug is installed properly) or the path to the local directory C<share> in your local copy of Uplug (if you don't use the makefile to install Uplug globally)
+C</UPLUGSHARE/> is the path to the global shared directory (if Uplug is installed properly) or the path to the local directory C<share> in your local copy of Uplug (if you don't use the makefile to install Uplug globally). See further down for more information on environment variables and default locations in Uplug.
 
 Uplug modules may also point to a sequence of sub-modules. Add the following structures to the config-hash within the 'module' structure:
 
@@ -234,18 +234,34 @@ our @EXPORT   = qw/FindConfig ReadConfig WriteConfig
  $OS_TYPE      # type of operating system     (uname -s)
  $MACHINE_TYPE # type of machine architecture (uname -m)
 
+C<$SHARED_HOME> is the global directory of shared files for Uplug (if properly installed) or the directory set in the environment variable UPLUGSHARE. 
+
+If you start a local copy of C<uplug> (not the globally installed one): Uplug tries to find local directories of shared files ('share') relative to the location of the startup script (C</path/to/script/share> or C</path/to/script/../share>) or relative to the environment variable UPLUGHOME (if set). Note that the environment variable UPLUGSHARE overwrites these settings again.
+
 =cut
 
 # try to find the shared files for Uplug
+# - the global Uplug shared files dir
+# - overwrite with UPLUGSHARE (if set in environment)
+# - take local Uplug 'share' folders if we start a local copy of uplug
 
 my $SHARED_HOME;
 eval{ 
     require File::ShareDir; 
     $SHARED_HOME = File::ShareDir::dist_dir('Uplug'); 
 };
-$SHARED_HOME = $ENV{UPLUGHOME}.'/share' unless (-d  $SHARED_HOME);
-$SHARED_HOME = $Bin.'/share'            unless (-d  $SHARED_HOME);
-$SHARED_HOME = $Bin.'/../share'         unless (-d  $SHARED_HOME);
+$SHARED_HOME = $Bin.'/../share'         if (-d  $Bin.'/../share');
+$SHARED_HOME = $Bin.'/share'            if (-d  $Bin.'/share');
+$SHARED_HOME = $ENV{UPLUGHOME}.'/share' if (-d  $ENV{UPLUGHOME}.'/share');
+$SHARED_HOME = $ENV{UPLUGSHARE}         if (-d  $ENV{UPLUGSHARE});
+
+## OLD VERSION: prefer the global share-folder
+## Why is that not good: 'make test' may fail when updating Uplug and the existing
+## global share-folder does not contain the files necessary for the new version
+##
+# $SHARED_HOME = $ENV{UPLUGHOME}.'/share' unless (-d  $SHARED_HOME);
+# $SHARED_HOME = $Bin.'/share'            unless (-d  $SHARED_HOME);
+# $SHARED_HOME = $Bin.'/../share'         unless (-d  $SHARED_HOME);
 
 our $SHARED_BIN  = $SHARED_HOME . '/bin';
 our $SHARED_INI  = $SHARED_HOME . '/ini';
