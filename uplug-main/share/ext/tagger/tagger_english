@@ -1,60 +1,21 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
+#-*-perl-*-
 
 use FindBin qw($Bin);
 
-# my $JAVA="$ENV{JAVA_HOME}/bin/java";
 my $JAVA=`which java`;
 chomp $JAVA;
 
-
-my $GROK_HOME="$Bin/../grok";
-my $GROK_LIB = "$GROK_HOME/lib";
+my $GROK_HOME = "$Bin/../grok";
+my $GROK_LIB  = "$GROK_HOME/lib";
 my @JARS;
 opendir(LIB, $GROK_LIB) or die "Can't open $dir: $!";
 while( defined ($file = readdir LIB) ) {
     push (@JARS,"$GROK_LIB/$file") if $file=~/.jar$/;
 }
 closedir(LIB);
-$ENV{CLASSPATH}="$ENV{CLASSPATH}:.:".join(':',@JARS);
+$ENV{CLASSPATH}=join(':',@JARS).':'.$Bin;
 
-
-my $DIR=$ENV{PWD};                                  # save current dir
-chdir $Bin;                                         # go to Bin
 my $file=$ARGV[0];                                  # file to be tagged
-if (not -e $file){$file="$DIR/$file";}              # change path if necessary
-
-# print "$JAVA GrokTaggerEN $file\n";
 system "$JAVA GrokTaggerEN $file";                  # call the tagger
-
-chdir $DIR;                                         # go bach to original dir
 exit;
-
-
-
-#############################
-# bash version
-#
-#
-# !/bin/bash
-#
-#
-# JAVA_HOME='/usr/java/j2re1.4.2';
-#
-## openNLP
-## and Grok
-#
-# GROK_HOME=${UPLUGHOME}/ext/grok/
-# JARS=`echo ${GROK_HOME}/lib/*.jar | tr ' ' ':'`
-# CLASSPATH=${CLASSPATH}:.:${JARS}:${GROK_HOME}/output/classes:${GROK_HOME}/src/java/
-#
-# DIR=`pwd`;
-# TAGGERDIR=${UPLUGHOME}/ext/tagger;
-# cd ${TAGGERDIR};
-#
-#
-# ${JAVA_HOME}/bin/java GrokTaggerEN $1
-#
-#
-# cd ${DIR};
-
-

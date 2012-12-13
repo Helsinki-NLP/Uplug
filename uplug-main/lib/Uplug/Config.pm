@@ -252,7 +252,9 @@ eval{
 };
 $SHARED_HOME = $Bin.'/../share'         if (-d  $Bin.'/../share');
 $SHARED_HOME = $Bin.'/share'            if (-d  $Bin.'/share');
-$SHARED_HOME = $ENV{UPLUGHOME}.'/share' if (-d  $ENV{UPLUGHOME}.'/share');
+if (defined $ENV{UPLUGHOME}){
+    $SHARED_HOME = $ENV{UPLUGHOME}.'/share' if (-d  $ENV{UPLUGHOME}.'/share');
+}
 $SHARED_HOME = $ENV{UPLUGSHARE}         if (-d  $ENV{UPLUGSHARE});
 
 ## OLD VERSION: prefer the global share-folder
