@@ -29,13 +29,13 @@
 <s id="s3.1">
  <w mosy="PMNG" id="w3.1.1">Sveriges</w>
  <w mosy="NNUSIB" id="w3.1.2">neutralitetspolitik</w>
- <w mosy="NNUSIB" id="w3.1.3">är</w>
+ <w mosy="VBAPC" id="w3.1.3">är</w>
  <w mosy="PRN" id="w3.1.4">av</w>
- <w mosy="NNNSIB" id="w3.1.5">avgörande</w>
+ <w mosy="AVXXXBP" id="w3.1.5">avgörande</w>
  <w mosy="NNUSIB" id="w3.1.6">betydelse</w>
  <w mosy="PRN" id="w3.1.7">för</w>
- <w mosy="NNUSIB" id="w3.1.8">vårt</w>
- <w mosy="NNNXIG" id="w3.1.9">lands</w>
+ <w mosy="PSNS" id="w3.1.8">vårt</w>
+ <w mosy="NNUSIG" id="w3.1.9">lands</w>
  <w mosy="NNUSIB" id="w3.1.10">fred</w>
  <w mosy="CN" id="w3.1.11">och</w>
  <w mosy="AVXXXBP" id="w3.1.12">oberoende</w>
@@ -46,7 +46,7 @@
 <s id="s3.2">
  <w mosy="PNUSZ" id="w3.2.1">Den</w>
  <w mosy="VBAPM" id="w3.2.2">bidrar</w>
- <w mosy="NNUSIB" id="w3.2.3">också</w>
+ <w mosy="ABX" id="w3.2.3">också</w>
  <w mosy="PRN" id="w3.2.4">till</w>
  <w mosy="NNUSIB" id="w3.2.5">stabilitet</w>
  <w mosy="CN" id="w3.2.6">och</w>
@@ -92,11 +92,11 @@
  <w mosy="PRN" id="w4.1.3">av</w>
  <w mosy="ALNSI" id="w4.1.4">ett</w>
  <w mosy="AVNSIBP" id="w4.1.5">starkt</w>
- <w mosy="NNUPIB" id="w4.1.6">försvar</w>
+ <w mosy="NNNSIX" id="w4.1.6">försvar</w>
  <w mosy="PRN" id="w4.1.7">till</w>
  <w mosy="NNUSIB" id="w4.1.8">värn</w>
- <w mosy="CN" id="w4.1.9">för</w>
- <w mosy="VBAMM" id="w4.1.10">vårt</w>
+ <w mosy="PRN" id="w4.1.9">för</w>
+ <w mosy="PSNS" id="w4.1.10">vårt</w>
  <w mosy="AVXXXBP" id="w4.1.11">oberoende</w>
  <w mosy="PUNC" id="w4.1.12">.</w>
 </s> 
@@ -132,17 +132,17 @@
  <w mosy="NNUSDG" id="w4.4.3">regeringens</w>
  <w mosy="NNNXIB" id="w4.4.4">föresats</w>
  <w mosy="SNO" id="w4.4.5">att</w>
- <w mosy="AVXSIBP" id="w4.4.6">söka</w>
+ <w mosy="VBAIM" id="w4.4.6">söka</w>
  <w mosy="AVZZZBP" id="w4.4.7">breda</w>
  <w mosy="NNUPIB" id="w4.4.8">lösningar</w>
  <w mosy="PRN" id="w4.4.9">i</w>
- <w mosy="NNUSIB" id="w4.4.10">frågor</w>
+ <w mosy="NNUPIB" id="w4.4.10">frågor</w>
  <w mosy="SNO" id="w4.4.11">som</w>
- <w mosy="VBAPM" id="w4.4.12">är</w>
+ <w mosy="VBAPC" id="w4.4.12">är</w>
  <w mosy="PRN" id="w4.4.13">av</w>
  <w mosy="NNUSIB" id="w4.4.14">betydelse</w>
- <w mosy="CN" id="w4.4.15">för</w>
- <w mosy="VBAMM" id="w4.4.16">vår</w>
+ <w mosy="PRN" id="w4.4.15">för</w>
+ <w mosy="NNUSIB" id="w4.4.16">vår</w>
  <w mosy="AVZZZBP" id="w4.4.17">nationella</w>
  <w mosy="NNUSIB" id="w4.4.18">säkerhet</w>
  <w mosy="PUNC" id="w4.4.19">.</w>
@@ -171,11 +171,11 @@
 
 <s id="s5.2">
  <w mosy="ABX" id="w5.2.1">Nu</w>
- <w mosy="PRN" id="w5.2.2">måste</w>
+ <w mosy="VBAPO" id="w5.2.2">måste</w>
  <w mosy="NNUPDB" id="w5.2.3">ansträngningarna</w>
  <w mosy="VBPPM" id="w5.2.4">inriktas</w>
  <w mosy="PRN" id="w5.2.5">på</w>
- <w mosy="IE" id="w5.2.6">att</w>
+ <w mosy="SNO" id="w5.2.6">att</w>
  <w mosy="PRN" id="w5.2.7">bland</w>
  <w mosy="PDSINSB" id="w5.2.8">annat</w>
  <w mosy="VBAIM" id="w5.2.9">minska</w>
@@ -183,7 +183,7 @@
  <w mosy="AVZZZBP" id="w5.2.11">strategiska</w>
  <w mosy="NNUPDB" id="w5.2.12">rustningarna</w>
  <w mosy="CN" id="w5.2.13">och</w>
- <w mosy="VBAMM" id="w5.2.14">få</w>
+ <w mosy="AVZZZBP" id="w5.2.14">få</w>
  <w mosy="PRN" id="w5.2.15">till</w>
  <w mosy="NNNXIB" id="w5.2.16">stånd</w>
  <w mosy="ALNSI" id="w5.2.17">ett</w>
@@ -223,11 +223,11 @@
  <w mosy="PRN" id="w6.1.12">i</w>
  <w mosy="NNUSDB" id="w6.1.13">Norden</w>
  <w mosy="CN" id="w6.1.14">och</w>
- <w mosy="VBAMM" id="w6.1.15">för</w>
+ <w mosy="VBAPA" id="w6.1.15">för</w>
  <w mosy="ALUSI" id="w6.1.16">en</w>
  <w mosy="NNUSIB" id="w6.1.17">korridor</w>
  <w mosy="AVUSIBP" id="w6.1.18">fri</w>
- <w mosy="NNUSIB" id="w6.1.19">från</w>
+ <w mosy="PRN" id="w6.1.19">från</w>
  <w mosy="NNUSDB" id="w6.1.20">slagfältskärnvapen</w>
  <w mosy="PRN" id="w6.1.21">i</w>
  <w mosy="NNUSDB" id="w6.1.22">Centraleuropa</w>
@@ -249,12 +249,12 @@
  <w mosy="VBAIM" id="w7.1.11">bidra</w>
  <w mosy="PRN" id="w7.1.12">till</w>
  <w mosy="SNO" id="w7.1.13">att</w>
- <w mosy="NNUSDB" id="w7.1.14">vända</w>
+ <w mosy="VBAIM" id="w7.1.14">vända</w>
  <w mosy="NNUSDB" id="w7.1.15">tillbakagången</w>
  <w mosy="PRN" id="w7.1.16">i</w>
  <w mosy="ALXPD" id="w7.1.17">de</w>
  <w mosy="AVZZZBP" id="w7.1.18">fattiga</w>
- <w mosy="NNNXIB" id="w7.1.19">länderna</w>
+ <w mosy="NNUPDB" id="w7.1.19">länderna</w>
  <w mosy="CN" id="w7.1.20">och</w>
  <w mosy="VBAMM" id="w7.1.21">lindra</w>
  <w mosy="NNUSDB" id="w7.1.22">skuldkrisen</w>
@@ -291,7 +291,7 @@
  <w mosy="AVUSIBP" id="w8.1.8">global</w>
  <w mosy="NNUSIB" id="w8.1.9">FN-konferens</w>
  <w mosy="SNO" id="w8.1.10">om</w>
- <w mosy="NNUSDB" id="w8.1.11">miljö</w>
+ <w mosy="NNUSIB" id="w8.1.11">miljö</w>
  <w mosy="CN" id="w8.1.12">och</w>
  <w mosy="NNUSIB" id="w8.1.13">utveckling</w>
  <w mosy="VBPPM" id="w8.1.14">inkallas</w>
@@ -316,14 +316,14 @@
  <w mosy="VBASM" id="w9.1.13">gett</w>
  <w mosy="PSNS" id="w9.1.14">sitt</w>
  <w mosy="AVXXDBS" id="w9.1.15">helhjärtade</w>
- <w mosy="NNNSIB" id="w9.1.16">stöd</w>
+ <w mosy="NNNXIB" id="w9.1.16">stöd</w>
  <w mosy="PUNC" id="w9.1.17">.</w>
 </s> 
  
 
 <s id="s9.2">
  <w mosy="NNUPIB" id="w9.2.1">Förhandlingar</w>
- <w mosy="NNUSIB" id="w9.2.2">pågår</w>
+ <w mosy="VBAPM" id="w9.2.2">pågår</w>
  <w mosy="SNO" id="w9.2.3">om</w>
  <w mosy="NNUSIB" id="w9.2.4">fred</w>
  <w mosy="PRN" id="w9.2.5">mellan</w>
@@ -338,7 +338,7 @@
  <w mosy="ALXPD" id="w9.3.1">De</w>
  <w mosy="AVZZZBP" id="w9.3.2">sovjetiska</w>
  <w mosy="NNUPDB" id="w9.3.3">trupperna</w>
- <w mosy="DTCPB" id="w9.3.4">är</w>
+ <w mosy="VBAPC" id="w9.3.4">är</w>
  <w mosy="PRN" id="w9.3.5">i</w>
  <w mosy="NNUSIB" id="w9.3.6">färd</w>
  <w mosy="PRN" id="w9.3.7">med</w>
@@ -360,7 +360,7 @@
  <w mosy="NNUSIB" id="w10.1.8">Förenta</w>
  <w mosy="NNUSIB" id="w10.1.9">nationerna</w>
  <w mosy="VBASA" id="w10.1.10">kunnat</w>
- <w mosy="PRN" id="w10.1.11">göra</w>
+ <w mosy="VBAIM" id="w10.1.11">göra</w>
  <w mosy="AVZZZBP" id="w10.1.12">viktiga</w>
  <w mosy="NNUPIB" id="w10.1.13">insatser</w>
  <w mosy="PUNC" id="w10.1.14">.</w>
@@ -389,8 +389,8 @@
 
 <p id="11">
 <s id="s11.1">
- <w mosy="ALNSD" id="w11.1.1">Det</w>
- <w mosy="PCPXXXBT" id="w11.1.2">är</w>
+ <w mosy="PNNSZ" id="w11.1.1">Det</w>
+ <w mosy="VBAPC" id="w11.1.2">är</w>
  <w mosy="PRN" id="w11.1.3">med</w>
  <w mosy="NNUSDB" id="w11.1.4">glädje</w>
  <w mosy="PNUPS" id="w11.1.5">vi</w>
@@ -400,8 +400,8 @@
  <w mosy="PMUG" id="w11.1.9">Nobels</w>
  <w mosy="NNUSIB" id="w11.1.10">fredspris</w>
  <w mosy="PRN" id="w11.1.11">i</w>
- <w mosy="NNUXIB" id="w11.1.12">år</w>
- <w mosy="NNUSIB" id="w11.1.13">går</w>
+ <w mosy="NNNXIB" id="w11.1.12">år</w>
+ <w mosy="VBAPM" id="w11.1.13">går</w>
  <w mosy="PRN" id="w11.1.14">till</w>
  <w mosy="XXX" id="w11.1.15">FN</w>
  <w mosy="COLON" id="w11.1.16">:</w>
@@ -417,7 +417,7 @@
  <w mosy="VBAPE" id="w11.2.2">har</w>
  <w mosy="VBASM" id="w11.2.3">deltagit</w>
  <w mosy="PRN" id="w11.2.4">i</w>
- <w mosy="NNUSIB" id="w11.2.5">så</w>
+ <w mosy="ABX" id="w11.2.5">så</w>
  <w mosy="ABX" id="w11.2.6">gott</w>
  <w mosy="SNO" id="w11.2.7">som</w>
  <w mosy="PDTIXPB" id="w11.2.8">samtliga</w>
@@ -431,21 +431,21 @@
 
 <s id="s11.3">
  <w mosy="PNNSZ" id="w11.3.1">Det</w>
- <w mosy="PRN" id="w11.3.2">är</w>
- <w mosy="NNUSIB" id="w11.3.3">också</w>
- <w mosy="VBAPM" id="w11.3.4">hedrande</w>
+ <w mosy="VBAPC" id="w11.3.2">är</w>
+ <w mosy="ABX" id="w11.3.3">också</w>
+ <w mosy="VBPIM" id="w11.3.4">hedrande</w>
  <w mosy="PRN" id="w11.3.5">för</w>
  <w mosy="PMNB" id="w11.3.6">Sverige</w>
  <w mosy="IE" id="w11.3.7">att</w>
  <w mosy="NNUSDB" id="w11.3.8">generalsekreteraren</w>
  <w mosy="COMMA" id="w11.3.9">,</w>
  <w mosy="PRN" id="w11.3.10">i</w>
- <w mosy="NNUSDB" id="w11.3.11">samråd</w>
+ <w mosy="NNNXIB" id="w11.3.11">samråd</w>
  <w mosy="PRN" id="w11.3.12">med</w>
  <w mosy="NNUPDB" id="w11.3.13">parterna</w>
  <w mosy="COMMA" id="w11.3.14">,</w>
  <w mosy="PCPNSIB" id="w11.3.15">utsett</w>
- <w mosy="PRN" id="w11.3.16">vår</w>
+ <w mosy="NNUSIB" id="w11.3.16">vår</w>
  <w mosy="NNUSIB" id="w11.3.17">FN-ambassadör</w>
  <w mosy="PRN" id="w11.3.18">till</w>
  <w mosy="PSUS" id="w11.3.19">sin</w>
@@ -467,8 +467,8 @@
  <w mosy="NNNSDB" id="w12.1.3">apartheidsystemet</w>
  <w mosy="PRN" id="w12.1.4">i</w>
  <w mosy="PMNB" id="w12.1.5">Sydafrika</w>
- <w mosy="NNUSIB" id="w12.1.6">måste</w>
- <w mosy="VBPPM" id="w12.1.7">avskaffas</w>
+ <w mosy="VBAPO" id="w12.1.6">måste</w>
+ <w mosy="VBPIM" id="w12.1.7">avskaffas</w>
  <w mosy="PUNC" id="w12.1.8">.</w>
 </s> 
  
@@ -505,10 +505,10 @@
  <w mosy="NNUSDB" id="w13.1.1">Konflikten</w>
  <w mosy="PRN" id="w13.1.2">i</w>
  <w mosy="NNUSDB" id="w13.1.3">Mellanöstern</w>
- <w mosy="PRN" id="w13.1.4">tillhör</w>
+ <w mosy="VBAPM" id="w13.1.4">tillhör</w>
  <w mosy="ALXPD" id="w13.1.5">de</w>
  <w mosy="ABX" id="w13.1.6">mest</w>
- <w mosy="NNUSDB" id="w13.1.7">svårlösta</w>
+ <w mosy="AVZZZBP" id="w13.1.7">svårlösta</w>
  <w mosy="PRN" id="w13.1.8">i</w>
  <w mosy="NNUSIB" id="w13.1.9">vår</w>
  <w mosy="NNUSIB" id="w13.1.10">tid</w>
@@ -536,8 +536,8 @@
 
 <p id="14">
 <s id="s14.1">
- <w mosy="VBAMM" id="w14.1.1">Vårt</w>
- <w mosy="NNUSIB" id="w14.1.2">land</w>
+ <w mosy="PSNS" id="w14.1.1">Vårt</w>
+ <w mosy="NNNSIB" id="w14.1.2">land</w>
  <w mosy="VBAPC" id="w14.1.3">är</w>
  <w mosy="PCAXXXB" id="w14.1.4">beroende</w>
  <w mosy="PRN" id="w14.1.5">av</w>
@@ -552,15 +552,15 @@
 
 <s id="s14.2">
  <w mosy="PNUPS" id="w14.2.1">Vi</w>
- <w mosy="VBAPM" id="w14.2.2">är</w>
- <w mosy="NNUSDB" id="w14.2.3">pådrivande</w>
+ <w mosy="VBAPC" id="w14.2.2">är</w>
+ <w mosy="PCAXXXB" id="w14.2.3">pådrivande</w>
  <w mosy="PRN" id="w14.2.4">i</w>
  <w mosy="ALXPD" id="w14.2.5">de</w>
  <w mosy="NNUPIB" id="w14.2.6">förhandlingar</w>
  <w mosy="SNO" id="w14.2.7">som</w>
  <w mosy="ABX" id="w14.2.8">nu</w>
- <w mosy="PRN" id="w14.2.9">pågår</w>
- <w mosy="SNO" id="w14.2.10">för</w>
+ <w mosy="VBAPM" id="w14.2.9">pågår</w>
+ <w mosy="PRN" id="w14.2.10">för</w>
  <w mosy="IE" id="w14.2.11">att</w>
  <w mosy="VBAIM" id="w14.2.12">stärka</w>
  <w mosy="NNUSDB" id="w14.2.13">frihandeln</w>
@@ -579,23 +579,23 @@
  <w mosy="PRN" id="w15.1.8">i</w>
  <w mosy="NNUSXB" id="w15.1.9">samverkan</w>
  <w mosy="PRN" id="w15.1.10">med</w>
- <w mosy="NNUSIB" id="w15.1.11">övriga</w>
- <w mosy="NNUSIB" id="w15.1.12">EFTA-länder</w>
+ <w mosy="AVZZZBP" id="w15.1.11">övriga</w>
+ <w mosy="NNUPIB" id="w15.1.12">EFTA-länder</w>
  <w mosy="COMMA" id="w15.1.13">,</w>
  <w mosy="IE" id="w15.1.14">att</w>
  <w mosy="VBAIM" id="w15.1.15">fördjupa</w>
  <w mosy="NNNSDB" id="w15.1.16">samarbetet</w>
  <w mosy="PRN" id="w15.1.17">med</w>
  <w mosy="XXX" id="w15.1.18">EG</w>
- <w mosy="VBAMM" id="w15.1.19">på</w>
+ <w mosy="PRN" id="w15.1.19">på</w>
  <w mosy="PDTXXPB" id="w15.1.20">alla</w>
  <w mosy="NNUPIB" id="w15.1.21">samhällsområden</w>
  <w mosy="COMMA" id="w15.1.22">,</w>
- <w mosy="VBAMM" id="w15.1.23">så</w>
- <w mosy="PRN" id="w15.1.24">långt</w>
+ <w mosy="ABX" id="w15.1.23">så</w>
+ <w mosy="ABX" id="w15.1.24">långt</w>
  <w mosy="PDEINSB" id="w15.1.25">detta</w>
- <w mosy="PRN" id="w15.1.26">är</w>
- <w mosy="NNUSIB" id="w15.1.27">förenligt</w>
+ <w mosy="VBAPC" id="w15.1.26">är</w>
+ <w mosy="PCPNSIB" id="w15.1.27">förenligt</w>
  <w mosy="PRN" id="w15.1.28">med</w>
  <w mosy="NNUSDB" id="w15.1.29">neutralitetspolitiken</w>
  <w mosy="PUNC" id="w15.1.30">.</w>
@@ -603,7 +603,7 @@
  
 
 <s id="s15.2">
- <w mosy="SNO" id="w15.2.1">Också</w>
+ <w mosy="ABX" id="w15.2.1">Också</w>
  <w mosy="PNNSZ" id="w15.2.2">det</w>
  <w mosy="VBAPM" id="w15.2.3">nordiska</w>
  <w mosy="NNNSDB" id="w15.2.4">samarbetet</w>
@@ -613,7 +613,7 @@
  
 
 <s id="s15.3">
- <w mosy="NNUSIB" id="w15.3.1">Härvid</w>
+ <w mosy="ABX" id="w15.3.1">Härvid</w>
  <w mosy="VBAPO" id="w15.3.2">skall</w>
  <w mosy="NNNPDB" id="w15.3.3">kraven</w>
  <w mosy="PRN" id="w15.3.4">på</w>
@@ -625,9 +625,9 @@
  <w mosy="AVUSIBP" id="w15.3.10">god</w>
  <w mosy="NNUSIB" id="w15.3.11">miljö</w>
  <w mosy="CN" id="w15.3.12">och</w>
- <w mosy="VBAMM" id="w15.3.13">fackligt</w>
- <w mosy="NNUSDB" id="w15.3.14">medbestämmande</w>
- <w mosy="VBPPM" id="w15.3.15">sättas</w>
+ <w mosy="NNUSIB" id="w15.3.13">fackligt</w>
+ <w mosy="VBAPC" id="w15.3.14">medbestämmande</w>
+ <w mosy="VBPIM" id="w15.3.15">sättas</w>
  <w mosy="PRN" id="w15.3.16">i</w>
  <w mosy="NNNXIB" id="w15.3.17">centrum</w>
  <w mosy="PUNC" id="w15.3.18">.</w>
@@ -635,7 +635,7 @@
  
 
 <s id="s15.4">
- <w mosy="NNUSIB" id="w15.4.1">Möjligheterna</w>
+ <w mosy="NNUPDB" id="w15.4.1">Möjligheterna</w>
  <w mosy="PRN" id="w15.4.2">till</w>
  <w mosy="NNUSIB" id="w15.4.3">studier</w>
  <w mosy="COMMA" id="w15.4.4">,</w>
@@ -657,8 +657,8 @@
  <w mosy="SNO" id="w16.1.3">att</w>
  <w mosy="PRN" id="w16.1.4">på</w>
  <w mosy="PDQIXPB" id="w16.1.5">flera</w>
- <w mosy="AVXXXBP" id="w16.1.6">sätt</w>
- <w mosy="NNUSIB" id="w16.1.7">befästa</w>
+ <w mosy="VBAMM" id="w16.1.6">sätt</w>
+ <w mosy="NNUSDB" id="w16.1.7">befästa</w>
  <w mosy="CN" id="w16.1.8">och</w>
  <w mosy="VBAMM" id="w16.1.9">stärka</w>
  <w mosy="NNNSDB" id="w16.1.10">rättssamhället</w>
@@ -669,10 +669,10 @@
 <s id="s17.1">
  <w mosy="NNUSIB" id="w17.1.1">Domstolarnas</w>
  <w mosy="CN" id="w17.1.2">och</w>
- <w mosy="NNUSIB" id="w17.1.3">åklagarväsendets</w>
- <w mosy="VBAPM" id="w17.1.4">möjligheter</w>
+ <w mosy="NNNSDG" id="w17.1.3">åklagarväsendets</w>
+ <w mosy="NNUPIB" id="w17.1.4">möjligheter</w>
  <w mosy="SNO" id="w17.1.5">att</w>
- <w mosy="NNUSDB" id="w17.1.6">utföra</w>
+ <w mosy="VBAIM" id="w17.1.6">utföra</w>
  <w mosy="PSXP" id="w17.1.7">sina</w>
  <w mosy="AVZZZBP" id="w17.1.8">viktiga</w>
  <w mosy="NNUPIB" id="w17.1.9">uppgifter</w>
@@ -686,27 +686,27 @@
  <w mosy="VBAPM" id="w18.1.2">kommer</w>
  <w mosy="IE" id="w18.1.3">att</w>
  <w mosy="VBAIM" id="w18.1.4">lägga</w>
- <w mosy="PRP" id="w18.1.5">förslag</w>
- <w mosy="SNO" id="w18.1.6">om</w>
- <w mosy="NNUSIB" id="w18.1.7">åtgärder</w>
+ <w mosy="NNNXIB" id="w18.1.5">förslag</w>
+ <w mosy="PRN" id="w18.1.6">om</w>
+ <w mosy="NNUPIB" id="w18.1.7">åtgärder</w>
  <w mosy="PRN" id="w18.1.8">för</w>
  <w mosy="IE" id="w18.1.9">att</w>
  <w mosy="VBAIM" id="w18.1.10">utveckla</w>
  <w mosy="CN" id="w18.1.11">och</w>
- <w mosy="VBAMM" id="w18.1.12">effektivisera</w>
- <w mosy="NNUSDG" id="w18.1.13">polisens</w>
+ <w mosy="NNUSDB" id="w18.1.12">effektivisera</w>
+ <w mosy="VBAPM" id="w18.1.13">polisens</w>
  <w mosy="NNUSIB" id="w18.1.14">verksamhet</w>
  <w mosy="PUNC" id="w18.1.15">.</w>
 </s></p>
 
 <p id="19">
 <s id="s19.1">
- <w mosy="NNUSIB" id="w19.1.1">Förslag</w>
+ <w mosy="NNNXIB" id="w19.1.1">Förslag</w>
  <w mosy="SNO" id="w19.1.2">om</w>
- <w mosy="NNUSDB" id="w19.1.3">sänkt</w>
- <w mosy="VBAPM" id="w19.1.4">gräns</w>
+ <w mosy="PCPXSIB" id="w19.1.3">sänkt</w>
+ <w mosy="NNUSIX" id="w19.1.4">gräns</w>
  <w mosy="PRN" id="w19.1.5">för</w>
- <w mosy="NNNSDB" id="w19.1.6">rattonykterhet</w>
+ <w mosy="NNUSIB" id="w19.1.6">rattonykterhet</w>
  <w mosy="VBAPM" id="w19.1.7">kommer</w>
  <w mosy="IE" id="w19.1.8">att</w>
  <w mosy="VBPIM" id="w19.1.9">föreläggas</w>
@@ -728,7 +728,7 @@
 <s id="s20.2">
  <w mosy="NNUSDB" id="w20.2.1">Kampen</w>
  <w mosy="PRN" id="w20.2.2">mot</w>
- <w mosy="NNUSIB" id="w20.2.3">våldet</w>
+ <w mosy="NNNSDB" id="w20.2.3">våldet</w>
  <w mosy="CN" id="w20.2.4">och</w>
  <w mosy="ALUSD" id="w20.2.5">den</w>
  <w mosy="AVZZZBP" id="w20.2.6">ekonomiska</w>
@@ -740,23 +740,23 @@
 <p id="21">
 <s id="s21.1">
  <w mosy="NNUSDB" id="w21.1.1">Kriminalvården</w>
- <w mosy="PRN" id="w21.1.2">måste</w>
- <w mosy="NNUSDB" id="w21.1.3">bedrivas</w>
- <w mosy="PRN" id="w21.1.4">så</w>
- <w mosy="IE" id="w21.1.5">att</w>
- <w mosy="VBAIA" id="w21.1.6">rymningar</w>
- <w mosy="VBPIM" id="w21.1.7">förhindras</w>
+ <w mosy="VBAPO" id="w21.1.2">måste</w>
+ <w mosy="VBPIM" id="w21.1.3">bedrivas</w>
+ <w mosy="ABX" id="w21.1.4">så</w>
+ <w mosy="SNO" id="w21.1.5">att</w>
+ <w mosy="NNUSDB" id="w21.1.6">rymningar</w>
+ <w mosy="VBPPM" id="w21.1.7">förhindras</w>
  <w mosy="PUNC" id="w21.1.8">.</w>
 </s> 
  
 
 <s id="s21.2">
  <w mosy="ABX" id="w21.2.1">Samtidigt</w>
- <w mosy="SNO" id="w21.2.2">måste</w>
+ <w mosy="VBAPO" id="w21.2.2">måste</w>
  <w mosy="NNUSDB" id="w21.2.3">fängelsetiden</w>
  <w mosy="CN" id="w21.2.4">och</w>
  <w mosy="NNUSDB" id="w21.2.5">frivården</w>
- <w mosy="VBAPA" id="w21.2.6">underlätta</w>
+ <w mosy="VBAIM" id="w21.2.6">underlätta</w>
  <w mosy="ALUSI" id="w21.2.7">en</w>
  <w mosy="NNUSIB" id="w21.2.8">återanpassning</w>
  <w mosy="PRN" id="w21.2.9">efter</w>
@@ -766,17 +766,17 @@
 
 <p id="22">
 <s id="s22.1">
- <w mosy="NNUSIB" id="w22.1.1">Målet</w>
+ <w mosy="NNNSDB" id="w22.1.1">Målet</w>
  <w mosy="PRN" id="w22.1.2">för</w>
  <w mosy="ALUSD" id="w22.1.3">den</w>
  <w mosy="AVZZZBP" id="w22.1.4">ekonomiska</w>
  <w mosy="NNUSDB" id="w22.1.5">politiken</w>
- <w mosy="PRN" id="w22.1.6">är</w>
+ <w mosy="VBAPC" id="w22.1.6">är</w>
  <w mosy="AVUSIBP" id="w22.1.7">full</w>
  <w mosy="NNUSIB" id="w22.1.8">sysselsättning</w>
  <w mosy="CN" id="w22.1.9">och</w>
- <w mosy="VBAMM" id="w22.1.10">ökat</w>
- <w mosy="NNUSDB" id="w22.1.11">välstånd</w>
+ <w mosy="VBASM" id="w22.1.10">ökat</w>
+ <w mosy="NNUSIB" id="w22.1.11">välstånd</w>
  <w mosy="VBAPA" id="w22.1.12">för</w>
  <w mosy="PDTDXSB" id="w22.1.13">hela</w>
  <w mosy="NNNSDB" id="w22.1.14">folket</w>
@@ -786,19 +786,19 @@
 <p id="23">
 <s id="s23.1">
  <w mosy="PNUSZ" id="w23.1.1">Den</w>
- <w mosy="VBAPM" id="w23.1.2">alltför</w>
- <w mosy="ABP" id="w23.1.3">höga</w>
+ <w mosy="ABX" id="w23.1.2">alltför</w>
+ <w mosy="AVZZZBP" id="w23.1.3">höga</w>
  <w mosy="NNUSDB" id="w23.1.4">inflationstakten</w>
- <w mosy="PRN" id="w23.1.5">måste</w>
- <w mosy="AVNSIBP" id="w23.1.6">bringas</w>
- <w mosy="ABX" id="w23.1.7">ned</w>
+ <w mosy="VBAPO" id="w23.1.5">måste</w>
+ <w mosy="VBPIM" id="w23.1.6">bringas</w>
+ <w mosy="ABP" id="w23.1.7">ned</w>
  <w mosy="PUNC" id="w23.1.8">.</w>
 </s> 
  
 
 <s id="s23.2">
- <w mosy="NNUSIB" id="w23.2.1">Därför</w>
- <w mosy="PRN" id="w23.2.2">måste</w>
+ <w mosy="ABX" id="w23.2.1">Därför</w>
+ <w mosy="VBAPO" id="w23.2.2">måste</w>
  <w mosy="NNUSDB" id="w23.2.3">budgetpolitiken</w>
  <w mosy="VBAIC" id="w23.2.4">vara</w>
  <w mosy="PCPXSIB" id="w23.2.5">fortsatt</w>
@@ -814,8 +814,8 @@
 
 <s id="s23.3">
  <w mosy="NNUSIB" id="w23.3.1">Kostnadskrävande</w>
- <w mosy="VBAPM" id="w23.3.2">reformer</w>
- <w mosy="VBAPA" id="w23.3.3">genomförs</w>
+ <w mosy="NNUSIB" id="w23.3.2">reformer</w>
+ <w mosy="VBPPM" id="w23.3.3">genomförs</w>
  <w mosy="ABX" id="w23.3.4">endast</w>
  <w mosy="PRN" id="w23.3.5">i</w>
  <w mosy="ALUSD" id="w23.3.6">den</w>
@@ -846,8 +846,8 @@
  <w mosy="NNUSIB" id="w24.1.3">arbetskraft</w>
  <w mosy="CN" id="w24.1.4">och</w>
  <w mosy="ALNSD" id="w24.1.5">det</w>
- <w mosy="NNNXIB" id="w24.1.6">låga</w>
- <w mosy="NNUSIB" id="w24.1.7">sparandet</w>
+ <w mosy="AVZZZBP" id="w24.1.6">låga</w>
+ <w mosy="NNNSDB" id="w24.1.7">sparandet</w>
  <w mosy="VBAPM" id="w24.1.8">begränsar</w>
  <w mosy="NNUSDB" id="w24.1.9">tillväxten</w>
  <w mosy="CN" id="w24.1.10">och</w>
@@ -861,11 +861,11 @@
  
 
 <s id="s24.2">
- <w mosy="NNUSIB" id="w24.2.1">Särskilda</w>
- <w mosy="NNUSIB" id="w24.2.2">åtgärder</w>
+ <w mosy="AVZZZBP" id="w24.2.1">Särskilda</w>
+ <w mosy="NNUPIB" id="w24.2.2">åtgärder</w>
  <w mosy="VBAPM" id="w24.2.3">kommer</w>
- <w mosy="PRN" id="w24.2.4">därför</w>
- <w mosy="IE" id="w24.2.5">att</w>
+ <w mosy="ABX" id="w24.2.4">därför</w>
+ <w mosy="SNO" id="w24.2.5">att</w>
  <w mosy="VBPIM" id="w24.2.6">sättas</w>
  <w mosy="ABP" id="w24.2.7">in</w>
  <w mosy="PRN" id="w24.2.8">för</w>
@@ -873,9 +873,9 @@
  <w mosy="VBAIM" id="w24.2.10">öka</w>
  <w mosy="NNNSDB" id="w24.2.11">sparandet</w>
  <w mosy="CN" id="w24.2.12">och</w>
- <w mosy="VBAMM" id="w24.2.13">bättre</w>
- <w mosy="PRP" id="w24.2.14">ta</w>
- <w mosy="PRN" id="w24.2.15">till</w>
+ <w mosy="AVXXXBC" id="w24.2.13">bättre</w>
+ <w mosy="VBAMM" id="w24.2.14">ta</w>
+ <w mosy="PRP" id="w24.2.15">till</w>
  <w mosy="NNUSIB" id="w24.2.16">vara</w>
  <w mosy="NNUPIG" id="w24.2.17">människors</w>
  <w mosy="VBAIO" id="w24.2.18">vilja</w>
@@ -886,22 +886,22 @@
  
 
 <s id="s24.3">
- <w mosy="NNUSIB" id="w24.3.1">Förslag</w>
+ <w mosy="NNNXIB" id="w24.3.1">Förslag</w>
  <w mosy="VBAPM" id="w24.3.2">kommer</w>
  <w mosy="IE" id="w24.3.3">att</w>
  <w mosy="VBPIM" id="w24.3.4">läggas</w>
- <w mosy="ABP" id="w24.3.5">fram</w>
+ <w mosy="ABX" id="w24.3.5">fram</w>
  <w mosy="PRN" id="w24.3.6">för</w>
  <w mosy="IE" id="w24.3.7">att</w>
  <w mosy="VBAIM" id="w24.3.8">öka</w>
  <w mosy="NNUSDB" id="w24.3.9">konkurrensen</w>
  <w mosy="CN" id="w24.3.10">och</w>
- <w mosy="VBAMM" id="w24.3.11">hålla</w>
+ <w mosy="VBAIM" id="w24.3.11">hålla</w>
  <w mosy="ABP" id="w24.3.12">tillbaka</w>
  <w mosy="NNUPDB" id="w24.3.13">kostnaderna</w>
  <w mosy="PRN" id="w24.3.14">på</w>
- <w mosy="NNUSDB" id="w24.3.15">områden</w>
- <w mosy="PRN" id="w24.3.16">där</w>
+ <w mosy="NNNPIB" id="w24.3.15">områden</w>
+ <w mosy="ABX" id="w24.3.16">där</w>
  <w mosy="NNUSDB" id="w24.3.17">prisutvecklingen</w>
  <w mosy="VBAPM" id="w24.3.18">driver</w>
  <w mosy="PRN" id="w24.3.19">på</w>
@@ -919,14 +919,14 @@
  <w mosy="PRN" id="w25.1.6">med</w>
  <w mosy="NLCPB" id="w25.1.7">tre</w>
  <w mosy="NNUPIB" id="w25.1.8">procentenheter</w>
- <w mosy="CN" id="w25.1.9">för</w>
+ <w mosy="VBAPA" id="w25.1.9">för</w>
  <w mosy="PRN" id="w25.1.10">i</w>
- <w mosy="PDSDXSBXXPB" id="w25.1.11">första</w>
+ <w mosy="NLOXB" id="w25.1.11">första</w>
  <w mosy="NNUSIB" id="w25.1.12">hand</w>
  <w mosy="CN" id="w25.1.13">heltidsarbetande</w>
  <w mosy="VBAPM" id="w25.1.14">kommer</w>
  <w mosy="IE" id="w25.1.15">att</w>
- <w mosy="NNUSIB" id="w25.1.16">föreslås</w>
+ <w mosy="VBAIM" id="w25.1.16">föreslås</w>
  <w mosy="PUNC" id="w25.1.17">.</w>
 </s></p>
 
@@ -936,7 +936,7 @@
  <w mosy="PRN" id="w26.1.2">under</w>
  <w mosy="NNUSDB" id="w26.1.3">valperioden</w>
  <w mosy="VBAPM" id="w26.1.4">kommer</w>
- <w mosy="PRN" id="w26.1.5">förslag</w>
+ <w mosy="NNNXIB" id="w26.1.5">förslag</w>
  <w mosy="IE" id="w26.1.6">att</w>
  <w mosy="VBPIM" id="w26.1.7">läggas</w>
  <w mosy="ABP" id="w26.1.8">fram</w>
@@ -952,7 +952,7 @@
 
 <s id="s26.2">
  <w mosy="NNNSDB" id="w26.2.1">Syftet</w>
- <w mosy="PRN" id="w26.2.2">är</w>
+ <w mosy="VBAPC" id="w26.2.2">är</w>
  <w mosy="IE" id="w26.2.3">att</w>
  <w mosy="VBAIM" id="w26.2.4">stimulera</w>
  <w mosy="NNNSIB" id="w26.2.5">arbete</w>
@@ -978,7 +978,7 @@
 <s id="s26.4">
  <w mosy="NNUSDB" id="w26.4.1">Skattesystemet</w>
  <w mosy="VBAPO" id="w26.4.2">skall</w>
- <w mosy="VBAIM" id="w26.4.3">göras</w>
+ <w mosy="VBPIM" id="w26.4.3">göras</w>
  <w mosy="AVXXXBC" id="w26.4.4">enklare</w>
  <w mosy="CN" id="w26.4.5">och</w>
  <w mosy="NNUSDB" id="w26.4.6">skatteplanering</w>
@@ -995,7 +995,7 @@
  <w mosy="PRN" id="w26.5.5">i</w>
  <w mosy="NNUSIB" id="w26.5.6">riktning</w>
  <w mosy="PRN" id="w26.5.7">mot</w>
- <w mosy="NNUSIB" id="w26.5.8">lägre</w>
+ <w mosy="AVXXXBC" id="w26.5.8">lägre</w>
  <w mosy="NNUPIB" id="w26.5.9">skattesatser</w>
  <w mosy="CN" id="w26.5.10">och</w>
  <w mosy="AVXXXBC" id="w26.5.11">bredare</w>
@@ -1005,7 +1005,7 @@
  
 
 <s id="s26.6">
- <w mosy="PRN" id="w26.6.1">Även</w>
+ <w mosy="ABX" id="w26.6.1">Även</w>
  <w mosy="ALUSD" id="w26.6.2">den</w>
  <w mosy="AVZZZBP" id="w26.6.3">indirekta</w>
  <w mosy="NNUSDB" id="w26.6.4">beskattningen</w>
@@ -1016,13 +1016,13 @@
 
 <p id="27">
 <s id="s27.1">
- <w mosy="VBAMM" id="w27.1.1">För</w>
+ <w mosy="PRN" id="w27.1.1">För</w>
  <w mosy="SNO" id="w27.1.2">att</w>
  <w mosy="ABG" id="w27.1.3">ytterligare</w>
- <w mosy="AVXXIBS" id="w27.1.4">öka</w>
+ <w mosy="VBAIM" id="w27.1.4">öka</w>
  <w mosy="NNUSDB" id="w27.1.5">sysselsättningen</w>
  <w mosy="CN" id="w27.1.6">och</w>
- <w mosy="VBAMM" id="w27.1.7">möta</w>
+ <w mosy="VBAIM" id="w27.1.7">möta</w>
  <w mosy="NNUSDB" id="w27.1.8">bristen</w>
  <w mosy="PRN" id="w27.1.9">på</w>
  <w mosy="NNUSIB" id="w27.1.10">arbetskraft</w>
@@ -1046,7 +1046,7 @@
  <w mosy="NNUSIB" id="w27.2.6">kompetensgivande</w>
  <w mosy="PUNC" id="w27.2.7">vidareutbildning</w>
  <w mosy="VBAPM" id="w27.2.8">spelar</w>
- <w mosy="PRN" id="w27.2.9">härvid</w>
+ <w mosy="ABX" id="w27.2.9">härvid</w>
  <w mosy="ALUSI" id="w27.2.10">en</w>
  <w mosy="AVUSIBP" id="w27.2.11">viktig</w>
  <w mosy="NNUSIB" id="w27.2.12">roll</w>
@@ -1056,25 +1056,25 @@
 
 <s id="s27.3">
  <w mosy="NNUSIB" id="w27.3.1">Handikappades</w>
- <w mosy="VBAPM" id="w27.3.2">möjligheter</w>
- <w mosy="SNO" id="w27.3.3">att</w>
+ <w mosy="NNUPIB" id="w27.3.2">möjligheter</w>
+ <w mosy="IE" id="w27.3.3">att</w>
  <w mosy="VBAIM" id="w27.3.4">delta</w>
  <w mosy="PRN" id="w27.3.5">i</w>
  <w mosy="NNNSDB" id="w27.3.6">arbetslivet</w>
- <w mosy="PRN" id="w27.3.7">måste</w>
- <w mosy="ABG" id="w27.3.8">ytterligare</w>
- <w mosy="NNNXIB" id="w27.3.9">förbättras</w>
+ <w mosy="VBAPO" id="w27.3.7">måste</w>
+ <w mosy="ABX" id="w27.3.8">ytterligare</w>
+ <w mosy="VBPPM" id="w27.3.9">förbättras</w>
  <w mosy="PUNC" id="w27.3.10">.</w>
 </s> 
  
 
 <s id="s27.4">
- <w mosy="NNUSIB" id="w27.4.1">Invandrarnas</w>
- <w mosy="VBARM" id="w27.4.2">inträde</w>
+ <w mosy="NNUPDG" id="w27.4.1">Invandrarnas</w>
+ <w mosy="NNNSIB" id="w27.4.2">inträde</w>
  <w mosy="PRN" id="w27.4.3">på</w>
  <w mosy="NNUSDB" id="w27.4.4">arbetsmarknaden</w>
- <w mosy="PRN" id="w27.4.5">bör</w>
- <w mosy="NNUSIB" id="w27.4.6">underlättas</w>
+ <w mosy="VBAPO" id="w27.4.5">bör</w>
+ <w mosy="VBPIM" id="w27.4.6">underlättas</w>
  <w mosy="PUNC" id="w27.4.7">.</w>
 </s></p>
 
@@ -1082,7 +1082,7 @@
 <s id="s28.1">
  <w mosy="NNUSIB" id="w28.1.1">Arbetslivet</w>
  <w mosy="VBAPO" id="w28.1.2">skall</w>
- <w mosy="VBAIM" id="w28.1.3">göras</w>
+ <w mosy="VBPIM" id="w28.1.3">göras</w>
  <w mosy="NNUSIB" id="w28.1.4">tryggare</w>
  <w mosy="CN" id="w28.1.5">och</w>
  <w mosy="NNUSIB" id="w28.1.6">rättvisare</w>
@@ -1099,7 +1099,7 @@
  <w mosy="PRN" id="w29.1.6">på</w>
  <w mosy="NNUSDB" id="w29.1.7">arbetsmarknaden</w>
  <w mosy="CN" id="w29.1.8">och</w>
- <w mosy="VBAMM" id="w29.1.9">berörda</w>
+ <w mosy="PCPXXXB" id="w29.1.9">berörda</w>
  <w mosy="NNUPIB" id="w29.1.10">myndigheter</w>
  <w mosy="IE" id="w29.1.11">att</w>
  <w mosy="VBAIM" id="w29.1.12">delta</w>
@@ -1125,21 +1125,21 @@
  <w mosy="NNUSDB" id="w29.2.1">Kommissionen</w>
  <w mosy="VBAPO" id="w29.2.2">skall</w>
  <w mosy="VBAIM" id="w29.2.3">lägga</w>
- <w mosy="ABP" id="w29.2.4">fram</w>
- <w mosy="NNUSDB" id="w29.2.5">förslag</w>
+ <w mosy="ABX" id="w29.2.4">fram</w>
+ <w mosy="NNNXIB" id="w29.2.5">förslag</w>
  <w mosy="PRN" id="w29.2.6">till</w>
- <w mosy="NNUSIB" id="w29.2.7">åtgärder</w>
+ <w mosy="NNUPIB" id="w29.2.7">åtgärder</w>
  <w mosy="SNO" id="w29.2.8">som</w>
  <w mosy="VBAPM" id="w29.2.9">ger</w>
  <w mosy="NNUSIB" id="w29.2.10">hälsosammare</w>
- <w mosy="NNUSIB" id="w29.2.11">arbetsmiljöer</w>
+ <w mosy="NNUPIB" id="w29.2.11">arbetsmiljöer</w>
  <w mosy="COMMA" id="w29.2.12">,</w>
  <w mosy="CN" id="w29.2.13">och</w>
  <w mosy="SNO" id="w29.2.14">som</w>
  <w mosy="VBAPM" id="w29.2.15">minskar</w>
  <w mosy="ALXPD" id="w29.2.16">de</w>
- <w mosy="NNNXIB" id="w29.2.17">många</w>
- <w mosy="NNUSIB" id="w29.2.18">arbetsskadorna</w>
+ <w mosy="PDQIXPB" id="w29.2.17">många</w>
+ <w mosy="NNUPIB" id="w29.2.18">arbetsskadorna</w>
  <w mosy="PUNC" id="w29.2.19">.</w>
 </s></p>
 
@@ -1150,8 +1150,8 @@
  <w mosy="VBPPM" id="w30.1.3">lagstiftas</w>
  <w mosy="SNO" id="w30.1.4">om</w>
  <w mosy="ALUSI" id="w30.1.5">en</w>
- <w mosy="AVUSIBP" id="w30.1.6">sjätte</w>
- <w mosy="NNUSIB" id="w30.1.7">semestervecka</w>
+ <w mosy="NLOSB" id="w30.1.6">sjätte</w>
+ <w mosy="NNUSDB" id="w30.1.7">semestervecka</w>
  <w mosy="PUNC" id="w30.1.8">.</w>
 </s> 
  
@@ -1168,7 +1168,7 @@
 <s id="s31.1">
  <w mosy="PNNSZ" id="w31.1.1">Det</w>
  <w mosy="VBAPC" id="w31.1.2">är</w>
- <w mosy="AVNSIBP" id="w31.1.3">angeläget</w>
+ <w mosy="PCPNSIB" id="w31.1.3">angeläget</w>
  <w mosy="IE" id="w31.1.4">att</w>
  <w mosy="VBAIM" id="w31.1.5">fortsätta</w>
  <w mosy="NNNSDB" id="w31.1.6">arbetet</w>
@@ -1185,9 +1185,9 @@
 <s id="s31.2">
  <w mosy="NNUSIB" id="w31.2.1">Kvinnor</w>
  <w mosy="CN" id="w31.2.2">och</w>
- <w mosy="VBAMM" id="w31.2.3">män</w>
- <w mosy="NNUSDB" id="w31.2.4">måste</w>
- <w mosy="IE" id="w31.2.5">lättare</w>
+ <w mosy="NNUSDB" id="w31.2.3">män</w>
+ <w mosy="VBAPO" id="w31.2.4">måste</w>
+ <w mosy="AVXXXBC" id="w31.2.5">lättare</w>
  <w mosy="VBAIA" id="w31.2.6">kunna</w>
  <w mosy="VBAIM" id="w31.2.7">förena</w>
  <w mosy="NNNSDB" id="w31.2.8">förvärvsarbete</w>
@@ -1199,7 +1199,7 @@
 
 <s id="s31.3">
  <w mosy="PCPXXXB" id="w31.3.1">Fortsatta</w>
- <w mosy="NNUSIB" id="w31.3.2">åtgärder</w>
+ <w mosy="NNUPIB" id="w31.3.2">åtgärder</w>
  <w mosy="VBAPM" id="w31.3.3">kommer</w>
  <w mosy="IE" id="w31.3.4">att</w>
  <w mosy="VBPIM" id="w31.3.5">vidtas</w>
@@ -1221,11 +1221,11 @@
  <w mosy="PRN" id="w32.1.3">av</w>
  <w mosy="NNUSDB" id="w32.1.4">regionalpolitiken</w>
  <w mosy="SNO" id="w32.1.5">som</w>
- <w mosy="PRN" id="w32.1.6">ägt</w>
+ <w mosy="PCPNSIB" id="w32.1.6">ägt</w>
  <w mosy="NNNXIB" id="w32.1.7">rum</w>
  <w mosy="PRN" id="w32.1.8">under</w>
  <w mosy="ABX" id="w32.1.9">senare</w>
- <w mosy="ABX" id="w32.1.10">år</w>
+ <w mosy="VBAPC" id="w32.1.10">år</w>
  <w mosy="COMMA" id="w32.1.11">,</w>
  <w mosy="PRN" id="w32.1.12">med</w>
  <w mosy="NNUSIB" id="w32.1.13">inriktning</w>
@@ -1234,7 +1234,7 @@
  <w mosy="COMMA" id="w32.1.16">,</w>
  <w mosy="NNUSIB" id="w32.1.17">utbildning</w>
  <w mosy="CN" id="w32.1.18">och</w>
- <w mosy="NNUSIB" id="w32.1.19">förbättrad</w>
+ <w mosy="PCPUSIB" id="w32.1.19">förbättrad</w>
  <w mosy="NNUSIB" id="w32.1.20">infrastruktur</w>
  <w mosy="COMMA" id="w32.1.21">,</w>
  <w mosy="VBAPM" id="w32.1.22">kommer</w>
@@ -1246,7 +1246,7 @@
 <p id="33">
 <s id="s33.1">
  <w mosy="ALXPD" id="w33.1.1">De</w>
- <w mosy="NLCPB" id="w33.1.2">små</w>
+ <w mosy="AVXPXBP" id="w33.1.2">små</w>
  <w mosy="NNNPDB" id="w33.1.3">företagen</w>
  <w mosy="VBAPM" id="w33.1.4">svarar</w>
  <w mosy="ABX" id="w33.1.5">för</w>
@@ -1272,8 +1272,8 @@
  <w mosy="PRN" id="w33.2.6">för</w>
  <w mosy="NNUSDB" id="w33.2.7">småföretagen</w>
  <w mosy="VBAPM" id="w33.2.8">kommer</w>
- <w mosy="PRN" id="w33.2.9">därför</w>
- <w mosy="IE" id="w33.2.10">att</w>
+ <w mosy="ABX" id="w33.2.9">därför</w>
+ <w mosy="SNO" id="w33.2.10">att</w>
  <w mosy="VBAIM" id="w33.2.11">fortsätta</w>
  <w mosy="PUNC" id="w33.2.12">.</w>
 </s></p>
@@ -1300,7 +1300,7 @@
  <w mosy="NNUSDG" id="w34.2.6">världens</w>
  <w mosy="NNUPIB" id="w34.2.7">flyktingar</w>
  <w mosy="VBAPO" id="w34.2.8">skall</w>
- <w mosy="VBAIC" id="w34.2.9">få</w>
+ <w mosy="VBAIA" id="w34.2.9">få</w>
  <w mosy="PCPXSIB" id="w34.2.10">fortsatt</w>
  <w mosy="AVNSIBP" id="w34.2.11">starkt</w>
  <w mosy="NNNXIB" id="w34.2.12">stöd</w>
@@ -1319,7 +1319,7 @@
 
 <p id="35">
 <s id="s35.1">
- <w mosy="NNUSIB" id="w35.1.1">Förslag</w>
+ <w mosy="NNNXIB" id="w35.1.1">Förslag</w>
  <w mosy="VBAPM" id="w35.1.2">kommer</w>
  <w mosy="IE" id="w35.1.3">att</w>
  <w mosy="VBPIM" id="w35.1.4">föreläggas</w>
@@ -1338,7 +1338,7 @@
  <w mosy="NNUSDB" id="w35.2.3">utlänningsärenden</w>
  <w mosy="VBAPO" id="w35.2.4">skall</w>
  <w mosy="VBPIM" id="w35.2.5">förkortas</w>
- <w mosy="ABP" id="w35.2.6">väsentligt</w>
+ <w mosy="AVNSIBP" id="w35.2.6">väsentligt</w>
  <w mosy="PUNC" id="w35.2.7">.</w>
 </s></p>
 
@@ -1349,8 +1349,8 @@
  <w mosy="NNUSIB" id="w36.1.3">miljö</w>
  <w mosy="CN" id="w36.1.4">och</w>
  <w mosy="NNUSIB" id="w36.1.5">natur</w>
- <w mosy="PRN" id="w36.1.6">måste</w>
- <w mosy="NNUSIB" id="w36.1.7">prägla</w>
+ <w mosy="VBAPO" id="w36.1.6">måste</w>
+ <w mosy="VBAIM" id="w36.1.7">prägla</w>
  <w mosy="NNUSDB" id="w36.1.8">utvecklingen</w>
  <w mosy="PRN" id="w36.1.9">på</w>
  <w mosy="PDTXXPB" id="w36.1.10">alla</w>
@@ -1393,7 +1393,7 @@
  <w mosy="VBAIM" id="w37.2.6">nå</w>
  <w mosy="NNUPIB" id="w37.2.7">överenskommelser</w>
  <w mosy="PRN" id="w37.2.8">över</w>
- <w mosy="NNUSIB" id="w37.2.9">gränserna</w>
+ <w mosy="NNUPDB" id="w37.2.9">gränserna</w>
  <w mosy="SNO" id="w37.2.10">om</w>
  <w mosy="VBARM" id="w37.2.11">minskade</w>
  <w mosy="NNUSIB" id="w37.2.12">luft-</w>
@@ -1413,7 +1413,7 @@
  <w mosy="NNUSDB" id="w37.3.1">Avvecklingsplanen</w>
  <w mosy="PRN" id="w37.3.2">för</w>
  <w mosy="NNUSIB" id="w37.3.3">freon</w>
- <w mosy="NNUSIB" id="w37.3.4">fullföljs</w>
+ <w mosy="VBPPM" id="w37.3.4">fullföljs</w>
  <w mosy="PUNC" id="w37.3.5">.</w>
 </s></p>
 
@@ -1427,7 +1427,7 @@
  <w mosy="VBAIC" id="w38.1.6">bli</w>
  <w mosy="AVXXXBC" id="w38.1.7">renare</w>
  <w mosy="PRN" id="w38.1.8">genom</w>
- <w mosy="NNUSIB" id="w38.1.9">hårda</w>
+ <w mosy="AVZZZBP" id="w38.1.9">hårda</w>
  <w mosy="NNNXIB" id="w38.1.10">krav</w>
  <w mosy="CN" id="w38.1.11">och</w>
  <w mosy="AVUSIBP" id="w38.1.12">snabb</w>
@@ -1441,7 +1441,7 @@
 
 <s id="s38.2">
  <w mosy="PCPXXXB" id="w38.2.1">Givna</w>
- <w mosy="NNUSDB" id="w38.2.2">tillstånd</w>
+ <w mosy="NNNXIB" id="w38.2.2">tillstånd</w>
  <w mosy="VBPPM" id="w38.2.3">omprövas</w>
  <w mosy="PUNC" id="w38.2.4">.</w>
 </s> 
@@ -1450,14 +1450,14 @@
 <s id="s38.3">
  <w mosy="NNNPDB" id="w38.3.1">Kraven</w>
  <w mosy="PRN" id="w38.3.2">på</w>
- <w mosy="NNUSIB" id="w38.3.3">miljöfarliga</w>
+ <w mosy="AVZZZBP" id="w38.3.3">miljöfarliga</w>
  <w mosy="NNUPIB" id="w38.3.4">produkter</w>
  <w mosy="COMMA" id="w38.3.5">,</w>
  <w mosy="NNUPIB" id="w38.3.6">kemikalier</w>
  <w mosy="CN" id="w38.3.7">och</w>
- <w mosy="VBAMM" id="w38.3.8">på</w>
+ <w mosy="PRN" id="w38.3.8">på</w>
  <w mosy="NNUSDB" id="w38.3.9">avfallshanteringen</w>
- <w mosy="VBAPM" id="w38.3.10">skärps</w>
+ <w mosy="NNUSIG" id="w38.3.10">skärps</w>
  <w mosy="PUNC" id="w38.3.11">.</w>
 </s> 
  
@@ -1465,7 +1465,7 @@
 <s id="s38.4">
  <w mosy="AVZZZBP" id="w38.4.1">Nya</w>
  <w mosy="AVZZZBP" id="w38.4.2">kemiska</w>
- <w mosy="PRN" id="w38.4.3">ämnen</w>
+ <w mosy="NNNPIB" id="w38.4.3">ämnen</w>
  <w mosy="NNUSDB" id="w38.4.4">förhandsgranskas</w>
  <w mosy="PUNC" id="w38.4.5">.</w>
 </s></p>
@@ -1475,8 +1475,8 @@
  <w mosy="NNUSIB" id="w39.1.1">Miljöavgifter</w>
  <w mosy="VBPPM" id="w39.1.2">införs</w>
  <w mosy="ABX" id="w39.1.3">redan</w>
- <w mosy="PRN" id="w39.1.4">år</w>
- <w mosy="NNUSIB" id="w39.1.5">1989</w>
+ <w mosy="VBAPC" id="w39.1.4">år</w>
+ <w mosy="PCPXXXBT" id="w39.1.5">1989</w>
  <w mosy="PRN" id="w39.1.6">på</w>
  <w mosy="NNUSIB" id="w39.1.7">klororganiska</w>
  <w mosy="NNUPIB" id="w39.1.8">föreningar</w>
@@ -1487,16 +1487,16 @@
  
 
 <s id="s39.2">
- <w mosy="NNUSIB" id="w39.2.1">Förslag</w>
+ <w mosy="NNNXIB" id="w39.2.1">Förslag</w>
  <w mosy="SNO" id="w39.2.2">om</w>
  <w mosy="NNUSIB" id="w39.2.3">miljöavgift</w>
  <w mosy="PRN" id="w39.2.4">på</w>
  <w mosy="NLOXB" id="w39.2.5">andra</w>
- <w mosy="NNUSDB" id="w39.2.6">ämnen</w>
+ <w mosy="NNNPIB" id="w39.2.6">ämnen</w>
  <w mosy="COMMA" id="w39.2.7">,</w>
  <w mosy="PRN" id="w39.2.8">bland</w>
  <w mosy="PDSINSB" id="w39.2.9">annat</w>
- <w mosy="NNNXIB" id="w39.2.10">på</w>
+ <w mosy="PRN" id="w39.2.10">på</w>
  <w mosy="NNUSIB" id="w39.2.11">koldioxid</w>
  <w mosy="COMMA" id="w39.2.12">,</w>
  <w mosy="VBPIM" id="w39.2.13">presenteras</w>
@@ -1511,7 +1511,7 @@
  <w mosy="NNUSIB" id="w40.1.2">miljölagstiftning</w>
  <w mosy="VBAPO" id="w40.1.3">skall</w>
  <w mosy="VBPIM" id="w40.1.4">ses</w>
- <w mosy="ABP" id="w40.1.5">över</w>
+ <w mosy="PRN" id="w40.1.5">över</w>
  <w mosy="CN" id="w40.1.6">och</w>
  <w mosy="VBPIM" id="w40.1.7">samordnas</w>
  <w mosy="PUNC" id="w40.1.8">.</w>
@@ -1519,7 +1519,7 @@
  
 
 <s id="s40.2">
- <w mosy="NNUSIB" id="w40.2.1">Förslag</w>
+ <w mosy="NNNXIB" id="w40.2.1">Förslag</w>
  <w mosy="PRN" id="w40.2.2">till</w>
  <w mosy="AVUSIBP" id="w40.2.3">ny</w>
  <w mosy="NNUSIB" id="w40.2.4">naturvårdslag</w>
@@ -1538,16 +1538,16 @@
 <s id="s41.1">
  <w mosy="NNUSDB" id="w41.1.1">Miljöskyddsorganisationen</w>
  <w mosy="VBPPM" id="w41.1.2">ges</w>
- <w mosy="PRN" id="w41.1.3">ökade</w>
+ <w mosy="PCPXSDBT" id="w41.1.3">ökade</w>
  <w mosy="NNUPIB" id="w41.1.4">resurser</w>
  <w mosy="PUNC" id="w41.1.5">.</w>
 </s> 
  
 
 <s id="s41.2">
- <w mosy="NNUSIB" id="w41.2.1">Särskilda</w>
- <w mosy="NNUSIB" id="w41.2.2">åtgärder</w>
- <w mosy="VBAPM" id="w41.2.3">sätts</w>
+ <w mosy="AVZZZBP" id="w41.2.1">Särskilda</w>
+ <w mosy="NNUPIB" id="w41.2.2">åtgärder</w>
+ <w mosy="VBPPM" id="w41.2.3">sätts</w>
  <w mosy="ABP" id="w41.2.4">in</w>
  <w mosy="PRN" id="w41.2.5">i</w>
  <w mosy="AVNSIBP" id="w41.2.6">speciellt</w>
@@ -1556,7 +1556,7 @@
  <w mosy="COMMA" id="w41.2.9">,</w>
  <w mosy="PRN" id="w41.2.10">till</w>
  <w mosy="NNNXIB" id="w41.2.11">exempel</w>
- <w mosy="VBAPM" id="w41.2.12">västra</w>
+ <w mosy="AVXXXBP" id="w41.2.12">västra</w>
  <w mosy="NNUSIB" id="w41.2.13">Skåne</w>
  <w mosy="CN" id="w41.2.14">och</w>
  <w mosy="NNUSIB" id="w41.2.15">Sundsvall</w>
@@ -1583,7 +1583,7 @@
  <w mosy="NNUSDB" id="w42.1.14">miljön</w>
  <w mosy="PRN" id="w42.1.15">i</w>
  <w mosy="PDEIXPB" id="w42.1.16">dessa</w>
- <w mosy="NNUSDB" id="w42.1.17">områden</w>
+ <w mosy="NNNPIB" id="w42.1.17">områden</w>
  <w mosy="VBAPO" id="w42.1.18">skall</w>
  <w mosy="VBPIM" id="w42.1.19">förbättras</w>
  <w mosy="PUNC" id="w42.1.20">.</w>
@@ -1591,17 +1591,17 @@
 
 <p id="43">
 <s id="s43.1">
- <w mosy="NNUSIB" id="w43.1.1">Förslag</w>
+ <w mosy="NNNXIB" id="w43.1.1">Förslag</w>
  <w mosy="VBAPM" id="w43.1.2">kommer</w>
- <w mosy="ABX" id="w43.1.3">år</w>
+ <w mosy="VBAPC" id="w43.1.3">år</w>
  <w mosy="PRN" id="w43.1.4">1990</w>
  <w mosy="IE" id="w43.1.5">att</w>
  <w mosy="VBPIM" id="w43.1.6">föreläggas</w>
  <w mosy="NNUSDB" id="w43.1.7">riksdagen</w>
  <w mosy="SNO" id="w43.1.8">om</w>
  <w mosy="PVXPB" id="w43.1.9">vilka</w>
- <w mosy="NNUPIB" id="w43.1.10">två</w>
- <w mosy="VBPPM" id="w43.1.11">reaktorer</w>
+ <w mosy="NLCPB" id="w43.1.10">två</w>
+ <w mosy="NNUPIB" id="w43.1.11">reaktorer</w>
  <w mosy="PRN" id="w43.1.12">i</w>
  <w mosy="NNUSDB" id="w43.1.13">kärnkraftverken</w>
  <w mosy="NNUSIB" id="w43.1.14">Barsebäck</w>
@@ -1622,7 +1622,7 @@
 <s id="s43.2">
  <w mosy="NNNSDB" id="w43.2.1">Energisystemet</w>
  <w mosy="VBPPM" id="w43.2.2">förändras</w>
- <w mosy="PRN" id="w43.2.3">så</w>
+ <w mosy="ABX" id="w43.2.3">så</w>
  <w mosy="SNO" id="w43.2.4">att</w>
  <w mosy="NNUSDB" id="w43.2.5">försurningen</w>
  <w mosy="VBAPM" id="w43.2.6">minskar</w>
@@ -1643,9 +1643,9 @@
  <w mosy="NNNXIB" id="w44.1.7">jordbruk</w>
  <w mosy="PRN" id="w44.1.8">utan</w>
  <w mosy="AVUSIBP" id="w44.1.9">skadlig</w>
- <w mosy="NNUSIB" id="w44.1.10">påverkan</w>
+ <w mosy="NNUSXB" id="w44.1.10">påverkan</w>
  <w mosy="PRN" id="w44.1.11">på</w>
- <w mosy="NNUSIB" id="w44.1.12">miljön</w>
+ <w mosy="NNUSDB" id="w44.1.12">miljön</w>
  <w mosy="PUNC" id="w44.1.13">.</w>
 </s> 
  
@@ -1653,8 +1653,8 @@
 <s id="s44.2">
  <w mosy="ALUSI" id="w44.2.1">En</w>
  <w mosy="NNUSIB" id="w44.2.2">förskjutning</w>
- <w mosy="NNUSIB" id="w44.2.3">måste</w>
- <w mosy="VBAMM" id="w44.2.4">ske</w>
+ <w mosy="VBAPO" id="w44.2.3">måste</w>
+ <w mosy="VBAIM" id="w44.2.4">ske</w>
  <w mosy="PRN" id="w44.2.5">från</w>
  <w mosy="NNUSDG" id="w44.2.6">dagens</w>
  <w mosy="AVZZZBP" id="w44.2.7">intensiva</w>
@@ -1663,17 +1663,17 @@
  <w mosy="ALNSI" id="w44.2.10">ett</w>
  <w mosy="NNNXIB" id="w44.2.11">jordbruk</w>
  <w mosy="SNO" id="w44.2.12">som</w>
- <w mosy="VBAPM" id="w44.2.13">bättre</w>
+ <w mosy="AVXXXBC" id="w44.2.13">bättre</w>
  <w mosy="VBAPM" id="w44.2.14">motsvarar</w>
  <w mosy="ALXPD" id="w44.2.15">de</w>
  <w mosy="NNNXIB" id="w44.2.16">krav</w>
  <w mosy="SNO" id="w44.2.17">som</w>
  <w mosy="VBPPM" id="w44.2.18">ställs</w>
  <w mosy="COMMA" id="w44.2.19">,</w>
- <w mosy="PRN" id="w44.2.20">när</w>
- <w mosy="ALNSD" id="w44.2.21">det</w>
- <w mosy="NNNXIB" id="w44.2.22">gäller</w>
- <w mosy="DTCPB" id="w44.2.23">miljön</w>
+ <w mosy="SNO" id="w44.2.20">när</w>
+ <w mosy="PNNSZ" id="w44.2.21">det</w>
+ <w mosy="VBAPM" id="w44.2.22">gäller</w>
+ <w mosy="NNUSDB" id="w44.2.23">miljön</w>
  <w mosy="CN" id="w44.2.24">och</w>
  <w mosy="ALUSD" id="w44.2.25">den</w>
  <w mosy="AVZZZBP" id="w44.2.26">regionala</w>
@@ -1692,7 +1692,7 @@
 
 <s id="s44.4">
  <w mosy="PNNSZ" id="w44.4.1">Det</w>
- <w mosy="VBAPM" id="w44.4.2">öppna</w>
+ <w mosy="VBAIM" id="w44.4.2">öppna</w>
  <w mosy="NNNSDB" id="w44.4.3">landskapet</w>
  <w mosy="VBPPM" id="w44.4.4">värnas</w>
  <w mosy="PUNC" id="w44.4.5">.</w>
@@ -1704,7 +1704,7 @@
  <w mosy="AVZZZBP" id="w45.1.2">internationella</w>
  <w mosy="NNUSDB" id="w45.1.3">utvecklingen</w>
  <w mosy="VBAPM" id="w45.1.4">kommer</w>
- <w mosy="PRN" id="w45.1.5">också</w>
+ <w mosy="ABX" id="w45.1.5">också</w>
  <w mosy="IE" id="w45.1.6">att</w>
  <w mosy="VBAIM" id="w45.1.7">ställa</w>
  <w mosy="NNNXIB" id="w45.1.8">krav</w>
@@ -1729,7 +1729,7 @@
  <w mosy="IE" id="w45.2.3">att</w>
  <w mosy="VBAIM" id="w45.2.4">utveckla</w>
  <w mosy="NNUSDB" id="w45.2.5">livsmedelspolitiken</w>
- <w mosy="PRN" id="w45.2.6">så</w>
+ <w mosy="ABX" id="w45.2.6">så</w>
  <w mosy="SNO" id="w45.2.7">att</w>
  <w mosy="NNUSDB" id="w45.2.8">prisutvecklingen</w>
  <w mosy="VBPPM" id="w45.2.9">dämpas</w>
@@ -1746,7 +1746,7 @@
 
 <s id="s45.3">
  <w mosy="NNUSDB" id="w45.3.1">Livsmedelskontrollen</w>
- <w mosy="VBAPM" id="w45.3.2">skärps</w>
+ <w mosy="NNUSIG" id="w45.3.2">skärps</w>
  <w mosy="PUNC" id="w45.3.3">.</w>
 </s></p>
 
@@ -1759,9 +1759,9 @@
  <w mosy="VBPIM" id="w46.1.5">förnyas</w>
  <w mosy="PRN" id="w46.1.6">för</w>
  <w mosy="IE" id="w46.1.7">att</w>
- <w mosy="VBAIM" id="w46.1.8">bättre</w>
- <w mosy="PRN" id="w46.1.9">tjäna</w>
- <w mosy="NNUSIB" id="w46.1.10">människorna</w>
+ <w mosy="AVXXXBC" id="w46.1.8">bättre</w>
+ <w mosy="VBAIM" id="w46.1.9">tjäna</w>
+ <w mosy="NNUPDB" id="w46.1.10">människorna</w>
  <w mosy="PRN" id="w46.1.11">efter</w>
  <w mosy="PSXX" id="w46.1.12">deras</w>
  <w mosy="NNNXIB" id="w46.1.13">behov</w>
@@ -1776,7 +1776,7 @@
  <w mosy="CN" id="w46.2.2">och</w>
  <w mosy="NNUSDB" id="w46.2.3">valfriheten</w>
  <w mosy="VBAPO" id="w46.2.4">skall</w>
- <w mosy="PNUSZ" id="w46.2.5">öka</w>
+ <w mosy="VBAIM" id="w46.2.5">öka</w>
  <w mosy="PUNC" id="w46.2.6">.</w>
 </s> 
  
@@ -1823,15 +1823,15 @@
  <w mosy="NNUSDB" id="w47.2.1">Utbyggnaden</w>
  <w mosy="VBAPO" id="w47.2.2">skall</w>
  <w mosy="VBAIC" id="w47.2.3">vara</w>
- <w mosy="AVUSIBP" id="w47.2.4">slutförd</w>
+ <w mosy="PCPUSIB" id="w47.2.4">slutförd</w>
  <w mosy="NNUSIB" id="w47.2.5">1991</w>
  <w mosy="PUNC" id="w47.2.6">.</w>
 </s> 
  
 
 <s id="s47.3">
- <w mosy="PNUSZ" id="w47.3.1">Den</w>
- <w mosy="VBAPM" id="w47.3.2">första</w>
+ <w mosy="ALUSD" id="w47.3.1">Den</w>
+ <w mosy="NLOXB" id="w47.3.2">första</w>
  <w mosy="NNUSDB" id="w47.3.3">etappen</w>
  <w mosy="COMMA" id="w47.3.4">,</w>
  <w mosy="SNO" id="w47.3.5">som</w>
@@ -1843,7 +1843,7 @@
  <w mosy="NNUSIB" id="w47.3.11">juli</w>
  <w mosy="TYPXX" id="w47.3.12">1989</w>
  <w mosy="COMMA" id="w47.3.13">,</w>
- <w mosy="ABX" id="w47.3.14">innebär</w>
+ <w mosy="VBAMM" id="w47.3.14">innebär</w>
  <w mosy="ABG" id="w47.3.15">ytterligare</w>
  <w mosy="NLCPB" id="w47.3.16">tre</w>
  <w mosy="NNUPIG" id="w47.3.17">månaders</w>
@@ -1856,7 +1856,7 @@
  <w mosy="NNUSDB" id="w48.1.1">Utbyggnaden</w>
  <w mosy="PRN" id="w48.1.2">av</w>
  <w mosy="NNUSDB" id="w48.1.3">barnomsorgen</w>
- <w mosy="VBPPM" id="w48.1.4">fortsätter</w>
+ <w mosy="VBAPM" id="w48.1.4">fortsätter</w>
  <w mosy="PRN" id="w48.1.5">i</w>
  <w mosy="NNUSIB" id="w48.1.6">enlighet</w>
  <w mosy="PRN" id="w48.1.7">med</w>
@@ -1873,15 +1873,15 @@
  <w mosy="NNUSDB" id="w49.1.4">höjningen</w>
  <w mosy="PRN" id="w49.1.5">av</w>
  <w mosy="NNUSIB" id="w49.1.6">basbeloppet</w>
- <w mosy="NNUSIB" id="w49.1.7">från</w>
+ <w mosy="PRN" id="w49.1.7">från</w>
  <w mosy="CN" id="w49.1.8">och</w>
  <w mosy="PRN" id="w49.1.9">med</w>
  <w mosy="ALUSD" id="w49.1.10">den</w>
  <w mosy="DTCSB" id="w49.1.11">1</w>
  <w mosy="NNUSIB" id="w49.1.12">januari</w>
- <w mosy="PRN" id="w49.1.13">1989</w>
- <w mosy="NNUSIB" id="w49.1.14">får</w>
- <w mosy="CN" id="w49.1.15">pensionärerna</w>
+ <w mosy="TYPXX" id="w49.1.13">1989</w>
+ <w mosy="PRN" id="w49.1.14">får</w>
+ <w mosy="NNUSDB" id="w49.1.15">pensionärerna</w>
  <w mosy="AVUSIBP" id="w49.1.16">full</w>
  <w mosy="NNUSIB" id="w49.1.17">kompensation</w>
  <w mosy="PRN" id="w49.1.18">för</w>
@@ -1900,7 +1900,7 @@
  <w mosy="PRN" id="w50.1.6">genom</w>
  <w mosy="NNUSIB" id="w50.1.7">Hälso-</w>
  <w mosy="CN" id="w50.1.8">och</w>
- <w mosy="SNO" id="w50.1.9">sjukvårdsberedningens</w>
+ <w mosy="PRN" id="w50.1.9">sjukvårdsberedningens</w>
  <w mosy="NNNSIB" id="w50.1.10">arbete</w>
  <w mosy="COMMA" id="w50.1.11">,</w>
  <w mosy="IE" id="w50.1.12">att</w>
@@ -1910,15 +1910,15 @@
  <w mosy="PRN" id="w50.1.16">åt</w>
  <w mosy="SNO" id="w50.1.17">att</w>
  <w mosy="PDTXXPB" id="w50.1.18">alla</w>
- <w mosy="TYPXX" id="w50.1.19">får</w>
- <w mosy="NNUSIB" id="w50.1.20">rätt</w>
+ <w mosy="PRN" id="w50.1.19">får</w>
+ <w mosy="AVXSIBP" id="w50.1.20">rätt</w>
  <w mosy="PRN" id="w50.1.21">till</w>
  <w mosy="ALUSI" id="w50.1.22">en</w>
  <w mosy="NNUSIB" id="w50.1.23">hälso-</w>
  <w mosy="CN" id="w50.1.24">och</w>
  <w mosy="NNUSIB" id="w50.1.25">sjukvård</w>
  <w mosy="PRN" id="w50.1.26">av</w>
- <w mosy="NNUSIB" id="w50.1.27">hög</w>
+ <w mosy="AVUSIBP" id="w50.1.27">hög</w>
  <w mosy="NNUSIB" id="w50.1.28">kvalitet</w>
  <w mosy="PUNC" id="w50.1.29">.</w>
 </s> 
@@ -1927,31 +1927,31 @@
 <s id="s50.2">
  <w mosy="NNUSDB" id="w50.2.1">Personalrekryteringen</w>
  <w mosy="PRN" id="w50.2.2">inom</w>
- <w mosy="NNUSDB" id="w50.2.3">vården</w>
+ <w mosy="NNNPIB" id="w50.2.3">vården</w>
  <w mosy="CN" id="w50.2.4">och</w>
  <w mosy="NNUSDB" id="w50.2.5">omsorgen</w>
- <w mosy="PRN" id="w50.2.6">måste</w>
- <w mosy="NNUSDB" id="w50.2.7">förbättras</w>
+ <w mosy="VBAPO" id="w50.2.6">måste</w>
+ <w mosy="VBPIM" id="w50.2.7">förbättras</w>
  <w mosy="PUNC" id="w50.2.8">.</w>
 </s></p>
 
 <p id="51">
 <s id="s51.1">
  <w mosy="NNUSDB" id="w51.1.1">Situationen</w>
- <w mosy="CN" id="w51.1.2">för</w>
- <w mosy="VBAMM" id="w51.1.3">svårt</w>
- <w mosy="NNNSDB" id="w51.1.4">handikappade</w>
+ <w mosy="PRN" id="w51.1.2">för</w>
+ <w mosy="AVNSIBP" id="w51.1.3">svårt</w>
+ <w mosy="NNNXIB" id="w51.1.4">handikappade</w>
  <w mosy="CN" id="w51.1.5">samt</w>
- <w mosy="VBAMM" id="w51.1.6">för</w>
- <w mosy="PRP" id="w51.1.7">handikappade</w>
- <w mosy="NNUSIB" id="w51.1.8">barn</w>
+ <w mosy="PRN" id="w51.1.6">för</w>
+ <w mosy="AVZZZBP" id="w51.1.7">handikappade</w>
+ <w mosy="NNNXIB" id="w51.1.8">barn</w>
  <w mosy="CN" id="w51.1.9">och</w>
  <w mosy="PSXX" id="w51.1.10">deras</w>
  <w mosy="NNUSIB" id="w51.1.11">familjer</w>
  <w mosy="VBAPM" id="w51.1.12">kommer</w>
  <w mosy="IE" id="w51.1.13">att</w>
- <w mosy="VBAIA" id="w51.1.14">uppmärksammas</w>
- <w mosy="NNUSIB" id="w51.1.15">särskilt</w>
+ <w mosy="VBPIM" id="w51.1.14">uppmärksammas</w>
+ <w mosy="ABX" id="w51.1.15">särskilt</w>
  <w mosy="PUNC" id="w51.1.16">.</w>
 </s></p>
 
@@ -1970,7 +1970,7 @@
  <w mosy="CN" id="w52.1.11">och</w>
  <w mosy="NNUSIB" id="w52.1.12">valfrihet</w>
  <w mosy="PRN" id="w52.1.13">för</w>
- <w mosy="NNUSIB" id="w52.1.14">äldre</w>
+ <w mosy="AVXXXBC" id="w52.1.14">äldre</w>
  <w mosy="PUNC" id="w52.1.15">.</w>
 </s></p>
 
@@ -1982,7 +1982,7 @@
  <w mosy="CN" id="w53.1.4">och</w>
  <w mosy="NNUSIB" id="w53.1.5">AIDS</w>
  <w mosy="VBAPO" id="w53.1.6">skall</w>
- <w mosy="NNUSIB" id="w53.1.7">fortsätta</w>
+ <w mosy="VBAIM" id="w53.1.7">fortsätta</w>
  <w mosy="COMMA" id="w53.1.8">,</w>
  <w mosy="ABX" id="w53.1.9">liksom</w>
  <w mosy="NNUSDB" id="w53.1.10">kampen</w>
@@ -1999,7 +1999,7 @@
  <w mosy="NNUSDB" id="w54.1.4">grundskolan</w>
  <w mosy="VBAPM" id="w54.1.5">föreligger</w>
  <w mosy="ABX" id="w54.1.6">nu</w>
- <w mosy="IE" id="w54.1.7">för</w>
+ <w mosy="PRN" id="w54.1.7">för</w>
  <w mosy="NNUSIB" id="w54.1.8">behandling</w>
  <w mosy="PUNC" id="w54.1.9">.</w>
 </s> 
@@ -2017,7 +2017,7 @@
  <w mosy="VBAPM" id="w54.3.2">innebär</w>
  <w mosy="NNUPIB" id="w54.3.3">förändringar</w>
  <w mosy="PRN" id="w54.3.4">av</w>
- <w mosy="NNUSIB" id="w54.3.5">såväl</w>
+ <w mosy="SNO" id="w54.3.5">såväl</w>
  <w mosy="ALXPD" id="w54.3.6">de</w>
  <w mosy="NNNXIB" id="w54.3.7">yrkesinriktade</w>
  <w mosy="SNO" id="w54.3.8">som</w>
@@ -2033,7 +2033,7 @@
  <w mosy="NNUPIB" id="w54.4.2">ungdomar</w>
  <w mosy="PRN" id="w54.4.3">under</w>
  <w mosy="DTCPB" id="w54.4.4">20</w>
- <w mosy="NNUXIB" id="w54.4.5">år</w>
+ <w mosy="VBAPC" id="w54.4.5">år</w>
  <w mosy="VBAPO" id="w54.4.6">skall</w>
  <w mosy="VBPIM" id="w54.4.7">beredas</w>
  <w mosy="NNUSIX" id="w54.4.8">plats</w>
@@ -2051,21 +2051,21 @@
  <w mosy="NNUSDB" id="w55.1.5">personalutbildning</w>
  <w mosy="VBAPO" id="w55.1.6">skall</w>
  <w mosy="VBPIM" id="w55.1.7">samordnas</w>
- <w mosy="ABX" id="w55.1.8">bättre</w>
+ <w mosy="AVXXXBC" id="w55.1.8">bättre</w>
  <w mosy="PUNC" id="w55.1.9">.</w>
 </s></p>
 
 <p id="56">
 <s id="s56.1">
- <w mosy="NNUPDB" id="w56.1.1">Ansträngningarna</w>
- <w mosy="SNO" id="w56.1.2">att</w>
- <w mosy="NNUSDB" id="w56.1.3">uppnå</w>
- <w mosy="PRN" id="w56.1.4">ökad</w>
+ <w mosy="PRN" id="w56.1.1">Ansträngningarna</w>
+ <w mosy="IE" id="w56.1.2">att</w>
+ <w mosy="VBAIM" id="w56.1.3">uppnå</w>
+ <w mosy="PCPUSIB" id="w56.1.4">ökad</w>
  <w mosy="NNUSIB" id="w56.1.5">jämställdhet</w>
  <w mosy="CN" id="w56.1.6">och</w>
  <w mosy="ALUSI" id="w56.1.7">en</w>
- <w mosy="NNUSIB" id="w56.1.8">jämnare</w>
- <w mosy="PRN" id="w56.1.9">social</w>
+ <w mosy="AVXXXBC" id="w56.1.8">jämnare</w>
+ <w mosy="NNUSIB" id="w56.1.9">social</w>
  <w mosy="NNUSIB" id="w56.1.10">sammansättning</w>
  <w mosy="PRN" id="w56.1.11">på</w>
  <w mosy="PDTXXPB" id="w56.1.12">alla</w>
@@ -2078,8 +2078,8 @@
  
 
 <s id="s56.2">
- <w mosy="NNUSIB" id="w56.2.1">Särskilt</w>
- <w mosy="NNUPDG" id="w56.2.2">invandrarungdomarnas</w>
+ <w mosy="ABX" id="w56.2.1">Särskilt</w>
+ <w mosy="PRN" id="w56.2.2">invandrarungdomarnas</w>
  <w mosy="NNUSIB" id="w56.2.3">situation</w>
  <w mosy="VBAPM" id="w56.2.4">kommer</w>
  <w mosy="IE" id="w56.2.5">att</w>
@@ -2120,7 +2120,7 @@
  <w mosy="CN" id="w57.2.14">och</w>
  <w mosy="AVZZZBP" id="w57.2.15">svenska</w>
  <w mosy="NNNXIB" id="w57.2.16">forskare</w>
- <w mosy="SNO" id="w57.2.17">att</w>
+ <w mosy="IE" id="w57.2.17">att</w>
  <w mosy="VBAIM" id="w57.2.18">delta</w>
  <w mosy="PRN" id="w57.2.19">i</w>
  <w mosy="ALNSD" id="w57.2.20">det</w>
@@ -2156,14 +2156,14 @@
  <w mosy="NNUPIB" id="w58.2.3">ungdomar</w>
  <w mosy="VBAPO" id="w58.2.4">skall</w>
  <w mosy="VBPIM" id="w58.2.5">ges</w>
- <w mosy="PRN" id="w58.2.6">ökade</w>
- <w mosy="NNUSIB" id="w58.2.7">möjligheter</w>
- <w mosy="SNO" id="w58.2.8">att</w>
- <w mosy="NNUSDB" id="w58.2.9">mötas</w>
+ <w mosy="PCPXSDBT" id="w58.2.6">ökade</w>
+ <w mosy="NNUPIB" id="w58.2.7">möjligheter</w>
+ <w mosy="IE" id="w58.2.8">att</w>
+ <w mosy="VBPIM" id="w58.2.9">mötas</w>
  <w mosy="CN" id="w58.2.10">och</w>
- <w mosy="VBAMM" id="w58.2.11">själva</w>
- <w mosy="NNUSDB" id="w58.2.12">utöva</w>
- <w mosy="VBPPM" id="w58.2.13">musik</w>
+ <w mosy="AVZZZBP" id="w58.2.11">själva</w>
+ <w mosy="PRN" id="w58.2.12">utöva</w>
+ <w mosy="NNUSIB" id="w58.2.13">musik</w>
  <w mosy="COMMA" id="w58.2.14">,</w>
  <w mosy="NNUSIB" id="w58.2.15">dans</w>
  <w mosy="COMMA" id="w58.2.16">,</w>
@@ -2211,7 +2211,7 @@
  <w mosy="CN" id="w59.1.6">och</w>
  <w mosy="NNUSDB" id="w59.1.7">idrottsrörelsen</w>
  <w mosy="COMMA" id="w59.1.8">,</w>
- <w mosy="PRN" id="w59.1.9">utför</w>
+ <w mosy="VBAMM" id="w59.1.9">utför</w>
  <w mosy="ALNSI" id="w59.1.10">ett</w>
  <w mosy="AVNSIBP" id="w59.1.11">värdefullt</w>
  <w mosy="NNNSIB" id="w59.1.12">arbete</w>
@@ -2219,7 +2219,7 @@
  <w mosy="VBAPO" id="w59.1.14">skall</w>
  <w mosy="VBPIM" id="w59.1.15">stödjas</w>
  <w mosy="CN" id="w59.1.16">och</w>
- <w mosy="NNUSIB" id="w59.1.17">underlättas</w>
+ <w mosy="VBPIM" id="w59.1.17">underlättas</w>
  <w mosy="PUNC" id="w59.1.18">.</w>
 </s></p>
 
@@ -2229,7 +2229,7 @@
  <w mosy="VBAPO" id="w60.1.2">skall</w>
  <w mosy="VBAIE" id="w60.1.3">ha</w>
  <w mosy="ALUSI" id="w60.1.4">en</w>
- <w mosy="NNUSIB" id="w60.1.5">sådan</w>
+ <w mosy="PDCIUSB" id="w60.1.5">sådan</w>
  <w mosy="NNUSIB" id="w60.1.6">omfattning</w>
  <w mosy="COMMA" id="w60.1.7">,</w>
  <w mosy="SNO" id="w60.1.8">att</w>
@@ -2260,22 +2260,22 @@
  <w mosy="NNUPIB" id="w60.3.1">Resurser</w>
  <w mosy="VBPPM" id="w60.3.2">frigörs</w>
  <w mosy="PRN" id="w60.3.3">för</w>
- <w mosy="NNUSDB" id="w60.3.4">bostadsbyggande</w>
+ <w mosy="NNUSIB" id="w60.3.4">bostadsbyggande</w>
  <w mosy="PRN" id="w60.3.5">genom</w>
  <w mosy="NNUPIB" id="w60.3.6">begränsningar</w>
  <w mosy="PRN" id="w60.3.7">av</w>
  <w mosy="PDSINSB" id="w60.3.8">annat</w>
  <w mosy="PCAXXXB" id="w60.3.9">byggande</w>
  <w mosy="PRN" id="w60.3.10">i</w>
- <w mosy="NNNXIB" id="w60.3.11">överhettade</w>
- <w mosy="VBAPM" id="w60.3.12">regioner</w>
+ <w mosy="PCPXSDBT" id="w60.3.11">överhettade</w>
+ <w mosy="NNUPIB" id="w60.3.12">regioner</w>
  <w mosy="PUNC" id="w60.3.13">.</w>
 </s> 
  
 
 <s id="s60.4">
  <w mosy="ABG" id="w60.4.1">Ytterligare</w>
- <w mosy="NNUSIB" id="w60.4.2">åtgärder</w>
+ <w mosy="NNUPIB" id="w60.4.2">åtgärder</w>
  <w mosy="PRN" id="w60.4.3">för</w>
  <w mosy="IE" id="w60.4.4">att</w>
  <w mosy="VBAIM" id="w60.4.5">begränsa</w>
@@ -2289,20 +2289,20 @@
  <w mosy="ALXPD" id="w61.1.1">De</w>
  <w mosy="AVXXXBP" id="w61.1.2">kommande</w>
  <w mosy="NLCPB" id="w61.1.3">tre</w>
- <w mosy="NNUPIB" id="w61.1.4">årens</w>
- <w mosy="ABX" id="w61.1.5">politik</w>
+ <w mosy="NNNPDG" id="w61.1.4">årens</w>
+ <w mosy="NNUSIB" id="w61.1.5">politik</w>
  <w mosy="VBAPM" id="w61.1.6">kommer</w>
  <w mosy="IE" id="w61.1.7">att</w>
- <w mosy="PDTDXPB" id="w61.1.8">sätta</w>
+ <w mosy="VBAIM" id="w61.1.8">sätta</w>
  <w mosy="PSUS" id="w61.1.9">sin</w>
  <w mosy="NNUSIB" id="w61.1.10">prägel</w>
  <w mosy="PRN" id="w61.1.11">på</w>
  <w mosy="NNUSDB" id="w61.1.12">utvecklingen</w>
  <w mosy="PRN" id="w61.1.13">i</w>
- <w mosy="NNUSIB" id="w61.1.14">vårt</w>
+ <w mosy="PSNS" id="w61.1.14">vårt</w>
  <w mosy="NNNSIB" id="w61.1.15">land</w>
  <w mosy="PRN" id="w61.1.16">under</w>
- <w mosy="NNUSIB" id="w61.1.17">nästa</w>
+ <w mosy="AVXXXBP" id="w61.1.17">nästa</w>
  <w mosy="NNNSIB" id="w61.1.18">decennium</w>
  <w mosy="PUNC" id="w61.1.19">.</w>
 </s> 
@@ -2311,8 +2311,8 @@
 <s id="s61.2">
  <w mosy="ALXPD" id="w61.2.1">De</w>
  <w mosy="AVXXDBS" id="w61.2.2">närmaste</w>
- <w mosy="NNUSIB" id="w61.2.3">åren</w>
- <w mosy="VBAPM" id="w61.2.4">ställs</w>
+ <w mosy="NNNPDB" id="w61.2.3">åren</w>
+ <w mosy="VBPPM" id="w61.2.4">ställs</w>
  <w mosy="PNUPS" id="w61.2.5">vi</w>
  <w mosy="VBAPM" id="w61.2.6">inför</w>
  <w mosy="NNUPIB" id="w61.2.7">utmaningar</w>
@@ -2320,8 +2320,8 @@
  <w mosy="NNUSDB" id="w61.2.9">verkningar</w>
  <w mosy="ABX" id="w61.2.10">in</w>
  <w mosy="PRN" id="w61.2.11">i</w>
- <w mosy="NNNSDB" id="w61.2.12">nästa</w>
- <w mosy="NNNXIB" id="w61.2.13">århundrade</w>
+ <w mosy="AVXXXBP" id="w61.2.12">nästa</w>
+ <w mosy="NNNSIB" id="w61.2.13">århundrade</w>
  <w mosy="PUNC" id="w61.2.14">.</w>
 </s></p>
 
@@ -2332,23 +2332,23 @@
  <w mosy="DTCPB" id="w62.1.3">80-</w>
  <w mosy="CN" id="w62.1.4">och</w>
  <w mosy="NNUSDB" id="w62.1.5">90-talen</w>
- <w mosy="PRN" id="w62.1.6">bör</w>
- <w mosy="NNUSDB" id="w62.1.7">därför</w>
- <w mosy="VBPPM" id="w62.1.8">användas</w>
+ <w mosy="VBAPO" id="w62.1.6">bör</w>
+ <w mosy="ABX" id="w62.1.7">därför</w>
+ <w mosy="VBPIM" id="w62.1.8">användas</w>
  <w mosy="PRN" id="w62.1.9">för</w>
  <w mosy="IE" id="w62.1.10">att</w>
- <w mosy="VBAIA" id="w62.1.11">långsiktigt</w>
- <w mosy="NNUSIB" id="w62.1.12">befästa</w>
+ <w mosy="AVNSIBP" id="w62.1.11">långsiktigt</w>
+ <w mosy="NNNXIB" id="w62.1.12">befästa</w>
  <w mosy="CN" id="w62.1.13">och</w>
  <w mosy="VBAMM" id="w62.1.14">stärka</w>
  <w mosy="PNNSZ" id="w62.1.15">det</w>
  <w mosy="SNO" id="w62.1.16">som</w>
- <w mosy="NNUSDB" id="w62.1.17">måste</w>
+ <w mosy="VBAPO" id="w62.1.17">måste</w>
  <w mosy="VBAIC" id="w62.1.18">vara</w>
  <w mosy="NNUSDB" id="w62.1.19">grunden</w>
- <w mosy="PRN" id="w62.1.20">även</w>
- <w mosy="SNO" id="w62.1.21">för</w>
- <w mosy="PNUSZ" id="w62.1.22">den</w>
+ <w mosy="ABX" id="w62.1.20">även</w>
+ <w mosy="PRN" id="w62.1.21">för</w>
+ <w mosy="ALUSD" id="w62.1.22">den</w>
  <w mosy="AVXXXBP" id="w62.1.23">framtida</w>
  <w mosy="NNUSDB" id="w62.1.24">utvecklingen</w>
  <w mosy="COLON" id="w62.1.25">:</w>
@@ -2362,10 +2362,10 @@
 
 <p id="63">
 <s id="s63.1">
- <w mosy="NNUSIB" id="w63.1.1">Därmed</w>
+ <w mosy="ABX" id="w63.1.1">Därmed</w>
  <w mosy="VBAPM" id="w63.1.2">skapar</w>
  <w mosy="PNUPS" id="w63.1.3">vi</w>
- <w mosy="VBAPM" id="w63.1.4">också</w>
+ <w mosy="ABX" id="w63.1.4">också</w>
  <w mosy="NNUSDB" id="w63.1.5">handlingsutrymme</w>
  <w mosy="PRN" id="w63.1.6">för</w>
  <w mosy="ALUSD" id="w63.1.7">den</w>
@@ -2375,12 +2375,12 @@
  <w mosy="AVZZZBP" id="w63.1.11">nya</w>
  <w mosy="NNUPIB" id="w63.1.12">insatser</w>
  <w mosy="SNO" id="w63.1.13">som</w>
- <w mosy="VBAPM" id="w63.1.14">krävs</w>
+ <w mosy="VBPPM" id="w63.1.14">krävs</w>
  <w mosy="PRN" id="w63.1.15">på</w>
  <w mosy="ALUSI" id="w63.1.16">en</w>
  <w mosy="NNUSIB" id="w63.1.17">rad</w>
  <w mosy="AVZZZBP" id="w63.1.18">viktiga</w>
- <w mosy="NNUSDB" id="w63.1.19">områden</w>
+ <w mosy="NNNPIB" id="w63.1.19">områden</w>
  <w mosy="COLON" id="w63.1.20">:</w>
  <w mosy="PRN" id="w63.1.21">inom</w>
  <w mosy="NNNSDB" id="w63.1.22">miljö-</w>
@@ -2395,13 +2395,13 @@
  <w mosy="PRN" id="w63.1.31">i</w>
  <w mosy="NNNSDB" id="w63.1.32">arbetslivet</w>
  <w mosy="COMMA" id="w63.1.33">,</w>
- <w mosy="VBAMM" id="w63.1.34">på</w>
+ <w mosy="PRN" id="w63.1.34">på</w>
  <w mosy="NNUSIB" id="w63.1.35">skatteområdet</w>
  <w mosy="CN" id="w63.1.36">och</w>
- <w mosy="SNO" id="w63.1.37">för</w>
+ <w mosy="PRN" id="w63.1.37">för</w>
  <w mosy="IE" id="w63.1.38">att</w>
  <w mosy="VBAIM" id="w63.1.39">stärka</w>
- <w mosy="PRN" id="w63.1.40">vårt</w>
+ <w mosy="PSNS" id="w63.1.40">vårt</w>
  <w mosy="NNNSIB" id="w63.1.41">samarbete</w>
  <w mosy="HYPHEN" id="w63.1.42">-</w>
  <w mosy="AVNSIBP" id="w63.1.43">ekonomiskt</w>
@@ -2421,11 +2421,11 @@
  <w mosy="NNUPIB" id="w64.1.1">Förutsättningar</w>
  <w mosy="PRN" id="w64.1.2">för</w>
  <w mosy="ALUSI" id="w64.1.3">en</w>
- <w mosy="NNUSIB" id="w64.1.4">sådan</w>
+ <w mosy="PDCIUSB" id="w64.1.4">sådan</w>
  <w mosy="NNUSIB" id="w64.1.5">inriktning</w>
  <w mosy="PRN" id="w64.1.6">av</w>
  <w mosy="NNUSDB" id="w64.1.7">politiken</w>
- <w mosy="PRN" id="w64.1.8">är</w>
+ <w mosy="VBAPC" id="w64.1.8">är</w>
  <w mosy="AVZZZBP" id="w64.1.9">gynnsamma</w>
  <w mosy="PUNC" id="w64.1.10">.</w>
 </s></p>
@@ -2445,8 +2445,8 @@
  <w mosy="COMMA" id="w65.1.11">,</w>
  <w mosy="NNUSIB" id="w65.1.12">frihet</w>
  <w mosy="CN" id="w65.1.13">och</w>
- <w mosy="VBAMM" id="w65.1.14">ökad</w>
- <w mosy="NNUSDB" id="w65.1.15">förståelse</w>
+ <w mosy="PCPUSIB" id="w65.1.14">ökad</w>
+ <w mosy="NNUSIB" id="w65.1.15">förståelse</w>
  <w mosy="PRN" id="w65.1.16">mellan</w>
  <w mosy="NNUPIB" id="w65.1.17">nationer</w>
  <w mosy="CN" id="w65.1.18">och</w>
@@ -2458,13 +2458,13 @@
 <s id="s66.1">
  <w mosy="PMNG" id="w66.1.1">Sveriges</w>
  <w mosy="AVZZZBP" id="w66.1.2">ekonomiska</w>
- <w mosy="PNXPS" id="w66.1.3">läge</w>
+ <w mosy="NNNSIB" id="w66.1.3">läge</w>
  <w mosy="VBAPE" id="w66.1.4">har</w>
  <w mosy="AVNSIBP" id="w66.1.5">kraftigt</w>
- <w mosy="NNNXIB" id="w66.1.6">förbättrats</w>
+ <w mosy="VBPSM" id="w66.1.6">förbättrats</w>
  <w mosy="PRN" id="w66.1.7">under</w>
  <w mosy="ABX" id="w66.1.8">senare</w>
- <w mosy="ABX" id="w66.1.9">år</w>
+ <w mosy="VBAPC" id="w66.1.9">år</w>
  <w mosy="PUNC" id="w66.1.10">.</w>
 </s> 
  
@@ -2472,10 +2472,10 @@
 <s id="s66.2">
  <w mosy="NNUSDB" id="w66.2.1">Sysselsättningen</w>
  <w mosy="PRN" id="w66.2.2">i</w>
- <w mosy="NNUSIB" id="w66.2.3">vårt</w>
- <w mosy="NNUSIB" id="w66.2.4">land</w>
- <w mosy="PRN" id="w66.2.5">är</w>
- <w mosy="NNUSIB" id="w66.2.6">hög</w>
+ <w mosy="PSNS" id="w66.2.3">vårt</w>
+ <w mosy="NNNSIB" id="w66.2.4">land</w>
+ <w mosy="VBAPC" id="w66.2.5">är</w>
+ <w mosy="AVUSIBP" id="w66.2.6">hög</w>
  <w mosy="PUNC" id="w66.2.7">.</w>
 </s> 
  
@@ -2513,11 +2513,11 @@
 <s id="s68.1">
  <w mosy="PNUPS" id="w68.1.1">Vi</w>
  <w mosy="VBAPC" id="w68.1.2">kan</w>
- <w mosy="ABX" id="w68.1.3">på</w>
+ <w mosy="PRN" id="w68.1.3">på</w>
  <w mosy="AVZZZBP" id="w68.1.4">goda</w>
  <w mosy="NNUPIB" id="w68.1.5">grunder</w>
- <w mosy="PRN" id="w68.1.6">känna</w>
- <w mosy="NNUSIB" id="w68.1.7">optimism</w>
+ <w mosy="VBAIM" id="w68.1.6">känna</w>
+ <w mosy="ALNSI" id="w68.1.7">optimism</w>
  <w mosy="PRN" id="w68.1.8">inför</w>
  <w mosy="NNUSDB" id="w68.1.9">framtiden</w>
  <w mosy="PUNC" id="w68.1.10">.</w>
@@ -2528,12 +2528,12 @@
  <w mosy="SNO" id="w69.1.1">Men</w>
  <w mosy="PNNSZ" id="w69.1.2">det</w>
  <w mosy="VBDPM" id="w69.1.3">finns</w>
- <w mosy="PRN" id="w69.1.4">också</w>
+ <w mosy="ABX" id="w69.1.4">också</w>
  <w mosy="AVZZZBP" id="w69.1.5">goda</w>
- <w mosy="PRN" id="w69.1.6">skäl</w>
- <w mosy="SNO" id="w69.1.7">att</w>
- <w mosy="NNUSDB" id="w69.1.8">påminna</w>
- <w mosy="SNO" id="w69.1.9">om</w>
+ <w mosy="NNNXIB" id="w69.1.6">skäl</w>
+ <w mosy="IE" id="w69.1.7">att</w>
+ <w mosy="VBAIM" id="w69.1.8">påminna</w>
+ <w mosy="PRP" id="w69.1.9">om</w>
  <w mosy="SNO" id="w69.1.10">hur</w>
  <w mosy="AVNSIBP" id="w69.1.11">snabbt</w>
  <w mosy="ALUSI" id="w69.1.12">en</w>
@@ -2554,14 +2554,14 @@
  <w mosy="PRN" id="w69.2.3">under</w>
  <w mosy="NNUSIB" id="w69.2.4">70-talet</w>
  <w mosy="COMMA" id="w69.2.5">,</w>
- <w mosy="PRN" id="w69.2.6">när</w>
+ <w mosy="SNO" id="w69.2.6">när</w>
  <w mosy="AVUSIBP" id="w69.2.7">svensk</w>
  <w mosy="NNUSIB" id="w69.2.8">ekonomi</w>
  <w mosy="PCPXSDG" id="w69.2.9">drabbades</w>
  <w mosy="PRN" id="w69.2.10">av</w>
  <w mosy="ALUSD" id="w69.2.11">den</w>
- <w mosy="NNUSIB" id="w69.2.12">svåraste</w>
- <w mosy="VBAPM" id="w69.2.13">krisen</w>
+ <w mosy="AVXXDBS" id="w69.2.12">svåraste</w>
+ <w mosy="NNUSDB" id="w69.2.13">krisen</w>
  <w mosy="ABX" id="w69.2.14">sedan</w>
  <w mosy="NNNSDB" id="w69.2.15">30-talet</w>
  <w mosy="PUNC" id="w69.2.16">.</w>
@@ -2573,12 +2573,12 @@
  <w mosy="NNUPIB" id="w69.3.2">uppgifter</w>
  <w mosy="PNUPS" id="w69.3.3">vi</w>
  <w mosy="VBAPE" id="w69.3.4">har</w>
- <w mosy="VBASM" id="w69.3.5">framför</w>
+ <w mosy="PRN" id="w69.3.5">framför</w>
  <w mosy="PNUPO" id="w69.3.6">oss</w>
  <w mosy="COMMA" id="w69.3.7">,</w>
  <w mosy="CN" id="w69.3.8">och</w>
  <w mosy="NNUPDB" id="w69.3.9">riskerna</w>
- <w mosy="VBAPC" id="w69.3.10">för</w>
+ <w mosy="PRN" id="w69.3.10">för</w>
  <w mosy="AVZZZBP" id="w69.3.11">snabba</w>
  <w mosy="NNUPIB" id="w69.3.12">dramatiska</w>
  <w mosy="NNUPIB" id="w69.3.13">förändringar</w>
@@ -2597,7 +2597,7 @@
  <w mosy="NNUSIB" id="w69.3.26">förmåga</w>
  <w mosy="PRN" id="w69.3.27">till</w>
  <w mosy="NNNSIB" id="w69.3.28">samarbete</w>
- <w mosy="NNUSIB" id="w69.3.29">också</w>
+ <w mosy="ABX" id="w69.3.29">också</w>
  <w mosy="PRN" id="w69.3.30">i</w>
  <w mosy="NNUSDB" id="w69.3.31">framtiden</w>
  <w mosy="PUNC" id="w69.3.32">.</w>
@@ -2605,18 +2605,18 @@
 
 <p id="70">
 <s id="s70.1">
- <w mosy="VBAMM" id="w70.1.1">För</w>
- <w mosy="NNUSDB" id="w70.1.2">första</w>
- <w mosy="PRN" id="w70.1.3">gången</w>
- <w mosy="XXX" id="w70.1.4">på</w>
+ <w mosy="PRN" id="w70.1.1">För</w>
+ <w mosy="NLOXB" id="w70.1.2">första</w>
+ <w mosy="NNUSDB" id="w70.1.3">gången</w>
+ <w mosy="PRN" id="w70.1.4">på</w>
  <w mosy="DTCPB" id="w70.1.5">70</w>
- <w mosy="NNUXIB" id="w70.1.6">år</w>
+ <w mosy="VBAPC" id="w70.1.6">år</w>
  <w mosy="VBAPM" id="w70.1.7">tar</w>
  <w mosy="ABX" id="w70.1.8">nu</w>
  <w mosy="ALNSI" id="w70.1.9">ett</w>
  <w mosy="AVNSIBP" id="w70.1.10">nytt</w>
  <w mosy="NNNSIB" id="w70.1.11">parti</w>
- <w mosy="NNUSIB" id="w70.1.12">säte</w>
+ <w mosy="NNNSIB" id="w70.1.12">säte</w>
  <w mosy="PRN" id="w70.1.13">i</w>
  <w mosy="NNUSDB" id="w70.1.14">riksdagen</w>
  <w mosy="PUNC" id="w70.1.15">.</w>
@@ -2631,14 +2631,14 @@
  <w mosy="ALXPD" id="w70.2.5">de</w>
  <w mosy="AVXXXBC" id="w70.2.6">grönas</w>
  <w mosy="NNUSIB" id="w70.2.7">ledamöter</w>
- <w mosy="NNUSIB" id="w70.2.8">välkomna</w>
- <w mosy="PRN" id="w70.2.9">till</w>
+ <w mosy="VBAMM" id="w70.2.8">välkomna</w>
+ <w mosy="PRP" id="w70.2.9">till</w>
  <w mosy="PVXXB" id="w70.2.10">vad</w>
  <w mosy="PNUSS" id="w70.2.11">jag</w>
  <w mosy="VBPPM" id="w70.2.12">hoppas</w>
  <w mosy="VBAPC" id="w70.2.13">blir</w>
  <w mosy="ALNSI" id="w70.2.14">ett</w>
- <w mosy="NNNXIB" id="w70.2.15">inspirerande</w>
+ <w mosy="NNUSIG" id="w70.2.15">inspirerande</w>
  <w mosy="NNNSIB" id="w70.2.16">riksdagsarbete</w>
  <w mosy="PUNC" id="w70.2.17">.</w>
 </s></p>
@@ -2656,22 +2656,22 @@
  <w mosy="ALXPD" id="w71.1.9">de</w>
  <w mosy="NLCPB" id="w71.1.10">tre</w>
  <w mosy="AVXXXBP" id="w71.1.11">kommande</w>
- <w mosy="NNUSIB" id="w71.1.12">åren</w>
+ <w mosy="NNNPDB" id="w71.1.12">åren</w>
  <w mosy="VBAPC" id="w71.1.13">blir</w>
  <w mosy="AVZZZBP" id="w71.1.14">goda</w>
  <w mosy="PRN" id="w71.1.15">för</w>
- <w mosy="NNUSIB" id="w71.1.16">vårt</w>
- <w mosy="NNUSIB" id="w71.1.17">land</w>
+ <w mosy="PSNS" id="w71.1.16">vårt</w>
+ <w mosy="NNNSIB" id="w71.1.17">land</w>
  <w mosy="CN" id="w71.1.18">och</w>
  <w mosy="PDTXXPB" id="w71.1.19">alla</w>
  <w mosy="PEG" id="w71.1.20">dess</w>
  <w mosy="NNUSIB" id="w71.1.21">invånare</w>
  <w mosy="COMMA" id="w71.1.22">,</w>
  <w mosy="PRN" id="w71.1.23">för</w>
- <w mosy="NNUSIB" id="w71.1.24">miljön</w>
+ <w mosy="NNUSDB" id="w71.1.24">miljön</w>
  <w mosy="COMMA" id="w71.1.25">,</w>
- <w mosy="CN" id="w71.1.26">för</w>
- <w mosy="VBAMM" id="w71.1.27">våra</w>
+ <w mosy="PRN" id="w71.1.26">för</w>
+ <w mosy="PSXP" id="w71.1.27">våra</w>
  <w mosy="NNUPIB" id="w71.1.28">relationer</w>
  <w mosy="PRN" id="w71.1.29">med</w>
  <w mosy="NNUSDB" id="w71.1.30">omvärlden</w>
@@ -2681,7 +2681,7 @@
  <w mosy="CN" id="w71.1.34">och</w>
  <w mosy="NNUPIB" id="w71.1.35">samvaron</w>
  <w mosy="PNUPO" id="w71.1.36">oss</w>
- <w mosy="NNUSIB" id="w71.1.37">människor</w>
+ <w mosy="NNUPIB" id="w71.1.37">människor</w>
  <w mosy="PRN" id="w71.1.38">emellan</w>
  <w mosy="PRN" id="w71.1.39">i</w>
  <w mosy="NNUSDB" id="w71.1.40">vardagen</w>
@@ -2690,7 +2690,7 @@
  <w mosy="VBAMC" id="w71.1.43">var</w>
  <w mosy="PNUPS" id="w71.1.44">vi</w>
  <w mosy="VBAPE" id="w71.1.45">har</w>
- <w mosy="NNUSIB" id="w71.1.46">vårt</w>
+ <w mosy="PSNS" id="w71.1.46">vårt</w>
  <w mosy="NNNXIB" id="w71.1.47">ursprung</w>
  <w mosy="PUNC" id="w71.1.48">.</w>
 </s></p>
@@ -2717,8 +2717,8 @@
  <w mosy="AVZZZBP" id="w72.1.18">breda</w>
  <w mosy="NNUPIB" id="w72.1.19">lösningar</w>
  <w mosy="CN" id="w72.1.20">och</w>
- <w mosy="SNO" id="w72.1.21">att</w>
- <w mosy="PRN" id="w72.1.22">föra</w>
+ <w mosy="IE" id="w72.1.21">att</w>
+ <w mosy="VBAIM" id="w72.1.22">föra</w>
  <w mosy="ALUSI" id="w72.1.23">en</w>
  <w mosy="NNUSIB" id="w72.1.24">politik</w>
  <w mosy="PRN" id="w72.1.25">i</w>
