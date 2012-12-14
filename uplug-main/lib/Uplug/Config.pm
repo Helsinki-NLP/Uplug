@@ -250,12 +250,15 @@ eval{
     require File::ShareDir; 
     $SHARED_HOME = File::ShareDir::dist_dir('Uplug'); 
 };
+
 $SHARED_HOME = $Bin.'/../share'         if (-d  $Bin.'/../share');
 $SHARED_HOME = $Bin.'/share'            if (-d  $Bin.'/share');
 if (defined $ENV{UPLUGHOME}){
-    $SHARED_HOME = $ENV{UPLUGHOME}.'/share' if (-d  $ENV{UPLUGHOME}.'/share');
+    $SHARED_HOME = $ENV{UPLUGHOME}.'/share' if (-d $ENV{UPLUGHOME}.'/share');
 }
-$SHARED_HOME = $ENV{UPLUGSHARE}         if (-d  $ENV{UPLUGSHARE});
+if (defined $ENV{UPLUGSHARE}){
+    $SHARED_HOME = $ENV{UPLUGSHARE}         if (-d $ENV{UPLUGSHARE});
+}
 
 ## OLD VERSION: prefer the global share-folder
 ## Why is that not good: 'make test' may fail when updating Uplug and the existing

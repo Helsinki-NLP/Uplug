@@ -9,6 +9,7 @@ use Uplug::Config;
 
 name          'Uplug';
 license       'gpl';
+author        'Joerg Tiedemann';
 all_from      'lib/Uplug.pm';
 
 unless ($ARGV[0] eq 'skip-compile'){
