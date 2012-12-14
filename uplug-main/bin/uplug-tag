@@ -298,8 +298,8 @@ $output->close;
 $/=$InputSeperator;
 
 END {
-    unlink $TmpUntagged;
-    unlink $TmpTagged;
+#    unlink $TmpUntagged;
+#    unlink $TmpTagged;
 }
 
 ############################################################################
