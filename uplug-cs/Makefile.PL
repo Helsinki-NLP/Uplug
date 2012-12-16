@@ -6,11 +6,11 @@ license       'gpl';
 
 abstract    'Czech language pack for Uplug';
 author      'Joerg Tiedemann';
-include     'Module::AutoInstall';
+# include     'Module::AutoInstall';
 
 requires 'Uplug'     => 0;
 
-auto_install;
+# auto_install;
 install_share;
 
 WriteAll;

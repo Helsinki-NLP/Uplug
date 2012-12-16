@@ -6,7 +6,7 @@ license       'gpl';
 
 abstract    'Catalan language pack for Uplug';
 author      'Joerg Tiedemann';
-include     'Module::AutoInstall';
+# include     'Module::AutoInstall';
 
 # make sure that SVMTagger scripts are in your path
 my $tagger = `which SVMTagger.pl`;
@@ -19,7 +19,7 @@ unless (-e $tagger){
 requires 'Uplug'     => 0;
 requires 'SVMTool'   => '1.3.2';
 
-auto_install;
+# auto_install;
 install_share;
 
 WriteAll;

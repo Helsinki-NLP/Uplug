@@ -7,7 +7,7 @@ version     '0.3';
 
 abstract    'TreeTagger add-on for Uplug';
 author      'Joerg Tiedemann';
-include     'Module::AutoInstall';
+# include     'Module::AutoInstall';
 
 
 my $TaggerLicense = "http://www.ims.uni-stuttgart.de/~schmid/Tagger-Licence";
@@ -67,7 +67,7 @@ $TaggerModels{'MacOSX.PPC'} = $TaggerModels{'Solaris'};
 requires 'Uplug'     => '0';
 
 install_treetagger() unless ($ARGV[0] eq 'skip-compile');
-auto_install;
+# auto_install;
 install_share;
 
 WriteAll;
