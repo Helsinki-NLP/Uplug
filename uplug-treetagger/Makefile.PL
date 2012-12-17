@@ -1,3 +1,5 @@
+#-*-perl-*-
+
 use inc::Module::Install;
 use LWP::Simple;
 use File::Basename;
@@ -82,6 +84,8 @@ sub install_treetagger{
 
     use Cwd;
     my $pwd = getcwd;
+    mkdir('share/ext/') unless (-d 'share/ext/');
+    mkdir('share/ext/tree-tagger') unless (-d 'share/ext/tree-tagger');
     chdir('share/ext/tree-tagger/');
 
     my $url;

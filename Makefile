@@ -2,7 +2,6 @@
 MODULES = uplug-main $(wildcard uplug-??) uplug-treetagger
 
 all test install:
-	which uplug || echo "run 'make install-main' first"
 	for m in $(MODULES); do\
 		$(MAKE) $$m/Makefile; \
 		$(MAKE) -C $$m $@; \

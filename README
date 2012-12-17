@@ -24,14 +24,19 @@ You can either download the latest sources from bitbucket or install distributed
 and run
 
  make all
- make test
  sudo make install
+ make test
 
-Uplug is also distributed in several packages including various components.
-Start by downloading uplug-main and installing the main
+Note that this will take some time to install. Note also that you need
+o agree with the licenses of external tools that will be included like
+the TreeTagger and its models which are not free for non-academic use.
+
+Uplug is also distributed in several packages including various
+components.  Start by downloading uplug-main and installing the main
 components. Select the language packs that you'd like to include and
 install them. Look at the documentation and readme's inside of the
-packages.
+packages. Of course, you can also install selected packages from
+source when downloading via git.
 
 
 More information and the newest sources are at
