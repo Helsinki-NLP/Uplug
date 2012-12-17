@@ -4,12 +4,10 @@
     'submodules' => [
         'pre/markup',
         'pre/sent',
-        'pre/tok',
     ],
     'submodule names' => [
         'basic XML markup',
         'sentence splitter',
-        'tokenizer',
     ],
     'stdin' => 'text',
     'stdout' => 'text',

@@ -1,26 +1,18 @@
 {
   'module' => {
-    'name' => 'basic pre-processing',
+    'name' => 'Vallback annotation = generic tokenization',
     'submodules' => [
-        'pre/markup',
-        'pre/sent',
         'pre/tok',
     ],
     'submodule names' => [
-        'basic XML markup',
-        'sentence splitter',
         'tokenizer',
     ],
-    'stdin' => 'text',
     'stdout' => 'text',
   },
-  'description' => 'The basic pre-processing module includes a tool
-  for basic XML markup, a simple sentence splitter and a general
-  tokenizer which probably does not work sufficiently for most
-  languages :-)',
   'input' => {
     'text' => {
-      'format' => 'text',
+      'format' => 'xml',
+      'root' => 's',
     }
   },
   'output' => {
@@ -34,7 +26,7 @@
   'arguments' => {
     'shortcuts' => {
        'in' => 'input:text:file',
-       'out' => 'output:text:file',
+	'out' => 'output:text:file',
        'ci' => 'input:text:encoding',
        'co' => 'output:text:encoding',
     }
@@ -42,7 +34,7 @@
   'widgets' => {
        'input' => {
 	  'text' => {
-	    'stream name' => 'stream(format=text)'
+	    'stream name' => 'stream(format=text,language=it)'
 	  },
        },
   }

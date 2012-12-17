@@ -3,13 +3,11 @@
     'name' => 'basic pre-processing',
     'submodules' => [
         'pre/markup',
-        'pre/sent',
-        'pre/tok',
+        'pre/sent -l it',
     ],
     'submodule names' => [
         'basic XML markup',
         'sentence splitter',
-        'tokenizer',
     ],
     'stdin' => 'text',
     'stdout' => 'text',

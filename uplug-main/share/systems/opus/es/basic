@@ -3,8 +3,8 @@
     'name' => 'basic pre-processing',
     'submodules' => [
         'pre/markup',
-        'pre/sent',
-        'pre/tok',
+        'pre/sent -l es',
+        'pre/tok -l es',
     ],
     'submodule names' => [
         'basic XML markup',

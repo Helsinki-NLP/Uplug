@@ -3,21 +3,18 @@
     'name' => 'basic pre-processing',
     'submodules' => [
         'pre/markup',
-        'pre/sent',
-        'pre/tok',
+        'pre/sent -l da',
     ],
     'submodule names' => [
         'basic XML markup',
         'sentence splitter',
-        'tokenizer',
     ],
     'stdin' => 'text',
     'stdout' => 'text',
   },
   'description' => 'The basic pre-processing module includes a tool
-  for basic XML markup, a simple sentence splitter and a general
-  tokenizer which probably does not work sufficiently for most
-  languages :-)',
+  for basic XML markup, a sentence splitter and a
+  tokenizer',
   'input' => {
     'text' => {
       'format' => 'text',
