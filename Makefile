@@ -30,8 +30,7 @@ install-main:
 
 PACKAGES = $(patsubst %,%.tar.gz,$(shell find . -maxdepth 1 -type d -name 'uplug*'))
 
-dist: clean
-	${MAKE} packages
+dist: clean packages
 
 packages: $(PACKAGES)
 
