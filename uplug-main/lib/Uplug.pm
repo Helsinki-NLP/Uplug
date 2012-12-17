@@ -409,9 +409,7 @@ sub output{
 	    }
 	    $self->{DATA}->{$_}=$output->{$_};
 	}
-	if (exists $self->{MODULE}){
-	    &WriteConfig($self->{MODULE},$self->{CONFIG});
-	}
+	$self->load();
     }
     return &GetParam($self->{CONFIG},'output');
 }

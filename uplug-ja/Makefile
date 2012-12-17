@@ -9,11 +9,15 @@ CHASEN=chasen-2.4.5
 DARTS=darts-0.32
 IPADIC=ipadic-2.7.0
 
-all test install: $(CHASEN)/Makefile $(IPADIC)/Makefile uplug/Makefile
+all install: $(CHASEN)/Makefile $(IPADIC)/Makefile uplug/Makefile
 	which chasen || \
 		( ${MAKE} -C $(DARTS) $@ && \
 		  ${MAKE} -C $(CHASEN) $@ && \
 		  ${MAKE} -C $(IPADIC) $@ )
+	${MAKE} -C uplug $@
+
+test:
+	${MAKE} uplug/Makefile
 	${MAKE} -C uplug $@
 
 clean:

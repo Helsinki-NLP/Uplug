@@ -3,6 +3,7 @@
     'program' => 'uplug-malt',
     'location' => '$UplugBin',
     'name' => 'MaltParser (Portuguese)',
+    'stdout' => 'text'
   },
   'input' => {
     'text' => {

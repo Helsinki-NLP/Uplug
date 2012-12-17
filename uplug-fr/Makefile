@@ -6,9 +6,14 @@ VERSION = 0.2
 
 CONTENTS = $(shell ls) 
 
-all test install clean: uplug/Makefile melt-0.6/Makefile
+all test install: uplug/Makefile melt-0.6/Makefile
 	${MAKE} -C melt-0.6 $@
 	${MAKE} -C uplug $@
+
+clean: uplug/Makefile melt-0.6/Makefile
+	${MAKE} -C melt-0.6 dist$@
+	${MAKE} -C uplug $@
+
 
 manifest: clean
 
