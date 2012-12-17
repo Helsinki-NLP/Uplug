@@ -1,6 +1,7 @@
 
-Uplug - NLP tools for processing (parallel) corpora
----------------------------------------------------
+-----------------------------------------------------
+ Uplug - NLP tools for processing (parallel) corpora
+-----------------------------------------------------
 
 Uplug is a collection of tools and scripts for processing text-corpora
 
@@ -14,6 +15,19 @@ uplug-treetagger  config files for integrating the TreeTagger
 uplug-cwb	  scripts for indexing and querying parallel corpora with CWB
 
 
+INSTALLATION
+
+You can either download the latest sources from bitbucket or install distributed packages. If you want to download the entire Uplug system with all its components, use git for downloading the sources:
+
+ git clone https://bitbucket.org/tiedemann/uplug.git
+
+and run
+
+ make all
+ make test
+ sudo make install
+
+Uplug is also distributed in several packages including various components.
 Start by downloading uplug-main and installing the main
 components. Select the language packs that you'd like to include and
 install them. Look at the documentation and readme's inside of the
@@ -24,8 +38,6 @@ More information and the newest sources are at
 
 The new project home page:	https://bitbucket.org/tiedemann/uplug
 The old pages at SourceForge:	http://sourceforge.net/projects/uplug/
-		       		http://uplug.sourceforge.net/
-
 
 
 Please cite the following dissertation if you use Uplug:
@@ -42,3 +54,9 @@ Please cite the following dissertation if you use Uplug:
                   Linguistica Upsaliensia},
   url =		 {http://uu.diva-portal.org/smash/record.jsf?pid=diva2:163715},
  }
+
+
+COPYRIGHT AND LICENSE
+
+Copyrhight (C) 2004-2012 Joerg Tiedemann
+The software is distributed under the GPL v3 license.

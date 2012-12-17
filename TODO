@@ -1,10 +1,11 @@
 
 - more unit tests (also in language packages)
 - opennlp package with pre-trained models (tokenization, sentence splitting, ...)
-- integrate Gargantua, Moore's aligner, ...?
+- integrate Gargantua, Moore's sentence aligner, ...?
 - improved package for subtitle handling
 - indexing with latest version of CWB
 - code optimization
+- tutorials and F.A.Q.'s
 
 
 Annotation:
@@ -15,7 +16,6 @@ Annotation:
 - uplug-is: integrate icelandic toolbox
 - uplug-fa: add tools for farsi
 - alternative tagger for some languages
-- treetagger package (separate from all? not standard in pipeline!)
 
 
 Maybe:

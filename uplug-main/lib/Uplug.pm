@@ -1,6 +1,6 @@
 #-*-perl-*-
 #---------------------------------------------------------------------------
-# Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
+# Copyright (C) 2004-2012 Joerg Tiedemann
 #
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
