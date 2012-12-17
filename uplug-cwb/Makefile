@@ -1,14 +1,10 @@
 
-# install svmtool and uplug
-# use all targets for both sub-directories
-
-VERSION = 0.2
-
+VERSION  = 0.1
 CONTENTS = $(shell ls) 
 
-all test install clean: uplug/Makefile svmtool/Makefile
-	${MAKE} -C svmtool $@
-	${MAKE} -C uplug $@
+PWD = $(shell pwd)
+
+all test clean:
 
 manifest: clean
 
@@ -19,9 +15,3 @@ dist: clean
 	tar -czf $(notdir $(shell pwd))-$(VERSION).tar.gz $(notdir $(shell pwd))-$(VERSION)
 	mv $(notdir $(shell pwd))-$(VERSION)/* .
 	rmdir $(notdir $(shell pwd))-$(VERSION)
-
-dist-uplug: uplug/Makefile
-	${MAKE} -C uplug manifest dist
-
-%/Makefile: %/Makefile.PL
-	(cd $(dir $@) && perl Makefile.pl)
