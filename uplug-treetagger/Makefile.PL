@@ -5,7 +5,7 @@ use LWP::Simple;
 use File::Basename;
 
 name        'Uplug';
-version     '0.3';
+version     '0.3.1';
 
 abstract    'TreeTagger add-on for Uplug';
 author      'Joerg Tiedemann';
@@ -118,14 +118,14 @@ sub install_treetagger{
     # download binaries, scriprts and all model files
 
     print "Download binaries and scripts ....\n";
-    getstore($url, basename($url));
-    getstore($TaggerScripts, 'tagger-scripts.tar.gz');
-    getstore($TaggerInstaller, 'install-tagger.sh');
+    my_getstore($url, basename($url));
+    my_getstore($TaggerScripts, 'tagger-scripts.tar.gz');
+    my_getstore($TaggerInstaller, 'install-tagger.sh');
 
     print "Download tagging models ....\n";
     foreach my $m (@{$models}){
 	print " - $m\n";
-	getstore($m,basename($m));
+	my_getstore($m,basename($m));
     }
 
     # install (using the provided install script)
@@ -139,4 +139,20 @@ sub install_treetagger{
     print "Done!\n\n";
 
     chdir($pwd);
+}
+
+
+# get data from the ftp-server
+# in case LWP::Simpledoesn't work: try to call wget
+
+sub my_getstore{
+  my $url = shift;
+  my $status = getstore($url, basename($url) );
+  unless ( is_success($status)){
+    system("wget $url");
+  }
+  unless (-e basename($url)){
+    die "cannot fetch $url!\n";
+  }
+  return 1;
 }
