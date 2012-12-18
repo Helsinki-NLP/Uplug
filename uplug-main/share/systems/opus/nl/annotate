@@ -19,7 +19,7 @@
   'description' => 'This is the pre-processing pipe-line for Dutch that includes the TreeTagger for tokenization and POS tagging.',
   'input' => {
     'text' => {
-      'format' => 'text',
+      'format' => 'xml',
     }
   },
   'output' => {
