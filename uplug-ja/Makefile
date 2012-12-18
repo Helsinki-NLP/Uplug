@@ -62,4 +62,4 @@ $(IPADIC)/Makefile: $(CHASEN)/Makefile
 			--with-chasenrc-path=/usr/local/etc )
 
 uplug/Makefile: uplug/Makefile.PL
-	(cd $(dir $@) && perl Makefile.pl)
+	(cd $(dir $@) && perl Makefile.PL)
