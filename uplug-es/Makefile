@@ -24,4 +24,4 @@ dist-uplug: uplug/Makefile
 	${MAKE} -C uplug manifest dist
 
 %/Makefile: %/Makefile.PL
-	(cd $(dir $@) && perl Makefile.pl)
+	(cd $(dir $@) && perl Makefile.PL)

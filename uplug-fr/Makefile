@@ -32,4 +32,4 @@ melt-0.6/Makefile:
 	(cd melt-0.6 && ./configure)
 
 uplug/Makefile: uplug/Makefile.PL
-	(cd $(dir $@) && perl Makefile.pl)
+	(cd $(dir $@) && perl Makefile.PL)
