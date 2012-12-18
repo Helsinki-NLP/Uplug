@@ -1,6 +1,6 @@
 {
   'module' => {
-    'name' => 'Vallback annotation = generic tokenization',
+    'name' => 'fallback annotation = generic tokenization',
     'submodules' => [
         'pre/tok',
     ],
