@@ -53,9 +53,36 @@ install_script 'tools/uplug-sentence-align';
 
 install_share;
 
+requires 'AnyDBM_File'     => 0;
+requires 'Cwd'             => 0;
+requires 'Data::Dumper'    => 0;
+requires 'Encode'          => 0;
+requires 'Exporter'        => 0;
+requires 'File::Basename'  => 0;
+requires 'File::Compare'   => 0;
+requires 'File::Copy'      => 0;
+requires 'File::ShareDir'  => 0;
+requires 'File::stat'      => 0;
+requires 'FileHandle'      => 0;
+requires 'FindBin'         => 0;
+requires 'Getopt::Std'     => 0;
+requires 'HTML::Entities'  => 0;
+requires 'IO::File'        => 0;
+requires 'IO'              => 0;
+requires 'POSIX'           => 0;
+requires 'Storable'        => 0;
+requires 'Sys::Hostname'   => 0;
+requires 'Test::More'      => 0;
 requires 'XML::Parser'     => 0;
 requires 'XML::Simple'     => 0;
-requires 'File::ShareDir'  => 0;
+
+## for the outdated UplugWeb
+# CGI
+# Carp
+# Fcntl
+# WebCqp::Query
+# ExtUtils::Command
+# Mail::Mailer
 
 WriteAll;
 
