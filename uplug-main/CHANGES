@@ -1,4 +1,10 @@
 
+* v0.3.6 - Sat Jan  5 19:34:41 CET 2013
+
+- fixed tests that require java
+- added dependency for DB_File and GDBM_File
+- added auto_install
+
 * v0.3.5 - Fri Dec 28 23:28:20 CET 2012
 
 - added all dependencies in Makefile.PL

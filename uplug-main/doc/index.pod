@@ -53,7 +53,7 @@ of those packages.
 
 You may also download the latest source from bitbucket and install all packages in one run:
 
- git clone https://bitbucket.org/tiedeman/uplug.git
+ git clone https://bitbucket.org/tiedemann/uplug.git
  cd uplug
  make all
  sudo make install

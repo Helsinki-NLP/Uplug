@@ -12,10 +12,17 @@ my $DATA  = $Bin.'/data';
 
 my $null = "2> /dev/null >/dev/null";
 
+my $JAVA=`which java`;
+chomp $JAVA;
+
 #-------------------------------------------------
 # sentence alignment with align2, hunalign and gma
+# (run gma only if java is present!)
 
-for my $a ('sent','hun','gma'){
+my @sent = ('sent','hun');
+push(@sent,'gma') if (-e $JAVA);
+
+for my $a ( @sent ){
 
     system("$UPLUG align/$a -src $DATA/xml/1988de.basic.xml -trg $DATA/xml/1988en.basic.xml -out align.xml $null");
 
@@ -26,6 +33,7 @@ for my $a ('sent','hun','gma'){
     unlink('align.xml');
     system("rm -fr data/runtime");
 }
+
 
 #-------------------------------------------------
 

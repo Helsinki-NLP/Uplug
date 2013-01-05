@@ -6,11 +6,11 @@ use File::Copy;
 use lib 'lib';
 use Uplug::Config;
 
-
 name          'Uplug';
 license       'gpl';
 author        'Joerg Tiedemann';
 all_from      'lib/Uplug.pm';
+include       'Module::AutoInstall';
 
 unless ($ARGV[0] eq 'skip-compile'){
   &make_align2;
@@ -51,9 +51,9 @@ install_script 'tools/uplug-readalign';
 install_script 'tools/uplug-recode';
 install_script 'tools/uplug-sentence-align';
 
-install_share;
-
 requires 'AnyDBM_File'     => 0;
+requires 'DB_File'         => 0;
+requires 'GDBM_File'       => 0;
 requires 'Cwd'             => 0;
 requires 'Data::Dumper'    => 0;
 requires 'Encode'          => 0;
@@ -83,6 +83,13 @@ requires 'XML::Simple'     => 0;
 # WebCqp::Query
 # ExtUtils::Command
 # Mail::Mailer
+
+
+## activate to force existing java
+# requires_external_bin 'java';
+
+auto_install;
+install_share;
 
 WriteAll;
 
