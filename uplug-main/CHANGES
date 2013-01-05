@@ -1,6 +1,7 @@
 
 * v0.3.6 - Sat Jan  5 19:34:41 CET 2013
 
+- added tools/xces2plain
 - fixed tests that require java
 - added dependency for DB_File and GDBM_File
 - added auto_install

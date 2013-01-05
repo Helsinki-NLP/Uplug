@@ -336,12 +336,14 @@ format as well. There are actually three options:
  uplug/tools/xces2text 1988sven.xml output.sv output.en
  uplug/tools/xces2moses -s sv -t en 1988sven.xml output
  uplug/tools/opus2moses.pl -d . -e output.sv -f output.en < 1988sven.xml
+ uplug/tools/xces2plain 1988sven.xml output output sv en
 
 The three tools use different ways of extracting the text from the
 aligned XML files. Look at the code and the usage information about
 how they differ. The first option os probably the safest one as
 this uses the same Uplug modules for extracting the text as they
-are used for word alignemnt.
+are used for word alignemnt. The last one requires XML::DT and works
+even when sentences are not aligned monotonically.
 
 =head2 Tagging (using external taggers)
 

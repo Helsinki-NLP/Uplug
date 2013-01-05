@@ -11,6 +11,7 @@ tab2tmx			simplistic conversion of TAB-separated parallel corpora to TMX
 xces2moses		simplistic converter from XCES format to Moses format
 xces2text		convert parallel corpora in XCES format to text format
 xces2tmx		convert parallel corpora in XCES format to TMX
+xces2plain		yet another XCES to text converter (based on XML::DT and XML::XCES)
 
 * Process Uplug word alignment files
 
