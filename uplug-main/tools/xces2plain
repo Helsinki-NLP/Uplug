@@ -90,8 +90,8 @@ sub align2pair {
 	  dt($target, %h2);
 	  
 	  for my $link (@$cont) {
-	      print S (map { "$_\n" } (@s{@{$link->[0]}}));
-	      print T (map { "$_\n" } (@t{@{$link->[1]}}));
+	      print S join(' ',@s{@{$link->[0]}}),"\n";
+	      print T join(' ',@t{@{$link->[1]}}),"\n";
 	  }
       },
       );
