@@ -5,7 +5,7 @@ use LWP::Simple;
 use File::Basename;
 
 name        'Uplug';
-version     '0.3.1';
+version     '0.3.2';
 
 abstract    'TreeTagger add-on for Uplug';
 author      'Joerg Tiedemann';

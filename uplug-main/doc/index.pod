@@ -47,6 +47,12 @@ Start by downloading the latest uplug-main tar-ball and install the main
 components. This is fully functional and includes already a lot of the
 main features and some annotation tools.
 
+ tar xzf uplug-main*.tar.gz
+ cd uplug-main*
+ perl Makefile.PL
+ make all
+ sudo make install
+
 You may then select the language packs that you'd like to include and
 install them one by one. Look at the documentation and readme's inside
 of those packages.

@@ -10,7 +10,6 @@
       'format' => 'xml',
       'root' => 's',
       'write_mode' => 'overwrite',
-#	'encoding' => 'iso-8859-1',
 	'status' => 'tagTree',
     }
   },
@@ -28,7 +27,7 @@
      'tagger' => {
       'language' => 'german',
       'startup base' => 'tree_',
-      'encoding' => 'iso-8859-1',
+      'encoding' => 'iso-8859-15',
      },
      'output' => {
 #        'attribute' => 'pos',
@@ -37,7 +36,7 @@
         'token delimiter' => "\n",
         'sentence delimiter' => "\n<s>\n",
         'tag delimiter' => '\s+',
-	'encoding' => 'iso-8859-1',
+	'encoding' => 'iso-8859-15',
      },
      'input' => {
         'token delimiter' => " ",

@@ -467,7 +467,7 @@ sub FindConfig{
 
  $config = ReadConfig( $module, @params );
 
-Read the configuration of a given module, expand 'named data streams' (the ones defined in C<DataStreams.ini> and C<UserDataStreams.ini>) and Uplug variables (see below) and set parameters specified in C<@param>.
+Read the configuration of a given module, expand 'named data streams' (the ones defined in C<DataStreams.ini> and C<UserDataStreams.ini>) and Uplug variables (see below) and set parameters specified in C<@{params}>.
 
 =cut
 
@@ -634,9 +634,9 @@ sub GetNamedIO{
 
 =head2 C<CheckParam>
 
- CheckParam( $config, @param );
+ CheckParam( $config, @params );
 
-Check command line parameters and modify the config hash according to the given parameters C<@param>. Possible command line arguments are specified in the config hash, in either of the following: 
+Check command line parameters and modify the config hash according to the given parameters C<@params>. Possible command line arguments are specified in the config hash, in either of the following: 
 
  { arguments => { shortcuts => { ... } } }
  { arguments => { optons => { ... } } }
