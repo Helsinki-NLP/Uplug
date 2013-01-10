@@ -10,7 +10,6 @@
       'format' => 'xml',
       'root' => 's',
       'write_mode' => 'overwrite',
-#	'encoding' => 'iso-8859-1',
 	'status' => 'chunk',
     }
   },
@@ -33,7 +32,7 @@
 ',
       'chunk tag' => 'chunk',
       'POS tag delimiter' => '\\/',
-	'encoding' => 'iso-8859-1',
+#	'encoding' => 'iso-8859-1',
     },
     'input token replacements' => {
       '\\,' => 'COMMA',

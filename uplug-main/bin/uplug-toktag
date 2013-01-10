@@ -174,7 +174,7 @@ while ($input->read($data)){
 #	if ($OutEncoding ne $UplugEncoding){
 	if ($InEncoding ne $UplugEncoding){
 	    my $octets = encode($InEncoding, $txt,sub{ return ' ' });
-	    $txt = decode($InEncoding, $octets);
+	    $txt = decode($InEncoding, $octets );
 	}
 	$untagged->write($txt.$InSentDel);
 #	print F $txt;
@@ -286,9 +286,25 @@ while ($ret=$input->read($data)){
 
 	## number nodes <> number tagged tokens
 	if (@children != @SegAttr){
-	    print STDERR "# toktag.pl - warning: ";
-	    print STDERR scalar @children," tokens but ",
-	    scalar @SegAttr," tags!! (try to match them anyway)\n";
+
+	    ## check if there were problems with character encoding conversion
+	    if ($OutEncoding ne $UplugEncoding){
+		my @nodes=();
+		foreach my $c (@children){
+		    my $str = decode($OutEncoding, 
+				     encode($OutEncoding,
+					    $c->content,
+					    sub{ return '' } ));
+		    push (@nodes,$c) if ($str=~/\S/);
+		}
+		@children = @nodes;
+	    }
+
+	    if (@children != @SegAttr){
+		print STDERR "# toktag.pl - warning: ";
+		print STDERR scalar @children," tokens but ",
+		scalar @SegAttr," tags!! (try to match them anyway)\n";
+	    }
 	}
 
 	my @ChildString=();

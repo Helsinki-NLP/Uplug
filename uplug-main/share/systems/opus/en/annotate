@@ -2,11 +2,15 @@
   'module' => {
     'name' => 'English pre-processing',
     'submodules' => [
-        'pre/en/toktag',
+        'pre/tok -l en',
+#        'pre/en/toktag',
+        'pre/en/tagTree',
         'pre/en/annotate',
     ],
     'submodule names' => [
-	'tokenization and POS tagging (TreeTagger)',
+        'tokenization',
+#	'tokenization and POS tagging (TreeTagger)',
+	'POS tagging (TreeTagger)',
         'other annotation',
     ],
     'stdin' => 'text',

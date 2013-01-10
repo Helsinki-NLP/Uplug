@@ -155,14 +155,13 @@ while ($input->read($data)){
 
     map($tok[$_]=&FixTaggerData($tok[$_],\%InputReplace),0..$#tok);
 
-    # TODO: the code below is weird ... not needed anymore?
-    # if ($OutEncoding ne $UplugEncoding){
-    # 	foreach my $t (0..$#tok){
-    # 	    my $octets = encode($OutEncoding, $tok[$t],sub{ return '' });
-    # 	    $tok[$t] = decode($OutEncoding, $octets);
-    # 	}
-    # }
-
+    # take care of some non-compatible characters in some 
+    # character conversions (like utf8-->latin1)
+    if ($InEncoding ne $UplugEncoding){
+    	map( $tok[$_] = decode( $InEncoding, 
+    				encode( $InEncoding, $tok[$_],
+    					sub{ return '' } ) ), 0..$#tok );
+    }
     @tok=grep(/\S/,@tok);                  # take only non-empty tokens
     if (@tok){                             # print them if any left
 	print F join $InTokDel,@tok;
@@ -341,7 +340,8 @@ sub GetDefaultIni{
     'input' => {
       'token delimiter' => ' ',
       'sentence delimiter' => '
-'
+',
+	'encoding' => 'iso-8859-1',
     },
     'output' => {
       'token delimiter' => '\\s+',

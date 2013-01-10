@@ -10,7 +10,6 @@
       'format' => 'xml',
       'root' => 's',
       'write_mode' => 'overwrite',
-#	'encoding' => 'iso-8859-1',
 	'status' => 'tagGrok',
     }
   },
@@ -31,7 +30,8 @@
       'sentence delimiter' => '
 ',
       'attribute' => 'pos',
-	'encoding' => 'iso-8859-1',
+#	'encoding' => 'iso-8859-1',
+	'encoding' => 'utf8',
     },
     'tagger' => {
       'language' => 'english',
