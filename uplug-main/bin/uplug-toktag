@@ -155,34 +155,24 @@ if (not defined $OutEncoding){$OutEncoding=$InEncoding;}
 
 my $untagged=Uplug::IO::Any->new('text');
 $untagged->open('write',{file=>$TmpUntagged,encoding=>$InEncoding});
-#open F,">$TmpUntagged";
 
 while ($input->read($data)){
 
     my $txt=$data->content;
-#    if ($OutEncoding ne $UplugEncoding){
-##	$txt=&Uplug::Data::encode($txt,$UplugEncoding,$OutEncoding);
-#	$txt=&Uplug::Encoding::convert($txt,$UplugEncoding,$OutEncoding);
-#    }
     if ($txt){
-
 	$txt=&FixTaggerData($txt,\%InputReplace);
 
 	## handle malformed data by converting to octets and back
 	## the sub in encode ensures that malformed characters are ignored!
 	## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
-#	if ($OutEncoding ne $UplugEncoding){
 	if ($InEncoding ne $UplugEncoding){
 	    my $octets = encode($InEncoding, $txt,sub{ return ' ' });
 	    $txt = decode($InEncoding, $octets );
 	}
 	$untagged->write($txt.$InSentDel);
-#	print F $txt;
-#	print F $InSentDel;
     }
 }
 
-#close F;
 $untagged->close;
 $input->close;
 
@@ -237,20 +227,6 @@ while ($ret=$input->read($data)){
     foreach my $i (0..$#tok){
 	$tok[$i]=~/$OutPattern/s;
 	my @Val=($1,$2,$3,$4,$5,$6,$7,$8,$9);
-
-#	if ($OutEncoding ne $UplugEncoding){
-#	    my $octets = encode($OutEncoding, $txt);
-#	    $txt = decode($OutEncoding, $octets);
-#	}
-#
-#	if ($OutEncoding ne $UplugEncoding){
-#	    map ($Val[$_]=
-#		 &Uplug::Encoding::convert($Val[$_],$OutEncoding,$UplugEncoding),
-#		 (0..$#Val));
-##	    map ($Val[$_]=
-##		 &Uplug::Data::encode($Val[$_],$OutEncoding,$UplugEncoding),
-##		 (0..$#Val));
-#	}
 	$SegString[$i]=$Val[$TextAttr];
 	%{$SegAttr[$i]}=();
 	foreach my $j (0..$#Attr){
@@ -284,22 +260,14 @@ while ($ret=$input->read($data)){
     my @children=$data->findNodes($SegTag);
     if (@children){
 
-	## number nodes <> number tagged tokens
+	## if there are more tags than tokens:
+	## - check if there were problems with character encoding conversion
+	## - if not: skip this sentence (write data without adding annotations)
+
 	if (@children != @SegAttr){
-
-	    ## check if there were problems with character encoding conversion
-	    if ($OutEncoding ne $UplugEncoding){
-		my @nodes=();
-		foreach my $c (@children){
-		    my $str = decode($OutEncoding, 
-				     encode($OutEncoding,
-					    $c->content,
-					    sub{ return '' } ));
-		    push (@nodes,$c) if ($str=~/\S/);
-		}
-		@children = @nodes;
+	    if ($InEncoding ne $UplugEncoding){
+		@children = $data->contentNodesEncoded($InEncoding);
 	    }
-
 	    if (@children != @SegAttr){
 		print STDERR "# toktag.pl - warning: ";
 		print STDERR scalar @children," tokens but ",

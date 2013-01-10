@@ -124,23 +124,27 @@ my $data=Uplug::Data->new;
 
 $input->open('read',$InputStream);
 my $UplugEncoding=$input->getInternalEncoding();
+
+my $InEncoding=$IniData{parameter}{input}{encoding};
 my $OutEncoding=$IniData{parameter}{output}{encoding};
-if (not defined $OutEncoding){$OutEncoding=$UplugEncoding;}
+my $ModelEncoding=$IniData{parameter}{chunker}{encoding};
+
+if (not defined $ModelEncoding){$ModelEncoding=$UplugEncoding;}
+if (not defined $InEncoding){$InEncoding=$ModelEncoding;}
+if (not defined $OutEncoding){$OutEncoding=$InEncoding;}
 
 open F,">$TmpUntagged";
 
 while ($input->read($data)){
 
-#    my @nodes=$data->contentElements;
-    my @nodes=$data->findNodes('w');
-    my @tok=$data->content(\@nodes);
-    my @attr=$data->attribute(\@nodes);
+    my @tok   = ();
+    my @nodes = $data->contentNodesEncoded($InEncoding,\@tok);
+    my @attr  = $data->attribute(\@nodes);
 
     map(s/^\s*//,@tok);                    # remove initial white-spaces
     map(s/\s*$//,@tok);                    # remove final white-spaces
 
     map($tok[$_]=&FixChunkerData($tok[$_],\%TokReplace),0..$#tok);
-
     foreach (0..$#tok){
 	if ($tok[$_]!~/\S/){next;}
 	if (defined $attr[$_]{$POSattr}){
@@ -150,24 +154,9 @@ while ($input->read($data)){
 	}
     }
     map($tok[$_]=&FixChunkerData($tok[$_],\%InputReplace),0..$#tok);
-#    if ($OutEncoding ne $UplugEncoding){
-#	map($tok[$_]=&Uplug::Encoding::convert($tok[$_],
-#					       $UplugEncoding,
-#					       $OutEncoding),
-#	    0..$#tok);
-#    }
 
-#	## handle malformed data by converting to octets and back
-#	## the sub in encode ensures that malformed characters are ignored!
-#	## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
-    if ($OutEncoding ne $UplugEncoding){
-	foreach my $t (0..$#tok){
-	    my $octets = encode($OutEncoding, $tok[$t],sub{ return '' });
-	    $tok[$t] = decode($OutEncoding, $octets);
-	}
-    }
-    @tok=grep(/\S/,@tok);                  # take only non-empty tokens
-    if (@tok){                             # print them if any left
+    # print them if any left
+    if (@tok){
 	print F join $InTokDel,@tok;
 	print F $InSentDel;
     }
@@ -196,31 +185,18 @@ open F,"<$TmpTagged";
 my $data=Uplug::Data->new;    # use a new data-object (new XML parser!)
 while ($input->read($data)){
     my $tagged=undef;
-#    my @cont=$data->contentElements;
-    my @cont=$data->findNodes('w');
+
+    my @cont = $data->contentNodesEncoded($InEncoding);
     if (not @cont){$output->write($data);next;}
+
     my @tok=();
     $/=$OutSentDel;
     $tagged=<F>;
     $tagged=&FixChunkerData($tagged,\%OutputReplace);
     chomp $tagged;
     @tok=split(/$OutTokDel/,$tagged);
-    if (@cont != @tok){
-	print STDERR "# chunk.pl - warning: ";
-	print STDERR scalar @cont," tokens but ",scalar @tok," tags!!\n";
-	$output->write($data);
-	next;
-    }
-#    while ($tagged=<F>){
-#	$tagged=&FixChunkerData($tagged,\%OutputReplace);
-#	chomp $tagged;
-#	@tok=split(/$OutTokDel/,$tagged);
-#	if (@cont == @tok){last;}
-#    }
 
     $/=$InputSeperator;
-#    chomp $tagged;
-#    my @tok=split(/$OutTokDel/,$tagged);
     my @label=@tok;
     map(s/^.*$InTagDel//,@label);
     map(s/^(.*)$InTagDel.*$/$1/,@tok);
@@ -231,7 +207,7 @@ while ($input->read($data)){
     my $id=$data->attribute('id');
     $id=~s/^./c/;
 
-    &AddChunks($data,\@tok,\@tag,\@label,$id);
+    &AddChunks($data,\@cont,\@tok,\@tag,\@label,$id);
     $output->write($data);
 }
 close F;
@@ -242,26 +218,30 @@ $/=$InputSeperator;
 
 END {
     unlink $TmpUntagged;
-#    unlink $TmpTagged;
+    unlink $TmpTagged;
 }
 
 ############################################################################
 
 sub AddChunks{
-    my ($data,$tokens,$tags,$labels,$id)=@_;
+    my ($data,$nodes,$tokens,$tags,$labels,$id)=@_;
 
     my @words=();
     my @attr=();
     my $count=0;
 
-    my @nodes=$data->contentElements;
+    if (@{$nodes} != @{$tokens}){
+	print STDERR "# chunk.pl - warning: ";
+	print STDERR scalar @{$nodes}," tokens but ",scalar @{$tokens}," tags!!\n";
+	return 0;
+    }
 
     my ($type,$length);
     while (($type,$length)=&GetNextChunk($labels)){
 	$count++;
 	my @children=();
 	foreach (0..$length){
-	    $children[$_]=shift @nodes;
+	    $children[$_]=shift @{$nodes};
 	}
 	if (not $type){next;}              # no type --> no chunk!!
 	my %ParentAttr=();

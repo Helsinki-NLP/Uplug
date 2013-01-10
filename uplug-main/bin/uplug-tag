@@ -149,20 +149,14 @@ open F,">$TmpUntagged";
 binmode(F,":encoding($InEncoding)");
 
 while ($input->read($data)){
-    my @tok=$data->content();
+    my @tok = ();
+    my @nodes = $data->contentNodesEncoded($InEncoding,\@tok);
+
     map(s/^\s*//,@tok);                    # remove initial white-spaces
     map(s/\s*$//,@tok);                    # remove final white-spaces
 
     map($tok[$_]=&FixTaggerData($tok[$_],\%InputReplace),0..$#tok);
 
-    # take care of some non-compatible characters in some 
-    # character conversions (like utf8-->latin1)
-    if ($InEncoding ne $UplugEncoding){
-    	map( $tok[$_] = decode( $InEncoding, 
-    				encode( $InEncoding, $tok[$_],
-    					sub{ return '' } ) ), 0..$#tok );
-    }
-    @tok=grep(/\S/,@tok);                  # take only non-empty tokens
     if (@tok){                             # print them if any left
 	print F join $InTokDel,@tok;
 	print F $InSentDel;
@@ -207,20 +201,7 @@ my $data=Uplug::Data->new;    # use a new data-object (new XML parser!)
 my $ret;
 while ($ret=$input->read($data)){
 
-    ## do the same as for preparing the data for tagging
-    ## (mainly to check if we have to ignore some content nodes)
-    my @nodes=$data->contentElements;
-    my @tokcont=$data->content();
-    my @cont=();
-    foreach (0..$#tokcont){
-	if ($OutEncoding ne $UplugEncoding){
-	    my $octets = encode($OutEncoding, $tokcont[$_],sub{ return '' });
-	    $tokcont[$_] = decode($OutEncoding, $octets);
-	}
-	if ($tokcont[$_]=~/\S/){
-	    push(@cont,$nodes[$_]);
-	}
-    }
+    my @cont = $data->contentNodesEncoded($InEncoding);
 
     ## no content nodes left --> just print the data
     if (not @cont){
@@ -297,8 +278,8 @@ $output->close;
 $/=$InputSeperator;
 
 END {
-#    unlink $TmpUntagged;
-#    unlink $TmpTagged;
+    unlink $TmpUntagged;
+    unlink $TmpTagged;
 }
 
 ############################################################################

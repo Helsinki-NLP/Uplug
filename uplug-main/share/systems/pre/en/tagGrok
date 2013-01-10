@@ -30,12 +30,11 @@
       'sentence delimiter' => '
 ',
       'attribute' => 'pos',
-#	'encoding' => 'iso-8859-1',
-	'encoding' => 'utf8',
     },
     'tagger' => {
       'language' => 'english',
-      'startup base' => 'tagger_'
+      'startup base' => 'tagger_',
+      'encoding' => 'iso-8859-1',
     },
      'input replacements' => {
         ' ' => '_',

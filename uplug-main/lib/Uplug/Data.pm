@@ -33,6 +33,8 @@ use Data::Dumper;
 
 use Uplug::Data::Node;
 use Uplug::Encoding;
+use Encode;
+
 
 @ISA=qw( Exporter);
 @EXPORT = qw( $DEFAULTDELIMITER $DEFAULTROOTLABEL);
@@ -275,6 +277,34 @@ sub contentElements{
     }
     return @elements;
 }
+
+
+sub contentNodesEncoded{
+    my $data     = shift;
+    my $encoding = shift;
+    my $tokens   = shift;
+
+    my @nodes=$data->contentElements;
+#    my @nodes=$data->findNodes('w');
+
+    unless ($encoding=~/utf-?8/i){
+	my @content = ();
+	$tokens = [] unless (ref($tokens) eq 'ARRAY');
+	foreach my $c (@nodes){
+	    next unless (ref($c));
+	    my $str = decode($encoding, encode($encoding, $c->content,sub{ return '' }) );
+	    if ( $str=~/\S/ ){
+		push(@content,$c);
+		push(@{$tokens},$str);
+	    }
+	}
+	return @content;
+    }
+    @{$tokens}=$data->content(\@nodes) if (ref($tokens) eq 'ARRAY');
+    return @nodes;
+}
+
+
 
 #--------------------------------------------------------------------
 # attribute .... return value of a node attribute

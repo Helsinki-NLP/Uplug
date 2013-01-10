@@ -23,7 +23,8 @@
     },
     'chunker' => {
       'language' => 'english',
-      'startup base' => 'chunker_'
+      'startup base' => 'chunker_',
+      'encoding' => 'iso-8859-1',
     },
     'output' => {
       'token delimiter' => '\\s+',
@@ -32,7 +33,6 @@
 ',
       'chunk tag' => 'chunk',
       'POS tag delimiter' => '\\/',
-#	'encoding' => 'iso-8859-1',
     },
     'input token replacements' => {
       '\\,' => 'COMMA',
