@@ -2,10 +2,12 @@
   'module' => {
     'name' => 'Russian pre-processing',
     'submodules' => [
+        'pre/tok -l ru',
         'pre/ru/tagHunPos',
         'pre/ru/malt',
     ],
     'submodule names' => [
+        'tokenizer',
         'POS tagger (hunpos)',
         'dependency parser (malt)',
     ],

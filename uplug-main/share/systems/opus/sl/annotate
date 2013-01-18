@@ -7,6 +7,7 @@
         'pre/sl/malt',
     ],
     'submodule names' => [
+        'tokenizer',
         'POS tagger (hunpos)',
 	'dependency parser (malt)',
     ],
