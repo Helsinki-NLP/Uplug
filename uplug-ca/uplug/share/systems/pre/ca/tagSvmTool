@@ -10,7 +10,6 @@
       'format' => 'xml',
       'root' => 's',
       'write_mode' => 'overwrite',
-#	'encoding' => 'iso-8859-1',
 	'status' => 'tagSvmTool',
     }
   },
@@ -32,7 +31,6 @@
         'token delimiter' => "\n",
         'sentence delimiter' => "\n\n",
         'tag delimiter' => '\s+',
-	'encoding' => 'iso-8859-1',
      },
      'input' => {
         'token delimiter' => "\n",
