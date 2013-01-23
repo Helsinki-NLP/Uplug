@@ -85,7 +85,7 @@ my $TokenizeTrg   = $IniData{parameter}{'tokenize target'} || $Tokenize;
 # lowercase source/target language before aligning (good for -realign and dic-matching)?
 my $Lowercase     = $IniData{parameter}{'lowercase'};
 my $LowercaseSrc  = $IniData{parameter}{'lowercase source'} || $Lowercase;
-my $LowercaseTrg  = $IniData{parameter}{'lowercase target'} || $Lowercase);
+my $LowercaseTrg  = $IniData{parameter}{'lowercase target'} || $Lowercase;
 
 # skip dictionary matches (even thoug there is a doctionary for the given language pair)
 my $SkipDictionary = $IniData{parameter}{'skip dictionary'};
