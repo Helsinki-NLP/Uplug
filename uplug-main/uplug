@@ -29,7 +29,7 @@ For the latest sources, language packs, additional modules and tools: Please, ha
 
 =head1 SYNOPSIS
 
-  uplug [-ehHlp] [-f fallback] config-file [OPTIONS]
+  uplug [-ehHlp] [-f fallback] config-file [MODULE-ARGUMENTS]
 
 C<config-file> is a valid Uplug configuration file (describing a module that may consist of several sub-modules). Configuration files can be given with the absolute and relative paths. If they are not found as specified, then Uplug will look at C<UplugSharedDir/systems/>
 

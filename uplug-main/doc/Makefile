@@ -78,9 +78,13 @@ $(wikidocbin): wiki/bin/%.wiki: $(binhome)/%
 
 wiki/Home.wiki: index.pod
 	mkdir -p `dirname $@`
+	find wiki/bin -name '*.wiki'  | sort | grep -v 'Home.wiki' |\
+	sed 's#^# * [[#;s#\.wiki#.wiki]]#;s#wiki/##' > $@
+	find wiki/Uplug -name '*.wiki'  | sort | grep -v 'Home.wiki' |\
+	sed 's#^# * [[#;s#\.wiki#.wiki]]#;s#wiki/##' >> $@
 	pod2wiki --style=moinmoin --encoding=utf8 < $< |\
 		sed 's/`/**/g' |\
-		perl -pe 's/^ (\S.*)\:\:/ \* $$1/'  > $@
+		perl -pe 's/^ (\S.*)\:\:/ \* $$1/'  >> $@
 	@echo "\n== More Information ==\n" >> $@
 	find . -name '*.wiki'  | sort | grep -v 'Home.wiki' |\
 	sed 's#^\.\/# * [[#;s#\.wiki#.wiki]]#;s#wiki/##' >> $@

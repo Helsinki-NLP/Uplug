@@ -41,6 +41,7 @@ use lib "$Bin/../lib";
 use Uplug::Data;
 use Uplug::IO::Any;
 use Uplug::Config;
+use Uplug::PreProcess::Tokenizer;
 
 my $UplugHome="$Bin/../";
 
@@ -73,6 +74,24 @@ if (not -e $TrgStream->{file}){
 my $ParBreak      = $IniData{parameter}{'paragraph boundary'};
 my $DicFile       = $IniData{parameter}{'dictionary'};
 my $BisentMode    = $IniData{parameter}{'bisent mode'};
+my $SrcLang       = $IniData{parameter}{'source language'};
+my $TrgLang       = $IniData{parameter}{'target language'};
+
+# tokenize source/target language before aligning (good for -realign and dic-matching)?
+my $Tokenize      = $IniData{parameter}{'tokenize'};
+my $TokenizeSrc   = $IniData{parameter}{'tokenize source'} || $Tokenize;
+my $TokenizeTrg   = $IniData{parameter}{'tokenize target'} || $Tokenize;
+
+# lowercase source/target language before aligning (good for -realign and dic-matching)?
+my $Lowercase     = $IniData{parameter}{'lowercase'};
+my $LowercaseSrc  = $IniData{parameter}{'lowercase source'} || $Lowercase;
+my $LowercaseTrg  = $IniData{parameter}{'lowercase target'} || $Lowercase);
+
+# skip dictionary matches (even thoug there is a doctionary for the given language pair)
+my $SkipDictionary = $IniData{parameter}{'skip dictionary'};
+my $SkipRealign    = $IniData{parameter}{'skip realign'};
+
+my %Tokenizer=();
 
 my $AlignPrg = &find_executable('hunalign');
 my $AlignDir = &shared_home().'/ext/hunalign';
@@ -80,10 +99,20 @@ my $TmpSrc=Uplug::IO::Any::GetTempFileName;
 my $TmpTrg=Uplug::IO::Any::GetTempFileName;
 
 if (not -e $DicFile){                            # if there is no dictionary:
-    $DicFile=$AlignDir.'/data/null.dic';          # - use an empty file
-    $AlignPrg.=' -realign';                      # - ... and the realign flag
+    unless ($SkipDictionary){
+	my $SharedLangDir = &shared_lang().'/hunalign';
+	if (-e "$SharedLangDir/$SrcLang-$TrgLang.dic"){
+	    $DicFile="$SharedLangDir/$SrcLang-$TrgLang.dic";
+	}
+    }
 }
+if (not -e $DicFile){                            # if there is no dictionary:
+    $DicFile=$AlignDir.'/data/null.dic';          # - use an empty file
+}
+
+$AlignPrg.=' -realign' unless ($SkipRealign);
 $AlignPrg.=' -bisent' if ($BisentMode);
+
 
 #---------------------------------------------------------------------------
 # open data streams!
@@ -122,8 +151,12 @@ while ($source->read($data)){
 		push(@SrcSent,'p');
 	    }
 	    push (@SrcSent,$id);
-	    print F join " ",@tok;
-	    print F "\n";
+	    # print F join " ",@tok;
+	    # print F "\n";
+	    my $string = join(' ',@tok);
+	    $string = tokenize($string,$SrcLang) if ($TokenizeSrc);
+	    $string = lc($string)                if ($LowercaseSrc);
+	    print F $string,"\n";
 	}
     }
 }
@@ -152,8 +185,12 @@ while ($target->read($data)){
 		push(@TrgSent,'p');
 	    }
 	    push (@TrgSent,$id);
-	    print F join " ",@tok;
-	    print F "\n";
+	    # print F join " ",@tok;
+	    # print F "\n";
+	    my $string = join(' ',@tok);
+	    $string = tokenize($string,$TrgLang) if ($TokenizeTrg);
+	    $string = lc($string)                if ($LowercaseTrg);
+	    print F $string,"\n";
 	}
     }
 }
@@ -192,10 +229,6 @@ foreach (@alignments){
     ## add links
     my @LinkSrc=();
     my @LinkTrg=();
-
-    if ($id == 149){
-	print '';
-    }
 
     # bisent mode: only allow 1:1 alignments!
     if ($BisentMode){
@@ -257,6 +290,16 @@ unlink $TmpTrg;
 
 
 
+sub tokenize{
+    unless (exists $Tokenizer{$_[1]}){
+	$Tokenizer{$_[1]} = new Uplug::PreProcess::Tokenizer( lang => $_[1] );
+    }
+    my @tok = $Tokenizer{$_[1]}->tokenize($_[0]);
+    return join(' ',@tok);
+}
+
+
+
 
 ############################################################################
 
@@ -290,7 +333,18 @@ sub GetDefaultIni{
        'src' => 'input:source text:file',
        'trg' => 'input:target text:file',
        'out' => 'output:bitext:file',
-       'b'   => 'parameter:bisent mode'
+       'b'   => 'parameter:bisent mode',
+       'd'   => 'parameter:dictionary',
+       's'     => 'parameter:source language',
+       't'     => 'parameter:target language',
+       'tok'   => 'parameter:tokenize',
+       'tok-s' => 'parameter:tokenize source',
+       'tok-t' => 'parameter:tokenize target',
+       'l'     => 'parameter:lowercase',
+       'ls'    => 'parameter:lowercase source',
+       'lt'    => 'parameter:lowercase target',
+       'no-dic'     => 'parameter:skip dictionary',
+       'no-realign' => 'parameter:skip realign',
     }
   },
 };
