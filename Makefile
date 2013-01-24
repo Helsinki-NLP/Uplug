@@ -1,5 +1,5 @@
 
-MODULES = uplug-main $(wildcard uplug-??) uplug-treetagger
+MODULES = uplug-main $(wildcard uplug-??) uplug-treetagger uplug-hunalign-dics
 
 all test install:
 	for m in $(MODULES); do\

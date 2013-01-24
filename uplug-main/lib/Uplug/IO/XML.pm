@@ -739,6 +739,8 @@ sub XmlChar{
 	    $c=~s/\&gt\;/\>/gis;
 	    $c=~s/\&lt\;/\</gis;
 	    $c=~s/\&amp\;/\&/gis;
+	    $c=~s/\&apos\;/\'/gis;
+	    $c=~s/\&d?quot\;/\"/gis;
 	}
 
 	$p->{XmlData}->addContent($p->{LastNode},$c);  # add new content!
