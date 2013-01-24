@@ -291,6 +291,11 @@ unlink $TmpTrg;
 
 
 sub tokenize{
+    # for Japanese and Chinese: split string into space-separated characters
+    if ($_[1]=~/^(ja|zh)/i){
+	my @chars = split(//,$_[0]);
+	return join(' ',@chars);
+    }
     unless (exists $Tokenizer{$_[1]}){
 	$Tokenizer{$_[1]} = new Uplug::PreProcess::Tokenizer( lang => $_[1] );
     }
