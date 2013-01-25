@@ -27,7 +27,18 @@
        'out' => 'output:bitext:file',
        'p' => 'parameter:paragraph boundary',
        'dic' => 'parameter:dictionary',
-       'b'   => 'parameter:bisent mode'
+       'd'   => 'parameter:dictionary',
+       'b'   => 'parameter:bisent mode',
+       's'     => 'parameter:source language',
+       't'     => 'parameter:target language',
+       'tok'   => 'parameter:tokenize',
+       'tok-s' => 'parameter:tokenize source',
+       'tok-t' => 'parameter:tokenize target',
+       'l'     => 'parameter:lowercase',
+       'ls'    => 'parameter:lowercase source',
+       'lt'    => 'parameter:lowercase target',
+       'no-dic'     => 'parameter:skip dictionary',
+       'no-realign' => 'parameter:skip realign',
     }
   },
   'module' => {
