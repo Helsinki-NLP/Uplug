@@ -1,4 +1,6 @@
 
+- added a timout-option to uplug-hunalign
+
 * v0.3.7 - Sat Jan 19 19:03:24 CET 2013
 
 - hunalign wrapper with tokenized and lowercased text
