@@ -94,7 +94,7 @@ while ($input->read($data)){
 	    print STDERR '.';
 	}
     }
-    &split($data);
+    &split_data($data);
     $output->write($data);
 }
 
@@ -104,7 +104,7 @@ $output->close;
 my $parId;
 my $id;
 my $idhead;
-sub split{
+sub split_data{
     my $data=shift;
     my %subst=();
 
