@@ -1,5 +1,7 @@
 
-- fixed a problem with the sentence splitter
+* v0.3.8 Sat Mar 16 10:58:22 CET 2013
+
+- fixed a serious problem with the sentence splitter
 - added a timout-option to uplug-hunalign
 
 * v0.3.7 - Sat Jan 19 19:03:24 CET 2013
