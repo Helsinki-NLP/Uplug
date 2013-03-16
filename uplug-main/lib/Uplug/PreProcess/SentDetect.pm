@@ -114,6 +114,15 @@ our $NONBREAKING_PREFIX_DIR     = &shared_lang() . '/nonbreaking_prefixes';
 our $DEFAULT_NONBREAKING_PREFIX = $NONBREAKING_PREFIX_DIR . '/nonbreaking_prefix.en';
 
 
+# some language aliases for non-standard language ID's
+# (sometimes used, for example, in EUbookshop)
+my %LANG_ALIASES = ( gr => 'el',   # greek
+		     ho => 'hu',   # hungarian
+		     lx => 'lb',   # luxembourgish
+		     no => 'nb',   # norwegian (assume that it is bokmål)
+		     vl => 'nl',   # flemish
+		     fb => 'fr');  # wallonian french
+
 =head1 CONSTRUCTOR
 
 The constructor can be called in two ways:
@@ -161,7 +170,16 @@ sub init {
 
     #default back to English if we don't have a language-specific prefix file
     if ( !( -e $prefixfile ) ) {
-        $prefixfile = $DEFAULT_NONBREAKING_PREFIX;
+	if (exists $LANG_ALIASES{$langid}){
+	    if (-e "$NONBREAKING_PREFIX_DIR/nonbreaking_prefix.".$LANG_ALIASES{$langid}){
+		$prefixfile = 
+		    "$NONBREAKING_PREFIX_DIR/nonbreaking_prefix.".$LANG_ALIASES{$langid};
+		# print STDERR "use $LANG_ALIASES{$langid} instead of $langid\n";
+	    }
+	}
+	if ( !( -e $prefixfile ) ) {
+	    $prefixfile = $DEFAULT_NONBREAKING_PREFIX;
+	}
         unless ( -e $prefixfile ) {
             die "ERROR: No abbreviations files found in $dir";
         }
