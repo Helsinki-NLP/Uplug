@@ -69,6 +69,7 @@ requires 'Getopt::Std'     => 0;
 requires 'HTML::Entities'  => 0;
 requires 'IO::File'        => 0;
 requires 'IO'              => 0;
+requires 'IPC::Run'        => 0;
 requires 'POSIX'           => 0;
 requires 'Storable'        => 0;
 requires 'Sys::Hostname'   => 0;

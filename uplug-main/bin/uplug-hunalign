@@ -43,9 +43,9 @@ use Uplug::IO::Any;
 use Uplug::Config;
 use Uplug::PreProcess::Tokenizer;
 
-my $UplugHome="$Bin/../";
+use IPC::Run qw( run timeout );
 
-use strict;
+my $UplugHome="$Bin/../";
 
 my %IniData=&GetDefaultIni;
 my $IniFile='hunalign.ini';
@@ -91,12 +91,18 @@ my $LowercaseTrg  = $IniData{parameter}{'lowercase target'} || $Lowercase;
 my $SkipDictionary = $IniData{parameter}{'skip dictionary'};
 my $SkipRealign    = $IniData{parameter}{'skip realign'};
 
+# set a timeout for hunalign (unless used with NullDic)
+my $TimeOut        = $IniData{parameter}{'timeout'};
+
+
 my %Tokenizer=();
 
 my $AlignPrg = &find_executable('hunalign');
 my $AlignDir = &shared_home().'/ext/hunalign';
-my $TmpSrc=Uplug::IO::Any::GetTempFileName;
-my $TmpTrg=Uplug::IO::Any::GetTempFileName;
+my $TmpSrc   = Uplug::IO::Any::GetTempFileName;
+my $TmpTrg   = Uplug::IO::Any::GetTempFileName;
+
+my $NullDic  = $AlignDir.'/data/null.dic';
 
 if (not -e $DicFile){                            # if there is no dictionary:
     unless ($SkipDictionary){
@@ -107,7 +113,7 @@ if (not -e $DicFile){                            # if there is no dictionary:
     }
 }
 if (not -e $DicFile){                            # if there is no dictionary:
-    $DicFile=$AlignDir.'/data/null.dic';          # - use an empty file
+    $DicFile=$NullDic;                           # - use an empty file
 }
 
 $AlignPrg.=' -realign' unless ($SkipRealign);
@@ -198,14 +204,36 @@ close F;
 $target->close;
 
 
+#---------------------------------------------------------------------------
+my @cmd = split(/\s+/,$AlignPrg);
+my ($in,$out,$err) = ('',undef,undef);
 
+# run without timeout if a dictionary is specified
+# and a timeout value is set
+if ($TimeOut && $DicFile ne $NullDic){
+    print STDERR "$AlignPrg $DicFile $TmpSrc $TmpTrg (timeout = $TimeOut)\n";
+    my $t = timeout( $TimeOut );
+    eval {
+	run [@cmd,$DicFile,$TmpSrc,$TmpTrg], \$in, \$out, \$err, $t
+    };
+    if ( $t->is_expired ){
+	print STDERR "$AlignPrg $NullDic $TmpSrc $TmpTrg\n";
+	run [@cmd,$NullDic,$TmpSrc,$TmpTrg], \$in, \$out, \$err
+	    or die "cat $?";
+    }
+}
 
+# otherwise: run as usual
+else{
+    print STDERR "$AlignPrg $DicFile $TmpSrc $TmpTrg\n";
+    run [@cmd,$DicFile,$TmpSrc,$TmpTrg], \$in, \$out, \$err
+	or die "cat $?";
+}
+
+# get alignments from the output
+my @alignments = split(/\n/,$out);
 #---------------------------------------------------------------------------
 
-print STDERR "$AlignPrg $DicFile $TmpSrc $TmpTrg\n";
-my @alignments = `$AlignPrg $DicFile $TmpSrc $TmpTrg 2>/dev/null`;
-
-#---------------------------------------------------------------------------
 
 my ($prevSrc,$prevTrg,$prevScore)=(0,0,0);
 
@@ -350,6 +378,7 @@ sub GetDefaultIni{
        'lt'    => 'parameter:lowercase target',
        'no-dic'     => 'parameter:skip dictionary',
        'no-realign' => 'parameter:skip realign',
+       'time'  => 'parameter:timeout',
     }
   },
 };

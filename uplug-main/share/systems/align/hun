@@ -25,7 +25,7 @@
        'src' => 'input:source text:file',
        'trg' => 'input:target text:file',
        'out' => 'output:bitext:file',
-       'p' => 'parameter:paragraph boundary',
+       'p'   => 'parameter:paragraph boundary',
        'dic' => 'parameter:dictionary',
        'd'   => 'parameter:dictionary',
        'b'   => 'parameter:bisent mode',
@@ -37,6 +37,7 @@
        'l'     => 'parameter:lowercase',
        'ls'    => 'parameter:lowercase source',
        'lt'    => 'parameter:lowercase target',
+       'time'  => 'parameter:timeout',
        'no-dic'     => 'parameter:skip dictionary',
        'no-realign' => 'parameter:skip realign',
     }
