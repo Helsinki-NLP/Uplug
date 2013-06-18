@@ -4,12 +4,12 @@
     'submodules' => [
         'pre/tok -l ru',
         'pre/ru/tagHunPos',
-#        'pre/ru/malt',      # the Russian model is toooo slow ...
+        'pre/ru/malt',      # the Russian model is toooo slow ...
     ],
     'submodule names' => [
         'tokenizer',
         'POS tagger (hunpos)',
-#        'dependency parser (malt)',
+        'dependency parser (malt)',
     ],
     'stdout' => 'text',
   },
