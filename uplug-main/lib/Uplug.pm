@@ -146,6 +146,7 @@ sub load{
     $runtime .= basename($self->{CONFIGFILE});
     while (-e $runtime.$count){$count++;}
     $self->{MODULE} = $runtime.$count;
+    push(@{$self->{TEMPFILES}},$self->{MODULE});
     &WriteConfig($self->{MODULE},$self->{CONFIG});
     $self->loadSubMods();
     $self->data($self->output());   # my own data is available
