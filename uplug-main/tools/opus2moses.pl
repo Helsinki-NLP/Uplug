@@ -203,8 +203,16 @@ sub OpenCorpora{
     # aligned document (use file basenames and the current directory)
     # (use opt_e/opt_f as extension or 'src', 'trg' as default)
     if ($opt_m){
-	my $srcout = basename($srcfile);
-	my $trgout = basename($trgfile);
+
+	# my $srcout = basename($srcfile);
+	##  my $trgout = basename($trgfile);
+	# my $trgout = basename($srcfile);
+
+        my @path = split(/\/+/,$srcfile);
+        shift(@path);
+        my $srcout = join('_',@path);
+        my $trgout = join('_',@path);
+
 	$srcout =~s/\.xml(\.gz)?/.$SRCOUTFILE/;
 	$trgout =~s/\.xml(\.gz)?/.$TRGOUTFILE/;
 
@@ -411,9 +419,11 @@ sub XmlTagEnd{
 	}
 	delete $p->{OPENSID};
 	if ($opt_r){
-	    $p->{OUTSTR} .= $p->{WATTR}->{word}.' ';
-	    $p->{WATTR}->{word} = '';
-	}
+            unless ($p->{NRWORDS}){
+                $p->{OUTSTR} .= $p->{WATTR}->{word}.' ';
+                $p->{WATTR}->{word} = '';
+            }
+        }
     }
     elsif ($e eq 'w'){
 	if ($p->{OPENSID} eq $p->{IDS}->[0]){
@@ -438,7 +448,7 @@ sub XmlTagEnd{
 		push(@factors,$p->{WATTR}->{$f});
 	    }
 	    if (defined $p->{OUT}){
-		my $OUT = $p->{OUT};
+#		my $OUT = $p->{OUT};
 		$p->{OUTSTR}.=join('|',@factors);  # save string
 		$p->{OUTSTR}.=' ';
 #		print $OUT join('|',@factors);     # instead of printing
