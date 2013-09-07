@@ -5,6 +5,7 @@
 #
 # OPTIONS
 #
+#   -a lang.... list of aligned languages (optional, space separated)
 #   -o ........ overwrite existing data (deletes entire data directory!!)
 #   -y ........ assumes yes (doesn't prompt before deleting data dir!)
 #   -s ........ skip conversion via recode (used for OO)
@@ -39,9 +40,9 @@ use File::Basename;
 use XML::Parser;
 use Encode;
 
-use vars qw($opt_i $opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s $opt_u $opt_p);
+use vars qw($opt_a $opt_i $opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s $opt_u $opt_p);
 use Getopt::Std;
-getopts('d:r:t:c:x:voyf:m:si:u:p:');
+getopts('a:d:r:t:c:x:voyf:m:si:u:p:');
 
 
 # script arguments
@@ -56,7 +57,12 @@ my $ASSUME_YES = $opt_y || 0;           # assume yes to overwrite
 my $VERBOSE    = $opt_v || 0;           # verbose output
 
 my @LANG       = @ARGV;                 # languages to be processed (sub-dirs!)
+my @ALGLANG    = @LANG;
 
+## if aligned languages are given then use only those
+if ($opt_a){
+    @ALGLANG = split(/\s+/,$opt_a);
+}
 
 # CWB encoding tools
 
@@ -227,7 +233,7 @@ foreach my $l (@LANG){
 ########################################################################
 # make alignment index for each language pair
 
-foreach my $s (@LANG){
+foreach my $s (@ALGLANG){
 
     my $slc = lc($s);
 
@@ -236,7 +242,7 @@ foreach my $s (@LANG){
     my %SrcPos=();
     ReadPosFile($srcpos,\%SrcPos);
 
-    foreach my $t (@LANG){
+    foreach my $t (@ALGLANG){
 
 	my $tlc = lc($t);
 

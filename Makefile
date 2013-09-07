@@ -37,7 +37,9 @@ packages: $(PACKAGES)
 $(PACKAGES): %.tar.gz: %
 	$(MAKE) MODE=skip-compile $</Makefile
 	$(MAKE) -C $< manifest dist
-	mv $</*plug*.tar.gz `ls $</*plug*.tar.gz | sed 's/Uplug/$</'`
+	if [ ! -e `ls $</*plug*.tar.gz | sed 's/Uplug/$</'` ]; then \
+	  mv $</*plug*.tar.gz `ls $</*plug*.tar.gz | sed 's/Uplug/$</'`; \
+	fi
 	mv $</*plug*.tar.gz .
 	$(MAKE) -C $< clean
 

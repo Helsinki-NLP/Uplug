@@ -8,7 +8,7 @@ LIB=$ROOT/lib
 OPTIONS="-token -lemma -sgml"
 
 TAGGER=${BIN}/tree-tagger
-TOKENIZER=${CMD}/utf8-tokenize.pl
+TOKENIZER=${CMD}/utf8-tokenize.perl
 PARFILE=${LIB}/bulgarian.par
 
 $TOKENIZER $* |
