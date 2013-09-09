@@ -4,7 +4,7 @@
     'submodules' => [
         'pre/nl/alptok',  # does nothing if Alpino is not present
         'pre/tok -l nl',
-        'pre/nl/annotate',
+#        'pre/nl/annotate',
     ],
     'submodule names' => [
 	'Alpino tokenizer',

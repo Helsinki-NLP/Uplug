@@ -4,13 +4,13 @@
     'submodules' => [
         'pre/nl/alptok',  # does nothing if Alpino is not present
         'pre/tok -l nl',
-        'pre/nl/tagMBT',
+#        'pre/nl/tagMBT',
         'pre/nl/tagTree',
     ],
     'submodule names' => [
     	'Alpino tokenizer',
 	'standard tokenizer',  # if necessary
-        'POS tagger (MBT)',
+#        'POS tagger (MBT)',
 	'POS tagging (TreeTagger)',
     ],
     'stdin' => 'text',
