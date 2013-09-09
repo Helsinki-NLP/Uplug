@@ -39,8 +39,7 @@
     'program' => 'uplug-tag',
     'location' => '$UplugBin',
     'name' => 'MElt tagger (french)',
-    'stdout' => 'text',
-    'stdin' => 'text',
+#    'stdin' => 'text',
     'stdout' => 'text',
   },
   'arguments' => {
