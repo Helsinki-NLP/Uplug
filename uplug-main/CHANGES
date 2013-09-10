@@ -1,4 +1,8 @@
 
+
+- fixed a problem of changing the root attribute in pipelines
+  (which messes up annotation pipelines)
+
 * v0.3.8 Sat Mar 16 10:58:22 CET 2013
 
 - fixed a serious problem with the sentence splitter

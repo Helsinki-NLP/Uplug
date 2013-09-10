@@ -370,6 +370,10 @@ Change the input settings in a particular configuration.
 ## change input settings in the module configuraton
 ##    (only for the ones that exist already)
 ## and write changes to the physical config file
+#
+# we make exception: the attribute 'root' should NOT be overwritten!
+# (this is necessary to not change the root tag in pipelines!)
+# TODO: this is not a nice solution! Is there a more general solution?!
 
 sub input{
     my $self=shift;
@@ -377,6 +381,12 @@ sub input{
     if (ref($input) eq 'HASH'){
 	foreach (keys %$input){
 	    if (&GetParam($self->{CONFIG},'input',$_)){
+		## don't change the root attribute if it exists
+		## (this is quite a hack - awful!!!)
+		if ((exists $self->{CONFIG}->{input}->{$_}->{root}) && 
+		    (exists $input->{$_}->{root})){
+		    $input->{$_}->{root} = $self->{CONFIG}->{input}->{$_}->{root};
+		}
 		&SetParam($self->{CONFIG},$input->{$_},'input',$_);
 	    }
 	    $self->{DATA}->{$_}=$input->{$_};
