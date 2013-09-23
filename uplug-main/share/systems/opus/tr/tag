@@ -3,11 +3,11 @@
     'name' => 'Turkish pre-processing',
     'submodules' => [
         'pre/tok -l tr',
-        'pre/tr/tag',
+#        'pre/tr/tag',
     ],
     'submodule names' => [
         'tokenizer',
-        'POS tagger',
+#        'POS tagger',
     ],
     'stdout' => 'text',
   },

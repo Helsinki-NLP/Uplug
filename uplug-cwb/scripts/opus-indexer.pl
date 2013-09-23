@@ -13,6 +13,8 @@
 #   -i depth .. min depth for finding alignment file (0 otherwise)
 #   -u pattern  allowed structural patterns
 #   -p pattern  allowed positional patterns
+#   -M ........ skip creating monolingual index files
+#   -k ........ keep temp file for cwb encoding
 #
 #---------------------------------------------------------------------------
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
@@ -40,9 +42,9 @@ use File::Basename;
 use XML::Parser;
 use Encode;
 
-use vars qw($opt_a $opt_i $opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s $opt_u $opt_p);
+use vars qw($opt_a $opt_i $opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s $opt_u $opt_p $opt_M $opt_k);
 use Getopt::Std;
-getopts('a:d:r:t:c:x:voyf:m:si:u:p:');
+getopts('a:d:r:t:c:x:voyf:m:si:u:p:Mk');
 
 
 # script arguments
@@ -180,6 +182,7 @@ if ($opt_f){
 # make monolingual corpus indeces
 
 # if (not $opt_m){
+unless ($opt_M){
 foreach my $l (@LANG){
 
     my $llc = lc($l);
@@ -225,10 +228,10 @@ foreach my $l (@LANG){
     print STDERR "make CWB index for '$l'\n" if $VERBOSE;
     MakeCWBindex($llc,$cwbtok,$attr);
 
-    unlink $cwbtok;
+    unlink $cwbtok unless ($opt_k);
     
 }
-# }
+}
 
 ########################################################################
 # make alignment index for each language pair
@@ -534,7 +537,10 @@ sub MakeCWBindex{
 	@extra = `grep 'ALIGNED' $regdir/$lang`;
     }
     mkdir "$datdir/$lang",0755;
+
+    print STDERR "$ENCODE -R $regdir/$lang -d $datdir/$lang -f $cwbtok $attr\n";
     system ("$ENCODE -R $regdir/$lang -d $datdir/$lang -f $cwbtok $attr");
+    print STDERR "$CWBMAKEALL -r $regdir -V $lang\n";
     system ("$CWBMAKEALL -r $regdir -V $lang");
 
     ## ... and add them to the new registry file
