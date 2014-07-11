@@ -1,4 +1,4 @@
-#!/usr/bin/env perl -w
+#!/usr/bin/env perl
 #-*-perl-*-
 #
 # this is a sentence aligner based on Phillip Koehn's implementation used
