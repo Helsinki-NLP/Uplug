@@ -159,16 +159,20 @@ $untagged->open('write',{file=>$TmpUntagged,encoding=>$InEncoding});
 while ($input->read($data)){
 
     my $txt=$data->content;
-    if ($txt){
+    if (defined($txt) and ($txt ne '')){
 	$txt=&FixTaggerData($txt,\%InputReplace);
+	$txt=~s/\s+/ /g;                           # normalize whitespace
 
 	## handle malformed data by converting to octets and back
 	## the sub in encode ensures that malformed characters are ignored!
 	## (see http://perldoc.perl.org/Encode.html#Handling-Malformed-Data)
 	if ($InEncoding ne $UplugEncoding){
-	    my $octets = encode($InEncoding, $txt,sub{ return ' ' });
+	    # my $octets = encode($InEncoding, $txt,sub{ return ' ' });
+	    # my $octets = encode($InEncoding, $txt,sub{ return '_' });
+	    my $octets = encode($InEncoding, $txt,sub{ return '' });
 	    $txt = decode($InEncoding, $octets );
 	}
+	$txt = '_' unless $txt=~/\S/;   # require at least one non-whitespace
 	$untagged->write($txt.$InSentDel);
     }
 }
@@ -210,7 +214,7 @@ my $idhead='';
 my $data=Uplug::Data->new;    # use a new data-object (new XML parser!)
 while ($ret=$input->read($data)){
     my $txt=$data->content;
-    if (not $txt){
+    if ((not defined($txt)) or ($txt eq '')){
 	$output->write($data);
 	next;
     }

@@ -18,12 +18,12 @@ require 5.004;
 use strict;
 use vars qw($VERSION);
 use Carp;
-use IO;
+use IO qw(Handle File Pipe);
 
 $VERSION = "0.4";
 
 
-
+
 ########################################################################
 # Constructor.
 ########################################################################

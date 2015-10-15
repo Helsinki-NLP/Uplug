@@ -115,7 +115,8 @@ while ($input->read($data)){
 
     my $txt=$data->content;
     chomp($txt);
-    if ($txt){
+    if (defined($txt) and ($txt ne '')){
+	$txt=~s/\s+/ /g;                           # normalize whitespace
 
 	## handle malformed data by converting to octets and back
 	## the sub in encode ensures that malformed characters are ignored!
@@ -123,8 +124,10 @@ while ($input->read($data)){
 #	if ($OutEncoding ne $UplugEncoding){
 	if ($ModelEncoding ne $UplugEncoding){
 	    my $octets = encode($OutEncoding, $txt,sub{ return ' ' });
+	    my $octets = encode($OutEncoding, $txt,sub{ return '' });
 	    $txt = decode($OutEncoding, $octets);
 	}
+	$txt = '_' unless $txt=~/\S/;   # require at least one non-whitespace
 	$untokenized->write($txt.$InSentDel);
     }
 }
@@ -174,7 +177,8 @@ while ($ret=$input->read($data)){
     my $txt_nospaces=$txt;     # in case the external tokenizer tokens together
     $txt_nospaces=~s/\s//gs;   # --> take away all spaces in original string
 #    print STDERR "$txt ...";
-    if (not $txt){
+    if ((not defined($txt)) or ($txt eq '')){
+
 	$output->write($data);
 	next;
     }
