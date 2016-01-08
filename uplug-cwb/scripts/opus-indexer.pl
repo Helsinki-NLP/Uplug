@@ -105,6 +105,7 @@ my $WordStart=0;
 my $WordDone=0;
 my $XmlStr;
 my %WordAttr=();
+my %AllWordAttr=();
 
 my $OutputEncoding;
 
@@ -223,6 +224,7 @@ foreach my $l (@LANG){
     $WordDone=0;
     $XmlStr;
     %WordAttr=();
+    %AllWordAttr=();
 
     foreach my $f (@doc){
 #	next if ($f ne 'xml/de/ep-01-09-05.xml.gz');
@@ -670,7 +672,7 @@ sub XML2CWB{
 	
 	eval { $AllAttrParser->parsefile($file); };
 	if ($@){warn "$@";}
-	@PATTR=sort keys %WordAttr;
+	@PATTR=sort keys %AllWordAttr;
 #	%{$parser1}=();
 #	$parser1 = undef;
     }
@@ -813,14 +815,14 @@ sub XmlAttrStart{
     my %a=@_;
     if ($e eq $WordTag){
 	$WordStart=1;
-	foreach (keys %a){
+	foreach my $i (keys %a){
 	    if (defined $WordAttrPattern){
-		next if ($_!~/^$WordAttrPattern$/);
+		next if ($i!~/^$WordAttrPattern$/);
 	    }
 	    if (defined $SkipWordAttrPattern){
-		next if ($_=~/^$SkipWordAttrPattern$/);
+		next if ($i=~/^$SkipWordAttrPattern$/);
 	    }
-	    $WordAttr{$_}=$a{$_};
+	    $AllWordAttr{$i}=$a{$i};
 	}
     }
     else{
