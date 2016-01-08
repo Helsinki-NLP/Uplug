@@ -13,6 +13,8 @@
 #   -i depth .. min depth for finding alignment file (0 otherwise)
 #   -u pattern  allowed structural patterns
 #   -p pattern  allowed positional patterns
+#   -U pattern  disallowed structural patterns
+#   -P pattern  disallowed positional patterns
 #   -M ........ skip creating monolingual index files
 #   -k ........ keep temp file for cwb encoding
 #
@@ -42,9 +44,9 @@ use File::Basename;
 use XML::Parser;
 use Encode;
 
-use vars qw($opt_a $opt_i $opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s $opt_u $opt_p $opt_M $opt_k);
+use vars qw($opt_a $opt_i $opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s $opt_u $opt_p $opt_M $opt_k $opt_P $opt_U);
 use Getopt::Std;
-getopts('a:d:r:t:c:x:voyf:m:si:u:p:Mk');
+getopts('a:d:r:t:c:x:voyf:m:si:u:p:MkP:U:');
 
 
 # script arguments
@@ -82,6 +84,10 @@ my $WordTag='w';                 # default word tag
 my $AllAttributes = 1;           # use all attributes
 my $StrucAttrPattern = $opt_u || undef;    # structural attribute pattern
 my $WordAttrPattern = $opt_p || undef;     # token attribute pattern
+
+my $SkipStrucAttrPattern = $opt_U || undef;  # skip structural attribute pattern
+my $SkipWordAttrPattern = $opt_P || undef;   # skip token attribute pattern
+
 
 # global variables used in XML parser
 
@@ -362,8 +368,8 @@ sub MakeCWBalg{
 	close F;
     }
 
-    system "$CWBALIGNENCODE -r $regdir -D $srctrg";
-    system "$CWBALIGNENCODE -r $regdir -D $trgsrc";
+    system "$CWBALIGNENCODE -v -r $regdir -D $srctrg";
+    system "$CWBALIGNENCODE -v -r $regdir -D $trgsrc";
 
     copy "$srctrg","$datdir/$srclang$trglang.alg";
     copy "$trgsrc","$datdir/$trglang$srclang.alg";
@@ -804,17 +810,26 @@ sub XmlChar{
 sub XmlAttrStart{
     my $p=shift;
     my $e=shift;
+    my %a=@_;
     if ($e eq $WordTag){
-	if (defined $WordAttrPattern){
-	    if ($e!~/^$WordAttrPattern$/){return;}
-	}
 	$WordStart=1;
-	while (@_){$WordAttr{$_[0]}=$_[1];shift;shift;}
+	foreach (keys %a){
+	    if (defined $WordAttrPattern){
+		next if ($_!~/^$WordAttrPattern$/);
+	    }
+	    if (defined $SkipWordAttrPattern){
+		next if ($_=~/^$SkipWordAttrPattern$/);
+	    }
+	    $WordAttr{$_}=$a{$_};
+	}
     }
     else{
 	if (defined $StrucAttrPattern){
 	    if ($e!~/^$StrucAttrPattern$/){return;}
-	    }
+	}
+	if (defined $SkipStrucAttrPattern){
+	    if ($e=~/^$SkipStrucAttrPattern$/){return;}
+	}
 	while (@_){$SATTR{$e}{$_[0]}=$_[1];shift;shift;}
     }
 }
