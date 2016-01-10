@@ -16,6 +16,7 @@
 #   -U pattern  disallowed structural patterns
 #   -P pattern  disallowed positional patterns
 #   -M ........ skip creating monolingual index files
+#   -A ........ skip creating alignment files
 #   -k ........ keep temp file for cwb encoding
 #
 #---------------------------------------------------------------------------
@@ -44,9 +45,9 @@ use File::Basename;
 use XML::Parser;
 use Encode;
 
-use vars qw($opt_a $opt_i $opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s $opt_u $opt_p $opt_M $opt_k $opt_P $opt_U);
+use vars qw($opt_a $opt_i $opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s $opt_u $opt_p $opt_M $opt_k $opt_P $opt_U $opt_A);
 use Getopt::Std;
-getopts('a:d:r:t:c:x:voyf:m:si:u:p:MkP:U:');
+getopts('a:d:r:t:c:x:voyf:m:si:u:p:MkP:U:A');
 
 
 # script arguments
@@ -244,6 +245,7 @@ foreach my $l (@LANG){
 ########################################################################
 # make alignment index for each language pair
 
+unless ($opt_A){
 foreach my $s (@ALGLANG){
 
     my $slc = lc($s);
@@ -322,7 +324,7 @@ foreach my $s (@ALGLANG){
     }
 }
 
-if (not $opt_m){
+if ((not $opt_m) and (not $opt_k)){
     foreach my $s (@LANG){
 	my $slc=lc($s);
 	unlink($TMPDIR.'/'.$slc.'.pos');
@@ -332,6 +334,7 @@ if (not $opt_m){
 	}
     }
     rmdir($TMPDIR);
+}
 }
 
 # end of main ...
@@ -398,7 +401,7 @@ sub check_alg_filename{
 }
 
 sub Align2CWB{
-    my ($file,$srcPosFile,$trgPosFile,$srcPos,$trgPos)=@_;
+    my ($file,$srcPosFile,$trgPosFile,$srcPosStr,$trgPosStr)=@_;
 
     my $lastsrc=-1;
     my $lasttrg=-1;
@@ -410,14 +413,22 @@ sub Align2CWB{
     my ($srcdoc,$trgdoc);
     my ($srcdocID,$trgdocID);
 
+    my $srcPos = {};
+    my $trgPos = {};
+
     while(<F>){
 	if (/fromDoc\s*=\s*\"([^\"]+)\"/){
-	    $srcdoc=check_alg_filename($1,$srcPos);
+	    $srcdoc=check_alg_filename($1,$srcPosStr);
 	    next if (not defined $srcdoc);
+	    $srcPos = {};
+	    GetPosInfo($$srcPosStr{$srcdoc},$srcPos);
 	}
 	if (/toDoc\s*=\s*\"([^\"]+)\"/){
-	    $trgdoc=check_alg_filename($1,$trgPos);
+	    $trgdoc=check_alg_filename($1,$trgPosStr);
+	    $trgPos = {};
 	    next if (not defined $trgdoc);
+	    GetPosInfo($$trgPosStr{$trgdoc},$trgPos);
+	    print STDERR '.' if ($VERBOSE);
 	}
 
 	if (/(sentLink|link)\s.*xtargets=\"([^\"]+)\s*\;\s*([^\"]+)\"/){
@@ -427,42 +438,44 @@ sub Align2CWB{
 	    my @trgsent=split(/\s/,$trg);
 
 	    if (not (@srcsent and @trgsent)){next;}
-	    next if (not defined $$srcPos{$srcdoc});
-	    next if (not defined $$srcPos{$srcdoc}{$srcsent[0]});
-	    next if (not defined $$srcPos{$srcdoc}{$srcsent[-1]});
+	    next if (not defined $$srcPos{$srcsent[0]});
+	    next if (not defined $$srcPos{$srcsent[-1]});
 
-	    next if (not defined $$trgPos{$trgdoc});
-	    next if (not defined $$trgPos{$trgdoc}{$trgsent[0]});
-	    next if (not defined $$trgPos{$trgdoc}{$trgsent[-1]});
+	    next if (not defined $$trgPos{$trgsent[0]});
+	    next if (not defined $$trgPos{$trgsent[-1]});
+
+	    ## this is weird but I saw it happening ...
+	    next if ($$srcPos{$srcsent[0]}[0] > $$srcPos{$srcsent[-1]}[1]);
+	    next if ($$trgPos{$trgsent[0]}[0] > $$trgPos{$trgsent[-1]}[1]);
 
 	    #------------------------------------------
 	    # print alignment file (src --> trg)
 
-	    if ($lastsrc<$$srcPos{$srcdoc}{$srcsent[0]}[0]){
-		print ALG1 $$srcPos{$srcdoc}{$srcsent[0]}[0],"\t";
-		print ALG1 $$srcPos{$srcdoc}{$srcsent[-1]}[1],"\t";
-		print ALG1 $$trgPos{$trgdoc}{$trgsent[0]}[0],"\t";
-		print ALG1 $$trgPos{$trgdoc}{$trgsent[-1]}[1],"\t";
+	    if ($lastsrc<$$srcPos{$srcsent[0]}[0]){
+		print ALG1 $$srcPos{$srcsent[0]}[0],"\t";
+		print ALG1 $$srcPos{$srcsent[-1]}[1],"\t";
+		print ALG1 $$trgPos{$trgsent[0]}[0],"\t";
+		print ALG1 $$trgPos{$trgsent[-1]}[1],"\t";
 		print ALG1 scalar @srcsent;
 		print ALG1 ':';
 		print ALG1 scalar @trgsent;
 		print ALG1 "\n";
-		$lastsrc=$$srcPos{$srcdoc}{$srcsent[-1]}[1];
+		$lastsrc=$$srcPos{$srcsent[-1]}[1];
 	    }
 	    
 	    #------------------------------------------
 	    # print alignment file (trg --> src)
 
-	    if ($lasttrg<$$trgPos{$trgdoc}{$trgsent[0]}[0]){
-		print ALG2 $$trgPos{$trgdoc}{$trgsent[0]}[0],"\t";
-		print ALG2 $$trgPos{$trgdoc}{$trgsent[-1]}[1],"\t";
-		print ALG2 $$srcPos{$srcdoc}{$srcsent[0]}[0],"\t";
-		print ALG2 $$srcPos{$srcdoc}{$srcsent[-1]}[1],"\t";
+	    if ($lasttrg<$$trgPos{$trgsent[0]}[0]){
+		print ALG2 $$trgPos{$trgsent[0]}[0],"\t";
+		print ALG2 $$trgPos{$trgsent[-1]}[1],"\t";
+		print ALG2 $$srcPos{$srcsent[0]}[0],"\t";
+		print ALG2 $$srcPos{$srcsent[-1]}[1],"\t";
 		print ALG2 scalar @trgsent;
 		print ALG2 ':';
 		print ALG2 scalar @srcsent;
 		print ALG2 "\n";
-		$lasttrg=$$trgPos{$trgdoc}{$trgsent[-1]}[1];
+		$lasttrg=$$trgPos{$trgsent[-1]}[1];
 	    }
 	}
     }
@@ -471,6 +484,25 @@ sub Align2CWB{
 
 
 
+
+
+# sub ReadPosFile{
+#     my $file=shift;
+#     my $pos=shift;
+#     open F,"<$file";
+#     my $f;
+#     while(<F>){
+# 	chomp;
+# 	if (/^\#\s+(\S+)\s*$/){
+# 	    $f=$1;
+# 	    next;
+# 	}
+# 	my ($id,$start,$end)=split(/\t/,$_);
+# 	$$pos{$f}{$id}[0]=$start;
+# 	$$pos{$f}{$id}[1]=$end;
+#     }
+#     close F;
+# }
 
 
 sub ReadPosFile{
@@ -479,19 +511,24 @@ sub ReadPosFile{
     open F,"<$file";
     my $f;
     while(<F>){
-	chomp;
 	if (/^\#\s+(\S+)\s*$/){
 	    $f=$1;
 	    next;
 	}
-	my ($id,$start,$end)=split(/\t/,$_);
-	$$pos{$f}{$id}[0]=$start;
-	$$pos{$f}{$id}[1]=$end;
+	$$pos{$f} .= $_;
     }
     close F;
 }
 
-
+sub GetPosInfo{
+    my $posstr = shift;
+    my $pos = shift;
+    foreach (split(/\n/,$posstr)){
+ 	my ($id,$start,$end)=split(/\t/,$_);
+ 	$$pos{$id}[0]=$start;
+	$$pos{$id}[1]=$end;	
+    }
+}
 
 
 
