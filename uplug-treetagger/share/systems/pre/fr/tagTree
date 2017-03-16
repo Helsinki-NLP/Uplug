@@ -25,7 +25,8 @@
      'tagger' => {
       'language' => 'french',
       'startup base' => 'tree_',
-	'encoding' => 'iso-8859-15',
+	'encoding' => 'utf8',      
+#	'encoding' => 'iso-8859-15',
      },
      'output' => {
 #        'attribute' => 'pos',
@@ -34,7 +35,8 @@
         'token delimiter' => "\n",
         'sentence delimiter' => "\n<s>\n",
         'tag delimiter' => '\s+',
-	'encoding' => 'iso-8859-15',
+	'encoding' => 'utf8',	
+#	'encoding' => 'iso-8859-15',
      },
      'input' => {
         'token delimiter' => " ",

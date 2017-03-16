@@ -16,52 +16,51 @@ my $TaggerLicense = "http://www.ims.uni-stuttgart.de/~schmid/Tagger-Licence";
 
 # TreeTagger downloads
 
+my $DownloadHome = 'http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/';
+my $TaggerVersion = '3.2.1';
+
 my %TaggerBinaries = (
-'Linux'       =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-linux-3.2.tar.gz',
-'Linux.x86_86'=>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-linux-3.2-64bit.tar.gz',
-'Linux.old'   =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-linux-3.2-old.tar.gz',
-'Darwin'      =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-MacOSX-3.2-intel.tar.gz',
-'MacOSX.PPC'  =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-MacOSX-3.2.tar.gz',
-'Solaris'     =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-3.2.tar.gz',
-'Windows'     =>'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tree-tagger-windows-3.2.zip' 
+'Linux'       =>$DownloadHome.'tree-tagger-linux-'.$TaggerVersion.'.tar.gz',
+'Linux.x86_86'=>$DownloadHome.'tree-tagger-linux-'.$TaggerVersion.'-64bit.tar.gz',
+'Linux.old'   =>$DownloadHome.'tree-tagger-linux-'.$TaggerVersion.'-old.tar.gz',
+'Darwin'      =>$DownloadHome.'tree-tagger-MacOSX-'.$TaggerVersion.'-intel.tar.gz',
+'MacOSX.PPC'  =>$DownloadHome.'tree-tagger-MacOSX-'.$TaggerVersion.'.tar.gz',
+'Solaris'     =>$DownloadHome.'tree-tagger-'.$TaggerVersion.'.tar.gz',
+'Windows'     =>$DownloadHome.'tree-tagger-windows-'.$TaggerVersion.'.zip' 
     );
 
-my $TaggerScripts   = 'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/tagger-scripts.tar.gz';
-my $TaggerInstaller = 'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/install-tagger.sh';
+my $TaggerScripts   = $DownloadHome.'tagger-scripts.tar.gz';
+my $TaggerInstaller = $DownloadHome.'install-tagger.sh';
 
 my %TaggerModels = ();
 @{$TaggerModels{'Linux'}} = (
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/bulgarian-par-linux-3.1.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/dutch-par-linux-3.1.bin.gz',
-#    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/dutch2-par-linux-3.1.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/english-par-linux-3.2.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/french-par-linux-3.2.bin.gz',
-#    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/french-par-linux-3.2-utf8.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/german-par-linux-3.2.bin.gz',
-#    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/german-par-linux-3.2-utf8.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/italian-par-linux-3.1.bin.gz',
-#    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/italian-par-linux-3.2-utf8.bin.gz',
-#    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/italian-par2-linux-3.1.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/spanish-par-linux-3.2.bin.gz',
-#    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/spanish-par-linux-3.2-utf8.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/estonian-par-linux-3.2.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/swahili-par-linux-3.2.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/latin-par-linux-3.2.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/mongolian-par-linux-3.2.bin.gz'
+    $DownloadHome.'bulgarian-par-linux-3.2-utf8.bin.gz',
+    $DownloadHome.'dutch-par-linux-3.2-utf8.bin.gz',
+#    $DownloadHome.'dutch2-par-linux-3.1.bin.gz',
+    $DownloadHome.'english-par-linux-3.2-utf8.bin.gz',
+    $DownloadHome.'french-par-linux-3.2-utf8.bin.gz',
+    $DownloadHome.'german-par-linux-3.2-utf8.bin.gz',
+    $DownloadHome.'italian-par-linux-3.2-utf8.bin.gz',
+#    $DownloadHome.'italian-par2-linux-3.1.bin.gz',
+    $DownloadHome.'spanish-par-linux-3.2-utf8.bin.gz',
+    $DownloadHome.'estonian-par-linux-3.2-utf8.bin.gz',
+    $DownloadHome.'swahili-par-linux-3.2.bin.gz',
+    $DownloadHome.'latin-par-linux-3.2.bin.gz',
+    $DownloadHome.'mongolian-par-linux-3.2.bin.gz'
     );
 $TaggerModels{'Darwin'} = $TaggerModels{'Linux'};
 $TaggerModels{'Windows'} = $TaggerModels{'Linux'};
 
 @{$TaggerModels{'Solaris'}} = (
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/bulgarian-par-3.1.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/dutch-par-3.1.bin.gz',
-#    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/dutch2-par-3.1.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/english-par-3.2.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/french-par-3.2.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/german-par-3.2.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/italian-par-3.1.bin.gz',
-#    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/italian-par2-3.1.bin.gz',
-    'ftp://ftp.ims.uni-stuttgart.de/pub/corpora/spanish-par-3.1.bin.gz'
+    $DownloadHome.'bulgarian-par-3.1.bin.gz',
+    $DownloadHome.'dutch-par-3.1.bin.gz',
+#    $DownloadHome.'dutch2-par-3.1.bin.gz',
+    $DownloadHome.'english-par-3.2.bin.gz',
+    $DownloadHome.'french-par-3.2.bin.gz',
+    $DownloadHome.'german-par-3.2.bin.gz',
+    $DownloadHome.'italian-par-3.1.bin.gz',
+#    $DownloadHome.'italian-par2-3.1.bin.gz',
+    $DownloadHome.'spanish-par-3.1.bin.gz'
     );
 $TaggerModels{'MacOSX.PPC'} = $TaggerModels{'Solaris'};
 
