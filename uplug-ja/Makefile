@@ -79,7 +79,7 @@ $(IPADIC)/Makefile: $(CHASEN)/Makefile
 	( cd $(IPADIC) && \
 	  ./configure 	--with-chasen-config=../$(CHASEN) \
 			--with-mkchadic=../$(CHASEN)/mkchadic \
-			--with-chasenrc-path=${CHASENPREFIX}/etc  \
+			--with-chasenrc-path=${CHASENPREFIX}/etc/chasenrc  \
 			--with-dicdir=${CHASENPREFIX}/share \
 			${CONFIG_ARGS} )
 
