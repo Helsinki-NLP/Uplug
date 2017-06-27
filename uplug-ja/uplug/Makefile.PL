@@ -9,7 +9,7 @@ author      'Joerg Tiedemann';
 # include     'Module::AutoInstall';
 
 requires              'Uplug'     => 0;
-requires_external_bin 'chasen';
+# requires_external_bin 'chasen';
 
 # auto_install;
 install_share;
