@@ -18,6 +18,8 @@
 #   -M ........ skip creating monolingual index files
 #   -A ........ skip creating alignment files
 #   -k ........ keep temp file for cwb encoding
+#   -e enc .... use character encoding enc
+#   -C ........ convert only (don't run indexing and registring)
 #
 #---------------------------------------------------------------------------
 # Copyright (C) 2004 Jörg Tiedemann  <joerg@stp.ling.uu.se>
@@ -45,9 +47,9 @@ use File::Basename;
 use XML::Parser;
 use Encode;
 
-use vars qw($opt_a $opt_i $opt_d $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s $opt_u $opt_p $opt_M $opt_k $opt_P $opt_U $opt_A);
+use vars qw($opt_a $opt_i $opt_d $opt_e $opt_r $opt_t $opt_c $opt_v $opt_x $opt_o $opt_y $opt_f $opt_m $opt_s $opt_u $opt_p $opt_M $opt_k $opt_P $opt_U $opt_A $opt_C);
 use Getopt::Std;
-getopts('a:d:r:t:c:x:voyf:m:si:u:p:MkP:U:A');
+getopts('a:d:e:r:t:c:x:voyf:m:si:u:p:MkP:U:AC');
 
 
 # script arguments
@@ -318,8 +320,8 @@ foreach my $s (@ALGLANG){
 	print STDERR "make alignment index for '$s-$t'\n" if $VERBOSE;
 	MakeCWBalg($srctrg,$trgsrc,$slc,$tlc);
 
-	unlink($srctrg);
-	unlink($trgsrc);
+	unlink($srctrg) unless ($opt_k);
+	unlink($trgsrc) unless ($opt_k);
 
     }
 }
@@ -356,31 +358,35 @@ sub MakeCWBalg{
     #-----------------------------------------------
     # register alignments in CWB
 
-    open F,"<$regdir/$trglang";
-    my @reg=grep { /ALIGNED $srclang/ } <F>;
-    close F;
-    if (not @reg){
-	open F,">>$regdir/$trglang";
-	print F "ALIGNED $srclang\n";
+    unless ($opt_C){
+	open F,"<$regdir/$trglang";
+	my @reg=grep { /ALIGNED $srclang/ } <F>;
 	close F;
-    }
-    open F,"<$regdir/$srclang";
-    my @reg=grep { /ALIGNED $trglang/ } <F>;
-    close F;
-    if (not @reg){
-	open F,">>$regdir/$srclang";
-	print F "ALIGNED $trglang\n";
+	if (not @reg){
+	    open F,">>$regdir/$trglang";
+	    print F "ALIGNED $srclang\n";
+	    close F;
+	}
+	open F,"<$regdir/$srclang";
+	my @reg=grep { /ALIGNED $trglang/ } <F>;
 	close F;
+	if (not @reg){
+	    open F,">>$regdir/$srclang";
+	    print F "ALIGNED $trglang\n";
+	    close F;
+	}
     }
 
-    system "$CWBALIGNENCODE -v -r $regdir -D $srctrg";
-    system "$CWBALIGNENCODE -v -r $regdir -D $trgsrc";
+    unless ($opt_C){
+	system "$CWBALIGNENCODE -v -r $regdir -D $srctrg";
+	system "$CWBALIGNENCODE -v -r $regdir -D $trgsrc";
 
-    copy "$srctrg","$datdir/$srclang$trglang.alg";
-    copy "$trgsrc","$datdir/$trglang$srclang.alg";
+	copy "$srctrg","$datdir/$srclang$trglang.alg";
+	copy "$trgsrc","$datdir/$trglang$srclang.alg";
 
-    system "gzip -f $datdir/$trglang$srclang.alg";
-    system "gzip -f $datdir/$srclang$trglang.alg";
+	system "gzip -f $datdir/$trglang$srclang.alg";
+	system "gzip -f $datdir/$srclang$trglang.alg";
+    }
 }
 
 
@@ -550,51 +556,56 @@ sub MakeCWBindex{
 
     my $datdir = "$CWBDATA/$CORPUS";
     my $regdir = "$CWBREG/$CORPUS";
+    my @extra  = ();
 
-    if (-d "$datdir/$lang"){
-	if ($OVERWRITE){
-	    my $ok = $ASSUME_YES;
-	    if (! $ASSUME_YES){
-		print "$datdir/$lang exists! Overwrite [y|N]\n";
-		my $answer = <STDIN>;
-		if ($answer=~/^y/){
-		    $ok = 1;
+    unless ($opt_C){
+	if (-d "$datdir/$lang"){
+	    if ($OVERWRITE){
+		my $ok = $ASSUME_YES;
+		if (! $ASSUME_YES){
+		    print "$datdir/$lang exists! Overwrite [y|N]\n";
+		    my $answer = <STDIN>;
+		    if ($answer=~/^y/){
+			$ok = 1;
+		    }
+		}
+		if ($ok){
+		    system ("rm -fr $datdir/$lang");  # this looks scary!!!!!!!!!
+		}
+		else{
+		    unlink $lang;
+		    return 0;
 		}
 	    }
-	    if ($ok){
-		system ("rm -fr $datdir/$lang");  # this looks scary!!!!!!!!!
-	    }
 	    else{
+		warn "$datdir/$lang exists! (do not overwrite!)\n";
 		unlink $lang;
 		return 0;
 	    }
 	}
-	else{
-	    warn "$datdir/$lang exists! (do not overwrite!)\n";
-	    unlink $lang;
-	    return 0;
-	}
-    }
 
-    ## save the ALIGNED lines!
-    my @extra=();
-    if (-e "$regdir/$lang"){
-	@extra = `grep 'ALIGNED' $regdir/$lang`;
+	## save the ALIGNED lines!
+	if (-e "$regdir/$lang"){
+	    @extra = `grep 'ALIGNED' $regdir/$lang`;
+	}
+	mkdir "$datdir/$lang",0755;
     }
-    mkdir "$datdir/$lang",0755;
 
     print STDERR "$ENCODE -R $regdir/$lang -d $datdir/$lang -f $cwbtok $attr\n";
-    system ("$ENCODE -R $regdir/$lang -d $datdir/$lang -f $cwbtok $attr");
+    system ("$ENCODE -R $regdir/$lang -d $datdir/$lang -f $cwbtok $attr")
+	unless ($opt_C);
     print STDERR "$CWBMAKEALL -r $regdir -V $lang\n";
-    system ("$CWBMAKEALL -r $regdir -V $lang");
+    system ("$CWBMAKEALL -r $regdir -V $lang") 	unless ($opt_C);
 
     ## ... and add them to the new registry file
     if (@extra){
-	open REG,">>$regdir/$lang";
-	foreach (@extra){
-	    print REG $_;
+	unless ($opt_C){
+	    open REG,">>$regdir/$lang";
+	    foreach (@extra){
+		print REG $_;
+	    }
+	    close REG;
 	}
-	close REG;
     }
 }
 
@@ -659,7 +670,7 @@ sub XML2CWB{
     open OUT,">>$cwbtok";
     open POS,">>$cwbpos";
 
-    $OutputEncoding = GetLangEncoding($lang);
+    $OutputEncoding = $opt_e || GetLangEncoding($lang);
     eval { binmode (OUT,':encoding('.$OutputEncoding.')'); };
 
     print POS "# $file\n";
