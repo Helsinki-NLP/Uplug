@@ -11,7 +11,6 @@ abstract    'TreeTagger add-on for Uplug';
 author      'Joerg Tiedemann';
 # include     'Module::AutoInstall';
 
-
 my $TaggerLicense = "http://www.ims.uni-stuttgart.de/~schmid/Tagger-Licence";
 
 # TreeTagger downloads
@@ -20,13 +19,14 @@ my $DownloadHome = 'http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data
 my $TaggerVersion = '3.2.1';
 
 my %TaggerBinaries = (
-'Linux'       =>$DownloadHome.'tree-tagger-linux-'.$TaggerVersion.'.tar.gz',
-'Linux.x86_86'=>$DownloadHome.'tree-tagger-linux-'.$TaggerVersion.'-64bit.tar.gz',
-'Linux.old'   =>$DownloadHome.'tree-tagger-linux-'.$TaggerVersion.'-old.tar.gz',
-'Darwin'      =>$DownloadHome.'tree-tagger-MacOSX-'.$TaggerVersion.'-intel.tar.gz',
-'MacOSX.PPC'  =>$DownloadHome.'tree-tagger-MacOSX-'.$TaggerVersion.'.tar.gz',
-'Solaris'     =>$DownloadHome.'tree-tagger-'.$TaggerVersion.'.tar.gz',
-'Windows'     =>$DownloadHome.'tree-tagger-windows-'.$TaggerVersion.'.zip' 
+    'Linux'       =>$DownloadHome.'tree-tagger-linux-'.$TaggerVersion.'.tar.gz',
+    'Linux.x86_86'=>$DownloadHome.'tree-tagger-linux-'.$TaggerVersion.'-64bit.tar.gz',
+    #'Linux.old'   =>$DownloadHome.'tree-tagger-linux-'.$TaggerVersion.'-old.tar.gz',
+    'Linux.old'   =>$DownloadHome.'tree-tagger-linux-3.2-old5.tar.gz',
+    'Darwin'      =>$DownloadHome.'tree-tagger-MacOSX-'.$TaggerVersion.'-intel.tar.gz',
+    'MacOSX.PPC'  =>$DownloadHome.'tree-tagger-MacOSX-'.$TaggerVersion.'.tar.gz',
+    'Solaris'     =>$DownloadHome.'tree-tagger-'.$TaggerVersion.'.tar.gz',
+    'Windows'     =>$DownloadHome.'tree-tagger-windows-'.$TaggerVersion.'.zip' 
     );
 
 my $TaggerScripts   = $DownloadHome.'tagger-scripts.tar.gz';
@@ -121,6 +121,7 @@ sub install_treetagger{
     # download binaries, scriprts and all model files
 
     print "Download binaries and scripts ....\n";
+    print "fetch $url\n";
     my_getstore($url, basename($url));
     my_getstore($TaggerScripts, 'tagger-scripts.tar.gz');
     my_getstore($TaggerInstaller, 'install-tagger.sh');
@@ -136,6 +137,23 @@ sub install_treetagger{
     print "Unpack all archives ....\n";
     system( 'chmod +x install-tagger.sh' );
     system( './install-tagger.sh' );
+
+    # sometimes we can get kernel problems
+    # --> try an older version
+    if ($system eq 'Linux'){
+    	my $testrun = `bin/tree-tagger 2>&1`;
+    	if ($testrun!~/USAGE/s){
+    	     my $oldurl = $TaggerBinaries{'Linux.old'};
+    	     print "fetch $oldurl\n";
+    	     my_getstore($oldurl, basename($oldurl));
+    	     rename(basename($oldurl),basename($url));
+    	     system( './install-tagger.sh' );
+	     $testrun = `bin/tree-tagger 2>&1`;
+	     unless ($testrun=~/USAGE/s){
+		 die "Problems with tree-tagger binaries!";
+	     }
+    	}
+    }
 
     print "remove temporary downloads ....\n";
     system( 'rm -f *.gz *.zip' );

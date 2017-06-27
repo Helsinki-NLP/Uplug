@@ -9,9 +9,10 @@ LIB=$ROOT/lib
 OPTIONS="-token -lemma -sgml"
 
 TAGGER=${BIN}/tree-tagger
-TOKENIZER=${CMD}/tokenize.pl
+# TOKENIZER=${CMD}/tokenize.pl
+TOKENIZER=${CMD}/utf8-tokenize.perl
 ABBR_LIST=${LIB}/dutch-abbreviations
-PARFILE=${LIB}/dutch.par
+PARFILE=${LIB}/dutch-utf8.par
 
 $TOKENIZER -a $ABBR_LIST $* |
 $TAGGER $OPTIONS $PARFILE

@@ -27,6 +27,7 @@
      'tagger' => {
       'language' => 'swahili',
       'startup base' => 'tree_',
+#	'encoding' => 'utf8',
 	'encoding' => 'iso-8859-15',
      },
      'output' => {
@@ -36,6 +37,7 @@
         'token delimiter' => "\n",
         'sentence delimiter' => "\n<s>\n",
         'tag delimiter' => '\s+',
+#	'encoding' => 'utf8',
 	'encoding' => 'iso-8859-15',
      },
      'input' => {

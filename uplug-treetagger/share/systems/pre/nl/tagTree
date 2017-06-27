@@ -49,7 +49,7 @@
   'module' => {
     'program' => 'uplug-tag',
     'location' => '$UplugBin',
-    'name' => 'tree tagger (english)',
+    'name' => 'tree tagger (Dutch)',
     'stdout' => 'text'
   },
   'arguments' => {

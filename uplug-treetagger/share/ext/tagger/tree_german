@@ -9,11 +9,15 @@ LIB=$ROOT/lib
 
 OPTIONS="-token -lemma -sgml -pt-with-lemma"
 
-TOKENIZER=${CMD}/tokenize.pl
+# TOKENIZER=${CMD}/tokenize.pl
+TOKENIZER=${CMD}/utf8-tokenize.perl
 TAGGER=${BIN}/tree-tagger
-ABBR_LIST=${LIB}/german-abbreviations
-PARFILE=${LIB}/german.par
-LEXFILE=${LIB}/german-lexicon.txt
+# ABBR_LIST=${LIB}/german-abbreviations
+# PARFILE=${LIB}/german.par
+# LEXFILE=${LIB}/german-lexicon.txt
+ABBR_LIST=${LIB}/german-abbreviations-utf8
+PARFILE=${LIB}/german-utf8.par
+LEXFILE=${LIB}/german-lexicon-utf8.txt
 FILTER=${CMD}/filter-german-tags
 
 $TOKENIZER -a $ABBR_LIST $* |
