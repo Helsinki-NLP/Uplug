@@ -67,7 +67,11 @@ $TaggerModels{'MacOSX.PPC'} = $TaggerModels{'Solaris'};
 
 requires 'Uplug'     => '0';
 
+my @argv = @ARGV;
+@ARGV = ();
 install_treetagger() unless ($ARGV[0] eq 'skip-compile');
+@ARGV = @argv;
+
 # auto_install;
 install_share;
 

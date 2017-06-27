@@ -1,10 +1,14 @@
 
 MODULES = uplug-main $(wildcard uplug-??) uplug-treetagger uplug-hunalign-dics
 
+ifdef PREFIX
+  MAKE_ARGS = PREFIX=${PREFIX}
+endif
+
 all test install:
 	for m in $(MODULES); do\
 		$(MAKE) $$m/Makefile; \
-		$(MAKE) -C $$m $@; \
+		$(MAKE) -C $$m $@ ${MAKE_ARGS}; \
 	done
 
 clean:
@@ -44,5 +48,5 @@ $(PACKAGES): %.tar.gz: %
 	$(MAKE) -C $< clean
 
 %/Makefile:
-	cd $(dir $@) && perl Makefile.PL $(MODE)
+	cd $(dir $@) && perl Makefile.PL $(MODE) ${MAKE_ARGS}
 

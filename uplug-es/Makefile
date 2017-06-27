@@ -6,6 +6,10 @@ VERSION = 0.2.1
 
 CONTENTS = $(shell ls) 
 
+ifdef PREFIX
+  MAKE_ARGS = PREFIX=${PREFIX}
+endif
+
 all test install clean: uplug/Makefile svmtool/Makefile
 	${MAKE} -C svmtool $@
 	${MAKE} -C uplug $@
@@ -24,4 +28,4 @@ dist-uplug: uplug/Makefile
 	${MAKE} -C uplug manifest dist
 
 %/Makefile: %/Makefile.PL
-	(cd $(dir $@) && perl Makefile.PL)
+	(cd $(dir $@) && perl Makefile.PL ${MAKE_ARGS})
