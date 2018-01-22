@@ -1,7 +1,10 @@
 
+* v0.3.9 
 
 - fixed a problem of changing the root attribute in pipelines
   (which messes up annotation pipelines)
+- added config files for the pre-processing pipelines used in OPUS
+- fixed cleanup issue with temporary files
 
 * v0.3.8 Sat Mar 16 10:58:22 CET 2013
 
