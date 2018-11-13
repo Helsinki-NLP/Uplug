@@ -3,11 +3,9 @@
     'name' => 'French pre-processing',
     'submodules' => [
         'pre/fr/toktag',
-        'pre/fr/tagMElt',
     ],
     'submodule names' => [
 	'tokenization and POS tagging (TreeTagger)',
-        'POS tagger (MElt)',
     ],
     'stdin' => 'text',
     'stdout' => 'text',
