@@ -52,7 +52,7 @@ require 5.005;
 
 use strict;
 use IO::File;
-use POSIX qw(tmpnam);
+use File::Temp qw/ :POSIX /;
 use Uplug::Config;
 use File::Basename;
 

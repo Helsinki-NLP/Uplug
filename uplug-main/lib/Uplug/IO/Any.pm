@@ -86,7 +86,7 @@ use vars qw($DefaultFormat);
 use FindBin qw($Bin);
 
 use IO::File;
-use POSIX qw(tmpnam);
+use File::Temp qw/ :POSIX /;
 
 use autouse 'Uplug::Config';
 

@@ -18,7 +18,7 @@ package Uplug::Web::Corpus;
 
 use strict;
 use IO::File;
-use POSIX qw(tmpnam);
+use File::Temp qw/ :POSIX /;
 use File::Copy;
 use ExtUtils::Command;
 use File::Basename;

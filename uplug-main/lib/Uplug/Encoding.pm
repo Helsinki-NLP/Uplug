@@ -152,7 +152,7 @@ sub decode{
 sub encodeArray{
     my ($arr,$oldCode,$newCode)=@_;
     if (ref($arr) eq 'HASH'){
-	foreach (keys %{$arr}){
+	foreach (sort keys %{$arr}){
 	    $arr->{$_}=&encode($arr->{$_},$oldCode,$newCode);
 	}
     }

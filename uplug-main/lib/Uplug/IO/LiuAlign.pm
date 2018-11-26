@@ -32,7 +32,7 @@ use Uplug::IO::XML;
 use Uplug::IO::Any;
 use Uplug::Data;
 # use IO::File;
-# use POSIX qw(tmpnam);
+# use File::Temp qw/ :POSIX /;
 
 @ISA = qw( Uplug::IO::XML );
 
