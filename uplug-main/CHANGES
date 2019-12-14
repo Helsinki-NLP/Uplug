@@ -5,6 +5,7 @@
   (which messes up annotation pipelines)
 - added config files for the pre-processing pipelines used in OPUS
 - fixed cleanup issue with temporary files
+- fixed problem with POSIX tmpnam()
 
 * v0.3.8 Sat Mar 16 10:58:22 CET 2013
 
