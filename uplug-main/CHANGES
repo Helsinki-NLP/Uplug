@@ -1,4 +1,9 @@
 
+* v0.3.10
+
+- updated treetagger (v3.2.2 and latest parameters files)
+
+
 * v0.3.9 
 
 - fixed a problem of changing the root attribute in pipelines

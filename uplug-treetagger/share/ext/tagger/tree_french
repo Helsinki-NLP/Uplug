@@ -11,8 +11,8 @@ OPTIONS="-token -lemma -sgml"
 TAGGER=${BIN}/tree-tagger
 # TOKENIZER=${CMD}/tokenize.pl
 TOKENIZER=${CMD}/utf8-tokenize.perl
-ABBR_LIST=${LIB}/french-abbreviations-utf8
-PARFILE=${LIB}/french-utf8.par
+ABBR_LIST=${LIB}/french-abbreviations
+PARFILE=${LIB}/french.par
 
 $TOKENIZER -f -a $ABBR_LIST $* |
 $TAGGER $OPTIONS $PARFILE

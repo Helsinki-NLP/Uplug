@@ -11,7 +11,7 @@ TAGGER=${BIN}/tree-tagger
 TOKENIZER=${CMD}/utf8-tokenize.perl
 # TOKENIZER=${CMD}/tokenize.pl
 ABBR_LIST=${LIB}/italian-abbreviations
-PARFILE=${LIB}/italian-utf8.par
+PARFILE=${LIB}/italian.par
 
 $TOKENIZER -i -a $ABBR_LIST $* |
 $TAGGER $OPTIONS $PARFILE

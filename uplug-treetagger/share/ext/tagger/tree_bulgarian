@@ -11,7 +11,7 @@ TAGGER=${BIN}/tree-tagger
 TOKENIZER=${CMD}/utf8-tokenize.perl
 MWL=${CMD}/mwl-lookup.perl
 ABBR_LIST=${LIB}/bulgarian-abbreviations
-PARFILE=${LIB}/bulgarian-utf8.par
+PARFILE=${LIB}/bulgarian.par
 MWLFILE=${LIB}/bulgarian-mwls
 
 

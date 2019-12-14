@@ -13,7 +13,7 @@ OPTIONS="-token -lemma -sgml -pt-with-lemma"
 TOKENIZER=${CMD}/utf8-tokenize.perl
 TAGGER=${BIN}/tree-tagger
 ABBR_LIST=${LIB}/english-abbreviations
-PARFILE=${LIB}/english-utf8.par
+PARFILE=${LIB}/english.par
 # LEXFILE=${LIB}/english-lexicon.txt
 
 $TOKENIZER -e -a $ABBR_LIST $* |

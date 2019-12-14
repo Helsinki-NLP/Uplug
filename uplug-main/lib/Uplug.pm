@@ -62,7 +62,7 @@ use vars qw($VERSION $AUTHOR $DEBUG);
 use vars qw(@TempFiles);
 
 
-$VERSION = '0.3.9';
+$VERSION = '0.3.10';
 $AUTHOR  = 'Joerg Tiedemann';
 $DEBUG = 0;
 

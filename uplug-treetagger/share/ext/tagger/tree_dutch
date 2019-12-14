@@ -12,7 +12,7 @@ TAGGER=${BIN}/tree-tagger
 # TOKENIZER=${CMD}/tokenize.pl
 TOKENIZER=${CMD}/utf8-tokenize.perl
 ABBR_LIST=${LIB}/dutch-abbreviations
-PARFILE=${LIB}/dutch-utf8.par
+PARFILE=${LIB}/dutch.par
 
 $TOKENIZER -a $ABBR_LIST $* |
 $TAGGER $OPTIONS $PARFILE

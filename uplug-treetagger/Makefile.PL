@@ -5,48 +5,80 @@ use LWP::Simple;
 use File::Basename;
 
 name        'Uplug';
-version     '0.3.2';
+version     '0.3.10';
 
 abstract    'TreeTagger add-on for Uplug';
 author      'Joerg Tiedemann';
 # include     'Module::AutoInstall';
 
-my $TaggerLicense = "http://www.ims.uni-stuttgart.de/~schmid/Tagger-Licence";
+my $TaggerLicense = "https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/Tagger-Licence";
 
 # TreeTagger downloads
 
-my $DownloadHome = 'http://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/';
-my $TaggerVersion = '3.2.1';
+my $DownloadHome = 'https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/';
+my $TaggerVersion = '3.2.2';
+
+# https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tree-tagger-MacOSX-3.2.2.tar.gz
 
 my %TaggerBinaries = (
     'Linux'       =>$DownloadHome.'tree-tagger-linux-'.$TaggerVersion.'.tar.gz',
     'Linux.x86_86'=>$DownloadHome.'tree-tagger-linux-'.$TaggerVersion.'-64bit.tar.gz',
     #'Linux.old'   =>$DownloadHome.'tree-tagger-linux-'.$TaggerVersion.'-old.tar.gz',
     'Linux.old'   =>$DownloadHome.'tree-tagger-linux-3.2-old5.tar.gz',
-    'Darwin'      =>$DownloadHome.'tree-tagger-MacOSX-'.$TaggerVersion.'-intel.tar.gz',
+    # 'Darwin'      =>$DownloadHome.'tree-tagger-MacOSX-'.$TaggerVersion.'-intel.tar.gz',
+    'Darwin'      =>$DownloadHome.'tree-tagger-MacOSX-'.$TaggerVersion.'.tar.gz',
     'MacOSX.PPC'  =>$DownloadHome.'tree-tagger-MacOSX-'.$TaggerVersion.'.tar.gz',
     'Solaris'     =>$DownloadHome.'tree-tagger-'.$TaggerVersion.'.tar.gz',
     'Windows'     =>$DownloadHome.'tree-tagger-windows-'.$TaggerVersion.'.zip' 
     );
 
+# https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/data/tagger-scripts.tar.gz
+
 my $TaggerScripts   = $DownloadHome.'tagger-scripts.tar.gz';
 my $TaggerInstaller = $DownloadHome.'install-tagger.sh';
 
+# available parameter files (see https://www.cis.uni-muenchen.de/~schmid/tools/TreeTagger/)
+
 my %TaggerModels = ();
 @{$TaggerModels{'Linux'}} = (
-    $DownloadHome.'bulgarian-par-linux-3.2-utf8.bin.gz',
-    $DownloadHome.'dutch-par-linux-3.2-utf8.bin.gz',
-#    $DownloadHome.'dutch2-par-linux-3.1.bin.gz',
-    $DownloadHome.'english-par-linux-3.2-utf8.bin.gz',
-    $DownloadHome.'french-par-linux-3.2-utf8.bin.gz',
-    $DownloadHome.'german-par-linux-3.2-utf8.bin.gz',
-    $DownloadHome.'italian-par-linux-3.2-utf8.bin.gz',
-#    $DownloadHome.'italian-par2-linux-3.1.bin.gz',
-    $DownloadHome.'spanish-par-linux-3.2-utf8.bin.gz',
-    $DownloadHome.'estonian-par-linux-3.2-utf8.bin.gz',
-    $DownloadHome.'swahili-par-linux-3.2.bin.gz',
-    $DownloadHome.'latin-par-linux-3.2.bin.gz',
-    $DownloadHome.'mongolian-par-linux-3.2.bin.gz'
+    $DownloadHome.'bulgarian.par.gz',
+    $DownloadHome.'catalan.par.gz',
+    $DownloadHome.'czech.par.gz',
+    $DownloadHome.'danish.par.gz',
+    $DownloadHome.'dutch.par.gz',
+    $DownloadHome.'dutch2.par.gz',
+    $DownloadHome.'english.par.gz',
+    $DownloadHome.'english-bnc.par.gz',
+    $DownloadHome.'estonian.par.gz',
+    $DownloadHome.'finnish.par.gz',
+    $DownloadHome.'french.par.gz',
+    $DownloadHome.'old-french.par.gz',
+    $DownloadHome.'galician.par.gz',
+    $DownloadHome.'german.par.gz',
+    $DownloadHome.'german-spoken.par.gz',
+    $DownloadHome.'middle-high-german.par.gz',
+    $DownloadHome.'greek.par.gz',
+    $DownloadHome.'ancient-greek.par.gz',
+    $DownloadHome.'italian.par.gz',
+    $DownloadHome.'italian2.par.gz',
+    $DownloadHome.'korean.par.gz',
+    $DownloadHome.'latin.par.gz',
+    $DownloadHome.'latinIT.par.gz',
+    $DownloadHome.'mongolian.par.gz',
+    $DownloadHome.'norwegian.par.gz',
+    $DownloadHome.'polish.par.gz',
+    $DownloadHome.'portuguese.par.gz',
+    $DownloadHome.'portuguese-finegrained.par.gz',
+    $DownloadHome.'portuguese2.par.gz',
+    $DownloadHome.'romanian.par.gz',
+    $DownloadHome.'russian.par.gz',
+    $DownloadHome.'slovak.par.gz',
+    $DownloadHome.'slovak2.par.gz',
+    $DownloadHome.'slovenian.par.gz',
+    $DownloadHome.'spanish.par.gz',
+    $DownloadHome.'spanish-ancora.par.gz',
+    $DownloadHome.'swahili.par.gz',
+    $DownloadHome.'swedish.par.gz'
     );
 $TaggerModels{'Darwin'} = $TaggerModels{'Linux'};
 $TaggerModels{'Windows'} = $TaggerModels{'Linux'};
@@ -122,6 +154,8 @@ sub install_treetagger{
 
     print "Download binaries and scripts ....\n";
     print "fetch $url\n";
+    unlink('install-tagger.sh');
+    unlink('tagger-scripts.tar.gz');
     my_getstore($url, basename($url));
     my_getstore($TaggerScripts, 'tagger-scripts.tar.gz');
     my_getstore($TaggerInstaller, 'install-tagger.sh');
@@ -164,7 +198,7 @@ sub install_treetagger{
 
 
 # get data from the ftp-server
-# in case LWP::Simpledoesn't work: try to call wget
+# in case LWP::Simple doesn't work: try to call wget
 
 sub my_getstore{
   my $url = shift;
