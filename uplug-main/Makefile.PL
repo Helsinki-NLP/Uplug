@@ -53,7 +53,6 @@ install_script 'tools/uplug-sentence-align';
 
 requires 'AnyDBM_File'     => 0;
 requires 'DB_File'         => 0;
-requires 'GDBM_File'       => 0;
 requires 'Cwd'             => 0;
 requires 'Data::Dumper'    => 0;
 requires 'Encode'          => 0;

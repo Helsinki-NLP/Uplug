@@ -2,7 +2,7 @@
 * v0.3.10
 
 - updated treetagger (v3.2.2 and latest parameters files)
-
+- remove deendency on GDBM_File
 
 * v0.3.9 
 
