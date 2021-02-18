@@ -175,6 +175,13 @@ sub install_treetagger{
     # sometimes we can get kernel problems
     # --> try an older version
     if ($system eq 'Linux'){
+	if (! -e 'bin/tree-tagger' ){
+	    my $tarfile = basename($url);
+	    system("tar -xzf $tarfile");
+	    system( './install-tagger.sh' );
+	    system('chmod +x bin/*');
+	    system('chmod +x cmd/*');
+	}
     	my $testrun = `bin/tree-tagger 2>&1`;
     	if ($testrun!~/USAGE/s){
     	     my $oldurl = $TaggerBinaries{'Linux.old'};
