@@ -11,6 +11,11 @@ all test install:
 		$(MAKE) -C $$m $@ ${MAKE_ARGS}; \
 	done
 
+makefiles:
+	for m in $(MODULES); do\
+		$(MAKE) MODE=skip-compile $$m/Makefile; \
+	done
+
 clean:
 	for m in $(MODULES); do\
 		$(MAKE) MODE=skip-compile $$m/Makefile; \
@@ -24,7 +29,6 @@ clean:
 	-find . -name 'META.yml' | xargs rm -f
 	-find . -name 'translate.txt' | xargs rm -f
 	-find . -name 'runtime' -type d | xargs rm -fr
-	-rm -fr uplug-*/inc uplug-*/uplug/inc
 
 
 install-main:
