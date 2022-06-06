@@ -1,4 +1,4 @@
-# use lib '.';
+use lib '.';
 use inc::Module::Install;
 
 use Cwd;
